@@ -1,0 +1,16 @@
+Here are the static analysis issues:
+
+| Line | Rule |
+|------|------|
+| 17 | **`InjectedFieldNotInitialized`** / **`NullableInjectedField`** – `undoManager` is `@Inject`ed but used in `initialize()` (line 33) before injection is guaranteed if called out of order |
+| 19–25 | **`ConstructorCallsOverridableMethod`** – `ViewLoader.view(this).root(this).load()` called in constructor; `load()` triggers `initialize()`, which references fields not yet set by subclass |
+| 15 | **`VisibilityModifier`** – `@FXML` field `preamble` has package-private visibility instead of `private` (though `private` is used here — actually it *is* private; N/A) |
+| 17 | **`VisibilityModifier`** – `@Inject` field `undoManager` is package-private (no explicit modifier beyond `@Inject`); should be `private` |
+| 31 | **`UncommentedEmptyMethodBody`** / missing `@FXML` annotation – `initialize()` is the JavaFX init callback but lacks `@FXML` annotation, making it reliant on public visibility contract |
+| 3 | **`AvoidUsingSwingLibraries`** / **`IllegalImport`** – `javax.swing.undo.UndoManager` imports Swing into a JavaFX application layer |
+
+**Key issues summarized:**
+- **Line 3**: Swing dependency in JavaFX UI class.
+- **Line 17**: Field injection visibility violation.
+- **Lines 19–25**: Calling overridable/lifecycle method (`load()`) inside constructor is unsafe.
+- **Line 31**: `initialize()` missing `@FXML`; relies on public access rather than explicit annotation contract.

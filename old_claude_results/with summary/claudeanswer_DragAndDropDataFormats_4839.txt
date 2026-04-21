@@ -1,0 +1,8 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 10 | **HideUtilityClassConstructor** – Utility class `DragAndDropDataFormats` has no private constructor, allowing instantiation. |
+| 17 | **UncheckedCast** – Double cast `(Class<List<PreviewLayout>>) (Class<?>) List.class` performs an unsafe/unchecked cast (suppressed with `@SuppressWarnings`, which itself indicates a smell). |
+| 17 | **SuppressWarnings** – Use of `@SuppressWarnings("unchecked")` masks a type-safety violation rather than fixing it. |
+| 17 | **MemberName** / **ConstantName** – `PREVIEWLAYOUT_LIST_CLASS` is a `public static final` field but holds a `Class` reference, not a primitive/String constant; some tools flag this as a poorly named or misused constant. |

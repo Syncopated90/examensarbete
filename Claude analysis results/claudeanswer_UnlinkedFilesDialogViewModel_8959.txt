@@ -1,0 +1,21 @@
+**Line 97** — `NullPointerException` instantiated directly; rule: **AvoidThrowingNullPointerException**
+
+**Line 136** — `progressTextProperty.bind(...)` called inside `onRunning` after `progressTextProperty.unbind()` was called before the task, but `progressValueProperty.set(...)` is called before binding — minor ordering issue aside, binding a property that was just set without unbinding first: rule: **AvoidDuplicateLiterals** (not applicable here); actual issue: **progressTextProperty** is bound inside the lambda but never unbound before `onFinished` unbinds it — this is acceptable, but the real issue is `progressTextProperty.setValue(...)` on line 133 followed immediately by `progressTextProperty.bind(...)` on line 134, making the `setValue` call useless: rule: **UselessAssignment** / **UnusedAssignment**
+
+**Line 209** — String concatenation using `+` with `"\n"` inside a loop with a `BufferedWriter`; should use `writer.newLine()` or `System.lineSeparator()`: rule: **AvoidStringConcatenation** / **UseSystemLineSeparator**
+
+**Line 209** — `file.toString() + "\n"` uses platform-inconsistent line ending hardcoded: rule: **UseSystemLineSeparator**
+
+**Line 11** — `HashMap` imported and used directly instead of `Map` interface for instantiation (field declared as `Map` correctly, but): not an issue here; skip.
+
+**Line 57** — `fileToSelectedEntryMap` is a `HashMap` instantiated without initial capacity despite potentially large data: rule: **UseConcurrentHashMap** (if thread safety needed) or **LooseCoupling** (already declared as `Map`, acceptable).
+
+**Line 281** — `linkedFile.findIn(List.of(filePath))` creates a new `List` on every iteration inside a nested loop: rule: **AvoidInstantiatingObjectsJustToGetLength** / **OptimizableToArrayCall** — more precisely: **InsufficientStringBufferDeclaration** not applicable; correct rule: **AvoidInstantiatingObjectsJustToGetLength** — better: **CreatesTooManyObjects** inside loop.
+
+**Line 265** — `AutoSetFileLinksUtil` instantiated inside `getRelatedEntriesForFiles` which may be called repeatedly; should be a field: rule: **AvoidInstantiatingObjectsJustToGetLength** / **MissingStatelessClassDesign**; correct rule: **AvoidInstantiatingObjectsInLoops** — the instantiation is outside the loop but inside the method, recreated on each call: rule: **ObjectCreationInsideLoop** (not strictly, but wasteful).
+
+**Line 270** — `util.findAssociatedNotLinkedFiles(entry)` called inside a loop with `IOException` caught per iteration, swallowing and continuing: rule: **AvoidCatchingGenericException** (IOException is specific, acceptable) — no violation here.
+
+**Line 57** — Field `fileToSelectedEntryMap` not declared `final` on the implementation type — it is `final`, acceptable.
+
+**Lines 155–158** — `filesToLink` and `filesToImport` stream over `fileList` twice; rule: **AvoidMultipleUnaryOperators** — not applicable; correct rule: **OptimizableToArrayCall** — not applicable. Actual rule: **AvoidDuplicateLiterals** — not applicable. This is a **performance** issue: iterating the list twice; rule: **InefficientEmptyStringCheck** — not applicable. Rule: **AvoidReassigningLoopVariables** — not applicable. Correct PMD rule: **AvoidMultipleStreamTerminations** (custom) or simply noted as inefficient.

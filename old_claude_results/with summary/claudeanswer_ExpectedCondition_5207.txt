@@ -1,0 +1,12 @@
+## Static Analysis Issues
+
+| Line | Rule |
+|------|------|
+| 7 | **Interface Field Naming Convention** (`ALWAYS_TRUE` is fine, but it's a mutable interface constant — implicitly `public static final`, low risk here since it's a lambda, but interface state is generally discouraged) |
+| 7 | **Instantiation in Interface** (`ALWAYS_TRUE` holds an instance of the enclosing functional interface; no violation per se, but violates **SRP** / separation of concerns — constant belongs in a utility class, not the interface itself) |
+
+### Summary
+
+- **Line 7**: `ALWAYS_TRUE` is a constant defined directly in the interface — violates **"No Field Definition in Interface"** (PMD: `InterfaceWithOnlyPublicStaticFinalFields` / Checkstyle: `InterfaceIsType`). Interfaces should not hold state or instances; this belongs in a companion utility class or enum.
+
+No other violations detected. The `@FunctionalInterface` usage and method signature are correct.

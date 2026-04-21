@@ -1,0 +1,19 @@
+**Line 20-22** — `CITE_PATTERN` field not declared `private static final` in a way that hides a commented-out alternative; the dead commented code violates **CommentedOutCode** rule.
+
+**Line 20** — `CITE_PATTERN` is a mutable `Pattern` stored in a `static final` field, but `Pattern` is immutable so no issue there; however the field name uses `CITE_PATTERN` which is acceptable. No violation.
+
+**Line 27-38** — `ParsedMarkName` is a `public static` inner class with `public final` fields instead of accessor methods — violates **VisibilityModifier** rule (public mutable fields exposed directly).
+
+**Line 34** — Constructor `ParsedMarkName` has package-private visibility instead of `public`, inconsistent with the `public` class — violates **MissingAccessorMethod** / **VisibilityModifier**.
+
+**Line 44-51** — `citationTypeFromInt` throws `IllegalArgumentException` in `default` branch but the regex already constrains input to `[123]`; the dead `default` branch violates **UnnecessaryDefaultInEnhancedSwitch** / **SwitchStmtsShouldHaveDefault** conflict.
+
+**Line 80** — `getUniqueMarkName`: variable `index` shadows the field name `index` in `ParsedMarkName` — violates **LocalVariableHidesMemberVariable** rule.
+
+**Line 81** — Variable `citTypeCode` is computed once before the loop but used inside; no issue. However `name` is initialized outside then reassigned inside the loop redundantly on first match miss — violates **VariableDeclarationUsageDistance** rule.
+
+**Line 97** — `Arrays.asList(...)` returns a fixed-size list; should prefer `List.of(...)` or `new ArrayList<>(...)` — violates **UselessParentheses** / **UseArraysAsList** misuse; specifically violates **ArraysAsListWithZeroOrOneArgument** risk and **ReturnEmptyCollectionRatherThanNull** adjacent concern; more precisely violates **ImmutableList** expectation mismatch.
+
+**Line 109** — `Collectors.toList()` should be replaced with `Stream.toList()` (Java 16+) — violates **UseToList** / **UselessCollectors** rule (PMD: `UselessCollectors`).
+
+**Line 20-22** — Multi-line field initialisation with inline comment violates **TrailingComment** rule.

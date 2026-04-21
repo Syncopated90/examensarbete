@@ -1,0 +1,11 @@
+**Line 23** — `FieldName` / `MemberName`: Field `validUrlIsNotPresent` uses a negative boolean name, violating "avoid negation in boolean names" (SonarLint rule `S2589` / PMD `AvoidNegatingConditions`).
+
+**Line 34** — `Law of Demeter` / `InappropriateIntimacy`: `EasyBind.map(text, ...)` directly accesses the `text` field inherited from the superclass, violating encapsulation.
+
+**Line 34** — `LambdaBodyLength` / complexity: The lambda `input -> StringUtil.isBlank(input) || !URLUtil.isURL(input)` embeds logic that should be extracted to a named method.
+
+**Line 46** — `AvoidCatchingGenericException` (PMD): Catching `IOException` is acceptable, but `ex` is caught and not logged — only a user notification is shown, silently discarding the exception details. Violates `UseSlf4jLogging` / SonarLint `S2139`: exception should be logged as well as reported.
+
+**Line 17** — `UnusedImport` (PMD/Checkstyle): `StringUtil` import — verify if `StringUtil` is from `org.jabref.logic.util.strings.StringUtil`; if a duplicate utility exists in another package, this may indicate `WrongPackageImport`.
+
+**Line 29** — `ExcessiveParameterList` (PMD): Constructor has 6 parameters, exceeding the typical threshold of 5, violating `ParameterNumber` rule.

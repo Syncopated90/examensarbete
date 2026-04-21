@@ -1,0 +1,8 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 20 | **Listener Leak / Inconsistent Listener Wrapping** | `addListener` wraps `listener` in `UiThreadInvalidationListener`, but `removeListener` passes the **original** `listener` — the delegate will never find a match and the listener is never removed. |
+| 28 | **Listener Leak / Inconsistent Listener Wrapping** | Same problem: `addListener` wraps in `UiThreadChangeListener<>`, but `removeListener` passes the **original** `listener` — removal silently fails. |
+
+**Rule names (PMD/general):** `JO_INCONSISTENT_LISTENER_REGISTRATION` / `ResourceLeak` / `CorrectImplementationOfListenerRemoval`

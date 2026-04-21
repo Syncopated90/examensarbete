@@ -1,0 +1,11 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 29 | **Parameter reassignment** – `string` (method parameter) is reassigned. Violates PMD `AvoidReassigningParameters`. |
+| 44 | **Nullable parameter not checked** – `parse(String data)` lacks `@NonNull`/null check; passing `null` causes NPE. Violates PMD `NullAssignment` / FindBugs `NP_NULL_ON_SOME_PATH`. |
+| 60 | **Unchecked return value / possible null** – `URLUtil.createUri(...)` may return `null`; wrapping directly in `Optional.of()` would throw NPE. Should use `Optional.ofNullable()`. Violates PMD `NullAssignment` / SpotBugs `NP_NULL_ON_SOME_PATH`. |
+| 21 | **Mutable `Integer` field not validated** – `abstractId` can be `null` (constructor at line 44 accepts `null` `Integer`), yet `asString()` and `getExternalURI()` dereference it without null check. Violates PMD `NullAssignment`. |
+| 44 | **Constructor accepts `null` boxed type** – `public SSRN(Integer abstractId)` should either accept `int` (primitive) or validate non-null. Violates PMD `AvoidUsingBoxedPrimitiveAsConstructorArgument` / `NullAssignment`. |
+| 31 | **Empty string edge case** – `string.chars().allMatch(...)` returns `true` for an empty string, causing `Integer.parseInt("")` to throw `NumberFormatException` rather than `IllegalArgumentException`. Missing guard. |
+| 17–19 | **Regex compiled with overlapping flags** – `SSRN_URL_FULL_MATCH` uses `^`/`$` anchors but `SSRN_URL_MATCH` uses `MULTILINE`; inconsistent flag usage may cause unexpected matching behaviour. |

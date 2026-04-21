@@ -1,0 +1,16 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 7 | **AvoidJavaFxUtilPair** / **InappropriateDependency** | `javafx.util.Pair` used in non-UI logic layer; should use `java.util.AbstractMap.SimpleEntry` or a custom type |
+| 35 | **LocalVariableHidesMemberVariable** | Local variable `port` shadows the instance field `this.port` |
+| 33 | **CompareObjectsWithEquals** / **ReferenceComparison** | `response.getKey() == RemoteMessage.PING` — enum comparison with `==` is safe, but `Protocol.IDENTIFIER.equals(response.getValue())` implies mixed comparison style inconsistency; `response.getKey()` should consistently use `==` for enums (acceptable) but flagged if linter expects `.equals()` uniformly |
+| 35 | **UnusedLocalVariable** (indirect) | `port` is declared only to pass into `lang()`, could be inlined |
+| 36–37 | **AvoidConcatenationInLoggingStatements** | `errorMessage` string is pre-built outside the logger; though not concatenation inside logger, the message is always constructed regardless of log level (minor) |
+| 54 | **AvoidStringJoinInLogger** | `String.join(", ", args)` is eagerly evaluated in logger call regardless of log level; should use lazy supplier or guard with `isDebugEnabled()` |
+| 79 | **ResourceNotClosedOnException** | `Socket` is created before being wrapped in `Protocol`; if `Protocol` constructor throws, the socket leaks (not closed in finally/try-with-resources) |
+
+### Key Issues Summary
+- **Line 35**: Variable shadowing (critical readability bug)
+- **Line 79**: Potential socket resource leak (correctness/reliability bug)
+- **Line 54**: Eager argument evaluation in debug logging (performance)

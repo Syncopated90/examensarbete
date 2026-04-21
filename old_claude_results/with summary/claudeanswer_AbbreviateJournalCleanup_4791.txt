@@ -1,0 +1,11 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 56 | **NullDereference** – `newTextOptional.get()` called after `isEmpty()` check is safe, but `origText` is derived from `orElse("")` while `text` resolves strings; comparison `newTextOptional.get().equals(origText)` compares resolved vs unresolved text — **incorrect equality check** (logic bug, not purely style) |
+| 70 | **NullAssignment** – `orElse(null)` assigns `null` to `oldFjournalValue`, violating `@NullMarked` non-null contract for local variables passed to `FieldChange` constructor |
+| 70 | **ConfusingTernary / NullableReturn** – `entry.getField(AMSField.FJOURNAL).orElse(null)` breaks `@NullMarked` discipline; prefer `orElse("")` or `Optional` parameter |
+| 68 | **LambdaCapturesSideEffect** – lambda passed to `ifPresent` mutates external `changes` list and `entry`, causing side effects that are non-obvious and untestable in isolation |
+| 25 | **ExcessiveParameterList** – constructor has 4 parameters; consider a parameter object |
+| 60 | **RegexReuse** – `replaceAll("(?<!\\\\)&", "\\\\&")` pattern compiled inline; same pattern repeated at line 72 violating **DuplicateLiteral** / **PrecompileRegex** rule |
+| 72 | **DuplicateLiteral** – regex string `"(?<!\\\\)&"` duplicated from line 60 |

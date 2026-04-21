@@ -1,0 +1,13 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 23 | **Field not initialized in declaration** – `ingestor` and `documentSplitter` are non-final mutable fields initialized via `rebuild()`, preventing `final` use and indicating fragile state. |
+| 24 | Same as above for `documentSplitter`. |
+| 36–44 | **Non-atomic compound action / race condition** – `rebuild()` non-atomically replaces `ingestor` and `documentSplitter`; listener callbacks can race with `ingestDocument`. |
+| 50 | **Unused lambda parameter with `_`** – use of unnamed parameter (`_`) requires Java 21+; may violate language-level compatibility rules depending on project target. |
+| 57 | **Method signature declares checked exception unnecessarily** – `throws InterruptedException` is thrown via `new InterruptedException()` (not from a blocking call), misleading callers about the source of interruption. |
+| 62 | **Nesting JavaFX property read in tight loop** – `stopProperty.get()` called on every iteration without caching; minor but flagged by performance rules (e.g., PMD `AvoidCallingFinalize` analogue / repeated property access). |
+| 64 | **Non-atomic read-modify-write on IntegerProperty** – `workDone.set(workDone.get() + 1)` is not thread-safe (PMD: **NonAtomicOperationOnVolatileField** equivalent). |
+| 57 | **Too many parameters** – `ingestDocument` has 4 parameters (PMD: **ExcessiveParameterList** / Checkstyle `ParameterNumber`). |
+| 18 | **Low cohesion / SRP violation** – class manages both splitting and ingesting logic while also listening to preference changes (PMD: **GodClass** / SRP). |

@@ -1,0 +1,21 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 17 | **VisibilityModifier** – `sidePaneType` could be `private final` but class field `buttonContainer` (line 23) is non-`final` instance field with package-private effective visibility risk |
+| 23 | **ImmutableField** – `buttonContainer` is only assigned once (line 56) after construction; should be `final` (assigned in `initialize()` not constructor directly, but still only set once) |
+| 23 | **FieldShouldBeFinal** – `buttonContainer` is never reassigned after `initialize()` |
+| 38 | **OverridableMethodCallInConstructor** – `initialize()` is a `private` method called from constructor (acceptable here, but `setTop`/`setCenter` are overridable JavaFX calls in constructor context) |
+| 40 | **AvoidInlineConditionals** – Ternary inline conditional in `VBox.setVgrow(...)` |
+| 66 | **MethodOnlyUsedFromInnerClass / ProtectedMembersInFinalClass** – `addExtraNodeToHeader` is `protected` but the class is not designed for inheritance (not `abstract`, not documented for extension) |
+| 71 | **PatternMatchingForInstanceof** – (positive) uses modern pattern matching; no violation here |
+| 66–68 | **LawOfDemeter** – `this.buttonContainer.getChildren().add(...)` chains through internal structure directly |
+| 46 | **LawOfDemeter** – `closeButton.setOnAction(e -> closeCommand.execute())` — minor; lambda wraps a single-method delegate unnecessarily (use method reference `closeCommand::execute`) |
+| 51 | **LawOfDemeter** – same as line 46 for `moveUpCommand.execute()` |
+| 54 | **LawOfDemeter** – same as line 46 for `moveDownCommand.execute()` |
+
+**Summary of key violations:**
+- `buttonContainer` should be `final` (**FieldShouldBeFinal**)
+- Lambda wrappers should be method references (`closeCommand::execute`) (**UnnecessaryLambdaWrapper**)
+- `protected` method on non-`abstract` class without inheritance contract (**ProtectedMethodInFinalClass**)
+- Law of Demeter violations on chained calls

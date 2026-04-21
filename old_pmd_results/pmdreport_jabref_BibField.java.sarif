@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "SimplifyBooleanReturns",
+              "shortDescription": {
+                "text": "This if statement can be replaced by `return !{condition} && {elseBranch};`"
+              },
+              "fullDescription": {
+                "text": "\nAvoid unnecessary if-then-else statements when returning a boolean. The result of\nthe conditional test can be returned instead.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#simplifybooleanreturns",
+              "help": {
+                "text": "\nAvoid unnecessary if-then-else statements when returning a boolean. The result of\nthe conditional test can be returned instead.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SimplifyBooleanReturns",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This if statement can be replaced by `return !{condition} && {elseBranch};`"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BibField.java"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 9,
+                  "endLine": 14,
+                  "endColumn": 10
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

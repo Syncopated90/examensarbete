@@ -1,0 +1,13 @@
+## Static Analysis
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 13 | **Duplicate Code / Redundant Parameter** | `dialogService` is passed to `super()` and also stored locally — if the parent class already holds it, the field is redundant |
+| 11 | **Redundant Field** | `dialogService` field shadows/duplicates storage already in parent `PushToTexShop` (assuming parent stores it) |
+| 9 | **Coupling / Unnecessary Dependency** | Class depends on both `GuiPushToApplication` and `PushToTexShop`; tight coupling between GUI and logic layers violates layered architecture |
+
+### Key Rules Broken
+
+- **`S1068` (SonarQube) — Unused/redundant private field**: `dialogService` may duplicate parent field.
+- **`DRY / S4144` — Duplicate assignment**: `dialogService` passed to `super(dialogService, preferences)` and re-assigned at line 14.
+- **`S110` — Inheritance tree too deep / improper layering**: GUI class extending a logic-layer class (`PushToTexShop`) breaks separation of concerns.

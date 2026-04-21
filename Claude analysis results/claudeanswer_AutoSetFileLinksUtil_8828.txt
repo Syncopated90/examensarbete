@@ -1,0 +1,41 @@
+**Line 107** — `LocalVariableCouldBeFinal`: `files` could be declared `final` (reassigned later at line 119, so actually not applicable — but `newLinkedFiles` is reassigned).
+
+**Line 107** — `VariableDeclarationUsageDistance`: `files` declared far from first use.
+
+**Line 108** — `LocalVariableCouldBeFinal`: `newLinkedFiles` cannot be final (reassigned at line 120), but initial assignment is redundant given reassignment path.
+
+**Line 110-113** — `CollectionCalledWithItselfOrItsView`: `entry.getFiles()` called multiple times without caching.
+
+**Line 113** — `LocalVariableCouldBeFinal`: `linkedFileNames` could be `final`.
+
+**Line 114-117** — `LocalVariableCouldBeFinal`: `filesToAdd` could be `final`.
+
+**Line 148** — `MutatingStaticState` / **MethodSideEffects**: `linkedFile.setLink(...)` mutates the parameter object passed in — unexpected mutation of input `linkedFiles` list elements.
+
+**Line 148** — `LocalVariableCouldBeFinal`: `fileName` could be `final`.
+
+**Line 149** — `LocalVariableCouldBeFinal`: `extension` could be `final`.
+
+**Line 155** — `CollectionModifiedWhileIterating` risk: `files.remove(fileName)` called while `files` is being iterated indirectly (not a direct iterator but still a logical concern).
+
+**Line 168** — `LocalVariableCouldBeFinal`: `files` could be `final`.
+
+**Line 185** — `LocalVariableCouldBeFinal`: `toBeRemoved` could be `final`.
+
+**Line 186** — `LocalVariableCouldBeFinal`: `result` could be `final` (shadows outer class field name `result` in other methods — **HiddenField** violation).
+
+**Line 186** — `HiddenField`: local variable `result` in `findAssociatedNotLinkedFilesWithUniqueName` shadows parameter `result` in calling method.
+
+**Line 214** — `LocalVariableCouldBeFinal`: `linkedFiles` could be `final`.
+
+**Line 209** — `LocalVariableCouldBeFinal`: `associatedFiles` could be `final`.
+
+**Line 229** — `LocalVariableCouldBeFinal`: `strType` could be `final`.
+
+**Line 230** — `LocalVariableCouldBeFinal`: `relativeFilePath` could be `final`.
+
+**Line 236** — `LambdaCanBeMethodReference`: `.map(ExternalFileType::getName)` is already a method reference, but the `flatMap` lambda on lines 238-242 could be a method reference.
+
+**Line 107 & 119** — `MultipleVariableDeclarations` / **VariableReuse**: `files` is declared then reassigned a new value at line 119 — use of a non-final variable across two logical blocks reduces clarity (SonarQube: `S1854` — dead store between lines 107 and 119 if first value is fully consumed).
+
+**Line 107** — `S1854` (Dead Store): the value assigned to `files` at line 107 is consumed, then `files` is reassigned at line 119 — variable should be split into two separate `final` variables.

@@ -1,0 +1,15 @@
+**Line 29** — `LocalVariableNamingConventions`: variable `formatted` shadows the parameter `value`; consider using `value` directly or renaming.
+
+**Line 29** — `UnnecessaryLocalVariable`: `String formatted = value;` immediately assigns parameter to a new variable with no transformation.
+
+**Line 30** — `ComplexBooleanExpression`: compound condition with multiple `&&` and method calls should be extracted into a named boolean or helper method.
+
+**Line 31–32** — `LineWrapping`/`OperatorWrap`: binary operator `==` at end-of-line wrapping violates operator-wrap rule (operator should be at start of new line).
+
+**Line 51** — `JavadocStyle`: uses Markdown `///` doc comments (JEP 467 preview) mixed with `@param`/`@return` tags; non-standard for stable Java; violates `JavadocStyle` rule.
+
+**Line 9** — `AbstractClassWithoutAbstractMethod` (indirect): `RemoveEnclosingBracesFormatter` extends `Formatter` which appears to be abstract, but no abstract methods are declared in the visible code — flag for verification.
+
+**Line 55** — `ForLoopVariableCount`: loop variable `index` used only in `value.charAt(index)` — prefer enhanced for-loop via `value.toCharArray()` (`ForLoopCanBeForeach`).
+
+**Line 56** — `UnnecessaryLocalVariable`: `char charAtIndex = value.charAt(index);` is an unnecessary temporary variable; can be inlined directly into the `if` conditions.

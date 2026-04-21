@@ -1,0 +1,15 @@
+## Static Analysis Findings
+
+| Line | Rule |
+|------|------|
+| 6 | **UnusedImports** – `ParserRuleContext`, `ErrorNode`, `TerminalNode` imports are used, but the entire file is auto-generated boilerplate; however `org.antlr.v4.runtime.tree.ErrorNode` and `org.antlr.v4.runtime.tree.TerminalNode` are only referenced via parameter types in empty methods — not a violation per se, but see below. |
+| 14 | **ClassNamingConventions** / **AbstractClassWithoutAbstractMethods** – `LtwaBaseListener` is a concrete class implementing an interface with no abstract methods; should arguably be `abstract` since it is a base/adapter class. |
+| 14 | **ExcessivePublicCount** – Class exposes a very large number of public methods (30+) with no logic. |
+| 21–240 | **EmptyMethodInAbstractClassShouldBeAbstract** – All methods have empty bodies `{ }`; in a base-listener/adapter pattern the class should be declared `abstract`. |
+| 6–8 | **UnnecessaryImport** – `ParserRuleContext`, `ErrorNode`, `TerminalNode` are used only as parameter types in no-op methods; if the class were abstract and methods removed, these would be unused. (Minor; not a violation here but flagged by some linters.) |
+
+### Summary of Key Rules Broken
+
+1. **Line 14** – `AbstractClassWithoutAbstractMethods` (PMD): class acts as abstract base but is not declared `abstract`.
+2. **Lines 21–240** – `EmptyMethodInAbstractClassShouldBeAbstract` (PMD): every method body is empty `{}`.
+3. **Line 14** – `ExcessivePublicCount` (PMD): too many public methods.

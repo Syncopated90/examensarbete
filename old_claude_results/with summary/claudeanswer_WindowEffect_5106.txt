@@ -1,0 +1,14 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 10–11 | **NullableOfNonNull** | `Optional<WindowResolver>` annotated `@NonNull` is redundant/contradictory — `Optional` already represents absence; wrapping in `@NonNull Optional` is an anti-pattern (`Optional` itself should never be `null`, but `@NonNull` on an `Optional` field is misleading) |
+| 13 | **NullableOfNonNull** | Same issue — `@NonNull Optional<NodeResolver>` |
+| 10–13 | **RecordCompactConstructorMissing** | No compact constructor validates the `@NonNull` constraints at runtime; annotations are not enforced |
+| 10 | **OptionalUsedAsFieldType** | `Optional` is not recommended as a record component / field type (JDK design intent; flagged by tools like SpotBugs/PMD `OptionalAsField`) |
+| 13 | **OptionalUsedAsFieldType** | Same — `Optional<NodeResolver>` as record component |
+
+**Summary of distinct rules broken:**
+- `OptionalAsField` (PMD) — lines 10, 13
+- `@NonNull` on `Optional` type (NullAway / SpotBugs) — lines 10, 11, 13
+- Missing null/contract validation in canonical constructor — lines 10–13

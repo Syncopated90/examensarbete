@@ -1,0 +1,16 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 47 | **FieldNamingConvention** – Field `dbmsSynchronizer` declared as `DatabaseSynchronizer` but named with `dbms` prefix; inconsistent abstraction (concrete prefix, interface type) |
+| 47 | **UninitialisedField** – `dbmsSynchronizer` is not initialized in constructor; null dereference risk if `listen()` is called before `openNewSharedDatabaseTab()` or `openSharedDatabaseFromParserResult()` |
+| 104 | **StringConcatenationInLoop** / **StringConcatenation** – Multi-line string built with repeated `+` and `"\r\n"` literals; use `String.join` or `StringBuilder` |
+| 104 | **HardcodedLineSeparator** – `"\r\n"` is hardcoded; use `System.lineSeparator()` |
+| 122 | **NullAssignment** – `dbmsSynchronizer` (shared mutable field) is reassigned in `openNewSharedDatabaseTab()` and again in `openSharedDatabaseFromParserResult()`; not thread-safe, violates **NonThreadSafeSingleton** |
+| 133 | **LawOfDemeter** – Long chain `dbmsConnectionProperties.getType().toString()` violates LoD |
+| 148 | **NullPassthrough** – `parserResult.getDatabaseContext().getDatabasePath().orElse(null)` passes `null` explicitly into `setDatabasePath()`; use `Optional` API instead |
+| 160 | **LawOfDemeter** – Repeated deep chains e.g. `preferences.getBibEntryPreferences().getKeywordSeparator()`, `preferences.getFieldPreferences()`, etc. across multiple lines |
+| 197 | **LawOfDemeter** – `preferences.getCitationKeyPatternPreferences().getKeyPatterns()` |
+| 199 | **LawOfDemeter** – `preferences.getFilePreferences().getUserAndHost()` |
+| 82–89 | **BranchComplexity** / **NullCheck** – `answer.isPresent()` followed by two `answer.get().equals()` calls; use `answer.map()` or pattern matching |
+| 116 | **BranchComplexity** – `response.isPresent() && response.get().equals(merge)` should use `response.filter(...).isPresent()` |

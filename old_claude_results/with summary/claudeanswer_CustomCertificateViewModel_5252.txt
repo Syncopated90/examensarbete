@@ -1,0 +1,13 @@
+Here are the static analysis findings:
+
+| Line | Rule | Note |
+|------|------|-------|
+| 25 | **ExcessiveParameterList** | Constructor has 7 parameters; exceeds typical limit of 5 |
+| 25 | **UseObjectForClearerAPI** | Long parameter list of primitives/strings should use a builder or value object |
+| 72 | **ReturnCount / AvoidMultipleReturnStatements** | `getPath()` has two return statements; can be simplified to single expression |
+| 72–76 | **SimplifyConditional** | `getPath()` condition can be replaced with `Optional.ofNullable(v).filter(s -> !s.isEmpty())` |
+| 17–23 | **UnusedPrivateField (partial)** | `thumbprintProperty` has no corresponding public `ReadOnlyStringProperty` accessor exposed, unlike other fields — inconsistent API |
+| 81 | **MethodChaining / UnexpectedReturnType** | `setPath()` returns `this` (builder pattern) inconsistently; all other setters are via constructor; mixing patterns violates **SingleResponsibilityPrinciple** |
+| 98 | **LawOfDemeter** | Chained call `sslCertificate.getVersion().toString()` violates LoD |
+| 16–23 | **MutableField** | Fields declared as `StringProperty`/`ObjectProperty` (mutable) but exposed as `ReadOnly*` — the internal mutable reference is still accessible via `pathProperty()` (line 69) breaking encapsulation consistency |
+| 69 | **InconsistentAccessorType** | `pathProperty()` returns mutable `StringProperty` while all other property accessors return `ReadOnly*` variants |

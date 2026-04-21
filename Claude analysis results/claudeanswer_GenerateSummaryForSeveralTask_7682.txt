@@ -1,0 +1,19 @@
+**Line 6** — `Future` imported but `Future<?>` usage with raw-ish pair could mask type safety; minor, but see below for concrete violations.
+
+**Line 9** — `javafx.util.Pair` — **UseStandardJavaPair / AvoidJavaFxUtilPair**: Using JavaFX `Pair` in logic/non-UI layer violates layering rules; should use `java.util.AbstractMap.SimpleEntry` or a record.
+
+**Line 80** — **StreamForEachWithSideEffects / StreamMisusedForSideEffects**: `.stream().map(...).forEach(futures::add)` — `map()` is used for side effects (setting `ProcessingState.PROCESSING`), violating functional stream contract. Should be a `for` loop or `forEach` directly.
+
+**Line 83** — **SideEffectsInMap**: `processingInfo.setState(ProcessingState.PROCESSING)` inside `.map()` is a side effect inside a mapping operation.
+
+**Line 75** — **OverlyBroadThrowsDeclaration**: `call()` declares `throws ExecutionException, InterruptedException` — `InterruptedException` should trigger thread interrupt flag restoration before re-throwing or propagating.
+
+**Line 103** — **InterruptedExceptionHandling**: `pair.getKey().get()` throws `InterruptedException` which is declared but the interrupt status is never restored via `Thread.currentThread().interrupt()`.
+
+**Line 70** — **ListenerLambdaWithUnusedParameters**: `(_, _, newValue)` — non-standard use of `_` as parameter names (valid in Java 21+ but the first two unnamed discards may violate style rules depending on target version).
+
+**Line 114** — **StringConcatenationInLoop / InefficientStringBuilding**: `progressCounter.getMessage() + " - " + currentFile + ", ..."` — string concatenation with multiple `+` operators instead of `StringBuilder` or formatted string.
+
+**Line 33** — **MutableFieldNotFinal / FieldShouldBeFinal**: `currentFile` is a mutable non-final field modified from `call()` and read from `updateProgress()`, potentially accessed across threads without synchronization — **UnsynchronizedFieldAccess**.
+
+**Line 43** — `private final ProgressCounter progressCounter = new ProgressCounter()` — **FieldInitializerWithSideEffects**: field initialized inline with a constructor call that is not a simple value type; minor but flagged by some analyzers.

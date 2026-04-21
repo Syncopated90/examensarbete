@@ -1,0 +1,15 @@
+**Line 84** — `orElse(true)` returns `true` when dialog is dismissed/cancelled, causing the version to be silently ignored. Likely logic error; should be `orElse(false)`. **Rule: CorrectDefaultValue / WrongDefaultValue**
+
+**Line 78** — `newerVersion.get()` called without prior `isPresent()` check in compound condition; if `isEmpty()` is false, `get()` is safe, but the short-circuit logic relies on correct operator precedence with mixed `||`/`&&`. **Rule: OptionalGetWithoutIsPresent** (borderline, depends on analyzer strictness)
+
+**Line 55** — `checkForNewVersionAsync` method name implies async but does not signal that to the caller; minor, but **Rule: ConfusingMethodName** (PMD)
+
+**Line 17** — `Logger` field declared but `LOGGER.debug` only called once (line 73); acceptable, but some tools flag sparse logger use. **Rule: MoreThanOneLogger** — not broken here, but:
+
+**Line 27** — `LOGGER` is `private static final` and properly named. No issue.
+
+**Line 73** — Exception passed as second argument to `LOGGER.debug`; SLF4J convention expects exception as the **last** argument with no placeholder. Here it is last, so this is correct. No issue.
+
+**Line 55–58 / 61–64** — `BackgroundTask.wrap(this::getNewVersion)` — `getNewVersion` declares `throws IOException` but `BackgroundTask.wrap` likely accepts a `Callable`; the checked exception handling depends on the API. If unchecked wrapping isn't explicit, **Rule: AvoidThrowingRawExceptionTypes** may apply to the `IOException` in `getNewVersion` (line 50).
+
+**Line 50** — `getNewVersion` throws `IOException` but callers (`checkForNewVersionAsync`, `checkForNewVersionDelayed`) handle it only via `onFailure`, hiding the checked exception. **Rule: SignatureDeclareThrowsException** (PMD)

@@ -1,0 +1,37 @@
+**Line 46** – `BULLET_LIST_PATTERN`, `NUMBERED_LIST_PATTERN`, `UNICODE_BULLET`, `BLOCKQUOTE_MARKER`: **ConstantNamingConvention** / constants are fine, but these are `private static final` fields using regex/string literals — no issue here actually.
+
+**Line 88** – `addHyperlinkNode`: **InefficientEmptyStringCheck** — `text == null || text.isEmpty()` is fine, but parameter `text` is not annotated `@Nullable` while `content` in `addTextNode` is annotated `@Nullable`. **MissingNullAnnotation** on `text` parameter.
+
+**Line 88** – `addHyperlinkNode(String text, String url, ...)`: **NullParameterAnnotation** — `url` and `text` lack `@Nullable`/`@NonNull` annotations, inconsistent with the rest of the API.
+
+**Line 95–99** – `new OpenBrowserAction(...).execute()` inside a lambda: **ServiceLocatorPattern** (Injector calls) — violates Dependency Injection principle; dependencies should be injected, not pulled via `Injector.instantiateModelOrService`.
+
+**Line 95** – `Injector.instantiateModelOrService(DialogService.class)`: **LawOfDemeter** — method chains through Injector to get service.
+
+**Line 155** – `delimitedNode` variable declared but `delimitedNode.getOpeningMarker()` / `delimitedNode.getClosingMarker()` used immediately: no issue, pattern variable is fine.
+
+**Line 163** – `ClipBoardManager clipBoardManager = Injector.instantiateModelOrService(...)`: **ServiceLocatorPattern** — same as lines 95–99.
+
+**Line 214** – `private Node previousBlock = null;`: **NullInitialization** — explicit `= null` is redundant; default value for object fields is already `null`.
+
+**Line 211** – `private boolean isFirstBlockElement = true;` and `private int listIndentationLevel = 0;`: **RedundantFieldInitialization** — `false` and `0` are default values; `true` is intentional but `0` is redundant.
+
+**Line 213** – `private int listIndentationLevel = 0;`: **RedundantInitialization** — `int` defaults to `0`.
+
+**Line 280** – `visit(FencedCodeBlock)` and **Line 292** – `visit(IndentedCodeBlock)`: **DuplicatedBlocks** — near-identical logic for processing content (trim leading `\n` and trailing `\n\n`), violates **DRY** / **AvoidDuplicateLiterals**.
+
+**Line 282–285** and **Lines 294–297**: **MagicNumber** — literal `3`, `1`, `2` used without named constants.
+
+**Line 340** – `orderedListCounters.pop() + 1` with immediate `orderedListCounters.push(number)`: **NonThreadSafe** — `Deque` is `ArrayDeque` (non-thread-safe), but this is an inner class instance; minor concern.
+
+**Line 375** – `String[] lines = text.split("\n", -1)`: **AvoidLiteralsInIfCondition** / **MagicNumber** — `-1` is a magic number.
+
+**Line 375** – `text.split("\n", -1)`: **UseCollectionIsEmpty** not applicable, but splitting and iterating could use **StringTokenizer** or streams — **InsufficientStringBufferDeclaration** not applicable; minor **AvoidInstantiatingObjectsOnlyToGetValue** concern.
+
+**Line 406** – `if (previousBlock instanceof FencedCodeBlock || previousBlock instanceof IndentedCodeBlock || currentBlock instanceof FencedCodeBlock || currentBlock instanceof IndentedCodeBlock)`: **CyclomaticComplexity** — `addNewlinesBetweenBlocks` has high cyclomatic complexity.
+
+**Line 388–410** – `addNewlinesBetweenBlocks`: **CyclomaticComplexity** rule violation — multiple chained `if/else if` branches.
+
+**Lines 418–426** and **Lines 428–436** – `MarkdownAwareText` and `MarkdownAwareHyperlink`: **DataClass** — these classes only hold data with no behavior; also `astNode` field has package-private visibility (no access modifier) on **Lines 120** (`mat.astNode`) and **Line 125** (`mah.astNode`) — **VisibilityModifier** violation; `astNode` should be `private` with a getter.
+
+**Line 419** – `private final Node astNode;` in `MarkdownAwareText` but accessed as `mat.astNode` at **Line 120**: **VisibilityModifier** — field is `private` yet accessed directly from outer class (permitted in Java but violates encapsulation convention in some rulesets).

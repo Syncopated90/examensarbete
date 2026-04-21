@@ -1,0 +1,14 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 10 | **UnusedImports** – `StringUtil` is imported but never directly referenced (used via method reference `StringUtil::isNotBlank`, which is valid, so check if `org.jabref.logic.util.strings.StringUtil` resolves correctly; flag if tool treats method references as indirect) |
+| 8 | **UnusedImports** – `javafx.scene.Node` imported; used only in `getIcon()`, acceptable, but flag if Node is resolved from a transitive dependency |
+| 30–33 | **VisibilityModifier** – Fields `extensionValidator`, `nameValidator`, `mimeTypeValidator`, `validator` are not `final` despite being assigned once in `setupValidation()` |
+| 54 | **LocalVariableNamingConventions** – `extensionisNotBlankValidator` violates camelCase (should be `extensionIsNotBlankValidator`) |
+| 54, 60, 77, 82, 90, 96 | **RawTypes** – `Validator` used as raw type; should be `Validator<String>` |
+| 113 | **DuplicateValidatorRegistration / ConfusingValidation** – `sameExtensionValidator`, `sameNameValidator`, `sameMimeTypeValidator` are added to both their composite validators *and* directly to `validator`, causing double validation |
+| 153 | **ConfusingMethodName / WrongReturn** – `validExtensionTypeProperty()` returns `defaultApplicationSelectedProperty` instead of an extension-type-related property; likely a copy-paste bug |
+| 113 | **ExcessiveParameterList** – `validator.addValidators(...)` called with 6 arguments, three of which are redundant (already covered by sub-validators) |
+| 34 | **ImmutableField** – `fileTypeViewModel` and `fileTypes` could be declared `final` (they are, correctly); `originalExtension`, `originalName`, `originalMimeType` are `final` (correct); the four validator fields are not `final` — **MutableField** violation |
+| 44 | **NullDereference** – `fileTypeViewModel.applicationProperty().getValue()` could return `null`; calling `.isEmpty()` without null-check |

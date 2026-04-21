@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "SingularField",
+              "shortDescription": {
+                "text": "Perhaps 'inTextNatureChanged' could be replaced by a local variable."
+              },
+              "fullDescription": {
+                "text": "\nReports fields which may be converted to a local variable. This is so because\nin every method where the field is used, it is assigned before it is first read.\nHence, the value that the field had before the method call may not be observed,\nso it might as well not be stored in the enclosing object.\n\nLimitations:\n* We can only check private fields for now.\n* The rule is not aware of threading, so it may cause false positives in concurrent code.\nSuch FPs are best handled by suppression (see also the `ignoredAnnotations` property).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#singularfield",
+              "help": {
+                "text": "\nReports fields which may be converted to a local variable. This is so because\nin every method where the field is used, it is assigned before it is first read.\nHence, the value that the field had before the method call may not be observed,\nso it might as well not be stored in the enclosing object.\n\nLimitations:\n* We can only check private fields for now.\n* The rule is not aware of threading, so it may cause false positives in concurrent code.\nSuch FPs are best handled by suppression (see also the `ignoredAnnotations` property).\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SingularField",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Perhaps 'inTextNatureChanged' could be replaced by a local variable."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CSLCitationOOAdapter.java"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 21,
+                  "endLine": 53,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

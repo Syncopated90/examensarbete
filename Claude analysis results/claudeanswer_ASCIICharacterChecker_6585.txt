@@ -1,0 +1,9 @@
+**Line 13** - `ClassNamingConventions` / `AbstractClassName`: Class `ASCIICharacterChecker` uses an acronym "ASCII" in all-caps; naming convention typically requires `AsciiCharacterChecker`.
+
+**Line 18** - `ForEachCanBeReplacedWithStreamAndCollect`: The `for` loop over `entrySet()` with conditional `add` can be replaced with a stream `.filter().map().collect()` pipeline.
+
+**Line 19** - `LocalVariableNamingConvention`: Variable `asciiOnly` is assigned from a single expression and used only in the immediate `if`; it should be inlined directly into the condition rather than declared as a separate local variable.
+
+**Line 14** - `JavadocStyle`: The comment uses `///` (Markdown/Javadoc preview syntax) instead of the standard `/** ... */` Javadoc block comment format.
+
+**Line 18** - `UseDiamondOperator` / redundancy: `new ArrayList<>()` is fine, but the raw iteration variable `Map.Entry<Field, String> field` shadows the outer generic — no issue here; however the loop variable name `field` conflicts semantically with `Field` type on the same line, violating `AvoidShadowing`/`NamingConvention` clarity rules.

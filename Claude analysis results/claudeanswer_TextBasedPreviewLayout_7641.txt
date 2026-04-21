@@ -1,0 +1,21 @@
+**Line 46** – `layout` field not marked `final`; mutable field could be. **Rule: ImmutableField / AvoidMutableFields**
+
+**Line 47** – `text` field not marked `final`; mutable field could be. **Rule: ImmutableField**
+
+**Line 48** – `layoutFormatterPreferences` field not marked `final`. **Rule: ImmutableField**
+
+**Line 49** – `abbreviationRepository` field not marked `final`. **Rule: ImmutableField**
+
+**Line 57** – Constructor `TextBasedPreviewLayout(Layout layout)` does not initialize `layoutFormatterPreferences` or `abbreviationRepository`; calling `setText()` from this instance would throw `NullPointerException`. **Rule: NullAssignment / ConstructorCallsOverridableMethod (partial initialization)**
+
+**Line 63** – `setText` is a public non-final method called from constructor (line 54); if subclassed, overridden method executes before subclass is initialized. **Rule: ConstructorCallsOverridableMethod** *(class is `final` so subclassing is prevented, but the public mutator is still called in constructor — acceptable caveat)*
+
+**Line 64** – `text` is dereferenced (`text.replace(...)`) without null check; if `null` is passed, `NullPointerException` occurs. **Rule: NullPointerDereference / AvoidNullInput**
+
+**Line 57–60** – Second constructor leaves `layoutFormatterPreferences` and `abbreviationRepository` as `null`; if `setText` is later called, both will cause `NullPointerException` on line 66. **Rule: NullDereference**
+
+**Line 79** – `getText()` dereferences `text` without null guard; `text` can be `null` if the two-arg constructor path never set it. **Rule: NullDereference**
+
+**Line 21–41** – `DEFAULT` is a `public static final` string built via string concatenation across many lines; should use a constant or resource file. **Rule: UseStringBufferForStringAppends / LongStringLiteral**
+
+**Line 93** – `getShortTitle()` is not part of the `PreviewLayout` interface and is not annotated `@Override`; likely an interface contract violation or dead method. **Rule: UnusedPublicMethod / MissingOverride**

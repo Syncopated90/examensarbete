@@ -1,0 +1,18 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 17 | **Package-private class** — class has no access modifier; likely unintentional if part of public API |
+| 31 | **Local variable declared far from usage** — `Optional<BibEntryType> type` declared before loop but only used inside `while` condition/body |
+| 33 | **Unchecked `Optional.get()` without `isPresent()` check** — `type.get()` called twice (lines 34, 35) after `isPresent()` in loop condition; while technically safe, brittle; prefer `ifPresent` or assign inside loop |
+| 35 | **Unused variable `storedOldTypes`** — list is populated but never read or returned after the loop |
+| 48 | **Null return from method** — `preferences.get(...)` may return `null` (checked on line 49), violating null-safety conventions; should prefer `Optional` return type |
+| 54–55 | **Overly complex stream chain** — multi-step stream+collect inline reduces readability; extract to named variable |
+| 57–59 | **Unnecessary variable reassignment** — `entryTypeBuilder` is reassigned via `=` on a nominally final builder pattern; builder should be chained without reassignment |
+| 63 | **Modifying parameter-derived collection** — `secondary` is mutated with `removeAll` which is a side-effect on a derived list; acceptable but worth noting |
+| 64–66 | **Duplicated stream pattern** — identical `.stream().map(FieldFactory::parseField).collect(...)` pattern repeated (lines 58, 65, 66); extract helper method |
+
+**Key issues by severity:**
+1. **Line 35** — `storedOldTypes` populated but never used (**dead code / useless assignment**)
+2. **Line 33–35** — `type.get()` called twice; assign once to avoid double unwrap
+3. **Line 48** — null return instead of `Optional<String>`

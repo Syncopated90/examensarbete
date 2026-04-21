@@ -1,0 +1,43 @@
+**Line 17** – `FieldName` / `VisibilityModifier`: `moreLink` is a non-private, non-static field initialized inline (package-private by default... actually declared without modifier but the rule is about non-final mutable field). More precisely:
+
+**Line 17** – `DeclarationOrder`: field initialization with `new Hyperlink(...)` calls a method (`Localization.lang`) during field initialization, which can be fragile, but the primary issue is:
+
+**Line 16** – `VisibilityModifier`: `isCollapsed` is not `private final`; it is mutable state that could be encapsulated better, but it is `private` — acceptable.
+
+**Line 17** – `initialization of fields at declaration`: `moreLink` is initialized with `new Hyperlink(Localization.lang("(more)"))` — this is acceptable but flagged under some rules.
+
+Let me be precise and direct:
+
+---
+
+**Line 17** `ImmutableField` / `MutableField`: `moreLink` is a mutable field initialized at declaration but never reassigned — should be `final`.
+
+**Line 18** `ImmutableField`: `clip` is assigned only once and never reassigned — should be `final`.
+
+**Line 16** `ImmutableField`: `isCollapsed` **is** reassigned, so not applicable here.
+
+**Line 38–40** `DoubleCheckedLocking` / `AnonymousInnerClass`: Anonymous `Transition` subclass with an instance initializer block is a code smell — prefer a named class.
+
+**Line 31** `AnonymousInnerClass`: Anonymous class `new Transition() { ... }` violates the rule against anonymous classes.
+
+**Line 62** `AvoidCallingMethodsOnClipboardObject` / general: `computePrefHeight(this.getWidth())` — calling an overridable method (`computePrefHeight`) from `layoutChildren` is acceptable, but `this.getWidth()` is redundant (`getWidth()` suffices).
+
+**Line 62** `UnnecessaryThis`: `this.getWidth()` — `this` is unnecessary; same on lines 63, 65, 66, 68.
+
+**Line 57** `UnnecessaryThis`: `this.getChildren()` — unnecessary use of `this`.
+
+**Line 60** `UnnecessaryThis`: `this.getChildren()` — unnecessary use of `this`.
+
+**Line 64** `UnnecessaryThis`: `this.setClip()` — unnecessary use of `this`.
+
+**Line 68** `UnnecessaryThis`: `this.getChildren()` — unnecessary use of `this`.
+
+**Line 69** `UnnecessaryThis`: `this.setClip()` — unnecessary use of `this`.
+
+**Line 22** `UnnecessaryThis`: `this.setPrefWidth(...)` — unnecessary use of `this`.
+
+**Line 27** `UnnecessaryThis`: `this.setOnMouseClicked(...)` — unnecessary use of `this`.
+
+**Line 17** `MutableStaticState` / `DoNotCallOverridableMethodsDuringObjectConstruction`: `Localization.lang(...)` called during field initialization is acceptable, but the field itself participates in construction.
+
+**Line 24** `AvoidUsingHardCodedColor` / `MagicCharacter`: hardcoded CSS string `"-fx-background-color: white"` — magic string.

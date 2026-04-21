@@ -1,0 +1,9 @@
+Here are the static analysis violations:
+
+| Line | Rule |
+|------|------|
+| 39 | **RedundantFieldInitialization** – `parent = null` and `child = null` are redundant; fields default to null |
+| 120 | **NullDereference** – `child.isAncestorOf(anotherNode)` called without null check; `child` may be null, causing NPE |
+| 120 | **MissingElse / IncompleteLogic** – if `child == null` and `anotherNode != this`, no path returns `false`; method falls through to NPE instead of returning `false` |
+| 107 | **CommentMisleading / StaleComment** – comment says "NPE if this is ever called" but the block executes normally; misleading inline comment |
+| 131 | **NullableParameterNotChecked** – `addAtEnd(T node)` lacks `@NonNull` annotation and has no null guard, but passes `node` directly to `setChild` which requires `@NonNull` |

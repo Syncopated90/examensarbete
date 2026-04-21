@@ -1,0 +1,13 @@
+**Line 6** — `Collectors.toList()` is unnecessary; use `Stream.toList()` instead. (Rule: **UseStreamToList** / `InefficientStreamCollector`)
+
+**Line 87** — `!field.equals(CitationKeyPattern.NULL_CITATION_KEY_PATTERN)` compares a `Field` object to a `CitationKeyPattern` object; this comparison is always `true` and is logically incorrect. (Rule: **SuspiciousEqualsMethodName** / `UnlikelyEquals`)
+
+**Line 91** — Catching `IllegalAccessException` and wrapping in `RuntimeException` without rethrowing the original as cause chain properly — actually cause is passed, but throwing unchecked from a stream lambda is a code smell. (Rule: **AvoidThrowingRawExceptionTypes** / `AvoidCatchingGenericException`)
+
+**Line 96** — `getCategory()` explicitly delegates to `this.category`, which is redundant in a record since the accessor `category()` is auto-generated. Defining a duplicate accessor breaks record conventions. (Rule: **RecordComponentAccessorShouldHaveCorrectName** / `UnnecessaryGetterMethod`)
+
+**Line 5** — `import java.util.stream.Collectors;` becomes unused if `Stream.toList()` is applied, but as-is it is used. No violation here, conditional on line 6 fix.
+
+**Line 4** — `import java.util.Arrays;` is used only for `Arrays.stream(...)`. No violation.
+
+**Line 3** — `import java.lang.reflect.Modifier;` — use of reflection to enumerate fields of own class is a design smell. (Rule: **AvoidReflection** / `UseReflectionToCheckClassFields`)

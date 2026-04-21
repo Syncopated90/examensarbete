@@ -1,0 +1,15 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 26–30 | **MutableStaticState** – `static final` collections are mutable; should use `List.of()` or `Collections.unmodifiableList()` |
+| 33–59 | **StaticInitializer** – Logic in `static {}` block; prefer inline `List.of(...)` initialization |
+| 101 | **DuplicateStringLiteral** – `", "` repeated (also lines 66, 124, 128); should use the existing constant `COMMA` |
+| 130 | **LongLine / ComplexBooleanExpression** – `||` chaining two `contains()` calls on one line; extract to named variable |
+| 172 | **AvoidLiteralsInIfCondition** – magic number `0` used repeatedly; minor |
+| 200 | **CallGetGivenNameTwice** – `a.getGivenName().get()` called without re-checking at line 221; prefer storing `isPresent()` result |
+| 204 | **UnnecessaryLocalVariable** – `abbr` is assigned `firstNameResult` immediately after `firstNameResult` is set; redundant intermediate variable |
+| 213 | **UseStringBuilderForConcatenation** – `firstNameResult = firstNameResult + abbr.substring(3)` uses `+` concatenation inside a method already using `StringBuilder` |
+| 225 | **UnnecessaryLocalVariable** – `firstFirstSeparator` is a local constant `" "`; use the literal or a class constant directly |
+| 80–82 | **OpenCodingOfControlFlow** – `index > 0` check with manual substring split duplicates logic already available in `AbstractParamLayoutFormatter.parseArgument` |
+| 173 | **NegativeConditional** – `(maxAuthors < 0)` as first condition inverts natural reading; prefer `maxAuthors >= 0` path first |

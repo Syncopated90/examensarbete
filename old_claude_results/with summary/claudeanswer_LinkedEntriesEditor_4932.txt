@@ -1,0 +1,15 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 18 | **UnusedImport** – `JabRefDialogService` is imported but used only via static method; acceptable, but flagged by some tools as a concrete-class import where interface suffices |
+| 55 | **UR_UNINIT_READ** / **Initialization order** – `undoManager` and `stateManager` are `@Inject` fields assigned *after* `ViewLoader.view(...).load()` returns, yet used on this same line; injected values will be `null` at point of use |
+| 57 | **Raw/unchecked** – `new ViewModelListCellFactory<ParsedEntryLink>()` lambda `.withText(ParsedEntryLink::getKey)` is fine, but the outer type erasure of `SuggestionProvider<?>` wildcard is passed without bound check |
+| 85 | **DM_CONVERT_CASE** – `entryLink.getKey().toLowerCase()` called without `Locale` argument (locale-sensitive operation); should be `toLowerCase(Locale.ROOT)` |
+| 85 | Same as above for `searchText.toLowerCase()` |
+| 96 | **ST_WRITE_TO_STATIC_FROM_INSTANCE** – `ActionFactory` is instantiated per-tag-creation call inside `createTag`; object created but never reused (**Inefficient object creation** / `DI_USAGE_OF_NEW`) |
+| 113 | **SIC_INNER_SHOULD_BE_STATIC** – `TagContextAction` is a non-static inner class that does not use any instance members of the outer class directly (it captures `clipBoardManager`, `dialogService`, `entryLinkField` from enclosing scope via implicit outer reference); should be `static` with explicit dependencies passed in |
+| 128–133 | **Duplicate code / Missing differentiation** – `COPY` and `CUT` cases execute identical clipboard/notify logic (CUT just adds `removeTags`); not a bug but flagged by PMD **AvoidDuplicateLiterals** / **CollapsibleIfStatements** |
+| 40 | **MutableStaticField** – `FOCUSED` is `static final` and immutable, acceptable; however `LOGGER` field name conventionally triggers **ConstantName** (should be `logger` per some style rules) — minor |
+
+**Most critical finding: Line 55** — `@Inject` fields (`undoManager`, `stateManager`) are read before injection completes because `ViewLoader.load()` triggers injection, but the constructor proceeds to use them on the very next line, making the behavior dependent on framework injection ordering (potential NPE).

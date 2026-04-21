@@ -1,0 +1,23 @@
+**Line 43** — `LINK_TO_BIB_PATTERN`: `RegexpShouldUseQuotedEscape` / `AvoidEscapedUnicodeCharacters` — forward slashes in regex do not need escaping (`\/` should be `/`).
+
+**Line 80** — `doc.body().html()`: method chain call on `doc.body()` without null check; `NullPointerException` risk — `ReturnValueIgnored` / `NullDereference`.
+
+**Line 86** — `link.first()` called twice without storing result — `AvoidCallingMethodMultipleTimes` / `DuplicateExpression`.
+
+**Line 86** — `"%S"` uses uppercase `%S` format specifier (converts to uppercase string); likely a bug, should be `%s` — `FormatStringAnnotation` / `BadFormatString`.
+
+**Line 109** — `throw new FetcherException(queryURL, "...", null)`: passing explicit `null` as exception cause — `AvoidPassingNullToMethod` / `NullArgumentToVariableArgMethod`.
+
+**Line 109** — string concatenation using `+` inside method call — `UseStringBuilderForStringConcatenation` / `InefficientStringBuffering`.
+
+**Line 132** — `BibEntry entry = entries.iterator().next(); return entry;` — unnecessary local variable, should return directly — `UnnecessaryLocalBeforeReturn`.
+
+**Line 141** — `obtainAndModifyCookie()`: cookies are retrieved and modified locally but the modified cookies are never applied/used anywhere — `UnusedVariable` / `UselessOperationOnImmutable` / dead code.
+
+**Line 160** — `foundEntries.size() == 10`: magic number `10` used directly instead of `NUM_RESULTS` constant — `MagicNumber` / `AvoidLiteralsInIfCondition`.
+
+**Line 162** — `uriBuilder.addParameter("start", "10")`: magic number `10` hardcoded as string instead of using `NUM_RESULTS` — `MagicNumber`.
+
+**Line 167** — `LOGGER.info("IOException for URL {}", uriBuilder)`: logging `uriBuilder` object instead of `uriBuilder.toString()` — `GuardLogStatement` / `InappropriateLoggingLevel` (info used for exception path, should be `warn` or `error`).
+
+**Line 145** — `new URLDownload("https://scholar.google.com")`: URL string hardcoded inline rather than as a named constant — `AvoidDuplicateLiterals` / `MagicNumber`.

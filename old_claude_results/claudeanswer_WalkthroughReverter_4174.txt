@@ -1,0 +1,19 @@
+**Line 18** — `com.sun.javafx` — **Forbidden API / Internal API Usage**: `NodeHelper` is an internal Sun/Oracle API (`com.sun.javafx.scene.NodeHelper`), not part of the public JavaFX API.
+
+**Line 68** — **Unnamed Variable in Lambda Parameter** (`_`): Using `_` as a lambda parameter name suppresses unused parameter warnings but may reduce readability; depending on ruleset this flags as **AvoidUsingUnderscore**.
+
+**Line 80** — same as line 68 for the `nodeVisibleListener` lambda.
+
+**Line 110** — **`continue` inside `switch` expression within `for` loop**: Using `continue` inside a `switch` block to continue the enclosing `for` loop is error-prone — **AvoidContinue** / **SwitchStatementsShouldHaveDefault** context confusion.
+
+**Line 117** — **Complex Boolean Expression**: The compound condition `activeWindow.getScene() != null && (component.nodeResolver().isEmpty() || component.nodeResolver().get().resolve(...).isPresent())` violates **SimplifyBooleanExpression** / **CyclomaticComplexity**.
+
+**Line 130** — **Pattern Matching Deconstruction in `instanceof`** (`SideEffect(String title, WalkthroughSideEffect sideEffect)`): Deconstruction patterns with `instanceof` are a preview/newer feature; mixing with legacy style breaks **ConsistentDeclarationStyle**.
+
+**Line 130** — **`step instanceof SideEffect` after `getStepAtIndex`**: `step` was already typed via `walkthrough.getStepAtIndex`, making the `instanceof` redundant — **UnnecessaryInstanceOf**.
+
+**Line 54** — **`@Nullable` field `reversion` accessed without null check in `findAndUndo` (line 108)**: `detach()` is called first (which nulls `reversion`), but the prior `reversion != null` checks inside lambdas (lines 73, 83) are not synchronized — **NullDereference** risk under concurrent access (**GuardedBy** violation).
+
+**Line 25** — **`LOGGER` not `private static final` per convention** — it is correctly declared, but `LoggerFactory.getLogger(WalkthroughReverter.class)` — no issue here; this is fine.
+
+**Line 143** — **`revertAll` iterates from `currentStepProperty().get()` inclusive**: If the current step is a `VisibleComponent`, `undo(i)` is a no-op (not a `SideEffect`), but this is silently ignored — **EmptyStatementNotInLoop** / dead logic, violating **UnusedCode**.

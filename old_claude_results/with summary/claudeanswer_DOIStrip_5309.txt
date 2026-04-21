@@ -1,0 +1,12 @@
+**Line 13**: `DOI::asString` — **Method Reference to Non-Static Method Without Instance** (or more precisely, the rule concern here is minor, but the real finding is):
+
+**Line 13**: `orElse(fieldText)` — **Inconsistent Return Behavior**: returns the raw unparsed `fieldText` as fallback, meaning no stripping occurs silently on invalid input. (**Questionable fallback / Violated "fail loudly" principle** — *LSPCQ* or SonarQube rule **S2201**-adjacent; more precisely a design smell.)
+
+**Line 7**: Class `DOIStrip` — **Missing `@Override` or interface documentation** is fine, but the class uses a `///` Javadoc comment (triple-slash) which is a **Java 23 preview feature (doc comments for declarations)**; if compiled below Java 23 this is a **syntax error**. Rule: **Inappropriate Language Feature Use**.
+
+**Summary:**
+
+| Line | Rule |
+|------|------|
+| 7 | `///` doc comment requires Java 23+ — **Invalid Syntax for target Java version** |
+| 13 | Silent fallback to raw input on parse failure — **Dubious Return Value / Inconsistent Behavior** |

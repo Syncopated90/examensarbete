@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "MissingStaticMethodInNonInstantiatableClass",
+              "shortDescription": {
+                "text": "Class cannot be instantiated and does not provide any static methods or fields"
+              },
+              "fullDescription": {
+                "text": "\nA class that has private constructors and does not have any static methods or fields cannot be used.\n\nWhen one of the private constructors is annotated with one of the annotations, then the class is not considered\nnon-instantiatable anymore and no violation will be reported.\nSee the property `annotations`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#missingstaticmethodinnoninstantiatableclass",
+              "help": {
+                "text": "\nA class that has private constructors and does not have any static methods or fields cannot be used.\n\nWhen one of the private constructors is annotated with one of the annotations, then the class is not considered\nnon-instantiatable anymore and no violation will be reported.\nSee the property `annotations`.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "MissingStaticMethodInNonInstantiatableClass",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class cannot be instantiated and does not provide any static methods or fields"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/Notifications.java"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 8,
+                  "endLine": 23,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 1,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/Notifications.java"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 8,
+                  "endLine": 23,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

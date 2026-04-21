@@ -1,0 +1,29 @@
+**Line 29** – `defaultApiKeys` field is not `final` conceptually but more critically it's a mutable `Map` stored directly; however it is assigned via direct reference without defensive copy... wait, line 57 does `this.defaultApiKeys = defaultApiKeys;` — **Missing Defensive Copy** (no `new HashMap<>(defaultApiKeys)`) — actually line 57 does NOT copy it. Rule: **EI_EXPOSE_REP2** (storing external mutable object directly).
+
+Wait, re-reading: line 57 is `this.defaultApiKeys = defaultApiKeys;` — yes, no copy. Rule: **EI_EXPOSE_REP2**.
+
+Actually line 61 does copy `searchEngineUrlTemplates`: `new HashMap<>(searchEngineUrlTemplates)` — correct.
+
+**Line 57** – `this.defaultApiKeys = defaultApiKeys;` — **EI_EXPOSE_REP2**: Mutable `Map` stored without defensive copy.
+
+**Line 63** – Method `areImporterEnabled()` — **MethodNamingConventions** (PMD): Boolean getter should be `isImporterEnabled()` or `isImportersEnabled()`, not `areImporterEnabled`.
+
+**Line 29** – `private final Map<String, String> defaultApiKeys;` — **VisibilityModifier**: Internal mutable map exposed; no getter returns it directly, acceptable, but combined with line 57 issue above.
+
+**Line 160** – `getSearchEngineUrlTemplates()` returns the internal `HashMap` directly — **EI_EXPOSE_REP**: Mutable map returned without defensive copy or unmodifiable wrapper.
+
+**Line 40** – Constructor parameter `Set<CustomImporter> customImporters` shadows field name — **HiddenField** (PMD/Checkstyle): parameter name `customImporters` shadows field `customImporters`.
+
+**Line 41** – Parameter `Set<FetcherApiKey> apiKeys` shadows field `apiKeys` — **HiddenField**.
+
+**Line 42** – Parameter `Map<String, String> defaultApiKeys` shadows field `defaultApiKeys` — **HiddenField**.
+
+**Line 44** – Parameter `List<String> catalogs` shadows field `catalogs` — **HiddenField**.
+
+**Line 46** – Parameter `Map<String, String> searchEngineUrlTemplates` shadows field `searchEngineUrlTemplates` — **HiddenField**.
+
+**Line 57** – `this.defaultApiKeys = defaultApiKeys;` — **EI_EXPOSE_REP2**: Mutable object stored by reference, not copied.
+
+**Line 160** – `return searchEngineUrlTemplates;` — **EI_EXPOSE_REP**: Internal mutable collection returned directly.
+
+**Line 121** – `/// @param`, `/// @return`, `/// @implNote` — Non-standard Javadoc using `///` (Markdown comments, Java 23+); if target is < Java 23, this is a **InvalidJavadocPosition** / syntax issue. If intentional, rule: **JavadocStyle** violation for `@implNote` which is not a standard Javadoc tag recognized by all tools.

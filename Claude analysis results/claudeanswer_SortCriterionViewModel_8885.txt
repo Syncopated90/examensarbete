@@ -1,0 +1,11 @@
+**Line 17** - `criterion.field` — Direct field access on `criterion` (Law of Demeter / encapsulation violation). Should use getter if available.
+
+**Line 18** - `criterion.descending` — Same as above, direct field access on `criterion`.
+
+**Line 33** - `descendingProperty.getValue()` returns `Boolean` (boxed), implicit unboxing risk / unnecessary autoboxing passed to constructor.
+
+**Line 21 & 22** - Default constructor sets hardcoded `StandardField.AUTHOR` — magic value / hardcoded constant without named symbolic justification.
+
+**Line 13** - `fieldProperty` field name shadows the method name `fieldProperty()` at line 25 — naming collision reduces readability (variable and method share identical name).
+
+**Line 14** - `descendingProperty` field name shadows method `descendingProperty()` at line 29 — same issue.

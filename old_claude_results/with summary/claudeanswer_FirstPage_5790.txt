@@ -1,0 +1,8 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 16 | **Use `charAt(0)` / Regex Complexity** (or **`RegexShouldBePrecompiled`**) | The regex `"[ \\-\u2013\u2014]+"` is compiled on every method invocation. Should be a `static final Pattern` constant. |
+| 17 | **`MagicNumber`** | Literal `2` is a magic number; should be a named constant. |
+| 17–19 | **`SimplifiableConditional`** / **`UnnecessaryElse`** | The `else` block is unnecessary after a `return` in the `if` block. |
+| 12–13 | **`ReturnEmptyStringInsteadOfNull`** (inverse) | Method accepts `null` input and silently returns `""` rather than enforcing a non-null contract (consider `@NonNull` + caller fix, or document the null handling explicitly). |

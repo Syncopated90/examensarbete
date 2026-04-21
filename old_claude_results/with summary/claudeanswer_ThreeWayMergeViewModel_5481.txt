@@ -1,0 +1,18 @@
+## Static Analysis Findings
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 88 | `JavadocStyle` / `InvalidBlockTag` | `///` is a documentation comment using Java 23+ style (preview); not valid in standard Javadoc — should be `/** ... */` |
+| 41–43 | `LocalVariableCouldBeFinal` | The stream expression result passed to `setVisibleFields` could be extracted to a final local variable for clarity, but minor |
+| 23–27 | `VisibilityModifier` | Fields are `private final` which is correct, but `mergedEntry` has no public property accessor (no `mergedEntryProperty()` method exposed), inconsistent with the pattern used for `leftEntry`/`rightEntry`/`leftHeader`/`rightHeader` |
+| 70 | `UnusedPrivateMethod` (potential) | `setLeftEntry` and `setRightEntry` (lines 70, 78) are `private` and only called from the constructor — no rule violation per se, but flagged by tools like PMD's `UnusedPrivateMethod` if inlined |
+| 95 | `RemoveableModifier` / `UnnecessaryModifier` | `visibleFields.removeIf(FieldFactory::isInternalField)` — method reference used as `Predicate`; verify `isInternalField` matches `Predicate<Field>` signature exactly, otherwise a compile error |
+| 88 | `CommentedOutCode` / `TrailingComment` | Inline comment `// See org.jabref.model.entry.field.InternalField` should reference via `@see` in proper Javadoc |
+| 31–32 | `ParameterNameShadowsField` | Constructor parameters `leftEntry`, `rightEntry`, `leftHeader`, `rightHeader` shadow the instance field names — PMD **`FormalParameterNamingConventions`** / **`AvoidShadowing`** |
+
+### Key Violations Summary
+
+1. **Line 31–32**: Parameter names shadow class field names (`leftEntry`, `rightEntry`, `leftHeader`, `rightHeader`)
+2. **Line 88**: Non-standard `///` comment syntax
+3. **Lines 70, 78**: Private setters only called once (constructor) — could be inlined
+4. **Line 84**: Missing `mergedEntryProperty()` — inconsistent API design compared to other properties

@@ -1,0 +1,15 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 6 | **UnusedImport** – `Collectors` is imported but not used directly (`.collect(Collectors.joining(...))` is used, so this is valid — *not a violation*) |
+| 38 | **DuplicateConditionalCheck** – `props.getFormattedLocator().isPresent()` is called twice unnecessarily; the second check on line 39 is redundant since it's already inside the block where the outer `if` (line 37) confirmed at least one of the two is present, but line 39 re-evaluates `getFormattedLocator().isPresent()` — this is a **duplicate condition / double invocation** |
+| 38–42 | **OptionalGetWithoutIsPresent / Repeated Optional.isPresent calls** – `props.getFormattedLocator()` is called multiple times (lines 37, 38, 39) instead of storing the result; violates **ObjectCreatedOnlyToBeDiscarded / AvoidRepeatedOptionalGet** |
+| 32 | **UnnecessaryLocalVariable** – `CitationProperties props` could be inlined, minor style violation |
+| 34 | **UnnecessaryLocalVariable** – `StringBuilder result` is acceptable but `result.toString()` return at end is a common false-positive target for **UseStringBuilderDirectly** if simpler concatenation suffices |
+| 39 | **LogicError / DeadCode risk** – The inner `if (props.getFormattedLocator().isPresent())` on line 39 will *always be true* at that point if the outer `if` on line 37 passed and `getFormattedLocator()` was the truthy part, but if only `getSuffix()` was present, control reaches `else` correctly — however, the `getFormattedLocator().ifPresent(result::append)` on line 38 already appended it; the re-check on line 39 is **redundant conditional** (`RedundantConditional`) |
+
+**Summary of key violations:**
+
+- **Line 38–39**: `RedundantConditional` — `getFormattedLocator().isPresent()` checked twice.
+- **Lines 37–39**: `AvoidRepeatedOptionalGet` — `getFormattedLocator()` called 3×; result should be stored in a local variable.

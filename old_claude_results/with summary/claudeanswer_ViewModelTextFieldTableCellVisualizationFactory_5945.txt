@@ -1,0 +1,24 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 21 | **ClassNaming / GenericClass** | Class has two generic type parameters but one (`T`) is unused in meaningful logic — potential over-generalization |
+| 25 | **VisibilityModifier** | `validationStatusProperty` is package-private (no modifier) — should be `private` |
+| 26 | **VisibilityModifier** | `stringConverter` is package-private (no modifier) — should be `private` |
+| 33 | **UnsynchronizedStaticUsage / ThreadSafety** | `this.stringConverter` set in `install()` and read in `call()` — not thread-safe, mutable state on shared instance |
+| 38 | **AnonymousClassShouldBeNamedClass** | Large anonymous class returned from `call()` — should be a named static inner class |
+| 40 | **VisibilityModifier** | `subscriptions` in anonymous class lacks explicit access modifier; effectively package-private |
+| 54 | **CommentFormat** | Triple-slash `///` Javadoc-style comments are not valid Java — should use `/** */` |
+| 62 | **CyclomaticComplexity** | `lookupTextField()` uses nested if/else with instanceof pattern matching — minor complexity issue |
+| 85 | **NullCheck / LawOfDemeter** | `getTableRow().getItem()` — double chained call without intermediate null-safety guarantee beyond the null check |
+| 88 | **DuplicatedCode / DoubleInvocation** | `validationStatusProperty.apply(viewModel)` called twice (lines ~90 and ~95) — result should be stored in a local variable |
+| 88 | **AvoidDuplicateLiterals / Performance** | `validationStatusProperty.apply(viewModel)` duplicated — unnecessary double evaluation |
+| 78 | **MissingOverrideAnnotation** | `updateItem` properly has `@Override`, but `lookupTextField` and `startEdit` are fine; anonymous class lacks documented contract |
+| 33 | **ImmutableField** | `stringConverter` and `validationStatusProperty` are set post-construction via mutators — violates immutability; prefer constructor injection |
+
+### Key Violations Summary
+
+1. **Double invocation** (line 88–95): `validationStatusProperty.apply(viewModel)` called twice — store result in a local variable.
+2. **Mutable shared state** (lines 25–26, 33): Fields set via setters make the factory stateful and non-thread-safe.
+3. **Invalid comment syntax** (line 54): `///` is not valid Java Javadoc.
+4. **Anonymous class too large** (line 38): Violates single responsibility and readability rules.

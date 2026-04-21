@@ -1,0 +1,29 @@
+**Line 155 — `highlight(@NonNull HighlightEffect effect)` wraps `HighlightEffect` in `WindowEffect` instead of `WalkthroughEffect`**
+
+Rule: **Incorrect Delegation / Wrong Method Called**
+
+`highlight(HighlightEffect)` calls `highlight(new WindowEffect(effect))`, which routes to `highlight(@NonNull WindowEffect)`, which then wraps it in `WalkthroughEffect`. This is an extra unnecessary indirection and inconsistent with the intended pattern, but more critically it assumes `WindowEffect` accepts a `HighlightEffect` — if that constructor doesn't exist or has different semantics, this is a bug.
+
+---
+
+**Line 83 — `Builder.resolver` field is `@Nullable`**
+
+Rule: **Nullable Field Used Without Null-Safety in `build()`**
+
+The null check at line 172 is correct, but the field is typed `@Nullable NodeResolver resolver` while `build()` passes it as `@NonNull NodeResolver` to the record constructor. The null guard at line 172–174 handles it, but static analysis tools (e.g., NullAway, SpotBugs) will flag the unchecked dereference/pass of a `@Nullable` value to a `@NonNull` parameter at line 175–176.
+
+---
+
+**Line 17–18 — Record component `content` not defensively copied**
+
+Rule: **Mutable Collection Stored Without Defensive Copy (EI_EXPOSE_REP)**
+
+`@NonNull List<WalkthroughRichTextBlock> content` is a record component stored directly. No `List.copyOf()` is applied in the canonical or compact constructor, allowing the caller to mutate the internal state.
+
+---
+
+**Line 100 — `content(@NonNull List<WalkthroughRichTextBlock> content)`**
+
+Rule: **Mutable Collection Stored Without Defensive Copy (EI_EXPOSE_REP2)**
+
+The `Builder.content` field is assigned directly from the passed `List` without copying, allowing external mutation of builder state.

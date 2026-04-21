@@ -1,0 +1,19 @@
+**Line 11** `ImportControl` / `IllegalImport` — `tools.jackson.core.JacksonException` uses a non-standard shaded package path; should be `com.fasterxml.jackson.core.JacksonException`.
+
+**Line 12** `ImportControl` / `IllegalImport` — `tools.jackson.databind.ObjectMapper` uses a non-standard shaded package path; should be `com.fasterxml.jackson.databind.ObjectMapper`.
+
+**Line 22** `ConstantName` — `MAPPER` is a mutable static field (`ObjectMapper` is not truly immutable); should not be `static final` or needs justification, but more critically violates `MutableStaticField` / `StaticVariableMayNotBeInitialized` if ObjectMapper is not thread-safe in all versions.
+
+**Line 22** `ThreadSafety` — `ObjectMapper` instance shared as a static field without synchronization; `ObjectMapper` is thread-safe after configuration but construction without explicit configuration is a `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` risk and violates `VisibleForTesting` encapsulation.
+
+**Line 24–28** `EmptyCatchBlock` / `AvoidCatchingGenericException` — catching `JacksonException` (a broad checked exception) and returning a magic string `"{}"` suppresses the error silently after logging; violates `ReturnOfNull`-adjacent smell with magic value return.
+
+**Line 19** `DeclarationOrder` — `NULL_OBJECT` is a `public static final` field declared before the `private static final` fields (`LOGGER`, `MAPPER`), violating declared order rules (constants before logger/mapper is acceptable, but `NULL_OBJECT` depends on the constructor and mixes concerns).
+
+**Line 42** `LawOfDemeter` — `stateManager.getOpenDatabases().stream()...` chains multiple method calls violating the Law of Demeter.
+
+**Line 42–44** `InlineAnonymousClass` / `UseOfOptionalAsFieldOrParameterType` — deeply chained stream with inline `new org.jabref.model.TransferInformation(...)` using fully qualified class name violates `AvoidUsingFullyQualifiedName` rule.
+
+**Line 43** `AvoidUsingFullyQualifiedName` — `org.jabref.model.TransferInformation` used inline instead of being imported.
+
+**Line 40** `AvoidUsingFullyQualifiedName` — `org.jabref.model.TransferInformation` in return type's `map()` lambda should be imported at the top of the file.

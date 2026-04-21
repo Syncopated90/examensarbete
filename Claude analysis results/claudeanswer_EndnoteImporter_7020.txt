@@ -1,0 +1,39 @@
+**Line 57** - `isRecognizedFormat` creates a `BufferedReader` wrapping the passed `Reader` but never closes it. **Resource Leak**
+
+**Line 72** - `str.indexOf("%0") == 0` — use `str.startsWith("%0")` instead. **Inefficient String Usage / Use startsWith**
+
+**Line 87** - Variables `author`, `type`, `editor`, `artnum` declared outside the loop but reset inside; prefer declaring inside the loop scope. **Inappropriate Variable Scope**
+
+**Line 92** - `entry.trim().substring(1).split("\n%")` — `substring(1)` silently drops the first character without validation; no bounds check if string is empty after trim. **Improper Input Validation**
+
+**Line 97** - `field.length() < 3` continues silently, discarding data without logging. **Silent Data Loss**
+
+**Line 121** - `val.indexOf("Journal") == 0` — use `val.startsWith("Journal")`. **Inefficient String Usage / Use startsWith**
+
+**Line 123** - `val.indexOf("Book Section") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 125** - `val.indexOf("Book") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 127** - `val.indexOf("Edited Book") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 129** - `val.indexOf("Conference") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 131** - `val.indexOf("Report") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 133** - `val.indexOf("Review") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 135** - `val.indexOf("Thesis") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 205** - `val.indexOf("Ph.D.") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 208** - `val.indexOf("Masters") == 0` — use `val.startsWith(...)`. **Inefficient String Usage / Use startsWith**
+
+**Line 221** - `!"".contentEquals(author)` — non-idiomatic; use `!author.isEmpty()`. **Misuse of contentEquals / Inefficient Empty Check**
+
+**Line 224** - `!"".contentEquals(editor)` — same issue. **Misuse of contentEquals / Inefficient Empty Check**
+
+**Line 227** - `"-".equals(hm.get(StandardField.PAGES))` combined with null check is fragile; no handling of blank/whitespace-only page values. **Incomplete Null/Empty Check**
+
+**Line 231** - `b.setField(hm)` — passing entire map; if `hm` contains `InternalField.KEY_FIELD`, it may conflict with citation key handling. **Potential Key Field Collision**
+
+**Line 232** - `b.getFields().isEmpty()` used to filter empty entries, but `type` is always set (defaulting to `BibEntry.DEFAULT_TYPE`), so type-only entries with no fields still get silently dropped. **Silent Data Loss**

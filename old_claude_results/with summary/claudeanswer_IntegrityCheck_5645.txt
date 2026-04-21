@@ -1,0 +1,11 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 52 | **Method visibility too low** – `check()` has package-private visibility; likely should be `public` |
+| 64 | **Null check on parameter** – `checkEntry` silently returns empty list for `null` entry instead of throwing `IllegalArgumentException` (null check / defensive programming violation) |
+| 43 | **Unnecessary boxing/wrapping** – `bibDatabaseContext.getMetaData().getEncoding().orElse(...)` used directly; no issue per se, but the `UTF8Checker` name implies encoding is always UTF-8, making the `.orElse(StandardCharsets.UTF_8)` redundant if isBiblatexMode guarantees UTF-8 (dead code / misleading logic) |
+| 32–41 | **Constructor does too much work** (SRP / God Constructor) – business logic and checker instantiation mixed into constructor body |
+| 80 | **New instance created per call** – `new DoiDuplicationChecker()` instantiated on every `checkDatabase()` call; should be a field (unnecessary object creation) |
+| 17–18 | **Fields not declared `final`** consistently – `entryCheckers` is modified post-construction (in the `if/else` block), which is acceptable, but exposes mutability risk; consider building the list fully before assigning |
+| 52 | **`check()` not in public API** – inconsistent visibility with `checkEntry()` (public) and `checkDatabase()` (public); package-private `check()` breaks API consistency |

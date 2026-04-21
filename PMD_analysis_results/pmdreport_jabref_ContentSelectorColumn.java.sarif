@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UnusedFormalParameter",
+              "shortDescription": {
+                "text": "Avoid unused method parameters such as 'value'."
+              },
+              "fullDescription": {
+                "text": "\nReports parameters of methods and constructors that are not referenced them in the method body.\nParameters whose name starts with `ignored` or `unused` are filtered out.\n\nRemoving unused formal parameters from public methods could cause a ripple effect through the code base.\nHence, by default, this rule only considers private methods. To include non-private methods, set the\n`checkAll` property to `true`. The same applies to public constructors.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedformalparameter",
+              "help": {
+                "text": "\nReports parameters of methods and constructors that are not referenced them in the method body.\nParameters whose name starts with `ignored` or `unused` are filtered out.\n\nRemoving unused formal parameters from public methods could cause a ripple effect through the code base.\nHence, by default, this rule only considers private methods. To include non-private methods, set the\n`checkAll` property to `true`. The same applies to public constructors.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UnusedFormalParameter",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Avoid unused method parameters such as 'value'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ContentSelectorColumn.java"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 83,
+                  "endLine": 48,
+                  "endColumn": 88
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

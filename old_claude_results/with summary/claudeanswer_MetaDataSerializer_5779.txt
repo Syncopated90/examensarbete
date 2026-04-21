@@ -1,0 +1,25 @@
+Here are the static analysis findings:
+
+| Line | Rule | Note |
+|------|------|-------|
+| 26 | `HideUtilityClassConstructor` | Constructor is `private` ✓ — no issue here actually |
+| 36 | `UseDiamondOperator` / `RawTypes` | `new HashMap<>()` is fine, but overall class mixes concerns |
+| 57 | `ConsecutiveLiteralAppends` / `StringConcatenation` | String concatenation using `+` with `'-'` and `"-"` inconsistently |
+| 57 | `UseStringBufferForStringAppends` / `InefficientStringBuffering` | `MetaData.FILE_DIRECTORY + '-' + user` — string concat in loop (`forEach`) |
+| 59 | `InefficientStringBuffering` | Same issue: `MetaData.FILE_DIRECTORY_LATEX + '-' + user` in lambda/loop |
+| 63 | `InefficientStringBuffering` | `MetaData.BLG_FILE_PATH + "-" + user` — inconsistent quote style (`'-'` vs `"-"`) compared to line 57 |
+| 63 | `ConfusingTernary` / `LawOfDemeter` | `.path.toString().trim()` — chained call, potential NPE if `path` is null |
+| 88 | `UnnecessaryLocalVariable` | `string` is reassigned immediately after declaration; initial assignment `""` is dead |
+| 88–93 | `ModifiedControlVariable` / `AvoidReassigningParameters` | `string` is declared then conditionally reassigned rather than using ternary |
+| 120 | `InefficientEmptyStringCheck` | `!citationKeyPattern.getDefaultValue().equals(CitationKeyPattern.NULL_CITATION_KEY_PATTERN)` — double `getDefaultValue()` call; null check then equals on same expression risks redundancy |
+| 120 | `AvoidDuplicateLiterals` / `DuplicateCondition` | `citationKeyPattern.getDefaultValue()` called twice; should be extracted to variable |
+| 124–125 | `UnnecessaryLocalVariable` | `data` list created, single item added, immediately passed — could use `List.of(...)` |
+| 112–116 | `UnnecessaryLocalVariable` | Same: `data` in loop could be `List.of(...)` |
+| 147–153 | `ConsecutiveLiteralAppends` | Multiple `+` concatenations building a single string — use `StringBuilder` or `String.format` |
+
+**Key violations summary:**
+- **Duplicate method calls** (line 120): `getDefaultValue()` called twice without null-safe extraction
+- **Inefficient string concat in loops** (lines 57, 59, 63)
+- **Unnecessary local variables** (lines 112, 124, 88)
+- **Inconsistent delimiter literals** `'-'` vs `"-"` (lines 57 vs 63) — `AvoidDuplicateLiterals`
+- **String concatenation instead of StringBuilder** (lines 147–153)

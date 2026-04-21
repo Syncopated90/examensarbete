@@ -1,0 +1,7 @@
+**Line 13** - `getLogicalAndOperator` has `public` visibility but base class declares it `protected` — **Inappropriate Modifier / Weaker Access Restriction Inversion**
+
+**Line 18** - `getLogicalOrOperator` has `public` visibility but base class declares it `protected` — **Inappropriate Modifier / Weaker Access Restriction Inversion**
+
+**Line 38** - `handleYear` uses `String.formatted()` — **Inefficient String Formatting** (prefer `String.format()` for compatibility with older Java targets)
+
+**Line 38** - `"date:%s*".formatted(year)` — if `year` contains user-supplied input, no sanitization is performed — **Improper Input Validation**

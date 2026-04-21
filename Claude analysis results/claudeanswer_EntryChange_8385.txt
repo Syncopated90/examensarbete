@@ -1,0 +1,13 @@
+**Line 17** — `Too many parameters` (rule: **ParameterNumber** / **ExcessiveParameterList**) — constructor has 4 parameters.
+
+**Line 21** — `Avoid chained method calls` (rule: **MethodChainLength** / **AvoidChainedMethodCalls**) — `oldEntry.getCitationKey().map(...).orElse(...)`.
+
+**Line 25** — `NullLiteral passed as argument` (rule: **NullArgumentToMethod** / **AvoidPassingNullAsArgument**) — `null` passed explicitly to constructor.
+
+**Line 37** — `applyChange` performs two operations (remove + insert) before recording undos, leaving inconsistent undo state if insert fails (rule: **UnrelatedReturnValues** / **OperationSequenceNotAtomic**).
+
+**Line 38** — `databaseContext.getDatabase()` called multiple times (rule: **DuplicateCalls** / **UnusedLocalVariable** / **MethodCallInLoopCondition**) — repeated calls to `getDatabase()` should be stored in a local variable. Applies also to lines 39, 40, 41.
+
+**Line 40** — Undo recorded for `removeEntry` **after** the removal already occurred (rule: **IncorrectUndoRedoImplementation**) — undo action added post-facto rather than pre-action.
+
+**Line 42** — `CompoundEdit` created but `undoEdit.addEdit()` called after `end()` (rule: **CallToMethodWithoutReturn** / **UnnecessaryFinalizer**) — `end()` seals the edit before it is added to `undoEdit`, making the outer undo potentially non-functional.

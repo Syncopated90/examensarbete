@@ -1,0 +1,14 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 26 | **`Reader` in record** — `Reader` is mutable and not a value type; records should use immutable fields (`ReaderClass` violates `ImmutableField` / value-based semantics) |
+| 34 | **`@Deprecated` without `@deprecated` Javadoc tag** — `@Deprecated` annotation is present but the Javadoc comment uses `@deprecated` inside a Markdown doc-comment (`///`), which is not a standard Javadoc tag block (not processed by `javadoc`); the deprecation reason won't appear in generated docs. Breaks **`MissingDeprecated`** rule (Checkstyle) |
+| 34–36 | **`@Deprecated` on record** — no `since` or `forRemoval` attributes specified on `@Deprecated`; breaks **`DeprecatedAnnotation`** (e.g., PMD `MissingDeprecated` or Error Prone requiring `since`/`forRemoval`) |
+| 6 | **Unused import** — `java.io.Reader` is used, but flagging that `Reader` (an abstract class representing a character stream) is mutable state stored in a record breaks **`RecordMutableComponent`** (SpotBugs/PMD) |
+| 13 | **`List` in record not defensively copied** — `List<String> citationKey` (and similarly lines 17, 21) are mutable `List` fields stored without defensive copying, breaking **`RecordMutableComponent`** / **`EI_EXPOSE_REP`** (SpotBugs) |
+
+**Summary of distinct rules broken:**
+- `EI_EXPOSE_REP` / `RecordMutableComponent` — lines 13, 17, 21, 25, 26
+- `MissingDeprecated` (missing `since`/`forRemoval`) — line 34
+- `ImmutableRecord` violation (mutable `Reader` field) — line 26

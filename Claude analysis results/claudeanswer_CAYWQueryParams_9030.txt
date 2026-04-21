@@ -1,0 +1,23 @@
+**Line 14 — `VisibilityModifier` / `ImmutableField`**
+Fields annotated with `@QueryParam` are non-private in effect but declared without encapsulation intent; more critically, all fields are mutable instance variables with no constructor injection, relying solely on framework reflection.
+
+**Line 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 54 — `DefaultAnnotationParameterValue` (PMD)**
+Fields use framework annotations (`@QueryParam`, `@DefaultValue`) for injection but have no constructor, violating **InjectionWithoutConstructor**.
+
+**Line 18–19 — Field order (`@DefaultValue` before `@QueryParam` on adjacent lines is fine, but)**
+`@DefaultValue` is placed after `@QueryParam` on `format`; by convention `@DefaultValue` should precede `@QueryParam`. Minor **AnnotationOnSameLineAsDeclaration** style violation.
+
+**Line 14–54 — `ClassWithoutConstructor` / `MissingNoArgConstructor`**
+No explicit no-arg constructor; JAX-RS requires one for query param injection — implicitly present but not declared. Breaks **ExplicitConstructor** rule.
+
+**Line 76 — `ReturnCount` (PMD)**
+`getApplication()` has two return statements, violating **OnlyOneReturn** / **ReturnCount** rule.
+
+**Line 73–78 — `UnnecessaryLocalBeforeReturn` / mixed logic**
+`getApplication()` conflates `isTexstudio()` with `application` string lookup, violating **SingleResponsibilityPrinciple** at method level.
+
+**Line 57 — `UseEqualsToCompareStrings` (inverse)**
+`isClipboard()`, `isTexstudio()`, `isSelected()`, `isMinimize()` (lines 49, 53, 57, 65) check `!= null` on strings but never validate empty string `""`, violating **EqualsAvoidNull** / **UseStringIsEmpty** — a non-null empty string would incorrectly return `true`.
+
+**Lines 14, 22, 26, 30, 34, 38, 42, 46, 50, 54 — `UnnecessaryAnnotation`**
+Fields like `minimize`, `texstudio`, `selected` are only checked for nullity but never used for their value, suggesting **UnusedPrivateField** (PMD) violation.

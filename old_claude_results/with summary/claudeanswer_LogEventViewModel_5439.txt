@@ -1,0 +1,10 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 20 | **Null Return Not Checked** – `logEvent.getMessage()` may return `null`; method declares return type `String` but no null guard exists |
+| 20 | **NullPointerException Risk** – No null check before calling `logEvent.getMessage()`; result passed directly to caller |
+| 44 | **String Concatenation in Return** – `getDisplayText() + getStackTrace()...` uses `+` operator for string concatenation; prefer `StringBuilder` (PMD: `UseStringBufferForStringAppends` / `InefficientStringBuffering`) |
+| 44 | **Double Method Call** – `getDisplayText()` is called inside `getDetailedText()` which is an indirect self-reference through a getter rather than accessing the field directly (minor: `logEvent.getMessage()` called twice if both methods are used) |
+| 16 | **@NonNull Redundant with Final Field** – `@NonNull` on constructor param is not enforced programmatically (no `Objects.requireNonNull`); annotation alone does not guarantee null safety at runtime (PMD: `NullAssignment` / FindBugs: `NP_NULL_ON_SOME_PATH`) |
+| 24–41 | **Switch Missing Explicit Cases** – `switch` on an enum uses `default` instead of exhaustively listing all enum cases, masking future enum additions (PMD: `SwitchStmtsShouldHaveDefault` inverse / SpotBugs: `SF_SWITCH_NO_DEFAULT` complement) |

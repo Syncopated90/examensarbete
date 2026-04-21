@@ -1,0 +1,7 @@
+**Line 21** — `NullPointerException::new` — **ThrowSpecificExceptions / AvoidThrowingNullPointerException**: Manually throwing `NullPointerException` is bad practice; a more specific exception (e.g., `NoSuchElementException` or `IllegalStateException`) should be used.
+
+**Line 20** — `Injector.instantiateModelOrService(DialogService.class)` — **LawOfDemeter / HiddenDependency**: `DialogService` is obtained via a service locator rather than injected through the constructor, hiding the dependency.
+
+**Line 20** — `dialogService` — **NullAssignment / NullDereference**: Return value of `Injector.instantiateModelOrService` is not null-checked before use on line 21.
+
+**Line 14** — `ParseLatexAction(StateManager stateManager)` — **UnusedFormalParameter / ImmutableField**: `stateManager` is assigned to a field but `DialogService` dependency is not injected, indicating incomplete constructor-based dependency injection.

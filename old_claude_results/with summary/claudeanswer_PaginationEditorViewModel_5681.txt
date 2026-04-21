@@ -1,0 +1,14 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 14 | **ParameterNumber** | Constructor has too many parameters (5+) — exceeds typical threshold of 4 |
+| 15–21 | **Map.of() ordering** / **UseUnmodifiableMap** (not applicable here) — N/A, but note: `Map.of()` does **not** guarantee insertion order; if display order matters, use `LinkedHashMap` instead |
+| 15 | **LongParameterList** (same as line 14, PMD) | Passing large inline `Map.of(...)` as constructor argument reduces readability |
+
+### Key Violations Summary
+
+1. **Line 14** — `ParameterNumber` (PMD/Checkstyle): 4 explicit params + large inline map exceeds recommended limit.
+2. **Lines 15–21** — `Map.of()` with 7 entries is acceptable (limit is 10), but **no guaranteed order** — potential logic bug if ordered iteration is expected. Rule: **UseOrderedCollection** / design smell.
+3. **No `@Override`** concern — N/A here as it's a constructor.
+4. **Class lacks Javadoc** — `MissingJavadocType` (Checkstyle, line 12).

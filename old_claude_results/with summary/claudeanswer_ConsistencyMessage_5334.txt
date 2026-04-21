@@ -1,0 +1,8 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 7 | **AvoidCloneImplementation** – implementing `Cloneable` on a `record` is unnecessary and misleading; records are effectively immutable value types and should use copy constructors or factory methods instead |
+| 7 | **CloneableWithoutClone** / inverse: **CloneImplementation** – `clone()` simply calls the canonical constructor, making `Cloneable` pointless boilerplate |
+| 10 | **UnnecessaryFullyQualifiedName / WeakerAccess** – `clone()` widens access to `public` but returns `Object` instead of `ConsistencyMessage`, violating covariant return type best practice (**MissingCovariantReturnType**) |
+| 7 | **ShallowClone** – the clone is shallow; `List<String> message` is copied by reference, not defensively copied, so mutations to the list in the clone affect the original (and vice versa) |

@@ -1,0 +1,19 @@
+**Line 5** – `MalformedURLException` is a subclass of `IOException`; redundant import relative to usage, but more critically:
+
+**Line 41** – `URISyntaxException | MalformedURLException | FetcherException` – `MalformedURLException` is a subclass of `IOException`, not caught here directly, but `MalformedURLException` is a subclass of `IOException` — minor ordering issue only. Real issue: **ExceptionHandling** — catching `FetcherException` and rethrowing a new `FetcherException` loses no information but the catch conflates unrelated exception types (URI syntax vs fetcher logic).
+
+**Line 38** – **AvoidReassigningParameters** / **LocalVariableCouldBeFinal** — `urlForQuery` is assigned once after declaration; should be declared with assignment inline or marked effectively final explicitly (declared on line 39 then assigned in try block, split declaration and initialization unnecessarily).
+
+**Line 39** – **VariableDeclarationUsageDistance** — variable `urlForQuery` declared before the try block but only used after; split declaration increases scope unnecessarily.
+
+**Line 48** – **ReturnCount** / **MethodLength** is acceptable, but `getBibEntries` is a `private` method in an `interface` — **InterfaceMethodInPrivate** — `private` methods in interfaces require Java 9+; not a rule violation per se, but **DesignForExtension** is violated as the private method cannot be overridden or tested independently.
+
+**Line 30** – **InterfaceIsType** — interface `SearchBasedParserFetcher` contains only default and private methods plus two abstract methods; it functions more as a mixin/abstract class, violating **InterfaceSegregation** and the code comment on line 26 acknowledges this ("Note that this interface 'should' be an abstract class").
+
+**Line 48** – **ResourceCloseInFinally** — `try-with-resources` is used correctly, no violation here.
+
+**Line 52** – **EmptyCatchBlock** — comments inside catch blocks ("Regular expression to redact API keys...") are misleading; no actual redaction is performed. **MisleadingVariableComment** / **CommentedOutCode** implied but not actual code.
+
+**Line 50** – **PreserveStackTrace** — `getParser().parseEntries(stream)` exceptions are caught and rethrown with a new message; the original `ParseException` is passed, so stack trace is preserved — no violation.
+
+**Line 63** – **MethodNamingConventions** — parameter named `queryList` but the type is `BaseQueryNode` (a single node, not a list); **MisleadingVariableName** violation.

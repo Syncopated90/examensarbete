@@ -1,0 +1,32 @@
+**Line 42 — Magic Number**
+`taskExecutor` passed as 4th arg, `dialogService` as 5th — matches constructor, but `LinkedFileViewModel` constructor argument order should be verified; no rule broken here specifically.
+
+**Line 15 — Magic Number (PMD:AvoidLiteralsInIfCondition / CheckStyle:MagicNumber)**
+`FILES_LIMIT = 10` is defined as a constant, so this is fine. No violation here.
+
+**Line 38-44 — Excessive Method Length / Long Lambda (PMD:ExcessiveMethodLength)**
+Lambda inside `ifPresent` is long and should be extracted to a named method.
+
+**Line 38 — Law of Demeter (PMD:LawOfDemeter)**
+`stateManager.getActiveDatabase().ifPresent(...)` chains into `stateManager.getSelectedEntries()` inside the lambda — accessing multiple features of `stateManager` violates LoD.
+
+**Line 39-44 — PMD:TooManyChainedMethodCalls**
+`stateManager.getSelectedEntries().stream().flatMap(...).toList()` is an overly long method chain.
+
+**Line 40 — PMD:LawOfDemeter**
+`entry.getFiles().stream()` — talking to a stranger; `entry`'s files are accessed and then mapped externally rather than delegating to `entry`.
+
+**Line 47 — PMD:LawOfDemeter**
+`linkedFileViewModelList.size()` used twice (lines 46 and 48) without storing in a local variable — minor, but repeated navigation.
+
+**Line 46 — PMD:LocalVariableCouldBeFinal (CheckStyle:FinalLocalVariable)**
+`boolean continueOpening` is assigned once and never reassigned; should be declared `final`.
+
+**Line 36 — PMD:LambdaCanBeMethodReference**
+The lambda passed to `ifPresent` is too complex for a direct method reference, but the inner lambda on line 41 `linkedFile -> new LinkedFileViewModel(...)` could be a method reference if a factory method existed — minor.
+
+**Line 55 — PMD:LambdaCanBeMethodReference**
+`linkedFileViewModelList.forEach(LinkedFileViewModel::open)` is already a method reference — no violation.
+
+**Line 30-31 — PMD:LawOfDemeter**
+`ActionHelper.hasLinkedFileForSelectedEntries(stateManager).and(...)` — chained call on result of static utility method.

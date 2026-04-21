@@ -1,0 +1,12 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 46 | **Runtime.exec(String[])** — Use of `Runtime.getRuntime().exec()` is flagged as a security risk (PMD: `Runtime.exec` / SonarQube: `java:S4721`). Prefer `ProcessBuilder`. |
+| 46 | **Resource Leak** — `Process p` is never closed/destroyed (PMD: `CloseResource`). |
+| 55 | **Inefficient String conversion** — `sb.toString().trim().isEmpty()` creates unnecessary intermediate String; prefer `sb.isEmpty()` after trimming or `isBlank()` on CharSequence (PMD: `InefficientEmptyStringCheck`). |
+| 57 | **SLF4J parameter mismatch** — `LOGGER.warn("Push to Vim error: {}", sb)` passes a `StringBuilder` instead of `String`; should be `sb.toString()` (SonarQube: `java:S4973` / SpotBugs). |
+| 96 | **`Integer.toString(column)` unnecessary** — `String.format`/`.formatted()` already handles `int`; redundant boxing (PMD: `UnnecessaryBoxing`). |
+| 105 | **Ignored return value** — `processBuilder.start()` result (the `Process`) is not used or closed (SpotBugs: `RV_RETURN_VALUE_IGNORED`). |
+| 46 | **Ignored return value** — Same issue with `Runtime.getRuntime().exec(com)` result `p` never waited on or closed (SpotBugs: `RV_RETURN_VALUE_IGNORED`). |
+| 118–120 | **Mutable field written in method** — Direct mutation of inherited fields `couldNotPush`, `couldNotCall`, `notDefined`, `commandPath` without synchronization, while `pushEntries` runs on an executor thread (PMD: `NonThreadSafeSingleton` / SonarQube: `java:S2885`). |

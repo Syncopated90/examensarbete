@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "EmptyControlStatement",
+              "shortDescription": {
+                "text": "Empty if statement"
+              },
+              "fullDescription": {
+                "text": "\n            Reports control statements whose body is empty, as well as empty initializers.\n\n            The checked code constructs are the following:\n            - bodies of `try` statements\n            - `finally` clauses of `try` statements\n            - `switch` statements\n            - `synchronized` statements\n            - `if` statements\n            - loop statements: `while`, `for`, `do .. while`\n            - initializers\n            - blocks used as statements (for scoping)\n\n            This rule replaces the rules EmptyFinallyBlock,\n            EmptyIfStmt, EmptyInitializer, EmptyStatementBlock,\n            EmptySwitchStatements, EmptySynchronizedBlock, EmptyTryBlock, and EmptyWhileStmt.\n\n            Notice that {% rule java/errorprone/EmptyCatchBlock %} is still an independent rule.\n\n            EmptyStatementNotInLoop is replaced by {% rule java/codestyle/UnnecessarySemicolon %}.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#emptycontrolstatement",
+              "help": {
+                "text": "\n            Reports control statements whose body is empty, as well as empty initializers.\n\n            The checked code constructs are the following:\n            - bodies of `try` statements\n            - `finally` clauses of `try` statements\n            - `switch` statements\n            - `synchronized` statements\n            - `if` statements\n            - loop statements: `while`, `for`, `do .. while`\n            - initializers\n            - blocks used as statements (for scoping)\n\n            This rule replaces the rules EmptyFinallyBlock,\n            EmptyIfStmt, EmptyInitializer, EmptyStatementBlock,\n            EmptySwitchStatements, EmptySynchronizedBlock, EmptyTryBlock, and EmptyWhileStmt.\n\n            Notice that {% rule java/errorprone/EmptyCatchBlock %} is still an independent rule.\n\n            EmptyStatementNotInLoop is replaced by {% rule java/codestyle/UnnecessarySemicolon %}.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "NonExhaustiveSwitch",
+              "shortDescription": {
+                "text": "Switch statements or expressions should be exhaustive, add a default case (or missing enum branches)"
+              },
+              "fullDescription": {
+                "text": "\n            Switch statements should be exhaustive, to make their control flow\n            easier to follow. This can be achieved by adding a `default` case, or,\n            if the switch is on an enum type, by ensuring there is one switch branch\n            for each enum constant.\n\n            This rule doesn't consider Switch Statements, that use Pattern Matching, since for these the\n            compiler already ensures that all cases are covered. The same is true for Switch Expressions,\n            which are also not considered by this rule.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#nonexhaustiveswitch",
+              "help": {
+                "text": "\n            Switch statements should be exhaustive, to make their control flow\n            easier to follow. This can be achieved by adding a `default` case, or,\n            if the switch is on an enum type, by ensuring there is one switch branch\n            for each enum constant.\n\n            This rule doesn't consider Switch Statements, that use Pattern Matching, since for these the\n            compiler already ensures that all cases are covered. The same is true for Switch Expressions,\n            which are also not considered by this rule.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnusedLocalVariable",
+              "shortDescription": {
+                "text": "Avoid unused local variables such as 'group'."
+              },
+              "fullDescription": {
+                "text": "\nDetects when a local variable is declared and/or assigned, but not used.\nVariables whose name starts with `ignored` or `unused` are filtered out.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedlocalvariable",
+              "help": {
+                "text": "\nDetects when a local variable is declared and/or assigned, but not used.\nVariables whose name starts with `ignored` or `unused` are filtered out.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "EmptyControlStatement",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Empty if statement"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupNodeViewModel.java"
+                },
+                "region": {
+                  "startLine": 270,
+                  "startColumn": 13,
+                  "endLine": 293,
+                  "endColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NonExhaustiveSwitch",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Switch statements or expressions should be exhaustive, add a default case (or missing enum branches)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupNodeViewModel.java"
+                },
+                "region": {
+                  "startLine": 403,
+                  "startColumn": 13,
+                  "endLine": 410,
+                  "endColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnusedLocalVariable",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Avoid unused local variables such as 'group'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupNodeViewModel.java"
+                },
+                "region": {
+                  "startLine": 674,
+                  "startColumn": 61,
+                  "endLine": 674,
+                  "endColumn": 66
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

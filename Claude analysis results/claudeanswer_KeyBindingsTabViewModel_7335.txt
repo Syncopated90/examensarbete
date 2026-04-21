@@ -1,0 +1,26 @@
+**Line 88 — AvoidCallingGetTwice / OptionalGetWithoutIsPresent (double invocation)**
+`keyBindingRepository.getKeyCombination(keyBinding)` is called twice: once for `.isPresent()` and again for `.get()`. Store the result in a local variable.
+
+**Line 63 — ForEachLambdaCanBeMethodReference**
+The lambda `(key, value) -> prefsRepo.getBindingsProperty().put(key, value)` can be replaced with a method reference.
+
+**Line 57 — RedundantMethodCall / UnnecessaryClear**
+`root.clear()` followed immediately by `root.getChildren().clear()` — calling both is likely redundant depending on what `clear()` does; if `clear()` already clears children, line 58 is redundant.
+
+**Line 43 — ConstructorCallsOverridableMethod**
+`keyBindingPresets.add(...)` is called inside the constructor; if `keyBindingPresets` is a property that could be overridden, this is unsafe construction-time side effect.
+
+**Line 42 — UnusedFormalParameter / Violation of Law of Demeter**
+`keyBindingRepository.getKeyBindings()` is called directly inside the constructor to copy state, coupling the constructor tightly to the internals of the parameter.
+
+**Line 88-89 — NullReturnFromOptional / OptionalMisuse**
+Calling `.get()` on an `Optional` without guarding via `ifPresent` or `map`; while there is an `isPresent()` check, using `map`/`ifPresent` is the preferred idiom (OptionalGetWithoutIsPresent style violation).
+
+**Line 110 — LambdaCanBeMethodReference**
+`keyBindingRepository.getKeyBindings().forEach((key, value) -> { prefsRepo.getBindingsProperty().put(key, value); })` — single-statement lambda with no logic should be a method reference.
+
+**Line 38 — MutableCollectionAsField**
+`restartWarning` is a mutable `List<String>` field returned directly in `getRestartWarnings()` at line 148, exposing internal state — violates **Encapsulate Collection**.
+
+**Line 148 — ReturnMutableObject**
+`getRestartWarnings()` returns the internal mutable list directly with no defensive copy.

@@ -1,0 +1,15 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 6 | **UnusedImport** – `Collectors` is used indirectly via stream but `java.util.stream.Collectors` is explicitly imported; acceptable, but worth noting it could be replaced with `String.join` |
+| 49 | **NullPointerException misuse** – `new NullPointerException("Database null")` should be `IllegalStateException`; throwing NPE manually is bad practice (`PreferIllegalStateOverNullPointerException`) |
+| 57 | **AnonymousClassShouldBeStaticInnerClass** / **AvoidAnonymousClasses** – Anonymous `Task<>` subclass is large and complex; should be a named class |
+| 58 | **InstanceVariableInAnonymousClass** – `onLinkedFilesUpdated` is declared as a field inside the anonymous `Task` class but is effectively a local; should be a local variable in `call()` |
+| 58 | **LambdaCapturesOuterField** – `nc` is captured from outer scope inside the anonymous class field initializer; implicit coupling |
+| 64 | **MethodCallInLambda (side-effects)** – `nc.addEdit(fieldChange)` inside `onLinkedFilesUpdated` lambda has a side effect on shared mutable state without synchronization |
+| 67 | **PotentialDeadlock / BlockingCallInAsyncContext** – `UiTaskExecutor.runAndWaitInJavaFXThread(...)` called from within a background `Task`, risking deadlock if the FX thread is blocked |
+| 79 | **ReturnInsteadOfBreak / EarlyReturn** – Multiple early `return` statements inside `succeeded()` lead to inconsistent notification behaviour (some paths notify, others silently exit) |
+| 80 | **MissingNotification** – When `fileExceptions` is non-empty, `undoManager` edits already added to `nc` are silently discarded without cleanup |
+| 97 | **StringFormatWithNewline** – `\n` used in a `notify()` message; UI notifications typically don't render newlines correctly |
+| 97 | **OverlyComplexExpression** – Deeply chained stream expression inline inside `Localization.lang(...)` reduces readability; extract to a variable |

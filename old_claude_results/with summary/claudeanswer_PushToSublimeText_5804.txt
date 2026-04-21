@@ -1,0 +1,13 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 47 | **NullPointerException Risk** | `Path.of(commandPath).getParent()` — `.getParent()` can return `null` if path has no parent; `.toString()` will throw NPE |
+| 48 | **Resource Leak** | `Process process` is never closed/destroyed; no `process.waitFor()` or `try-with-resources` |
+| 64 | **Dead Code / Unused Variable** | `citeCommand` is assigned on line 63, then conditionally reassigned on line 65-67, but the Windows branch (line 70) ignores `citeCommand` entirely and calls `getCitePrefix()` directly |
+| 70 | **Security - Command Injection** | String concatenation used to build shell command passed to `cmd.exe /c`; unsanitized `commandPath` and `keyString` |
+| 73 | **Security - Command Injection** | Same issue; unsanitized values concatenated into shell string passed to `sh -c` |
+| 70 | **Correctness** | Malformed command string — `"\"" + commandPath + "\""` immediately followed by `"--command"` with no space separator |
+| 55 | **Resource Leak** | `StreamGobbler` threads are submitted but never awaited; process output may be lost or threads may linger |
+| 63-67 | **Redundant Condition** | `getCitePrefix()` called twice unnecessarily; result should be stored once |
+| 19 | **Mutable Public Static Field Risk** | `APPLICATION` is `public static final` but references a mutable enum — minor, acceptable but worth noting if enum gains state |

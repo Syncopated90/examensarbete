@@ -1,0 +1,21 @@
+**Line 24** — `serializeAllEntriesGroup` — **UnusedPrivateMethod** (method is `private static` but never called statically; also flagged as **MethodCanBeStatic** for instance methods, though here it already is static — the issue is it could be inlined).
+
+**Line 24** — `serializeAllEntriesGroup` — **UnnecessaryLocalVariable** / **MethodMayBeStatic** — method is `private static` with a trivial single-return body, no real violation, but:
+
+**Line 99** — `serializeTree` — **StringConcatenationInsideStringBuilderAppend** — uses `String.valueOf(node.getLevel()) + ' '` string concatenation instead of separate `append` calls.
+
+**Line 110** — `serializeGroup` — **SwitchStatementWithTooManyBranches** — switch has 9 cases exceeding typical threshold.
+
+**Line 117** — `case KeywordGroup keywordGroup` — **InvertedCondition** / **PrematureDeclaration** — `RegexKeywordGroup` is a subclass of `KeywordGroup`; matching `KeywordGroup` before `AutomaticKeywordGroup` could shadow subtypes if hierarchy overlaps (fragile ordering).
+
+**Line 122** — `case AutomaticKeywordGroup` — **SuspiciousInstanceofOrder** — subclass cases (`AutomaticKeywordGroup`, `AutomaticPersonsGroup`, etc.) appear after the parent `KeywordGroup` case, risking unreachable branches depending on class hierarchy.
+
+**Line 127** — `case null` — **NullCheckInPatternSwitch** — explicit null case in a pattern switch is a code smell; null should be validated prior to the switch.
+
+**Line 129** — `throw new UnsupportedOperationException(...)` — **MissingSpace** — string literal `"Don't know how to serialize group"` is missing a space before concatenation with `group.getClass().getName()`.
+
+**Line 24** — `serializeAllEntriesGroup` — **UnusedImport** risk: `AutomaticGroup` import (line 13) is only used as a parameter type in a private method, acceptable, but `AutomaticDateGroup`, `AutomaticEntryTypeGroup` imports warrant confirmation of use.
+
+**Line 80** — `appendGroupDetails` — **LawOfDemeter** — chains `group.getColor().orElse("")`, `group.getIconName().orElse("")`, `group.getDescription().orElse("")` violating single-dot rule.
+
+**Line 99** — **InefficientStringConcatenation** — `String.valueOf(node.getLevel()) + ' '` concatenates inside what could be a `StringBuilder` chain.

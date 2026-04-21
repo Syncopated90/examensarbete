@@ -1,0 +1,17 @@
+**Line 62** — `ReferenceEquality` / `CompareObjectsWithEquals`
+Comparing `StandardField` enum-like objects with `!=` instead of `!equals()`.
+
+**Line 54** — `OptionalGetWithoutIsPresent`
+Calling `.orElseThrow()` on `Optional` from `journalAbbreviationRepository.get(text)` without a checked condition guaranteeing presence (the prior `isAbbreviatedName` check does not contractually guarantee `get` returns non-empty).
+
+**Line 43** — `UnnecessaryLocalVariable`
+`origText` is assigned `text` immediately before `text` is reassigned; the separation is functional but `origText = text` followed by `text = database.resolveForStrings(origText)` could be collapsed.
+
+**Line 79** — `AssignmentToNull`
+`new FieldChange(entry, AMSField.FJOURNAL, newText, null)` passes explicit `null` as a parameter, which may violate `@NullMarked` / nullability contract on `FieldChange` constructor.
+
+**Line 20** — `FieldCanBeLocal` / `UnusedField` risk
+`database` is a field used only in `unabbreviate`; acceptable but worth noting if `BibDatabase` is mutable shared state passed without defensive copy.
+
+**Line 62** — `UseEqualsInsteadOfIdentityComparison`
+`StandardField.JOURNAL != field` uses identity comparison (`!=`) on a `Field` interface reference, not `.equals()`.

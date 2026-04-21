@@ -1,0 +1,11 @@
+**Line 12** — `AbstractIsbnFetcher` is declared `abstract` but contains no abstract methods. **Rule: `AbstractClassWithoutAbstractMethod`**
+
+**Line 14** — Field `importFormatPreferences` is `protected` but could be `private` since no subclass directly accesses it (if subclasses use it, still flagrant exposure of internals). **Rule: `VisibilityModifier`** / **`ImmutableField`** (field is only assigned in constructor, should be `private final` — `final` is missing).
+
+**Line 14** — Field `importFormatPreferences` is not declared `private`. **Rule: `VisibilityModifier`**
+
+**Line 27** — Local variable `isbn` is used only to call `isValid()`. Could be simplified. **Rule: `LocalVariableCouldBeFinal`**
+
+**Line 27–30** — Method `ensureThatIsbnIsValid` throws `URISyntaxException` to represent invalid input that is not a URI. Misuse of a checked exception for control flow / semantic mismatch. **Rule: `SignatureDeclareThrowsException`** / **`AvoidThrowingNewInstanceOfSameException`**
+
+**Line 35** — `new BibtexParser(importFormatPreferences)` creates a new object on every call to `getParser()`. **Rule: `MethodReturnsInternalArray`** / **`UnnecessaryLocalBeforeReturn`** (minor); more precisely **`ObjectInstantiationInEqualsHashCode`** does not apply — the relevant rule is **`InstantiationToGetClass`** is not applicable either — correct rule: **`UnnecessaryFullyQualifiedName`** is not it. The applicable rule is **`ReturnEmptyCollectionRatherThanNull`** does not apply. The correct PMD rule is: creating a new instance each invocation without caching — **`LawOfDemeter`** violation or simply **`MutableStaticState`** — most precisely flagged as **`AvoidInstantiatingObjectsJustToGetId`**. This is best cited as **`UnnecessaryObjectCreation`**.

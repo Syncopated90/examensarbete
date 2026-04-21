@@ -1,0 +1,7 @@
+**Line 12** — `SimpleBooleanProperty` constructor used with `FieldValueCell.class` as bean reference; the bean name argument (`"selected"`) duplicates the field name but the bean object passed is a `Class` literal, not an instance. **Rule: `SimpleBooleanProperty` should be initialized with a bean instance, not a Class literal** (misuse of JavaFX property constructor / suspicious argument).
+
+**Line 12** — Magic string `"selected"` hardcoded as property name. **Rule: AvoidDuplicateLiterals / MagicString**.
+
+**Line 13** — `toggleGroup` field initialized but no default value set; `getToggleGroup()` can return `null`. **Rule: NullAssignment / ReturnOfNull risk (NullableReturn)**.
+
+**Line 16** — `setFieldValue(text)` called in constructor with a parameter that may be `null`; no null check performed. **Rule: NullArgumentToMethod / AvoidNullInput**.

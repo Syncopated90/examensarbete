@@ -1,0 +1,11 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 21 | **Field naming convention** – `DOM_XMP_PARSER` uses UPPER_SNAKE_CASE, which is reserved for `static final` constants. Non-static fields should use camelCase. |
+| 31 | **Null dereference** – `DOM_XMP_PARSER` may be `null` (set to `null` in catch block at line 28), so `DOM_XMP_PARSER.parse(is)` can throw a `NullPointerException`. |
+| 36 | **Misleading comment** – Comment says "bad style to catch Exception" but `XmpParsingException` is not `Exception`; comment is inaccurate/misleading. |
+| 57 | **Redundant `toString()`** – `path.toString()` is unnecessary; SLF4J accepts `Object` arguments and calls `toString()` implicitly. (Sonar: `S2116`) |
+| 57 | **`LOGGER` accessed via class name on instance field** – `XmpUtilShared.LOGGER` uses explicit class qualification unnecessarily inside the same class. |
+| 50 | **Resource leak** – `new XmpUtilReader()` is created but never closed (if it implements `Closeable`). |
+| 16 | **Utility-class-like static method mixed with instance state** – `hasMetadata` is `static` but the class also has instance state (`DOM_XMP_PARSER`), indicating poor cohesion / violation of single responsibility. |

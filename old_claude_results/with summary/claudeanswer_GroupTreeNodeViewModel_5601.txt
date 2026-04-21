@@ -1,0 +1,10 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 46 | **Dead Store** – `shortDescription` is assigned `""` then immediately overwritten by the switch expression |
+| 47 | **Unused Variable** – `showDynamic` is declared but its value is never varied; effectively a magic constant |
+| 100 | **NoSonar / Suppressed Issue Noted in Comment** – `TODO: Null!` comment acknowledges unsafe `.get()` on `Optional` without guard |
+| 101 | **Optional.get() Without isPresent()** – `getNode().getParent().get()` called without checking `isPresent()`, risking `NoSuchElementException` |
+| 138 | **Null Dereference** – `UndoableChangeEntriesOfGroup.getUndoableEdit(...)` may return `null` (checked on line 140), but on line 150 the return value is passed directly to `undoManager.addEdit()` without a null check |
+| 176 | **Variable Shadowing** – lambda parameter `node` on `subscribeToDescendantChanged` shadows the instance field `node` declared at line 21 |

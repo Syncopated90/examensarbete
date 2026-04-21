@@ -1,0 +1,23 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 17 | **RawTypeAssignment** | `ReadOnlyListWrapper<>` assigned to `ReadOnlyListProperty<String>` — wrapper's `ReadOnlyListProperty` returned by `getReadOnlyProperty()` is not used; direct assignment loses the read-only contract enforcement. |
+| 19 | **RawTypeAssignment** | Same issue as line 17 for `bodyFormatListProperty`. |
+| 17 | **FieldShouldBeFinal** (effectively) | `ReadOnlyListWrapper` is created but only its supertype `ReadOnlyListProperty` is exposed — the wrapper itself is never used after construction, wasteful reference retention. |
+| 23 | **AssignmentToNonFinalField** (indirectly) | `openOfficePreferences` is `final` — OK, but the object it references is mutable and stored, creating **Mutable Object Storage** risk. |
+| 13-15 | **UnusedField** risk | `cslBibliographyTitle`, `cslBibliographySelectedHeaderFormat`, `cslBibliographySelectedBodyFormat` are `SimpleStringProperty` but returned as `StringProperty` — no issue per se, but exposes setters unnecessarily (prefer `ReadOnlyStringProperty` if mutation should be view-only). |
+| 17 | **MissingReadOnlyWrapper** | Should call `.getReadOnlyProperty()` on `ReadOnlyListWrapper` before assigning to `ReadOnlyListProperty` to properly enforce immutability. |
+
+### Key Issue Summary
+
+The most significant rule violation is on **lines 17 and 19**: assigning a `ReadOnlyListWrapper` directly to a `ReadOnlyListProperty` field bypasses the intended read-only pattern. The correct idiom is:
+
+```java
+private final ReadOnlyListWrapper<String> headerFormatList =
+        new ReadOnlyListWrapper<>(...);
+// expose as:
+public ReadOnlyListProperty<String> headerFormatListProperty() {
+    return headerFormatList.getReadOnlyProperty();
+}
+```

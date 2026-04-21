@@ -1,0 +1,23 @@
+**Line 18** — `InternalApi`: `com.sun.javafx.scene.NodeHelper` is an internal Sun/Oracle API and should not be used in public code.
+
+**Line 67** — `LambdaParameterNamingConventions` / `UnusedFormalParameter`: Unnamed pattern variable `_` used for `wasShowing` — suppresses the parameter name, reducing readability; same on **Line 78** (`wasVisible`).
+
+**Line 67** — `AvoidLambdaWithUnusedParameters`: First lambda parameter `_` (old value `wasShowing`) is discarded; same on **Line 78** (`wasVisible`).
+
+**Line 86** — `UnnecessaryNullCheck` / `NullCheckRedundant`: `this.resolvedNode` was already checked for null at **line 65** and assigned; the re-check `if (this.resolvedNode != null)` on **line 82** is redundant.
+
+**Line 113** — `AvoidReassigningParameters` / `ParameterReassignment`: Method parameter is shadowed by the loop variable `i`, but more specifically `from` is used directly as a loop bound without defensive copying — not a violation per se, but:
+
+**Line 113** — `ForLoopShouldBeWhileLoop` (minor): conventional but acceptable.
+
+**Line 127** — `PatternMatchingForInstanceof` / `DeconstructionPatternInSwitch`: Deconstruction pattern on `SideEffect` in `undo()` at **line 140** duplicates the type already checked via `instanceof`; the `case SideEffect _` at **line 127** and subsequent `instanceof` check at **line 141** are redundant — `InstanceofPatternMatchRedundant`.
+
+**Line 141–145** — `UnnecessaryInstanceofCheck`: `step` is retrieved from `walkthrough.getStepAtIndex(stepIndex)` and then immediately checked with `instanceof SideEffect(...)`. Since `undo()` is only called from `case SideEffect _` branch (**line 127**), the `instanceof` check is always true — dead branch protection is redundant.
+
+**Line 152** — `AvoidCallingCurrentStepTwice` / `MethodCallInLoopCondition`: `walkthrough.currentStepProperty().get()` is called inside the `revertAll()` loop initializer — the property is read once, acceptable, but calling `.get()` on a property object each time is an object method call that could be cached as a local variable — `LocalVariableCouldBeFinal` / `CallToMethodShouldBeCached`.
+
+**Line 25** — `LoggerShouldBePrivateStaticFinal`: `LOGGER` is `private static final` — compliant; no violation here.
+
+**Line 52–53** — `NullableFieldWithNonNullAnnotation` conflict: Fields annotated `@Nullable` (`windowShowingListener`, `nodeVisibleListener`, etc.) are correctly annotated, but `@NonNull` parameters in constructor (**lines 55–57**) are stored without null-assertion guards — `MissingNullAssertion` for `@NonNull` parameters.
+
+**Line 18** — `IllegalImport`: Internal API import `com.sun.javafx.*` violates encapsulation rules and may break across JDK versions.

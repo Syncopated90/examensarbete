@@ -1,0 +1,19 @@
+**Line 39** – `MalformedURLException` caught but message logged without exception object; lost stack trace. Rule: **PreserveStackTrace / GenericExceptionLogging**
+
+**Line 38–42** – Lambda assigned to instance field `isPDF` performs network I/O (`isPdf()`), violating separation of concerns and making the field non-serializable with side effects. Rule: **DoNotPerformWorkInField / AvoidSideEffectsInLambdaFields**
+
+**Line 57** – `new BibEntry(entry)` used as a defensive copy, but the copy constructor behaviour is assumed without null-check on `entry`. Rule: **NullCheck / AvoidNullPointerException**
+
+**Line 60** – `HeadlessExecutorService.INSTANCE` is a singleton accessed as a public static field. Rule: **UseOfSingleton / SingletonPattern**
+
+**Line 63–68** – `filter(Optional::isPresent)` followed by `map(Optional::get)` should be replaced with `flatMap(Optional::stream)`. Rule: **OptionalGetWithoutIsPresent / UseOptionalFlatMap**
+
+**Line 66** – Redundant parentheses around `res.getSource()` in the filter predicate. Rule: **UnnecessaryParentheses**
+
+**Line 88** – `InterruptedException` is silently swallowed without restoring the interrupted status (`Thread.currentThread().interrupt()`). Rule: **PreserveInterruptedStatus / DoNotSwallowInterruptedException**
+
+**Line 90** – `CancellationException` is grouped with `ExecutionException` but logged without the exception object, losing diagnostic information. Rule: **PreserveStackTrace / GenericExceptionLogging**
+
+**Line 97** – `IOException` and `FetcherException` caught together in a multi-catch; logged without re-throw, silently suppressing failures. Rule: **ExceptionHandling / AvoidCatchingGenericException**
+
+**Line 50** – Package-private constructor (`FulltextFetchers(Set<FulltextFetcher>)`) annotated `@VisibleForTesting` but not `private`; exposes internals beyond test scope. Rule: **VisibilityModifier**

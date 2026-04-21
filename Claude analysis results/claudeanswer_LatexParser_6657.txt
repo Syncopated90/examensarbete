@@ -1,0 +1,9 @@
+**Line 22** — `Optional` return type in API: `Optional` should not be used as a return type in interfaces intended for broad use; prefer returning an empty result object or throwing an exception. **Rule: `OptionalUsage` / `AvoidOptionalAsReturnType`**
+
+**Line 17** — Method `parse(String)` and `parse(Path)` and `parse(List<Path>)` are overloaded with the same name but different return types (`LatexParserResult`, `Optional<LatexParserResult>`, `LatexParserResults`). Overloaded methods with inconsistent return types violate the **`ConsistentOverloads`** rule.
+
+**Line 11** — Interface `LatexParser` has no `public` modifier on declared methods (`parse`), which is implicit but inconsistent style. **Rule: `RedundantModifier` / `MissingMethodModifier`** (minor, style).
+
+**Line 17** — `parse(String citeString)`: parameter name `citeString` is redundant in an interface declaration per some style guides, but more critically the Javadoc `@param` tag says path is `""` — using a magic empty string to represent no path is a code smell. **Rule: `AvoidMagicValues`** (conceptual, in doc contract).
+
+**Line 27** — `parse(List<Path> latexFiles)` accepts a raw `List` without null-check contract defined; no `@NonNull` or null-handling documented. **Rule: `NullPointerDereference` / `MissingNullCheckAnnotation`**

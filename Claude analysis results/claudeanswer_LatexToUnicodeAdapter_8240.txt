@@ -1,0 +1,13 @@
+**Line 37** — `instanceof` pattern matching available (Java 16+); no pattern variable used. **Rule: UsePatternMatchingInstanceof**
+
+**Line 38** — Raw `parsingResult.get()` called without verifying success safely; potential unchecked cast. **Rule: UnsafeGetFromParsingResult / AvoidUncheckedCast**
+
+**Line 13** — `UNDERSCORE_MATCHER` field is `private static final` but `Pattern.compile` with a regex using lookahead — no issue, but the constant is not `@SuppressWarnings` annotated despite complex regex. **Rule: AvoidComplexRegex** (minor)
+
+**Line 26** — `format` returns result of `Normalizer.normalize` as fallback when parsing fails, but the input `inField` is used directly (not `toFormat` with tilde replacements applied). Inconsistent preprocessing between success and failure paths. **Rule: InconsistentBehavior**
+
+**Line 11** — Class `LatexToUnicodeAdapter` has only `static` methods and no constructor is declared, but there is no `private` no-arg constructor to prevent instantiation. **Rule: HideUtilityClassConstructor**
+
+**Line 33** — `parse` method modifies `toFormat` (a local variable) after initial assignment from `TILDE_MATCHER`, then reassigns it from `UNDERSCORE_MATCHER`. The intermediate value is never used independently — reassignment of `toFormat` could be a single chained expression. **Rule: LocalVariableCouldBeFinal / AvoidReassigningVariables**
+
+**Line 38** — `parsingResult.get().value()` — chained method calls without null-check on intermediate result. **Rule: AvoidChainedMethodCalls**

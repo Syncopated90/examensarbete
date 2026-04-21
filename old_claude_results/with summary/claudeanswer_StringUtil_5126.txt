@@ -1,0 +1,21 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 14 | **AvoidJavaFxImport / ArchitectureViolation** – `javafx.util.Pair` used in utility class; prefer `java.util.AbstractMap.SimpleEntry` or similar |
+| 36–43 | **FieldName / MagicString** – Inline string literals in regex pattern (e.g., `"(?<whitespace>\\s+)\|"`) could be named constants |
+| 46 | **UnusedPrivateField** – `WRAPPED_LINE_PREFIX` is assigned `""` and effectively a no-op; misleading |
+| 60 | **NullableParamNotAnnotated** – `toQuote` param has null check but lacks `@Nullable` annotation |
+| 83 | **NullableParamNotAnnotated** – `text` has no null guard and no `@Nullable`/`@NonNull` annotation |
+| 99 | **NullableParamNotAnnotated** – `toShave` checked for null but not annotated `@Nullable` |
+| 138 | **NullableParamNotAnnotated** – `orgName` checked for null but not annotated `@Nullable` |
+| 156 | **ArrayIndexOutOfBounds risk** – `lines[0]` accessed without checking `lines.length > 0` |
+| 295 | **ComplexBooleanExpression / CyclomaticComplexity** – `intValueOf` condition is excessively complex in a single `if` |
+| 316 | **DuplicateCode** – `intValueOfOptional` is near-identical to `intValueOf`; violates DRY |
+| 391 | **NullableParamNotAnnotated** – `s` in `limitStringLength` checked for null but not annotated |
+| 434 | **UseStringBuilderInsteadOfConcat** – `"<b>" + input + "</b>"` uses string concatenation; minor but flagged by some analyzers |
+| 438 | **NullableParamNotAnnotated** – `input` in `boldHTML(String, String)` checked for null but lacks `@Nullable` |
+| 476 | **NullableParamNotAnnotated** – `toCapitalize` has no null guard and no annotation; NPE risk |
+| 484 | **UsePatternCompileStatic** – `Pattern.compile(...)` inside `getStringAsSentences` executed on every call; should be a static field |
+| 527 | **NullDereference risk** – `pair.getKey()` in `alignStringTable` called without null check (only length is null-guarded via `requireNonNullElse`, but the second call on line ~527 is unguarded) |
+| 521 | **UseJavaxInsteadOfJavaFx** – `Pair<String,String>` from JavaFX used as method parameter type in non-UI logic layer |

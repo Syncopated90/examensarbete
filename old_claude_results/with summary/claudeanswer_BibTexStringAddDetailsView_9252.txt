@@ -1,0 +1,12 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 9 | **ClassNamingConvention** | Class name `BibTexStringAddDetailsView` mixes abbreviation casing — should be `BibTeXStringAddDetailsView` or `BibtexStringAddDetailsView` for consistency |
+| 12 | **LocalVariableCouldBeFinal** | `container` could be declared `final` |
+| 13 | **LocalVariableCouldBeFinal** | `header` could be declared `final` |
+| 16-18 | **AvoidDuplicateLiterals** | `Localization.lang(...)` called multiple times inline within a single statement — reduces readability |
+| 16 | **LawOfDemeter** | `stringAdd.getAddedString().getName()` violates Law of Demeter (train wreck / chained calls) |
+| 17 | **LawOfDemeter** | `stringAdd.getAddedString().getContent()` violates Law of Demeter (chained calls) |
+| 9 | **FinalClassShouldHavePrivateConstructor** | `final` class has a `public` constructor; consider package-private if not instantiated externally |
+| 20 | **MagicString** | `"sectionHeader"` is a hardcoded string literal; should be a named constant |

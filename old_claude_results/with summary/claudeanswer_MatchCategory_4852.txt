@@ -1,0 +1,13 @@
+## Static Analysis
+
+| Line | Rule |
+|------|------|
+| 3 | **JavadocStyle** – `/// @implNote` uses text block doc comment syntax (Java 23 preview); standard Javadoc should use `/** @implNote ... */` |
+| 3 | **MissingJavadocType** – No formal `/** */` Javadoc block on the `enum` type declaration |
+| 5–8 | **JavaNamingConventions / ConstantName** – Constants follow `UPPER_SNAKE_CASE` ✅ (no violation) |
+| 1 | **PackageDeclaration** – No violation ✅ |
+
+### Summary of Real Violations
+
+1. **Line 3 – `CommentDefaultAccessModifier` / `InvalidJavadocPosition`**: The `///` triple-slash comment is not standard Javadoc; a static analysis tool (e.g., Checkstyle, PMD) would flag it as an invalid or unrecognized doc comment format.
+2. **Line 3 – `MissingJavadocType` (Checkstyle)**: No valid `/** */` Javadoc block exists for the `enum`.

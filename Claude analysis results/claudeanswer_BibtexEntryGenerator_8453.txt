@@ -1,0 +1,11 @@
+**Line 5** — `VisibilityModifier`: Class `BibtexEntryGenerator` has no explicit access modifier concern, but method `generateBibtexEntries` is `public` in a package-private-intended utility class with no constructor defined.
+
+**Line 4** — `HideUtilityClassConstructor`: Utility class `BibtexEntryGenerator` lacks a private constructor.
+
+**Line 5** — `DesignForExtension`: Public method `generateBibtexEntries` is neither `abstract`, `final`, nor empty; class is not `final`.
+
+**Line 4** — `FinalClass`: Class only has private methods (`generateBibtexEntry`) and one public method but is not declared `final`.
+
+**Line 8** — `AppendCharacterWithCharArgument` (PMD): `sb.append("\n")` should use `sb.append('\n')` — appending a single-character string instead of a `char`.
+
+**Line 14** — `UseStringBufferForStringAppends` / string concatenation in loop: `generateBibtexEntry` builds a return value via `+` string concatenation across multiple lines, though this is a single expression (acceptable), but the int `i` is concatenated directly — **`StringConcatenation`** rule triggered by `"...entry" + i + ","`.

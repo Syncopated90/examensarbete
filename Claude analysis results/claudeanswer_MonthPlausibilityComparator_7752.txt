@@ -1,0 +1,11 @@
+**Line 22** — **Redundant condition**: `leftMonth.isPresent() && rightMonth.isPresent()` is always true at this point due to prior guards eliminating all other cases. The combined condition is unnecessarily complex.
+
+**Line 22** — **Excessive method calls / Law of Demeter violation**: `leftMonth.get()` and `rightMonth.get()` called directly; prefer `ifPresent` or structured unpacking.
+
+**Line 33** — **Duplicate condition check**: `leftStrict && rightStrict` repeats a subset of the condition on **line 26** (`leftStrict && !rightStrict`) and **line 29** (`!leftStrict && rightStrict`), making the logic harder to follow and partially redundant; a single `if/else if/else` chain would be cleaner.
+
+**Line 35–36** — **Magic character literal**: `"#"` is used as a raw string literal twice with no named constant, violating the **Avoid Magic Literals** rule.
+
+**Line 38** — **Complex ternary / avoid conditional expressions**: The ternary return inside an `if` block reduces readability; a standard `if/else` is preferred.
+
+**Line 12–13** — **Null parameter not guarded**: `left` and `right` are passed directly to `Month.parse()` without null checks, violating the **Null Dereference / Missing Null Check** rule.

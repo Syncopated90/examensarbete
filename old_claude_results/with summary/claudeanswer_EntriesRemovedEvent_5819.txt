@@ -1,0 +1,16 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 12 | **ClassJavadoc / MissingJavadocType** – Class-level comment uses Markdown (`///`) doc comment syntax, not standard `/** */` Javadoc; may not be processed by Javadoc tooling. |
+| 15 | **MissingJavadocMethod** (minor) – Same `///` non-standard Javadoc on constructor. |
+| 21 | **MissingJavadocMethod** (minor) – Same `///` non-standard Javadoc on constructor. |
+| 12 | **AbstractClassName / DesignForExtension** – Concrete class extends `EntriesEvent` but declares no `final` modifier; subclassing behaviour is uncontrolled. |
+| 15 | **HiddenField / ParameterName** – Parameter `bibEntries` shadows no field here, but the delegating constructor adds no validation (null/empty list not guarded). **NullCheck / IllegalArgumentCheck** – no null-check on `bibEntries`. |
+| 21 | Same **NullCheck** violation – `location` parameter not null-checked before delegation. |
+
+### Summary of Key Rules Broken
+
+- **`com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck`** (lines 11–12): Non-standard doc comment format.
+- **`DesignForExtension`** (line 12): Class not `final`.
+- **`IllegalArgumentCheck` / null-check** (lines 15, 21): No defensive null validation on parameters.

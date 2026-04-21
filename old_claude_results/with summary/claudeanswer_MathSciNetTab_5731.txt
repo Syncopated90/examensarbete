@@ -1,0 +1,19 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 29 | `AvoidInstantiatingObjectsOnlyToGetClass` / resource leak | `WebView browser = WebViewStore.get()` — WebView retrieved but never released back to store if reused |
+| 31 | `ConfusingTernary` / unnecessary filter | `MouseEvent::consume` used as filter consumes **all** mouse events including scroll; overly broad suppression |
+| 44 | `AvoidLiteralsInIfCondition` | Magic number `0.7` used directly; should be a named constant |
+| 44 | `LawOfDemeter` | Excessive chaining: `browser.getEngine().getLoadWorker().progressProperty()` violates LoD (multiple dots through unrelated objects) |
+| 39 | `LawOfDemeter` | `browser.getEngine().load(...)` — chained call through unrelated object |
+| 27 | `StackPane` children ordering | `browser` added before `progress`, meaning progress indicator renders **under** browser; visually incorrect |
+| 53 | `BindingsShouldBeCleanedUp` | Listener added in `bindToEntry` on progress property is never removed; repeated calls leak listeners |
+| 20 | `MissingOverride` / incomplete init | Constructor only calls `setText`; no `setId` or graphic set, inconsistent with other tabs |
+| 23 | `NullCheckForGetField` | `entry.getField()` result passed directly to `flatMap` without null-guard on `entry` itself |
+
+### Key Issues Summary
+1. **Memory leak** (line 44): Progress listener never removed on rebind
+2. **Magic number** (line 44): `0.7` should be `private static final double PROGRESS_THRESHOLD = 0.7`
+3. **LoD violations** (lines 39, 44): Deep method chaining
+4. **Z-order bug** (line 34): Browser obscures progress indicator

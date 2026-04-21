@@ -1,0 +1,23 @@
+**Line 27** – `FieldNamingConventions`: Field `highlightCharactersRadioButtons` has a plural name suggesting a collection, but it is a single `RadioButton`.
+
+**Line 51** – `UnusedImport` / unused field: `import com.google.common.base.Enums` is only used inside inner enums; acceptable, but `parse` methods in both enums are never called externally — `DeadCode`.
+
+**Line 96** – `DeadCode`: Listener lambda captures `observable` parameter but never uses it; parameter should be named `_` or suppressed — `UnusedFormalParameter`.
+
+**Line 121** – `ReturnType`: `shouldShowDiffs()` returns boxed `Boolean` instead of primitive `boolean` — `UnnecessaryBoxing` / `BooleanGetMethodName` (method named `should*` returns `Boolean` not `boolean`).
+
+**Line 175** – `DeadCode`: `PlainTextOrDiff.parse(String)` is defined but never referenced anywhere in the file — unused method.
+
+**Line 176** – `InadequateErrorHandling`: `fromString` calls `Enum.valueOf` without try/catch; will throw unchecked `IllegalArgumentException` on bad input — `PreemptiveException`.
+
+**Line 195** – `DeadCode`: `DiffView.parse(String)` is defined but never referenced anywhere in the file — unused method.
+
+**Line 196** – `InadequateErrorHandling`: `DiffView.fromString` calls `Enum.valueOf` without try/catch — `PreemptiveException`.
+
+**Line 64** – `AnonymousInnerClass`: Anonymous `StringConverter` should be a named class or lambda-equivalent to reduce verbosity — `AvoidAnonymousInnerClasses`.
+
+**Line 79** – `AnonymousInnerClass`: Same rule for second anonymous `StringConverter`.
+
+**Line 102** – `LawOfDemeter`: Repeated chained calls `preferences.getMergeDialogPreferences().*` violate the Law of Demeter; local variable should be extracted (as done in `loadSavedConfiguration` but not in `saveToolbarConfiguration` or `initialize`).
+
+**Line 109** – `LawOfDemeter`: Same violation in `saveToolbarConfiguration` — `preferences.getMergeDialogPreferences()` called three times without caching.

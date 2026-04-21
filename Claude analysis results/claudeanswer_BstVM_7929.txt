@@ -1,0 +1,21 @@
+**Line 8** — `Collectors.toList()` (inside `render`): **Use `Stream.toList()` instead of `Collectors.toList()`** (Java 16+).
+
+**Line 25** — `protected static final Integer FALSE = 0;`: **Use primitive `int` instead of boxed `Integer`** (UnnecessaryBoxing / UseUnboxedTypes).
+
+**Line 26** — `protected static final Integer TRUE = 1;`: Same as above.
+
+**Line 29** — `protected BstVMContext latestContext;`: **Non-private field** (VisibilityModifier). Also mutable protected field violates encapsulation.
+
+**Line 31** — `private Path path = null;`: **Redundant null initializer** (RedundantFieldInitialization).
+
+**Line 87** — `public String render(Collection<BibEntry> bibEntries)`: **Method can be private or the overload should delegate clearly**; minor: missing `@NonNull` on parameter inconsistent with the other `render` overload (InconsistentAnnotations).
+
+**Line 90** — `protected Deque<Object> getStack()`: **Non-private method returning mutable collection** (ReturnOfCollectionOrArrayField / VisibilityModifier).
+
+**Line 94** — `throw new BstVMException(...)`: **String concatenation in exception message** instead of using a formatted string or structured message (UseStringFormat / StringConcatenation).
+
+**Line 91–95** — `getStack()`: **Method contains two exit points** with an exception path that could be an `Optional` return instead (AvoidThrowingRawExceptionTypes / PreferOptional — design rule).
+
+**Line 98** — `public static final ThrowingErrorListener INSTANCE = new ThrowingErrorListener();`: **Public field in a private inner class** (VisibilityModifier); should be private with an accessor, or the singleton pattern is insufficient (no private constructor enforced beyond package).
+
+**Line 99** — `ThrowingErrorListener` has **no explicit private constructor** despite being a singleton (SingletonClassWithoutPrivateConstructor).

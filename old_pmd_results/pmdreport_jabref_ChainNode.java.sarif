@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "SimplifyBooleanReturns",
+              "shortDescription": {
+                "text": "This if statement can be replaced by `return {condition} || {elseBranch};`"
+              },
+              "fullDescription": {
+                "text": "\nAvoid unnecessary if-then-else statements when returning a boolean. The result of\nthe conditional test can be returned instead.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#simplifybooleanreturns",
+              "help": {
+                "text": "\nAvoid unnecessary if-then-else statements when returning a boolean. The result of\nthe conditional test can be returned instead.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CompareObjectsWithEquals",
+              "shortDescription": {
+                "text": "Use equals() to compare object references."
+              },
+              "fullDescription": {
+                "text": "\nUse `equals()` to compare object references; avoid comparing them with `==`.\n\nSince comparing objects with named constants is useful in some cases (eg, when\ndefining constants for sentinel values), the rule ignores comparisons against\nfields with all-caps name (eg `this == SENTINEL`), which is a common naming\nconvention for constant fields.\n\nYou may allow some types to be compared by reference by listing the exceptions\nin the `typesThatCompareByReference` property.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#compareobjectswithequals",
+              "help": {
+                "text": "\nUse `equals()` to compare object references; avoid comparing them with `==`.\n\nSince comparing objects with named constants is useful in some cases (eg, when\ndefining constants for sentinel values), the rule ignores comparisons against\nfields with all-caps name (eg `this == SENTINEL`), which is a common naming\nconvention for constant fields.\n\nYou may allow some types to be compared by reference by listing the exceptions\nin the `typesThatCompareByReference` property.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SimplifyBooleanReturns",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This if statement can be replaced by `return {condition} || {elseBranch};`"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ChainNode.java"
+                },
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 9,
+                  "endLine": 129,
+                  "endColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CompareObjectsWithEquals",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Use equals() to compare object references."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ChainNode.java"
+                },
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 13,
+                  "endLine": 125,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+## Static Analysis Issues
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 27 | **Redundant Type Reference** | `BiblatexNonStandardEntryType.values()` — class name is redundant inside its own enum; use `values()` directly |
+| 33 | **Inconsistent API** | `getName()` returns lowercase, but `getDisplayName()` returns original case — the display name passed to constructor already matches the enum constant name exactly, making `displayName` field redundant; `getName()` could use `name().toLowerCase(Locale.ENGLISH)` |
+| 8–20 | **Enum Constructor Redundancy** | Each enum constant passes a string literal identical to its own name (e.g., `Artwork("Artwork")`), violating **DRY**; the `displayName` field is unnecessary since `name()` provides the same value |
+| 27 | **`findAny()` Non-Determinism** | Use `findFirst()` instead of `findAny()` for deterministic results on a sequential stream (**PreferFindFirst** rule) |
+| 6 | **Unused Import** | `java.util.Locale` — not a violation here, but flagged by **UnusedImports** if `getName()` were refactored away; currently used correctly |
+
+### Key Violations Summary
+1. **DRY violation** — enum name strings duplicate `name()` (lines 9–20)
+2. **`findAny()` on sequential stream** — line 29
+3. **Redundant qualified reference** — line 28

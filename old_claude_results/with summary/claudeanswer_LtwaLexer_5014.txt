@@ -1,0 +1,21 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 8 | **Wildcard Import** (`import org.antlr.v4.runtime.*`) |
+| 9 | **Wildcard Import** (`import org.antlr.v4.runtime.atn.*`) |
+| 10 | **Wildcard Import** (`import org.antlr.v4.runtime.dfa.DFA`) — redundant; covered by wildcard above |
+| 11 | **Wildcard Import** (`import org.antlr.v4.runtime.misc.*`) |
+| 5-7 | **Unused Imports** (`Lexer`, `Token`, `TokenStream` imported explicitly but also covered/unused) |
+| 23 | **Mutable Public Static Field** (`channelNames` is `public static` non-final array) |
+| 27 | **Mutable Public Static Field** (`modeNames` is `public static` non-final array) |
+| 36 | **Mutable Public Static Field** (`ruleNames` is `public static` non-final array) |
+| 57 | **Mutable Public Static Field** (`tokenNames` is `public static` non-final array — also `@Deprecated`) |
+| 100 | **Unused Parameter** (`_localctx` in `isNextBoundary`/`sempred` private methods) |
+| 113 | **Unused Parameter** (`_localctx` in `ABBREVIATION_sempred`) |
+| 123 | **Unused Parameter** (`_localctx` in `PART_sempred`) |
+| 129 | **Unused Parameter** (`_localctx` in `ORDINAL_sempred`) |
+| 135 | **Unused Parameter** (`_localctx` in `ARTICLE_sempred`) |
+| 143 | **Unused Parameter** (`_localctx` in `STOPWORD_sempred`) |
+| 151 | **Unused Parameter** (`_localctx` in `WORD_sempred`) |
+| 96 | **Redundant Cast** (`(RuleContext)_localctx` — parameter already typed `RuleContext`) |

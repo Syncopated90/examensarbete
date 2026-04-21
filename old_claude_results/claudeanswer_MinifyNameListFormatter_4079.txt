@@ -1,0 +1,13 @@
+**Line 47** — `String.split(String)` without a limit argument can discard trailing empty strings; use `split(authorSeparator, -1)` if trailing tokens matter. **Rule: `String.split` limit argument missing** (PMD: `UseIndexOfChar` / SonarQube: `S4248` / general: unintended split behavior).
+
+**Line 47** — `authorSeparator` is a regex-interpreted argument to `split()`, but `" and "` contains no special regex chars; still, passing a plain string to a regex method without `Pattern.quote()` is fragile. **Rule: `PatternLiteralInRegex` / SonarQube S5361**.
+
+**Line 43** — `authorSeparator` is declared as a local variable inside `abbreviateAuthor` but never changes; it should be a `private static final` constant. **Rule: PMD `AvoidDuplicateLiterals` / `LongVariable` / SonarQube S1192 (string literal duplicated)** — `" and "` also appears implicitly via the constant but is defined locally each call.
+
+**Line 9** — Class `MinifyNameListFormatter` extends `Formatter` but does not declare `serialVersionUID`. If `Formatter` implements `Serializable`, this violates **PMD `MissingSerialVersionUID`**.
+
+**Line 28** — `@NonNull` annotation on `value` parameter, yet `value.isEmpty()` is called without a null-guard; if the annotation is not enforced at runtime the null check is absent. **Rule: SonarQube S2259 / NullPointerException risk** (contradictory: annotation promises non-null but no defensive check exists for callers ignoring the contract).
+
+**Line 52–54** — `for` loop manually iterates array to trim elements; could be replaced with streams, but more critically the loop modifies the array in-place while `authors` is used later — not a bug but violates **PMD `ForLoopCanBeForeach`**.
+
+**Line 57** — Condition `(authors.length == 2)` uses parentheses unnecessarily around a simple comparison inside a compound condition. **Rule: PMD `UselessParentheses`**.

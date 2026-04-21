@@ -1,0 +1,20 @@
+**Line 28: Field `failures` — Mutable Collection in Field (Security/Design)**
+`failures` is a mutable `ArrayList` field that accumulates state across multiple `cleanup()` calls without being reset, causing unbounded growth and stale state retention.
+
+**Line 30: Constructor — Excessive Parameters (too many parameters rule)**
+Constructor has 5 parameters, exceeding typical threshold of 4.
+
+**Line 38: Method `cleanup` — Non-thread-safe mutable state access**
+`failures` field is modified in `cleanup()` without synchronization; class is not documented as non-thread-safe.
+
+**Line 42–45: Pattern variable shadowing — Variable Shadowing**
+Pattern variable `cleanup` is reused across two separate `instanceof` branches (lines 42 and 44), shadowing each other in scope per branch — same identifier name for different types.
+
+**Line 107: `getFailures()` — Returning reference to mutable internal collection**
+Returns direct reference to the internal `failures` list, violating encapsulation. Should return `Collections.unmodifiableList(failures)`.
+
+**Line 53: `determineCleanupActions` — Unchecked iteration over `preset.getActiveJobs()`**
+No null-check on the return value of `preset.getActiveJobs()` before iteration, risking `NullPointerException` despite `@NullMarked`.
+
+**Line 68: `toJob` — `default` branch in exhaustive switch (UnnecessaryDefaultInEnumSwitch)**
+A `switch` over an enum with a `default` clause prevents compile-time detection of unhandled enum constants.

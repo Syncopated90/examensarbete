@@ -1,0 +1,11 @@
+**Line 26** — `ClearContentTabView` implements both `AbstractAutomaticFieldEditorTabView` (extends) and `AutomaticFieldEditorTab` (interface). If the abstract class already implements the interface, the explicit `implements AutomaticFieldEditorTab` is redundant. **Rule: RedundantImplements / ExcessiveImplements**
+
+**Line 29** — `@NonNull` annotation on `stateManager` field, but the field is assigned *after* `selectedEntries` on line 41 (`this.stateManager = stateManager`), while `stateManager` is already dereferenced on line 40 (`stateManager.getSelectedEntries()`). The `@NonNull` annotation is on the field, not the parameter — provides no null-check protection on the parameter. **Rule: ConfusingAnnotation / MisplacedNullAnnotation**
+
+**Line 40** — `stateManager.getSelectedEntries()` is called before `this.stateManager = stateManager` (line 41). Field assignment order is inconsistent; the local parameter is used directly here, but the ordering is misleading and fragile. **Rule: FieldInitializationBeforeUse / ConfusingFieldAssignmentOrder**
+
+**Line 33** — `@FXML private ComboBox<Field> fieldComboBox` and **Line 34** `@FXML private Button clearButton` are `@FXML`-injected fields accessed in `initialize()`, but the class is also constructing the view itself (`ViewLoader.view(this)`). If `initialize()` is called before injection completes, NPE risk exists. **Rule: PrematureFieldAccess**
+
+**Line 48** — `initialize()` is `public` but is an FXML lifecycle method that should not be part of the public API. **Rule: UnusedAccessModifier / Fxml method should be package-private or private**
+
+**Line 63** — `onClear()` performs a null-check on `chosen` (line 64), but `clearButton` is already bound to disable when `fieldComboBox.valueProperty().isNull()` (line 58), making the null check dead code. **Rule: UnnecessaryNullCheck / DeadCode**

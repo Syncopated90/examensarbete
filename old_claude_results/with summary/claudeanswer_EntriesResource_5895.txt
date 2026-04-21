@@ -1,0 +1,16 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 35 | **Visibility** – `preferences` field is package-private (missing `private` modifier) |
+| 38 | **Visibility** – `srvStateManager` field is package-private |
+| 41 | **Visibility** – `filesToServe` field is package-private |
+| 44 | **Visibility** – `gson` field is package-private |
+| 47 | **Visibility** – `uiMessageHandler` field is package-private |
+| 50 | **Null Check on Injected Field** – `uiMessageHandler == null` check is a code smell; injection frameworks should guarantee non-null, and null checks on `@Inject` fields indicate unreliable injection design |
+| 65 | **Null Check on Injected Field** – same issue repeated for `uiMessageHandler` |
+| 76 | **Raw Type / Fully Qualified Type in Method Body** – `java.nio.file.Path` is used as a fully qualified name despite `java.nio.file.Files` already being imported; `java.nio.file.Path` should be imported separately (`ImmediatelyDereferencedLocalVariable` / `UnnecessaryFullyQualifiedName`) |
+| 78 | **Resource Leak** – `tempFile` is created but never deleted after use (missing cleanup in `finally` block or `Files.deleteOnExit`) |
+| 96 | **Premature Empty-Collection Exception** – throwing `NotFoundException` when `entries.isEmpty()` prevents returning a valid empty JSON array `[]`, violating REST conventions (`PreferEmptyCollectionOverNull` / improper exceptional flow) |
+| 104 | **Magic String / Literal Duplication** – `"PDF"` is a hard-coded string literal; should be a named constant |
+| 107 | **Unnecessary Nesting** – the `if (!pathsToFiles.isEmpty())` guard is redundant; the inner `for` loop handles empty lists naturally (empty loop body) |

@@ -1,0 +1,21 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 16 | **LocalVariableCouldBeFinal** | `container` can be declared `final` |
+| 17 | **LocalVariableCouldBeFinal** | `header` can be declared `final` |
+| 14 | **LocalVariableCouldBeFinal** | `preambleDiff` can be declared `final` |
+| 21 | **AvoidDuplicateLiterals** | `"Current value: %0"` — string literal duplication risk (minor) |
+| 11 | **ClassNamingConventions** / **CouplingBetweenObjects** | Class directly constructs multiple UI components inline, violating separation of concerns |
+| 21–25 | **LongMethod** / **DoNotCallSystemExit** | Constructor performs UI logic; constructors should not contain heavy logic (constructor does too much) |
+| 22 | **AvoidInstantiatingObjectsJustToGetClass** | `new Label(...)` instantiated and immediately added without reference — not reusable/testable |
+
+### Key Violations Summary
+
+1. **Lines 14, 16, 17** — `LocalVariableCouldBeFinal`: Variables `preambleDiff`, `container`, and `header` are never reassigned and should be `final`.
+
+2. **Lines 13–31** — **HeavyConstructor**: Constructor performs UI building logic; this should be delegated to an `initialize()` method.
+
+3. **Line 17** — **MagicLiteral**: Hardcoded CSS class string `"sectionHeader"` should be a named constant.
+
+4. **Lines 22, 25** — **AvoidInlineConditionalInstantiation**: Anonymous `new Label(...)` objects are created with no variable binding, making them untestable.

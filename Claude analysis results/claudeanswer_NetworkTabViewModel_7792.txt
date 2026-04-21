@@ -1,0 +1,25 @@
+**Line 4** (`import java.nio.file.Path`) — No violation here, used.
+
+**Line 6** (`import java.util.Optional`) — Used only internally; acceptable.
+
+**Line 230** — **EmptyCatchBlock**: `catch (MalformedURLException e)` swallows the exception silently with only a comment, no logging or re-throw.
+
+**Line 139** — **ListenerLeak**: `customCertificateListProperty.addListener(...)` inside `setSSLValues()` adds a new listener every time `setValues()` is called without ever removing the previous one, causing listener accumulation.
+
+**Line 139–149** — **AvoidInstantiatingObjectsJustToGetClass** / **ComplexMethod**: Lambda registered as `ListChangeListener` performs trust store side-effects inside a UI property listener, violating separation of concerns (not a strict PMD rule but a design rule violation).
+
+**Line 63** (`backupProxyPreferences`) — **ImmutableField**: `backupProxyPreferences` is assigned once in the constructor and never reassigned; it should be declared `final`.
+
+**Line 174** — **UnnecessaryLocalVariable**: `CompositeValidator validator = new CompositeValidator()` — the variable `validator` is used immediately and could be considered unnecessary indirection, though minor.
+
+**Line 32** — **UnusedImports**: `import org.jabref.logic.util.strings.StringUtil` — used, not a violation.
+
+**Line 17** (`import javafx.stage.FileChooser`) — Used only in `addCertificateFile()`; acceptable.
+
+**Line 229** — **EmptyCatchBlock** (PMD rule `EmptyCatchBlock`): catch block for `MalformedURLException` contains no handling code, only a comment.
+
+**Line 63** — **MutableStaticState** / **ConstructorOnlyInitializesFields**: `backupProxyPreferences` should be `final` — violates **FinalFieldCouldBeFinal** (PMD).
+
+**Line 72** (`AtomicBoolean sslCertificatesChanged`) — **AtomicBoolean used where volatile boolean suffices**: single-threaded JavaFX context; unnecessarily complex, violates **AvoidUsingVolatile** counterpart / over-engineering.
+
+**Line 155** — **AvoidPrintStackTrace** / **GuardLogStatement**: no logging of caught `UnirestException` stack trace before showing dialog; original cause is discarded.

@@ -1,0 +1,5 @@
+**Line 22** — `DLS_DEAD_LOCAL_STORE` / **Ignored Return Value**: `insertEntry()` likely returns a boolean/result that is ignored.
+
+**Line 16** — `NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE`: `getCitationKey()` returns an `Optional`, but chained directly without null-check on the `addedEntry` itself — if `addedEntry` is `null`, a `NullPointerException` occurs. No null guard on constructor parameter `addedEntry`.
+
+**Line 13** — `NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE` / **Null Parameter**: `addedEntry` is accepted without null validation, violating a defensive programming rule (e.g., Sonar: `java:S2637` or PMD: `NullAssignment`).

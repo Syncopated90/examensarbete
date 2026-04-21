@@ -1,0 +1,23 @@
+**Line 32** — `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` / **Mutable Static Field**: `currentGroup` is a mutable static field, not thread-safe.
+
+**Line 32** — `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD`: Static field `currentGroup` can be written from multiple threads without synchronization.
+
+**Line 75** — `UnnecessaryLocalVariable` / `UNNECESSARY_LOCAL_VARIABLE`: `currentGroup` accessed via `LayoutHelper.currentGroup` instead of directly, but more critically, static mutable state shared across instances.
+
+**Line 84** — `NullAssignment`: `buffer` is initialized to `null` and used with null checks repeatedly — consider using `Optional` or pre-initializing.
+
+**Line 86** — `VariableNotUsed` / dead assignment: `start` is set to `false` but the initial value is never read before reassignment in `doBracketedField`.
+
+**Line 199** — `UnnecessaryLocalVariable`: `escaped = false` after `parseField()` — the variable was already `false` by default; redundant assignment with misleading comment.
+
+**Line 232** — `StringConcatenation` in exception: `lastFive.toString().replace("\n", " ") + '\''` — use `StringBuilder` or formatted string instead of `+` concatenation inside `throw`.
+
+**Line 291** — `UnnecessaryLocalVariable`: `boolean annotation = ...; return annotation;` — return expression directly.
+
+**Line 297** — `UnnecessaryLocalVariable`: `boolean character = ...; return character;` — return expression directly.
+
+**Line 32/79** — `GLOBAL_MUTABLE_STATE`: `currentGroup` is a `private static` non-final field mutated via public static setters, creating shared mutable global state.
+
+**Line 320** — `MagicNumber`: `65535` is a magic number; should be a named constant (e.g., `UNICODE_BOM` or `EOF_UNICODE`).
+
+**Line 44** — `ParameterNotNullable`: `fileDirForDatabase` and `abbreviationRepository` lack `@NonNull` or `@Nullable` annotations, inconsistent with other parameters on lines 41–44.

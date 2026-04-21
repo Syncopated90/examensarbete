@@ -1,0 +1,12 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 32 | **Volatile field with compound action** – `watcher` is `volatile`, but it is read and used non-atomically in `addListenerForFile` (line 84) and `shutdown` (line 98), creating a TOCTOU race. |
+| 38 | **Variable shadowing** – Local variable `watcher` in `run()` shadows the instance field `this.watcher`. |
+| 55 | **Misplaced `key.reset()`** – `key.reset()` is called inside the `for` loop over `key.pollEvents()`, but it should be called *after* the loop; resetting mid-iteration can cause missed or repeated events. |
+| 63 | **Exception information loss** – `e.getLocalizedMessage()` is passed where the cause description is expected; `e.getMessage()` and `e.getLocalizedMessage()` are redundant and `e.getCause()` discards the original cause chain context. |
+| 75 | **Null dereference** – `file.toAbsolutePath().getParent()` can return `null` (e.g., root path), and `directory` is used without a null check on line 86. |
+| 84 | **Non-thread-safe use of `watcher`** – `watcher` can be `null` if `run()` has not yet initialised it; there is no synchronisation guard between `isActive()` (line 84) and the use of `watcher` (line 86). |
+| 30 | **Mutable static-like shared collection** – `listeners` (`ArrayListMultimap`) is accessed from multiple threads (`run`, `addListenerForFile`, `removeListener`) without synchronisation; `ArrayListMultimap` is not thread-safe. |
+| 46 | **Swallowed `InterruptedException`** – `InterruptedException` is caught and causes a bare `return` without restoring the thread's interrupted status (`Thread.currentThread().interrupt()`). |

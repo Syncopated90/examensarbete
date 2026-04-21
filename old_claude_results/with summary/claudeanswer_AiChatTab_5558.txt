@@ -1,0 +1,15 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 76 | **NullAssignment / AvoidReassigningParameters** | `previousBibEntry` is a mutable field reassigned on each call; variable shadowing with local `previousBibEntry` inside lambda |
+| 76 | **VariableNameShadowing** | Lambda parameter `previousBibEntry ->` shadows the field `previousBibEntry` |
+| 80 | **BranchOrElse / UseOptionalOrElseGet** | `orElse(new BibDatabaseContext())` always constructs a new object; should use `orElseGet(BibDatabaseContext::new)` |
+| 85 | **AvoidChainedMethodCalls / LawOfDemeter** | Chained: `entry.getFiles().stream().map(...).map(Path::of).noneMatch(...)` — excessive chain |
+| 85 | **NullDereference** | `Path::of` called on raw string link with no null/blank check before conversion |
+| 113 | **AvoidInstantiationInLoop / UnnecessaryWrapperObjectCreation** | `new ArrayList<>(List.of(entry))` — unnecessarily wraps a `List.of()` into an `ArrayList` just to pass to `observableArrayList` |
+| 127 | **TrailingWhitespace / MisplacedClosingBrace** | Dangling blank line before closing parenthesis of `new AiChatGuardedComponent(...)` (style) |
+| 33–42 | **ExcessiveFieldCount** | Class has 12 instance fields — violates single responsibility; consider a parameter object |
+| 45–63 | **ExcessiveParameterList** | Constructor has 7 parameters — exceeds recommended maximum (≤5) |
+| 70 | **MissingOverrideAnnotation** | *(Minor)* `shouldShow` overrides abstract method; `@Override` is present — OK, but `bindToEntry` Javadoc uses non-standard `///` syntax (JEP 467 markdown, may break standard Javadoc tooling) |
+| 72 | **NonStandardJavadoc** | `///` triple-slash markdown comment syntax is non-standard for Java < 23 toolchains |

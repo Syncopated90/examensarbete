@@ -1,0 +1,11 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 68 | **MutableStaticState / ModifyStaticObject** – `getDefault()` returns a new instance then `getDefaultWithStyles()` mutates it via `defaults.getLayoutCycle().addAll(...)`, violating the principle that a "defaults" factory method should return an immutable/unmodified object. |
+| 68 | **ReturnValueIgnored / SideEffectOnReturnedObject** – The result of `getDefault()` is immediately mutated before being returned; callers of `getDefault()` expect a pristine default. |
+| 44 | **FXCollections.observableList wraps mutable list** – `FXCollections.observableList(bstPreviewLayoutPaths)` wraps the *caller's* list directly (no copy), giving the caller a backdoor to mutate internal state. Unlike line 38 which uses `observableArrayList` (defensive copy). |
+| 113 | **DirectInstantiationOfDependency / HardcodedDependency** – `new JournalAbbreviationRepository()` is instantiated directly inside a method, making it untestable and ignoring any configured repository. |
+| 113 | **AvoidInstantiatingObjectsJustToGetClass / ResourceLeak** – `new JournalAbbreviationRepository()` may hold resources and is created as a throwaway with no lifecycle management. |
+| 48 | **UnusedPrivateConstructor** (minor) – Private no-arg constructor is only called internally; acceptable, but combined with the mutable-default anti-pattern it is a design smell. |
+| 80 | **LawOfDemeter** – `previewPreferences.layoutCycle` (and other fields) are accessed directly (package-private field access bypassing encapsulation) rather than through accessors. |

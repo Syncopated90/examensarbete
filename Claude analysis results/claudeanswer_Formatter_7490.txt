@@ -1,0 +1,11 @@
+**Line 44** – `equals()` does not check `obj == this` (self-comparison check missing). **Rule: `EqualsAvoidNull` / `NeedBraces` (PMD) or `equals.no.self.check` (SonarQube: S1295/S2097)**
+
+**Line 44** – `equals()` does not check `obj == null` explicitly before the `instanceof` check (though `instanceof` handles null implicitly, some rules flag missing null-guard). **Rule: `OverrideBothEqualsAndHashcode` is satisfied, but `equals` contract: PMD `NullAssignment` / Checkstyle `EqualsHashCode`** — not broken here.
+
+**Line 44** – Class is `abstract` but `equals` and `hashCode` are concrete and depend on `getKey()`, which is abstract and could return `null`, causing `NullPointerException`. **Rule: `NullPointerException` risk — PMD `NPathComplexity` / SonarQube `S2637` (NonNull methods may return null)**
+
+**Line 22** – `getKey()` is declared abstract with no `@NonNull` annotation, yet `hashCode()` (line 43) and `equals()` (line 50) call `.hashCode()` and `.equals()` on its return value without null-check. **Rule: SonarQube `S2259` — Null pointer dereference**
+
+**Line 16** – `getName()`, `getKey()`, `getDescription()`, `getExampleInput()` are documented as "always not null" / "always non empty" but lack `@NonNull` annotation. **Rule: Checkstyle/PMD `MissingOverride` / SonarQube `S2176` — undeclared nullability constraint**
+
+**Line 43** – `hashCode()` calls `getKey()` which may return `null` in a subclass, causing `NullPointerException`. **Rule: SonarQube `S2259` — Null pointer dereference**

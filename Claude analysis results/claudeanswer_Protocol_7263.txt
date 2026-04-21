@@ -1,0 +1,17 @@
+**Line 10** — `javafx.util.Pair` import: **AvoidImportingJavaFX** / architectural dependency violation; `javafx.util.Pair` is a UI-layer class used in a logic-layer class.
+
+**Line 55** — `receiveMessage()`: **UncheckedCast** — `(RemoteMessage) in.readObject()` and `(String[]) argument` are unchecked casts with no `instanceof` guard before casting.
+
+**Line 61** — `((String[]) argument)[i]`: **DuplicateCode** / **ArrayAccessWithArrayCastRepeated** — `(String[]) argument` is cast and dereferenced multiple times on the same line; the cast result is not stored in a local variable.
+
+**Line 42** — `((String[]) argument).clone()`: **UncheckedCast** — `argument` cast to `String[]` without prior `instanceof` check.
+
+**Line 55** — `receiveMessage()`: **CloseResource** — `in.readObject()` is used but if an exception occurs mid-read, partial state is not cleaned up; no resource guard on the stream mid-operation.
+
+**Line 27–28** — Constructor: **ResourceLeak** — if `new ObjectInputStream(socket.getInputStream())` (line 28) throws, the already-constructed `ObjectOutputStream` (line 27) is never closed.
+
+**Line 31** — `sendMessage(RemoteMessage)`: **OverlyBroadThrowsDeclaration** — throws `IOException` but only `ObjectOutputStream` write exceptions are possible; more specific exception could be declared.
+
+**Line 40** — `type == RemoteMessage.SEND_COMMAND_LINE_ARGUMENTS`: **CompareObjectsWithEquals** — enum comparison with `==` is acceptable for enums, but same pattern on line 59 with object identity check is consistent; no violation here strictly, but flagged by some tools as **UseEnumSwitchStatement** — `if/else` on enum type should be a `switch`.
+
+**Line 59** — same as line 40: **UseEnumSwitchStatement** — enum checked with `==` in `if` rather than `switch`.

@@ -1,0 +1,22 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 12 | `HideUtilityClassConstructor` | Utility class `ListUtil` has no private constructor — public default constructor exposed |
+| 12 | `FinalClass` / `UtilityClass` | Utility class should be `final` |
+
+**Summary:**
+
+- **Line 12** (`public class ListUtil`): Utility classes (only `static` methods, no instance state) should declare a **private no-arg constructor** to prevent instantiation, and the class should be declared `final`. The default public constructor is implicitly generated, violating the utility class pattern.
+
+**Fix:**
+```java
+public final class ListUtil {
+    private ListUtil() {
+        // Utility class
+    }
+    ...
+}
+```
+
+No other violations found. The generics usage, stream operations, and method signatures are clean.

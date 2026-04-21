@@ -1,0 +1,17 @@
+**Line 5: `com.sun.star.uno.UnoRuntime` import**
+- Rule: **AvoidStarImport** / restricted API — `com.sun.*` classes are internal/proprietary Sun APIs. Rule: **IllegalImport**
+
+**Line 9: Empty constructor**
+- Rule: **HideUtilityClassConstructor** — Utility class has a private no-arg constructor, which is correct, but the constructor body is empty and the class is a utility class. Actually the private constructor satisfies the rule. ✓
+
+**Line 15: Parameter name `zInterface`**
+- Rule: **ParameterNamingConventions** — `zInterface` uses a non-standard Hungarian notation prefix `z`, violating standard camelCase naming conventions.
+
+**Line 15: Method `cast`**
+- Rule: **MethodNamingConventions** — `cast` is acceptable, no violation here. ✓
+
+**Line 5: `com.sun.star.uno.UnoRuntime`**
+- Rule: **IllegalImport** — Use of `com.sun.*` packages is restricted as they are internal proprietary APIs not part of the public Java API.
+
+**Lines 12-13: Javadoc uses `///` (markdown doc comments)**
+- Rule: **InvalidJavadocFormat** / **JavadocStyle** — `///` is not standard Javadoc syntax (`/**`). This will not be processed by Javadoc tooling correctly.

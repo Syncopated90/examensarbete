@@ -1,0 +1,15 @@
+**Line 43** — `RV_RETURN_VALUE_IGNORED` / **Ignored Return Value**
+`localDateTime.truncatedTo(ChronoUnit.SECONDS)` — `LocalDateTime` is immutable; the result is discarded. Should be `localDateTime = localDateTime.truncatedTo(ChronoUnit.SECONDS)`.
+
+**Line 60** — `DC_CALL_TO_GETFIELD_TWICE` / **Double Field Access**
+`entry.getField(timeStampField)` is called twice (`.isPresent()` then `.get()`). The result should be stored in a variable.
+
+**Line 68** — `FieldChange` constructed with hardcoded empty string `""` as new value — **Magic Value** / `AvoidLiteralInArgumentList`; also the semantic is inverted: the constructor likely expects `(entry, field, oldValue, newValue)` but `""` is passed as `newValue` for a *removal*, making intent unclear — **Suspicious Parameter Order**.
+
+**Line 69-70** — `DC_CALL_TO_GETFIELD_TWICE` / **Double Field Access**
+`entry.setField(...)` is called and then `entry.getField(StandardField.MODIFICATIONDATE)` is called immediately after; the value `formattedTimeStamp.get()` is already known and should be reused directly.
+
+**Line 71** — `FieldChange` arguments: old value is retrieved from the entry after setting it, meaning old value equals new value — **Incorrect Old/New Value in FieldChange**; the previous value before `setField` is never captured, losing the actual old value.
+
+**Line 64** — `UR_UNINIT_READ` / **Unnecessary Variable**
+`changeTo` is declared on line 64 and only assigned inside a non-branching block; it should be declared at point of assignment (line 70).

@@ -1,0 +1,9 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 22 | **Redundant Condition** | `leftMonth.isPresent() && rightMonth.isPresent()` is redundant; both being present is already the only remaining case after the two prior guards. |
+| 22 | **Complex Boolean Expression** | Triple `&&` condition increases cyclomatic complexity unnecessarily. |
+| 22 | **Use `equals()` for Object Comparison** | `leftMonth.get() == rightMonth.get()` uses `==` on an `Optional`-wrapped enum — while safe for enums, this relies on enum identity semantics and should use `.equals()` for clarity/consistency. |
+
+> **Note:** Line 22's `==` is technically safe for Java enums (identity == equality), but many static analysis tools (e.g., SpotBugs: `EC_UNRELATED_TYPES`, SonarQube: `java:S4973`) will flag reference comparison on non-primitive types.

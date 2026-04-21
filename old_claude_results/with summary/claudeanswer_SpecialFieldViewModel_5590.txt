@@ -1,0 +1,18 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 57 | **Null Return / Possible NPE** – `getAction().getIcon().get()` calls `get()` on `Optional` without checking `isPresent()`. |
+| 83 | **Use `Collectors.toUnmodifiableList()` or `Stream.toList()`** – `Collectors.toList()` is mutable and less explicit; prefer `Stream.toList()`. |
+| 87 | **Redundant Parameter** – `getField().isSingleValueField()` duplicates the logic already expressed on line 50 (`field.getValues().size() == 1`), violating DRY. |
+| 92 | **Unconditional `getFirst()` Without Guard** – `getField().getValues().getFirst()` throws `NoSuchElementException` if the values list is empty; no null/empty check precedes it. |
+| 44 | **Parameter Should Be `@Nullable` Annotated** – `value` in `getSpecialFieldAction` is passed to `value.getFieldValue().orElse(null)` but is not annotated, creating an implicit null-passing pattern without contract enforcement. |
+| 50 | **Passing `null` Explicitly** – `value.getFieldValue().orElse(null)` passes `null` as a method argument, which can cause downstream NPEs and violates **Avoid Passing Null** (Clean Code / PMD `NullAssignment`). |
+| 87 | **Same issue** – `value.getFieldValue().orElse(null)` repeated. |
+
+**Summary of rule names:**
+- `OptionalGetWithoutIsPresent` (PMD / SpotBugs `RCN`)
+- `UseDiamondOperator` / `UseUnmodifiableList`
+- `AvoidPassingNullParameters` (PMD)
+- `DontUseFloatTypeForLoopIndices` / `NoSuchElementException` risk (SpotBugs `DMI`)
+- `DuplicatedCode` / DRY violation

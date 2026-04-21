@@ -1,0 +1,10 @@
+Here are the static analysis issues:
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 18 | **Mutable Collection Return (EI_EXPOSE_REP)** | `getNameFormatterKey()` returns direct reference to internal mutable `ObservableList`, exposing internal state. |
+| 23 | **Mutable Collection Return (EI_EXPOSE_REP)** | `getNameFormatterValue()` returns direct reference to internal mutable `ObservableList`, exposing internal state. |
+| 13 | **EI_EXPOSE_REP2** | Constructor accepts mutable `List` parameter `nameFormatterKey` without defensive copy (mitigated here by `observableArrayList`, so low severity). |
+| 14 | **EI_EXPOSE_REP2** | Constructor accepts mutable `List` parameter `nameFormatterValue` without defensive copy (same mitigation applies). |
+
+**Primary concern:** Lines 18 and 23 — callers receive the live internal list and can mutate it directly, bypassing the class's own setter logic. Fix by returning `FXCollections.unmodifiableObservableList(nameFormatterKey/Value)`.

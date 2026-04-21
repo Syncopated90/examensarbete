@@ -1,0 +1,14 @@
+## Static Analysis Findings
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 26 | **ParameterHidingField** | Parameter `priorityProperty` shadows field `priorityProperty` |
+| 26 | **ParameterHidingField** | Parameter `required` shadows field `required` |
+| 62 | **MutableFieldModification** | `field.getProperties().add(...)` mutates a shared/external object's internal collection; side-effect on returned field |
+| 62 | **NullDereference** | `field` returned by `FieldFactory.parseField()` could be null; no null check before `.getProperties()` |
+| 13 | **UnusedImport** | `FieldFactory` is used, but `FieldTextMapper` is imported and only used once — verify no unused imports; `EntryType` import could be flagged depending on tool scope (minor) |
+| 75 | **CallToStaticMethodInEnum** | `Localization.lang(...)` called during enum constant initialization; static initializer order risk and side effects at class load time |
+| 20-23 | **MutableFieldNotFinal** / **EncapsulationViolation** | `required`, `multiline`, `priorityProperty`, `displayName` are JavaFX properties returned directly via getters (lines 34, 37, 45), exposing mutable internal state |
+| 34 | **ReturnOfMutableObject** | `displayNameProperty()` returns mutable `StringProperty` directly |
+| 37 | **ReturnOfMutableObject** | `requiredProperty()` returns mutable `BooleanProperty` directly |
+| 45 | **ReturnOfMutableObject** | `multilineProperty()` returns mutable `BooleanProperty` directly |

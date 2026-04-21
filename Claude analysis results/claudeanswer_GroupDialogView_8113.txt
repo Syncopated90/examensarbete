@@ -1,0 +1,21 @@
+**Line 65** — `ST_FIELD_NOT_SERIALIZABLE`: Static field `useAutoColoring` in a non-serializable class is acceptable, but mutable static field is a shared mutable state violation — **Rule: MS_SHOULD_BE_FINAL** (mutable static field not declared final).
+
+**Line 65** — `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD`: Static field `useAutoColoring` is written from instance context (lambda at line ~248). — **Rule: ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD**
+
+**Line 148** — Unchecked cast: `(Button) getDialogPane().lookupButton(ButtonType.OK)` — **Rule: BC_UNCONFIRMED_CAST**
+
+**Line 149** — Unchecked cast: `(Button) getDialogPane().lookupButton(helpButtonType)` — **Rule: BC_UNCONFIRMED_CAST**
+
+**Line 253** — Null dereference: `parentGroup()` can return `null` (as declared with `@Nullable` and implemented at lines 158–163), and `.getColor()` is called on it without null check. — **Rule: NP_NULL_ON_SOME_PATH**
+
+**Line 294** — `IkonliCell` is a public inner class of `GroupDialogView`, giving it implicit access to the outer instance and breaking encapsulation. — **Rule: SIC_INNER_SHOULD_BE_STATIC**
+
+**Line 294** — Public inner class `IkonliCell` should be `static` or package-private. — **Rule: MemberVisibility / AccessibilityModifier**
+
+**Line 279** — `ikonGridView` is initialized with `FXCollections.observableArrayList()` (empty list) and then replaced via `Platform.runLater`; the initial items set is dead/unused. — **Rule: DLS_DEAD_LOCAL_STORE**
+
+**Line 270** — `ServiceLoader.load(IkonProvider.class.getModule().getLayer(), IkonProvider.class)`: `getLayer()` can return `null` if the module is unnamed, causing a NullPointerException. — **Rule: NP_NULL_ON_SOME_PATH**
+
+**Line 311** — `this.getGridView().getParent().getScene().getWindow()` chains multiple calls without null checks; any intermediate call can return `null`. — **Rule: NP_NULL_ON_SOME_PATH**
+
+**Line 311** — Unchecked cast: `(PopOver) this.getGridView().getParent().getScene().getWindow()` — **Rule: BC_UNCONFIRMED_CAST**

@@ -1,0 +1,25 @@
+**Line 7** — `OS.NEWLINE` used in enum constant initializer: referencing a non-constant static field in an enum constant argument can cause unexpected behavior if `OS.NEWLINE` is not a compile-time constant. **Rule: `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` / `UR_UNINIT_READ_CALLED_FROM_SUPER_CONSTRUCTOR`** (more precisely: **`SIC_INNER_SHOULD_BE_STATIC`** doesn't apply; the applicable rule is **`CNT_ROUGH_CONSTANT_VALUE`** or SpotBugs **`WS_WRITEOBJECT_SYNC`** — more accurately this violates PMD rule **`AvoidLiteralsInIfCondition`** doesn't apply either).
+
+Let me be precise:
+
+**Line 7** — **`UseEnumCollections`** is not it either.
+
+Correcting:
+
+- **Line 7**: `OS.NEWLINE` is a `static final` field but not a compile-time constant (it's assigned at runtime). Using it in an enum constant initializer is legal but fragile. **Rule: `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD`** (SpotBugs) — not quite.
+
+The actual applicable rule:
+
+- **Line 7**: **SpotBugs `IC_INIT_CIRCULARITY`** — potential initialization circularity; the enum constant initialization depends on `OS.NEWLINE`, a static field from another class loaded during enum initialization.
+
+- **Lines 19, 23**: **PMD `UnnecessaryModifier`** — `public` methods in a `public enum` are implicitly public; redundant modifier. *(Note: this is debatable for enums.)*
+
+- **Line 26**: **`@Override` on `toString()`** — no issue here.
+
+- **Line 7**: **PMD `AvoidDuplicateLiterals`** — `OS.NEWLINE` repeated twice on the same line. Not a rule break per se.
+
+**Line 1** — Missing blank line after package declaration. **Rule: PMD `UnnecessaryImport`** — not applicable.
+
+**Most valid finding:**
+
+- **Line 7**: **SpotBugs `IC_INIT_CIRCULARITY`** — enum static initializer depends on external static field `OS.NEWLINE`, risking class initialization ordering issues.

@@ -1,0 +1,16 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 11 | **MissingDefaultConstructor** / `SimpleBooleanProperty` initialized without explicit default value (`false` is implicit but undocumented intent) |
+| 12 | **MissingDefaultConstructor** / Same as above for `citeInText` |
+| 17 | **ReturnOfMutableObject** – `pageInfoProperty()` returns a mutable `StringProperty` directly, exposing internal state |
+| 21 | **ReturnOfMutableObject** – `citeInParProperty()` returns a mutable `BooleanProperty`, exposing internal state |
+| 25 | **ReturnOfMutableObject** – `citeInTextProperty()` returns a mutable `BooleanProperty`, exposing internal state |
+| 8 | **ClassWithoutLogger** – No logging mechanism present in ViewModel class |
+| 8 | **MissingSerialVersionUID** / class is not `final` and has no explicit serialization control |
+| 10–12 | **FieldShouldBeFinal** – Fields are `final`, ✅ OK — but the *properties themselves* are mutable (encapsulation violation) |
+
+### Key Violations Summary
+- **Primary concern**: Mutable internal properties returned directly (lines 17, 21, 25) — violates encapsulation (*PMD: MethodReturnsInternalArray* equivalent)
+- **Secondary**: Missing explicit initialization values for `BooleanProperty` fields (lines 11–12) reduces readability/intent clarity

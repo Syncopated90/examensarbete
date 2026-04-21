@@ -1,0 +1,12 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 25 | `ImmutableField` / `FieldShouldBeFinal` | `description` is not final but could be (modified in methods, not constructor-safe design) |
+| 27 | `InstanceVariableMayNotBeInitialized` | `location` is never initialized at declaration; may be `null` when `getProtectTermsList` is called |
+| 57 | `ResourceOpenedNotClosed` | `BufferedReader` / `InputStreamReader` wrapped around the passed-in `inputStream` are never explicitly closed; only the `Stream` is closed via try-with-resources |
+| 57 | `CloseResource` | The `BufferedReader` created inline is not the resource in the try-with-resources — closing the `Stream` does not guarantee closing the `BufferedReader` |
+| 31 | `CloseResource` | `InputStream` obtained from `getResourceAsStream` is closed, but if `readTermsList` throws `UncheckedIOException` the outer catch only catches `IOException`, leaving potential leaks |
+| 42–45 | `AssignmentToMethodParameter` | `path` parameter is reassigned (`path = path.toAbsolutePath()`) — violates immutability of parameters |
+| 24 | `MutableField` | `terms` is a mutable `ArrayList` exposed indirectly via `getProtectTermsList`; no defensive copy is made |
+| 80 | `LawOfDemeter` | `termList.setEnabled(enabled)` — setter called immediately after construction suggests a constructor parameter should be used instead |

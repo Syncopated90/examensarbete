@@ -1,0 +1,7 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 17 | **NullDereference** – `criterion` is not null-checked before accessing `criterion.field` and `criterion.descending` |
+| 17 | **DirectFieldAccess** – Public/package fields `criterion.field` and `criterion.descending` accessed directly instead of via getters |
+| 34 | **UnboxingNullPointerException** – `descendingProperty.getValue()` returns `Boolean` (boxable); auto-unboxing can throw NPE if value is null |

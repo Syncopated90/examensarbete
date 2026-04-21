@@ -1,0 +1,5 @@
+**Line 20 — `addListener(InvalidationListener)`: Listener Wrapper Mismatch**
+The original `listener` is wrapped in `UiThreadInvalidationListener`, but `removeListener` (line 24) passes the unwrapped `listener`. The delegate will never find a match to remove.
+
+**Line 29 — `addListener(ChangeListener)`: Listener Wrapper Mismatch**
+Same issue: wrapped in `UiThreadChangeListener<>` on add, but `removeListener` (line 34) passes the unwrapped `listener`. Rule: **Asymmetric add/remove listener registration**.

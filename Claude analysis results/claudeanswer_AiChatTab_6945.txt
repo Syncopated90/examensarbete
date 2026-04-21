@@ -1,0 +1,17 @@
+**Line 44** - `previousBibEntry` field shadows local variable `previousBibEntry` in lambda on **Line 75**: Variable hiding/shadowing rule (`LocalVariableHidingInstanceVariable` / `ShadowingLocalVariable`)
+
+**Line 75**: `previousBibEntry.ifPresent(previousBibEntry -> ...)` — lambda parameter `previousBibEntry` shadows field `previousBibEntry` (`LocalVariableHidingMemberVariable`)
+
+**Line 77**: `stateManager.getActiveDatabase().orElse(new BibDatabaseContext())` — unnecessary object construction when `orElse` always evaluates eagerly; should use `orElseGet` (`OptionalOrElseMethodInvocation` / `UnnecessaryObjectCreation`)
+
+**Line 82**: `entry.getFiles().stream().map(LinkedFile::getLink).map(Path::of).noneMatch(FileUtil::isPDFFile)` — chained stream operations could be simplified; `Path::of` on arbitrary strings may throw `InvalidPathException` unchecked (`AvoidThrowingRawExceptionTypes` / missing exception handling)
+
+**Line 109**: `citationKeyGenerator.generateAndSetKey(entry).isEmpty()` — side-effect (mutating `entry`) inside a conditional expression (`AvoidSideEffectsInConditionals`)
+
+**Line 117**: `new SimpleStringProperty("entry " + entry.getCitationKey().orElse("<no citation key>"))` — string concatenation using `+` inside constructor rather than using `StringProperty` binding (`UseStringBuilderForConcatenation` / `StringConcatenationInLoop` adjacent concern)
+
+**Line 118**: `entry.getCiteKeyBinding().addListener(...)` — listener added but never removed; potential memory leak (`AvoidMemoryLeaks` / `DoNotUseThreads` adjacent — listener lifecycle issue)
+
+**Line 120–133**: Constructor call spanning 13 lines with many arguments — excessive number of constructor parameters passed directly (`ExcessiveParameterList`)
+
+**Line 34–42**: Multiple `private final` fields of similar type (`DialogService`, `AiService`, etc.) — class has too many dependencies, violating Single Responsibility (`GodClass` / `ExcessiveClassLength` / `CouplingBetweenObjects`)

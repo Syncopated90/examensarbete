@@ -1,0 +1,13 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 25 | **Object instantiation in event handler** | `Injector.instantiateModelOrService()` called on every key press — expensive object lookup inside hot event handler |
+| 44 | **Unchecked cast** | `(Button)` cast from `lookupButton()` result with no type safety; will throw `ClassCastException` if not a Button |
+| 56 | **Unchecked cast** | `(Stage)` cast from `getWindow()` with no null/type check; `ClassCastException` risk if dialog is embedded |
+| 32 | **Use of instanceof with cast** | Old-style `instanceof` check followed by explicit cast `((Button) event.getTarget())` — should use pattern matching `instanceof Button b` (Java 16+), inconsistent with line 67 which uses pattern matching correctly |
+| 24 | **Constructor calls overridable method** | `getDialogPane()` called in constructor of non-final class — unsafe publication |
+| 42 | **Constructor calls overridable method** | `setDialogIcon()` and `setResizable()` called in constructor of non-final class |
+| 22 | **Missing `final`** | Class `BaseDialog` is intended as a base but not abstract and not final — design ambiguity |
+| 56 | **Null dereference** | `getDialogPane().getScene()` may return null if dialog not yet shown; no null guard before `.getWindow()` |
+| 25 | **Service locator anti-pattern** | Use of `Injector` (service locator) inside event handler violates dependency injection principles; should be injected at construction |

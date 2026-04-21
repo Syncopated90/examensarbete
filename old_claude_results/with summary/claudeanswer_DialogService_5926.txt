@@ -1,0 +1,12 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 41 | **NullableParameterUsedDirectly** – `null` passed explicitly as `defaultChoice` to method with `@NullMarked`; parameter typing may not permit null without `@Nullable` annotation |
+| 46 | **NullableParameterUsedDirectly** – same issue: `null` passed as `defaultChoice` in default method under `@NullMarked` |
+| 156 | **EmptyLine/ExtraBlankLine** – spurious blank line between Javadoc `@return` tag and method declaration (`Optional<ButtonType> showCustomButtonDialogWithTooltipsAndWait`) |
+| 41 | **MissingNullAnnotation** – `@NullMarked` on interface implies non-null; passing literal `null` for `T defaultChoice` violates this contract without a `@Nullable` annotation on that parameter |
+| 46 | **MissingNullAnnotation** – same as above for `showEditableChoiceDialogAndWait` default method |
+| 34 | **ImplicitNullableParameter** – `@implNote` documents `null` acceptance for `defaultChoice` but no `@Nullable` is declared; under `@NullMarked` this is a contract violation |
+| 232 | **CheckedExceptionOnInterface** – `showFileOpenFromArchiveDialog` declares `throws IOException`; interface methods should generally avoid checked exceptions (use return type or unchecked exceptions) |
+| 31 | **InterfaceExtendsInterface (empty method body risk)** – `DialogService` extends `NotificationService` but also re-declares `notify(Notification<?>)` at line ~248, potentially creating a **DuplicateAbstractMethod** conflict |

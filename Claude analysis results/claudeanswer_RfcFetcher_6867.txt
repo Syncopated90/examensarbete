@@ -1,0 +1,7 @@
+**Line 23** — `private final static` should be `private static final` — **ConstantName / ModifierOrder**
+
+**Line 44** — Double negation with redundant parentheses `(!prefixedIdentifier.startsWith(DRAFT_PREFIX))` — **InverseBooleanLogic / UnnecessaryParentheses**
+
+**Line 47** — String concatenation used to build URL instead of `URIBuilder` setter methods, risking injection — **AvoidStringConcatenationInURIBuilder**
+
+**Line 48** — `URIBuilder` constructed and used only to immediately call `.build().toURL()`; local variable `uriBuilder` is unnecessary — **LocalVariableCouldBeFinal** / **UnusedLocalVariable**

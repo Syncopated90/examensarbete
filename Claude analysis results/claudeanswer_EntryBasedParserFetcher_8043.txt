@@ -1,0 +1,13 @@
+**Line 13** – `UnusedImports`: `org.slf4j.LoggerFactory` is used inline but logger is not stored as a constant field; however, the import itself is used. *(Withdraw this one.)*
+
+**Line 13** – `ImmediatelyInstantiatedLogger` / `LoggerShouldBePrivateStaticFinal` (PMD/Checkstyle): `LoggerFactory.getLogger(...)` is called inline inside a method rather than declared as a `private static final` logger field.
+
+**Line 32** – `AssignmentInOperand` (PMD): Assignment inside `if` condition `(urlForEntry = getURLForEntry(entry)) == null` is a control-flow anti-pattern.
+
+**Line 6** – `UnusedImports` (PMD/Checkstyle): `java.net.MalformedURLException` is imported and re-thrown but also declared in the interface method signature—acceptable; however `java.net.MalformedURLException` and `java.net.URISyntaxException` on **lines 6–7** are only referenced inside the `default` method catch block and the interface method signature, which is fine. *(Withdraw.)*
+
+**Line 38** – `AvoidCallingFinalize` / resource: `urlForEntry.openStream()` is not wrapped in its own try, so if `new BufferedInputStream(...)` throws, the stream from `openStream()` leaks. **ResourceLeak** (SpotBugs `OS_OPEN_STREAM`).
+
+**Line 43** – `TodoComment` (PMD/Checkstyle): `// TODO:` comment present in production code (line 44–45).
+
+**Line 19** – `InterfaceType` / design: Interface extends two interfaces (`EntryBasedFetcher`, `ParserFetcher`) and provides a `default` method with non-trivial logic, violating **ExcessivePublicCount** or **InterfaceWithDefaultMethods` depending on ruleset (ArchUnit / PMD).

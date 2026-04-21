@@ -1,0 +1,18 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 11 | `HideUtilityClassConstructor` | Utility class `LatexToUnicodeAdapter` lacks a private constructor; it can be instantiated. |
+| 37 | `InstanceofChecksInsteadOfPolymorphism` / `AvoidInstanceofChecksInConditions` | `instanceof` check on `Parsed.Success` instead of using polymorphic dispatch. |
+| 38 | `UncheckedCast` / `AvoidUncheckedExceptions` | `parsingResult.get()` likely involves an unchecked/unsafe cast after the `instanceof` guard without casting to `Parsed.Success<String>`. |
+| 13 | `ImmutableField` / `FieldNamingConventions` | No issue here strictly, but `Pattern.compile` calls at class init are fine — no violation. |
+| 26 | `ReturnCount` | `format` delegates but acceptable; no violation. |
+| 33–44 | `LocalVariableNamingConventions` | `toFormat` is reassigned multiple times (lines 34, 35, 40), violating **`VariableDeclarationUsageDistance`** — variable reuse instead of distinct names. |
+| 40 | `LocalVariableHidesMemberVariable` | `text` is an unnecessary intermediate variable used only once; violates **`UnnecessaryLocalBeforeReturn`** variant. |
+| 7–8 | `UnusedImports` | Verify `fastparse.Parsed` and `com.github.tomtung.latex2unicode.LaTeX2Unicode` are not triggering any **`AvoidStarImports`** or ordering violations — imports are not sorted alphabetically (`com.*` should precede `fastparse.*`). |
+
+### Key Violations Summary
+1. **Missing private constructor** (utility class anti-pattern) — Line 11
+2. **`instanceof` usage** instead of polymorphism — Line 37
+3. **Variable reassignment** (`toFormat` mutated 3×) — Lines 34, 35, 40
+4. **Import ordering** (`fastparse` before `org.*` breaks convention) — Lines 7–8

@@ -1,0 +1,9 @@
+**Line 16** — `NullAssignment` / `NullDereference`: `entry.getType()` could return null; result assigned to `type` without null check before dereferencing `type.getName()` on **line 17**.
+
+**Line 17** — `AvoidInstantiationInLoop` / object instantiation inside a method that may be called repeatedly with no guard; minor, but `Set.of(...)` wrapping a single `new GroupTreeNode(...)` creates unnecessary object chaining.
+
+**Line 17** — `LawOfDemeter`: Chain `entry.getType().getName()` violates the Law of Demeter (two levels of method chaining on a returned object).
+
+**Line 10** — `UnnecessaryConstructor`: Constructor only calls `super`; it is redundant if it adds no logic.
+
+**Line 14** — `MissingOverride` annotation is present (correct), but `createSubgroups` does not handle the case where `entry` is `null` — **NullDereference** risk on `entry.getType()` at **line 16**.

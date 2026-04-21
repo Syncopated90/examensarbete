@@ -1,0 +1,20 @@
+**Line 118-122 — Duplicate Condition (Collapsible If / Redundant Condition)**
+The inner `if` at line 119 is identical to the outer `if` at line 118. The inner block is dead code; the outer check already guards entry. Rule: `CollapsibleIfStatements` / `DuplicateCondition`.
+
+**Line 118 — Useless Parent `if` (Double Negative / Unnecessary Nesting)**
+The outer `if` wraps an identical inner `if` with no `else`, making the outer condition redundant. Rule: `UselessParentheses` / `RedundantConditional`.
+
+**Line 130 — Local Variable Shadows Field**
+`String query = getQuery().trim();` shadows the instance field `query` declared at line 40. Rule: `LocalVariableHidesMemberVariable` / `VariableDeclarationUsageDistance`.
+
+**Line 38 — Class Not Serializable but Has Non-Transient Fields (minor)**
+`SimpleListProperty` and `SimpleObjectProperty` are not `Serializable` but this is a ViewModel — low severity. Rule: `NonSerializableClass` (if enforced).
+
+**Line 85 — Variable `line` Unused in Meaningful Context**
+`int line = offendingToken.getLine();` is assigned but only used as the first argument where it likely represents the token text or position — the naming is misleading and `line` from a single-line query is always `1`, making it pointless. Rule: `UnusedAssignment` / `MeaninglessVariableName`.
+
+**Line 55 — Magic Number**
+The literal `0` in `defaultFetcherIndex <= 0` is a magic number with no named constant. Rule: `MagicNumber` / `AvoidLiteralsInIfCondition`.
+
+**Line 95 — Caught Exception Name Shadows Outer Scope**
+The variable `recEx` is inlined via pattern matching but the exception `e` is caught and its cause cast — this is fine, but `e` is not logged or rethrown, violating: Rule: `AvoidSwallowingExceptions` / `EmptyCatchBlock` (partially, since a value is returned but the exception is consumed without logging).

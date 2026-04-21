@@ -1,0 +1,21 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 28 | **Non-private mutable field** – `entries` and `isCanceled` are package-private (default) instance fields; should be `private` |
+| 29 | **Non-private mutable field** – same as above for `isCanceled` |
+| 97 | **BackgroundTask anonymous class accesses outer instance field** – `isCanceled` read inside background thread without synchronization (**unsynchronized shared field access / thread-safety violation**) |
+| 105–120 | **Thread-safety violation** – `entries` (mutable `List`) read from background thread without synchronization |
+| 127 | **Null dereference** – `compound` may be `null` if `stateManager.getActiveDatabase()` is empty; `compound.hasEdits()` will throw `NullPointerException` |
+| 127 | **Method called on potentially null object** – `compound` is only assigned inside `ifPresent` lambda; no guarantee it is initialized before `onSuccess` is called |
+| 133 | **Override of non-abstract method changes behavior unexpectedly** – `onSuccess` is overridden in an anonymous class to perform side-effects (undo registration, UI update) rather than delegating cleanly; fragile design / **Liskov Substitution Principle violation** |
+| 53 | **Return after state mutation** – `entries` is assigned to `stateManager.getSelectedEntries()` (a live/shared list) and then mutated via `removeIf` (line 87); **mutating externally-owned collection** |
+| 87 | **Modification of externally-owned collection** – `entries.removeIf(...)` mutates the list returned by `stateManager.getSelectedEntries()` without defensive copy |
+| 62 | **Magic literal** – literal `0` passed directly to `backgroundTask.messageProperty()` format instead of a named constant |
+
+**Summary of most critical rules broken:**
+
+- `NullPointerException` risk on `compound` (line 127)
+- Thread-safety / unsynchronized access to `entries` and `isCanceled` (lines 97, 105–120)
+- Mutation of externally-owned collection (line 87)
+- Non-private mutable instance state (lines 28–29)

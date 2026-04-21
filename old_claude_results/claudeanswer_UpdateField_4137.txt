@@ -1,0 +1,15 @@
+**Line 32** — `Boolean nullFieldIfValueIsTheSame` — **Use primitive type instead of wrapper class** (`Boolean` should be `boolean`).
+
+**Line 19** — `BibEntry be` — **Non-descriptive/abbreviated parameter name** (`be` violates naming conventions; should be `entry` or similar). Same applies to line 23, line 32.
+
+**Line 33** — `String writtenValue = null` — **Unnecessary null initialization** (local variable assigned null before conditional reassignment; default is implicit).
+
+**Line 34** — `String oldValue = null` — **Unnecessary null initialization** (same rule).
+
+**Line 37** — `if ((newValue == null) || (oldValue.equals(newValue) && nullFieldIfValueIsTheSame))` — **Null dereference risk on `newValue`** (`newValue` is checked for null but `oldValue.equals(newValue)` short-circuits correctly; however, unboxing `nullFieldIfValueIsTheSame` (Boolean) risks **NullPointerException** if passed `null`).
+
+**Line 60** — `private static void setAutomaticFields(BibEntry entry, boolean setOwner, String owner, boolean setTimeStamp, String timeStamp)` — **Too many parameters** (method has 5 parameters; exceeds recommended maximum of 3–4).
+
+**Line 60** — Method `setAutomaticFields` has the **same name as the public method at line 76** with different signatures — **Overloaded method with misleading private/public distinction**; not a naming convention violation per se but flagged by some analyzers as **hiding/confusing overload**.
+
+**Line 76** — `Collection<BibEntry> entries` parameter with no null-check — **Missing null check on parameter** (no guard against `null` collection before iteration at line 89).

@@ -1,0 +1,12 @@
+Here are the static analysis findings:
+
+| Line | Rule | Detail |
+|------|------|--------|
+| 11 | **Wrong Import** | `tools.jackson.core.JacksonException` — should be `com.fasterxml.jackson.core.JacksonException` |
+| 12 | **Wrong Import** | `tools.jackson.databind.ObjectMapper` — should be `com.fasterxml.jackson.databind.ObjectMapper` |
+| 22 | **Mutable Static Field** | `MAPPER` is a mutable `ObjectMapper` instance held in a `static final` field; not thread-safe without synchronization |
+| 14–17 | **Record with NullMarked + no compact constructor validation** | `@NullMarked` is declared but no null checks exist in the record; fields could receive null at construction time with no enforcement |
+| 19 | **Exposing Mutable Sentinel** | `NULL_OBJECT` is `public static final` but uses a magic string `"-1"` with no named constant; magic literal anti-pattern |
+| 41–43 | **Fully Qualified Type Reference** | `org.jabref.model.TransferInformation` used as fully qualified name inline instead of being imported — inconsistent with `org.jabref.model.TransferMode` which is imported |
+| 31 | **Javadoc Style** | `///` is a Java 23 documentation comment (Markdown doc comment); if the project targets < Java 23 this is invalid syntax |
+| 6 | **Unused Import** (potential) | `org.jabref.model.TransferMode` is imported and used, but verify `org.jabref.model.TransferInformation` on line 41 is not also importable — inconsistency suggests missing import |

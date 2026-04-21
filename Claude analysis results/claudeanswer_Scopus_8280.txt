@@ -1,0 +1,19 @@
+**Line 68**: `uriBuilder.build().toString()` — Redundant `toString()` call; SLF4J calls `toString()` implicitly. Rule: **RedundantMethodCall** / **UnnecessaryToStringCall**
+
+**Line 38–39**: `@Nullable private ScopusQueryTransformer transformer` — Mutable field used across calls in a non-thread-safe manner; class implements shared state via instance field set in `getURLForQuery` and read in `shouldIncludeEntry`. Rule: **NonThreadSafeSingleton** / **InstanceVariableMayNotBeInitialized**
+
+**Line 39**: Field `transformer` is `@Nullable` but class is `@NullMarked`; `shouldIncludeEntry` guards with null check, but `getParser` lambda captures `this.transformer` closing over mutable state set by `getURLForQuery`. Rule: **FieldNotInitialized** / **UnsafePublicationOfMutableObject**
+
+**Line 179**: `authorName` constructed via `given-name` + `" "` + `surname` may produce a leading/trailing space if either field is empty; `.trim()` partially mitigates but a double space can occur if both are non-empty with inner blank. Rule: **ImproperStringConcatenation** / **InsufficientStringBuilding**
+
+**Line 258–271**: Switch on `subtype.toLowerCase()` has cases `"re"`, `"ed"`, `"le"`, `"sh"` all returning `StandardEntryType.Article` — duplicate case bodies. Rule: **DuplicateBranches** / **CollapsibleIfStatements**
+
+**Line 258**: `subtype.toLowerCase()` called without `Locale` argument. Rule: **DefaultLocale** / **UnnecessaryLocalVariable**
+
+**Line 68**: Same issue — `aggregationType.toLowerCase()` without explicit `Locale`. Rule: **DefaultLocale**
+
+**Line 55**: `importerPreferences.getApiKey(FETCHER_NAME).ifPresent(...)` — API key silently omitted if absent with no warning/log. Rule: **MissingLoggingStatement** (minor, style)
+
+**Line 112**: Lambda in `getParser` is long and complex — anonymous lambda exceeds reasonable length. Rule: **ExcessiveLambdaLength** / **LambdaCanBeMethodReference**
+
+**Line 101**: `entries` list created inside lambda and passed through multiple branches; early return after error check is inconsistent with the general flow (returns mutable list reference). Rule: **ReturnOfCollectionOrArrayField**

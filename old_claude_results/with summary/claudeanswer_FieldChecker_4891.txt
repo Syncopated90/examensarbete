@@ -1,0 +1,8 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 14 | **VisibilityModifier** – `field` should be `private`; protected visibility widens access unnecessarily for a non-designed-for-subclassing class |
+| 25 | **LambdaBodyLength / MethodLength** – lambda body is overly complex/long for a single expression; nested `.map()` chains reduce readability |
+| 25 | **UnnecessaryLocalVariable** – `value` variable is used only once immediately after assignment; could be inlined |
+| 17 | **NullableParameter mismatch** – `field` parameter has no `@NonNull` annotation but is stored and dereferenced unconditionally, inconsistent with `checker` which is annotated |

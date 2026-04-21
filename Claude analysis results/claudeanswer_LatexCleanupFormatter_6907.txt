@@ -1,0 +1,17 @@
+**Line 13-14** — `REMOVE_REDUNDANT` regex uses a variable-length lookbehind (`{0,100}`), which is not supported in all Java regex engines and may throw at runtime. **Rule: `InefficientRegularExpression` / `ReDoS`**
+
+**Line 13-14** — `Pattern` fields are `private static final` but lack `// NON-NLS` or similar; minor, but main issue: the lookbehind quantifier `{0,100}` on `[^\\}]{0,100}` inside a lookbehind is a **variable-length lookbehind** — Java supports this only from Java 13+ (finalized). **Rule: `RegexpSingleline`**
+
+**Line 37** — `replaceAll("$1")` where `$1` is a regex replacement referencing group 1 from `REMOVE_REDUNDANT`, which has no capturing group. This will throw `IndexOutOfBoundsException` at runtime. **Rule: `AvoidThrowingRawExceptionTypes` / `InvalidRegexGroupReference`**
+
+**Line 40** — Comment references `replaceAll` on a raw string pattern inline (commented-out code left in production). **Rule: `CommentedOutCode`**
+
+**Line 44** — `replaceAll(" $1@@")` — replacement string starts with a space but `$1` references group 1 of `MOVE_NUMBERS_RIGHT_INTO_EQUATION`; the leading space is unconditionally inserted, potentially introducing unintended whitespace. **Rule: `ConfusingTernary` / logic defect**
+
+**Line 47** — `newValue.replace("  ", " ")` only collapses a single pair of spaces; multiple consecutive spaces are not fully collapsed. **Rule: `InsufficientStringBufferDeclaration` / `SimplifyBooleanReturns`** — more precisely **`UseStringBufferForStringAppends`** / missed use of `replaceAll("\\s{2,}", " ")`.
+
+**Line 50** — Typo in inline comment: `"do not escapee"` — **Rule: `CommentContent` / typo**
+
+**Line 5** — Import `org.jabref.logic.formatter.Formatter` — the class `LatexCleanupFormatter` extends `Formatter` but the import is not from a standard/stable API boundary; no interface used. **Rule: `CouplingBetweenObjects`**
+
+**Line 32** — `format(@NonNull String oldString)` — `@NonNull` annotation is present but there is no null-check guard in the method body; annotation alone does not enforce null safety at runtime. **Rule: `NullAnnotationWithoutNullCheck` / `MissingNullCheck`**

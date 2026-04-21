@@ -1,0 +1,7 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 7 | **Naming Convention** | Enum constants should be `UPPER_SNAKE_CASE` (e.g., `LEGISLATION` not `Legislation`) |
+| 8-13 | **Naming Convention** | All 5 enum constants violate standard Java naming: `Legislation`, `Legadminmaterial`, `Jurisdiction`, `Constitution`, `Legal` |
+| 30 | **Redundant Operation** | `field.getName()` already returns `toLowerCase()` (line 23), making `.equalsIgnoreCase()` redundant — `equals()` suffices |

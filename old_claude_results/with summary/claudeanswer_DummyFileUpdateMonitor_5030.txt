@@ -1,0 +1,29 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 7 | **ClassWithoutLogger** – Class has no SLF4J/logging field (minor; may be intentional for dummy) |
+| 7 | **UncommentedEmptyMethodBody** – Methods `addListenerForFile`, `removeListener`, `shutdown` have empty bodies without adequate justification comment (PMD) |
+| 7 | **MissingOverride** – *(not applicable here, overrides are present)* |
+
+### Key Violations
+
+**Line 13** – `UncommentedEmptyMethodBody` (PMD)
+`addListenerForFile` body is empty; `// empty` comment is insufficient by strict PMD rules.
+
+**Line 18** – `UncommentedEmptyMethodBody` (PMD)
+Same issue for `removeListener`.
+
+**Line 24** – `UncommentedEmptyMethodBody` (PMD)
+Same issue for `shutdown`.
+
+**Line 7** – `InterfaceTypeChecked` / design smell: class name prefix `Dummy` suggests **TestDoubleInProduction** – a test double (`Dummy`) exists in production code (`org.jabref.model`) rather than test sources.
+
+### Summary of Significant Rule Breaks
+
+```
+Line  7  : TestDoubleInProduction – Dummy implementation in production package
+Line 13  : UncommentedEmptyMethodBody (PMD)
+Line 18  : UncommentedEmptyMethodBody (PMD)
+Line 24  : UncommentedEmptyMethodBody (PMD)
+```

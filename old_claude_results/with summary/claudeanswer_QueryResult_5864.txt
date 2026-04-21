@@ -1,0 +1,13 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 8 | **VisibilityModifier** – Field `query` should be package-private or higher (or use accessor only); more relevantly, consider `@SuppressWarnings` — actually: fields are `private final`, acceptable. No violation here. |
+| 18 | **MethodName / ConfusingMethodName** – Method `getResultsPerFetcher()` returns a field named `resultsPerLibrary`; name mismatch between method and backing field suggests either wrong field or wrong method name. |
+| 8–9 | **ImmutableField** – `resultsPerLibrary` is a mutable `List`; it is stored and returned directly, violating **PZLA (Store a copy of a mutable object)** / **EI2\_EXPOSE\_REP** (FindBugs/SpotBugs). |
+| 19 | **EI\_EXPOSE\_REP** – `getResultsPerFetcher()` returns the internal mutable list directly without defensive copying. |
+| 6 | **MissingJavadocType** – Class has a description via `///` doc comment (Markdown Javadoc) but no `@param`/`@author` — minor documentation rule violation depending on ruleset. |
+
+**Key violations (most critical):**
+1. **Line 19 – EI_EXPOSE_REP**: Mutable list returned directly; should return `List.copyOf(resultsPerLibrary)`.
+2. **Line 18 – ConfusingMethodName/MethodNamedIncorrectly**: Method name `getResultsPerFetcher` does not match field `resultsPerLibrary`.

@@ -1,0 +1,23 @@
+**Line 75** — `HashMap` used instead of `Map` for field declaration (`FieldCanBeLocal` / `UseConcrete Implementation`): `private final HashMap<Field, FieldRow> fieldRows` should be declared as `Map<Field, FieldRow>`.
+
+**Line 113** — `initialize()` is `public` but is an FXML controller method; should be `private` (`VisibilityModifier` / `UnusedAccessModifier`).
+
+**Line 160** — `header.setMinWidth(250)` uses a magic number (`MagicNumber`).
+
+**Line 197** — Casting `(HBox) hbox` after `HBox.class::isInstance` filter, then again casting children to `ToggleButton` — unnecessary raw cast / double cast pattern (`UnnecessaryCast`).
+
+**Line 232** — `UiTaskExecutor.runInJavaFXThread(...)` called inside constructor of inner class `Cell`; side effects in constructor (`ConstructorCallsOverridableMethod` / constructor side-effect).
+
+**Line 261** — `cellButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY)` immediately overridden by `cellButton.setContentDisplay(ContentDisplay.CENTER)` on line 262 — dead/redundant assignment (`UnusedAssignment` / `DeadCode`).
+
+**Line 279** — `new DoiFetcher(...)` instantiated inside a lambda inside a constructor; object creation with external dependency inside UI event handler without abstraction (`AvoidInstantiatingObjectsJustToCallGetClass` / tight coupling).
+
+**Line 283** — `doiFetcher.performSearchById(content).get()` calls `Optional.get()` without `isPresent()` check — caught by `NoSuchElementException` but suppressing via catch is a code smell (`OptionalGetWithoutIsPresent`).
+
+**Line 308** — `@SuppressWarnings("FieldCanBeLocal")` on `fieldBinding` suppresses a legitimate warning; the suppression masks a design issue where the field exists solely to prevent GC, indicating missing lifecycle management (`SuppressWarningsWithoutComment` / `AvoidSuppressWarnings`).
+
+**Line 344** — `VBox.setVgrow(fieldEditorCell, Priority.ALWAYS)` is called twice (lines 323 and 344) — duplicate/redundant statement (`RedundantStatement`).
+
+**Line 99** — `viewModel.mergedEntryProperty().get().getFieldsObservable()` chains multiple method calls with potential `NullPointerException` if `mergedEntryProperty().get()` returns null (`NullPointerDereference` / `LawOfDemeter`).
+
+**Line 87** — `viewModel.entriesProperty().addListener(...)` with an unchecked cast on `ListChangeListener<MultiMergeEntriesViewModel.EntrySource>` via raw type context (`UncheckedCast`).

@@ -1,0 +1,14 @@
+Here are the static analysis issues:
+
+| Line | Rule |
+|------|------|
+| 10 | **Unnecessary Import** – `StringUtil` appears to be a custom utility; if `identifier.isBlank()` (Java 11+) suffices, this import is redundant |
+| 33 | **Null Dereference / Missing Null Check** – `WebFetchers.getIdFetcherForIdentifier(DOI.class)` may return `null`; result is dereferenced immediately without null check |
+| 36 | **Redundant `this` qualifier** – `this.preferences` is unnecessary; plain `preferences` is unambiguous (`UnnecessaryThis`) |
+| 43 | **Local variable could be inlined** – `doiFetcher` is used only once; can be replaced with a direct call (`LocalVariableCouldBeFinal` / `ObjectInstantiationInReturn`) |
+| 28 | **Magic Enum Reference** – `HelpFile.FETCHER_TITLE` coupling: minor design smell if this fetcher is renamed, the help file reference silently diverges (not a hard rule violation but a maintainability flag) |
+
+**Key violations summary:**
+- **L33** – Potential NPE (critical)
+- **L36** – `UnnecessaryThis`
+- **L43** – `LocalVariableCouldBeFinal` / unnecessary local variable

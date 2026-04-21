@@ -1,0 +1,15 @@
+## Static Analysis
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 13 | **Redundant Parameter** | `dialogService` is passed to `super()` but the parent `PushToTeXstudio` already holds it; storing it again in this class is redundant |
+| 11 | **Redundant Field** | `dialogService` field is unnecessary if the parent class already stores and exposes it — violates **DRY** / `FieldHidingParentField` |
+| 9 | **CouplingBetweenObjects / God Class** | Class implements two interfaces while extending a base class, indicating unclear responsibility boundary |
+| 23 | **Duplicate/Redundant Code** | `sendErrorNotification` simply delegates to `dialogService.showErrorDialogAndWait` — if parent already has access to `dialogService`, this may duplicate logic already in the superclass |
+
+### Key Rule Names (PMD/SpotBugs/Checkstyle)
+- `MF_FIELD_MASKS_FIELD` (SpotBugs) — child field `dialogService` masks parent field
+- `UnusedPrivateField` / `SingularField` (PMD) — field only used in one method; could be inlined
+- `CallSuperFirst` — not applicable here, but constructor design is suspect
+
+**Primary issue: Line 11/14 — field `dialogService` shadows parent's field, violating `MF_FIELD_MASKS_FIELD`.**

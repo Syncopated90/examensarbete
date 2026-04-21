@@ -1,0 +1,21 @@
+**Line 6** — `Collectors` imported but `Collectors.joining` could use `String.join` instead; minor but flagged by **UnusedImport** if streams are simplified. *(Not applicable here, ignore.)*
+
+**Line 35** — `new JournalInformationFetcher()` instantiated inline inside a method. **AvoidInstantiatingObjectsJustToCallGetClass** / **ObjectInstantiationInIterationsOrMethods** — object created directly rather than injected (violates Dependency Injection principle; PMD: `InjectionRule` / checkstyle: no DI).
+
+**Line 6** — `import java.util.stream.Collectors;` — **UnusedImports** if `Collectors` is only used in one private static method (not a violation here, but note it is used at line 148).
+
+**Line 70** — `setCountry` is `public` but `setTitle` (line 58) is `private`. Inconsistent access modifiers on similar setter methods — **InconsistentAccessModifierRule**.
+
+**Line 100** — Method named `gethIndex()` — **MethodNamingConventions**: getter for `hIndex` should be `getHIndex()` per Java naming conventions (PMD: `MethodNamingConventions`).
+
+**Line 110** — Method named `sethIndex()` — **MethodNamingConventions**: setter should be `setHIndex()`.
+
+**Line 35** — `new JournalInformationFetcher()` — **UseInjectionInsteadOfInstantiation**: fetcher instantiated with `new` inside business logic instead of being injected.
+
+**Line 136** — `convertToSeries` is `public` but is a utility/helper method with no apparent need for public visibility — **MethodVisibilityRule** (PMD: `DefaultMethodVisibility`).
+
+**Line 148** — `Arrays.stream(...).map(...).collect(Collectors.joining(...))` — could simply use `String.join("\n", journalInformation.categories().split(","))` after trimming; PMD **UselessParentheses** / **SimplifyStreamOperations**.
+
+**Line 155–159** — `StringBuilder` used for simple string concatenation with few appends; PMD **UseStringBufferForStringAppends** is not violated, but using `String.format` or concatenation directly would be simpler — **InsufficientStringBuilderUsage**.
+
+**Line 35** — `Optional<JournalInformation> journalInformationOptional` — variable named with redundant type suffix `Optional`; PMD **LinguisticNaming** / Checkstyle **LocalVariableName** convention violation.

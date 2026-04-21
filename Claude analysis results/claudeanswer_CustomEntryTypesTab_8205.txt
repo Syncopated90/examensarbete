@@ -1,0 +1,35 @@
+**Line 3** — `UnusedImports`: `java.util.stream.Collectors` is used, but check below — actually used at line 196. Skip.
+
+**Line 44** — `VisibilityModifier`: `@FXML private` fields — not a violation by itself, but noted.
+
+**Line 84** — `MethodName` / naming: method `addNewField()` shadows the `@FXML` annotated method `addNewField()` at line 259 — **DuplicatedBlocks** / **HiddenField**: The `addNewField` TextField field (line 50) and the method `addNewField()` (line 259) share the same name, causing ambiguity.
+
+**Line 84** — `AvoidReassigningParameters`: Not present, skip.
+
+**Line 87** — `LawOfDemeter`: `preferences.getLibraryPreferences().getDefaultBibDatabaseMode()` — chained calls violating Law of Demeter.
+
+**Line 88** — `LawOfDemeter`: `preferences.getCustomEntryTypesRepository()` — minor, single chain.
+
+**Line 97** — `LawOfDemeter`: `viewModel.entryTypeValidationStatus().validProperty().not()` — chained calls.
+
+**Line 98** — `LawOfDemeter`: `viewModel.fieldValidationStatus().validProperty().not().or(...)` — chained calls.
+
+**Line 110** — `LawOfDemeter`: `cellData.getValue().entryType().get().getType().getDisplayName()` — excessive chaining.
+
+**Line 114** — `LawOfDemeter`: `cellData.getValue().entryType().get().getType().getDisplayName()` — excessive chaining.
+
+**Line 160** — `LawOfDemeter`: `event.getTableView().edit(-1, null)` and `event.getTableView().refresh()` — repeated chained calls.
+
+**Line 163** — `LawOfDemeter`: `selectedEntryType.fields()` used directly after `viewModel.selectedEntryTypeProperty().get()`.
+
+**Line 168** — `UnusedLocalVariable`: `entryFields` is assigned at line 163 but never used.
+
+**Line 196** — `AvoidCollectorsToList`: `Collectors.toList()` should prefer `Stream.toList()` (Java 16+).
+
+**Line 221** — `UnusedFormalParameter`: `fieldViewModel` parameter in `handleOnDragDetected` is unused; `field` is obtained separately from selection model instead of using the passed parameter.
+
+**Line 247** — `UnusedFormalParameter`: `fieldViewModel` parameter in `handleOnDragExited` is unused.
+
+**Line 221** — `LawOfDemeter`: `fields.getSelectionModel().getSelectedItem()` — chained call; also the passed `fieldViewModel` parameter should be used instead, indicating a **bug** / `UnusedFormalParameter`.
+
+**Line 81** — `UnnecessaryLocalVariable` / `LawOfDemeter`: `addNewEntryType.setOnAction` calls `addEntryType()`; `addNewField.setOnAction` calls `addNewField()` — the method `addNewField()` at line 83 conflicts with the FXML field name `addNewField` (line 50) — **ConfusingMethodName**.

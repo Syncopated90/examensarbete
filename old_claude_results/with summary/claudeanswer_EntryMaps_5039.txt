@@ -1,0 +1,7 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 16 | **CallToDeprecatedMethod / OptionalGetWithoutIsPresent** | `.get()` called on `Optional` — though guarded by `.filter()`, use `entry.getCitationKey().orElseThrow()` or `map()`/`flatMap()` for cleaner idiom; some analyzers (e.g., SonarQube `java:S3655`) still flag this pattern |
+| 11 | **HideUtilityClassConstructor** | Utility class with only static methods lacks a `private` constructor — PMD `UtilityClassWithoutPrivateConstructor` / Checkstyle `HideUtilityClassConstructor` |
+| 12 | **Law of Demeter / Train Wreck** | `context.getDatabase().getEntries()` — two levels of chaining violates PMD `LawOfDemeter` |

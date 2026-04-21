@@ -1,0 +1,23 @@
+**Line 12-17: Unused Import**
+`CASE_INSENSITIVE` is imported but only `CASE_SENSITIVE` is used in `getOperator`. Check if `CASE_INSENSITIVE` is referenced anywhere — it is not used directly, only added to the set. All static imports should be verified; `CASE_INSENSITIVE` is added to the set but never checked in `getOperator`, making the flag silently ignored.
+
+**Line 96: Confusing/Incorrect Logic (Bug)**
+`getOperator` appends `"!"` for `CASE_SENSITIVE`, which is misleading — using `"!"` for both `NEGATION` (line 89) and `CASE_SENSITIVE` (line 96) produces ambiguous/incorrect operator strings. Rule: **Duplicate/Conflicting Semantics**.
+
+**Line 89-96: Missing `else`**
+`NEGATION` appends `"!"` and `CASE_SENSITIVE` appends `"!"` independently. If both are set, the operator gets `"!!"` which is likely incorrect. Rule: **Incorrect Conditional Logic**.
+
+**Line 94: Dead/Unreachable Effective Branch**
+`REGULAR_EXPRESSION` flag is only added when `isRegularExpression` is true (line 75), but `EXACT_MATCH` and `INEXACT_MATCH` are mutually exclusive with `REGULAR_EXPRESSION` (lines 77-82). The `getOperator` method checks them sequentially without mutual exclusion enforcement, which is fragile. Rule: **Fragile Conditional**.
+
+**Line 22: Logger Not `private static final` Pattern Violation**
+`LOGGER` is `private static final` — compliant. No issue here.
+
+**Line 38: Unchecked List Access**
+`children.getFirst()` (line 42) can throw `NoSuchElementException` if `children` is empty, though the size check `== 1` prevents it only for size 1; size 0 falls through to `String.join` which returns `""`. No explicit guard for empty input. Rule: **Missing Guard Clause**.
+
+**Line 63: Null Dereference Risk**
+`ctx.searchValue().getText()` — no null check on `ctx.searchValue()`. Rule: **Null Dereference**.
+
+**Line 67: Null Dereference Risk**
+`ctx.operator().getStart().getType()` — no null check on `ctx.operator()` or `getStart()`. Rule: **Null Dereference**.

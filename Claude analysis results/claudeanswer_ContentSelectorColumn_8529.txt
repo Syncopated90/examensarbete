@@ -1,0 +1,15 @@
+**Line 23** — `Optional` used as field type / generic parameter (`MainTableColumn<Optional<String>>`). **Rule: `OptionalUsedAsFieldOrParameterType`** — `Optional` is not designed for use as a type parameter.
+
+**Line 24** — `List<String> values` stored as a field without defensive copy. **Rule: `ArrayIsStoredDirectly`** / **`LooseCoupling`** — mutable list accepted and stored directly.
+
+**Line 35** — `Optional.empty()` and `Optional.of(value)` inside lambda; `StringUtil.isBlank(value)` may throw NPE if `value` is null before `Optional.of(value)` is called. **Rule: `NullAssignment`** / **`AvoidThrowingNullPointerException`**.
+
+**Line 50** — `entry.getField(field).orElse(null)` assigns null to `oldValue`. **Rule: `NullAssignment`** — assigning `null` explicitly is discouraged.
+
+**Line 51** — Direct mutation of `BibEntry` (`entry.setField(field, item)`) outside any transaction/command pattern, mixed with conditional undo registration. **Rule: `LawOfDemeter`** — reaching through `model.getEntry()` then mutating it directly.
+
+**Line 46** — Parameter name `model` in `createMenu` shadows the class-level concept (the outer class is also named around `model`). **Rule: `FormalParameterNamingConventions`** / **`ShadowingLocalVariable`**.
+
+**Line 52–54** — `undoManager != null` guard implies the field could be null; no `@Nullable` annotation and no constructor enforcement. **Rule: `MissingNullCheckOnParameter`** / **`NullableAnnotationMissing`**.
+
+**Line 39** — Raw-ish chained builder `new OptionalValueTableCellFactory<BibEntryTableViewModel, String>()` with no assignment; result is discarded after `.install(this)`. **Rule: `ResultOfMethodCallIgnored`** (intermediate chain results).

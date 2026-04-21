@@ -1,0 +1,18 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 5 | **UnusedImport** | `org.jabref.logic.formatter.Formatter` — imported but class extends it; acceptable, however the import of `Formatter` is used indirectly, so this is fine. *(Disregard)* |
+| 5 | **MissingOverride / AbstractClassNamingConvention** | `Formatter` appears to be an abstract class; no issue here directly. |
+| 7 | **UnusedImport** | `org.jspecify.annotations.NonNull` is imported but annotation processing may not enforce it at runtime — not a static analysis violation per se, but worth noting. |
+| 31 | **NullParameterAnnotationCheck / ContractViolation** | `@NonNull` on `format()` parameter contradicts the parent class `Formatter.format()` signature if the parent does **not** declare `@NonNull`, introducing a **stricter precondition** on override (violation of Liskov Substitution Principle / `@Override` contract strengthening). |
+| 31 | **MissingNullCheck** | Despite `@NonNull`, no explicit null guard exists; if called reflectively or from non-annotated code, a `NullPointerException` will propagate from `Normalizer.normalize()`. |
+| 19 | **HardcodedStringLiteral** | `"NORMALIZE_UNICODE"` is a magic string constant; should be a `static final` field. |
+| 14 | **HardcodedStringLiteral** | `"Normalize Unicode"` — same as above. |
+| 24 | **HardcodedStringLiteral** | `"Normalize Unicode characters in BibTeX fields."` — same. |
+
+### Key Violations Summary
+
+1. **LSP / Stronger Precondition (line 31)** — `@NonNull` on overriding method parameter is stricter than parent; breaks substitutability.
+2. **Missing Null Guard (line 31)** — No runtime null check despite `@NonNull`.
+3. **HardcodedStringLiteral (lines 14, 19, 24)** — Magic strings should be constants.

@@ -1,0 +1,10 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 11 | **ConstantNamingConvention / Confusing constant** – `TRACKING = true` is a boolean constant whose name doesn't convey its value; mirrors field name, causing ambiguity |
+| 12 | **ConstantNamingConvention / Confusing constant** – same issue for `CONFLICT = true` |
+| 13 | **ConstantNamingConvention / Confusing constant** – same issue for `UNCOMMITTED = true` |
+| 10 | **OptionalUsage (PMD/Sonar S3553)** – `Optional<String>` used as a record component / field type; `Optional` should not be used as a field/parameter type |
+| 11–13 | **UnusedPrivateField / Dead Code** – constants `TRACKING`, `CONFLICT`, `UNCOMMITTED` are declared but never referenced |
+| 5–14 | **GodClass / Single Responsibility** – mixing data record with unrelated boolean constants in the same type |

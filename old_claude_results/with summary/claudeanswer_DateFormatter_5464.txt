@@ -1,0 +1,10 @@
+## Static Analysis Issues
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 14 | **Null Dereference** | `fieldText` is not null-checked before use in `LocalDate.parse()` |
+| 14 | **Exception Handling** | `DateTimeParseException` from `LocalDate.parse()` is uncaught/unhandled |
+| 15 | **Exception Handling** | `IllegalArgumentException` from `date.format()` is uncaught/unhandled |
+| 21 | **Null Assignment / Input Validation** | `arg` is not null-checked; assigning null to `formatString` will cause NPE on next `format()` call |
+| 21 | **Invalid Pattern** | `arg` is not validated as a legal `DateTimeFormatter` pattern before assignment; invalid pattern throws `IllegalArgumentException` at runtime |
+| 9 | **Mutable Field** | `formatString` is a mutable instance field set via `setArgument()`, making the class **not thread-safe** |

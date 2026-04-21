@@ -1,0 +1,14 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 51 | **Incorrect CRC/size calculation** – `mime.getBytes()` uses platform default charset; should be `mime.getBytes(StandardCharsets.UTF_8)` to match actual bytes written. Also `ze.setSize(mime.length())` uses char count, not byte count. |
+| 54 | **Inefficient single-byte write in loop** – Writing one byte at a time via `out.write(mime.charAt(i))` is inefficient; use `out.write(mime.getBytes(StandardCharsets.UTF_8))`. |
+| 62 | **Inefficient single-byte stream copy** – Reading/writing one byte at a time with `source.read()` / `out.write(c)`; use `source.transferTo(out)`. |
+| 80 | **Predictable/insecure temp file** – `File.createTempFile` in default temp dir without explicit directory control; temp file not cleaned up on exception paths before `delete()` call. |
+| 80 | **Resource leak on exception** – `tmpFile` is not deleted if `storeOpenDocumentSpreadsheetFile` throws. |
+| 106 | **`throw new Error`** – Throwing `java.lang.Error` for a recoverable condition; should throw a checked or runtime exception (e.g., `UncheckedIOException`). |
+| 116 | **Null dereference** – `getResourceAsStream(resource)` can return `null`; calling `in.transferTo(out)` will throw `NullPointerException`. |
+| 37 | **Commented-out code** – `// addResourceFile(...)` left in production code (code smell). |
+| 60 | **Commented-out code** – `// zipEntry.setMethod(ZipEntry.DEFLATED)` left in production code. |
+| 93 | **Unused parameter** – `databaseContext.getDatabase()` extracts the database but `databaseContext` itself could carry more context; minor design smell. |

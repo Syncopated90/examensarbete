@@ -1,0 +1,9 @@
+**Line 24** — `Collectors.joining("")` — Use `Collectors.joining()` (no-arg); passing empty string is redundant. **Rule: `UselessStringValueOf` / `UseStringJoining`**
+
+**Line 30** — `String sep = "\\]\\["` — Local variable `sep` is assigned but the condition on line 32 returns before `sep` is used; `sep` is only used in the else-if branch, meaning the variable is declared in a broader scope than necessary. **Rule: `LocalVariableCouldBeFinal` / `VariableDeclarationUsageDistance`**
+
+**Line 32** — `props.getPrefix().isPresent() && props.getPostnote().isEmpty()` — This condition is a subset of the condition on line 36 (`props.getPrefix().isPresent() || props.getPostnote().isPresent()`); the logic on line 32 returns early but the overlapping conditions make this confusing and potentially a logic defect. **Rule: `ConfusingTernary` / `SimplifyBooleanReturns`**
+
+**Line 32–33** — `props.getPrefix().get()` called after `isPresent()` check — while safe here, calling `.get()` directly is flagged by static analyzers. **Rule: `OptionalGetWithoutIsPresent`** (some tools flag any `.get()` call regardless of guard)
+
+**Line 20–24** — `format` method parameter `queryParams` is never used inside the method body. **Rule: `UnusedFormalParameter`**

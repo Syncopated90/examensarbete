@@ -1,0 +1,14 @@
+**Line 11**: `InterfaceIsType` — Interface declares no constants or methods other than a single abstract method; consider if `@FunctionalInterface` alone justifies the type (minor: this is acceptable, but some rulesets flag interfaces with no static members as potentially incomplete).
+
+More precisely, the concrete violation:
+
+**Line 21**: `MissingOverride` / javadoc `@return` uses non-standard spelling — `"layouted"` is not a valid English word (should be `"laid out"`). This is a **`CommentContent`** / documentation style violation.
+
+**Line 11**: `UnnecessaryModifier` or `InterfaceMethodsShouldBePublicAbstract` — `format` (line 21) in an interface is implicitly `public abstract`; no modifier is declared here so this is clean, but worth noting the interface itself has no issue there.
+
+**Primary finding:**
+
+| Line | Rule |
+|------|------|
+| 21 | `JavadocVariable` / `InvalidJavadocPosition` — `@param` and `@return` tags inside a method Javadoc that uses `///` (Markdown doc comment) mixed style may not be processed by standard Javadoc tools correctly depending on Java version. |
+| 21 | `CommentContent` — `"layouted"` is not standard English; should be `"laid out"`. |

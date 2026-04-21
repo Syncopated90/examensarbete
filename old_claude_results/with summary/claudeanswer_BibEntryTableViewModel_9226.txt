@@ -1,0 +1,14 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 111 | **Suspicious equality check** – `value.getValue().isEmpty()` after `currentValue.isEmpty() && value.getValue().isEmpty()` already handled; condition `value.getValue().isEmpty()` in the `else if` is redundant/unreachable for that branch |
+| 111 | **Incorrect `equals` comparison** – `!value.getValue().get().getValue().getFieldValue().equals(currentValue)` compares a `String` to an `Optional<String>`; should be `.equals(currentValue.get())` or `.equals(currentValue.orElse(null))` |
+| 109 | **Unused/misleading variable** – `currentValue` is fetched but the comparison at line 111 is against an `Optional<String>` rather than the unwrapped `String`, indicating a type mismatch bug |
+| 136 | **New object created in property accessor** – `bibDatabasePathProperty()` returns `new ReadOnlyStringWrapper(...)` on every call; violates the JavaFX property pattern (should cache the property) |
+| 42 | **Mutable collection exposed** – `fieldValues` and `specialFieldValues` are `HashMap` fields mutated from multiple methods with no synchronisation |
+| 128 | **ArrayList instantiation for array conversion** – `new ArrayList<>(List.of(...))` followed by `toArray` is unnecessarily verbose; minor code smell |
+| 86 | **Unnamed pattern variable (`_`)** – use of `_` as lambda parameter (preview/Java 21+ feature) may break compatibility depending on target Java version |
+| 100 | **`getSpecialField` returns mutable internal state** – `specialFieldValues` map entries returned directly; breaks encapsulation |
+| 52–53 | **Field not declared `final`** – `isMatchedBySearch`, `isVisibleBySearch`, etc. are effectively final but declared without `final`; minor style violation (actually they are `final` – N/A, retract) |
+| 136 | **`StringProperty` return type mismatch** – method declares return type `StringProperty` but `ReadOnlyStringWrapper` should be exposed as `ReadOnlyStringProperty` per JavaFX API contract |

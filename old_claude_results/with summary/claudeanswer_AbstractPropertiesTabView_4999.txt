@@ -1,0 +1,12 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 13 | **VisibilityModifier** – `dialogService` is `protected` but injected; should be private |
+| 15 | **VisibilityModifier** – `databaseContext` should be private, not `protected` |
+| 16 | **VisibilityModifier** – `viewModel` should be private, not `protected` |
+| 23 | **NullDereference** – `viewModel` may be null when `setValues()` is called (no null check) |
+| 28 | **NullDereference** – `viewModel` may be null when `storeSettings()` is called |
+| 33 | **NullDereference** – `viewModel` may be null when `validateSettings()` is called |
+| 11 | **ClassNamingConventions** – generic class with abstract suffix; abstract class name could be more descriptive |
+| 11 | **CouplingBetweenObjects** – class depends on `DialogService`, `BibDatabaseContext`, `PropertiesTab`, `PropertiesTabViewModel` (high coupling) |

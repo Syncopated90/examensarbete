@@ -1,0 +1,12 @@
+## Static Analysis Results
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 7 | `ClassNamingConventions` | Class named `MockSearchMatcher` suggests a test double but resides in `main` source (`org.jabref.model`), not in test sources |
+| 7 | `UnusedImports` / coupling | `SearchMatcher` interface imported and implemented — acceptable, but `BibEntry` parameter in `isMatch` is ignored entirely |
+| 16 | `UnusedFormalParameter` | Parameter `entry` is never used in method body |
+
+**Key violation summary:**
+
+- **Line 16 — `UnusedFormalParameter`** (PMD): `entry` is declared but never referenced.
+- **Line 7 — `TestClassWithoutTestCases`** / misplaced test utility (PMD/ArchUnit): Mock/stub class belongs in test source tree, not production code.

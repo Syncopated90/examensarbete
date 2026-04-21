@@ -1,0 +1,9 @@
+**Line 14** — `FieldMayBeFinal`: Field `propertiesTabs` can be declared `final` (it already is, but the list itself is immutable — no violation here; retract).
+
+**Line 27** — `ForEachCanBeReplacedWithStream` / `SimplifyForEach`: Enhanced for-loop can be replaced with `propertiesTabs.forEach(PropertiesTab::setValues)`.
+
+**Line 33** — `ForEachCanBeReplacedWithStream` / `SimplifyForEach`: Enhanced for-loop can be replaced with `propertiesTabs.forEach(PropertiesTab::storeSettings)`.
+
+**Line 38-42** — `SimplifyStreamApiCallChains` / `ReplaceWithAnyMatch`: Loop with early `return false` can be replaced with `return propertiesTabs.stream().allMatch(PropertiesTab::validateSettings)`.
+
+**Line 45** — `ReturnOfCollectionOrArrayField`: `getPropertiesTabs()` returns a reference to the internal collection `propertiesTabs` directly, exposing internal representation. (Since it's `List.of()`, it's unmodifiable, but the rule still flags returning the internal field.)

@@ -1,0 +1,18 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 16 | **UseArraysAsList / InefficientArrayUsage** | `Character[]` (boxed type) used instead of `char[]`; forces unnecessary autoboxing |
+| 17 | **MagicCharacter / UseNamedConstant** | `'\0'` is a magic constant with a comment explaining it — acceptable, but the name `NO_DELIMITER` is misleading (it *is* a delimiter value, not an absence marker returned from a typed method) |
+| 37 | **WrongControlFlow / BugPattern** | `return` instead of `continue` — on the first invalid/empty record the entire method exits, silently skipping all remaining records |
+| 52 | **AutoboxingReturnType** | `Arrays.stream(DELIMITERS).findFirst().orElse(NO_DELIMITER)` — `orElse` receives a `char` that gets autoboxed to `Character` to match stream type, then unboxed on return; potential confusion and unnecessary boxing |
+| 29 | **ResourceLeak / DoubleOpen** | `Files.newBufferedReader(file, ...)` is passed directly into `CSVParser` constructor — if the `CSVParser` constructor throws, the `BufferedReader` is never closed |
+| 28 | **VisibilityModifier** | `readJournalListFromFile` has package-private visibility with no documentation justifying it |
+| 19 | **MutableCollectionField** | `abbreviations` is a mutable `LinkedHashSet` returned directly by `getAbbreviations()` (line 57), exposing internal state — violates encapsulation |
+| 57 | **ReturnMutableObject** | `getAbbreviations()` returns the internal collection directly; callers can mutate it |
+
+### Key Issues Ranked by Severity
+
+1. **Line 37** — `return` vs `continue` (logic bug)
+2. **Line 29** — potential resource leak on `BufferedReader`
+3. **Line 57 / 19** — mutable internal state exposed

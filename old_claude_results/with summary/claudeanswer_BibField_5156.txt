@@ -1,0 +1,15 @@
+## Static Analysis Issues
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 5 | `java:S2176` / Record canonical constructor missing | Record declares compact/canonical constructor implicitly, but provides no validation of `field` or `priority` for nulls |
+| 8-15 | `java:S2162` — `equals()` not consistent with record semantics | `equals` overrides the record's auto-generated method but only compares `field.getName()` case-insensitively, ignoring `priority` — violates **EqualsHashCode** contract symmetry with `compareTo` |
+| 17-19 | `java:S1206` — `hashCode` inconsistent with `equals` | `hashCode` uses raw `field.getName()` (case-sensitive), but `equals` uses `equalsIgnoreCase` — two objects that are `equals` can return different `hashCode` values |
+| 30 | `java:S1210` — `compareTo` inconsistent with `equals` | `compareTo` does a case-sensitive comparison while `equals` is case-insensitive; violates the `Comparable` contract that `(a.compareTo(b)==0) == a.equals(b)` |
+| 5 | `java:S6218` — Record `equals`/`hashCode` override breaks record contract | Overriding `equals`/`hashCode` on a `record` is discouraged unless all components are considered |
+
+### Key Violations Summary
+
+1. **`hashCode`/`equals` inconsistency** (line 8 vs 17): `equalsIgnoreCase` vs case-sensitive `Objects.hash`
+2. **`compareTo`/`equals` inconsistency** (line 30 vs 8): case-sensitive vs case-insensitive
+3. **Partial field comparison** (line 13): `priority` excluded from `equals`/`hashCode`/`compareTo`

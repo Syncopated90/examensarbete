@@ -1,0 +1,9 @@
+**Line 40** — `instanceof` pattern matching preferred over `getClass()` comparison; use `o instanceof UnknownEntryType that` instead of separate null check, `getClass()` comparison, and cast. **Rule: `PatternMatchingForInstanceof` (PMD) / `InstanceofAndCastMatcher` (SonarLint)**
+
+**Line 40** — `(o == null) || (getClass() != o.getClass())` allows subclass symmetry violation; `getClass()` check is fragile. **Rule: `EqualsUsingGetClass` (Checkstyle/PMD)**
+
+**Line 43** — Explicit cast `(UnknownEntryType) o` is redundant if pattern matching were used. **Rule: `UnnecessaryCast` (PMD)**
+
+**Line 22** — String concatenation using `+` in `toString()`; prefer `StringBuilder` or `String.formatted()`. **Rule: `StringConcatenationInLoop` / `UseStringBuilderForStringConcatenation` (PMD)**
+
+**Line 7** — Import `org.jabref.logic.util.strings.StringUtil` in a `model` package violates layered architecture (model importing logic). **Rule: `AvoidLogicInModel` / layer dependency violation (ArchUnit)**

@@ -1,0 +1,13 @@
+**Line 21** - `NullCheck` (Null check of parameter annotated `@NonNull` inconsistent; `getSelectionSupplier` accepts `XTextDocument` without `@NonNull` but `getSelectionAsXServiceInfo` passes `@NonNull` parameter into it after null guard)
+
+**Line 21** - `AvoidPrintStackTrace` / logging: `doc == null` guard is redundant given callers annotate with `@NonNull`
+
+**Line 55** - `DesignForExtension` / `MissingJavadocMethod`: Public method lacks conventional Javadoc (uses Markdown `///` comment style inconsistently with standard Javadoc)
+
+**Line 21** - `PMED`/`UnnecessaryNullCheck`: Parameter `doc` in private method `getSelectionSupplier` is never `@NonNull`-annotated, yet the public callers declare `@NonNull`, making the null check dead code for those call sites
+
+**Line 75** - `NullCheck`: Parameter `newSelection` is `Object` with no null guard; passing `null` silently to `e.select(newSelection)` without warning or documentation
+
+**Line 17** - `HideUtilityClassConstructor`: Utility class has private constructor — compliant, but class is not declared `final`
+
+**Line 14** - `ClassWithoutFinalModifier` / `UtilityClassNotFinal`: Utility class `UnoSelection` is not declared `final`

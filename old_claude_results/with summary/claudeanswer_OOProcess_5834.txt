@@ -1,0 +1,18 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 14 | `VisibilityModifier` | `AUTHOR_YEAR_TITLE_COMPARATOR` is package-private (no modifier); should be `private` if not used externally |
+| 15 | `VisibilityModifier` | `YEAR_AUTHOR_TITLE_COMPARATOR` is package-private (no modifier); should be `private` if not used externally |
+| 14–15 | `MutableStaticState` | Non-`private` static fields expose mutable state (Comparator is not guaranteed immutable) |
+| 51 | `MisspelledComment` | Typo in string literal: `"misssing"` (triple 's') |
+| 33–40 | `JavadocStyle` | Uses `///` Markdown-style doc comments (non-standard Javadoc); should use `/** */` |
+| 46–47 | `JavadocStyle` | Same `///` non-standard comment style |
+| 14–15 | `DeclarationOrder` | Static fields declared after class body opening but before constructor — acceptable, however `static final` fields should be `private` per encapsulation rules |
+| 18 | `HideUtilityClassConstructor` | Utility class has `private` constructor (correct), but no `final` on the class itself — class should be declared `final` |
+
+### Key Issues Summary
+1. **Line 51** — Typo `"misssing"` (functional bug risk in error messages).
+2. **Lines 14–15** — Package-private static fields break encapsulation (`VisibilityModifier`).
+3. **Line 13 (class declaration)** — Utility class not declared `final` (`HideUtilityClassConstructor`/`FinalClass`).
+4. **Lines 33–47** — Non-standard `///` doc comments (`JavadocStyle`).

@@ -1,0 +1,9 @@
+Here are the static analysis issues:
+
+| Line | Rule |
+|------|------|
+| 31 | **Unchecked Cast** – `(Collection<Author>)` cast is unchecked; the `@SuppressWarnings("unchecked")` suppresses the warning rather than fixing it. Underlying cause is unsafe generics erasure at runtime. |
+| 31 | **`@SuppressWarnings` usage** – Suppressing compiler warnings instead of addressing the type-safety issue (PMD: `AvoidCatchingGenericException` / SonarLint: `java:S1905` / `java:S2259` related; specifically SonarLint **java:S1612** or **java:S3740** unchecked suppression). |
+| 35 | **Instantiation in method** – `new AppendPersonNamesStrategy()` created on every call; prefer a constant or injected instance (PMD: `InsufficientStringBufferDeclaration` adjacent; more precisely **Sonar java:S2583** / PMD `AvoidInstantiatingObjectsJustToGetClass`). |
+| 28 | **Instantiation in method** – `new PersonNameStringConverter(preferences)` created on every call to `getAutoCompletionConverter()`; should be a cached field (PMD: **ObjectInstantiationInEqualsAndHashCode** / general *repeated instantiation* smell). |
+| 22 | **Long parameter list** – Constructor has 5 parameters (PMD: **ExcessiveParameterList**, threshold typically ≤4). |

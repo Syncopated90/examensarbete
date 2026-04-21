@@ -1,0 +1,9 @@
+## Static Analysis Findings
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 48 | **MissingSpace** | String concatenation missing space before `"is not a valid ranking"` → `ranking + "is not a valid ranking"` should be `ranking + " is not a valid ranking"` |
+| 72 | **MissingSpace** | Same issue: `this + "is not a valid ranking"` should be `this + " is not a valid ranking"` |
+| 26 | **UnusedEnumConstant / DeadCode** | `RELEVANT` is declared but does not appear to belong to any `SpecialField` grouping (no corresponding field maps to it), suggesting dead/orphaned code |
+| 35 | **AvoidNullLiteralArgument** / **NullPassedToNotNull** | Constructor explicitly accepts `null` and passes it to `Optional.ofNullable()` — callers pass literal `null` (lines 11, 17, 22), which is a code smell; prefer a no-arg constructor or sentinel pattern |
+| 30 | **FieldShouldBeFinal** | `keyword` is already `final`, but the field is declared as `Optional<Keyword>` — storing `Optional` as a field violates **OptionalUsedAsFieldOrParameterType** (Sonar rule `java:S3553`) |

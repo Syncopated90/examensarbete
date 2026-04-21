@@ -1,0 +1,49 @@
+**Line 8** — `Collectors` imported but `Collectors.joining` used only once inline; not a violation per se, but:
+
+**Line 8** — `import java.util.stream.Collectors;` — **UnusedImports**: `Collectors` is used, so this is fine. Skipping.
+
+---
+
+**Line 41** — `private int cteCounter = 0;` — **FieldShouldBeFinal**: `cteCounter` is non-final but could not be (it's mutated), so not applicable. However:
+
+**Line 41** — `private int cteCounter = 0;` — **RedundantFieldInitializer**: Field initialized to default value `0`.
+
+---
+
+**Line 57** — `sql.append("SELECT * FROM ").append(finalNode.cte()).append(" GROUP BY ").append(ENTRY_ID);` — **MagicSQL / SQL injection concern**: `finalNode.cte()` is appended directly into SQL string without parameterization.
+
+---
+
+**Line 62** — `sql.setLength(sql.length() - 2);` — **AvoidLiterals / MagicNumber**: Literal `2` used directly.
+
+---
+
+**Line 66** — `sql.append("SELECT * FROM ").append(finalNode.cte()).append(" GROUP BY ").append(ENTRY_ID);` — **StringConcatenation**: Repeated string building via `append` with raw CTE names.
+
+---
+
+**Line 79** — `.collect(Collectors.joining("\n    INTERSECT\n"))` — **AvoidLiterals**: Hard-coded SQL keyword string inline rather than as a named constant.
+
+---
+
+**Line 147** — `if (term.isEmpty()) { if (searchFlags.contains(NEGATION)) { searchFlags.remove(NEGATION); } else { searchFlags.add(NEGATION); } }` — **InvertedCondition** / **CollapsibleIfStatements**: The inner if/else can be simplified; also, toggling by conditional add/remove is convoluted.
+
+---
+
+**Line 163** — `term = escapeTermForSql(term);` — **ReassignedVariable**: Parameter `term` is reassigned inside `getFieldQueryNode`, violating **ParameterAssignment** rule.
+
+---
+
+**Line 170** — `field = switch (field) { ... }` — **ParameterAssignment**: Parameter `field` is reassigned.
+
+---
+
+**Line 41** — `private final List<SqlQueryNode> nodes = new ArrayList<>();` — **ClassVariableVisibilityRule**: Mutable collection field `nodes` is accessible and mutated across many methods, violating encapsulation (not private enough guard against internal misuse).
+
+---
+
+**Line 32–35** — `private static final String MAIN_TABLE`, `SPLIT_TABLE`, `INNER_TABLE`, `GROUPS_FIELD` — **AvoidDuplicateLiterals**: Strings like `"main_table"`, `"inner_table"`, `"split_table"` are used repeatedly inside text blocks, bypassing the constants (e.g., the text blocks use `%s` with these constants correctly, but the raw alias names are embedded in formatted strings).
+
+---
+
+**Line 396** — `return term.replaceAll("[\\\\_%]", "\\\\$0");` — **UseIndexOfChar** / **AvoidStringReplaceAll**: `replaceAll` used where the pattern is a character class; should prefer a more explicit approach. **InefficientEmptyStringCheck** not applicable here, but **UseStringReplace** where regex isn't needed is flagged.

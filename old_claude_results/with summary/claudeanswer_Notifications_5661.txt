@@ -1,0 +1,19 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 57 | **MagicNumber / missing field declaration** – `undefinedTask` field has no access modifier (package-private), should be `private` |
+| 57 | **VisibilityModifier** – field `undefinedTask` not declared `private` |
+| 98 | **VisibilityModifier** – field `progressBar` not declared `private` |
+| 46 | **ConstructorDoesWork / SideEffect** – constructor starts a `DelayedExecution` (side effect in constructor) |
+| 50 | **ConstructorDoesWork / SideEffect** – same issue in `withAutoClose`; also object returned from constructor chain but `withAutoClose` is not a constructor — minor: method starts background work as a side effect |
+| 71 | **AvoidCatchingGenericException / LambdaClosure** – lambda in `setOnSucceeded` captures mutable field `undefinedTask` and calls `finishTask()` which also mutates it |
+| 57 | **ClassDataAbstractionCoupling / LeakingThis** – `this` reference passed/used inside constructor lambdas (`setOnSucceeded`, `setOnFailed`, `setOnCancelled`) before construction completes (**ThisEscapeInConstructor**) |
+| 22 | **HideUtilityClassConstructor** – `Notifications` has only static nested classes and a private constructor; acceptable, but the class itself acts as a namespace/utility holder |
+| 46 | **UiNotification** – second constructor does not call `setOnClick`, unlike the first constructor — **InconsistentInitialization** |
+
+**Key violations summarised:**
+- `undefinedTask` (line 57) and `progressBar` (line 98): **VisibilityModifier** (should be `private`)
+- Lines 71–83: **ThisEscapeInConstructor** (`this` used in lambdas registered before construction finishes)
+- Line 46: **ConstructorDoesWork** (side effect: starts timer in constructor)
+- Line 46 second `UiNotification` constructor: **InconsistentInitialization** (`setOnClick` missing)

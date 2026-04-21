@@ -1,0 +1,11 @@
+**Line 13** — `FieldDeclaration` / **Initialization of field in declaration instead of constructor** (or "Lazy initialization" / `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` if static — not applicable here, but the direct rule): The field `lobidFetcher` is initialized directly in the declaration while the class has a constructor; low severity but violates **ImmutableField** or **AvoidFieldNameMatchingMethodName** is not applicable — the actual rule is:
+
+**Line 13** — `MF_CLASS_NOT_DELEGATOR` / **Feature Envy**: The class exists solely to delegate all methods to `LOBIDFetcher`, violating the **Delegation over Inheritance** principle and triggering **ExcessivePublicCount** concern. More precisely:
+
+**Line 13** — Rule: **`UnusedPrivateField`** risk / `lobidFetcher` is not `private final` initialized via constructor injection — Rule: **`InjectedField`** / dependency should be injected, not instantiated directly (`new LOBIDFetcher()`). This violates **Dependency Inversion Principle** and the PMD rule **`CouplingBetweenObjects`**.
+
+**Line 13** — PMD: **`AvoidFieldInitializersInClass`** / field initialized outside constructor.
+
+**Line 20** — PMD: **`EmptyMethodInAbstractClassShouldBeAbstract`** is not applicable; however calling `this.ensureThatIsbnIsValid` — Rule: **`UnnecessaryThis`**: use of `this.` qualifier is unnecessary.
+
+**Line 20** — Checkstyle: **`RequireThis`** violation (opposite config) or PMD **`UnnecessaryThis`** — `this.ensureThatIsbnIsValid(identifier)` should be `ensureThatIsbnIsValid(identifier)`.

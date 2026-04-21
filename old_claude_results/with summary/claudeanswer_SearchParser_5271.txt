@@ -1,0 +1,21 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 13 | **ClassWithOnlyStaticMethodsShouldNotBeInstantiated** / **UtilityClassWithoutPrivateConstructor** – `@SuppressWarnings` on class suppresses all warnings, masking real issues |
+| 13 | **ExcessiveClassLength** – class is excessively long |
+| 13 | **TooManyFields** – large number of static/public fields |
+| 18 | **MutableStaticState** – `_decisionToDFA` is a non-final (effectively mutable) `static` array |
+| 54–55 | **UseArraysAsList** / **VariableDeclarationUsageDistance** – `tokenNames` is `public static` mutable array (encapsulation violation) |
+| 54 | **PublicStaticArrayField** – `tokenNames` is a public static non-final array, allowing external mutation |
+| 57–67 | **AvoidStaticInitializer (StaticInitialization)** – multiple `static {}` blocks used for complex logic |
+| 71 | **DeprecatedMethodOrClass** – `getTokenNames()` uses `@Deprecated` without a replacement documented inline |
+| 71–73 | **MissingOverrideAnnotation** pairing with `@Deprecated` without `@SuppressWarnings` scoped narrowly |
+| 100 | **OverloadedMethodsOrder** / **HiddenField** – `expression()` delegates to `expression(int)` with magic number `0` |
+| 103 | **CyclomaticComplexity** – `expression(int _p)` has high cyclomatic complexity |
+| 159 | **MagicNumber** – literal `15728644L` used without named constant |
+| 281 | **MagicNumber** – literal `851952L` used without named constant |
+| 311 | **MagicNumber** – literal `14680064L` used without named constant |
+| 344 | **LongVariable / GodClass** – `_serializedATN` is a raw encoded string constant embedded in source |
+| 344 | **AvoidLiteralsInIfCondition** / **HardcodedLiteral** – serialized ATN string hardcoded |
+| 350 | **AvoidStaticInitializer** – third `static {}` block with loop logic |

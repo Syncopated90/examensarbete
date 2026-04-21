@@ -1,0 +1,19 @@
+**Line 22** - `MethodParameterCount` / **LongParameterList**: Constructor has 4 parameters.
+
+**Line 32** - `ReturnNull`: `toString()` returns `null` instead of empty string; violates `StringConverter` contract.
+
+**Line 42** - `ReturnNull`: `fromString()` returns `null`; same concern.
+
+**Line 55** - `UncheckedCast`: `@SuppressWarnings("unchecked")` suppresses an unsafe cast of `String` to `T` which will always succeed at compile time but fail at runtime for non-String `T` — the `ClassCastException` will not actually be caught here due to type erasure; the cast succeeds silently and the exception occurs at the call site.
+
+**Line 56** - `CatchingClassCastExceptionRule` / **IllegalCatch**: Catching `ClassCastException` explicitly; cast exceptions should be prevented, not caught.
+
+**Line 57** - `GuardLogStatement`: `LOGGER.error(...)` passes `string.getClass()` as argument but does not guard with `isErrorEnabled()`; minor but flagged by some rulesets.
+
+**Line 57** - `NullDereference`: `string` could theoretically be null (though guarded above, this method is `protected` and callable directly), making `string.getClass()` unsafe.
+
+**Line 63** - `ReturnNull`: `getValueFromString` returns `null` on failure instead of `Optional<T>`.
+
+**Line 18** - `AbstractClassWithoutAbstractMethod` is not broken (there is an abstract method), but the class uses a raw-ish generic `StringConverter<>()` anonymous class — **AnonymousClassShouldBeNamedRule** / consider lambda or named class.
+
+**Line 14** - `UnusedImports`: `Collection` is used, so not unused — but verify `BiMap` import from Guava introduces **ThirdPartyPackageDependency** in a ViewModel layer (architecture violation: GUI layer depending on `com.google.common`).

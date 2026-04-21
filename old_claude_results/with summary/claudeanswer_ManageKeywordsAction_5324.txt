@@ -1,0 +1,9 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 27 | **Law of Demeter / Feature Envy** – `stateManager.getSelectedEntries()` called inside `execute()` rather than through an encapsulated method |
+| 27 | **Service Locator Anti-Pattern** – `Injector.instantiateModelOrService()` is a service locator; `DialogService` should be injected via constructor |
+| 27 | **Null Dereference** – `dialogService` is not null-checked before calling `.showCustomDialogAndWait()` |
+| 22 | **Long Line / Readability** – line exceeds typical 120-character limit |
+| 14 | **Missing `@SuppressWarnings` or documentation** – Javadoc uses `///` (Markdown doc comment, Java 23+) inconsistently with standard `/** */` style |

@@ -1,0 +1,10 @@
+## Static Analysis Findings
+
+| Line | Rule |
+|------|------|
+| 14 | **`@SuppressWarnings` on class level** — `"CheckReturnValue"` suppresses warnings broadly across entire class rather than at specific sites (PMD: `AvoidSuppressWarnings` / broad suppression scope) |
+| 15 | **Multiple interface implementation** — Class declares both `extends` and `implements` where the interface `LtwaVisitor<T>` is already implied by the parent `AbstractParseTreeVisitor<T>`; redundant `implements` declaration (PMD: `UnnecessaryImplementsClause`) |
+| 22–155 | **Design: Methods could be `final`** — All `@Override` visitor methods are non-final in a non-final class, allowing unintended override chains (PMD: `MethodCouldBeFinal`) |
+| 22–155 | **Code style: Multiple statements on one line** — Each `@Override` method places declaration and body on a single line, violating single-responsibility line formatting (Checkstyle: `DesignForExtension` / `OneStatementPerLine`) |
+| 15 | **Missing `@SuppressWarnings` justification** — No comment explaining why `CheckReturnValue` is suppressed (PMD: `MissingOverride` context / Checkstyle: `SuppressWarningsHolder`) |
+| 1 | **Generated code lacks `@Generated` annotation** — File is auto-generated (comment states so) but lacks `@javax.annotation.Generated` or `@jakarta.annotation.Generated` annotation to allow tools to skip analysis (PMD: missing `@Generated`) |

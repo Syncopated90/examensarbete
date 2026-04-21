@@ -1,0 +1,14 @@
+## Static Analysis Findings
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 17-19 | **EmptyMethod** | `initialize()` method has empty body with no implementation or comment explaining intent |
+| 22-24 | **AvoidInlineConditionals** / **LambdaCanBeMethodReference** | Multi-line lambda in `removeIf` is complex; the compound boolean condition reduces readability |
+| 22 | **CognitiveComplexity** | Nested `||` conditions within lambda increases complexity unnecessarily |
+
+### Notable Non-Issues
+- The `switch` expression (line 27-33) is exhaustive over the enum — no default needed, correct usage.
+- `@NonNull` on parameter is appropriate defensive annotation.
+- Constructor calling `ViewLoader` follows AfterburnerFX convention, not a violation in context.
+
+**Primary concern:** Line 17-19 — empty `@FXML initialize()` should either be removed or contain a `// intentionally empty` comment to avoid confusion and satisfy **UnnecessaryEmptyMethod** / **RedundantEmptyInitializer** rules.

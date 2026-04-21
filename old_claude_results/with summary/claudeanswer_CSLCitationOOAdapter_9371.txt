@@ -1,0 +1,18 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 75 | **HiddenField** | Parameter `bibEntryTypesManager` shadows field `this.bibEntryTypesManager` |
+| 113 | **HiddenField** | Parameter `bibEntryTypesManager` shadows field `this.bibEntryTypesManager` in `insertInTextCitation` |
+| 155 | **HiddenField** | Parameter `bibEntryTypesManager` shadows field `this.bibEntryTypesManager` in `insertBibliography` |
+| 120 | **UselessParentheses / ForLoopCanBeForeach** | `Iterator` used where enhanced for-loop suffices in `insertInTextCitation` |
+| 196 | **MagicNumber** | Literal `(short) 1` used directly without named constant |
+| 75 | **UnusedFormalParameter** | `bibEntryTypesManager` parameter redundant; field already exists |
+| 113 | **UnusedFormalParameter** | Same as above for `insertInTextCitation` |
+| 155 | **UnusedFormalParameter** | Same as above for `insertBibliography` |
+| 192 | **VariableDeclarationUsageDistance** | `preceedingSpaceExists` declared far from first conditional use |
+| 192 | **Misspelling** | Variable named `preceedingSpaceExists` (should be `precedingSpaceExists`) |
+| 219 | **PatternCompileStatic** | `Pattern.compile(...)` called inside method on every invocation; should be a `static final` constant |
+| 83 | **LocalVariableHidingMemberVariable** | Local `isNumericStyle`/`isAlphanumericStyle` recomputed when already set via `setStyle` |
+| 160–162 | **UnnecessaryLocalVariable** | `isNumericStyle` could be inlined |
+| 57 | **NullAssignment / ConfusingTernary** | Implicit null left for `currentStyle` with a comment explaining intent — should use `Optional<CitationStyle>` |

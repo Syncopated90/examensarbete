@@ -1,0 +1,17 @@
+## Static Analysis Results
+
+| Line | Rule | Issue |
+|------|------|-------|
+| 12 | `MissingAccessModifier` / `MethodVisibility` | `main` method lacks `public` access modifier |
+| 12 | `UseCorrectEntryPoint` / `PSVMSignature` | Standard entry point must be `public static void main` — missing `public` and `static` |
+| 13 | `VariableMayNotBeInitialized` (false risk, but) `UnnecessaryLocalVariable` | `targetDir` declared without initializer; both branches assign it, but compiler cannot guarantee initialization if branches were incomplete (style issue) |
+| 23 | `ArrayIsStoredDirectly` / `AvoidInlineConditionals` | String array literal constructed inline and passed directly; minor — no real mutability concern here but flagged by tools like PMD |
+| 24 | `AvoidCallingStaticMethodOnInstance` / `UseOfSystemExit` | `org.eclipse.jgit.pgm.Main.main()` internally calls `System.exit()`, which will terminate the JVM abruptly, bypassing any caller cleanup |
+| 20 | `SystemOutPrintln` | Use of `System.out.println` instead of a proper logger |
+| 26 | `SystemOutPrintln` | Use of `System.out.println` instead of a proper logger |
+
+### Key Issues Summary
+
+1. **Critical** (L12): Missing `public static` on `main` — class will not launch as a standard Java entry point.
+2. **Critical** (L24): `System.exit()` side-effect from JGit's `Main.main()` — unpredictable termination.
+3. **Minor**: `System.out` usage (L20, L26) violates logging best-practice rules (e.g., PMD `UseALogger`).

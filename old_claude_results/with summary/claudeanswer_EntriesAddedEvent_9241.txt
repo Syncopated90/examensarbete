@@ -1,0 +1,14 @@
+Here are the static analysis findings:
+
+| Line | Rule |
+|------|------|
+| 22 | **NullAssignment** – Assigning `null` to `firstEntry` (a field typed as `@NonNull`-implied `BibEntry`) instead of using `Optional<BibEntry>` |
+| 21-24 | **ConfusingTernary** / **CollapsibleIfStatements** – The `if/else` can be replaced with a single ternary assignment |
+| 19 | **ConstructorCallsOverridableMethod** – `bibEntries.isEmpty()` / `getFirst()` called on parameter without null-check on the list itself |
+| 19 | **NullParameterAnnotationMissing** – `bibEntries` parameter lacks `@NonNull` or `@Nullable` annotation; passing `null` would throw unchecked NPE |
+| 28 | **MissingOverride** – `getFirstEntry()` should be annotated with `@Override` if it overrides a parent method (minor: if not overriding, the `@Nullable` placement is non-standard; should be on the type, not the method) |
+
+**Primary violations summary:**
+- **L22**: Null assigned to non-nullable-typed field → use `Optional<BibEntry>` instead
+- **L19**: Missing `@NonNull` on `bibEntries` parameter (null dereference risk)
+- **L21–25**: Prefer ternary over if/else for simple null assignment

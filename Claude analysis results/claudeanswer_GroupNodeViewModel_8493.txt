@@ -1,0 +1,23 @@
+**Line 5** — `Collectors` imported but `Collectors.toCollection` is used; however `toList()` is used elsewhere — unused import: `java.util.stream.Collectors` (after Java 16+ `.toList()` is used at line 248, but `Collectors.toCollection` is used at line 97, so this is valid). Disregard.
+
+**Line 104** — **UnusedLocalVariable**: Variable `searchGroup` in the `instanceof` pattern is used, but the outer `if` block calls `refreshGroup()` and `invalidate()` after `setMatchedEntries`, which is fine.
+
+**Line 130** — **CommentedOutCode**: Large block of commented-out code inside `addEntriesToGroup` method (lines 130–134, 141–143).
+
+**Line 155** — **CommentedOutCode**: Comment block inside `addEntriesToGroup` after `return` statement (lines 141–143).
+
+**Line 339** — **UnusedVariable**: Variable `group` in `listen(IndexClosedEvent event)` — `group` is bound via pattern match but never used in the body.
+
+**Line 116** — **AvoidInstantiatingObjectsJustToGetClass** / **InefficientObjectCreation**: `new LatexToUnicodeFormatter()` instantiated inline without reuse.
+
+**Line 339** — **UnusedAssignment**: `SearchGroup group` is pattern-matched but only `databaseContext.getDatabase().unregisterListener(this)` is called; `group` is never referenced.
+
+**Line 64** — **VisibilityModifier**: Inner class `SearchIndexListener` (line 397) is package-private (no modifier), violating encapsulation — **ReducedAccessibility** / **VisibilityModifier**.
+
+**Line 147** — **CommentedOutCode**: Multiple commented-out `TODO` blocks throughout `addEntriesToGroup`.
+
+**Line 397** — **InnerClassVisibility**: `SearchIndexListener` is a non-static inner class with package-private visibility; should be `private`.
+
+**Line 397** — **MissingStaticModifier** / **InnerClassShouldBeStatic**: `SearchIndexListener` uses outer class fields but could raise concerns; it is not static despite being a listener helper — **NonStaticInnerClassInSecureContext**.
+
+**Line 280** — **EmptyBlock**: The `if (change.wasPermutated())` branch (lines 280–281) has an empty body with only a comment, violating **EmptyStatement** / **EmptyBlock** rule.

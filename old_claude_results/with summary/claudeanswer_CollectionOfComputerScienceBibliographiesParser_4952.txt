@@ -1,0 +1,14 @@
+## Static Analysis Findings
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 21 | `VisibilityModifier` | `REGEX_FOR_LINKS` should be `private` |
+| 22 | `VisibilityModifier` | `REGEX_FOR_BIBTEX` should be `private` |
+| 21 | `UseUnderscoreInNumericLiteral` / naming | `final static` should be `static final` (constant ordering convention) |
+| 22 | `UseUnderscoreInNumericLiteral` / naming | `final static` should be `static final` |
+| 24 | `VisibilityModifier` | `bibtexParser` field should be `private` |
+| 25 | `VisibilityModifier` | `htmlToUnicodeFormatter` field should be `private` |
+| 21-22 | `ImmutableField` / `ConstantNamingConvention` | Static final fields are constants; already named in UPPER_SNAKE_CASE (ok), but should be `private` |
+| 43 | `ReturnEmptyCollectionRatherThanNull` / `CloseResource` | `Scanner` wraps an externally-owned `InputStream`; closing it will close the caller's stream (resource ownership violation) |
+| 36 | `PreserveStackTrace` | `throw new ParseException(e)` — verify `ParseException(Throwable)` properly chains; if not, cause is lost |
+| 43 | `UseDiamondOperator` / charset | `new Scanner(inputStream)` uses default platform charset — should specify explicit charset (e.g., `StandardCharsets.UTF_8`) |

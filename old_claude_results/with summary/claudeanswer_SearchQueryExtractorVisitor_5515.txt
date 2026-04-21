@@ -1,0 +1,13 @@
+## Static Analysis Results
+
+| Line | Rule |
+|------|------|
+| 20 | **Mutable Instance Variable** – `isNegated` is a mutable field modified during visitor traversal, making the class non-thread-safe and stateful in a fragile way. |
+| 44–46 | **Non-Atomic State Toggle** – `isNegated` is toggled, delegated, then toggled back; not exception-safe (no try/finally). If `visit()` throws, state is corrupted. |
+| 51–53 | **Prefer `addAll` with constructor** – `new ArrayList<>()` followed by two `addAll` calls; can be simplified (minor style/usability issue). |
+| 80 | **Suppressed Functionality via Comment** – Inline `// if not regex, escape...` comment is misleading/incomplete; actual logic applies only to unfielded terms but comment implies broader scope. |
+| 84 | **Inconsistent Regex Escaping** – Backslash escaping (`term.replace("\\", "\\\\")`) is applied in two separate places (lines 84 and 106) with different conditions, violating DRY and risking inconsistency. |
+| 88 | **TODO Left in Production Code** – Line 88 contains a `TODO` comment indicating known broken behaviour (`PMDTODO` / `S1135`). |
+| 94–100 | **Switch on String with Magic Literals** – String switch uses hardcoded magic strings (`"key"`, `"anykeyword"`, `"anyfield"`) with no constants defined (`S109`/Magic Number equivalent for strings). |
+| 106 | **Duplicate Condition Logic** – The `operator != REQUAL && operator != CREEQUAL` check partially duplicates the negated-operator check at lines 72–79 (fragmented, error-prone logic). |
+| 20 | **Non-`final` Field** – `isNegated` is not `final` and is instance-level mutable state; should be refactored to a parameter or local context (`ImmutableField` rule). |

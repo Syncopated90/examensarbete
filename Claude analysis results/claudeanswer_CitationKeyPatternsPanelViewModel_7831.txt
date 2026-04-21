@@ -1,0 +1,17 @@
+**Line 22** – `MutableStaticFields` / `VisibilityModifier`: `defaultOnTopComparator` is a `public static` non-final field; should be `private static final`.
+
+**Line 22** – `LambdaCanBeMethodReference`: The comparator lambda is overly complex, but more critically it always returns `0` in the final case regardless of actual ordering — `InconsistentComparatorReturnValues` / logic defect.
+
+**Line 46** – `AvoidDeeplyNestedIfStmts` / `NullCheckWithInstanceOf`: Null check combined with `.equals()` call on the same expression without short-circuit safety — `CompareObjectsWithEquals`: `initialKeyPattern.getDefaultValue().equals(CitationKeyPattern.NULL_CITATION_KEY_PATTERN)` is called only if not null, but the compound condition uses `||` meaning if the first is false, the second still executes — actually this is correct, but the null check order is inverted; if `getDefaultValue()` is null, the right side would NPE without the null check on the left. Structurally safe here, but:
+
+**Line 46** – `ConfusingTernary` / `InvertedIfElse`: Negated/compound null check reduces readability.
+
+**Line 36** – `UnnecessaryConstructor` / missing `FXCollections.emptyObservableList()` init: `new SimpleListProperty<>()` is constructed without an initial `ObservableList`, which can cause `NullPointerException` when the property is accessed before `setValue` is called.
+
+**Line 37** – Same issue: `new SimpleObjectProperty<>()` initialized without a value; accessing before `setValue` returns null with no indication.
+
+**Line 52** – `AvoidInstantiatingObjectsJustToGetClass` / unnecessary lambda verbosity: `.forEach(entryType -> { ... })` block is a multi-statement lambda that could be extracted to a private method — `ExcessiveMethodLength` / `DoNotUseThreads` not applicable, but `LambdaCanBeReplacedWithAnonymous` for clarity.
+
+**Line 82–91** – `AbstractClassWithoutAbstractMethods` inverse: `DefaultEntryType` is a `public static` inner class implementing an interface, should be `package-private` — `ExcessiveAccessibility` / `VisibilityModifier`.
+
+**Line 22** – `MissingSerialVersionUID` not applicable, but `Comparator` field not declared `final` violates `PMD:ImmutableField` / `checkstyle:VisibilityModifier`.
