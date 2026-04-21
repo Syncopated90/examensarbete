@@ -1,0 +1,25 @@
+**Line 26** — `{1,3}` on a character class with single chars is redundant; `INFLECTION` pattern uses `{1,3}` but the rule name is **InefficientRegularExpression** / **RedundantRegexAlternative**.
+
+**Line 26** — `[ieasn'']{1,3}` includes ambiguous/duplicate quote characters (`'` and `'`). **DuplicateCharacterInCharacterClass**
+
+**Line 178** — `findBestEntry(matchingEntries).get()` calls `Optional.get()` without `isPresent()` check. **OptionalGetWithoutIsPresent**
+
+**Line 184** — `bestEntry.abbreviation() == null` checked after already filtering on it in `findBestEntry`; inconsistent null handling. **RedundantNullCheck**
+
+**Line 210** — `findBestEntry` return type is `Optional<LtwaEntry>` but `.get()` is called unconditionally at line 178. **UncheckedOptionalGet**
+
+**Line 235** — `isFirstElement = ctx.getParent() instanceof LtwaParser.TitleElementContext && isFirstElement` — assignment inside `exitEveryRule` may unintentionally reset `isFirstElement` to `false` prematurely on non-title-element parents. **ConfusingTernaryInAssignment** / **BooleanAssignmentInExpression**
+
+**Line 270** — Local variable `abbreviation` (parameter) is reassigned inside the method. **ParameterAssignment**
+
+**Line 286** — Lambda parameter named `_` (underscore). **LambdaParameterName** (PMD/Checkstyle unnamed parameter style violation pre-Java 21 convention).
+
+**Line 302** — `word` and `title` are method parameters reassigned within `matches()`. **ParameterAssignment**
+
+**Line 317** — `titlePosition` is modified inside `matchesInternal` but `wordPosition` advancement after boundary match (`wordPosition += boundaryLength`) is logically incorrect — boundary length in the title is added to word position. **SuspiciousLogic**
+
+**Line 340** — `titlePosition` is a local variable passed to `handleRemainingText` and modified locally but the caller's value is unaffected; the variable increment on line 343 has no effect on the caller. **UselessLocalVariable** / **IncrementIsEffectless**
+
+**Line 35** — Field `prefix` shadows the class-level concept and conflicts in naming with `java.util` prefix conventions. **FieldNamingConvention**
+
+**Line 44** — Resource opened in `try-with-resources` but `MVMap` objects derived from it are used after potential close if exception occurs mid-loop. **ResourceLeakDetection** risk.

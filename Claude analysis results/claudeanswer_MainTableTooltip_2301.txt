@@ -1,0 +1,17 @@
+**Line 16** — `ClassWithOnlyPrivateConstructorsShouldBeFinal` / **God Class** — `MainTableTooltip` extends `Tooltip` but acts as both a factory and a tooltip instance.
+
+**Line 19** — `FieldDeclarationsShouldBeAtStartOfClass` — `fieldValueLabel` field initialized inline with `new Label()` while other fields are not; initialization order inconsistency.
+
+**Line 22** — `ConstructorCallsOverridableMethod` — `preview.resizeForTooltipContent()` and `preview.getEngine()...` called during constructor execution on a non-final object; side effects in constructor.
+
+**Line 26** — `LambdaCanBeMethodReference` — lambda `(_, _, newState) -> { if (...) ... }` could potentially be simplified, though underscore parameters indicate anonymous discard (Java 21+); if pre-21, this is a **compile error** for unnamed patterns not supported.
+
+**Line 32** — `ReturnValueIgnored` / **Unused Return Value** — `createTooltip` returns `this` but the method mutates state and returns the same instance; misleading API design; callers may ignore the return value expecting a new object.
+
+**Line 32** — `AvoidReassigningParameters` — method signature suggests factory behavior but mutates shared instance fields (`fieldValueLabel`, `preview`) on each call, causing **thread-safety** / **shared mutable state** violation if called multiple times.
+
+**Line 18** — `UnusedPrivateField` risk — `preferences` is stored but only accessed in `createTooltip`, making the field potentially redundant if inlined.
+
+**Line 25** — `AddEmptyLineBetweenFields` / **Blank line missing** — no blank line separating constructor body logic blocks, reducing readability per coding standards.
+
+**Line 16** — `MutableSingleton` / **Stateful Tooltip reuse** — single `Tooltip` instance is mutated per call to `createTooltip`, making it unsafe for concurrent table row rendering.

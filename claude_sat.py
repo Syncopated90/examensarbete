@@ -6,9 +6,9 @@ import timeit
 code_dir = "Sourcecode/"
 def main():
   #all_files()
-  #random_choice()
+  random_choice()
   #pmd_recheck_with_all_rules()
-  print("doing nothing, check claude_sat.py")
+  #print("doing nothing, check claude_sat.py")
 
 def pmd_recheck_with_all_rules():
   files = populate_checked_files()
@@ -20,26 +20,37 @@ def pmd_recheck_with_all_rules():
   print(f"Elapsed time: {end - start}")
 
 def random_choice():
-  file_amount = 80
+  file_amount = 1
   checked_files = populate_checked_files()
   claude_time = 0.0
-  pmd_time = 0.0
+  pmd_quickstart_time = 0.0
+  pmd_all_rules_time = 0.0
   number_of_files_checked = 0
   for _ in range(0, file_amount):
     file = random.choice(os.listdir(code_dir))
     if file not in checked_files:
       checked_files.append(file)
       start = timeit.default_timer()
-      run_pmd_single_file(file)
-      middle = timeit.default_timer()
+      run_pmd_single_file_quickstart(file)
+      after_quickstart = timeit.default_timer()
+      run_pmd_single_file_all_rules(file)
+      after_all_rules = timeit.default_timer()
       claudecaller.call_claude(code_dir + file)
       end = timeit.default_timer()
-      pmd_time += (middle - start)
-      claude_time += (end - middle)
+      pmd_quickstart_time += (after_quickstart - start)
+      pmd_all_rules_time += (after_all_rules - after_quickstart)
+      claude_time += (end - after_all_rules)
       number_of_files_checked += 1
-  print(f"pmd time: {pmd_time}")
+  print(f"pmd quickstart time: {pmd_quickstart_time}")
+  print(f"pmd all rules time: {pmd_all_rules_time}")
   print(f"claude time: {claude_time}")
   print(f"number of files checked: {number_of_files_checked}")
+  with open("summary_of_analysis_results.txt", "a", encoding="utf-8") as result_file:
+    result_file.write(f"pmd time: {pmd_quickstart_time}\n")
+    result_file.write(f"pmd all rules time: {pmd_all_rules_time}\n")
+    result_file.write(f"claude time: {claude_time}\n")
+    result_file.write(f"number of files checked: {number_of_files_checked}\n\n")
+
 def populate_checked_files():
   checked_files = []
   analysed_files_dir = "PMD_analysis_results"
@@ -48,11 +59,14 @@ def populate_checked_files():
   return checked_files
 def all_files():
   for file in os.listdir(code_dir):
-    run_pmd_single_file(file)
+    run_pmd_single_file_quickstart(file)
+    run_pmd_single_file_all_rules(file)
     claudecaller.call_claude(code_dir + file)
 def run_pmd():
   os.system("pmd.bat check -d C:\\Users\\fredr\\kod\\exjobb\\Sourcecode -R rulesets/java/quickstart.xml -f sarif -r C:\\Users\\fredr\\kod\\exjobb\\PMD_analysis_results\\pmdreport_jabref.sarif")
-def run_pmd_single_file(file):
+def run_pmd_single_file_quickstart(file):
   os.system("pmd.bat check -d C:\\Users\\fredr\\kod\\exjobb\\Sourcecode\\" + file + " -R rulesets/java/quickstart.xml -f sarif -r C:\\Users\\fredr\\kod\\exjobb\\PMD_analysis_results\\pmdreport_jabref_" + file + ".sarif")
+def run_pmd_single_file_all_rules(file):
+  os.system("pmd.bat check -d C:\\Users\\fredr\\kod\\exjobb\\Sourcecode\\" + file + " -R rulesets/internal/all-java.xml -f sarif -r C:\\Users\\fredr\\kod\\exjobb\\PMD_analysis_results_with_all_rules\\pmdreport_jabref_" + file + ".sarif")
 if __name__ == "__main__":
   main()

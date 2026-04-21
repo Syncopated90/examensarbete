@@ -1,0 +1,13 @@
+**Line 19** - `CommentedOutCodeRule` / `TodoCommentRule`: JDK 23+ `///` Javadoc comments (markdown doc comments) used; if compiler level is below JDK 23 these are treated as regular comments, silently losing documentation intent.
+
+**Line 19, 22, 25** - `MissingJavadocMethodRule`: Methods `getStringConverter()`, `getItems()`, `convertToDisplayText()` lack proper `/** */` Javadoc; `///` syntax is non-standard Javadoc.
+
+**Line 14** - `AbstractClassWithoutAbstractMethodRule` violation is not present, but `GenericClassRule`: Raw-type risk — type parameter `<T>` is unbounded with no constraint, reducing type safety.
+
+**Line 14** - `MissingJavadocTypeRule`: No class-level Javadoc comment.
+
+**Line 25** - `LinguisticNamingRule`: Method `convertToDisplayText` uses verb "convert" but returns `String`; convention would be `toDisplayText` or `getDisplayText`.
+
+**Line 5** - `UnusedImportsRule`: `javax.swing.undo.UndoManager` is only passed to `super()`; while not unused per se, coupling a JavaFX ViewModel to `javax.swing` violates **LayeredArchitectureRule** / separation of concerns.
+
+**Line 15** - `ExcessiveParameterListRule`: Constructor has 4 parameters, exceeding typical threshold of 3.
