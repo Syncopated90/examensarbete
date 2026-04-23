@@ -1,0 +1,17 @@
+**Line 6** — `Pattern` imported but `Matcher` used directly; `Matcher` import missing? No — both are present. Let me proceed.
+
+**Line 27** — `URL_PATTERN` is `public static final` but class is not designed as a constant holder. **Rule: `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` / Encapsulation Violation** — public mutable static field (Pattern is effectively immutable, but exposure is unnecessary).
+
+**Line 49** — `entry.getField(NOTE_FIELD).orElse("")` — result used without null check on entry. **Rule: `NP_NULL_ON_SOME_PATH` (Null Dereference)** — if `entry` is null, NPE occurs with no guard.
+
+**Line 44** — `final Matcher urlMatcher`, **Line 45** — `final Matcher dateTermsMatcher`, **Line 46** — `final Matcher dateMatcher` — all three matchers are created unconditionally even if only `urlMatcher` is needed. **Rule: `DLS_DEAD_LOCAL_STORE` / Performance** — `dateTermsMatcher` and `dateMatcher` are created before `urlMatcher.find()` check.
+
+**Line 75** — `dateTermsMatcher.find()` is called after `urlMatcher.find()` already advanced the matcher state, but `dateMatcher.find()` searches the *original* `noteFieldValue`, not `newNoteFieldValue`. **Rule: `BC_VACUOUS_INSTANCEOF` / Logic Error** — date extraction operates on original string while note cleanup operates on modified string, causing inconsistent state.
+
+**Line 67** — When `entry.hasField(URL_FIELD)` is true but `urlFieldValue` does not equal `url`, no action is taken (URL in note is silently dropped). **Rule: `RCN_REDUNDANT_NULLCHECK` / Missing Branch** — silent failure, violates correctness.
+
+**Line 80** — `newNoteFieldValue` is reassigned but the `NOTE_FIELD` may have already been set at line 68 or 70 with a different value. Subsequent `setField(NOTE_FIELD, newNoteFieldValue)` at line 89 or 91 can overwrite or duplicate `FieldChange` entries. **Rule: `DLS_DEAD_LOCAL_STORE` / Incorrect State Management**.
+
+**Line 83** — `.replaceAll("^,|,$", "")` — regex anchors `^` and `$` match start/end of entire string in default mode, but intent appears to be per-line. **Rule: `RE_BAD_SYNTAX` / Regex Correctness** — if note spans multiple lines, anchors won't strip commas on inner lines as intended.
+
+**Line 37** — `NormalizeDateFormatter formatter` is an instance field initialized inline. If `URLCleanup` instances are shared across threads, and `NormalizeDateFormatter` is stateful, this is a **Rule: `STCAL_INVOKE_ON_STATIC_DATE_FORMAT_INSTANCE` / Thread Safety** violation.

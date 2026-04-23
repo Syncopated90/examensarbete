@@ -1,0 +1,5 @@
+**Line 27 — `ConstructorCallsOverridableMethod` / mutable collection exposure**
+`FXCollections.observableList(customExporters)` wraps the caller-supplied `List` directly (no copy), so the internal `ObservableList` is backed by the external list — violating **"Store a copy of a mutable object"** (`JCIP` / PMD:`ArrayIsStoredDirectly` / equivalent for collections).
+
+**Line 63 — `ReturnOfCollectionOrArrayField`**
+`getCustomExporters()` returns the internal `ObservableList` directly, exposing a mutable field without defensive copying.

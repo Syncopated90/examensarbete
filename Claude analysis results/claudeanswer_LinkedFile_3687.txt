@@ -1,0 +1,23 @@
+**Line 36** - `REGEX_URL` constant: `\\.` at end of regex is a regex bug (matches any char after dot), but more critically, field naming convention — `REGEX_URL` should follow consistent naming. Minor issue.
+
+**Line 38** - Rule: **Mutable Static Field** — `NULL_OBJECT` is a mutable object (`LinkedFile`) declared as `static final`. The reference is final but the object itself is mutable (setters available).
+
+**Line 43** - Rule: **Non-serializable Field** — `transient StringProperty description` is `transient`, but the class implements `Serializable`. While handled manually, initializer `= new SimpleStringProperty()` creates an object that will be replaced on deserialization, which is misleading but not a defect per se.
+
+**Line 153** - Rule: **Missing `serialVersionUID`** — Class `LinkedFile` implements `Serializable` but does not declare a `static final long serialVersionUID` field.
+
+**Line 36** - Rule: **`URL_PATTERN` regex incomplete** — The `REGEX_URL` does not match `https://` correctly for all valid URLs (trailing `.*` is too permissive), but more critically, `toLowerCase()` is called without a `Locale` at **line 174**.
+
+**Line 174** - Rule: **`String.toLowerCase()` without Locale** (`java:S1149` / PMD:UseLocaleWithCaseConversions) — `toCheck.trim().toLowerCase()` should be `toLowerCase(Locale.ROOT)`.
+
+**Line 113** - Rule: **Method hides field** — Parameter name `description` in `setDescription(String description)` shadows the instance field `description`.
+
+**Line 107** - Rule: **Method hides field** — Parameter name `fileType` in `setFileType(String fileType)` shadows the instance field `fileType`.
+
+**Line 119** - Rule: **Method hides field** — Parameter name `link` in `setLink(String link)` shadows the instance field `link`.
+
+**Line 143** - Rule: **Instanceof pattern without null check unnecessary** — `equals` uses `@Nullable Object o` annotation but the null case is not explicitly handled before `instanceof` (acceptable in modern Java, but `@Nullable` signals intent mismatch since `instanceof` handles null).
+
+**Line 155–158** - Rule: **`writeObject` writes fields in different order than `readObject` reads them** — `writeObject` order: `fileType`, `link`, `description`, `sourceUrl`; `readObject` (lines 163–166) order: `fileType`, `link`, `description`, `sourceURL`. Order matches here, but the field reassignment in `readObject` bypasses `setLink()` logic (backslash normalization), violating encapsulation — **Rule: Bypassed setter logic on deserialization**.
+
+**Line 163–166** - Rule: **Direct field assignment in `readObject` bypasses `setLink()`** — `link` is set directly via `new SimpleStringProperty(in.readUTF())` instead of calling `setLink()`, skipping the `replace("\\", "/")` normalization.

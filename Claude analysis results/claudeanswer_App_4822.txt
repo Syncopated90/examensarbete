@@ -1,0 +1,15 @@
+**Line 10** — `ImportOrder`: Blank line between `org.jabref` import groups violates import ordering rules (non-static imports should be grouped without blank lines between same top-level package).
+
+**Line 31** — `LocalVariableCouldBeFinal`: `entry` is assigned once in the try block and could be declared final, but is initialized to `null` unnecessarily.
+
+**Line 31** — `NullAssignment`: Variable `entry` is assigned `null`, which is a bad practice (PMD: `NullAssignment`).
+
+**Line 33** — `OptionalGetWithoutIsPresent`: `.get()` called on `Optional` without checking `isPresent()` first — will throw `NoSuchElementException` if empty (PMD/SpotBugs: `OptionalGetWithoutIsPresent`).
+
+**Line 26** — `UnusedLocalVariable`: `preferences` is passed to `BibDatabaseWriter` but the variable itself could be inlined; minor, but flagged under strict unused-variable rules.
+
+**Line 38** — `CloseResource`: `System.out` is wrapped in `OutputStreamWriter` inside try-with-resources, which will **close `System.out`** on exit — SpotBugs: `DM_DEFAULT_ENCODING` / `OBL_UNSATISFIED_OBLIGATION` adjacent concern; more critically flagged as closing a system stream.
+
+**Line 20** — `MethodLength` / `DoNotCallSystemExit` (indirect): `main` method contains all logic with no decomposition, violating single-responsibility (PMD: `ExcessiveMethodLength` if thresholds are low, `GodClass` precursor).
+
+**Line 21** — `LocalVariableCouldBeFinal`: `doi` is conditionally assigned but could be restructured to be final via ternary.

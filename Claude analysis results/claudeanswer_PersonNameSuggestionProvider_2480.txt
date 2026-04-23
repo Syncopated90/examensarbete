@@ -1,0 +1,21 @@
+**Line 9** — `StringUtil` import may be an internal/non-API utility used directly in public-facing logic; verify API encapsulation. *(UnstableApiUsage / LayerCoupling)*
+
+**Line 24** — `PersonNameSuggestionProvider(Field, BibDatabase)` has package-private visibility but the class is `public`. Inconsistent access modifier. *(VisibilityModifier)*
+
+**Line 24** — Constructor parameter `database` is not annotated `@NonNull` but is used without null check, unlike `field` which is annotated. *(MissingNullCheck / InconsistentNullAnnotations)*
+
+**Line 28** — Constructor parameter `database` is not annotated `@NonNull` but stored and later dereferenced at line 60 without null check. *(MissingNullCheck / InconsistentNullAnnotations)*
+
+**Line 35** — `getAuthors(BibEntry entry)` is `public` but calls `entry.getFieldMap()` — `BibEntry` parameter lacks `@NonNull` annotation. *(MissingNullAnnotation)*
+
+**Line 36** — `getFieldMap()` result is chained immediately without null check. *(NullDereference)*
+
+**Line 44** — `Equivalence.equals().onResultOf(Author::getNamePrefixAndFamilyName)` — `getNamePrefixAndFamilyName()` may return `null`, which would violate `Equivalence.equals()` contract. *(NullDereference / PotentialNullPointerException)*
+
+**Line 49** — `getNameForAlphabetization()` used in `Comparator.comparing` without null-safe comparator; if it returns `null`, a `NullPointerException` will be thrown. *(NullDereference)*
+
+**Line 55** — `candidate.getFamilyGiven(false)` may return `null`; `StringUtil.containsIgnoreCase` may not handle null safely. *(NullDereference)*
+
+**Line 60** — `database.getEntries()` called without prior null check on `database`. *(NullDereference)*
+
+**Line 61** — `.parallelStream()` used; if `getAuthors` has side effects or the underlying collection is not thread-safe, this is unsafe. *(ParallelStreamWithPotentialRaceCondition / ThreadSafety)*

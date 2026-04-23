@@ -1,0 +1,15 @@
+**Line 18** — `ActionFactory` instantiated as a field but never cleaned up; potential **Resource Leak** (if `ActionFactory` holds resources).
+
+**Line 20-29** — Anonymous class `Action` captures outer instance field `infoMessage` directly in `getText()`; **non-static inner/anonymous class holds implicit reference to outer class** (Enclosing Instance Reference / potential memory leak).
+
+**Line 27** — `getText()` calls `infoMessage.get()` which is not guaranteed to be called on the JavaFX Application Thread; **Thread Safety Violation**.
+
+**Line 33** — Constructor calls overridable method `configureButton()` indirectly via `EasyBind.subscribe`; **Constructor Calls Non-Private/Non-Final Method** (`configureButton` is private here, so the subscribe callback is the concern — still, calling `configureButton()` directly on line 34 before the subscribe is redundant and fragile).
+
+**Line 34** — `configureButton()` called explicitly in constructor, then immediately subscribed to call it again on any change; **Redundant Method Call** — the subscribe fires on initial value, making the explicit call on line 34 unnecessary (Double Invocation).
+
+**Line 38** — `setMaxHeight(Double.MAX_VALUE)` called inside `configureButton()`, which is invoked every time `infoMessage` changes; **Repeated Unnecessary Property Reset** on each message update (Performance issue / Incorrect Subscription Scope).
+
+**Line 41-45** — `new SimpleCommand()` anonymous class instantiated on every call to `configureButton()`; **Object Allocation in Repeated Method** — a new command object is created each time the info message changes.
+
+**Line 42-44** — Empty `execute()` method with only a comment; **Empty Method Body** (Code Smell / Commented-Out Explanation Instead of Design).

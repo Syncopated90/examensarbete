@@ -1,0 +1,325 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UseUtilityClass",
+              "shortDescription": {
+                "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+              },
+              "fullDescription": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#useutilityclass",
+              "help": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidAccessibilityAlteration",
+              "shortDescription": {
+                "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+              },
+              "fullDescription": {
+                "text": "\nMethods such as `getDeclaredConstructors()`, `getDeclaredMethods()`, and `getDeclaredFields()` also\nreturn private constructors, methods and fields. These can be made accessible by calling `setAccessible(true)`.\nThis gives access to normally protected data which violates the principle of encapsulation.\n\nThis rule detects calls to `setAccessible` and finds possible accessibility alterations.\nIf the call to `setAccessible` is wrapped within a `PrivilegedAction`, then the access alteration\nis assumed to be deliberate and is not reported.\n\nNote that with Java 17 the Security Manager, which is used for `PrivilegedAction` execution,\nis deprecated: [JEP 411: Deprecate the Security Manager for Removal](https://openjdk.org/jeps/411).\nFor future-proof code, deliberate access alteration should be suppressed using the usual\nsuppression methods (e.g. by using `@SuppressWarnings` annotation).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidaccessibilityalteration",
+              "help": {
+                "text": "\nMethods such as `getDeclaredConstructors()`, `getDeclaredMethods()`, and `getDeclaredFields()` also\nreturn private constructors, methods and fields. These can be made accessible by calling `setAccessible(true)`.\nThis gives access to normally protected data which violates the principle of encapsulation.\n\nThis rule detects calls to `setAccessible` and finds possible accessibility alterations.\nIf the call to `setAccessible` is wrapped within a `PrivilegedAction`, then the access alteration\nis assumed to be deliberate and is not reported.\n\nNote that with Java 17 the Security Manager, which is used for `PrivilegedAction` execution,\nis deprecated: [JEP 411: Deprecate the Security Manager for Removal](https://openjdk.org/jeps/411).\nFor future-proof code, deliberate access alteration should be suppressed using the usual\nsuppression methods (e.g. by using `@SuppressWarnings` annotation).\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UseUtilityClass",
+          "ruleIndex": 0,
+          "message": {
+            "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 8,
+                  "endLine": 18,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 9,
+                  "endLine": 113,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 9,
+                  "endLine": 114,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 9,
+                  "endLine": 115,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 9,
+                  "endLine": 116,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 9,
+                  "endLine": 117,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 9,
+                  "endLine": 119,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 9,
+                  "endLine": 120,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 9,
+                  "endLine": 121,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 9,
+                  "endLine": 123,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 1,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 9,
+                  "endLine": 124,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

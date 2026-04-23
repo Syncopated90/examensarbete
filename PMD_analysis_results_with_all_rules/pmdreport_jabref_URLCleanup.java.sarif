@@ -1,0 +1,978 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "AtLeastOneConstructor",
+              "shortDescription": {
+                "text": "Each class should declare at least one constructor"
+              },
+              "fullDescription": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#atleastoneconstructor",
+              "help": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like DATE_TERMS_PATTERN"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CognitiveComplexity",
+              "shortDescription": {
+                "text": "The method 'cleanup(BibEntry)' has a cognitive complexity of 22, current threshold is 15"
+              },
+              "fullDescription": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cognitivecomplexity",
+              "help": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'entry' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'changes' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'noteFieldValue' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'url' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Too many lines"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'urlFieldValue' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidDeeplyNestedIfStmts",
+              "shortDescription": {
+                "text": "Deeply nested if..then statements are hard to read"
+              },
+              "fullDescription": {
+                "text": "\nAvoid creating deeply nested if-then statements since they are harder to read and error-prone to maintain.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#avoiddeeplynestedifstmts",
+              "help": {
+                "text": "\nAvoid creating deeply nested if-then statements since they are harder to read and error-prone to maintain.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'term' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'date' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'formattedDate' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'urlDateFieldValue' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "AtLeastOneConstructor",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Each class should declare at least one constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 8,
+                  "endLine": 16,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 1,
+                  "endLine": 20,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 33,
+                  "endLine": 24,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 33,
+                  "endLine": 28,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 33,
+                  "endLine": 30,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 32,
+                  "endLine": 32,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 32,
+                  "endLine": 33,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 32,
+                  "endLine": 34,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Avoid excessively long variable names like DATE_TERMS_PATTERN"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 34,
+                  "endLine": 36,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 34,
+                  "endLine": 36,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 34,
+                  "endLine": 37,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 42,
+                  "endLine": 38,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CognitiveComplexity",
+          "ruleIndex": 4,
+          "message": {
+            "text": "The method 'cleanup(BibEntry)' has a cognitive complexity of 22, current threshold is 15"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 30,
+                  "endLine": 41,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Parameter 'entry' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 47,
+                  "endLine": 41,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Local variable 'changes' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 27,
+                  "endLine": 42,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Local variable 'noteFieldValue' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 16,
+                  "endLine": 44,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Local variable 'url' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 20,
+                  "endLine": 51,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Comment is too large: Too many lines"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 21,
+                  "endLine": 66,
+                  "endColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Local variable 'urlFieldValue' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 24,
+                  "endLine": 74,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 17,
+                  "endLine": 77,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Local variable 'term' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 24,
+                  "endLine": 84,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 17,
+                  "endLine": 104,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Local variable 'date' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 28,
+                  "endLine": 88,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Local variable 'formattedDate' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 28,
+                  "endLine": 89,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Local variable 'urlDateFieldValue' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/URLCleanup.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 32,
+                  "endLine": 96,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

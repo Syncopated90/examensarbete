@@ -1,0 +1,5 @@
+**Line 25** — `Optional.get()` without `isPresent()` check (Sonar: `java:S3655` / *OptionalGetWithoutIsPresent*) — although guarded by `isEmpty()` on line 18, `oldValue.get()` is called twice (lines 25, 27) after intervening method calls that could theoretically mutate state; static analyzers typically flag repeated `.get()` calls as a smell regardless.
+
+**Line 23** — Local variable `fileList` is used only once and could be inlined (`java:S1488` / *UnusedLocalVariable* or *InlineVariable*).
+
+**Line 13** — Javadoc uses `///` (Markdown doc comment syntax), which is non-standard for Java source below Java 23 and will be flagged as a syntax/style violation (`java:S1872` or checkstyle *InvalidJavadocPosition* depending on tooling).

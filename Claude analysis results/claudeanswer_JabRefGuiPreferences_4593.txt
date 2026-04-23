@@ -1,0 +1,19 @@
+**Line 282**: `importPreferences` - `getUnlinkedFilesDialogPreferences().setAll(getUnlinkedFilesDialogPreferences())` — **Self-assignment / Useless method call**: the argument is the same method call as the receiver, doing nothing meaningful. Should be `getUnlinkedFilesDialogPreferencesFromBackingStore(...)`.
+
+**Line 230**: `clear` — **Missing null/reset of cached singleton fields**: `clear()` purges the backing store but never nulls out the cached preference objects (`entryEditorPreferences`, `workspacePreferences`, etc.), so subsequent `get*()` calls return stale in-memory state. **Stale Cache after Clear**.
+
+**Line 366**: `storeEntryEditorTabs` — **Useless method call**: `getEntryEditorTabs()` is called at the end of `storeEntryEditorTabs` but its return value is ignored. **Return value ignored**.
+
+**Line 126**: `SEARCH_DIALOG_COLUMN_SORT_ORDER` — Typo in string literal `"searchDalogColumnSortOrder"` (missing 'i' in "Dialog"). **Inconsistent/misspelled constant value**.
+
+**Line 218**: `getInstance` — **Double-checked locking not used**: `singleton` is accessed without synchronization in a static method, not thread-safe. **Non-thread-safe singleton** (`DCL` / `UnsynchronizedSingleton`).
+
+**Line 218**: `getInstance` — `singleton` field is not `volatile`, exacerbating the thread-safety issue. **Missing volatile on singleton field**.
+
+**Line 491**: `getAutoCompletePreferences` — Lambda uses `Collectors.toList()` (mutable) where `toUnmodifiableList()` or a stream terminal is inconsistent with other usages. Minor, but **Inconsistent collector usage**.
+
+**Line 633**: `getPreviewLayouts` — Mutates the `cycle` parameter list with `cycle.addAll(...)` when it is empty. **Modification of method parameter** (`MethodParameterModification`).
+
+**Line 217-221**: `getInstance` — **Singleton with mutable state exposed via public static method** violates **Single Responsibility** and makes testing difficult. **Global mutable state**.
+
+**Line 282**: `getUnlinkedFilesDialogPreferences().setAll(getUnlinkedFilesDialogPreferences())` — potential **infinite recursion / StackOverflowError** if `setAll` triggers a listener that calls `getUnlinkedFilesDialogPreferences()` again before the field is set.

@@ -1,0 +1,3278 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ExcessiveImports",
+              "shortDescription": {
+                "text": "A high number of imports (35) can indicate a high degree of coupling within an object; current threshold is 30."
+              },
+              "fullDescription": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#excessiveimports",
+              "help": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CouplingBetweenObjects",
+              "shortDescription": {
+                "text": "A value of 22 may denote a high amount of coupling within the class (threshold: 20)"
+              },
+              "fullDescription": {
+                "text": "\nThis rule counts the number of unique attributes, local variables, and return types within an object.\nA number higher than the specified threshold can indicate a high degree of coupling.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#couplingbetweenobjects",
+              "help": {
+                "text": "\nThis rule counts the number of unique attributes, local variables, and return types within an object.\nA number higher than the specified threshold can indicate a high degree of coupling.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'sharedOptions' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like versionInfoRequested"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'entryTypesManager' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "SystemPrintln",
+              "shortDescription": {
+                "text": "Usage of System.out/err"
+              },
+              "fullDescription": {
+                "text": "\nReferences to System.(out|err).print are usually intended for debugging purposes and can remain in\nthe codebase even in production code. By using a logger one can enable/disable this behaviour at\nwill (and by priority) and avoid clogging the Standard out log.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#systemprintln",
+              "help": {
+                "text": "\nReferences to System.(out|err).print are usually intended for debugging purposes and can remain in\nthe codebase even in production code. By using a logger one can enable/disable this behaviour at\nwill (and by priority) and avoid clogging the Standard out log.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'importArguments' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'importFormat' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'porcelain' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'data' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'address' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'file' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "OnlyOneReturn",
+              "shortDescription": {
+                "text": "A method should have only one exit point, and that should be the last statement in the method"
+              },
+              "fullDescription": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#onlyonereturn",
+              "help": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'importResult' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Protected method constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'file' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like importFormatReader"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'importFormatReader' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ConfusingTernary",
+              "shortDescription": {
+                "text": "Avoid if (x != y) ..; else ..;"
+              },
+              "fullDescription": {
+                "text": "\nAvoid negation within an \"if\" expression with an \"else\" clause.  For example, rephrase:\n`if (x != y) diff(); else same();` as: `if (x == y) same(); else diff();`.\n\nMost \"if (x != y)\" cases without an \"else\" are often return cases, so consistent use of this\nrule makes the code easier to read.  Also, this resolves trivial ordering problems, such\nas \"does the error case go first?\" or \"does the common case go first?\".\n\nSince null checks are commonly considered a positive condition, they are by default ignored\nby this rule. This means both `a == null` and `a != null` are allowed. If you want\nto enforce either style and disallow the other, use the property `nullCheckBranch`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#confusingternary",
+              "help": {
+                "text": "\nAvoid negation within an \"if\" expression with an \"else\" clause.  For example, rephrase:\n`if (x != y) diff(); else same();` as: `if (x == y) same(); else diff();`.\n\nMost \"if (x != y)\" cases without an \"else\" are often return cases, so consistent use of this\nrule makes the code easier to read.  Also, this resolves trivial ordering problems, such\nas \"does the error case go first?\" or \"does the common case go first?\".\n\nSince null checks are commonly considered a positive condition, they are by default ignored\nby this rule. This means both `a == null` and `a != null` are allowed. If you want\nto enforce either style and disallow the other, use the property `nullCheckBranch`.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'result' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "InvalidLogMessageFormat",
+              "shortDescription": {
+                "text": "Too many arguments, expected 1 argument but found 2"
+              },
+              "fullDescription": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#invalidlogmessageformat",
+              "help": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 5,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'newBase' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'outputFile' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on method 'outputEntries(CliPreferences, List<BibEntry>)'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'entries' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like bibDatabaseContext"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'bibDatabaseContext' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on method 'outputDatabaseContext(CliPreferences, BibDatabaseContext)'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'bibDatabaseContext' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnnecessaryFullyQualifiedName",
+              "shortDescription": {
+                "text": "Unnecessary qualifier 'JabKit': 'generateCitationKeys' is already in scope"
+              },
+              "fullDescription": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname",
+              "help": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'bibWriter' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'saveConfiguration' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'databaseWriter' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'databaseContext' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like citationKeyPatternPreferences"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'citationKeyPatternPreferences' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'keyGenerator' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entry' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'preferences' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'exporterFactory' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on field 'debug'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on field 'porcelain'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like usageHelpRequested"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'usageHelpRequested' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ExcessiveImports",
+          "ruleIndex": 0,
+          "message": {
+            "text": "A high number of imports (35) can indicate a high degree of coupling within an object; current threshold is 30."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 261,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CouplingBetweenObjects",
+          "ruleIndex": 1,
+          "message": {
+            "text": "A value of 22 may denote a high amount of coupling within the class (threshold: 20)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 261,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 8,
+                  "endLine": 62,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 33,
+                  "endLine": 63,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 36,
+                  "endLine": 65,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 42,
+                  "endLine": 66,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field 'sharedOptions' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 27,
+                  "endLine": 69,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 27,
+                  "endLine": 69,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Avoid excessively long variable names like versionInfoRequested"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 21,
+                  "endLine": 72,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 21,
+                  "endLine": 72,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 12,
+                  "endLine": 74,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 34,
+                  "endLine": 74,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'entryTypesManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 71,
+                  "endLine": 74,
+                  "endColumn": 88
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 13,
+                  "endLine": 82,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 9,
+                  "endLine": 85,
+                  "endColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Parameter 'importArguments' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 63,
+                  "endLine": 89,
+                  "endColumn": 78
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Parameter 'importFormat' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 63,
+                  "endLine": 90,
+                  "endColumn": 75
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 71,
+                  "endLine": 91,
+                  "endColumn": 85
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Parameter 'porcelain' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 92,
+                  "startColumn": 64,
+                  "endLine": 92,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Local variable 'data' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 18,
+                  "endLine": 94,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Local variable 'address' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 16,
+                  "endLine": 96,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Local variable 'file' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 14,
+                  "endLine": 97,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 17,
+                  "endLine": 103,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 16,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 104,
+                  "startColumn": 17,
+                  "endLine": 104,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'importResult' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 32,
+                  "endLine": 114,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 17,
+                  "endLine": 117,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Protected method constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 45,
+                  "endLine": 123,
+                  "endColumn": 55
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Parameter 'file' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 61,
+                  "endLine": 123,
+                  "endColumn": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Parameter 'importFormat' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 63,
+                  "endLine": 124,
+                  "endColumn": 75
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 71,
+                  "endLine": 125,
+                  "endColumn": 85
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Parameter 'porcelain' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 64,
+                  "endLine": 126,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Avoid excessively long variable names like importFormatReader"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 32,
+                  "endLine": 128,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Local variable 'importFormatReader' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 32,
+                  "endLine": 128,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ConfusingTernary",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Avoid if (x != y) ..; else ..;"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 13,
+                  "endLine": 153,
+                  "endColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 21,
+                  "endLine": 137,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Local variable 'result' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 30,
+                  "endLine": 139,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 16,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 17,
+                  "endLine": 140,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 144,
+                  "startColumn": 21,
+                  "endLine": 144,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'importResult' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 147,
+                  "startColumn": 49,
+                  "endLine": 147,
+                  "endColumn": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 21,
+                  "endLine": 150,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 16,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 17,
+                  "endLine": 152,
+                  "endColumn": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "InvalidLogMessageFormat",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Too many arguments, expected 1 argument but found 2"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 13,
+                  "endLine": 155,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Protected method constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 27,
+                  "endLine": 160,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 55,
+                  "endLine": 160,
+                  "endColumn": 69
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'entryTypesManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 161,
+                  "startColumn": 61,
+                  "endLine": 161,
+                  "endColumn": 78
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Parameter 'newBase' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 162,
+                  "startColumn": 52,
+                  "endLine": 162,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Parameter 'outputFile' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 163,
+                  "startColumn": 45,
+                  "endLine": 163,
+                  "endColumn": 55
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Missing commented default access modifier on method 'outputEntries(CliPreferences, List<BibEntry>)'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 16,
+                  "endLine": 167,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 45,
+                  "endLine": 167,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Parameter 'entries' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 76,
+                  "endLine": 167,
+                  "endColumn": 83
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Avoid excessively long variable names like bibDatabaseContext"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 168,
+                  "startColumn": 28,
+                  "endLine": 168,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Local variable 'bibDatabaseContext' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 168,
+                  "startColumn": 28,
+                  "endLine": 168,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 31,
+          "message": {
+            "text": "Missing commented default access modifier on method 'outputDatabaseContext(CliPreferences, BibDatabaseContext)'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 173,
+                  "startColumn": 16,
+                  "endLine": 173,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 173,
+                  "startColumn": 53,
+                  "endLine": 173,
+                  "endColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Avoid excessively long variable names like bibDatabaseContext"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 173,
+                  "startColumn": 88,
+                  "endLine": 173,
+                  "endColumn": 106
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Parameter 'bibDatabaseContext' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 173,
+                  "startColumn": 88,
+                  "endLine": 173,
+                  "endColumn": 106
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnnecessaryFullyQualifiedName",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Unnecessary qualifier 'JabKit': 'generateCitationKeys' is already in scope"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 174,
+                  "startColumn": 9,
+                  "endLine": 174,
+                  "endColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 34,
+          "message": {
+            "text": "Local variable 'bibWriter' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 177,
+                  "startColumn": 31,
+                  "endLine": 177,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 181,
+                  "startColumn": 13,
+                  "endLine": 181,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 16,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 182,
+                  "startColumn": 13,
+                  "endLine": 182,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Protected method constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 187,
+                  "startColumn": 27,
+                  "endLine": 187,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'cliPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 187,
+                  "startColumn": 62,
+                  "endLine": 187,
+                  "endColumn": 76
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'entryTypesManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 188,
+                  "startColumn": 68,
+                  "endLine": 188,
+                  "endColumn": 85
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Avoid excessively long variable names like bibDatabaseContext"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 189,
+                  "startColumn": 66,
+                  "endLine": 189,
+                  "endColumn": 84
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Parameter 'bibDatabaseContext' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 189,
+                  "startColumn": 66,
+                  "endLine": 189,
+                  "endColumn": 84
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Parameter 'outputFile' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 52,
+                  "endLine": 190,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 17,
+                  "endLine": 193,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 34,
+          "message": {
+            "text": "Local variable 'bibWriter' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 196,
+                  "startColumn": 27,
+                  "endLine": 196,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 35,
+          "message": {
+            "text": "Local variable 'saveConfiguration' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 197,
+                  "startColumn": 48,
+                  "endLine": 197,
+                  "endColumn": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 36,
+          "message": {
+            "text": "Local variable 'databaseWriter' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 199,
+                  "startColumn": 35,
+                  "endLine": 199,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 209,
+                  "startColumn": 21,
+                  "endLine": 209,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 212,
+                  "startColumn": 17,
+                  "endLine": 212,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 215,
+                  "startColumn": 13,
+                  "endLine": 215,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 37,
+          "message": {
+            "text": "Parameter 'databaseContext' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 64,
+                  "endLine": 220,
+                  "endColumn": 79
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 38,
+          "message": {
+            "text": "Avoid excessively long variable names like citationKeyPatternPreferences"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 111,
+                  "endLine": 220,
+                  "endColumn": 140
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 39,
+          "message": {
+            "text": "Parameter 'citationKeyPatternPreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 111,
+                  "endLine": 220,
+                  "endColumn": 140
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 40,
+          "message": {
+            "text": "Local variable 'keyGenerator' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 30,
+                  "endLine": 221,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 41,
+          "message": {
+            "text": "Local variable 'entry' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 224,
+                  "startColumn": 23,
+                  "endLine": 224,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 231,
+                  "startColumn": 46,
+                  "endLine": 231,
+                  "endColumn": 71
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 42,
+          "message": {
+            "text": "Parameter 'preferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 231,
+                  "startColumn": 87,
+                  "endLine": 231,
+                  "endColumn": 98
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Avoid excessively long variable names like importFormatReader"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 232,
+                  "startColumn": 28,
+                  "endLine": 232,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Local variable 'importFormatReader' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 232,
+                  "startColumn": 28,
+                  "endLine": 232,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 244,
+                  "startColumn": 46,
+                  "endLine": 244,
+                  "endColumn": 71
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 42,
+          "message": {
+            "text": "Parameter 'preferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 244,
+                  "startColumn": 87,
+                  "endLine": 244,
+                  "endColumn": 98
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 43,
+          "message": {
+            "text": "Local variable 'exporterFactory' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 245,
+                  "startColumn": 25,
+                  "endLine": 245,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 251,
+                  "startColumn": 19,
+                  "endLine": 251,
+                  "endColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 253,
+                  "startColumn": 17,
+                  "endLine": 253,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 44,
+          "message": {
+            "text": "Missing commented default access modifier on field 'debug'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 253,
+                  "startColumn": 17,
+                  "endLine": 253,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 256,
+                  "startColumn": 17,
+                  "endLine": 256,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 45,
+          "message": {
+            "text": "Missing commented default access modifier on field 'porcelain'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 256,
+                  "startColumn": 17,
+                  "endLine": 256,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 46,
+          "message": {
+            "text": "Avoid excessively long variable names like usageHelpRequested"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 259,
+                  "startColumn": 25,
+                  "endLine": 259,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 47,
+          "message": {
+            "text": "Field 'usageHelpRequested' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 259,
+                  "startColumn": 25,
+                  "endLine": 259,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 259,
+                  "startColumn": 25,
+                  "endLine": 259,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

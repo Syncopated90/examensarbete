@@ -1,0 +1,1231 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "DataClass",
+              "shortDescription": {
+                "text": "The class 'CitationGroup' is suspected to be a Data Class (WOC=30.000%, NOPA=4, NOAM=7, WMC=13)"
+              },
+              "fullDescription": {
+                "text": "\nData Classes are simple data holders, which reveal most of their state, and\nwithout complex functionality. The lack of functionality may indicate that\ntheir behaviour is defined elsewhere, which is a sign of poor data-behaviour\nproximity. By directly exposing their internals, Data Classes break encapsulation,\nand therefore reduce the system's maintainability and understandability. Moreover,\nclasses tend to strongly rely on their data representation, which makes for a brittle\ndesign.\n\nRefactoring a Data Class should focus on restoring a good data-behaviour proximity. In\nmost cases, that means moving the operations defined on the data back into the class.\nIn some other cases it may make sense to remove entirely the class and move the data\ninto the former client classes.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* WOC: a 'non-triviality' measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHT_OF_CLASS %}\n* NOPA: number of public attributes, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_PUBLIC_FIELDS %}\n* NOAM: number of public accessor methods, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_ACCESSORS %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High NOPA + NOAM\n* Low WOC\n* Low WMC\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#dataclass",
+              "help": {
+                "text": "\nData Classes are simple data holders, which reveal most of their state, and\nwithout complex functionality. The lack of functionality may indicate that\ntheir behaviour is defined elsewhere, which is a sign of poor data-behaviour\nproximity. By directly exposing their internals, Data Classes break encapsulation,\nand therefore reduce the system's maintainability and understandability. Moreover,\nclasses tend to strongly rely on their data representation, which makes for a brittle\ndesign.\n\nRefactoring a Data Class should focus on restoring a good data-behaviour proximity. In\nmost cases, that means moving the operations defined on the data back into the class.\nIn some other cases it may make sense to remove entirely the class and move the data\ninto the former client classes.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* WOC: a 'non-triviality' measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHT_OF_CLASS %}\n* NOPA: number of public attributes, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_PUBLIC_FIELDS %}\n* NOAM: number of public accessor methods, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_ACCESSORS %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High NOPA + NOAM\n* Low WOC\n* Low WMC\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like citationsInStorageOrder"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like referenceMarkNameForLinking"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like indexInGlobalOrder"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'dataModel' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'groupId' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'citationType' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'citationsInStorageOrder' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'referenceMarkNameForLinking' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on method 'imposeLocalOrder(Comparator<BibEntry>)'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'entryComparator' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LawOfDemeter",
+              "shortDescription": {
+                "text": "Access to field `JabRef52` on foreign value `OODataModel` (degree 1)"
+              },
+              "fullDescription": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#lawofdemeter",
+              "help": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'lastCitation' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'indexInGlobalOrder' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'citationMarker' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "DataClass",
+          "ruleIndex": 0,
+          "message": {
+            "text": "The class 'CitationGroup' is suspected to be a Data Class (WOC=30.000%, NOPA=4, NOAM=7, WMC=13)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 8,
+                  "endLine": 13,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 30,
+                  "endLine": 15,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 34,
+                  "endLine": 20,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 31,
+                  "endLine": 26,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Avoid excessively long variable names like citationsInStorageOrder"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 33,
+                  "endLine": 27,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 33,
+                  "endLine": 27,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 1,
+                  "endLine": 33,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like referenceMarkNameForLinking"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 30,
+                  "endLine": 36,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 30,
+                  "endLine": 36,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 1,
+                  "endLine": 39,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 27,
+                  "endLine": 44,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Avoid excessively long variable names like indexInGlobalOrder"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 31,
+                  "endLine": 49,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 31,
+                  "endLine": 49,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 30,
+                  "endLine": 54,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 12,
+                  "endLine": 56,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'dataModel' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 38,
+                  "endLine": 56,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'groupId' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 42,
+                  "endLine": 57,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'citationType' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 39,
+                  "endLine": 58,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Avoid excessively long variable names like citationsInStorageOrder"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 41,
+                  "endLine": 59,
+                  "endColumn": 64
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Parameter 'citationsInStorageOrder' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 41,
+                  "endLine": 59,
+                  "endColumn": 64
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like referenceMarkNameForLinking"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 43,
+                  "endLine": 60,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Parameter 'referenceMarkNameForLinking' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 43,
+                  "endLine": 60,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 16,
+                  "endLine": 71,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Missing commented default access modifier on method 'imposeLocalOrder(Comparator<BibEntry>)'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 10,
+                  "endLine": 80,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'entryComparator' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 48,
+                  "endLine": 80,
+                  "endColumn": 63
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LawOfDemeter",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Access to field `JabRef52` on foreign value `OODataModel` (degree 1)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 26,
+                  "endLine": 85,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Local variable 'lastCitation' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 22,
+                  "endLine": 86,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LawOfDemeter",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Access to field `JabRef52` on foreign value `OODataModel` (degree 1)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 26,
+                  "endLine": 94,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 27,
+                  "endLine": 107,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Avoid excessively long variable names like indexInGlobalOrder"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 57,
+                  "endLine": 115,
+                  "endColumn": 75
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Parameter 'indexInGlobalOrder' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 57,
+                  "endLine": 115,
+                  "endColumn": 75
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like referenceMarkNameForLinking"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 65,
+                  "endLine": 131,
+                  "endColumn": 92
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Parameter 'referenceMarkNameForLinking' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 65,
+                  "endLine": 131,
+                  "endColumn": 92
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Parameter 'citationMarker' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CitationGroup.java"
+                },
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 52,
+                  "endLine": 139,
+                  "endColumn": 66
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+**Line 23** - `inCommandName` and `inCommand` and `inCommandOption` are assigned but `inCommand` is never used before being overwritten (Dead Store / Unused Assignment).
+
+**Line 24** - `inCommandOption` initialized to `false` redundantly (unnecessary initialization, defaults to false for boolean).
+
+**Line 26** - `commandName` local variable shadows potential field (Naming/Shadowing concern; also never reset when `escape` resets).
+
+**Line 35** - Empty `if` block: `} else if (Character.isWhitespace(c) && (inCommand || inCommandOption)) { // Whitespace }` — **Empty Block** rule violation.
+
+**Line 47** - `commandName.delete(0, commandName.length())` — use `commandName.setLength(0)` instead (inefficient StringBuilder clearing; **Optimization/Use setLength(0)**).
+
+**Line 62** - Same as line 47: `commandName.delete(0, commandName.length())` — **Optimization/Use setLength(0)**.
+
+**Line 68** - Complex boolean expression `(c == '&') && !escape && !(inCommand && "url".contentEquals(commandName)) && (nestedEnvironments == 0)` violates **Simplify Boolean Expression** / excessive complexity.
+
+**Line 22** - `escape` is a local variable with name that conflicts with common keyword semantics — **Avoid Confusing Variable Names**.
+
+**Line 20** - Method parameter annotated `@NonNull` but no null-check is performed explicitly, relying solely on annotation — **Explicit Null Check Missing** (redundant annotation without enforcement).
+
+**Line 9** - Class `EscapeAmpersandsFormatter` extends `Formatter` but does not declare `serialVersionUID` if `Formatter` is `Serializable` — **Missing serialVersionUID** (conditional on superclass).

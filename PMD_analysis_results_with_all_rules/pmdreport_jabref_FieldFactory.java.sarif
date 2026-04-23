@@ -1,0 +1,2243 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UseUtilityClass",
+              "shortDescription": {
+                "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+              },
+              "fullDescription": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#useutilityclass",
+              "help": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "TooManyMethods",
+              "shortDescription": {
+                "text": "This class has too many methods, consider refactoring it."
+              },
+              "fullDescription": {
+                "text": "\nA class with too many methods is probably a good suspect for refactoring, in order to reduce its\ncomplexity and find a way to have more fine grained objects.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#toomanymethods",
+              "help": {
+                "text": "\nA class with too many methods is probably a good suspect for refactoring, in order to reduce its\ncomplexity and find a way to have more fine grained objects.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like FIELD_OR_SEPARATOR"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like UNKNOWNFIELD_PATTERN"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'fieldName' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'type' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'username' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "OnlyOneReturn",
+              "shortDescription": {
+                "text": "A method should have only one exit point, and that should be the last statement in the method"
+              },
+              "fullDescription": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#onlyonereturn",
+              "help": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'matcher' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidReassigningParameters",
+              "shortDescription": {
+                "text": "Avoid reassigning parameters such as 'fieldName'"
+              },
+              "fullDescription": {
+                "text": "\nReassigning values to incoming parameters of a method or constructor is not recommended, as this can\nmake the code more difficult to understand. The code is often read with the assumption that parameter values\ndon't change and an assignment violates therefore the principle of least astonishment. This is especially a\nproblem if the parameter is documented e.g. in the method's javadoc and the new content differs from the original\ndocumented content.\n\nUse temporary local variables instead. This allows you to assign a new name, which makes the code better\nunderstandable.\n\nNote that this rule considers both methods and constructors. If there are multiple assignments for a formal\nparameter, then only the first assignment is reported.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#avoidreassigningparameters",
+              "help": {
+                "text": "\nReassigning values to incoming parameters of a method or constructor is not recommended, as this can\nmake the code more difficult to understand. The code is often read with the assumption that parameter values\ndon't change and an assignment violates therefore the principle of least astonishment. This is especially a\nproblem if the parameter is documented e.g. in the method's javadoc and the new content differs from the original\ndocumented content.\n\nUse temporary local variables instead. This allows you to assign a new name, which makes the code better\nunderstandable.\n\nNote that this rule considers both methods and constructors. If there are multiple assignments for a formal\nparameter, then only the first assignment is reported.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'field' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'fieldNames' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnnecessaryFullyQualifiedName",
+              "shortDescription": {
+                "text": "Unnecessary qualifier 'FieldFactory': 'FIELD_OR_SEPARATOR' is already in scope because it is declared in an enclosing type"
+              },
+              "fullDescription": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname",
+              "help": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "UnnecessaryFullyQualifiedName",
+              "shortDescription": {
+                "text": "Unnecessary qualifier 'FieldFactory': 'DELIMITER' is already in scope because it is declared in an enclosing type"
+              },
+              "fullDescription": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname",
+              "help": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'fields' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'result' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LooseCoupling",
+              "shortDescription": {
+                "text": "Avoid using implementation types like 'EnumSet'; use the interface instead"
+              },
+              "fullDescription": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling",
+              "help": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'allFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LooseCoupling",
+              "shortDescription": {
+                "text": "Avoid using implementation types like 'LinkedHashSet'; use the interface instead"
+              },
+              "fullDescription": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling",
+              "help": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like publicAndInternalFields"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'publicAndInternalFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like standardFieldsWithBibtexKey"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'standardFieldsWithBibtexKey' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LawOfDemeter",
+              "shortDescription": {
+                "text": "Access to field `YEAR` on foreign value `StandardField` (degree 1)"
+              },
+              "fullDescription": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#lawofdemeter",
+              "help": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'selector' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like nonWrappableFields"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'nonWrappableFields' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UseUtilityClass",
+          "ruleIndex": 0,
+          "message": {
+            "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 8,
+                  "endLine": 29,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 8,
+                  "endLine": 29,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "TooManyMethods",
+          "ruleIndex": 2,
+          "message": {
+            "text": "This class has too many methods, consider refactoring it."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 27,
+                  "endLine": 223,
+                  "endColumn": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 1,
+                  "endLine": 31,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like FIELD_OR_SEPARATOR"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 33,
+                  "endLine": 33,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 33,
+                  "endLine": 34,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Avoid excessively long variable names like UNKNOWNFIELD_PATTERN"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 34,
+                  "endLine": 36,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 34,
+                  "endLine": 36,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 25,
+                  "endLine": 40,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'fieldName' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 43,
+                  "endLine": 40,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 1,
+                  "endLine": 44,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 1,
+                  "endLine": 45,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 1,
+                  "endLine": 47,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'type' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 70,
+                  "endLine": 48,
+                  "endColumn": 74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 1,
+                  "endLine": 49,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Local variable 'username' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 20,
+                  "endLine": 51,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 11,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 13,
+                  "endLine": 52,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Local variable 'matcher' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 17,
+                  "endLine": 56,
+                  "endColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidReassigningParameters",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Avoid reassigning parameters such as 'fieldName'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 13,
+                  "endLine": 58,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 27,
+                  "endLine": 77,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Parameter 'field' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 49,
+                  "endLine": 77,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 28,
+                  "endLine": 81,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Parameter 'fieldNames' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 49,
+                  "endLine": 81,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Local variable 'fields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 20,
+                  "endLine": 82,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnnecessaryFullyQualifiedName",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Unnecessary qualifier 'FieldFactory': 'FIELD_OR_SEPARATOR' is already in scope because it is declared in an enclosing type"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 60,
+                  "endLine": 82,
+                  "endColumn": 72
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 42,
+                  "endLine": 89,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Parameter 'fieldNames' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 67,
+                  "endLine": 89,
+                  "endColumn": 77
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnnecessaryFullyQualifiedName",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Unnecessary qualifier 'FieldFactory': 'DELIMITER' is already in scope because it is declared in an enclosing type"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 47,
+                  "endLine": 90,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 39,
+                  "endLine": 96,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Parameter 'fieldNames' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 61,
+                  "endLine": 96,
+                  "endColumn": 71
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnnecessaryFullyQualifiedName",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Unnecessary qualifier 'FieldFactory': 'DELIMITER' is already in scope because it is declared in an enclosing type"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 47,
+                  "endLine": 97,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 26,
+                  "endLine": 106,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Parameter 'fields' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 64,
+                  "endLine": 106,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 112,
+                  "startColumn": 26,
+                  "endLine": 112,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Parameter 'fields' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 112,
+                  "startColumn": 53,
+                  "endLine": 112,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 26,
+                  "endLine": 116,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Parameter 'fields' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 53,
+                  "endLine": 116,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 26,
+                  "endLine": 122,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Parameter 'fields' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 62,
+                  "endLine": 122,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Parameter 'field' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 129,
+                  "startColumn": 46,
+                  "endLine": 129,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 1,
+                  "endLine": 133,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Local variable 'result' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 20,
+                  "endLine": 135,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 146,
+                  "startColumn": 30,
+                  "endLine": 146,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Avoid using implementation types like 'EnumSet'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 9,
+                  "endLine": 152,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Local variable 'allFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 32,
+                  "endLine": 152,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Avoid using implementation types like 'LinkedHashSet'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 9,
+                  "endLine": 154,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Avoid excessively long variable names like publicAndInternalFields"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 30,
+                  "endLine": 154,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Local variable 'publicAndInternalFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 30,
+                  "endLine": 154,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 163,
+                  "startColumn": 1,
+                  "endLine": 163,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Local variable 'fields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 20,
+                  "endLine": 165,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Avoid using implementation types like 'EnumSet'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 174,
+                  "startColumn": 9,
+                  "endLine": 174,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Local variable 'allFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 174,
+                  "startColumn": 32,
+                  "endLine": 174,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Avoid using implementation types like 'LinkedHashSet'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 176,
+                  "startColumn": 9,
+                  "endLine": 176,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Avoid excessively long variable names like standardFieldsWithBibtexKey"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 176,
+                  "startColumn": 30,
+                  "endLine": 176,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Local variable 'standardFieldsWithBibtexKey' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 176,
+                  "startColumn": 30,
+                  "endLine": 176,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 183,
+                  "startColumn": 30,
+                  "endLine": 183,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 187,
+                  "startColumn": 30,
+                  "endLine": 187,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LawOfDemeter",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Access to field `YEAR` on foreign value `StandardField` (degree 1)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 196,
+                  "startColumn": 106,
+                  "endLine": 196,
+                  "endColumn": 124
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Parameter 'selector' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 199,
+                  "startColumn": 66,
+                  "endLine": 199,
+                  "endColumn": 74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Local variable 'fields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 206,
+                  "startColumn": 20,
+                  "endLine": 206,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 216,
+                  "startColumn": 1,
+                  "endLine": 216,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 218,
+                  "startColumn": 1,
+                  "endLine": 218,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Avoid excessively long variable names like nonWrappableFields"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 75,
+                  "endLine": 220,
+                  "endColumn": 93
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 31,
+          "message": {
+            "text": "Parameter 'nonWrappableFields' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FieldFactory.java"
+                },
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 75,
+                  "endLine": 220,
+                  "endColumn": 93
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

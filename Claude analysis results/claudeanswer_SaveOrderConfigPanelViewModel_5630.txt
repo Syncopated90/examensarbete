@@ -1,0 +1,13 @@
+**Line 33** – `contains` then `indexOf` called separately: redundant double-lookup (Performance / **OptimizeForLoop** or **AvoidInstantiatingObjectsInLoops**); more precisely violates **CollapsibleIfStatements** / redundant guard — `indexOf` returns `-1` if not found, making the `contains` check superfluous.
+
+**Line 33** – `moveCriterionUp`: `indexOf` is called after `contains`, duplicating the traversal — **UnnecessaryLocalBeforeReturn** / **DuplicateCode** with `moveCriterionDown` (line 40).
+
+**Line 40** – Same issue as line 33: redundant `contains` check before `indexOf`.
+
+**Line 42** – `index >= 0` is a redundant condition; since `contains` already confirmed membership, `indexOf` will never return `-1` — **UselessParentheses** / **SimplifiableConditional** (redundant sub-expression).
+
+**Line 33** (and **40**) – **AvoidDuplicateLiterals** / **DuplicateCode**: `moveCriterionUp` and `moveCriterionDown` share nearly identical logic violating the **DRY** principle.
+
+**Line 22** – Empty constructor `SaveOrderConfigPanelViewModel()` is unnecessary — **UnnecessaryConstructor**.
+
+**Lines 14–19** – Fields are declared `private final` but their properties expose mutable state via public accessors returning the property itself, violating **EncapsulationRule** (direct property exposure allows external mutation).

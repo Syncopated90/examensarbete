@@ -1,0 +1,32 @@
+**Line 40-41 — `ImmutableField` / Mutable Public Static Field**
+`SUPPORTED_FIELDS` is `public static` but not `final`. Should be `public static final`.
+
+**Line 40-41 — `VisibilityModifier` / Public Mutable Collection**
+`SUPPORTED_FIELDS` is a `public static` field exposing a mutable reference; violates encapsulation.
+
+**Line 84 — `LambdaCanBeMethodReference` / Lambda Could Be Method Reference**
+`.map(EntriesMergeResult::mergedEntry)` is fine, but the wrapping lambdas in `ifPresentOrElse` are excessively long — violation of **MethodLength** / **ExcessiveMethodLength**.
+
+**Line 75-100 — `MethodLength` / Method Too Long**
+`fetchAndMerge(BibEntry, List<Field>)` body is overly long with deeply nested lambdas.
+
+**Line 83 — `AvoidInlineConditionals` / Complex Lambda Nesting**
+Multi-level nested lambdas inside `ifPresentOrElse` reduce readability; violates **AvoidNestedBlocks** / **NPathComplexity**.
+
+**Line 144 — `OptionalGetWithoutIsPresent` / Unsafe `Optional.get()`**
+`mergedString.get()` is called with only a comment `// mergedString always present` rather than a guard; violates **OptionalGetWithoutIsPresent**.
+
+**Line 154 — `OptionalGetWithoutIsPresent` / Unsafe `Optional.get()`**
+`originalString.get()` is called with only a comment `// originalString always present` rather than a guard; violates **OptionalGetWithoutIsPresent**.
+
+**Line 109 — `LocalVariableCouldBeFinal` / Variable Could Be Final**
+`compoundEdit` is assigned once and never reassigned; should be `final`.
+
+**Line 112-113 — `LocalVariableCouldBeFinal` / Variable Could Be Final**
+`jointFields` and `originalFields` are assigned once; should be `final`.
+
+**Line 117 — `LocalVariableCouldBeFinal` / Variable Could Be Final**
+`oldType` and `newType` are assigned once; should be `final`.
+
+**Line 107 — `CyclomaticComplexity` / High Cyclomatic Complexity**
+`showMergeDialog` has multiple branches (entry type check, field loops, two for-loops with conditionals) exceeding recommended complexity threshold.

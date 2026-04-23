@@ -1,0 +1,13 @@
+**Line 40** — `new BibEntryTypesManager()` instantiated inside a loop/lambda; should reuse the injected or passed `bibEntryTypesManager` parameter. **Object Instantiation in Loop** / **Misuse of Constructor**.
+
+**Line 33** — Lambda parameter `(_, _)` uses unnamed/wildcard parameter syntax; may not be valid in the target Java version. **Unsupported Language Feature** (pre-Java 21).
+
+**Line 35** — `result.entryTypeToResultMap().values().stream()...` and then `result.entryTypeToResultMap().forEach(...)` on **line 38** iterates the map twice unnecessarily. **Duplicate Map Traversal** / **Inefficient Code**.
+
+**Line 40** — `new BibEntryTypesManager()` discards the `bibEntryTypesManager` argument passed into `check()`. **Unused Parameter** / **Dead Parameter**.
+
+**Lines 46–52, 63–70, 75–82** — `diagnostics` (a local variable from the enclosing method) is modified inside a `forEach` lambda. **Modifying External State in Lambda** / **Side Effects in Stream**.
+
+**Line 6** — `import java.util.Collection;` is used only via method reference `Collection::stream`; acceptable, but flagged by some analyzers as indirect. *(Minor — skip if tool doesn't flag.)*
+
+**Line 18** — `import com.google.common.collect.Sets;` introduces a Guava dependency for `Sets.difference` and `Sets.union`, which could be replaced with standard Java. **Unnecessary External Dependency**.

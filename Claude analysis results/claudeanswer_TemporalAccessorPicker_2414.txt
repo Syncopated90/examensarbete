@@ -1,0 +1,19 @@
+**Line 44** – `defaultFormatter` field is not `static` but could be; unnecessary instance field for a constant. **Field Should Be Static**
+
+**Line 45** – `converter` field shadows the inherited `converterProperty()` method from `DatePicker`. **Field Name Hides Inherited Field/Method**
+
+**Line 87** – Unnamed pattern variable `_` used in catch clause (`catch (DateTimeException _)`). Non-standard prior to Java 21; if targeting earlier versions, this is a **Invalid Catch Parameter Syntax** violation.
+
+**Line 104** – Unnamed pattern variable `_` used in catch clause (`catch (DateTimeParseException _)`). Same as above. **Invalid Catch Parameter Syntax**
+
+**Line 93** – `getStringConverter()` creates a new anonymous `StringConverter` via a `Supplier` on every call. **Repeated Object Creation / Inefficient Method Implementation**
+
+**Line 92–111** – `Supplier<StringConverter<TemporalAccessor>> converterSupplier` is declared as a local variable but used only once inline; overly verbose with no benefit. **Unnecessary Local Variable**
+
+**Line 44** – `defaultFormatter` is effectively a constant (`static final`) but declared as an instance field. **Non-Static Field Should Be Static Constant**
+
+**Line 131** – `InternalConverter` is a non-static inner class but does not use any instance state of the outer class directly that couldn't be accessed statically; should be `static`. **Inner Class Could Be Static** (or **Make Inner Class Static**)
+
+**Line 134** – In `toString`, fallback `getEditor().getText()` introduces a side-effect dependency on UI state inside a converter method, violating converter contract. **Inappropriate Method Call in Converter**
+
+**Line 77** – `getLocalDate` null-checks `dateTime` for null, but the only caller (`getDate`, line 68) already null-checks before calling it, making the null check redundant. **Redundant Null Check**

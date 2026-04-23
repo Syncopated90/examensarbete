@@ -1,0 +1,15 @@
+**Line 5** – `UnusedImports`: `ReadOnlyListWrapper` import may be flagged if the wrapper is considered unnecessary, but more precisely:
+
+**Line 28** – `ReturnOfCollectionOrArrayField`: Returns a mutable-backed `ReadOnlyListWrapper` wrapping the internal `citationList`, exposing the internal state. Should return an unmodifiable copy.
+
+**Line 19-20** – `UnnecessaryLocalVariable` / redundant initialization: `citationList` is initialized with an empty `observableArrayList()` on line 19, then immediately overwritten via `setAll()` on line 20. These could be combined.
+
+**Line 16** – `ParameterNamingConventions` (minor): `citationColl` abbreviation inconsistency, though minor.
+
+**Line 28** – `MutableStaticState` / `EncapsulationRule`: `new ReadOnlyListWrapper<>(citationList)` still exposes the backing list; the wrapper is read-only by interface but the underlying `citationList` reference is leaked.
+
+**Line 12** – `ImmutableField`: `entry` is only assigned in constructor and never modified — correctly `final`, no issue.
+
+**Line 13** – `ImmutableField`: `highlighted` same — no issue.
+
+**Line 28** – `InstantiationRule`: Unnecessary object creation (`new ReadOnlyListWrapper<>`) on every call to `getCitationList()`; result is not cached.

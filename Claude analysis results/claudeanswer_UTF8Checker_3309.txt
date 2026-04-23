@@ -1,0 +1,11 @@
+**Line 47** - `MethodNamingConventions`: Method name `UTF8EncodingChecker` must begin with a lowercase letter and use camelCase (should be `utf8EncodingChecker` or `checkUtf8Encoding`).
+
+**Line 36** - `MethodNamingConventions` (call site): Invocation of `UTF8EncodingChecker(...)` violates convention for the same reason.
+
+**Line 19-22** - `InvalidJavadocFormat` / `JavadocStyle`: Javadoc uses `///` (Markdown doc comment syntax) and `-` list items instead of standard `/** */` with `<li>` tags; non-standard for Java < 23 conventional Javadoc.
+
+**Line 15** - `ClassWithoutLogger` / missing field visibility concern: `charset` field (line 16) is `private final` but never validated for null — `NullAssignment` risk; no null-check on constructor parameter.
+
+**Line 47** - `UtilityClassShouldNotBeInstantiable` (partial): `UTF8EncodingChecker` is a `public static` utility method on a non-utility class, violating single-responsibility; should be extracted or made private.
+
+**Line 36** - `LocalVariableNamingConventions`: Variable `utfOnly` is a boolean but named ambiguously; minor violation of `BooleanNaming` (should be `isUtf8Encoded` or similar).

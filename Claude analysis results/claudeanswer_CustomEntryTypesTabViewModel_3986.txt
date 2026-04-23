@@ -1,0 +1,23 @@
+**Line 57** — `VisibilityModifier` / `WeakerAccess`: `isMultiline` field should be `private`.
+
+**Line 57** — `FieldNamingConvention`: Field `isMultiline` is named like a method/predicate; should follow noun-based naming convention for fields.
+
+**Line 83** — `UnnecessaryConditional` / `SimplifiableConditional`: `if (!this.entryTypesWithFields.isEmpty())` guard before `clear()` is unnecessary; `clear()` on an empty list is a no-op.
+
+**Line 119** — `LocalVariableNamingConvention`: Variable `newentryType` violates camelCase naming (`newEntryType` expected).
+
+**Line 99** — `CollectorsToList`: `.collect(Collectors.toList())` should be replaced with `.toList()` (consistent with line 95 usage).
+
+**Line 102** — `CollectorsToList`: `.collect(Collectors.toList())` should be replaced with `.toList()`.
+
+**Line 10** — `UnusedImport`: `java.util.stream.Collectors` can be removed if `.toList()` replacements are applied on lines 99 and 102.
+
+**Line 46** — `UnnecessaryThis`: Redundant `this` qualifier on `entryTypesWithFields` field initializer is inconsistent (field initializers cannot use `this` meaningfully here; consistent style violation throughout).
+
+**Line 140** — `NullDereference` / `PotentialNullPointerException`: `this.selectedEntryType.getValue()` may return `null` if no entry type is selected; no null-check before calling `.fields()`.
+
+**Line 152** — `NullDereference` / `PotentialNullPointerException`: `this.selectedEntryType.getValue()` may return `null`; no null-check before `.addField()`.
+
+**Line 161** — `NullDereference` / `PotentialNullPointerException`: `this.selectedEntryType.getValue()` may return `null`; no null-check before `.fields()`.
+
+**Line 166** — `NullDereference` / `PotentialNullPointerException`: `selectedEntryType.getValue()` may return `null`; no null-check before `.removeField()`.

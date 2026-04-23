@@ -1,0 +1,13 @@
+**Line 11** — `DESIGN` / **Duplicate Condition Check**: `preferences.shouldEnableJournalPopup()` is called twice unnecessarily; result should be stored in a local variable (PMD: `AvoidDuplicateConditions` / Sonar: `S1656`, or more precisely PMD **`CollapsibleIfStatements`** / repeated method call).
+
+**Line 11 & 14** — PMD: **`AvoidDuplicateConditions`** / Sonar **`S3923`**: `preferences.shouldEnableJournalPopup()` is invoked on lines 11 and 14 with no intervening mutation; the return value is not cached (PMD: **`AvoidRepeatedMethodCall`** / general: repeated method invocation with potential side-effects or performance cost).
+
+**Line 10** — PMD: **`OnlyOneReturn`** (Checkstyle: `ReturnCount`): method has multiple return statements (lines 12, 26, 33).
+
+**Line 10** — PMD: **`CyclomaticComplexity`**: method has complexity of 4, exceeding default threshold of 3 for a single method.
+
+**Line 10** — PMD: **`NPathComplexity`**: high NPath complexity due to nested conditionals and multiple branches.
+
+**Line 15–20** — Checkstyle: **`ParameterAssignment`** / PMD: **`AvoidReassigningParameters`**: local variable `enableJournalPopup` shadows intent; minor style note — not a parameter reassignment here but method result assigned then immediately used in ternary (low severity).
+
+**Line 8** — Checkstyle: **`HideUtilityClassConstructor`** (PMD: **`UseUtilityClass`**): class has only static methods but no private constructor, leaving the default public constructor exposed.

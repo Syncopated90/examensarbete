@@ -1,0 +1,11 @@
+**Line 26** `descriptionProperty()` — **Violation: Returning a new object on each call (Unstable Property)**: Creates a new `ReadOnlyStringWrapper` every call; property bindings will not reflect future changes.
+
+**Line 30** `locationProperty()` — **Violation: Returning a new object on each call (Unstable Property)**: Same issue as above with `ReadOnlyStringWrapper`.
+
+**Line 34** `internalProperty()` — **Violation: Returning a new object on each call (Unstable Property)**: Creates a new `ReadOnlyBooleanWrapper` every call; not a stable observable property.
+
+**Line 26, 30, 34** — **Rule: `ReadOnlyStringWrapper`/`ReadOnlyBooleanWrapper` should be stored as fields**: Wrappers are instantiated inline instead of being declared as fields, breaking the JavaFX property pattern convention.
+
+**Line 22** — **Rule: Unexpected Side Effect in Getter (`getTermsList`)**: `getTermsList()` calls `termsList.setEnabled(...)`, mutating state inside a getter, violating the principle that getters should be free of side effects.
+
+**Line 13** — **Rule: Field could be `private` (Encapsulation)**: `termsList` is `final` and accessed only through methods; acceptable, but `getTermsList()` exposes the mutable object directly, violating **Law of Demeter / Expose Internal Representation**.

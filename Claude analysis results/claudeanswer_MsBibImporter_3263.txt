@@ -1,0 +1,13 @@
+**Line 33** — `DOCUMENT_BUILDER_FACTORY` is a mutable static field (`DocumentBuilderFactory`). Mutable static fields are not thread-safe. **Rule: MSF_MUTABLE_SERVLET_FIELD / ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD / thread-safety violation on mutable static.**
+
+**Line 33** — Static initializer calls `makeSafeDocBuilderFactory` which can throw `ParserConfigurationException` internally but swallows it; the factory may be returned in a partially configured state silently. **Rule: DE_MIGHT_IGNORE / exception swallowed in static init path.**
+
+**Line 40** — `DOCUMENT_BUILDER_FACTORY.newDocumentBuilder()` is called on a shared mutable static `DocumentBuilderFactory`. `DocumentBuilderFactory` is not guaranteed thread-safe. **Rule: IS2_INCONSISTENT_SYNC / unsynchronized access to non-thread-safe static object.**
+
+**Line 41** — Anonymous `ErrorHandler` class created on every call to `isRecognizedFormat`. **Rule: ISC_INSTANTIATE_STATIC_CLASS (minor) / unnecessary object creation in loop-able context.**
+
+**Line 57** — `docin` is initialized to null and assigned inside a try block. The null check `docin == null` on line 60 can only be true if `dbuild.parse` returns null, which per API contract it does not; the null check is dead code. **Rule: RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE.**
+
+**Line 63** — `@NonNull` annotation on `BufferedReader reader` parameter conflicts with the parent class `Importer.importDatabase` signature which does not declare `@NonNull`. **Rule: NP_METHOD_PARAMETER_TIGHTENS_ANNOTATION / improper override annotation tightening.**
+
+**Line 86** — `feature` variable is declared as `null` and only set inside the try block. If the first `setFeature` call throws, `feature` already holds `DISABLEDTD`, so the log is correct; but `feature` is declared nullable and passed to a format string without null guard. **Rule: NP_NULL_ON_SOME_PATH / nullable variable passed without null check.**

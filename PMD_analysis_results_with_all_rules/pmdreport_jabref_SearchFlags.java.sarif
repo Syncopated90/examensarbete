@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Enum comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like REGULAR_EXPRESSION"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Enum comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/SearchFlags.java"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 8,
+                  "endLine": 3,
+                  "endColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid excessively long variable names like REGULAR_EXPRESSION"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/SearchFlags.java"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 33,
+                  "endLine": 4,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

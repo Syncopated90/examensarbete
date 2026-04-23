@@ -1,0 +1,19 @@
+**Line 148** — `sciLink` and `pdfLink` initialized to `""` but used as sentinel values; use `null` or `Optional` instead. **Rule: `IDP_INSTEAD_OF_EMPTY_STRING` / Avoiding empty string as null sentinel**
+
+**Line 148–149** — Variables `sciLink` and `pdfLink` declared outside try block unnecessarily, broadening scope. **Rule: `S1481` / Declare variables as close to their usage as possible** (or PMD `LocalVariableCouldBeFinal` / scope minimization)
+
+**Line 87** — `element.childNode(0)` called without checking if the element has any child nodes, risking `IndexOutOfBoundsException`. **Rule: `S6204` / Unchecked index access**
+
+**Line 86** — `metaLinks.first()` called without null check (though `isEmpty()` is checked, `first()` can still return null in Jsoup). **Rule: `NP_NULL_ON_SOME_PATH` / Null dereference**
+
+**Line 155–158** — `Unirest.get(request)` result not checked for HTTP error status before parsing body. **Rule: `S2259` / Potential null dereference / unchecked HTTP response status**
+
+**Line 32** — `FETCHER_NAME` is a public constant but the class is not `final`. **Rule: `S2386` / Mutable or overridable class exposes public static field**
+
+**Line 148** — `getUrlByDoi` declares `throws UnirestException` but catches `JSONException` only; `UnirestException` is unchecked and leaks to caller unnecessarily. **Rule: `S1130` / Unnecessary `throws` declaration for unchecked exception**
+
+**Line 110** — `String.formatted` used inside a stream `.map()` for URL construction without input validation or encoding. **Rule: `S2092` / URL constructed from unvalidated/unencoded parts**
+
+**Line 75** — `URLUtil.create(url)` can throw `MalformedURLException` (checked) but is not caught inside the switch expression arm, relying on the outer `throws IOException`. **Rule: `S1166` / Exception swallowing / inconsistent exception handling**
+
+**Line 40** — Sealed interface `DoiResolution` and its `record` members declared inside `ScienceDirect`; inner `record` types are implicitly `static`, making the sealed hierarchy needlessly complex inside a non-`final` outer class. **Rule: `S2972` / Inner class/interface complexity**

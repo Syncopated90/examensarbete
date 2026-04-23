@@ -1,0 +1,20 @@
+**Line 22 — Naming Convention / Confusing Method Name**
+`matchesExcepted` likely should be `matchesExpected` — misspelled method name (typo/naming rule violation).
+
+**Line 28–31 — Correctness / Use `find()` Return Value**
+`matcher.find()` return value is ignored. Should check `if (matcher.find())` before calling `matcher.group(0)`.
+
+**Line 36–39 — Code Style / Escaped Characters in Regex**
+Unnecessary escape of `/` and `:` in regex string (`\:`, `\/`). Forward slashes and colons don't require escaping in Java regex.
+
+**Line 42–46 — Null Dereference / Missing Null Check**
+`identifier` parameter in `parse()` has no `@NonNull` annotation and no null check; passing `null` causes `NullPointerException` on `.strip()`.
+
+**Line 19 — Design / Public Mutable Static Field**
+`RESOLVER` is `public static final` but `URI` is effectively immutable — acceptable, though exposing implementation detail breaks encapsulation (OOP encapsulation rule).
+
+**Line 25 — Access Modifier / Package-Private Constructor**
+Constructor `IacrEprint(String)` has package-private visibility with no documentation, while the class is `public`. Inconsistent API visibility.
+
+**Line 60–61 — Exception Handling / Swallowed Exception Context**
+Comment `// should never happen` alongside a logged error is contradictory; if it can happen enough to log, it shouldn't be dismissed. (Improper exception handling rule.)

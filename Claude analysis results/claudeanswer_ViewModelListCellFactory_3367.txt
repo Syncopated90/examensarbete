@@ -1,0 +1,21 @@
+**Line 32** — `INVALID_PSEUDO_CLASS` is a `static final` field but uses mutable `PseudoClass` object; field name follows constant convention correctly, but the class has no `serialVersionUID` despite extending `ListCell` (which implements `Serializable`). *(MissingSerialVersionUID)*
+
+**Line 44** — `pseudoClasses` is a `HashMap`; raw `HashMap` used instead of `LinkedHashMap` or interface type `Map` on declaration — actually declared as `Map`, acceptable, but `HashMap` does not guarantee iteration order which may cause non-deterministic pseudo-class application. *(NonDeterministicIteration)*
+
+**Line 62–65** — `withIcon` lambda does not null-check `toIcon.call(viewModel)` result before calling `.withColor(...)`. If `toIcon` returns `null`, a `NullPointerException` will be thrown. *(NullPointerDereference / AvoidDereferencingNullPointers)*
+
+**Line 118** — `setOnDragDone` parameter type is `BiConsumer<T, DragEvent>` (not wildcard `? super DragEvent`), inconsistent with all other drag handler methods (`? super DragEvent`). *(InconsistentSignature / ParameterTypeCanBeWild)*
+
+**Line 133** — `this.call(null)` passes `null` explicitly as `ListView<T>` param, which may cause `NullPointerException` inside `call` if `param` is ever dereferenced. *(AvoidPassingNullParameters)*
+
+**Line 148** — `subscriptions` field in the anonymous `ListCell` subclass is not `final` but is declared `final` — actually it is declared `final`, however it is an instance field of an anonymous inner class capturing outer state; the anonymous class is created per-cell invocation, causing repeated object allocation. *(InnerClassReferencesOuterClass / ExcessiveObjectCreation)*
+
+**Line 155** — `getItem()` is called after `super.updateItem(item, empty)` but `item` parameter is already available and equivalent; redundant method call. *(UnnecessaryLocalBeforeReturn / UselessAssignment)*
+
+**Line 192** — `DragEvent.copyFor(parent, parent)` passes the same node as both gesture source and target, which may produce incorrect drag semantics. *(SuspiciousArgument)*
+
+**Line 192 / Line 218** — `Event.fireEvent(parent, forwarded)` is called after `toOnDragDropped.accept` / `toOnDragOver.accept`, then `event.consume()` is called. Consuming the event after firing may suppress intended propagation. *(IncorrectEventConsumptionOrder)*
+
+**Line 227** — `validationStatusProperty.call(viewModel)` is called twice (lines 227 and 232), causing redundant computation and potentially inconsistent results if the callback has side effects. *(DuplicateCode / UnnecessaryMethodCall)*
+
+**Line 228** — `.getHighestMessage().ifPresent(...)` silently overwrites any tooltip previously set by `toTooltip` without warning. *(HiddenSideEffect)*

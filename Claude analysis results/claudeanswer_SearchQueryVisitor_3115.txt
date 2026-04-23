@@ -1,0 +1,15 @@
+**Line 34** — `Collectors.toList()` should be replaced with `Stream.toList()` (use unmodifiable list collector, Java 16+). **Rule: `UseUnmodifiableList` / `UseLiteralList`**
+
+**Line 50** — Comment `// Assuming the only other binary op is OR` indicates missing exhaustive handling; no `else if` or explicit OR check. **Rule: `ConfusingTernary` / `UncommentedEmptyElseBlock` (implicit else)**
+
+**Line 73** — `TODO` comment left in production code. **Rule: `CommentedOutCode` / `TodoComment`**
+
+**Line 85–90** — `switch` expression uses string literals `"key"`, `"anykeyword"`, `"anyfield"` as pseudo-field mappings with no constant definitions. **Rule: `AvoidDuplicateLiterals`**
+
+**Line 95–97** — Duplicate call to `ctx.operator().getStart().getType()` (same expression already evaluated at line 93). **Rule: `DuplicateCode` / redundant repeated call**
+
+**Line 93 and 95** — `ctx.operator() != null` is checked twice in sequence (lines 93 and 103) with no modification in between, making the second null-check redundant. **Rule: `UnnecessaryNullCheck` / `DoubleCheckedLocking`-adjacent**
+
+**Line 83** — Variable `field` is declared as `String` then reassigned via `switch` expression; the original `field` variable is being mutated. **Rule: `ImmutableField` / reassignment of effectively-mutable local variable**
+
+**Line 21** — Field `searchBarRegex` could be `private final` — it is already, but the class itself has no access modifier restriction beyond `public`; however the constructor parameter `EnumSet<SearchFlags>` is not defensively copied. **Rule: `MethodArgumentCouldBeFinal`**

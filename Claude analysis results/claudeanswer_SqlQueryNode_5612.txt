@@ -1,0 +1,8 @@
+**Line 24 — Return of Mutable Object (`EI_EXPOSE_REP`)**
+`params()` returns a direct reference to the mutable `ArrayList` field, allowing callers to modify internal state.
+
+**Line 17 — Field Not Defensively Copied (`EI2_EXPOSE_REP2`)**
+`List.of()` is immutable here, but inconsistent with line 12 where a defensive copy is made — the field type `List<String>` does not enforce immutability, making the contract unclear.
+
+**Line 12 — Inconsistent Defensive Copy**
+Constructor at line 10 copies the input (`new ArrayList<>(params)`), but the constructor at line 15 assigns `List.of()` directly — inconsistent mutability contract across constructors.

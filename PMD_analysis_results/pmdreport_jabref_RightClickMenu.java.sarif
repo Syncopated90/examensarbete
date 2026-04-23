@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UseUtilityClass",
+              "shortDescription": {
+                "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+              },
+              "fullDescription": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#useutilityclass",
+              "help": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UseUtilityClass",
+          "ruleIndex": 0,
+          "message": {
+            "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/RightClickMenu.java"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 8,
+                  "endLine": 49,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

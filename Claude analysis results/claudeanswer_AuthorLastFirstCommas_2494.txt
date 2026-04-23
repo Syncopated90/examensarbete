@@ -1,0 +1,9 @@
+**Line 15**: `UncommentedEmptyMethodBody` / **Missing Javadoc on public method** — `format` overrides an interface method but has no `@Override` documentation and the class-level `///` doc uses non-standard triple-slash comments.
+
+**Line 3–4**: `UnnecessaryImport` — `LayoutFormatter` and `AuthorList` imports should be verified; if `AuthorList` is only used via a static method call, a static import would be more appropriate (`UnusedImports` risk if refactored).
+
+**Line 11**: `NonFinalPublicClass` — `AuthorLastFirstCommas` is a public, non-final, non-abstract class with no extension point intended, violating encapsulation best practices.
+
+**Line 8–11**: `MissingJavadocType` — The `///` syntax is not valid Javadoc; standard `/** */` block comments must be used for Javadoc processing.
+
+**Line 15**: `LawOfDemeter` — Direct delegation to a static utility method `AuthorList.fixAuthorLastNameFirstCommas` couples this class tightly to `AuthorList` internals.

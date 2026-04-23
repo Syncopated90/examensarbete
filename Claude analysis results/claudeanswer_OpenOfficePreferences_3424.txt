@@ -1,0 +1,19 @@
+**Line 19** — `DEFAULT_WIN_EXEC_PATH` contains a hardcoded file path. **Rule: AvoidHardCodedPaths / Security - Hardcoded Path**
+
+**Line 22** — `DEFAULT_OSX_EXEC_PATH` contains a hardcoded file path. **Rule: AvoidHardCodedPaths / Security - Hardcoded Path**
+
+**Line 25** — `DEFAULT_LINUX_EXEC_PATH` contains a hardcoded file path. **Rule: AvoidHardCodedPaths / Security - Hardcoded Path**
+
+**Line 26** — `DEFAULT_LINUX_FLATPAK_EXEC_PATH` contains a hardcoded file path. **Rule: AvoidHardCodedPaths / Security - Hardcoded Path**
+
+**Line 20** — `WINDOWS_EXECUTABLE`, **Line 23** — `OSX_EXECUTABLE`, **Line 27** — `LINUX_EXECUTABLE` all have identical values `"soffice"` or near-identical. **Line 23 & 27**: **Rule: AvoidDuplicateLiterals**
+
+**Lines 29–40** — Eleven private fields declared but none are `final` after object construction is complete; they are JavaFX property wrappers mutated via setters. No direct rule break, but the fields themselves are `final` — acceptable.
+
+**Line 66** — Constructor has 12 parameters. **Rule: ExcessiveParameterList** (default threshold typically 7–10)
+
+**Line 128** — `setCurrentStyle` performs instance check and side-effect mutation of an unrelated field (`cslBibliographyBodyFormat`) — **Rule: SingleResponsibilityPrinciple / UnexpectedSideEffect**
+
+**Lines 75, 100** — `clearConnectionSettings` and `clearCurrentJStyle` methods set fields to empty string `""` rather than `null`; minor style issue but **Rule: AvoidDuplicateLiterals** applies to repeated `""` literals across lines 75, 68 (constructor default potential), 100.
+
+**Lines 19–27** — Public `static final` constants use underscore-separated names correctly, but `DEFAULT_WIN_EXEC_PATH` exposes Windows path separator `\\` directly in source. **Rule: AvoidEscapedUnicodeCharacters / Platform-Specific Path Separator**

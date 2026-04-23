@@ -1,0 +1,8 @@
+**Line 22 — `Method uses parallelStream()`**
+Using `parallelStream()` on a small or unsynchronized collection can cause thread-safety issues and is rarely beneficial; prefer `stream()`.
+
+**Line 11 — `Class modifier 'package-private' (missing access modifier)`**
+The class `FieldValueSuggestionProvider` has package-private visibility without explicit documentation justifying the restricted access; conventionally should be `public` or explicitly justified.
+
+**Line 22 — `Chained method calls (Law of Demeter violation)`**
+`database.getEntries().parallelStream().flatMap(...)` chains multiple method calls on intermediate objects, violating the Law of Demeter.

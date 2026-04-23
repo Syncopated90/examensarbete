@@ -1,0 +1,13 @@
+**Line 127** — `assert fieldsInAllEntries != null;` — **AssertWithSideEffects / MisplacedAssertion**: The null check via `assert` occurs *after* `fieldsInAllEntries` is already dereferenced on line 124 (`differingFields.removeAll(fieldsInAllEntries)`), making the assertion useless and misleading.
+
+**Line 124** — `differingFields.removeAll(fieldsInAllEntries);` — **NullPointerException / PotentialNullDereference**: `fieldsInAllEntries` can be `null` (result of `Map.get()`) and is used without a null check before dereferencing.
+
+**Line 113** — `entriesGroupingProgress.accept(counter++, entryTypeToFieldsInAnyEntryMap.size());` — **LoopVariableNotUsedInsideLoop / OffByOne**: `counter` is incremented but never reset or bounded; the final progress value sent is `size - 1`, not `size`, so 100% completion is never signalled.
+
+**Line 96** — `public Result check(BibDatabaseContext bibContext, BibEntryTypesManager bibEntryTypesManager, BiConsumer<Integer, Integer> entriesGroupingProgress)` — **ExcessiveParameterList**: Method has too many parameters; coupling of progress reporting via `BiConsumer` into the core check method violates Single Responsibility Principle.
+
+**Line 161** — `entryTypeToFieldsInAllEntriesMap.computeIfAbsent(entryType, _ -> new HashSet<>(filteredFields)).retainAll(filteredFields);` — **CorrectBehaviorForSingleEntry / LogicFlaw**: On the first entry of a type, `computeIfAbsent` initializes the set with `filteredFields`, then immediately calls `retainAll(filteredFields)` on the same set — the retain is a no-op and wastes a call, but more critically the initialization is entangled with mutation logic making it fragile.
+
+**Line 156** — `BibDatabaseMode mode = bibContext.getMode();` — **UnusedLocalVariable**: `mode` is assigned but never used within `collectEntriesIntoMaps`.
+
+**Line 53** — `private static Set<Field> filterExcludedFields(Collection<Field> fields)` — **DuplicatedCode / RepeatedCalls**: `filterExcludedFields` is called multiple times per entry in both `check` and `collectEntriesIntoMaps` on the same data without caching, causing redundant computation.

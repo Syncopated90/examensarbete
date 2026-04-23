@@ -1,0 +1,15 @@
+**Line 17** — `needsMigration` is a `public static` method; class is not designed as a utility class (no private constructor). **Inconsistent Static/Instance Design**.
+
+**Line 27** — `performMigration` checks `!entries.isEmpty()` and sets `changedOnMigration=true` even if no entry actually has a REVIEW field (no entries may be migrated). **Incorrect Logic / False Positive Side Effect**.
+
+**Line 44** — `performConflictingMigration` lacks `@NonNull` annotation on `parserResult`, inconsistent with `performMigration` (line 22) and `collectConflicts` (line 36). **Inconsistent Nullability Annotations**.
+
+**Line 60** — `LOGGER.info(...)` uses string concatenation implicitly via `.formatted()` inside the log call; while `.formatted()` is not concatenation per se, the entire argument expression is eagerly evaluated regardless of log level. **Rule: Avoid Eager Log Message Evaluation** (use parameterized logging instead).
+
+**Line 61** — `entry.getField(StandardField.COMMENT).get()` called without `isPresent()` check (the `isPresent()` is on the outer `if`, but `.get()` is chained in the return expression separately on a new `Optional` retrieval). **Redundant Double Call / Potential NoSuchElementException** if field is removed between calls.
+
+**Line 68** — `entry.getField(StandardField.REVIEW).get()` called without `isPresent()` guard at the call site; relies on `hasReviewField` check above but `.get()` on `Optional` is unsafe. **Rule: Optional.get() Without isPresent Check**.
+
+**Line 68** — `parserResult.setChangedOnMigration(true)` is set inside `migrate()` and also conditionally in `performMigration()` (line 29); duplicated responsibility. **Rule: Single Responsibility / Duplicate State Mutation**.
+
+**Line 36** — `collectConflicts` uses `Collectors.toList()` instead of `Stream.toList()` (available since Java 16). **Rule: Use Modern API**.

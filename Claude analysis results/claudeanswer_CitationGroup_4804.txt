@@ -1,0 +1,29 @@
+**Line 15** — `VisibilityModifier`: Public field `dataModel` should be private.
+
+**Line 21** — `VisibilityModifier`: Public field `groupId` should be private.
+
+**Line 26** — `VisibilityModifier`: Public field `citationType` should be private.
+
+**Line 27** — `VisibilityModifier`: Public field `citationsInStorageOrder` should be private.
+
+**Line 75** — `MethodLength` / `CyclomaticComplexity`: Method `imposeLocalOrder` contains duplicate conditional checks (`dataModel == OODataModel.JabRef52` appears twice); violates **DuplicatedBlocks**.
+
+**Line 75** — `AccessModifierCheck`: Method `imposeLocalOrder` has package-private access (no modifier) inconsistently with other public methods — **VisibilityModifier**.
+
+**Line 80** — `LocalVariableCouldBeFinal`: `lastCitation` could be declared `final`.
+
+**Line 71** — `LocalVariableCouldBeFinal`: `last` could be declared `final` (already is, acceptable) — N/A.
+
+**Line 72** — `LocalVariableCouldBeFinal`: `lastPageInfo` is reassigned conditionally; however declared with `Optional.empty()` and then reassigned — **VariableDeclarationUsageDistance**: variable `lastPageInfo` declared far from its use.
+
+**Line 100** — `UnnecessaryQualifiedReference` (or `ThisQualifier`): Unnecessary `this.` on `this.indexInGlobalOrder` in `getIndexInGlobalOrder`.
+
+**Line 108** — `ThisQualifier`: Unnecessary `this.` in `getReferenceMarkNameForLinking` is absent but `this.indexInGlobalOrder` at line 100 and `this.citationMarker` at line 124 use it inconsistently — **HiddenField** / **ThisQualifier** inconsistency across getters.
+
+**Line 54** — `OptionalAsParameter`: `Optional<String> referenceMarkNameForLinking` used as constructor parameter — violates **OptionalUsage** rule (Optionals should not be used as method/constructor parameters).
+
+**Line 97** — `OptionalAsParameter`: `Optional<Integer> indexInGlobalOrder` used as method parameter in `setIndexInGlobalOrder`.
+
+**Line 113** — `OptionalAsParameter`: `Optional<String> referenceMarkNameForLinking` used as method parameter in `setReferenceMarkNameForLinking`.
+
+**Line 119** — `OptionalAsParameter`: `Optional<OOText> citationMarker` used as method parameter in `setCitationMarker`.

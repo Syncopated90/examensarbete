@@ -1,0 +1,21 @@
+**Line 29** — `LocalVariableNamingConventions`: variable `formatted` shadows parameter `value` conceptually; minor but `formatted` is reassigned from its initializer — acceptable, no rule broken here strictly.
+
+**Line 29** — `VariableDeclarationUsageDistance`: `String formatted = value;` declared and immediately used in loop condition, acceptable.
+
+**Line 30** — `BooleanExpressionComplexity`: The `while` condition contains 3 boolean sub-expressions with line-wrapped `&&` — borderline but not a clear violation.
+
+**Line 30–31** — `OperatorWrap`: Binary operator `==` on line 31 is at the start of the continued line, violating **OperatorWrap** (operator should be at end of previous line).
+
+**Line 52–53** — `MissingJavadocMethod`: `hasNegativeBraceCount` uses Javadoc-style `///` (Markdown doc comments / line doc comments), which is non-standard Javadoc syntax — violates **JavadocStyle** / **InvalidJavadocPosition** (standard `/** */` expected).
+
+**Line 52** — `JavadocMethod` (`@param` and `@return` in non-standard `///` format): not recognized by standard Javadoc tooling — violates **JavadocStyle**.
+
+**Line 57** — `ForLoopVariableCount`: acceptable, no violation.
+
+**Line 9** — `DesignForExtension`: `RemoveEnclosingBracesFormatter` extends `Formatter` and overrides methods without being `final` — violates **DesignForExtension** (overridable methods in non-final class without documentation of extension).
+
+**Line 28** — `ParameterAssignment`: `formatted` is a local copy of `value`, but the pattern of reassigning it inside the loop violates **ParameterAssignment** analogue for locals — specifically **InnerAssignment** is not triggered, but reassignment of `formatted` inside `else` block is the intended logic, not a violation per se.
+
+**Line 28** — `ReturnCount`: `format` has two `return` statements — violates **ReturnCount** (only one return allowed).
+
+**Line 48** — `VisibilityModifier`: `hasNegativeBraceCount` is `private` — correct, no violation.

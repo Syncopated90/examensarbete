@@ -1,0 +1,23 @@
+**Line 16** — `ClassNamingConventions` / `CouplingBetweenObjects`: Class implements two interfaces/extends a class simultaneously; minor design concern, but more critically:
+
+**Line 16** — `UnnecessaryImplementsInterface`: `PreferencesTab` may already be implemented by `AbstractPreferenceTabView`, causing redundant declaration.
+
+**Line 23-25** — `ConstructorCallsOverridableMethod`: `ViewLoader.view(this)` is called inside the constructor, passing `this` before the object is fully initialized.
+
+**Line 35** — `FieldAssignment` / `AssignmentToNonFinalField`: `viewModel` is an inherited non-final field being assigned directly in `initialize()` rather than through a constructor or dependency injection.
+
+**Line 37** — `LawOfDemeter`: `exporterTable.getSelectionModel().setSelectionMode(...)` violates the Law of Demeter (multiple chained calls on foreign objects).
+
+**Line 38** — `LawOfDemeter`: `exporterTable.itemsProperty().bind(...)` — chained call violates Law of Demeter.
+
+**Line 39** — `LawOfDemeter`: `exporterTable.getSelectionModel().getSelectedItems()` — two-level chain violates Law of Demeter.
+
+**Line 40** — `LawOfDemeter`: `cellData.getValue().name()` inside lambda — chained navigation violates Law of Demeter.
+
+**Line 41** — `LawOfDemeter`: `cellData.getValue().layoutFileName()` — same violation.
+
+**Line 42** — `LawOfDemeter`: `cellData.getValue().extension()` — same violation.
+
+**Line 17-20** — `VisibilityModifier`: `@FXML` fields are package-private (no explicit modifier), violating encapsulation; they should be `private` (they are `private` here, acceptable) — actually fields are `private`, no violation here.
+
+**Line 35** — `MissingOverride`/`InjectedField`: `viewModel` assigned without null-check; if `preferences` or `dialogService` is null, no guard exists (`NullAssignment` risk).

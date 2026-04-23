@@ -1,0 +1,21 @@
+**Line 52** — `initialized` is a non-volatile static field accessed in synchronized and unsynchronized contexts. **Rule: DCL00-J / Unsafe publication of static mutable field (missing `volatile`)**
+
+**Line 52** — Static mutable field `initialized` in a class that is presumably instantiated by a DI container. **Rule: ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD**
+
+**Line 84** — `Collectors.toList()` used; prefer `Stream.toList()` (consistent with lines 83, 99). **Rule: S6204 / Use Stream.toList()**
+
+**Line 99** — Lambda inside `ifPresent` could be replaced with method reference or extracted for clarity; `Collectors.toList()` should be `Stream.toList()`. **Rule: S6204**
+
+**Line 112** — `"\\".concat(...)` string concatenation using `concat` instead of `+` operator; also string literal `"\\"` followed by chained `concat` is hard to read. **Rule: S1117 / Use string concatenation operator**
+
+**Line 144** — `assert` statement used to validate logic (`assert !"demo".equalsIgnoreCase(...)`). Assertions can be disabled at runtime and must not be used for control-flow validation. **Rule: S2check / Do not use assert for argument validation (PMD: DoNotUseAssertEquals / S5960)**
+
+**Line 196** — `initialized = true` written inside `Platform.startup()` lambda (non-synchronized thread) while `initializeGUI()` is `synchronized`. Write to `initialized` escapes the synchronized block. **Rule: DCL00-J / Unsafe write to shared variable outside synchronized context**
+
+**Line 204** — Catching `InterruptedException` and wrapping in `RuntimeException` without preserving the interrupt is partially mitigated by `Thread.currentThread().interrupt()`, but throwing `RuntimeException` (raw, unchecked) is flagged. **Rule: S112 / Do not throw raw RuntimeException**
+
+**Line 209** — `@Nullable` return type on `getChocolateBibAsStream()` but callers (`getLatestDatabaseStream`, `getDatabaseStreamFromPath`) pass the result directly to `getDatabaseContextFromStream(InputStream)` without null checks. **Rule: NullPointerException risk / S2259 / Null dereference**
+
+**Line 77** — `srvStateManager instanceof JabRefSrvStateManager` check is inverted in intent compared to line 91 — logic inconsistency and repeated `instanceof` pattern suggests violation of **Rule: S1862 / Related conditions should not have the same logic; also consider polymorphism over instanceof (S2094)**
+
+**Line 86** — `databaseContext.getEntries()` result streamed with `Collectors.toList()` while elsewhere `.toList()` is used. **Rule: S6204 / Inconsistent use of Collectors.toList() vs Stream.toList()**

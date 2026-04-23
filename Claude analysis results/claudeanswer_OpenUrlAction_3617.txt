@@ -1,0 +1,17 @@
+**Line 47** — `// ToDo:` comment left in production code. **Rule: CommentedOutCode / TodoComment**
+
+**Line 49** — `link` is assigned but may be immediately overwritten without use; variable assigned multiple times unconditionally. **Rule: VariableDeclarationUsageDistance**
+
+**Line 50** — `field` is assigned a value that may never be used if overwritten. **Rule: VariableDeclarationUsageDistance**
+
+**Line 52–53** — `StandardField.ISBN` is not in the executable binding check (`URL, DOI, URI, EPRINT`), yet it is handled silently. **Rule: InconsistentBehavior / MissingCase**
+
+**Line 40** — `entries.size() != 1` check is redundant given the `executable` binding already enforces exactly one selection; dead defensive code. **Rule: RedundantCondition / UnnecessaryConditional**
+
+**Line 37** — Lambda passed to `ifPresent` performs complex multi-step logic; method too long / violation of single responsibility inside lambda. **Rule: ExcessiveMethodLength / LambdaCanBeMethodReference**
+
+**Line 49–62** — Sequential `if` blocks (not `else if`) cause all conditions to be evaluated; earlier assignments are always overwritten if later conditions are true. **Rule: CollapsibleIfStatements / InefficientConditional**
+
+**Line 65** — `field` may be used uninitialized in a logical sense if `link` comes from `EPRINT` default but `field` is `EPRINT` regardless; however the real issue is `field` is not `final`, violating **Rule: ImmutableField / LocalVariableShouldBeFinal**
+
+**Line 66** — `field.equals(StandardField.DOI)` should use `==` for enum comparison. **Rule: UseEqualsToCompareEnumValues / CompareObjectsWithEquals**

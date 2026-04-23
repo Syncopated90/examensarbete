@@ -1,0 +1,2473 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ExcessiveImports",
+              "shortDescription": {
+                "text": "A high number of imports (37) can indicate a high degree of coupling within an object; current threshold is 30."
+              },
+              "fullDescription": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#excessiveimports",
+              "help": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CouplingBetweenObjects",
+              "shortDescription": {
+                "text": "A value of 24 may denote a high amount of coupling within the class (threshold: 20)"
+              },
+              "fullDescription": {
+                "text": "\nThis rule counts the number of unique attributes, local variables, and return types within an object.\nA number higher than the specified threshold can indicate a high degree of coupling.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#couplingbetweenobjects",
+              "help": {
+                "text": "\nThis rule counts the number of unique attributes, local variables, and return types within an object.\nA number higher than the specified threshold can indicate a high degree of coupling.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "TooManyMethods",
+              "shortDescription": {
+                "text": "This class has too many methods, consider refactoring it."
+              },
+              "fullDescription": {
+                "text": "\nA class with too many methods is probably a good suspect for refactoring, in order to reduce its\ncomplexity and find a way to have more fine grained objects.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#toomanymethods",
+              "help": {
+                "text": "\nA class with too many methods is probably a good suspect for refactoring, in order to reduce its\ncomplexity and find a way to have more fine grained objects.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidFieldNameMatchingMethodName",
+              "shortDescription": {
+                "text": "Field fieldsForAdding has the same name as a method"
+              },
+              "fullDescription": {
+                "text": "\nIt can be confusing to have a field name with the same name as a method. While this is permitted,\nhaving information (field) and actions (method) is not clear naming. Developers versed in\nSmalltalk often prefer this approach as the methods denote accessor methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidfieldnamematchingmethodname",
+              "help": {
+                "text": "\nIt can be confusing to have a field name with the same name as a method. While this is permitted,\nhaving information (field) and actions (method) is not clear naming. Developers versed in\nSmalltalk often prefer this approach as the methods denote accessor methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like entryTypesWithFields"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like entryTypesToDelete"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like entryTypeValidator"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on field 'isMultiline'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'mode' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'entryTypesManager' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'dialogService' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'preferences' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'allTypes' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entryType' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'viewModel' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidInstantiatingObjectsInLoops",
+              "shortDescription": {
+                "text": "Avoid instantiating new objects inside loops"
+              },
+              "fullDescription": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_performance.html#avoidinstantiatingobjectsinloops",
+              "help": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "properties": {
+                "ruleset": "Performance",
+                "priority": 3,
+                "tags": [
+                  "Performance"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'multilineFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'typeViewModel' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'allFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'type' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'newPlainType' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'required' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'newType' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'newentryType' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like entryTypeViewModel"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entryTypeViewModel' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'focusedItem' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fieldName' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'newField' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fieldExists' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "OnlyOneReturn",
+              "shortDescription": {
+                "text": "A method should have only one exit point, and that should be the last statement in the method"
+              },
+              "fullDescription": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#onlyonereturn",
+              "help": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fieldViewModel' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'displayName' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entryFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ExcessiveImports",
+          "ruleIndex": 0,
+          "message": {
+            "text": "A high number of imports (37) can indicate a high degree of coupling within an object; current threshold is 30."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 221,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CouplingBetweenObjects",
+          "ruleIndex": 1,
+          "message": {
+            "text": "A value of 24 may denote a high amount of coupling within the class (threshold: 20)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 221,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 8,
+                  "endLine": 44,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "TooManyMethods",
+          "ruleIndex": 3,
+          "message": {
+            "text": "This class has too many methods, consider refactoring it."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 77,
+                  "endLine": 221,
+                  "endColumn": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 41,
+                  "endLine": 46,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidFieldNameMatchingMethodName",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field fieldsForAdding has the same name as a method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 41,
+                  "endLine": 46,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 54,
+                  "endLine": 47,
+                  "endColumn": 71
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 34,
+                  "endLine": 48,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 34,
+                  "endLine": 49,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Avoid excessively long variable names like entryTypesWithFields"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 54,
+                  "endLine": 50,
+                  "endColumn": 74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 54,
+                  "endLine": 50,
+                  "endColumn": 74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Avoid excessively long variable names like entryTypesToDelete"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 38,
+                  "endLine": 51,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 38,
+                  "endLine": 51,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 34,
+                  "endLine": 53,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 40,
+                  "endLine": 54,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 33,
+                  "endLine": 55,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 35,
+                  "endLine": 56,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Avoid excessively long variable names like entryTypeValidator"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 29,
+                  "endLine": 58,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 29,
+                  "endLine": 58,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 29,
+                  "endLine": 59,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 30,
+                  "endLine": 60,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 22,
+                  "endLine": 62,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Missing commented default access modifier on field 'isMultiline'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 22,
+                  "endLine": 62,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 12,
+                  "endLine": 64,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Parameter 'mode' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 57,
+                  "endLine": 64,
+                  "endColumn": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Parameter 'entryTypesManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 62,
+                  "endLine": 65,
+                  "endColumn": 79
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'dialogService' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 55,
+                  "endLine": 66,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Parameter 'preferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 56,
+                  "endLine": 67,
+                  "endColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Local variable 'allTypes' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 34,
+                  "endLine": 91,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Local variable 'entryType' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 27,
+                  "endLine": 93,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'viewModel' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 32,
+                  "endLine": 94,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 29,
+                  "endLine": 96,
+                  "endColumn": 81
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 98,
+                  "startColumn": 29,
+                  "endLine": 98,
+                  "endColumn": 75
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'multilineFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 20,
+                  "endLine": 106,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Local variable 'typeViewModel' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 33,
+                  "endLine": 107,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Local variable 'allFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 34,
+                  "endLine": 108,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Local variable 'type' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 26,
+                  "endLine": 110,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Local variable 'newPlainType' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 23,
+                  "endLine": 111,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Local variable 'required' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 28,
+                  "endLine": 119,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Local variable 'fields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 28,
+                  "endLine": 125,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Local variable 'newType' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 26,
+                  "endLine": 127,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 36,
+                  "endLine": 127,
+                  "endColumn": 84
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Local variable 'entryType' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 27,
+                  "endLine": 132,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 31,
+                  "endLine": 140,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Local variable 'newentryType' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 19,
+                  "endLine": 141,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Local variable 'type' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 22,
+                  "endLine": 142,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Avoid excessively long variable names like entryTypeViewModel"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 28,
+                  "endLine": 143,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Local variable 'entryTypeViewModel' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 28,
+                  "endLine": 143,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 17,
+                  "endLine": 150,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Parameter 'focusedItem' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 52,
+                  "endLine": 150,
+                  "endColumn": 63
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 37,
+                  "endLine": 155,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 31,
+          "message": {
+            "text": "Local variable 'fieldName' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 156,
+                  "startColumn": 16,
+                  "endLine": 156,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Local variable 'newField' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 157,
+                  "startColumn": 15,
+                  "endLine": 157,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Local variable 'fieldExists' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 159,
+                  "startColumn": 17,
+                  "endLine": 159,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 34,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 13,
+                  "endLine": 166,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 35,
+          "message": {
+            "text": "Local variable 'fieldViewModel' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 24,
+                  "endLine": 169,
+                  "endColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 179,
+                  "startColumn": 20,
+                  "endLine": 179,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 36,
+          "message": {
+            "text": "Parameter 'displayName' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 179,
+                  "startColumn": 45,
+                  "endLine": 179,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 37,
+          "message": {
+            "text": "Local variable 'entryFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 180,
+                  "startColumn": 40,
+                  "endLine": 180,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 17,
+                  "endLine": 185,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Parameter 'focusedItem' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 44,
+                  "endLine": 185,
+                  "endColumn": 55
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 189,
+                  "startColumn": 17,
+                  "endLine": 189,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 194,
+                  "startColumn": 47,
+                  "endLine": 194,
+                  "endColumn": 72
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 198,
+                  "startColumn": 27,
+                  "endLine": 198,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 202,
+                  "startColumn": 27,
+                  "endLine": 202,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 206,
+                  "startColumn": 47,
+                  "endLine": 206,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 214,
+                  "startColumn": 29,
+                  "endLine": 214,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CustomEntryTypesTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 218,
+                  "startColumn": 29,
+                  "endLine": 218,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

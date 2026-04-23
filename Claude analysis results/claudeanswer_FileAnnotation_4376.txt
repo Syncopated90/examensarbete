@@ -1,0 +1,15 @@
+**Line 75** — `extractModifiedTime` mutates the parameter `dateTimeString` (a method parameter reassignment). **Rule: ParameterAssignment**
+
+**Line 92** — Magic string `"þÿ"` defined inline. **Rule: AvoidInlineConditionals / MagicNumber (magic literal)**
+
+**Line 113** — `Objects.equals(this.page, that.page)` boxes a primitive `int` unnecessarily. **Rule: UnnecessaryBoxing / UseEqualsToCompareIntegers** (should use `this.page == that.page`)
+
+**Line 75** — Method is `public static` but operates only on its parameter with no side effects; could be package-private. **Rule: VisibilityModifier / UnusedModifier**
+
+**Line 156** — `linkedFileAnnotation.get()` called without a guard inside the method itself; relies on external contract only. **Rule: OptionalGetWithoutIsPresent**
+
+**Line 18** — `DATE_TIME_STRING_WITH_TIME_ZONE` uses a loose regex (`".+"`) that could match unintended input. **Rule: RegexpSingleline / OverlyBroadPattern** (minor)
+
+**Line 101** — `abbreviateAnnotationName` calls `subSequence` instead of `substring`, returning `CharSequence` concatenated with a `String`, causing implicit cast. **Rule: UnnecessaryTypeConversion / PreferStringSubstring**
+
+**Line 101** — No null-check on `annotationName` parameter inside `abbreviateAnnotationName`; `toString()` passes `content`, which is guaranteed non-null, but the method itself is not defensively coded. **Rule: NullAssignment / AvoidDereferencingNull**

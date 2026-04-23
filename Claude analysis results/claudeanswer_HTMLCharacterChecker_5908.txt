@@ -1,0 +1,5 @@
+**Line 12** — `UPPER_CASE` constant name acceptable, but pattern string `&[#\\p{Alnum}]+;` uses `\\p{Alnum}` (POSIX class) inside a Java `Pattern`; `\p{Alnum}` is not a valid Java regex Unicode category — should be `\p{Alphanumeric}` or `[a-zA-Z0-9]`. **Rule: `InvalidRegularExpression`**
+
+**Line 17** — Method chain spans multiple lines with inconsistent indentation (extra spaces before `.filter`/`.map`). **Rule: `Indentation`**
+
+**Line 19** — `Localization.lang(...)` called inside a stream `map`, causing repeated localization lookup per entry field iteration. **Rule: `AvoidCallingLocalizationInLoop` / `MethodCallInLoopCondition`**

@@ -1,0 +1,13 @@
+**Line 13** — `UnusedImports`: `com.airhacks.afterburner.injection.Injector` is used inside the method, but the dependency injection via `Injector.instantiateModelOrService` is a **Service Locator anti-pattern** (not a static analysis rule per se, but flagged by tools like ArchUnit or SonarQube as `InjectionAntiPattern`).
+
+**Line 13** — `AvoidStaticImports` / **`StaticMethodInvocation`** (SonarQube: `S2209`): `Injector.instantiateModelOrService(BibEntryTypesManager.class)` is a static service-locator call hiding a true dependency; should be injected via constructor.
+
+**Line 44–45** — **`ObjectCreationInLoop`** / SonarQube `S2095`: `SaveDatabaseAction` is instantiated inside `execute()` on every invocation; resource may not be closed if it implements `Closeable`.
+
+**Line 17** — **`PublicInnerClass`** (Checkstyle: `VisibilityModifier`): `SaveMethod` enum is `public` and nested; should be a top-level type.
+
+**Line 44** — SonarQube **`S3010`** / **`S4449`**: `tabSupplier.get()` can return `null`; no null-check before passing to `SaveDatabaseAction` constructor.
+
+**Line 36–39** — **`AvoidDuplicateLiterals`** / control-flow: `saveMethod` is checked in the constructor (lines 36–39) and again in `execute()` (lines 49–54); duplicated conditional logic on the same field.
+
+**Line 16** — Checkstyle **`JavadocType`**: Class has a `///` doc comment (not valid Javadoc syntax); standard `/** */` should be used.

@@ -1,0 +1,29 @@
+**Line 170: `FieldAndContent` class - Package-Private Inner Class**
+Rule: `VisibilityModifier` - Fields `field` and `content` are package-private (no modifier), violating encapsulation.
+
+**Line 171-172: `FieldAndContent` fields**
+Rule: `VisibilityModifier` - Instance variables `field` and `content` should be private.
+
+**Line 100-101: Throwing `IllegalArgumentException` in utility method**
+Rule: `IllegalArgumentException` thrown for `maxAuthors == 0` and `maxAuthors < -1` — acceptable, but the conditions overlap: `maxAuthors < -1` would be caught before `maxAuthors == 0` if reordered; current order is fine but `maxAuthors == 0 && nAuthors != 0` skips the throw when `nAuthors == 0`.
+
+**Line 311: `year != null` check**
+Rule: `NonNull` — `getCitationMarkerField` never returns `null` (returns `""` on empty), making this null check (`if (year != null)`) dead code / `RedundantNullCheck`.
+
+**Line 395: `boolean[] startsNewGroup` oversized**
+Rule: `ArrayIndexOutOfBoundsException` risk — `startsNewGroup` is sized `nEntries` but only `i_out` entries are written; the array is passed to `getAuthorYearParenthesisMarker2` with `filteredCitationMarkerEntries` which may be smaller, causing potential index mismatch. Rule: `MismatchedArraySize`.
+
+**Line 167: `FieldAndContent` - Missing `private` constructor or access modifier**
+Rule: `PackageVisible` — class `FieldAndContent` has no access modifier, making it package-private unintentionally.
+
+**Line 86: Constant `maxAuthorsBeforeEtAl` with dead code block**
+Rule: `ConstantCondition` — `if (maxAuthorsBeforeEtAl > 1)` at line 151 is always `false` since `maxAuthorsBeforeEtAl = 1`, making the block dead code.
+
+**Line 442: `pageInfoInhibitsJoin` ternary**
+Rule: `SimplifyBooleanExpression` — `bothPageInfosAreEmpty ? false : (citationKeysDiffer || pageInfosDiffer)` simplifies to `!bothPageInfosAreEmpty && (citationKeysDiffer || pageInfosDiffer)`.
+
+**Line 340: `CitationMarkerNormEntryWrap.inner` field**
+Rule: `VisibilityModifier` — field `inner` is package-private; should be `private`.
+
+**Line 224: `getCitationMarkerField` parameter `fields` missing `@NonNull`**
+Rule: `MissingNullCheck` / inconsistent `@NonNull` annotation compared to `getRawCitationMarkerField` which annotates all parameters.

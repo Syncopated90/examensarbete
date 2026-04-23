@@ -1,0 +1,21 @@
+**Line 7** — `CommentDefaultsShouldBeJavadoc` (or `InvalidJavadocPosition`): Uses `///` (Markdown Javadoc, Java 23+) for a type comment; non-standard for most static analysis tools expecting `/** */`.
+
+**Line 7** — `MissingJavadocType`: The `///` comment block is not recognized as valid Javadoc by standard tools (e.g., Checkstyle, PMD).
+
+**Line 8** — `UnnecessaryFullyQualifiedName` / comment style: `///` used instead of `/** */` throughout — affects lines 7–10, 18–21, 23–27, 29–32, 34–38, 40–44.
+
+**Line 12** — `InstantiationOfUtilityClass`: `List.of(getTabName())` — minor, but acceptable.
+
+**Line 14** — `MissingJavadocMethod`: `getBuilder()` has no Javadoc comment.
+
+**Line 8** — `HideUtilityClassConstructor`: Not applicable here, but the comment `"It needs to extend from Component"` is factually incorrect — `Component` is AWT; this uses JavaFX `Node`. **Inaccurate documentation**.
+
+**Line 8** — `AvoidDuplicateLiterals`: Not triggered here.
+
+**Line 8** — `UnnecessaryImport` (PMD): `javafx.scene.Node` — used, so not an issue.
+
+**Line 3** — `UnnecessaryImport` (PMD/Checkstyle `UnusedImports`): `java.util.List` is used; no violation.
+
+**Line 34** — `MissingJavadocMethod` (Checkstyle): `validateSettings()` — `///` comment not valid Javadoc; method lacks proper `@return` tag in recognized format.
+
+**Line 40** — `JavadocMissingLeadingAsterisk` / improper `@return` placement: `@return` inside `///` block is not parsed as Javadoc by Checkstyle/PMD.

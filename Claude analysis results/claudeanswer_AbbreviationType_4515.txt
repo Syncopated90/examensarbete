@@ -1,0 +1,18 @@
+**Line 9: `S1118` (Utility classes should not have a public constructor)**
+— Not applicable here; this is an enum.
+
+**Line 3-8: `S125` (Sections of code should not be commented out)**
+— Not applicable; this is Javadoc.
+
+**Line 3: `MissingJavadocType` / `S1176`** — Javadoc uses `///` (single-line doc comment syntax), which is non-standard Java Javadoc syntax. Standard Javadoc requires `/** */`.
+
+**Line 9: `S2enum` / Naming** — No issues.
+
+---
+
+**Line 3-8:** Non-standard `///` triple-slash comments are not valid Javadoc in Java (valid in C#/Kotlin but not Java). This violates:
+- **Rule: `InvalidJavadocPosition`** or **`S1876`** — The `///` syntax is not recognized as Javadoc by the Java compiler or standard tools; it produces no actual Javadoc output.
+
+**Line 1:** Missing package-level or no issues.
+
+**Lines 11-14:** Enum constants lack individual Javadoc comments, violating **`MissingJavadocMethod`** / **`JavadocVariable`** if documentation of public enum constants is enforced.

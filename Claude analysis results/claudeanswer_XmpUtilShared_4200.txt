@@ -1,0 +1,15 @@
+**Line 21** — `DOM_XMP_PARSER` — Field name violates naming convention; non-static fields must use camelCase (`domXmpParser`). Rule: **FieldNamingConventions**
+
+**Line 21** — `private DomXmpParser DOM_XMP_PARSER;` — Non-final field using all-uppercase/constant naming convention. Rule: **FieldNamingConventions**
+
+**Line 32** — `XMPMetadata meta;` — Variable declared without initialization at point of declaration; unnecessary separate declaration before `try` block. Rule: **VariableDeclarationUsageDistance**
+
+**Line 32** — `meta = DOM_XMP_PARSER.parse(is);` — Possible null dereference; `DOM_XMP_PARSER` can be `null` if constructor caught `XmpParsingException`. Rule: **NullPointerException** / **AvoidDereferencingNullPointers**
+
+**Line 34** — `return meta;` — Local variable `meta` is redundant; result can be returned directly. Rule: **UnnecessaryLocalBeforeReturn**
+
+**Line 55** — `new XmpUtilReader()` — Instantiation of object inside `static` method using constructor with potential resource concerns; object not closed. Rule: **CloseResource** (if `XmpUtilReader` is `Closeable`)
+
+**Line 59** — `path.toString()` — Unnecessary call to `toString()` inside SLF4J logging; parameterized logging accepts `Object` directly. Rule: **InappropriateStringMethodCall** / **UseObjectForClearerAPI**
+
+**Line 58** — `XmpUtilShared.LOGGER` — Unnecessary class qualification for `LOGGER` within the same class; should be just `LOGGER`. Rule: **UnnecessaryFullyQualifiedName**

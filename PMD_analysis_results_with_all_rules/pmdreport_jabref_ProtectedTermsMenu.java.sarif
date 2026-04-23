@@ -1,0 +1,1484 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'FORMATTER' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like protectSelectionActionInformation"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like unprotectSelectionActionInformation"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CallSuperInConstructor",
+              "shortDescription": {
+                "text": "It is a good practice to call super() in a constructor"
+              },
+              "fullDescription": {
+                "text": "\nIt is a good practice to call super() in a constructor. If super() is not called but\nanother constructor (such as an overloaded constructor) is called, this rule will not report it.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#callsuperinconstructor",
+              "help": {
+                "text": "\nIt is a good practice to call super() in a constructor. If super() is not called but\nanother constructor (such as an overloaded constructor) is called, this rule will not report it.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on constructor 'ProtectSelectionAction()'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'selectedText' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "PublicMemberInNonPublicType",
+              "shortDescription": {
+                "text": "Public member 'UnprotectSelectionAction' declared in a non-public type"
+              },
+              "fullDescription": {
+                "text": "\nA non-public type should not declare its own members as public, as their visibility is effectively limited\nto private, package-private, or protected, making the use of the public modifier misleading.\nDeclaring members as public within a non-public type creates confusion and can lead to unintended consequences\nif the type is later made public, as this would expose all its public members.\nHowever, it is acceptable for a non-public type to inherit public members from a superclass, as this is part of\nthe superclass's design.\n\nTo avoid such issues, these members should be declared as protected, package-private, or even private,\nas appropriate. Note that altering the visibility of such members might unintentionally affect the API\nof a public subtype. Specifically, a public subtype of a package-private supertype inherits all public\nmethods of the supertype. Converting these methods to private removes them from the subtype as well, which\ncan inadvertently change the subtype's public API.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#publicmemberinnonpublictype",
+              "help": {
+                "text": "\nA non-public type should not declare its own members as public, as their visibility is effectively limited\nto private, package-private, or protected, making the use of the public modifier misleading.\nDeclaring members as public within a non-public type creates confusion and can lead to unintended consequences\nif the type is later made public, as this would expose all its public members.\nHowever, it is acceptable for a non-public type to inherit public members from a superclass, as this is part of\nthe superclass's design.\n\nTo avoid such issues, these members should be declared as protected, package-private, or even private,\nas appropriate. Note that altering the visibility of such members might unintentionally affect the API\nof a public subtype. Specifically, a public subtype of a package-private supertype inherits all public\nmethods of the supertype. Converting these methods to private removes them from the subtype as well, which\ncan inadvertently change the subtype's public API.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'formattedString' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on constructor 'FormatFieldAction()'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'list' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentDefaultAccessModifier",
+              "shortDescription": {
+                "text": "Missing commented default access modifier on field 'list'"
+              },
+              "fullDescription": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier",
+              "help": {
+                "text": "\nTo avoid mistakes if we want that an Annotation, Class, Enum, Method, Constructor or Field have a default access modifier\nwe must add a comment at the beginning of its declaration.\nBy default, the comment must be `/* default */` or `/* package */`, if you want another, you have to provide a regular expression.\n\nThis rule ignores by default all cases that have a `@VisibleForTesting` annotation or any JUnit5/TestNG annotation. Use the\nproperty \"ignoredAnnotations\" to customize the recognized annotations.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "PublicMemberInNonPublicType",
+              "shortDescription": {
+                "text": "Public member 'AddToProtectedTermsAction' declared in a non-public type"
+              },
+              "fullDescription": {
+                "text": "\nA non-public type should not declare its own members as public, as their visibility is effectively limited\nto private, package-private, or protected, making the use of the public modifier misleading.\nDeclaring members as public within a non-public type creates confusion and can lead to unintended consequences\nif the type is later made public, as this would expose all its public members.\nHowever, it is acceptable for a non-public type to inherit public members from a superclass, as this is part of\nthe superclass's design.\n\nTo avoid such issues, these members should be declared as protected, package-private, or even private,\nas appropriate. Note that altering the visibility of such members might unintentionally affect the API\nof a public subtype. Specifically, a public subtype of a package-private supertype inherits all public\nmethods of the supertype. Converting these methods to private removes them from the subtype as well, which\ncan inadvertently change the subtype's public API.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#publicmemberinnonpublictype",
+              "help": {
+                "text": "\nA non-public type should not declare its own members as public, as their visibility is effectively limited\nto private, package-private, or protected, making the use of the public modifier misleading.\nDeclaring members as public within a non-public type creates confusion and can lead to unintended consequences\nif the type is later made public, as this would expose all its public members.\nHowever, it is acceptable for a non-public type to inherit public members from a superclass, as this is part of\nthe superclass's design.\n\nTo avoid such issues, these members should be declared as protected, package-private, or even private,\nas appropriate. Note that altering the visibility of such members might unintentionally affect the API\nof a public subtype. Specifically, a public subtype of a package-private supertype inherits all public\nmethods of the supertype. Converting these methods to private removes them from the subtype as well, which\ncan inadvertently change the subtype's public API.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'list' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'text' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "PublicMemberInNonPublicType",
+              "shortDescription": {
+                "text": "Public member 'ProtectedTermsMenu' declared in a non-public type"
+              },
+              "fullDescription": {
+                "text": "\nA non-public type should not declare its own members as public, as their visibility is effectively limited\nto private, package-private, or protected, making the use of the public modifier misleading.\nDeclaring members as public within a non-public type creates confusion and can lead to unintended consequences\nif the type is later made public, as this would expose all its public members.\nHowever, it is acceptable for a non-public type to inherit public members from a superclass, as this is part of\nthe superclass's design.\n\nTo avoid such issues, these members should be declared as protected, package-private, or even private,\nas appropriate. Note that altering the visibility of such members might unintentionally affect the API\nof a public subtype. Specifically, a public subtype of a package-private supertype inherits all public\nmethods of the supertype. Converting these methods to private removes them from the subtype as well, which\ncan inadvertently change the subtype's public API.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#publicmemberinnonpublictype",
+              "help": {
+                "text": "\nA non-public type should not declare its own members as public, as their visibility is effectively limited\nto private, package-private, or protected, making the use of the public modifier misleading.\nDeclaring members as public within a non-public type creates confusion and can lead to unintended consequences\nif the type is later made public, as this would expose all its public members.\nHowever, it is acceptable for a non-public type to inherit public members from a superclass, as this is part of\nthe superclass's design.\n\nTo avoid such issues, these members should be declared as protected, package-private, or even private,\nas appropriate. Note that altering the visibility of such members might unintentionally affect the API\nof a public subtype. Specifically, a public subtype of a package-private supertype inherits all public\nmethods of the supertype. Converting these methods to private removes them from the subtype as well, which\ncan inadvertently change the subtype's public API.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AssignmentToNonFinalStatic",
+              "shortDescription": {
+                "text": "Possible unsafe assignment to non-final static field 'FORMATTER' in a constructor."
+              },
+              "fullDescription": {
+                "text": "\nIdentifies a possible unsafe usage of a static field.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#assignmenttononfinalstatic",
+              "help": {
+                "text": "\nIdentifies a possible unsafe usage of a static field.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like protectedTermsMenu"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'protectedTermsMenu' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'loader' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'emptyItem' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 1,
+                  "endLine": 25,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 30,
+                  "endLine": 27,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 2,
+          "message": {
+            "text": "The static field name 'FORMATTER' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 30,
+                  "endLine": 27,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 36,
+                  "endLine": 28,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 33,
+                  "endLine": 29,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Avoid excessively long variable names like protectSelectionActionInformation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 26,
+                  "endLine": 31,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 26,
+                  "endLine": 31,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like unprotectSelectionActionInformation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 26,
+                  "endLine": 48,
+                  "endColumn": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 26,
+                  "endLine": 48,
+                  "endColumn": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 13,
+                  "endLine": 60,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CallSuperInConstructor",
+          "ruleIndex": 5,
+          "message": {
+            "text": "It is a good practice to call super() in a constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 9,
+                  "endLine": 61,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Missing commented default access modifier on constructor 'ProtectSelectionAction()'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 9,
+                  "endLine": 61,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Local variable 'selectedText' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 20,
+                  "endLine": 67,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1,
+                  "endLine": 70,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 13,
+                  "endLine": 81,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CallSuperInConstructor",
+          "ruleIndex": 5,
+          "message": {
+            "text": "It is a good practice to call super() in a constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 16,
+                  "endLine": 83,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PublicMemberInNonPublicType",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Public member 'UnprotectSelectionAction' declared in a non-public type"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 16,
+                  "endLine": 83,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 16,
+                  "endLine": 83,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Local variable 'selectedText' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 20,
+                  "endLine": 89,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Local variable 'formattedString' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 20,
+                  "endLine": 90,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 13,
+                  "endLine": 95,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CallSuperInConstructor",
+          "ruleIndex": 5,
+          "message": {
+            "text": "It is a good practice to call super() in a constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 9,
+                  "endLine": 96,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Missing commented default access modifier on constructor 'FormatFieldAction()'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 9,
+                  "endLine": 96,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 13,
+                  "endLine": 106,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Field 'list' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 28,
+                  "endLine": 107,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 28,
+                  "endLine": 107,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentDefaultAccessModifier",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Missing commented default access modifier on field 'list'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 28,
+                  "endLine": 107,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CallSuperInConstructor",
+          "ruleIndex": 5,
+          "message": {
+            "text": "It is a good practice to call super() in a constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 16,
+                  "endLine": 109,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PublicMemberInNonPublicType",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Public member 'AddToProtectedTermsAction' declared in a non-public type"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 16,
+                  "endLine": 109,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 16,
+                  "endLine": 109,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Parameter 'list' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 70,
+                  "endLine": 109,
+                  "endColumn": 74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'text' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 24,
+                  "endLine": 120,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PublicMemberInNonPublicType",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Public member 'ProtectedTermsMenu' declared in a non-public type"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 12,
+                  "endLine": 137,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 12,
+                  "endLine": 137,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AssignmentToNonFinalStatic",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Possible unsafe assignment to non-final static field 'FORMATTER' in a constructor."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 9,
+                  "endLine": 140,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Avoid excessively long variable names like protectedTermsMenu"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 14,
+                  "endLine": 150,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Local variable 'protectedTermsMenu' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 14,
+                  "endLine": 150,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Local variable 'loader' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 151,
+                  "startColumn": 30,
+                  "endLine": 151,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Local variable 'emptyItem' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 158,
+                  "startColumn": 22,
+                  "endLine": 158,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

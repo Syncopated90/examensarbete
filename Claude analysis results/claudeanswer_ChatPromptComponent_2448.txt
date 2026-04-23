@@ -1,0 +1,27 @@
+**Line 26** `NEW_NON_EXISTENT_MESSAGE` — `MagicNumber`: raw value `-1` used as a sentinel; while named, the value `-1` is still a magic number pattern embedded in constant naming.
+
+**Line 87** — `ComplexBooleanExpression`: compound boolean with multiple conditions and method calls without extraction to named variable.
+
+**Line 119** — `ComplexBooleanExpression`: nested `&&` combining `getCaretPosition()` and `contains()` without explanation variable.
+
+**Line 50** — `AnonymousInnerClassShouldBeStatic` / lambda captures `this` implicitly through `currentUserMessageScroll` and `showingHistoryMessage`, risking unintended retention.
+
+**Line 148** — `TODO` comment left in production code violates `CommentedOutCode`/`TodoComment` rule.
+
+**Line 75** `initialize()` — `MethodLength`: method body is excessively long; violates single-responsibility/method-length rule.
+
+**Line 87** — `NPathComplexity`/`CyclomaticComplexity`: deeply nested if/else inside lambda listener exceeds acceptable threshold.
+
+**Line 31** — `FieldCount`: class declares 8 instance fields; violates `TooManyFields` rule.
+
+**Line 60** `setSendCallback` — `ImmutableField`: `sendCallback`, `retryCallback`, `cancelCallback`, `regenerateCallback` are `ObjectProperty` fields mutated via setters but could be passed via constructor, violating `FinalClass`/constructor injection principle.
+
+**Line 155** — `LawOfDemeter`: `retryCallback.get().accept(userMessage)` chains two method calls on returned object.
+
+**Line 161** — `LawOfDemeter`: `cancelCallback.get().run()` same violation.
+
+**Line 191** — `LawOfDemeter`: `sendCallback.get().accept(userPrompt)` same violation.
+
+**Line 196** — `LawOfDemeter`: `regenerateCallback.get().run()` same violation.
+
+**Line 119** — `CollectionGetShouldBeUsed` / `history.get().stream().skip(newValue.intValue()).findFirst()`: using `skip` on a list instead of direct index access (`history.get(newValue.intValue())`) is inefficient; violates `AvoidUsingStream` or `OptimizeStreamUsage`.

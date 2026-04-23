@@ -1,0 +1,39 @@
+**Line 96** – `stateManager.activeTabProperty()` lambda ignores potential null return from `library` without null check before calling `library.isEmpty()`. **NullDereference**
+
+**Line 96** – Lambda parameter `library` shadows outer scope; unclear type contract. **SuspiciousLambdaExpression**
+
+**Line 100** – `stateManager.getActiveDatabase()` called twice in same block instead of storing result. **DuplicateCode / AvoidDuplicateGetCalls**
+
+**Line 104** – Unnamed lambda parameters `(_, _, _)` — triple underscore suppresses compiler warnings about unused parameters without explicit `@SuppressWarnings`. **UnusedFormalParameter**
+
+**Line 113** – `codeArea.setStyleClass(0, codeArea.getLength(), TEXT_STYLE)` called without checking `codeArea.getLength() > 0`; may cause index-out-of-bounds. **UnsafeMethodCall**
+
+**Line 131** – `fieldPositions.get(field)` called without null-check on `fieldPositions` itself; `fieldPositions` is uninitialized until `getSourceString` runs. **NullDereference**
+
+**Line 152** – `try-with-resources` on `StringWriter` is unnecessary; `StringWriter.close()` is a no-op. **UnnecessaryCloseAttempt**
+
+**Line 196** – `codeArea.focusedProperty().addListener((_, _, onFocus)` references `currentEntry` from outer class directly; no null guard before use. **NullDereference**
+
+**Line 214** – `getActiveDatabase()` called again redundantly (already called at line 100). **DuplicateCode**
+
+**Line 232** – `entry.typeProperty().addListener(listener -> updateCodeArea())` and `entry.getFieldsObservable().addListener(...)` listeners are never removed, causing memory leaks when entries change. **AvoidListenerLeak / MemoryLeak**
+
+**Line 247** – `LOGGER.error("More than one entry found.")` logs an error but execution continues to `return` — the log level is inconsistent (should be `warn` for a user-correctable condition). **InadequateLoggingLevel**
+
+**Line 256** – `LOGGER.warn("Could not store entry", parserResult.warnings())` passes a `List` as the second argument to SLF4J; SLF4J expects `Object` or `Throwable`, not a `List`. **InvalidLoggerArgument**
+
+**Line 263** – `LOGGER.warn("No entries found.")` — trailing period in log message, inconsistent with other messages. **LogMessageFormatViolation**
+
+**Line 284** – `outOfFocusEntry.clearCiteKey()` called via method reference in lambda but `clearCiteKey` may not be visible or could throw; no exception handling. **UnsafeMethodCall**
+
+**Line 291** – Iterating `outOfFocusEntry.getFieldMap().entrySet()` while calling `outOfFocusEntry.clearField(fieldName)` inside the loop modifies the underlying map during iteration (depending on implementation). **ConcurrentModification**
+
+**Line 309** – `new FieldWriter(fieldPreferences).write(fieldName, newValue)` — result is discarded; object created solely for side-effect validation without assignment. **UnusedReturnValue**
+
+**Line 329** – `catch (InvalidFieldValueException | IOException ex)` — multi-catch merges logically distinct exceptions; `InvalidFieldValueException` and `IOException` warrant separate handling. **AvoidCatchingGenericException / ImproperExceptionHandling**
+
+**Line 337** – `switch` statement in `listenForSaveKeybinding` lacks a `default` branch. **MissingSwitchDefault**
+
+**Line 350** – `switch` in `EditAction.execute()` lacks a `default` branch. **MissingSwitchDefault**
+
+**Line 355** – `codeArea.requestFocus()` called unconditionally after `switch`, even for unmatched/no-op commands. **UnnecessaryCode**

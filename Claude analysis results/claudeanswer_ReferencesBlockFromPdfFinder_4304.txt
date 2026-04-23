@@ -1,0 +1,15 @@
+**Line 23** - `matcher.find()` called twice on same Matcher without reset — but more critically:
+
+**Line 15** - `Pattern.compile` with `Pattern.CASE_INSENSITIVE` flag but the pattern `"References"` is already a specific case mixed string; minor, not a rule violation itself.
+
+**Line 38** - **Recursion without depth limit** (`StackOverflowError` risk) — unbounded recursive call to `prependToResult`.
+
+**Line 23** - **Dead code / logic error**: `matcher.find()` result used for null check but `end` on line 28 calls `matcher.end()` after `find()` in the `if (!matcher.find())` branch already consumed the match; the `matcher.end()` on line 28 refers to the *second* implicit find never called — actually `matcher.find()` was called once in the `if`, so `matcher.end()` is valid only if find returned true, which it did (we're in the else path). This is correct but fragile.
+
+**Line 36** - **`pageNumber > 0` off-by-one**: `PdfUtils.getPageContents` is called with `pageNumber` starting at `lastPage` and going down to `1`, but condition `pageNumber > 0` allows calling with `pageNumber = 0` on the *next* iteration — **off-by-one error**.
+
+**Line 36** - **Condition order** (`containsWordReferences` side-effect free but short-circuit logic): the recursion continues when references word is **not** found, which is inverted logic — it should stop when references **are** found, not keep going. The method recurses *until* it finds "References", which means it recurses on non-reference pages — this is the intended design but the condition reads confusingly; not a static rule violation.
+
+**Line 18** - **`static` method** operating on instance-less class with only `static` members — **Utility Class Should Have Private Constructor** (SonarQube: `squid:S1118`).
+
+**Line 36** - **Recursive algorithm** — SonarQube rule `java:S2189` / PMD `AvoidRecursion` — unbounded recursion.

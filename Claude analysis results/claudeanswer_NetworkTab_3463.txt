@@ -1,0 +1,25 @@
+**Line 46** — `proxyPasswordText = ""` — Field initialized to default value (`""`) unnecessarily. (`FieldDeclarationsShouldAtLeastBeProtected` / `UnusedInitialization`)
+
+**Line 47** — `proxyPasswordCaretPosition = 0` — Same as above.
+
+**Line 54** — `gitPatText = ""` — Same as above.
+
+**Line 55** — `gitPatCaretPosition = 0` — Same as above.
+
+**Line 159** — `proxyPasswordReveal(MouseEvent event)` — Parameter `event` is unused. (`UnusedFormalParameter`)
+
+**Line 168** — `proxyPasswordMask(MouseEvent event)` — Parameter `event` is unused. (`UnusedFormalParameter`)
+
+**Line 178** — `gitPatReveal(MouseEvent event)` — Parameter `event` is unused. (`UnusedFormalParameter`)
+
+**Line 187** — `gitPatMask(MouseEvent event)` — Parameter `event` is unused. (`UnusedFormalParameter`)
+
+**Line 168** — `!"".equals(proxyPasswordText)` — Yoda condition; prefer `!proxyPasswordText.isEmpty()` or `!proxyPasswordText.equals("")`. (`UseEqualsToCompareStrings` / `LiteralsFirstInComparisons` inversion)
+
+**Line 187** — `!"".equals(gitPatText)` — Same as above.
+
+**Line 155** — `formatDate` — `DateTimeFormatter.ofPattern("dd-MMM-yyyy")` created on every call; should be a static final constant. (`InsufficientStringBufferDeclaration` / `AvoidInstantiatingObjectsJustToCallGetClass` / reusable constant rule)
+
+**Line 100** — `proxyCustomAndAuthentication.and(viewModel.passwordPersistAvailable()).not()` — Complex boolean binding not extracted to a named variable, reducing readability. (`CyclomaticComplexity` / `ExcessiveMethodLength` contributing factor)
+
+**Line 143** — `actionsColumn` tooltip uses `"Remove formatter '%0'"` — Misleading message referencing "formatter" in a certificate context. (`ImpreciseStringLiteral` / logic error)

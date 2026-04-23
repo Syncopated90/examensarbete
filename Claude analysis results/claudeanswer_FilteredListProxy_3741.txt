@@ -1,0 +1,21 @@
+**Line 19** — `ST3-MUTABLE_STATIC_FIELDS`: Non-final static fields (`initialized`, `BEGIN_CHANGE_METHOD`, etc.) are mutable shared state; not thread-safe.
+
+**Line 19–29** — `DC_PARTIALLY_CONSTRUCTED` / `LI_LAZY_INIT_STATIC`: Double-checked locking is absent; `initialized` flag checked without synchronization on lines 33 and 47 creates a race condition.
+
+**Line 19** — `NM_FIELD_NAMING_CONVENTION`: `initialized` does not follow constant naming convention despite being `static` (should be `INITIALIZED` or made instance-level).
+
+**Line 31** — `MDM_INACCESSIBLE_METHOD_REFLECTION` / `DP_DO_INSIDE_DO_PRIVILEGED`: Reflective access to private members without a `doPrivileged` block.
+
+**Line 48** — `THROWS_METHOD_THROWS_RUNTIMEEXCEPTION`: `throw new IndexOutOfBoundsException()` with no message string; poor diagnostic information.
+
+**Line 54** — `BC_UNCONFIRMED_CAST_OF_RETURN_VALUE`: Unchecked cast `(Predicate<BibEntryTableViewModel>)` from reflection return value; suppressed with `@SuppressWarnings` but underlying issue remains.
+
+**Line 57** — `URF_UNREAD_FIELD` / `EI_EXPOSE_REP2`: `filtered` array obtained via reflection and mutated directly; external array modification bypasses encapsulation.
+
+**Line 84** — `RV_RETURN_VALUE_IGNORED`: `FILTERED_FIELD.set(filteredList, filtered)` — writing back the same array reference that was already retrieved is redundant; the array was mutated in place, making the set call a no-op with misleading intent.
+
+**Line 31, 44** — `CQL_CONFUSING_METHOD_NAME`: Two overloads of `refilterListReflection` differ only in parameters but have distinct failure modes and no shared abstraction; violates single-responsibility.
+
+**Line 95–119** — `ST_STATIC_FIELD_SET_IN_INITIALIZER_PATTERN`: `initReflection()` sets multiple static fields non-atomically; partial initialization is possible if an exception is thrown mid-method, leaving some statics non-null and `initialized` false.
+
+**Line 95** — `THROWS_METHOD_THROWS_CHECKED_EXCEPTION`: `initReflection` declares checked exceptions (`NoSuchMethodException`, `NoSuchFieldException`) propagated to callers who must handle them inline, breaking encapsulation of the initialization concern.

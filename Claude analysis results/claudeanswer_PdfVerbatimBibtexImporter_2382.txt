@@ -1,0 +1,19 @@
+**Line 26** — `VariableDeclarationUsageDistance`: `result` declared separately from assignment without reason; declare at point of first assignment.
+
+**Line 26** — `UnnecessaryLocalBeforeReturn`: `result` could be returned directly without intermediate variable.
+
+**Line 28** — `LocalVariableCouldBeFinal`: `firstPageContents` is never reassigned; should be `final`.
+
+**Line 29** — `LocalVariableCouldBeFinal`: `parser` is never reassigned; should be `final`.
+
+**Line 31** — `UnusedAssignment` / `VariableDeclarationUsageDistance`: `result` assigned on line 26 as `List<BibEntry> result` with no initializer, then immediately overwritten on line 31; the declaration on line 26 is superfluous.
+
+**Line 29** — `CloseResource`: `BibtexParser` may hold resources; not closed after use (no try-with-resources).
+
+**Line 17** — `MissingOverride` / `MissingJavadocType`: Class-level Javadoc uses `///` (Markdown doc comment style) which is non-standard prior to Java 23 and may not be processed correctly by all tools; conventional `/** */` should be used.
+
+**Line 33** — `CommentedOutCode`: Inline `TODO` comments reference untested/unverified behavior, violating clean code standards (`TodoComment` rule).
+
+**Line 35** — `TodoComment`: Second `TODO` comment present.
+
+**Line 35** — `CommentDefaultAccessModifier` / `LambdaCanBeMethodReference`: `entry -> entry.setCommentsBeforeEntry("")` could be a method reference if the API permitted, but more critically the lambda has a side effect with no return value check.

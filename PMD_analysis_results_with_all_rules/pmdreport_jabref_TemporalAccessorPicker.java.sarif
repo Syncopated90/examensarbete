@@ -1,0 +1,1530 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Too many lines"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like temporalAccessorValue"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CallSuperInConstructor",
+              "shortDescription": {
+                "text": "It is a good practice to call super() in a constructor"
+              },
+              "fullDescription": {
+                "text": "\nIt is a good practice to call super() in a constructor. If super() is not called but\nanother constructor (such as an overloaded constructor) is called, this rule will not report it.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#callsuperinconstructor",
+              "help": {
+                "text": "\nIt is a good practice to call super() in a constructor. If super() is not called but\nanother constructor (such as an overloaded constructor) is called, this rule will not report it.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'contextMenu' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'date' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "OnlyOneReturn",
+              "shortDescription": {
+                "text": "A method should have only one exit point, and that should be the last statement in the method"
+              },
+              "fullDescription": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#onlyonereturn",
+              "help": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'temporalAccessor' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'dateTime' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'date' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'converterSupplier' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'value' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'temporalAccessorValue' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AtLeastOneConstructor",
+              "shortDescription": {
+                "text": "Each class should declare at least one constructor"
+              },
+              "fullDescription": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#atleastoneconstructor",
+              "help": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'value' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'dateTime' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 1,
+                  "endLine": 27,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Comment is too large: Too many lines"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 1,
+                  "endLine": 40,
+                  "endColumn": 176
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 1,
+                  "endLine": 28,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 1,
+                  "endLine": 30,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 1,
+                  "endLine": 31,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 1,
+                  "endLine": 34,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 1,
+                  "endLine": 35,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 1,
+                  "endLine": 36,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 1,
+                  "endLine": 37,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 1,
+                  "endLine": 40,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Avoid excessively long variable names like temporalAccessorValue"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 52,
+                  "endLine": 42,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 52,
+                  "endLine": 42,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 37,
+                  "endLine": 44,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 69,
+                  "endLine": 45,
+                  "endColumn": 78
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CallSuperInConstructor",
+          "ruleIndex": 4,
+          "message": {
+            "text": "It is a good practice to call super() in a constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 12,
+                  "endLine": 47,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 12,
+                  "endLine": 47,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Local variable 'contextMenu' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 25,
+                  "endLine": 56,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'date' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 62,
+                  "endLine": 62,
+                  "endColumn": 66
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 13,
+                  "endLine": 64,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'temporalAccessor' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 55,
+                  "endLine": 69,
+                  "endColumn": 71
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 13,
+                  "endLine": 71,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Parameter 'dateTime' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 60,
+                  "endLine": 77,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 13,
+                  "endLine": 80,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Local variable 'date' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 19,
+                  "endLine": 84,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 13,
+                  "endLine": 86,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 13,
+                  "endLine": 90,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 68,
+                  "endLine": 96,
+                  "endColumn": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 100,
+                  "startColumn": 52,
+                  "endLine": 100,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Local variable 'converterSupplier' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 53,
+                  "endLine": 101,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'value' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 53,
+                  "endLine": 103,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'value' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 55,
+                  "endLine": 108,
+                  "endColumn": 60
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 25,
+                  "endLine": 111,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 25,
+                  "endLine": 113,
+                  "endColumn": 93
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 23,
+                  "endLine": 123,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'value' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 76,
+                  "endLine": 123,
+                  "endColumn": 81
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Avoid excessively long variable names like temporalAccessorValue"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 59,
+                  "endLine": 131,
+                  "endColumn": 80
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Parameter 'temporalAccessorValue' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 59,
+                  "endLine": 131,
+                  "endColumn": 80
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 45,
+                  "endLine": 135,
+                  "endColumn": 74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 13,
+                  "endLine": 139,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AtLeastOneConstructor",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Each class should declare at least one constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 13,
+                  "endLine": 139,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 13,
+                  "endLine": 139,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Local variable 'value' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 30,
+                  "endLine": 142,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'value' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 44,
+                  "endLine": 149,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 8,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 17,
+                  "endLine": 152,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'dateTime' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TemporalAccessorPicker.java"
+                },
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 30,
+                  "endLine": 155,
+                  "endColumn": 38
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

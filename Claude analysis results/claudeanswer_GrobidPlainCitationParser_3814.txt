@@ -1,0 +1,5 @@
+**Line 44** — `e.getCause()` passed as cause to `FetcherException` instead of `e` itself. Passing `getCause()` loses the original `SocketTimeoutException` from the exception chain; `getCause()` may also return `null`. **Rule: AvoidLostExceptionCause / NullDereference**
+
+**Line 33** — Javadoc comment uses `///` (Markdown doc comment syntax), not standard `/** */` Javadoc. **Rule: InvalidJavadocFormat / NonStandardCommentStyle**
+
+**Line 24** — Constructor is `public` but the package-private overload at line 28 exists for testing; the public constructor tightly couples instantiation of `GrobidService` inside the constructor body, violating dependency injection principles. **Rule: AvoidInstantiatingObjectsJustToGetClass / SingleResponsibilityPrinciple**

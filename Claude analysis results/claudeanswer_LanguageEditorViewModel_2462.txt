@@ -1,0 +1,11 @@
+**Line 17** – `ImmutableField` / `FieldShouldBeFinal`: Field `databaseMode` is assigned once in constructor and never modified; should be `final`.
+
+**Line 28** – `ReturnOfNull`: `toString()` returns `null`; `StringConverter.toString()` should return empty string instead.
+
+**Line 37** – `ReturnOfNull`: `fromString()` returns `null`; may cause NPE in callers expecting a non-null `Langid`.
+
+**Line 50** – `NullPointerException` / `AvoidCallingObjectToString`: `convertToDisplayText(Langid object)` calls `object.getName()` without null check; if `object` is `null`, throws NPE (inconsistent with `toString()` which guards for null at line 28).
+
+**Line 44** – `UnnecessaryFullyQualifiedName` / `UselessImport` (potential): `Arrays.asList(Langid.values())` could use `List.of()` since the list is not mutated.
+
+**Line 12** – `UnusedImports`: `StringUtil` is used, but verify `org.jabref.logic.util.strings.StringUtil` is the correct package; if `isNotBlank` is from a different utility, this import may be incorrect or redundant with standard libraries.

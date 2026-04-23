@@ -1,0 +1,27 @@
+**Line 105-112: FeatureEnvy** — `fromLinkedFile` simply delegates to the constructor; the static factory method adds no value and duplicates the constructor signature.
+
+**Line 105: UnusedMethod (or superfluousStaticFactory)** — `fromLinkedFile` is a static factory that does nothing beyond calling `new LinkedFileViewModel(...)` with identical arguments.
+
+**Line 178: NullAssignment** — `DeleteFileAction` is called with `null` as one of its arguments (4th parameter), which is a code smell / potential NullPointerException risk.
+
+**Line 234: AvoidThrowingNewInstanceOfSameException / PreferRuntimeExceptions** — `redownload()` throws `UnsupportedOperationException` directly; same pattern repeated at line 249 in `download()`.
+
+**Line 249: DuplicateCode** — `download()` and `redownload()` share near-identical `DownloadLinkedFileAction` construction and `downloadProgress.bind(...)` / `.execute()` logic.
+
+**Line 93: LawOfDemeter** — `preferences.getFilePreferences()` is called repeatedly throughout the class (lines 93, 155, 205, 214, 263, 267, 271, etc.) rather than storing it once, violating the Law of Demeter and DRY.
+
+**Line 63: ExcessiveParameterList** — Constructor has 6 parameters, exceeding typical recommended maximum of 5.
+
+**Line 220: AvoidCatchingGenericException / EmptyCatchBlock (effectively)** — `BiPredicate` lambda catches `IOException` and silently returns `false` with no logging.
+
+**Line 155: PathTraversalRisk** — `Path.of(oldFile)` where `oldFile` comes from `linkedFile.getLink()` without sanitization before use in file operations.
+
+**Line 243: UnsupportedOperationException used for control flow** — Throwing `UnsupportedOperationException` in `redownload()` and `download()` to guard preconditions; should use `IllegalStateException` instead.
+
+**Line 67: MutableFieldShouldBeFinal** — `linkedFileIconBinding` is a non-final field that is lazily initialized (line 157), creating a thread-safety issue.
+
+**Line 191-196: CyclomaticComplexity** — `performRenameWithConflictCheck` has high cyclomatic complexity due to multiple chained `if/else if` branches on dialog results.
+
+**Line 128: ReturnCount** — `renameFileToName` has an early `return` in addition to a normal exit path; minor but flagged by some rule sets.
+
+**Line 98: OverlyBroadScope** — Lambda inside `FunctionBasedValidator` directly accesses outer fields (`linkedFile`, `databaseContext`, `preferences`), creating tight coupling and making the validator hard to test independently.

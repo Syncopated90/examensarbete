@@ -1,0 +1,7 @@
+**Line 12** - `NullPointerException` risk / **Null Parameter Not Checked**: `bibEntry` is passed directly to `List.of()` without null validation. `List.of()` throws `NullPointerException` if the element is null.
+
+**Line 19** - **Null Parameter Not Checked**: Same issue; `bibEntry` and `location` lack null checks before use.
+
+**Line 23** - **Law of Demeter** violation: Chain call `getBibEntries().getFirst()` reaches through an intermediate object.
+
+**Line 23** - **Unchecked / Potential Exception**: `getFirst()` throws `NoSuchElementException` if the list is empty, with no guard or documentation of this precondition.

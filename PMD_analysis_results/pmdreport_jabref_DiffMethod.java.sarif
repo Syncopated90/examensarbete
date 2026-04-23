@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UnnecessaryModifier",
+              "shortDescription": {
+                "text": "Unnecessary modifier 'public' on method 'separator': the method is declared in an interface type"
+              },
+              "fullDescription": {
+                "text": "\nFields in interfaces and annotations are automatically `public static final`, and methods are `public abstract`.\nClasses, interfaces or annotations nested in an interface or annotation are automatically `public static`\n(all nested interfaces and annotations are automatically static).\nNested enums are automatically `static`.\nFor historical reasons, modifiers which are implied by the context are accepted by the compiler, but are superfluous.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessarymodifier",
+              "help": {
+                "text": "\nFields in interfaces and annotations are automatically `public static final`, and methods are `public abstract`.\nClasses, interfaces or annotations nested in an interface or annotation are automatically `public static`\n(all nested interfaces and annotations are automatically static).\nNested enums are automatically `static`.\nFor historical reasons, modifiers which are implied by the context are accepted by the compiler, but are superfluous.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UnnecessaryModifier",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Unnecessary modifier 'public' on method 'separator': the method is declared in an interface type"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/DiffMethod.java"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 19,
+                  "endLine": 4,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+**Line 48** – `HashMap` used instead of interface type `Map` (already assigned to `Map`, but instantiation is fine; however `hm` is declared as `Map<Field, String>` — OK)
+
+**Line 49** – `HashMap` used instead of interface type `Map` for `lines` — acceptable, but flag for consistency.
+
+**Line 63–163** – **ExcessiveMethodLength** / **NPathComplexity** / **CyclomaticComplexity**: `importDatabase` method is excessively long and complex.
+
+**Line 63–163** – **AvoidDeeplyNestedIfStmts**: deeply nested if-else-if chain inside a for-each loop inside a while loop.
+
+**Line 56–57** – **LocalVariableCouldBeFinal**: `type` and `pages` arrays could be declared `final`.
+
+**Line 53** – **LocalVariableCouldBeFinal**: `hm` could be `final`.
+
+**Line 54** – **LocalVariableCouldBeFinal**: `lines` could be `final`.
+
+**Line 137** – **AvoidLiteralsInIfCondition**: magic string `"http://"` and `"ftp://"` used as literals inline.
+
+**Line 137–138** – **ExcessiveLineLength**: line exceeds 120 characters.
+
+**Line 228** – **ExcessiveLineLength**: the pages concatenation line exceeds 120 characters.
+
+**Line 63** – **CollapsibleIfStatements** / redundant iteration: iterating `lines.entrySet()` with a long if-else chain instead of a `switch` or dispatch map — **AvoidLongIfElseChain** / **AvoidCombiningConditions**.
+
+**Line 172** – **MagicNumber** / **AvoidLiteralsInIfCondition**: literal `1` and `0` used in loop bounds with no named constant.
+
+**Line 172** – **InvertedLoopCondition**: loop counts down (`--i`) from 1 to 0, which is unconventional.
+
+**Line 46** – **UnusedImport** (`Locale` is used, so not unused — skip); **Locale** used correctly at line 178.
+
+**Line 44** – **MethodNamingConvention**: `importDatabase` — OK, interface override.
+
+**Line 51** – **LocalVariableCouldBeFinal**: `line` cannot be final (reassigned in while condition) — skip.
+
+**Line 55** – **LocalVariableCouldBeFinal**: `previousLine` cannot be final — skip.
+
+**Line 94–95** – **StringConcatenation** in `comments.add(...)`: string concatenation with `+` inside loop instead of using `StringBuilder` — **InefficientStringBuffering** (lines 94, 98, 101, 104, 107, 110, 113, 116, 148, 151, 154, 157, 160, 163).
+
+**Line 210** – **ConfusingTernaryOperator**: nested ternaries on single line reduce readability.
+
+**Line 219** – **BranchStatementMustBeScopedWithBraces** / **NeedBraces**: `if (!comments.isEmpty())` comment — OK, braces present.
+
+**Line 248** – **ReturnEmptyCollectionRatherThanNull** / **ReturnOfNull**: `new ParserResult()` returned on parse error at line 248 — may indicate **DesignForExtension** or error-handling smell (**ReturnOfEmptyOptionalNotAllowed**).

@@ -1,0 +1,2289 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ExcessiveImports",
+              "shortDescription": {
+                "text": "A high number of imports (33) can indicate a high degree of coupling within an object; current threshold is 30."
+              },
+              "fullDescription": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#excessiveimports",
+              "help": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AtLeastOneConstructor",
+              "shortDescription": {
+                "text": "Each class should declare at least one constructor"
+              },
+              "fullDescription": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#atleastoneconstructor",
+              "help": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'stream' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'bibEntries' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'doiList' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'doc' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LooseCoupling",
+              "shortDescription": {
+                "text": "Avoid using implementation types like 'Elements'; use the interface instead"
+              },
+              "fullDescription": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling",
+              "help": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'doiHrefs' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'elem' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fullSegment' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'doi' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'doiList' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'urlFromDoiList' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'jsonString' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UselessParentheses",
+              "shortDescription": {
+                "text": "Useless parentheses around `stream.readAllBytes()`."
+              },
+              "fullDescription": {
+                "text": "\n            Parenthesized expressions are used to override the default operator precedence\n            rules. Parentheses whose removal would not change the relative nesting of operators\n            are unnecessary, because they don't change the semantics of the enclosing expression.\n\n            Some parentheses that strictly speaking are unnecessary, may still be considered useful\n            for readability. This rule allows to ignore violations on two kinds of unnecessary parentheses:\n            - \"Clarifying\" parentheses, which separate operators of difference precedence. While\n            unnecessary, they make precedence rules explicit, which may be useful for rarely used\n            operators. For example:\n            ```java\n                (a + b) & c // is equivalent to `a + b & c`, but probably clearer\n            ```\n            Unset the property `ignoreClarifying` to report them.\n\n            - \"Balancing\" parentheses, which are unnecessary but visually balance out another pair\n            of parentheses around an equality operator. For example, those two expressions are equivalent:\n            ```java\n                (a == null) != (b == null)\n                a == null != (b == null)\n            ```\n            The parentheses on the right are required, and the parentheses on the left are\n            just more visually pleasing. Unset the property `ignoreBalancing` to report them.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#uselessparentheses",
+              "help": {
+                "text": "\n            Parenthesized expressions are used to override the default operator precedence\n            rules. Parentheses whose removal would not change the relative nesting of operators\n            are unnecessary, because they don't change the semantics of the enclosing expression.\n\n            Some parentheses that strictly speaking are unnecessary, may still be considered useful\n            for readability. This rule allows to ignore violations on two kinds of unnecessary parentheses:\n            - \"Clarifying\" parentheses, which separate operators of difference precedence. While\n            unnecessary, they make precedence rules explicit, which may be useful for rarely used\n            operators. For example:\n            ```java\n                (a + b) & c // is equivalent to `a + b & c`, but probably clearer\n            ```\n            Unset the property `ignoreClarifying` to report them.\n\n            - \"Balancing\" parentheses, which are unnecessary but visually balance out another pair\n            of parentheses around an equality operator. For example, those two expressions are equivalent:\n            ```java\n                (a == null) != (b == null)\n                a == null != (b == null)\n            ```\n            The parentheses on the right are required, and the parentheses on the left are\n            just more visually pleasing. Unset the property `ignoreBalancing` to report them.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'jsonElement' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'items' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'item' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entry' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'uriBuilder' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'typeStr' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'type' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"PAPER_CONFERENCE\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like upperUnderscoreTyeStr"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'upperUnderscoreTyeStr' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CognitiveComplexity",
+              "shortDescription": {
+                "text": "The method 'parseBibEntry(String)' has a cognitive complexity of 21, current threshold is 15"
+              },
+              "fullDescription": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cognitivecomplexity",
+              "help": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CyclomaticComplexity",
+              "shortDescription": {
+                "text": "The method 'parseBibEntry(String)' has a cyclomatic complexity of 19."
+              },
+              "fullDescription": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cyclomaticcomplexity",
+              "help": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "NPathComplexity",
+              "shortDescription": {
+                "text": "The method 'parseBibEntry(String)' has an NPath complexity of 131072, current threshold is 200"
+              },
+              "fullDescription": {
+                "text": "\nThe NPath complexity of a method is the number of acyclic execution paths through that method.\nWhile cyclomatic complexity counts the number of decision points in a method, NPath counts the number of\nfull paths from the beginning to the end of the block of the method. That metric grows exponentially, as\nit multiplies the complexity of statements in the same block. For more details on the calculation, see the\ndocumentation {% jdoc java::lang.java.metrics.JavaMetrics#NPATH %}.\n\nA threshold of 200 is generally considered the point where measures should be taken to reduce\ncomplexity and increase readability.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#npathcomplexity",
+              "help": {
+                "text": "\nThe NPath complexity of a method is the number of acyclic execution paths through that method.\nWhile cyclomatic complexity counts the number of decision points in a method, NPath counts the number of\nfull paths from the beginning to the end of the block of the method. That metric grows exponentially, as\nit multiplies the complexity of statements in the same block. For more details on the calculation, see the\ndocumentation {% jdoc java::lang.java.metrics.JavaMetrics#NPATH %}.\n\nA threshold of 200 is generally considered the point where measures should be taken to reduce\ncomplexity and increase readability.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'jsonStr' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'jsonObject' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'bibEntry' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'authors' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'issued' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'dateArray' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'dateField' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'keywords' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'sortedKeywords' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'authors' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'jabrefAuthors' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'author' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'authorJsonObject' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'jabrefAuthor' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidInstantiatingObjectsInLoops",
+              "shortDescription": {
+                "text": "Avoid instantiating new objects inside loops"
+              },
+              "fullDescription": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_performance.html#avoidinstantiatingobjectsinloops",
+              "help": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "properties": {
+                "ruleset": "Performance",
+                "priority": 3,
+                "tags": [
+                  "Performance"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ExcessiveImports",
+          "ruleIndex": 0,
+          "message": {
+            "text": "A high number of imports (33) can indicate a high degree of coupling within an object; current threshold is 30."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 236,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 8,
+                  "endLine": 39,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AtLeastOneConstructor",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Each class should declare at least one constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 8,
+                  "endLine": 39,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 33,
+                  "endLine": 41,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 33,
+                  "endLine": 42,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 1,
+                  "endLine": 44,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Parameter 'stream' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 52,
+                  "endLine": 49,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Local variable 'bibEntries' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 24,
+                  "endLine": 50,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Parameter 'stream' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 56,
+                  "endLine": 63,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Local variable 'doiList' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 22,
+                  "endLine": 64,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Local variable 'doc' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 22,
+                  "endLine": 67,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Avoid using implementation types like 'Elements'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 13,
+                  "endLine": 68,
+                  "endColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Local variable 'doiHrefs' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 22,
+                  "endLine": 68,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Local variable 'elem' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 26,
+                  "endLine": 70,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Local variable 'fullSegment' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 24,
+                  "endLine": 71,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Local variable 'doi' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 24,
+                  "endLine": 72,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 27,
+                  "endLine": 82,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Parameter 'doiList' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 65,
+                  "endLine": 82,
+                  "endColumn": 72
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Local variable 'bibEntries' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 24,
+                  "endLine": 83,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Local variable 'urlFromDoiList' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 13,
+                  "endLine": 85,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'jsonString' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 92,
+                  "startColumn": 20,
+                  "endLine": 92,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UselessParentheses",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Useless parentheses around `stream.readAllBytes()`."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 92,
+                  "startColumn": 44,
+                  "endLine": 92,
+                  "endColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'jsonElement' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 25,
+                  "endLine": 94,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Local variable 'items' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 27,
+                  "endLine": 96,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Local variable 'item' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 34,
+                  "endLine": 97,
+                  "endColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Local variable 'entry' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 98,
+                  "startColumn": 57,
+                  "endLine": 98,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Parameter 'doiList' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 47,
+                  "endLine": 114,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Local variable 'uriBuilder' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 20,
+                  "endLine": 115,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Parameter 'typeStr' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 52,
+                  "endLine": 122,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Local variable 'type' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 27,
+                  "endLine": 123,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Avoid using literals such as \"PAPER_CONFERENCE\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 13,
+                  "endLine": 124,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Avoid excessively long variable names like upperUnderscoreTyeStr"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 20,
+                  "endLine": 127,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Local variable 'upperUnderscoreTyeStr' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 20,
+                  "endLine": 127,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CognitiveComplexity",
+          "ruleIndex": 29,
+          "message": {
+            "text": "The method 'parseBibEntry(String)' has a cognitive complexity of 21, current threshold is 15"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 21,
+                  "endLine": 137,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CyclomaticComplexity",
+          "ruleIndex": 30,
+          "message": {
+            "text": "The method 'parseBibEntry(String)' has a cyclomatic complexity of 19."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 21,
+                  "endLine": 137,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NPathComplexity",
+          "ruleIndex": 31,
+          "message": {
+            "text": "The method 'parseBibEntry(String)' has an NPath complexity of 131072, current threshold is 200"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 21,
+                  "endLine": 137,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Parameter 'jsonStr' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 42,
+                  "endLine": 137,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Local variable 'jsonObject' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 20,
+                  "endLine": 138,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 34,
+          "message": {
+            "text": "Local variable 'bibEntry' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 18,
+                  "endLine": 139,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 35,
+          "message": {
+            "text": "Local variable 'authors' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 145,
+                  "startColumn": 23,
+                  "endLine": 145,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 36,
+          "message": {
+            "text": "Local variable 'issued' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 24,
+                  "endLine": 150,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 37,
+          "message": {
+            "text": "Local variable 'dateArray' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 27,
+                  "endLine": 152,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 38,
+          "message": {
+            "text": "Local variable 'dateField' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 153,
+                  "startColumn": 33,
+                  "endLine": 153,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 39,
+          "message": {
+            "text": "Local variable 'keywords' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 22,
+                  "endLine": 185,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 40,
+          "message": {
+            "text": "Local variable 'sortedKeywords' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 186,
+                  "startColumn": 20,
+                  "endLine": 186,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 41,
+          "message": {
+            "text": "Parameter 'authors' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 217,
+                  "startColumn": 50,
+                  "endLine": 217,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 42,
+          "message": {
+            "text": "Local variable 'jabrefAuthors' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 218,
+                  "startColumn": 22,
+                  "endLine": 218,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 43,
+          "message": {
+            "text": "Local variable 'author' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 26,
+                  "endLine": 220,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 44,
+          "message": {
+            "text": "Local variable 'authorJsonObject' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 24,
+                  "endLine": 221,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 45,
+          "message": {
+            "text": "Local variable 'jabrefAuthor' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 231,
+                  "startColumn": 20,
+                  "endLine": 231,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 46,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ACMPortalParser.java"
+                },
+                "region": {
+                  "startLine": 231,
+                  "startColumn": 35,
+                  "endLine": 231,
+                  "endColumn": 78
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

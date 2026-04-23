@@ -1,0 +1,21 @@
+**Line 33** `@FXML private CitationCountEditorViewModel viewModel;` — **InjectedFieldsMustBeFinal** / **VisibilityModifier**: `@FXML` fields should not be used for non-UI view model objects; also field is not `final`.
+
+**Line 33** — **UnusedFormalParameter** / **MismatchedAnnotation**: `viewModel` is annotated `@FXML` but is not an FXML-injected UI component.
+
+**Line 34** `@FXML private EditorTextField textField;` — **FieldShouldBeFinal**: FXML-injected fields assigned by loader cannot be `final`, but are also accessible before `load()` is called.
+
+**Line 47** `Injector.registerExistingAndInject(this);` — **ConstructorCallsOverridableMethod** / **LeakingThisInConstructor**: `this` is leaked before the object is fully constructed.
+
+**Line 48** `this.viewModel = new CitationCountEditorViewModel(` — **FieldShouldBeFinal**: `viewModel` is reassigned after `@FXML` annotation implies framework injection; double assignment risk.
+
+**Line 55** `ViewLoader.view(this).root(this).load();` — **LeakingThisInConstructor**: `this` is passed to external methods inside the constructor.
+
+**Line 60** `new Tooltip(...)` — **AvoidInstantiatingObjectsJustToInvokeGetClass** / **ObjectCreationInLoop** (minor): `Tooltip` created inline without reference for potential reuse.
+
+**Line 66** `new ViewModelListCellFactory<CitationCountFetcherType>()` — **UnnecessaryLocalBeforeReturn** / **MissingBreak**: result of builder chain not stored; error-prone if chain is extended.
+
+**Line 70** `new EditorValidator(preferences).configureValidation(...)` — **ObjectCreationInConstructor**: object instantiated solely for a side-effect method call; no reference kept, hinders testability.
+
+**Line 38–43** `@Inject private DialogService dialogService;` (and similar) — **VisibilityModifier**: injectable fields should be `package-private` or use constructor injection rather than field injection for testability.
+
+**Line 79** `public CitationCountEditorViewModel getViewModel()` — **ReturnOfCollectionOrArrayField** / **ExposedInternalState**: returns internal mutable view model directly without defensive copy or interface type.

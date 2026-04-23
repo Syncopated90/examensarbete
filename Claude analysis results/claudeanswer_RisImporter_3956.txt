@@ -1,0 +1,25 @@
+**Line 55** — `Resource Leak`: `BufferedReader` created from `reader` is never closed. **ResourceLeak**
+
+**Line 96** — `else` branch after `continue` is unnecessary. **UnnecessaryElse**
+
+**Line 127** — `"JA"` and `"JF"` tags are already handled in the earlier `else if` at line ~122; dead/unreachable `else if` branch. **DuplicateCondition** / **UnreachableCode**
+
+**Line 160** — `"DB".equals(tag)` condition is duplicated at line ~147 and again at line ~207; second `else if ("DB"...)` can never be reached. **DuplicateCondition**
+
+**Line 191** — `"N1".equals(tag)` is checked at line ~188 and again at line ~193; second branch is unreachable. **DuplicateCondition**
+
+**Lines 230–243** — Author, editor, abstract, comment, and pages are set inside the inner `for` loop body but outside the `if/else` chain, so they are updated on every line iteration, not just at the end. **MisplacedCode** / **IncorrectScope**
+
+**Line 230** — `fields.put(StandardField.PAGES, startPage + endPage)` is executed for every line of every entry, not once per entry. **MisplacedCode**
+
+**Line 66** — `linesAsString` concatenates all lines, then re-splits; inefficient and unnecessary given `BufferedReader` already provides lines. **InefficientStringConcatenation**
+
+**Line 75** — `int tagPriority` is declared but only assigned inside a condition expression (`(tagPriority = dateTags.indexOf(tag)) != -1`); side-effect assignment inside condition. **AssignmentInCondition**
+
+**Line 73** — `int datePriority = dateTags.size();` uses magic initialization tied to list size without explanation. **MagicNumber** / **AvoidLiteralsInIfCondition**
+
+**Line 34** — `RECOGNIZED_FORMAT_PATTERN` and `YEAR_FORMATTER` are `private static final` but class is not `final`; pattern is acceptable but note `Pattern` is used only in one method. Minor: **UnusedPrivateField** (not unused, but noted).
+
+**Line 156** — `"".equals(fields.get(StandardField.JOURNAL))` should use `isEmpty()` after null check; mixing null check with `""` equals is inconsistent with surrounding code. **EqualsOnStringLiteral** / **UseEqualsEmpty**
+
+**Line 122** — Condition `("T2".equals(tag) || "J2".equals(tag) || "JA".equals(tag))` includes `"JA"` which is re-checked later at line 127, creating dead code. **DuplicateCondition**

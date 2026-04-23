@@ -1,0 +1,11 @@
+**Line 9 — `ClassWithoutConstructor` / Missing explicit constructor**
+The class `RootResource` has no explicit constructor defined; relying on the default public no-arg constructor is implicit.
+
+**Line 12 — `MethodLength` / Method body returns unterminated HTML**
+The returned HTML string (lines 13–19) is missing the closing `</html>` tag — the text block closes before `</html>` is written, producing malformed HTML output.
+
+**Line 9 — `DesignForExtension`**
+The class is public but not declared `final`, and `get()` (line 12) is a public, non-final, non-abstract method in a non-final class, violating design-for-extension rules.
+
+**Line 12 — `DesignForExtension`**
+Method `get()` is public and non-final in a non-final class; it should be `final`, `abstract`, or the class should be `final`.

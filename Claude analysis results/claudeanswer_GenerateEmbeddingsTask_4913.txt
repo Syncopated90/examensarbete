@@ -1,0 +1,21 @@
+**Line 80** — `ThrowingRuntimeException` / **AvoidThrowingRawExceptionTypes**: `new RuntimeException(...)` thrown directly; use a domain-specific exception.
+
+**Line 63** — **VariableDeclarationUsageDistance** / poor grammar in log message: `"There is a embeddings generation task"` — minor but flagged by some style rules as misleading/incorrect message.
+
+**Line 110** — **AvoidThrowingRawExceptionTypes**: `new RuntimeException(...)` thrown directly again.
+
+**Line 33** — **MutableStaticState** (or **ImmutableField** violation): `progressCounter` is declared `final` but is a mutable object assigned inline; not truly immutable.
+
+**Line 103** — **ResourceShouldBeClosed** / **LocalVariableCouldBeFinal**: `new FileToDocument(shutdownSignal)` creates an object that is used inline but never assigned, potentially masking lifecycle issues.
+
+**Line 93** — **CollapsibleIfStatements**: nested `if (ingestedModificationTimeInSeconds.isEmpty())` / `else { if (...) }` can be collapsed or restructured.
+
+**Line 86** — **LocalVariableCouldBeFinal**: `long currentModificationTimeInSeconds` could be `final`.
+
+**Line 84** — **LocalVariableCouldBeFinal**: `BasicFileAttributes attributes` could be `final`.
+
+**Line 75** — **LocalVariableCouldBeFinal**: `Optional<Path> path` could be `final`.
+
+**Line 83** — **PreserveStackTrace**: `IOException e` is logged but not rethrown or wrapped, silently continuing execution with partial state (`modTime` remains `Optional.empty()`, `shouldIngest` remains `true`), which is a **SilentlyContinueAfterException** / **EmptyCatchBlock**-adjacent issue.
+
+**Line 50** — **ConstructorShouldNotCallOverridableMethod**: `configure()` is called from the constructor; if subclassed, overriding `configure()` could cause issues.

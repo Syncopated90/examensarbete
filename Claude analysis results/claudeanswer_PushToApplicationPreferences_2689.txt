@@ -1,0 +1,13 @@
+**Line 92-93**: `DesignRule` / `MisleadingComment` — The Javadoc says "Modifies the current instance" but the method does not modify anything; it returns a new instance. The `@return` description contradicts the method name `withCitationCommand` and the summary line.
+
+**Line 13**: `FieldNamingConvention` — No violation, but note:
+
+**Line 44**: `ReturnMutableObject` — `getCommandPaths()` returns the internal `MapProperty` directly, exposing the mutable internal state without defensive copying.
+
+**Line 48-51**: `UnnecessaryMethodComplexity` — `setCommandPaths` mutates the internal map via `clear()` + `putAll()` rather than replacing it, which is inconsistent with the property-based design and can cause unexpected observer side effects.
+
+**Line 92**: `InvalidJavadoc` / `IncorrectJavadocDescription` — `/// Modifies the current instance...` is factually wrong; the method is a non-mutating factory method (`with`-pattern).
+
+**Line 19**: `UnusedField` — `defaultCiteCommand` is only written (constructor, `withCitationCommand`) and read via `getDefaultCiteCommand()` / `withCitationCommand`, but there is no `defaultCiteCommandProperty()` accessor, making the `ObjectProperty` wrapper pointless — a plain field would suffice. (`UnnecessaryWrapper`)
+
+**Line 85**: `InconsistentAccessorStyle` — `getDefaultCiteCommand()` uses `.getValue()` while `getCiteCommand()` at line 76 uses `.get()`. Inconsistent use of `getValue()` vs `get()` on the same property type. (`InconsistentMethodUsage`)

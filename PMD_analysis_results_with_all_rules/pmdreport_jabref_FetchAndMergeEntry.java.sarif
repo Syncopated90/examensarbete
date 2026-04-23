@@ -1,0 +1,2266 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ExcessiveImports",
+              "shortDescription": {
+                "text": "A high number of imports (32) can indicate a high degree of coupling within an object; current threshold is 30."
+              },
+              "fullDescription": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#excessiveimports",
+              "help": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MutableStaticState",
+              "shortDescription": {
+                "text": "Do not use non-final non-private static fields"
+              },
+              "fullDescription": {
+                "text": "\n            Non-private static fields should be made constants (or immutable references) by\n            declaring them final.\n\n            Non-private non-final static fields break encapsulation and can lead to hard to find\n            bugs, since these fields can be modified from anywhere within the program.\n            Callers can trivially access and modify non-private non-final static fields. Neither\n            accesses nor modifications can be guarded against, and newly set values cannot\n            be validated.\n\n            If you are using this rule, then you don't need this\n            rule {% rule java/errorprone/AssignmentToNonFinalStatic %}.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#mutablestaticstate",
+              "help": {
+                "text": "\n            Non-private static fields should be made constants (or immutable references) by\n            declaring them final.\n\n            Non-private non-final static fields break encapsulation and can lead to hard to find\n            bugs, since these fields can be modified from anywhere within the program.\n            Callers can trivially access and modify non-private non-final static fields. Neither\n            accesses nor modifications can be guarded against, and newly set values cannot\n            be validated.\n\n            If you are using this rule, then you don't need this\n            rule {% rule java/errorprone/AssignmentToNonFinalStatic %}.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'SUPPORTED_FIELDS' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like bibDatabaseContext"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'bibDatabaseContext' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'taskExecutor' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'preferences' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'dialogService' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'undoManager' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'stateManager' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'entry' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'field' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CognitiveComplexity",
+              "shortDescription": {
+                "text": "The method 'fetchAndMerge(BibEntry, List<Field>)' has a cognitive complexity of 17, current threshold is 15"
+              },
+              "fullDescription": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cognitivecomplexity",
+              "help": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'fields' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'field' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fieldContent' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'cleanup' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "InvalidLogMessageFormat",
+              "shortDescription": {
+                "text": "Too many arguments, expected 0 argument but found 1"
+              },
+              "fullDescription": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#invalidlogmessageformat",
+              "help": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 5,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "CognitiveComplexity",
+              "shortDescription": {
+                "text": "The method 'showMergeDialog(BibEntry, BibEntry, WebFetcher)' has a cognitive complexity of 19, current threshold is 15"
+              },
+              "fullDescription": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cognitivecomplexity",
+              "help": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CyclomaticComplexity",
+              "shortDescription": {
+                "text": "The method 'showMergeDialog(BibEntry, BibEntry, WebFetcher)' has a cyclomatic complexity of 10."
+              },
+              "fullDescription": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cyclomaticcomplexity",
+              "help": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'originalEntry' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'fetchedEntry' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'fetcher' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'dialog' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'mergedEntry' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'compoundEdit' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'jointFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'originalFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'oldType' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'newType' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'originalString' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'mergedString' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidInstantiatingObjectsInLoops",
+              "shortDescription": {
+                "text": "Avoid instantiating new objects inside loops"
+              },
+              "fullDescription": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_performance.html#avoidinstantiatingobjectsinloops",
+              "help": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "properties": {
+                "ruleset": "Performance",
+                "priority": 3,
+                "tags": [
+                  "Performance"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "GuardLogStatement",
+              "shortDescription": {
+                "text": "Logger calls should be surrounded by log level guards."
+              },
+              "fullDescription": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement",
+              "help": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "InvalidLogMessageFormat",
+              "shortDescription": {
+                "text": "Too many arguments, expected 1 argument but found 2"
+              },
+              "fullDescription": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#invalidlogmessageformat",
+              "help": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 5,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ExcessiveImports",
+          "ruleIndex": 0,
+          "message": {
+            "text": "A high number of imports (32) can indicate a high degree of coupling within an object; current threshold is 30."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 195,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 1,
+                  "endLine": 42,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MutableStaticState",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Do not use non-final non-private static fields"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 31,
+                  "endLine": 43,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 31,
+                  "endLine": 43,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 4,
+          "message": {
+            "text": "The static field name 'SUPPORTED_FIELDS' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 31,
+                  "endLine": 43,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 33,
+                  "endLine": 51,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 33,
+                  "endLine": 53,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 31,
+                  "endLine": 54,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 32,
+                  "endLine": 55,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Avoid excessively long variable names like bibDatabaseContext"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 38,
+                  "endLine": 56,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 38,
+                  "endLine": 56,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 32,
+                  "endLine": 57,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 34,
+                  "endLine": 58,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 12,
+                  "endLine": 60,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Avoid excessively long variable names like bibDatabaseContext"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 50,
+                  "endLine": 60,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'bibDatabaseContext' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 50,
+                  "endLine": 60,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'taskExecutor' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 44,
+                  "endLine": 61,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'preferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 46,
+                  "endLine": 62,
+                  "endColumn": 57
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Parameter 'dialogService' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 45,
+                  "endLine": 63,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Parameter 'undoManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 43,
+                  "endLine": 64,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Parameter 'stateManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 44,
+                  "endLine": 65,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 17,
+                  "endLine": 74,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'entry' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 40,
+                  "endLine": 74,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 17,
+                  "endLine": 78,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'entry' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 40,
+                  "endLine": 78,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Parameter 'field' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 53,
+                  "endLine": 78,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 17,
+                  "endLine": 82,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CognitiveComplexity",
+          "ruleIndex": 15,
+          "message": {
+            "text": "The method 'fetchAndMerge(BibEntry, List<Field>)' has a cognitive complexity of 17, current threshold is 15"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 17,
+                  "endLine": 82,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'entry' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 40,
+                  "endLine": 82,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Parameter 'fields' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 59,
+                  "endLine": 82,
+                  "endColumn": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'field' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 20,
+                  "endLine": 83,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Local variable 'fieldContent' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 30,
+                  "endLine": 84,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'cleanup' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 76,
+                  "endLine": 90,
+                  "endColumn": 83
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "InvalidLogMessageFormat",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Too many arguments, expected 0 argument but found 1"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 62,
+                  "endLine": 99,
+                  "endColumn": 135
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CognitiveComplexity",
+          "ruleIndex": 21,
+          "message": {
+            "text": "The method 'showMergeDialog(BibEntry, BibEntry, WebFetcher)' has a cognitive complexity of 19, current threshold is 15"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 18,
+                  "endLine": 116,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CyclomaticComplexity",
+          "ruleIndex": 22,
+          "message": {
+            "text": "The method 'showMergeDialog(BibEntry, BibEntry, WebFetcher)' has a cyclomatic complexity of 10."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 18,
+                  "endLine": 116,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Parameter 'originalEntry' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 43,
+                  "endLine": 116,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Parameter 'fetchedEntry' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 67,
+                  "endLine": 116,
+                  "endColumn": 79
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Parameter 'fetcher' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 92,
+                  "endLine": 116,
+                  "endColumn": 99
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Local variable 'dialog' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 28,
+                  "endLine": 117,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Local variable 'mergedEntry' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 28,
+                  "endLine": 122,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Local variable 'compoundEdit' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 31,
+                  "endLine": 125,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Local variable 'jointFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 24,
+                  "endLine": 128,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Local variable 'originalFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 130,
+                  "startColumn": 24,
+                  "endLine": 130,
+                  "endColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 31,
+          "message": {
+            "text": "Local variable 'oldType' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 23,
+                  "endLine": 135,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Local variable 'newType' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 136,
+                  "startColumn": 23,
+                  "endLine": 136,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'field' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 145,
+                  "startColumn": 24,
+                  "endLine": 145,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Local variable 'originalString' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 146,
+                  "startColumn": 34,
+                  "endLine": 146,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 34,
+          "message": {
+            "text": "Local variable 'mergedString' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 147,
+                  "startColumn": 34,
+                  "endLine": 147,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 35,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 42,
+                  "endLine": 151,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'field' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 157,
+                  "startColumn": 24,
+                  "endLine": 157,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Local variable 'originalString' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 159,
+                  "startColumn": 38,
+                  "endLine": 159,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 35,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 161,
+                  "startColumn": 42,
+                  "endLine": 161,
+                  "endColumn": 115
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 17,
+                  "endLine": 178,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Parameter 'entry' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 40,
+                  "endLine": 178,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Parameter 'fetcher' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 65,
+                  "endLine": 178,
+                  "endColumn": 72
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'cleanup' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 182,
+                  "startColumn": 45,
+                  "endLine": 182,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 36,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 27,
+                  "endLine": 190,
+                  "endColumn": 109
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "InvalidLogMessageFormat",
+          "ruleIndex": 37,
+          "message": {
+            "text": "Too many arguments, expected 1 argument but found 2"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FetchAndMergeEntry.java"
+                },
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 27,
+                  "endLine": 190,
+                  "endColumn": 108
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

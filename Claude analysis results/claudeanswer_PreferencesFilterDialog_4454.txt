@@ -1,0 +1,33 @@
+**Line 26** - `VisibilityModifier`: Field `preferencesFilter` should be private final (it is, but unused outside constructor after assignment — actually it's used in `updateModel`). No issue here.
+
+**Line 26** - `UnusedPrivateField`: `preferencesFilter` — actually used. Skip.
+
+**Line 52** - `NullAssignment`: Returning `null` from the predicate mapping lambda (`return null`) assigns null as a predicate value, which is an improper use of the Predicate functional interface.
+
+**Line 52-57** - `AvoidLiteralsInIfCondition`: `searchText.isEmpty()` combined with null check is a compound condition that could use `StringUtils.isBlank` or similar utility.
+
+**Line 27** - `UnusedPrivateField`: `preferenceOptions` is used only internally; not a violation per se, but accessibility could be questioned.
+
+**Line 36** - `UnusedPrivateField`: `count` field is written via binding but never read directly.
+
+**Line 51** - `ConstructorCallsOverridableMethod`: `showOnlyDeviatingPreferenceOptions.setOnAction` and `updateModel()` called inside `initialize()` which is invoked during construction context via FXML.
+
+**Line 63** - `LawOfDemeter`: `data.getValue().getDefaultValue().orElse("")` — chained method calls violating Law of Demeter.
+
+**Line 62** - `LawOfDemeter`: `data.getValue().getValue()` — chained call.
+
+**Line 61** - `LawOfDemeter`: `data.getValue().getKey()` — chained call.
+
+**Line 60** - `LawOfDemeter`: `data.getValue().getType()` — chained call.
+
+**Line 43** - `LawOfDemeter`: `ViewLoader.view(this).load().setAsDialogPane(this)` — method chaining violates Law of Demeter.
+
+**Line 47** - `UnnecessaryFullyQualifiedName`: Not applicable here as imports are used.
+
+**Line 39** - `CallSuperInConstructor`: `BaseDialog` is extended but no explicit `super()` call is made.
+
+**Line 53** - `AvoidInlineConditionals` / `ReturnCount`: Multiple return points inside the lambda body.
+
+**Line 25** - `ClassNamingConventions`: No violation.
+
+**Line 66** - `LawOfDemeter`: `Bindings.size(table.getItems()).asString("(%d)")` — chained call on result of `table.getItems()`.

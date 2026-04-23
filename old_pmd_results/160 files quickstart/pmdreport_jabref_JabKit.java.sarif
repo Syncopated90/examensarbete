@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UnnecessaryFullyQualifiedName",
+              "shortDescription": {
+                "text": "Unnecessary qualifier 'JabKit': 'generateCitationKeys' is already in scope"
+              },
+              "fullDescription": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname",
+              "help": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UnnecessaryFullyQualifiedName",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Unnecessary qualifier 'JabKit': 'generateCitationKeys' is already in scope"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JabKit.java"
+                },
+                "region": {
+                  "startLine": 174,
+                  "startColumn": 9,
+                  "endLine": 174,
+                  "endColumn": 15
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

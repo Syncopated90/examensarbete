@@ -1,0 +1,13 @@
+**Line 15** — `Public Field` (or `Visibility Modifier`): `failedToGetCitationEntries` is `public` and non-final after construction; should be `private` with an accessor.
+
+**Line 15** — `ImmutableField`: `failedToGetCitationEntries` is assigned only in the constructor and never changed; should be declared `final`.
+
+**Line 36** — `Collectors.toList()` (or `UseDiamondOperator` / `UseUnmodifiableList`): Prefer `Collectors.toUnmodifiableList()` or `Stream.toList()` over `Collectors.toList()`.
+
+**Line 24** — `LocalVariableCouldBeFinal`: `citationEntries` (Optional) is never reassigned; should be declared `final`.
+
+**Line 30** — `LocalVariableCouldBeFinal`: Loop variable `entry` is never reassigned; should be declared `final`.
+
+**Line 31** — `LocalVariableCouldBeFinal`: `itemViewModelEntry` is never reassigned; should be declared `final`.
+
+**Line 36** — `LocalVariableCouldBeFinal`: `citationEntries` (List) is never reassigned; should be declared `final`.

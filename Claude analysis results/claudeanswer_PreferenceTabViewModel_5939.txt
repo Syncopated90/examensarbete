@@ -1,0 +1,11 @@
+**Line 20** - `UnusedReturnValue` / `BooleanMethodIsAlwaysInverted`: default method `validateSettings()` returns a hardcoded literal `true` with no logic.
+
+**Line 20** - `ReturnCount`: trivial but the interface default method provides implementation detail in an interface, violating `InterfaceDesign` / `AbstractClassWithoutAbstractMethods` principle.
+
+**Line 7, 14, 23, 29** - `NonJavadocComment`: Triple-slash (`///`) comments are not valid Javadoc syntax in Java; standard Javadoc uses `/** */`. Breaks `JavadocStyle` rule.
+
+**Line 33** - `MethodReturnsInternalArray` / immutability: `List.of()` is fine, but the `@return` tag is present on line 32 while `@param` documentation is absent on `storeSettings` and `setValues` — violates `MissingJavadocMethod` / `JavadocMethod` rule.
+
+**Line 5** - `InterfaceIsType`: The interface contains only abstract methods and default methods but no constants, which is acceptable, however mixing default method implementations with abstract methods can violate `InterfaceSegregation` if clients are forced to depend on unused methods (`setValues`, `storeSettings`, `validateSettings`, `getRestartWarnings`).
+
+**Line 20, 33** - `UnnecessaryModifier`: `default` methods in interfaces providing stub implementations (`return true`, `return List.of()`) violate `UncommentedEmptyMethodBody` / `DesignForExtension` — callers may silently rely on the stub without overriding.

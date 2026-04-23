@@ -1,0 +1,15 @@
+**Line 10** — `SimpleBooleanProperty` initialized to `true` but field name implies disabling; no rule broken here structurally, but see below.
+
+**Lines 10–14** — **VisibilityModifier** / **EncapsulationRule**: Fields are `private final` — OK, but the property objects themselves are mutable and returned directly by the accessor methods.
+
+**Lines 21, 28, 35, 42, 49** — **MethodReturnsInternalArray** (PMD) / **ReturnOfCollectionOrArrayField**: Mutable `BooleanProperty` objects are returned directly, exposing internal state to external modification.
+
+**Lines 57–71** — **AvoidDuplicateLiterals** (PMD): Pattern of `if (isDisableX()) { preferences.getX().setX(false); }` is repeated five times — **DuplicatedCode** / **DRY violation**.
+
+**Lines 57–71** — **CyclomaticComplexity** (PMD): Five separate `if` blocks where a single loop over a map of `BooleanProperty → Runnable` would reduce complexity.
+
+**Lines 58, 61, 64, 67, 70** — **LawOfDemeter** (PMD `LawOfDemeter`): Chain calls like `preferences.getFilePreferences().setFulltextIndexLinkedFiles(false)` violate the Law of Demeter (train wrecks).
+
+**Line 6** — **UnusedImports** (PMD): `GuiPreferences` is used, but `AbstractViewModel` import should be verified — not an issue here; however the class extends `AbstractViewModel` without overriding or using any of its functionality — **UnusedInheritance** concern.
+
+**Lines 25, 32, 39, 46, 53** — **BooleanGetMethodName** (PMD): Methods named `isDisableX()` with double-negative semantics (`isDisable...`) create confusing logic; violates **ConfusingTernary** / naming conventions.

@@ -20,7 +20,7 @@ def pmd_recheck_with_all_rules():
   print(f"Elapsed time: {end - start}")
 
 def random_choice():
-  file_amount = 320
+  file_amount = 1
   checked_files = populate_checked_files()
   claude_time = 0.0
   pmd_quickstart_time = 0.0

@@ -1,0 +1,27 @@
+**Line 97** — `NullPointerException` instantiated directly; rule: **AvoidThrowingNullPointerException**
+
+**Line 220** — String concatenation with `+ "\n"` inside `write()`; rule: **AvoidStringConcatenation** / use `newLine()` or `System.lineSeparator()`
+
+**Line 57** — `fileToSelectedEntryMap` is a `HashMap` declared as field but never synchronized despite potential concurrent access from background tasks; rule: **UseConcurrentHashMap** / **NonThreadSafeSingleton**
+
+**Line 63** — `findUnlinkedFilesTask` and `importFilesBackgroundTask` are mutable fields with no synchronization; rule: **UnsynchronizedStaticDateFormatter** (mutable state accessed from multiple threads)
+
+**Line 113** — `startSearch()`: `selectedExtension.getValue()` can be `null` (no null check before `.dirFilter()`); rule: **NullAssignment** / **DereferenceAfterNullCheck**
+
+**Line 114** — `selectedDate.getValue()` and **line 115** `selectedSort.getValue()` similarly unguarded; rule: **NullAssignment**
+
+**Line 191** — `/// ` Javadoc-style comment uses `///` (not valid Javadoc); rule: **InvalidJavadocPosition** / **CommentDefaultAccessModifier**
+
+**Line 220** — `writer.write(file.toString() + "\n")`: platform line separator not used; rule: **AvoidStringConcatenation** and **UseSystemLineSeparator**
+
+**Line 253** — `getRelatedEntriesForFiles`: method creates a new `AutoSetFileLinksUtil` on every call inside a loop context; rule: **CreateObjectWithoutUsing** / **ObjectInstantiationInLoopsRule** (instantiated once per method call but internally loops `allEntries`)
+
+**Line 258** — `linkedFile.findIn(List.of(filePath))`: `List.of(filePath)` created on every iteration of inner stream; rule: **AvoidInstantiatingObjectsJustToCallGetClass** / unnecessary object creation in loop
+
+**Line 97** — `orElseThrow(() -> new NullPointerException(...))`: rule: **PreferIllegalStateException** — `NullPointerException` should not be thrown explicitly; use `IllegalStateException`
+
+**Line 11** — `import java.util.ArrayList` — **Line 11–16**: `ArrayList`, `Collection`, `HashMap` imported but `ArrayList` and `Collection` only used in one method; rule: **UnusedImports** (verify `Collection` — used only at line 257)
+
+**Line 16** — `import java.util.function.Predicate` used only as a local variable type in constructor; not a violation but tightly scoped — rule: **LawOfDemeter** (minor)
+
+**Line 258** — `associatedFiles.stream().anyMatch(...)` with `linkedFile.findIn(List.of(filePath)).isPresent()`: `Optional.isPresent()` check instead of `Optional.ifPresent`; rule: **OptionalGetWithoutIsPresent** / **UseOptionalOrElse**

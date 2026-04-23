@@ -1,0 +1,37 @@
+**Line 24 — Security/XXE (XML External Entity Injection)**
+`XMLInputFactory.newInstance()` without disabling external entity processing. Missing:
+```java
+XML_INPUT_FACTORY.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+XML_INPUT_FACTORY.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
+```
+Rule: `XXE_XMLStreamReader` / OWASP A03 XML External Entity
+
+---
+
+**Line 24 — Mutable Static Field**
+`XML_INPUT_FACTORY` is a mutable static field (`XMLInputFactory` is not guaranteed thread-safe). Rule: `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` / `VisibleForTesting`
+
+---
+
+**Line 92 — Resource Leak**
+`XMLStreamReader reader` created at line 112 is never closed. No try-with-resources or `reader.close()` call. Rule: `resource-leak` / `CloseResource`
+
+---
+
+**Line 92 — Inefficient String Construction**
+`new String(source.readAllBytes())` uses platform default charset implicitly. Rule: `ImplicitDefaultCharset` / `StringInstantiation`
+
+---
+
+**Line 156 — Redundant Null Check**
+`title` is initialized to `""` (line 117) and never assigned `null`, making `title != null` always true. Rule: `RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE`
+
+---
+
+**Line 63 — Logical Gap / Missing Else**
+When `filePath.isAbsolute()` is true but `Files.exists(filePath)` is false, execution silently falls through to treat the path as an internal resource, which is misleading behavior. Rule: `ConfusingTernary` / missing guard
+
+---
+
+**Line 24 — Static Mutable Field Not Final-Safe**
+`XMLInputFactory` instance modified post-construction in `static` block (line 32) but field is `final`. While technically legal, factory state mutation after assignment is a rule violation in some analyzers. Rule: `ImmutableField` / `PMD:ImmutableField`

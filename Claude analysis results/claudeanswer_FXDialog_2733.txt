@@ -1,0 +1,15 @@
+**Line 17** — `Javadoc:InvalidReference` — Malformed Javadoc reference `Dialojavafx.scene.control.DialogPanegPane` is not a valid type.
+
+**Line 44** — `CallToSuperInConstructor` (or `AvoidCallingConstructorFromConstructor`) — Constructor `FXDialog(AlertType, boolean)` calls `super(type)` but also chains multiple constructors; class has no single canonical constructor path, violating constructor chaining best practices.
+
+**Line 47** — `NullDereference` / `AvoidNullCheck` — `getDialogWindow()` at line 70 casts result of `getDialogPane().getScene().getWindow()` without null checks; `getScene()` can return null if the pane is not yet attached.
+
+**Line 54** — `InstantiationInsideLambda` / `ServiceLookupInLoop` — `Injector.instantiateModelOrService` is called inside a `setOnKeyPressed` lambda, meaning service lookup occurs on every key press rather than once at construction time.
+
+**Line 57** — `LambdaParameterNaming` — Lambda parameter `_` (unnamed/discard parameter) may not be valid syntax prior to Java 21; portability violation if targeting earlier Java versions.
+
+**Line 70** — `UncheckedCast` — `(Stage) getDialogPane().getScene().getWindow()` performs an unchecked cast with no `instanceof` guard.
+
+**Line 24–30** — `ConstructorCallsOverridableMethod` — `setDialogIcon(image)` is a private method called from constructors, acceptable here, but `setTitle` (line 34, 39) is an inherited overridable method called from constructors, violating `ConstructorCallsOverridableMethod`.
+
+**Lines 24–62** — `ExcessiveConstructorLength` / `OverloadedConstructorsWithMultipleChains` — Six overloaded constructors with overlapping chaining creates unnecessary complexity; violates `TooManyConstructors`.

@@ -1,0 +1,37 @@
+**Line 26** — `UnusedImports`: `JabRefDialogService` is imported but used only indirectly via static method; however it *is* used at lines 222/228, so this is fine. Re-examining:
+
+**Line 26** — `UnusedImports`: `import org.jabref.gui.JabRefDialogService` — actually used, skip.
+
+**Line 110** — `LambdaParameterNaming` / `UnusedFormalParameter`: Listener lambda `(_, _, _)` — three underscores; the third `_` shadows the new value which is actually unused, but this is intentional style.
+
+**Line 64** — `VisibilityModifier`: `protected final TagsField<Keyword> tagsField` — non-private field in a class; field should be private.
+
+**Line 56** — `VisibilityModifier`: `protected final Field field` — non-private field.
+
+**Line 57** — `VisibilityModifier`: `protected final SuggestionProvider<?> suggestionProvider` — non-private field.
+
+**Line 58** — `VisibilityModifier`: `protected final FieldCheckers fieldCheckers` — non-private field.
+
+**Line 59** — `VisibilityModifier`: `protected final UndoManager undoManager` — non-private field.
+
+**Line 66** — `VisibilityModifier`: `protected final DialogService dialogService` — non-private field.
+
+**Line 67** — `VisibilityModifier`: `protected final ClipBoardManager clipBoardManager` — non-private field.
+
+**Line 68** — `VisibilityModifier`: `protected final KeyBindingRepository keyBindingRepository` — non-private field.
+
+**Line 113** — `AvoidInlineConditionals` / logic issue: `isSortedTagsField` is set `true` even when the list is in order but `isSortedTagsField` was `false`, conflating two conditions in one branch.
+
+**Line 220–228** — `CUT` case copies to clipboard but message says "Copied" instead of "Cut"; this is a **copy-paste error / misleading message** (not a static analysis rule per se, but triggers `IssueDetection`).
+
+**Line 228** — Duplicate code: the `CUT` case body duplicates the `COPY` case body before adding `tagsField.removeTags(tag)`. Rule: `DuplicatedBlocks`.
+
+**Line 75** — `AvoidCallingFinalizeOrInjector` / `LawOfDemeter`: `Injector.instantiateModelOrService(...)` called three times directly in constructor — Rule: `LawOfDemeter`.
+
+**Line 52** — `MutableStaticState`: `private boolean isSortedTagsField` is instance field but `draggedTag` at line 53 is mutable `Optional` — Rule: `MutableInstanceField` (non-final mutable field).
+
+**Line 53** — `MutableInstanceField`: `private Optional<Keyword> draggedTag` is reassigned; `Optional` fields are discouraged — Rule: `OptionalAsFieldOrParameter`.
+
+**Line 196** — `InnerClassField`: `TagContextAction` inner class accesses outer class fields `clipBoardManager`, `dialogService`, `tagsField` directly — Rule: `ClassDataAbstractionCoupling`.
+
+**Line 193** — `VisibilityModifier`: Inner class `TagContextAction` is `private` (correct), but fields `command` and `tag` at lines 194–195 lack `final` — actually they have none declared; Rule: `FinalFieldCouldBeStatic` / missing `final`.

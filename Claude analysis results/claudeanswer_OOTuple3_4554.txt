@@ -1,0 +1,15 @@
+**Line 8** - `ClassWithoutLogger` / Missing `equals()` and `hashCode()` methods (`OverrideHashCodeAndEquals`)
+
+**Line 8** - `MissingSerialVersionUID` - class is a value-holding type without implementing `Serializable`, but more precisely: no `toString()` override (`MissingToStringMethod`)
+
+**Line 8** - `UncommentedEmptyConstructor` / class lacks `equals`/`hashCode` (`EqualsHashCode`)
+
+**Line 13** - `VisibilityModifier` - public mutable (though `final`) fields `a`, `b`, `c` violate encapsulation; fields should be private (`VisibilityModifier`)
+
+**Line 13-15** - `ExposedField` / public fields `a`, `b`, `c` — no accessor methods (`VisibilityModifier`)
+
+**Line 8** - `MissingOverride` / no `toString()` implementation (`ObjectToString` / `ToStringStyle`)
+
+**Line 8** - Raw generic class without bounding — no `Comparable` constraint, minor design issue (`GenericWhitespace` not applicable, but `ClassTypeParameterName` — parameter names `A`, `B`, `C` are single uppercase letters which is acceptable, no violation here)
+
+**Line 8** - `ImmutableClass` candidate — class is effectively immutable but not declared `final`, allowing subclassing (`FinalClass` / non-final immutable class)

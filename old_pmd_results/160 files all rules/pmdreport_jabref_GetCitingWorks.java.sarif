@@ -1,0 +1,840 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AtLeastOneConstructor",
+              "shortDescription": {
+                "text": "Each class should declare at least one constructor"
+              },
+              "fullDescription": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#atleastoneconstructor",
+              "help": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'sharedOptions' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like citationFetcherType"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'citationFetcherType' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'preferences' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LawOfDemeter",
+              "shortDescription": {
+                "text": "Access to field `cliPreferences` on foreign value `argumentProcessor` (degree 1)"
+              },
+              "fullDescription": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#lawofdemeter",
+              "help": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'aiService' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'citationFetcher' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entries' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "InvalidLogMessageFormat",
+              "shortDescription": {
+                "text": "Too many arguments, expected 0 argument but found 1"
+              },
+              "fullDescription": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#invalidlogmessageformat",
+              "help": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 5,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "SystemPrintln",
+              "shortDescription": {
+                "text": "Usage of System.out/err"
+              },
+              "fullDescription": {
+                "text": "\nReferences to System.(out|err).print are usually intended for debugging purposes and can remain in\nthe codebase even in production code. By using a logger one can enable/disable this behaviour at\nwill (and by priority) and avoid clogging the Standard out log.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#systemprintln",
+              "help": {
+                "text": "\nReferences to System.(out|err).print are usually intended for debugging purposes and can remain in\nthe codebase even in production code. By using a logger one can enable/disable this behaviour at\nwill (and by priority) and avoid clogging the Standard out log.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "OnlyOneReturn",
+              "shortDescription": {
+                "text": "A method should have only one exit point, and that should be the last statement in the method"
+              },
+              "fullDescription": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#onlyonereturn",
+              "help": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 1,
+                  "endLine": 23,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AtLeastOneConstructor",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Each class should declare at least one constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 1,
+                  "endLine": 23,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 33,
+                  "endLine": 25,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 20,
+                  "endLine": 28,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field 'sharedOptions' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 34,
+                  "endLine": 31,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 34,
+                  "endLine": 31,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like citationFetcherType"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 33,
+                  "endLine": 38,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field 'citationFetcherType' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 33,
+                  "endLine": 38,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 33,
+                  "endLine": 38,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 20,
+                  "endLine": 41,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Local variable 'preferences' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 24,
+                  "endLine": 45,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LawOfDemeter",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Access to field `cliPreferences` on foreign value `argumentProcessor` (degree 1)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 38,
+                  "endLine": 45,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Local variable 'aiService' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 19,
+                  "endLine": 46,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Local variable 'citationFetcher' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 25,
+                  "endLine": 53,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Local variable 'entries' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 24,
+                  "endLine": 62,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "InvalidLogMessageFormat",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Too many arguments, expected 0 argument but found 1"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 13,
+                  "endLine": 67,
+                  "endColumn": 81
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 13,
+                  "endLine": 68,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 13,
+                  "endLine": 69,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 13,
+                  "endLine": 70,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SystemPrintln",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Usage of System.out/err"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 13,
+                  "endLine": 71,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 13,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GetCitingWorks.java"
+                },
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 13,
+                  "endLine": 72,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

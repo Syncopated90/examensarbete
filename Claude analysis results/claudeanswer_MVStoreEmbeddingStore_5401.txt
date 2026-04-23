@@ -1,0 +1,23 @@
+**Line 137: `removeAll(Collection ids)` — RawTypes**
+Raw type `Collection` used; should be `Collection<?>` or parameterized.
+
+**Line 44: `EmbeddingRecord` — SerializableRecordContainsNonSerializableFields**
+`EmbeddingRecord` implements `Serializable` but contains `@Nullable String` and `float[]` which are fine, however the null marker `@Nullable` on a record component is not the issue — the `EMPTY_EMBEDDING_RECORD` uses `null` for the `file` field which is acceptable, but the record itself is not `serialVersionUID`-declared.
+
+**Line 44: `EmbeddingRecord` — SerialVersionUID missing**
+`EmbeddingRecord` implements `Serializable` but declares no `serialVersionUID`.
+
+**Line 42: `EMPTY_EMBEDDING_RECORD` — ImmutableField / StaticFinalField**
+Non-private static field storing a mutable `float[]` via `new float[0]` — the array is mutable, violating encapsulation.
+
+**Line 110: `applyFilter` lambda — VariableDeclarationUsageDistance**
+`eRecord` is declared and used across multiple statements inside the lambda with intermediate computations.
+
+**Line 59: `add(Embedding)`** — Comment references `InMemoryEmbeddingStore` in a block comment inside code; unclosed parenthesis in comment: `// Every embedding must have a unique id (convention in langchain4j.` — **MissingDeprecatedOrJavadoc / UnclosedHTMLComment** (malformed inline comment, missing closing parenthesis).
+
+**Line 137: `removeAll(Collection ids)` — UncheckedWarning / SuspiciousMethodCalls**
+Raw `Collection` causes unchecked operations; `ids.contains(entry.getKey())` operates on raw type without type safety.
+
+**Line 109: `applyFilter` call with `request.filter()`** — `request.filter()` may return `null`; passed into a method accepting `@Nullable Filter` — acceptable, but the switch-on-null pattern requires Java 21+; no language-level guard documented. **PatternMatchingInstanceOf / SwitchRules** — `case null` in switch requires explicit null handling only in Java 21+; portability concern.
+
+**Line 156: `errorMessageForOpening()`** — String is duplicated verbatim in `errorMessageForOpeningLocalized()` (line 162). **AvoidDuplicateLiterals**.

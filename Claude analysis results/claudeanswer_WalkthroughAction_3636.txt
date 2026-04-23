@@ -1,0 +1,15 @@
+**Line 48** - `WALKTHROUGH_CACHE` is a static mutable field (`ConcurrentHashMap`) shared across instances. **Rule: ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD** / **Mutable Static Field**
+
+**Line 67** - Lambda parameter `_` used as unused variable discard. **Rule: UnusedFormalParameter** (PMD)
+
+**Line 55** - Constructor parameter `name` is stored only indirectly via `getWalkthrough(name)`, not as a field, but `stage`, `frame`, `stateManager`, `preferences` are stored as instance fields yet `WALKTHROUGH_CACHE` is static — instance fields `frame`, `stateManager`, `preferences` are never used in `execute()`. **Rule: UnusedField** (PMD)
+
+**Line 63** - `execute()` accesses instance field `this.stage` but `walkthrough` was built using static cache potentially from a different `stage` instance. **Rule: GuardedByValidator** / **InconsistentSynchronization**
+
+**Line 48** - `WALKTHROUGH_CACHE` is never cleared; holds strong references to objects containing `stage`, `frame`, `stateManager`. **Rule: AvoidStaticMutableMembers** / **MemoryLeak**
+
+**Line 157** - `scene.lookup("#useMainFileDirectory").getParent()` — `lookup()` result not null-checked before calling `.getParent()`. **Rule: NullDereference** (PMD/SpotBugs: **NP_NULL_ON_SOME_PATH**)
+
+**Line 75** - `switch` with `default` throwing `IllegalArgumentException` but the method is `private` and all callers pass trusted constants — exception is unchecked and undocumented. **Rule: AvoidThrowingRawExceptionTypes** / **SignatureDeclareThrowsException**
+
+**Line 48** - `ConcurrentHashMap` used but walkthroughs inside contain non-thread-safe JavaFX objects. **Rule: JFXThreadViolation** / **ThreadSafety**

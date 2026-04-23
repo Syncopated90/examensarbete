@@ -1,0 +1,9 @@
+**Line 5** - `UnusedImports`: `org.jabref.logic.formatter.Formatter` is imported but `NormalizeUnicodeFormatter` extends it, so this is valid. Disregard.
+
+**Line 7** - `UnusedImports`: `org.jspecify.annotations.NonNull` — annotation used on line 31, valid. Disregard.
+
+**Line 31** - `MissingOverride` / `ParameterAnnotationOutsideOverride`: `@NonNull` annotation on `format()` parameter is not declared in the parent class/interface `Formatter`, violating Liskov substitution — adding a stronger precondition on an overridden method.
+
+**Line 12** - `ClassNamingConvention` (or `AbstractClassNaming`): `NormalizeUnicodeFormatter` extends `Formatter` which appears to be an abstract class, but the class itself has no abstract modifier — minor design issue depending on ruleset.
+
+**Line 31** - `NullAnnotationConflict`: `@NonNull` on the `value` parameter of an `@Override` method tightens the contract compared to the superclass, which violates the **WeakerAccess** / **Override** rule (PMD/CheckStyle: `OverriddenMethodMustInvokeSuper` adjacent concern; more precisely **ContractStrengthenedInSubtype**).

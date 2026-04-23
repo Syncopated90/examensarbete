@@ -1,0 +1,9 @@
+**Line 12** — `Field naming conventions`: Static final field `DIGITS` should be named to better reflect it only matches space-preceded digits, but more critically the regex `"[ ]\\d+"` uses a character class for a single literal space, which is unnecessarily complex (`" \\d+"` suffices). *(Simplifiable regex / `SimplifyRegex`)*
+
+**Line 5** — `UnusedImport`: `org.jabref.logic.formatter.Formatter` is imported but `RemoveDigitsFormatter` extends it — not an unused import issue. Disregard.
+
+**Line 24** — `ReturnValueIgnored` / `NullableReturn`: `DIGITS.matcher(value).replaceAll("")` — the `@NonNull` annotation on the parameter is redundant enforcement since `Matcher.replaceAll` can still produce an empty string for all valid input, but no null-check guard exists if the annotation is violated at runtime. *(Missing null guard / `NullAnnotationViolation`)*
+
+**Line 12** — `UnnecessaryUseOfCharacterClass`: `[ ]` is a character class containing a single space character; should be written as `" "` or `\\ `. *(PMD: `UnnecessaryCharacterClass`)*
+
+**Line 10** — `ClassNamingConvention` / `AbstractClassExtension`: `RemoveDigitsFormatter` extends `Formatter` without calling any `super` methods, yet inherits abstract contract — no `@Override` completeness issue, but lack of `super` calls could violate parent contract silently. *(MissingSuperCall)*

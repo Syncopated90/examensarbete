@@ -1,0 +1,53 @@
+**Line 9** – `SequencedCollection` import: unused if Java version doesn't support it, but more relevantly — `import java.util.SequencedCollection` is used, so not unused. Skipping.
+
+**Line 10** – `import java.util.stream.Collectors` — used only in `toJson()`, acceptable.
+
+---
+
+**Line 96** — **VariableAssignmentInLambda / EffectivelyFinalVariableModification**
+```java
+pages = pages.substring("Article ".length());
+```
+`pages` is a lambda parameter being reassigned inside the lambda body. This shadows/reassigns the lambda parameter — **reassignment of lambda parameter**.
+
+---
+
+**Line 108** — **PreferOptionalOrElseGet / OptionalOrElseMisuse**
+`entryType.map(...).map(...).get()` — calling `.get()` on an `Optional` without `isPresent()` guard. The `isPresent()` check is on line 107 but `.get()` is used instead of `.orElseThrow()` — **Optional.get() without isPresent check** (the `if` block guards it, but static analyzers flag `Optional.get()` unconditionally — **rule: OptionalGetWithoutIsPresent**).
+
+---
+
+**Line 148** — **ReturnNull**
+```java
+.findFirst().orElse(null);
+```
+Method returns `null` instead of `Optional` — **rule: ReturnOfNull** (NullReturned / ReturnNull).
+
+---
+
+**Line 41** — **UnnecessaryLocalVariable / BibDatabaseContext bibDatabaseContext** — field `bibDatabaseContext` shadows the method parameter `bibDatabaseContext` in `bibEntryToCSLItemData` on **line 85** — **rule: ParameterHidingMemberVariable** (HiddenField). Same for `entryTypesManager` on **line 85**.
+
+---
+
+**Line 165** — **rule: AvoidDuplicateCode / RedundantMethodCall**
+`toJson()` calls `this.setData(entries, ...)` which internally calls `this.data.clear()` and repopulates, even though `bibDatabaseContext` is already set — redundant side-effectful call that mutates state unnecessarily.
+
+---
+
+**Line 34** — **rule: MutableStaticField**
+```java
+private static final BibTeXConverter BIBTEX_CONVERTER = new BibTeXConverter();
+```
+`BibTeXConverter` is a mutable object held in a `static final` field — **rule: MutableStaticState**.
+
+---
+
+**Line 30** — **rule: ClassWithoutLogger** — no logging present despite complex logic; not strictly a PMD/Checkstyle rule but flagged by some rulesets.
+
+---
+
+**Line 107–109** — **rule: UnnecessaryMapBeforeGet**
+```java
+fields = entryType.map(BibEntryType::getAllFields).map(LinkedHashSet::new).get();
+```
+Using `.map().map().get()` on an `Optional` inside an `isPresent()` block — should use `.orElseThrow()` or direct unwrap; mixing `isPresent()` + `get()` — **rule: OptionalGetWithoutIsPresent**.

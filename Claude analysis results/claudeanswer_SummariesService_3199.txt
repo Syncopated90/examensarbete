@@ -1,0 +1,23 @@
+**Line 37** — `TreeMap` used with custom `Comparator`; field declared as `TreeMap` instead of `Map` (programming to implementation, not interface). **Rule: LooseCoupling**
+
+**Line 39** — `ArrayList` used; field declared as `List<List<BibEntry>>` (this is fine), but instantiated with `new ArrayList<>()` — acceptable. No violation here.
+
+**Line 78** — `e` is a poor single-character parameter name. **Rule: ShortVariable**
+
+**Line 84** — `e` is a poor single-character parameter name. **Rule: ShortVariable**
+
+**Line 100** — Unnamed/underscore lambda parameter `_` may not be valid in all Java versions targeted and is unconventional. **Rule: UnusedFormalParameter** (or language level issue)
+
+**Line 144** — `regenerateSummary`: logic condition is incorrect — `CitationKeyCheck.citationKeyIsPresentAndUnique` returning `true` is treated as an error case (missing negation `!`). **Rule: InvertedCondition / ConfusingTernary / LogicError**
+
+**Line 139** — `processingInfo.setState(ProcessingState.PROCESSING)` is called before potential early return paths, mutating state unnecessarily. **Rule: AvoidSideEffectsInConditions / PrematureStateChange**
+
+**Line 109** — `summarize(StringProperty groupName, ...)` — `groupName` parameter is passed through but not used in this method body directly; only forwarded. No null-check on `groupName`. **Rule: NullAssignment / MissingNullCheck**
+
+**Line 67** — Inner class `EntriesChangedListener` accesses outer class fields (`aiPreferences`, `summariesStorage`, etc.) directly — tight coupling of inner to outer. **Rule: CouplingBetweenObjects**
+
+**Line 67** — Non-static inner class `EntriesChangedListener` holds implicit reference to `SummariesService`, preventing GC. **Rule: NonStaticInnerClassReferencesOuterClass**
+
+**Line 37** — `summariesStatusMap` is never synchronized but may be accessed from multiple threads via `TaskExecutor`. **Rule: NonThreadSafeSingleton / UnsynchronizedStaticFormatter**
+
+**Line 39** — `listsUnderSummarization` is never synchronized; concurrent access risk. **Rule: NonThreadSafeSingleton**

@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UnusedPrivateField",
+              "shortDescription": {
+                "text": "Avoid unused private fields such as 'LOGGER'."
+              },
+              "fullDescription": {
+                "text": "\nDetects when a private field is declared and/or assigned a value, but not used.\n\nSince PMD 6.50.0 private fields are ignored, if the fields are annotated with any annotation or the\nenclosing class has any annotation. Annotations often enable a framework (such as dependency injection, mocking\nor e.g. Lombok) which use the fields by reflection or other means. This usage can't be detected by static code analysis.\nPreviously these frameworks where explicitly allowed by listing their annotations in the property\n\"ignoredAnnotations\", but that turned out to be prone of false positive for any not explicitly considered framework.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedprivatefield",
+              "help": {
+                "text": "\nDetects when a private field is declared and/or assigned a value, but not used.\n\nSince PMD 6.50.0 private fields are ignored, if the fields are annotated with any annotation or the\nenclosing class has any annotation. Annotations often enable a framework (such as dependency injection, mocking\nor e.g. Lombok) which use the fields by reflection or other means. This usage can't be detected by static code analysis.\nPreviously these frameworks where explicitly allowed by listing their annotations in the property\n\"ignoredAnnotations\", but that turned out to be prone of false positive for any not explicitly considered framework.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnusedPrivateMethod",
+              "shortDescription": {
+                "text": "Avoid unused private methods such as 'onBrowse()'."
+              },
+              "fullDescription": {
+                "text": "\nUnused Private Method detects when a private method is declared but is unused.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedprivatemethod",
+              "help": {
+                "text": "\nUnused Private Method detects when a private method is declared but is unused.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnusedPrivateMethod",
+              "shortDescription": {
+                "text": "Avoid unused private methods such as 'onReset()'."
+              },
+              "fullDescription": {
+                "text": "\nUnused Private Method detects when a private method is declared but is unused.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedprivatemethod",
+              "help": {
+                "text": "\nUnused Private Method detects when a private method is declared but is unused.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnusedLocalVariable",
+              "shortDescription": {
+                "text": "Avoid unused local variables such as 'initialDir'."
+              },
+              "fullDescription": {
+                "text": "\nDetects when a local variable is declared and/or assigned, but not used.\nVariables whose name starts with `ignored` or `unused` are filtered out.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedlocalvariable",
+              "help": {
+                "text": "\nDetects when a local variable is declared and/or assigned, but not used.\nVariables whose name starts with `ignored` or `unused` are filtered out.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "VariableCanBeInlined",
+              "shortDescription": {
+                "text": "Consider simply using the value vs. storing it in local variable 'config'."
+              },
+              "fullDescription": {
+                "text": "\n            Local variables should not be declared and then immediately returned or thrown. Such\n            variable declarations add unnecessary complexity and make the code harder to read.\n            It is often simpler and cleaner to return or throw the value directly.\n\n            This rule implements SonarSource rule [S1488](https://sonarsource.github.io/rspec/#/rspec/S1488).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#variablecanbeinlined",
+              "help": {
+                "text": "\n            Local variables should not be declared and then immediately returned or thrown. Such\n            variable declarations add unnecessary complexity and make the code harder to read.\n            It is often simpler and cleaner to return or throw the value directly.\n\n            This rule implements SonarSource rule [S1488](https://sonarsource.github.io/rspec/#/rspec/S1488).\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UnusedPrivateField",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Avoid unused private fields such as 'LOGGER'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BibLogSettingsPane.java"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 33,
+                  "endLine": 26,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnusedPrivateMethod",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid unused private methods such as 'onBrowse()'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BibLogSettingsPane.java"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 18,
+                  "endLine": 49,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnusedPrivateMethod",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Avoid unused private methods such as 'onReset()'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BibLogSettingsPane.java"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 18,
+                  "endLine": 58,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnusedLocalVariable",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Avoid unused local variables such as 'initialDir'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BibLogSettingsPane.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 14,
+                  "endLine": 74,
+                  "endColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "VariableCanBeInlined",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Consider simply using the value vs. storing it in local variable 'config'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BibLogSettingsPane.java"
+                },
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 33,
+                  "endLine": 75,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

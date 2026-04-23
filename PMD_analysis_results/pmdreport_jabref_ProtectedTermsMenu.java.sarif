@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "AssignmentToNonFinalStatic",
+              "shortDescription": {
+                "text": "Possible unsafe assignment to non-final static field 'FORMATTER' in a constructor."
+              },
+              "fullDescription": {
+                "text": "\nIdentifies a possible unsafe usage of a static field.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#assignmenttononfinalstatic",
+              "help": {
+                "text": "\nIdentifies a possible unsafe usage of a static field.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "AssignmentToNonFinalStatic",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Possible unsafe assignment to non-final static field 'FORMATTER' in a constructor."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ProtectedTermsMenu.java"
+                },
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 9,
+                  "endLine": 140,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

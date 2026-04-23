@@ -1,0 +1,23 @@
+**Line 56-57** — `LambdaParameterNaming` / `UnusedFormalParameter`: Lambda parameter is unnamed (`_`) which may not be valid prior to Java 21; if intentional, inconsistent with named parameters elsewhere.
+
+**Line 60** — `ExcessiveMethodLength` / `CognitiveComplexity`: `initialize()` method is excessively long.
+
+**Line 62-63** — `LocalVariableCouldBeFinal`: `tableView` and `cellItem` could be declared `final`.
+
+**Line 65** — `LocalVariableCouldBeFinal`: `existingItem` could be declared `final`.
+
+**Line 75** — `LocalVariableCouldBeFinal`: `selectionModel` could be declared `final`.
+
+**Line 53** — `LambdaTypeCanBeOmitted` / `UnnecessaryExplicitLambdaType`: Explicit lambda type `(TableColumn.CellEditEvent<ConstantsItemModel, String> cellEvent)` is unnecessary; type can be inferred.
+
+**Line 86** — `LambdaTypeCanBeOmitted`: Explicit lambda type `(TableColumn.CellEditEvent<ConstantsItemModel, String> cell)` is unnecessary.
+
+**Line 92-93** — `UnusedFormalParameter`: Unnamed parameter `_` used twice; if Java version < 21, this is invalid. If ≥ 21, the second `_` on line 94 shadows the first.
+
+**Line 44** — `MissingOverride`: `initialize()` is a JavaFX lifecycle method but lacks `@Override` annotation (if overriding a superclass method).
+
+**Line 46** — `CallToExternalMethod` in constructor chain: ViewModel is instantiated directly in `initialize()` rather than injected, violating dependency inversion principle (`DependencyInversionPrinciple`).
+
+**Line 35-38** — `ConstructorCallsOverridableMethod`: `ViewLoader.view(this)` called in constructor, which loads FXML and may trigger overridable methods before construction completes.
+
+**Line 94** — `LawOfDemeter`: `stringsList.getFocusModel().getFocusedItem()` violates Law of Demeter (chain of method calls).

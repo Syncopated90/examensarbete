@@ -1,0 +1,17 @@
+**Line 34** – `crossRefFetcher` field is not `final` candidate issue; actually it is final, but `CrossRef` is instantiated without dependency injection — **Dependency Injection / Hard-coded Dependency**
+
+**Line 31** – `GSON` instance is a mutable static field (Gson is thread-safe, but raw `static` mutable object) — **SS_SHOULD_BE_STATIC** (already static, acceptable), but `new Gson()` construction should be via builder for configurability — **Lazy Initialization**
+
+**Line 80** – `urlDownload.asString()` can throw `FetcherException` (checked) but it is not caught in the catch blocks; only `MalformedURLException` and `JsonSyntaxException` are caught — **Missing Exception Handling (DE_MIGHT_IGNORE)**
+
+**Line 86** – `citationItems` array is checked for null but `GSON.fromJson` returning an array type will throw `JsonSyntaxException` before returning null for malformed JSON; null check is unreachable for array deserialization — **Redundant Null Check**
+
+**Line 100** – `fetchBibEntryFromIdentifiers` is called inside a loop and performs a network call (`crossRefFetcher.performSearchById`) — **Network Call Inside Loop / Performance**
+
+**Line 107** – `FetcherException` is caught and only logged with `LOGGER.warn`; the exception is swallowed — **DE_MIGHT_IGNORE / Swallowed Exception**
+
+**Line 143** – `urlDownload.asString()` can throw `FetcherException` but is not declared or caught — **Missing Exception Handling**
+
+**Line 148** – `countResponse.countAsInt()` return value: if `count == 0`, `Optional.empty()` is returned, conflating "zero citations" with "unknown count" — **Logic Error / Incorrect Zero Handling**
+
+**Line 44** – `getApiUrl` performs string concatenation with `doi.get().asString()` which may contain characters invalid in a URI (e.g., unencoded special characters) without encoding — **URL_ENCODING / Improper URI Construction**

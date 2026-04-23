@@ -1,0 +1,13 @@
+**Line 17** — `FieldNamingConventions` / **Field declaration order**: `doiPreferences` is declared after `nameFormatterPreferences` but assigned in a different order in the constructor (nameFormatter → mainFileDirectory → doi), creating a mismatch between declaration order and assignment order.
+
+**Line 24-25** — `ConstructorParameterOrder`: Parameters `mainFileDirectoryProperty` and `doiPreferences` are assigned out of their declaration order (`doiPreferences` declared line 17, `mainFileDirectoryProperty` line 18, but assigned in reverse: `mainFileDirectoryProperty` on line 25, `doiPreferences` on line 26).
+
+**Line 19** — `MutableCollectionInField` / `EncapsulationRule`: `customExportNameFormatters` is a mutable `HashMap` field exposed via direct mutation methods (`clear`, `put`), violating encapsulation — the field is effectively mutable from outside via public methods without defensive copying.
+
+**Line 29** — `DesignForExtension` / `AvoidStaticMethods`: Factory method `getDefault()` uses a misleading `get` prefix (naming convention violation — should be `createDefault()` or `defaultInstance()`); static factory on a non-utility class is a design smell.
+
+**Line 29** — `CommentStyle`: `///` (triple-slash Javadoc-style markdown comment) is non-standard in Java; should use `/** */` for documentation comments.
+
+**Line 44** — `ReturnCount` / `NullWrapping`: Wrapping a potentially null map value in `Optional.ofNullable` is acceptable, but returning `Optional` from a non-stream context on a simple lookup is borderline over-engineering per some style rules (e.g., `OptionalUsedAsFieldOrParameterType` adjacent concern).
+
+**Line 19** — `ImmutableField` violated: field `customExportNameFormatters` is declared `final` but its contents are mutated via public methods `clearCustomExportNameFormatters()` (line 47) and `putCustomExportNameFormatter()` (line 51) — the `final` keyword is misleading about immutability to callers.

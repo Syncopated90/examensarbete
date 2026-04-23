@@ -1,0 +1,11 @@
+**Line 31** — `Injector.instantiateModelOrService` (Service Locator Pattern / Dependency Injection violation): `BibEntryTypesManager` is obtained via service locator instead of constructor injection. **Duplicate Code / Copy-Paste Error**
+
+**Line 57** — `checkedUnknownEntryTypes.forEach(...)` used inside the `if (!checkedDifferentEntryTypes.isEmpty())` block instead of `checkedDifferentEntryTypes.forEach(...)`. This is a **logic bug / wrong variable reference** — the loop body should iterate over `checkedDifferentEntryTypes`.
+
+**Line 53** — Same service locator issue as line 31: `BibEntryTypesManager` resolved via `Injector.instantiateModelOrService` rather than injected via constructor. **ServiceLocatorRule / InjectionPrincipleViolation**
+
+**Line 38** — `currentlyStoredType.get()` called twice after `currentlyStoredType.isEmpty()` check passes the `else` branch. While not incorrect, calling `.get()` without re-checking is a minor **OptionalGetWithoutIsPresent** smell if refactored, though logically safe here due to the `else`.
+
+**Lines 31, 53** — **God Constructor / doing work in constructor (line 31)**: the constructor performs significant logic and external service lookups, violating the **Single Responsibility Principle** and making the class hard to test. **DoNotCallOverridableMethodInConstructor / HeavyConstructor**
+
+**Lines 44, 48** — `newTypes()` and `differentCustomizations()` return mutable `ObservableList` references directly, violating **encapsulation**. Should return `FXCollections.unmodifiableObservableList(...)`. **ReturnMutableObjectFromMethod / EncapsulationViolation**

@@ -1,0 +1,15 @@
+**Line 40** — `EMBEDDED_FILE_NAME` should be `private static final` (non-private or non-final public static field). Rule: **MutableStaticState** / **VisibilityModifier**
+
+**Line 62** — `PDPage` created but `page` local variable could be replaced by inline usage; minor, but more relevantly: `new PDType1Font(Standard14Fonts.FontName.HELVETICA)` font object is created but never closed (implements `Closeable`). Rule: **CloseResource**
+
+**Line 78** — `embedBibTex` is called after the `try-catch` block that swallows the `IOException` on line 73; if the PDF was not created, `embedBibTex` will silently return (guarded by `Files.exists`), but the swallowed exception means failure is hidden. Rule: **AvoidSwallowingExceptions** / **EmptyCatchBlock** (catch only logs, does not rethrow)
+
+**Line 110** — `efTree != null` check is redundant; `efTree` is always non-null at this point in all code paths (assigned on lines 91 or 95). Rule: **RedundantNullCheck** / **UnnecessaryLocalBeforeReturn**
+
+**Line 115** — `new ByteArrayInputStream(...)` is never closed. Rule: **CloseResource**
+
+**Line 119** — `bibTeX.length()` returns character count, not byte count; for UTF-8 encoded bytes this is incorrect for non-ASCII content. Rule: **CorrectnessIssue** / **WrongUseOfApi**
+
+**Line 40** — Public, non-final static field is mutable by external classes. Rule: **PublicStaticField**
+
+**Line 47** — Constructor does not validate any parameters for null. Rule: **NullParameterValidation** / **MissingNullCheck**

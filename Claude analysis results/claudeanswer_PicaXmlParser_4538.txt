@@ -1,0 +1,35 @@
+**Line 29 — XXE (XML External Entity) Injection**
+`DocumentBuilderFactory.newInstance()` without disabling external entities/DTDs. Missing `FEATURE_SECURE_PROCESSING` or explicit disabling of `http://xml.org/sax/features/external-general-entities`.
+
+**Line 100 — String Concatenation in Loop**
+`author = author.concat(vorname + " " + nachname)` — string concatenation using `+` inside a loop body; should use `StringBuilder`.
+
+**Line 113 — String Concatenation in Loop**
+Same issue as line 100 for the second author block (`028B`).
+
+**Line 126 — String Concatenation in Loop**
+Same issue for editor concatenation (`028C`).
+
+**Line 175 — Null Dereference**
+`series = series + " / " + kor` — `series` could be `null` at this point if `getSubfield("a", datafield)` returned `null`.
+
+**Line 101 — Confusing Null Check / Redundant Assignment**
+`author = ""` then immediately `author = author.concat(...)` — the empty-string branch is pointless; the logic is confusing and error-prone.
+
+**Line 29 — Mutable Static Field**
+`DOCUMENT_BUILDER_FACTORY` is a `static final` field of a mutable type (`DocumentBuilderFactory`). `DocumentBuilderFactory` and `DocumentBuilder` are not thread-safe; sharing a factory as a static field is unsafe under concurrent access.
+
+**Line 34 — Non-Thread-Safe Usage of Shared Factory**
+`DOCUMENT_BUILDER_FACTORY.newDocumentBuilder()` called on a shared static mutable object without synchronization — thread-safety violation.
+
+**Line 367 — Redundant Regex Escape**
+`input.replaceAll("\\@", "")` — `@` has no special meaning in regex; the escape is unnecessary. Rule: `InefficientRegularExpression` / `UnnecessaryEscape`.
+
+**Line 302 — Duplicate Field Set**
+`result.setField(StandardField.JOURNAL, journal)` is called at line ~302 and again at line ~330 inside the `"article"` check — redundant duplicate assignment.
+
+**Line 56 — TODO Left in Production Code**
+Line 56 contains a `TODO` comment, violating a no-unresolved-TODO rule.
+
+**Line 45 — Commented-Out Code**
+Lines 45–46 contain commented-out code (`XMLUtil.printDocument`). Rule: `CommentedOutCode`.

@@ -1,0 +1,32 @@
+**Line 14-18: Compact Constructor Violation**
+Records should use compact constructors (without parameters). The explicit canonical constructor redeclares parameters unnecessarily.
+
+**Line 15-17: Redundant Field Assignment in Record Constructor**
+In a record's canonical constructor, `this.statusCode = statusCode` etc. are auto-generated; explicit assignments are redundant and non-idiomatic.
+
+**Line 14: Constructor Does Not Call Compact Form**
+`truncateResponseBody` is called in the canonical constructor but also called again in `getResponseBody` (line 97) — double truncation possible if `getResponseBodyDefaultEmpty` returns already-truncated content.
+
+**Line 97: Double Truncation**
+`getResponseBody` calls `truncateResponseBody(content.toString())`, and the canonical constructor at line 16 calls `truncateResponseBody(responseBody)` again on the already-truncated result. Logic defect.
+
+**Line 93: Resource Leak Risk**
+`connection.getErrorStream()` returns an `InputStream` that is passed directly into `InputStreamReader` without being independently closed if `BufferedReader` construction fails.
+
+**Line 93-99: `InputStreamReader` Without Explicit Charset**
+`new InputStreamReader(errorStream)` uses the platform default charset. Should specify `StandardCharsets.UTF_8`.
+
+**Line 38-41: Exception Swallowed / Silent Failure**
+`IOException` caught and replaced with `-1` silently. No logging of the exception.
+
+**Line 47-50: Exception Swallowed / Silent Failure**
+`IOException` caught and replaced with `""` silently. No logging.
+
+**Line 55-59: Exception Swallowed / Silent Failure**
+`IOException` caught and replaced with `""` silently. No logging.
+
+**Line 10: Unnecessary Import**
+`org.jsoup.HttpStatusException` couples the HTTP model record to a third-party HTML parsing library (Jsoup), violating separation of concerns.
+
+**Line 29-34: `toString` Override in Record**
+Records auto-generate `toString`; the manual override duplicates framework behavior without meaningful difference, adding maintenance burden.

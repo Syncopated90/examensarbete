@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ImplicitFunctionalInterface",
+              "shortDescription": {
+                "text": "Annotate this interface with @FunctionalInterface or with @SuppressWarnings(\"PMD.ImplicitFunctionalInterface\") to clarify your intent."
+              },
+              "fullDescription": {
+                "text": "\n            Reports functional interfaces that were not explicitly declared as such with\n            the annotation `@FunctionalInterface`. If an interface is accidentally a functional\n            interface, then it should bear a `@SuppressWarnings(\"PMD.ImplicitFunctionalInterface\")`\n            annotation to make this clear.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#implicitfunctionalinterface",
+              "help": {
+                "text": "\n            Reports functional interfaces that were not explicitly declared as such with\n            the annotation `@FunctionalInterface`. If an interface is accidentally a functional\n            interface, then it should bear a `@SuppressWarnings(\"PMD.ImplicitFunctionalInterface\")`\n            annotation to make this clear.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnnecessaryModifier",
+              "shortDescription": {
+                "text": "Unnecessary modifier 'public' on method 'separator': the method is declared in an interface type"
+              },
+              "fullDescription": {
+                "text": "\nFields in interfaces and annotations are automatically `public static final`, and methods are `public abstract`.\nClasses, interfaces or annotations nested in an interface or annotation are automatically `public static`\n(all nested interfaces and annotations are automatically static).\nNested enums are automatically `static`.\nFor historical reasons, modifiers which are implied by the context are accepted by the compiler, but are superfluous.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessarymodifier",
+              "help": {
+                "text": "\nFields in interfaces and annotations are automatically `public static final`, and methods are `public abstract`.\nClasses, interfaces or annotations nested in an interface or annotation are automatically `public static`\n(all nested interfaces and annotations are automatically static).\nNested enums are automatically `static`.\nFor historical reasons, modifiers which are implied by the context are accepted by the compiler, but are superfluous.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ImplicitFunctionalInterface",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Annotate this interface with @FunctionalInterface or with @SuppressWarnings(\"PMD.ImplicitFunctionalInterface\") to clarify your intent."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/DiffMethod.java"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 8,
+                  "endLine": 3,
+                  "endColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/DiffMethod.java"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 8,
+                  "endLine": 3,
+                  "endColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/DiffMethod.java"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 19,
+                  "endLine": 4,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnnecessaryModifier",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Unnecessary modifier 'public' on method 'separator': the method is declared in an interface type"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/DiffMethod.java"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 19,
+                  "endLine": 4,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

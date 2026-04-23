@@ -1,0 +1,19 @@
+**Line 68** — `Collectors.toList()` — Use `Stream.toList()` instead of `collect(Collectors.toList())` (modernized collection)
+
+**Line 84** — Typo in string literal: `"User didn't selected a file type"` — grammatically incorrect (`selected` → `select`); also magic string / non-localized user-facing message
+
+**Line 84** — `.orElseThrow(() -> new IllegalStateException(...))` — exception message not localized and silently swallowed from user perspective (minor: raw exception type used for control flow)
+
+**Line 80** — `file.endsWith(selectedExtension)` — `Path.endsWith()` checks path components, not string suffix; should use `file.toString().endsWith(selectedExtension)` (**BugProne / IncorrectPathEndsWith**)
+
+**Line 81** — Return value of `FileUtil.addExtension(file, selectedExtension)` is ignored; `Path` is immutable so `file` is never updated (**IgnoredReturnValue**)
+
+**Line 108** — `stateManager.getActiveDatabase().get()` — unchecked `Optional.get()` without `isPresent()` check; potential `NoSuchElementException` (**OptionalGetWithoutIsPresent**)
+
+**Line 57** — `this.executable.bind(...)` — binding inside constructor on a partially constructed object; side-effect in constructor (**LeakingThisInConstructor**)
+
+**Line 130** — `OnClickBehaviour.REMOVE` — unqualified reference; likely requires a qualified import/class reference, potential compilation issue depending on static import
+
+**Line 125–133** — `ExportSuccessNotification` is a non-static inner class; holds implicit reference to outer `ExportCommand` instance (**InnerClassMayBeStatic** — should be `static` if no outer instance members are strictly needed beyond `preferences` and `dialogService`)
+
+**Line 66** — `ExporterFactory.create(preferences)` called on every `execute()` invocation — repeated object creation on UI action; consider caching (**InefficientObjectCreation**)

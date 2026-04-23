@@ -1,0 +1,2519 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ExcessiveImports",
+              "shortDescription": {
+                "text": "A high number of imports (33) can indicate a high degree of coupling within an object; current threshold is 30."
+              },
+              "fullDescription": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#excessiveimports",
+              "help": {
+                "text": "\nA high number of imports can indicate a high degree of coupling within an object. This rule\ncounts the number of unique imports and reports a violation if the count is above the\nuser-specified threshold.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CouplingBetweenObjects",
+              "shortDescription": {
+                "text": "A value of 23 may denote a high amount of coupling within the class (threshold: 20)"
+              },
+              "fullDescription": {
+                "text": "\nThis rule counts the number of unique attributes, local variables, and return types within an object.\nA number higher than the specified threshold can indicate a high degree of coupling.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#couplingbetweenobjects",
+              "help": {
+                "text": "\nThis rule counts the number of unique attributes, local variables, and return types within an object.\nA number higher than the specified threshold can indicate a high degree of coupling.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'databaseContext' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like linkedFilesIndexer"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'linkedFilesIndexer' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'filePreferences' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'searchQuery' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "OnlyOneReturn",
+              "shortDescription": {
+                "text": "A method should have only one exit point, and that should be the last statement in the method"
+              },
+              "fullDescription": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#onlyonereturn",
+              "help": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'luceneQuery' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LooseCoupling",
+              "shortDescription": {
+                "text": "Avoid using implementation types like 'EnumSet'; use the interface instead"
+              },
+              "fullDescription": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling",
+              "help": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'searchFlags' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like shouldSearchInLinkedFiles"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'shouldSearchInLinkedFiles' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "GuardLogStatement",
+              "shortDescription": {
+                "text": "Logger calls should be surrounded by log level guards."
+              },
+              "fullDescription": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement",
+              "help": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like linkedFilesIndexSearcher"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'linkedFilesIndexSearcher' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'searchResults' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "InvalidLogMessageFormat",
+              "shortDescription": {
+                "text": "Too many arguments, expected 0 argument but found 1"
+              },
+              "fullDescription": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#invalidlogmessageformat",
+              "help": {
+                "text": "\nCheck for messages in slf4j and log4j2 (since 6.19.0) loggers with non matching number of arguments and placeholders.\n\nSince 6.32.0 in addition to parameterized message placeholders (`{}`) also format specifiers of string formatted\nmessages are supported (`%s`).\n\nThis rule has been renamed from \"InvalidSlf4jMessageFormat\" in PMD 6.19.0.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 5,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'query' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'indexSearcher' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'topDocs' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'storedFields' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LawOfDemeter",
+              "shortDescription": {
+                "text": "Access to field `totalHits` on foreign value `topDocs` (degree 1)"
+              },
+              "fullDescription": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#lawofdemeter",
+              "help": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'topDocs' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'storedFields' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'startTime' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'linkedFilesMap' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'highlighter' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'scoreDoc' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LawOfDemeter",
+              "shortDescription": {
+                "text": "Access to field `scoreDocs` on foreign value `topDocs` (degree 1)"
+              },
+              "fullDescription": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#lawofdemeter",
+              "help": {
+                "text": "\nThe law of Demeter is a simple rule that says \"only talk to friends\". It forbids\nfetching data from \"too far away\", for some definition of distance, in order to\nreduce coupling between classes or objects of different levels of abstraction.\n\nThe rule uses a notion of \"degree\", that quantifies how \"far\" an object is.\nExpressions with too high degree can only be used in certain ways. The degree of\nan expression is defined inductively:\n- The degree of `this` is 0\n- The degree of a method parameter is 1\n- The degree of a new object created in a method is 1\n- The degree of a static variable is 1\n- The degree of a field access expression like `expr.field` is the degree of `expr` plus 1\n- The degree of a \"getter expression\" like `expr.getFoo()` is the degree of `expr` plus 1\n- The degree of a \"transformation expression\" like `expr.withFoo(\"\")` is the degree of `expr`\n- The degree of a variable is the maximum degree of all the assignments that reach it\n\nIntuitively, the more you call getters, the more the degree increases. Eventually\nthe degree reaches the report threshold (property `trustRadius`) and the expression\nis reported. The details of the calculation are more involved and make room for common\npatterns, like usage of collections (objects that are in a list or array have the\nsame degree as their container), the builder pattern, and getters that do not appear\nto break a boundary of abstraction.\n\nBe aware that this rule is prone to many false-positives and low-priority warnings.\nYou can increase the `trustRadius` property to reduce them drastically. The default\n`trustRadius` of 1 corresponds to the original law of Demeter (you're only allowed\none getter call on untrusted values). Given some `trustRadius` value:\n- expressions of degree lower or equal to `trustRadius` are not reported\n- expressions of degree exactly `trustRadius + 1` are reported, unless they are only returned\nfrom the current method, or passed as argument to another method. Without this exception it\nwould not be possible to extract any information from e.g. method parameters.\n- values of degree strictly greater than `trustRadius + 1` are not reported. The\nintuition is that to obtain a value of degree `n > 1` then you must use an expression\nof degree `n - 1`, so if you have `n > trustRadius + 1`, there you're using some value\nof degree `trustRadius + 1` that will be reported.\n\nSee also the references:\n\n*   Andrew Hunt, David Thomas, and Ward Cunningham. The Pragmatic Programmer. From Journeyman to Master. Addison-Wesley Longman, Amsterdam, October 1999.;\n*   K.J. Lieberherr and I.M. Holland. Assuring good style for object-oriented programs. Software, IEEE, 6(5):38–48, 1989.;\n*   <http://www.ccs.neu.edu/home/lieber/LoD.html>\n*   <http://en.wikipedia.org/wiki/Law_of_Demeter>\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'document' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'fileLink' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entriesWithFile' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'searchResult' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidInstantiatingObjectsInLoops",
+              "shortDescription": {
+                "text": "Avoid instantiating new objects inside loops"
+              },
+              "fullDescription": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_performance.html#avoidinstantiatingobjectsinloops",
+              "help": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "properties": {
+                "ruleset": "Performance",
+                "priority": 3,
+                "tags": [
+                  "Performance"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UseConcurrentHashMap",
+              "shortDescription": {
+                "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+              },
+              "fullDescription": {
+                "text": "\nSince Java5 brought a new implementation of the Map designed for multi-threaded access, you can\nperform efficient map reads without blocking other threads.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_multithreading.html#useconcurrenthashmap",
+              "help": {
+                "text": "\nSince Java5 brought a new implementation of the Map designed for multi-threaded access, you can\nperform efficient map reads without blocking other threads.\n        "
+              },
+              "properties": {
+                "ruleset": "Multithreading",
+                "priority": 3,
+                "tags": [
+                  "Multithreading"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'bibEntry' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'linkedFile' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'document' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'field' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'searcherManager' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ExcessiveImports",
+          "ruleIndex": 0,
+          "message": {
+            "text": "A high number of imports (33) can indicate a high degree of coupling within an object; current threshold is 30."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 152,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CouplingBetweenObjects",
+          "ruleIndex": 1,
+          "message": {
+            "text": "A value of 23 may denote a high amount of coupling within the class (threshold: 20)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 152,
+                  "endColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 14,
+                  "endLine": 39,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 33,
+                  "endLine": 40,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 35,
+                  "endLine": 42,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 38,
+                  "endLine": 43,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 35,
+                  "endLine": 44,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 41,
+                  "endLine": 45,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 12,
+                  "endLine": 47,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Parameter 'databaseContext' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 51,
+                  "endLine": 47,
+                  "endColumn": 66
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Avoid excessively long variable names like linkedFilesIndexer"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 82,
+                  "endLine": 47,
+                  "endColumn": 100
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'linkedFilesIndexer' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 82,
+                  "endLine": 47,
+                  "endColumn": 100
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'filePreferences' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 118,
+                  "endLine": 47,
+                  "endColumn": 133
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 26,
+                  "endLine": 56,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'searchQuery' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 45,
+                  "endLine": 56,
+                  "endColumn": 56
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 10,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 13,
+                  "endLine": 58,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Local variable 'luceneQuery' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 25,
+                  "endLine": 61,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 10,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 13,
+                  "endLine": 63,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Avoid using implementation types like 'EnumSet'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 9,
+                  "endLine": 66,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Local variable 'searchFlags' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 30,
+                  "endLine": 66,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Avoid excessively long variable names like shouldSearchInLinkedFiles"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 17,
+                  "endLine": 67,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Local variable 'shouldSearchInLinkedFiles' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 17,
+                  "endLine": 67,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 10,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 13,
+                  "endLine": 69,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 9,
+                  "endLine": 72,
+                  "endColumn": 85
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Avoid excessively long variable names like linkedFilesIndexSearcher"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 27,
+                  "endLine": 74,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Local variable 'linkedFilesIndexSearcher' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 27,
+                  "endLine": 74,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'searchResults' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 27,
+                  "endLine": 75,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 10,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 13,
+                  "endLine": 77,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "InvalidLogMessageFormat",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Too many arguments, expected 0 argument but found 1"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 13,
+                  "endLine": 79,
+                  "endColumn": 74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'searchQuery' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 56,
+                  "endLine": 84,
+                  "endColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Local variable 'query' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 16,
+                  "endLine": 85,
+                  "endColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 10,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 13,
+                  "endLine": 87,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "InvalidLogMessageFormat",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Too many arguments, expected 0 argument but found 1"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 13,
+                  "endLine": 89,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Parameter 'indexSearcher' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 48,
+                  "endLine": 94,
+                  "endColumn": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'searchQuery' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 69,
+                  "endLine": 94,
+                  "endColumn": 80
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Local variable 'topDocs' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 17,
+                  "endLine": 95,
+                  "endColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Local variable 'storedFields' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 22,
+                  "endLine": 96,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 9,
+                  "endLine": 97,
+                  "endColumn": 80
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LawOfDemeter",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Access to field `totalHits` on foreign value `topDocs` (degree 1)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 53,
+                  "endLine": 97,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Parameter 'topDocs' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 52,
+                  "endLine": 101,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Parameter 'storedFields' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 74,
+                  "endLine": 101,
+                  "endColumn": 86
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'searchQuery' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 94,
+                  "endLine": 101,
+                  "endColumn": 105
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'searchResults' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 23,
+                  "endLine": 102,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Local variable 'startTime' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 14,
+                  "endLine": 103,
+                  "endColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Local variable 'linkedFilesMap' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 35,
+                  "endLine": 105,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Local variable 'highlighter' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 21,
+                  "endLine": 106,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 31,
+          "message": {
+            "text": "Local variable 'scoreDoc' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 23,
+                  "endLine": 108,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LawOfDemeter",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Access to field `scoreDocs` on foreign value `topDocs` (degree 1)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 34,
+                  "endLine": 108,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Local variable 'document' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 22,
+                  "endLine": 109,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 34,
+          "message": {
+            "text": "Local variable 'fileLink' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 20,
+                  "endLine": 110,
+                  "endColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 35,
+          "message": {
+            "text": "Local variable 'entriesWithFile' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 30,
+                  "endLine": 113,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 36,
+          "message": {
+            "text": "Local variable 'searchResult' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 34,
+                  "endLine": 115,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 37,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 49,
+                  "endLine": 120,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 9,
+                  "endLine": 125,
+                  "endColumn": 105
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 38,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 35,
+                  "endLine": 131,
+                  "endColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Local variable 'linkedFilesMap' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 35,
+                  "endLine": 131,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 39,
+          "message": {
+            "text": "Local variable 'bibEntry' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 23,
+                  "endLine": 132,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 40,
+          "message": {
+            "text": "Local variable 'linkedFile' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 29,
+                  "endLine": 133,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 37,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 134,
+                  "startColumn": 75,
+                  "endLine": 134,
+                  "endColumn": 92
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 41,
+          "message": {
+            "text": "Parameter 'document' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 53,
+                  "endLine": 140,
+                  "endColumn": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 42,
+          "message": {
+            "text": "Parameter 'field' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 84,
+                  "endLine": 140,
+                  "endColumn": 89
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 43,
+          "message": {
+            "text": "Parameter 'searcherManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 144,
+                  "startColumn": 71,
+                  "endLine": 144,
+                  "endColumn": 86
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 43,
+          "message": {
+            "text": "Parameter 'searcherManager' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 62,
+                  "endLine": 149,
+                  "endColumn": 77
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Parameter 'indexSearcher' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LinkedFilesSearcher.java"
+                },
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 93,
+                  "endLine": 149,
+                  "endColumn": 106
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

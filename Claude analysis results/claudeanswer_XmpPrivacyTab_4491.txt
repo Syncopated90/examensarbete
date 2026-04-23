@@ -1,0 +1,23 @@
+**Line 3** — `UnusedImports`: `javax.swing.undo.UndoManager` is a Swing class injected into a JavaFX controller; while it is used, mixing Swing and JavaFX is a design issue. More precisely:
+
+**Line 3** — `IllegalImport`: `javax.swing.undo.UndoManager` — Swing import in a JavaFX class.
+
+**Line 38** — `UnusedField` / `InjectedField never used directly as UndoManager logic`: `undoManager` is injected but only passed as a parameter to utility methods; no direct undo operations are performed in this controller.
+
+**Line 51** — `MissingOverride`: `initialize()` is a JavaFX `@FXML` lifecycle method and should be annotated with `@FXML`.
+
+**Line 51** — `DesignForExtension` / `MissingAnnotation`: `initialize()` is not annotated with `@FXML`, violating JavaFX controller conventions.
+
+**Line 68** — `LawOfDemeter`: `filterList.getFocusModel().getFocusedItem()` — chained method calls violating Law of Demeter.
+
+**Line 68** — `FeatureEnvy`: Uses `filterList.getFocusModel().getFocusedItem()` inside a lambda instead of using the `item` already provided by `withOnMouseClickedEvent`.
+
+**Line 64** — `LawOfDemeter`: `preferences.getXmpPreferences()` passed directly to constructor — caller reaches into `preferences` internals.
+
+**Line 56** — `LawOfDemeter`: `preferences.getXmpPreferences()` — same violation repeated from constructor call at line 52.
+
+**Line 99** — `LawOfDemeter`: `viewModel.xmpFilterListValidationStatus()` chained inside `Platform.runLater` lambda — minor but consistent with the pattern.
+
+**Line 41–44** — `ConstructorDoesWork`: Constructor calls `ViewLoader.view(this).root(this).load()`, performing non-trivial work (loading FXML) inside the constructor.
+
+**Line 29** — `ClassFanOutComplexity`: The class depends on an excessive number of external types (UndoManager, CliPreferences, ControlsFxVisualizer, multiple JavaFX controls, BindingsHelper, FieldsUtil, IconTheme, Localization, ValueTableCellFactory, ViewModelListCellFactory).

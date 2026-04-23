@@ -1,0 +1,15 @@
+**Line 71** — `releaseIndexSearcher` is only called on the happy path; if `search(linkedFilesIndexSearcher, ...)` throws, the searcher is never released. **Resource Leak** / missing try-finally block.
+
+**Line 71** — `IOException` is caught but `searcherManager.release()` (line 73) itself throws `IOException`, which is silently swallowed if it occurs after a successful search. **Swallowed Exception**.
+
+**Line 44** — `parser` is a shared mutable field (`MultiFieldQueryParser`) accessed from `search()` without synchronization. **Non-thread-safe use of shared mutable state**.
+
+**Line 48–49** — Mutable state set on `parser` after construction (`setDefaultOperator`, `setAllowLeadingWildcard`) outside constructor atomicity concern — minor, but same **Non-thread-safe shared mutable state** rule.
+
+**Line 85** — `topDocs.totalHits.value()` — direct field access on `TotalHits` object; `.value` is a public field, calling `.value()` as a method will not compile. **Incorrect method call** (field accessed as method).
+
+**Line 108** — `Integer.parseInt(getFieldContents(...))` — if the field is missing, `getFieldContents` returns `""`, causing `NumberFormatException` at runtime. **Missing input validation / potential unchecked exception**.
+
+**Line 96** — `linkedFilesMap.get(fileLink)` followed by null check, but `computeIfAbsent` was used in `getLinkedFilesMap()`; the null check is redundant but the `isEmpty()` check on a list built with `add()` can never be true — **Dead Code** (the list will always have ≥1 element).
+
+**Line 133** — `releaseIndexSearcher` declares `throws IOException` but callers (line 73) do not handle this secondary exception separately — **Declared checked exception ignored at call site**.

@@ -1,0 +1,17 @@
+**Line 49** - `findFullText(DOI doi)` is `public` but not part of the interface — **Unnecessary Public Method / Loose Encapsulation**
+
+**Line 51** - `"?email=developers@jabref.org"` hardcoded email in URL — **Avoid Hardcoded Credentials / Magic String**
+
+**Line 28** - `API_URL` field is `private static final` but string concatenation is done at runtime repeatedly — **Inefficient String Concatenation (should use `String.format` or constant)**
+
+**Line 31-32** - `entry.getField(StandardField.DOI).flatMap(DOI::parse)` — no null check on `entry` despite `@NonNull`, but `@NonNull` is not enforced at runtime — **Missing Null Check / Reliance on Annotation Only**
+
+**Line 50-51** - `Unirest.get(...)` uses a static method call directly, making the class untestable — **Law of Demeter / Static Method Call on External Dependency**
+
+**Line 57** - `Optional.of(request)` — `request` could theoretically be `null` (Unirest contract not guaranteed); should use `Optional.ofNullable` — **Misuse of Optional.of With Potentially Null Value**
+
+**Line 40** - `UnirestException` is caught and wrapped in `IOException` at the call site, but `findFullText(DOI)` declares `throws UnirestException` leaking a third-party exception type — **Leaky Abstraction / Inappropriate Exception Exposure**
+
+**Line 25** - Class does not declare `final` — **Missing Final Class Modifier**
+
+**Line 27** - `API_URL` missing `URL` suffix convention inconsistency aside, the constant is used in string concatenation without a trailing slash separator guard — **Fragile String Concatenation**

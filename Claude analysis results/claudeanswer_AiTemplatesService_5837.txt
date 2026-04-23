@@ -1,0 +1,29 @@
+**Line 13 — God Class / Single Responsibility Principle**
+`AiTemplatesService` handles template rendering for multiple unrelated concerns (chatting, summarization, citation parsing, follow-up questions).
+
+**Line 15 — Eager Initialization of Heavy Object**
+`VelocityEngine` is instantiated at field declaration level before constructor logic; initialization side-effects occur outside constructor.
+
+**Line 16 — Mutable Static-like Shared State**
+`baseContext` is a shared `VelocityContext` instance mutated in constructor (`put`) and passed to child contexts; concurrent access would cause race conditions.
+
+**Line 13 — Missing `final` on Class**
+Class is not declared `final` despite no intended extension points.
+
+**Line 14 — Unused Field**
+`aiPreferences` is only used in `makeTemplate`; consider passing directly rather than storing, but more critically it exposes the full preferences object violating Interface Segregation.
+
+**Line 27 — `VelocityContext` Wrapping Shared Mutable Base**
+`new VelocityContext(baseContext)` does not deep-copy `baseContext`; writes to parent context from one thread affect other threads — **Thread Safety Violation**.
+
+**Line 85 — Return Value of `velocityEngine.evaluate()` Ignored**
+The boolean return value indicating success/failure is discarded; errors are silently swallowed.
+
+**Line 83 — `StringWriter` Unnecessary Exposure**
+`StringWriter` is created but never closed; though benign for `StringWriter`, it violates the **resource should be managed** convention (PMD: `CloseResource`).
+
+**Line 27, 33, 41, 46, 52, 57, 63, 68, 74 — Repeated Code (DRY Violation)**
+Pattern of `new VelocityContext(baseContext)` + `context.put(...)` + `makeTemplate(...)` is duplicated across every public method.
+
+**Line 33 — Parameter `message` shadows potential field name**
+Using bare variable name `message` as parameter with no qualifier risks confusion in maintenance (minor: `LocalVariableNamingConventions`).

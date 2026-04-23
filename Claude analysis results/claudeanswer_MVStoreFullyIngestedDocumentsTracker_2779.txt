@@ -1,0 +1,17 @@
+**Line 14** — `ClassDataAbstractionCoupling`: Class depends on multiple external types (Path, Map, Optional, FullyIngestedDocumentsTracker, MVStoreBase, Localization, NotificationService).
+
+**Line 30** — `MissingOverride`: `markDocumentAsFullyIngested` implements an interface method but lacks `@Override` annotation.
+
+**Line 34** — `MissingOverride`: `getIngestedDocumentModificationTimeInSeconds` implements an interface method but lacks `@Override` annotation.
+
+**Line 38** — `MissingOverride`: `unmarkDocumentAsFullyIngested` implements an interface method but lacks `@Override` annotation.
+
+**Line 26** — `ThisEscapeFromConstructor`: `this.mvStore` is accessed in the constructor body, where `this` may not be fully initialized if `MVStoreBase` constructor throws.
+
+**Line 44** — `LineLength`: The string literal exceeds the typical 100/120 character line length limit.
+
+**Line 49** — `LineLength`: Same rule violation on the localized error message line.
+
+**Line 44** — `AvoidDuplicateLiterals`: The error message string is duplicated verbatim between `errorMessageForOpening()` (line 44) and the argument to `Localization.lang()` (line 49).
+
+**Line 17** — `AtclauseOrder` / `JavadocStyle`: Inline comment inside a field using `//` rather than Javadoc where the block is lengthy; also the comment references `LinkedDocument.getLink()` which is not a verified API reference.

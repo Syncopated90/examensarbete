@@ -1,0 +1,19 @@
+**Line 3: `record` component `text` shadows `java.lang.Record` — No issues found with shadowing here.**
+
+---
+
+**Line 1: Missing package-info.java** — `MissingPackageInfoRule`
+
+**Line 3: Public record lacks Javadoc** — `JavadocTypeRule` / `MissingJavadocTypeCheck`
+
+**Line 3: `text` is a reserved method name in `java.lang.Record`** — `MethodNameRule` — the record component `text()` conflicts with no reserved name, but note `Record` has no `text()` method, so no conflict.
+
+**Line 3: No explicit `serialVersionUID`** — Not applicable; records are not `Serializable` by default.
+
+---
+
+**Actual violations:**
+
+- **Line 1** — `MissingPackageInfoRule`: No `package-info.java` exists for `org.jabref.logic.ai.templates`.
+- **Line 3** — `JavadocVariable` / `MissingJavadocType`: Public type `PaperExcerpt` lacks Javadoc comment.
+- **Line 3** — `VisibilityModifier`: Record components `citationKey` and `text` are implicitly public accessors with no encapsulation control.

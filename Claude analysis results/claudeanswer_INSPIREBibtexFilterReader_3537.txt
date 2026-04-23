@@ -1,0 +1,15 @@
+**Line 15** - `ClassNamingConventions` / `UtilityClassWithPublicConstructor`: Class extends `FilterReader` but overrides only `read()`, violating the contract that `read(char[], int, int)` should also be overridden.
+
+**Line 23** - `ResourceLeak` / `WrappedObject`: `initialReader` is wrapped in a new `BufferedReader` assigned to `inReader`, but `super(initialReader)` also holds a reference. Double-wrapping risks the underlying reader being read by both, causing data corruption.
+
+**Line 17** - `FieldNamingConventions`: `inReader` duplicates the parent class's `in` field from `FilterReader`, shadowing/ignoring it entirely.
+
+**Line 62** - `MissingSuperCall` / `IncompleteOverride`: `read()` is overridden but `read(char[], int, int)` is not. The `FilterReader` contract requires overriding both; callers using `read(char[], int, int)` will bypass this filter's logic.
+
+**Line 28** - `MethodNamingConventions`: `readpreLine` does not follow camelCase convention; should be `readPreLine`.
+
+**Line 33** - `EmptyStatement` / `UnusedAnnotation`: `// @formatter:off` and `// @formatter:on` split the `do` from its body, serving no formatting purpose and reducing readability.
+
+**Line 20** - `VisibilityModifier`: `pre` and `line` instance fields have package-private/default visibility implicitly; should be `private`.
+
+**Line 19** - `VisibilityModifier`: `line` field is `private` but mutable state shared across `read()` calls without synchronization, violating thread safety (`GuardedBy` / `NotThreadSafe`).

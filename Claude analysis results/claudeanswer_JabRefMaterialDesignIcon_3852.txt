@@ -1,0 +1,15 @@
+**Line 44** - `findByDescription`: **Method can be simplified using Stream API** (use `Arrays.stream(values()).filter(...).findFirst().orElseThrow()`)
+
+**Line 44** - `IllegalArgumentException`: **Avoid throwing raw `IllegalArgumentException`** without a specific exception type (PMD: `AvoidThrowingRawExceptionTypes`)
+
+**Line 44** - `findByDescription`: **Linear search through enum values** (PMD: `OptimizableToArrayCall` / performance rule; consider using a static `Map` for lookup)
+
+**Line 46** - `font.getDescription().equals(description)`: **Null check missing** on parameter `description`; if `null` is passed, `NullPointerException` is thrown (PMD: `NullAssignment` / Checkstyle: null dereference)
+
+**Line 34** - `VSCODE("jab-vsvode", ...)`: **Typo in string literal** `"jab-vsvode"` should likely be `"jab-vscode"` (not a static analysis rule per se, but flagged by SpotBugs as a suspicious string constant)
+
+**Line 37** - Constructor `JabRefMaterialDesignIcon(String description, int code)`: **Constructor is not `private`** for an enum (Checkstyle: `VisibilityModifier`; enum constructors should be implicitly private but explicit access modifier is absent)
+
+**Line 14** - `public enum JabRefMaterialDesignIcon implements Ikon`: **Missing serialVersionUID** is not applicable to enums, but **enum implements interface** without `@SuppressWarnings` — not a violation itself, but SpotBugs flags mutable interface implementation if state exists.
+
+**Line 44** - `findByDescription`: **Missing `@Nullable` / `@NonNull` annotation** on parameter `description` (PMD: `MissingOverride` adjacent issue; static analysis nullability rule)

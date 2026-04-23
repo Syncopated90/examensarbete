@@ -1,0 +1,656 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "DataClass",
+              "shortDescription": {
+                "text": "The class 'MoveGroupChange' is suspected to be a Data Class (WOC=0.000%, NOPA=0, NOAM=4, WMC=5)"
+              },
+              "fullDescription": {
+                "text": "\nData Classes are simple data holders, which reveal most of their state, and\nwithout complex functionality. The lack of functionality may indicate that\ntheir behaviour is defined elsewhere, which is a sign of poor data-behaviour\nproximity. By directly exposing their internals, Data Classes break encapsulation,\nand therefore reduce the system's maintainability and understandability. Moreover,\nclasses tend to strongly rely on their data representation, which makes for a brittle\ndesign.\n\nRefactoring a Data Class should focus on restoring a good data-behaviour proximity. In\nmost cases, that means moving the operations defined on the data back into the class.\nIn some other cases it may make sense to remove entirely the class and move the data\ninto the former client classes.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* WOC: a 'non-triviality' measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHT_OF_CLASS %}\n* NOPA: number of public attributes, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_PUBLIC_FIELDS %}\n* NOAM: number of public accessor methods, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_ACCESSORS %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High NOPA + NOAM\n* Low WOC\n* Low WMC\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#dataclass",
+              "help": {
+                "text": "\nData Classes are simple data holders, which reveal most of their state, and\nwithout complex functionality. The lack of functionality may indicate that\ntheir behaviour is defined elsewhere, which is a sign of poor data-behaviour\nproximity. By directly exposing their internals, Data Classes break encapsulation,\nand therefore reduce the system's maintainability and understandability. Moreover,\nclasses tend to strongly rely on their data representation, which makes for a brittle\ndesign.\n\nRefactoring a Data Class should focus on restoring a good data-behaviour proximity. In\nmost cases, that means moving the operations defined on the data back into the class.\nIn some other cases it may make sense to remove entirely the class and move the data\ninto the former client classes.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* WOC: a 'non-triviality' measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHT_OF_CLASS %}\n* NOPA: number of public attributes, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_PUBLIC_FIELDS %}\n* NOAM: number of public accessor methods, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_ACCESSORS %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High NOPA + NOAM\n* Low WOC\n* Low WMC\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'oldParent' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'oldChildIndex' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'newParent' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ImmutableField",
+              "shortDescription": {
+                "text": "Field 'newChildIndex' may be declared final"
+              },
+              "fullDescription": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#immutablefield",
+              "help": {
+                "text": "\nReports non-final fields whose value never changes once object initialization ends,\nand hence may be marked final.\n\nNote that this rule does not enforce that the field value be deeply immutable itself.\nAn object can still have mutable state, even if all its member fields are declared final.\nThis is referred to as shallow immutability. For more information on mutability,\nsee *Effective Java, 3rd Edition, Item 17: Minimize mutability*.\n\nLimitations: We can only check private fields for now.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'oldParent' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'oldChildIndex' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'newParent' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'newChildIndex' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 8,
+                  "endLine": 5,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "DataClass",
+          "ruleIndex": 1,
+          "message": {
+            "text": "The class 'MoveGroupChange' is suspected to be a Data Class (WOC=0.000%, NOPA=0, NOAM=4, WMC=5)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 8,
+                  "endLine": 5,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field 'oldParent' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 27,
+                  "endLine": 7,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 27,
+                  "endLine": 7,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Field 'oldChildIndex' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 17,
+                  "endLine": 8,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 17,
+                  "endLine": 8,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field 'newParent' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 27,
+                  "endLine": 9,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 27,
+                  "endLine": 9,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ImmutableField",
+          "ruleIndex": 6,
+          "message": {
+            "text": "Field 'newChildIndex' may be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 17,
+                  "endLine": 10,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 17,
+                  "endLine": 10,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 1,
+                  "endLine": 13,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Parameter 'oldParent' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 42,
+                  "endLine": 14,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Parameter 'oldChildIndex' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 57,
+                  "endLine": 14,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Parameter 'newParent' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 86,
+                  "endLine": 14,
+                  "endColumn": 95
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Parameter 'newChildIndex' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MoveGroupChange.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 101,
+                  "endLine": 14,
+                  "endColumn": 114
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

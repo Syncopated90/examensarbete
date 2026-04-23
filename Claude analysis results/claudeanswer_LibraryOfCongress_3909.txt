@@ -1,0 +1,14 @@
+**Line 29 — Security/URLInjection (CWE-918 / SSRF)**
+`identifier` is concatenated directly into the URL string without sanitization or encoding, allowing malicious input to alter the request target.
+
+**Line 29 — Rule: AvoidStringConcatenationInLoop / UnsafeUrlForward**
+String concatenation used to build a URL instead of using `URIBuilder`'s path-setting methods (e.g., `setPath()`), bypassing proper URI encoding.
+
+**Line 16 — Rule: ImmutableField**
+`importFormatPreferences` is assigned once in the constructor and never modified; should be declared `final` (it is `final`, but the field is package-private — class itself is package-private, violating **VisibilityModifier** rule: field should be `private final` with the class being `public`).
+
+**Line 14 — Rule: MissingOverride / ClassJavadoc (Markdown Javadoc)**
+Use of `///` Markdown-style Javadoc comment (`/** */` is the standard Java Javadoc format); this is non-standard and may not be processed by Javadoc tooling — violates **JavadocStyle** rule.
+
+**Line 33 — Rule: UnnecessaryQualifiedThis**
+`this.importFormatPreferences` — use of `this.` qualifier is unnecessary and violates **HiddenField** / **UnnecessaryThis** rule since there is no local variable shadowing the field.

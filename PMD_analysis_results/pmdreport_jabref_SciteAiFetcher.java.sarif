@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UnnecessaryConstructor",
+              "shortDescription": {
+                "text": "Avoid unnecessary constructors - the compiler will generate these for you"
+              },
+              "fullDescription": {
+                "text": "\nThis rule detects when a constructor is not necessary; i.e., when there is only one constructor and the\nconstructor is identical to the default constructor. The default constructor should has same access\nmodifier as the declaring class. In an enum type, the default constructor is implicitly private.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessaryconstructor",
+              "help": {
+                "text": "\nThis rule detects when a constructor is not necessary; i.e., when there is only one constructor and the\nconstructor is identical to the default constructor. The default constructor should has same access\nmodifier as the declaring class. In an enum type, the default constructor is implicitly private.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UncommentedEmptyConstructor",
+              "shortDescription": {
+                "text": "Document empty constructor"
+              },
+              "fullDescription": {
+                "text": "\nUncommented Empty Constructor finds instances where a constructor does not\ncontain statements, but there is no comment. By explicitly commenting empty\nconstructors it is easier to distinguish between intentional (commented)\nand unintentional empty constructors.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#uncommentedemptyconstructor",
+              "help": {
+                "text": "\nUncommented Empty Constructor finds instances where a constructor does not\ncontain statements, but there is no comment. By explicitly commenting empty\nconstructors it is easier to distinguish between intentional (commented)\nand unintentional empty constructors.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UnnecessaryConstructor",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Avoid unnecessary constructors - the compiler will generate these for you"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/SciteAiFetcher.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 12,
+                  "endLine": 27,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UncommentedEmptyConstructor",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Document empty constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/SciteAiFetcher.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 12,
+                  "endLine": 27,
+                  "endColumn": 26
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

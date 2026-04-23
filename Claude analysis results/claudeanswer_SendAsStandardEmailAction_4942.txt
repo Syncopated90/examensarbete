@@ -1,0 +1,7 @@
+**Line 52** — `stateManager.getActiveDatabase().get()` called without `isPresent()` check. **Rule: `Optional` value used without presence check (Correctness / NullDereferencing)**
+
+**Line 54** — `BibWriter` wraps `StringWriter` but is never closed. **Rule: Resource leak (`BibWriter` implements `Closeable` but is not closed) (Resource/ResourceLeak)**
+
+**Line 56** — Long line exceeding typical 120/100 character limit. **Rule: LineLength**
+
+**Line 52** — `databaseContext` could throw `NoSuchElementException` if no active database is present. **Rule: UnsafeOptionalGet / DLS_DEAD_LOCAL_STORE (if database absent)**

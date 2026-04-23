@@ -1,0 +1,23 @@
+**Line 29** — `onMouseClickedEvent` field not initialized (null default); same for multiple fields. Acceptable in context, but collectively represent **Null Field** risk.
+
+**Line 122** — `treeTableView.addEventHandler(...)` inside `updateItem` — **EventHandler Leak**: handler added repeatedly on every `updateItem` call with no removal. Rule: **Avoid adding event handlers in updateItem without cleanup**.
+
+**Line 122–135** — Lambda captures `this` (anonymous `TreeTableRow`) inside `treeTableView.addEventHandler`, preventing GC of rows. Rule: **Memory Leak / Closure retains reference**.
+
+**Line 122** — `treeTableView.addEventHandler` called inside `updateItem` each time the cell is reused — duplicate handlers accumulate. Rule: **Do Not Modify External State in updateItem**.
+
+**Line 144** — `setOnMouseClicked` called inside `updateItem` without clearing when `empty` is true — stale handler left on recycled cell. Rule: **Stale Event Handler on Empty Cell**.
+
+**Line 148** — Same as line 144 for `setOnMousePressed`.
+
+**Line 153** — `toCustomInitializer.accept(this)` called on every non-empty update — side effects may accumulate. Rule: **Repeated Side Effects in updateItem**.
+
+**Line 175** — `addEventFilter` inside `updateItem` with no corresponding `removeEventFilter` — filters accumulate on cell reuse. Rule: **EventFilter Leak in Cell**.
+
+**Line 39** — `eventFilters` uses raw-like wildcard `BiConsumer<S, ? super Event>` stored in map iterated with unchecked cast at line 175. Rule: **Unchecked Cast / Type Safety**.
+
+**Line 107** — `pseudoClasses.putIfAbsent` and `eventFilters.putIfAbsent` allow only one handler per key silently dropping duplicates. Rule: **Silent Data Loss / Confusing API Contract**.
+
+**Line 119** — Anonymous `TreeTableRow` subclass defined inside `call` method. Rule: **Avoid Anonymous Class for Complex Logic** (prefer named class).
+
+**Line 121** — `subscriptions` field declared inside anonymous class but initialized as `new ArrayList<>()` — non-`final` effective but declared `final`; acceptable, however `subscriptions` is not cleared when `empty` is `true` yet handlers from prior state remain. Rule: **Incomplete Cleanup on Empty Cell** — `setOnMouseClicked(null)` etc. never called when `empty == true`.

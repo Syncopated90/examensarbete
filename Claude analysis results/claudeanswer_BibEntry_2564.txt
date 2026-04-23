@@ -1,0 +1,33 @@
+**Line 6** - `UnusedImport`: `java.io.IOException` is used, but verify; actually it is used in `getStringRepresentation`. Skip.
+
+**Line 116** - `UnnecessaryLocalVariable`: `BibEntry(String citationKey)` constructor calls `this()` then `setCitationKey` — not a rule violation per se, acceptable.
+
+**Line 271** - `InstanceMethodNamedAsGetStringRepresentation`: Method `getStringRepresentation` takes a `BibEntry entry` parameter but is an instance method — it should either be `static` or use `this` instead of `entry`. **Rule: `UnnecessaryParameter` / `ConfusingMethodName`**
+
+**Line 271** - `NonStaticMethodUsesParameterInsteadOfThis`: Instance method `getStringRepresentation` accepts `BibEntry entry` as parameter instead of using `this`. **Rule: `ParameterHidingMemberVariable` / `UseExplicitTypeWhenPossible`**
+
+**Line 271** - `UnusedFormalParameter` (indirect): The method is an instance method that ignores `this` and uses parameter `entry` instead. **Rule: `MissingStaticModifier`**
+
+**Line 104** - `ConstructorCallsOverridableMethod`: `BibEntry(EntryType type)` calls `setType(type)` which is a public non-final method. **Rule: `ConstructorCallsOverridableMethod`**
+
+**Line 118** - `ConstructorCallsOverridableMethod`: `BibEntry(EntryType type, String citationKey)` calls `setCitationKey` via `this(type)` chain. **Rule: `ConstructorCallsOverridableMethod`**
+
+**Line 113** - `ConstructorCallsOverridableMethod`: `BibEntry(String citationKey)` calls `setCitationKey`. **Rule: `ConstructorCallsOverridableMethod`**
+
+**Line 491** - `ReturnOfCollectionOrArrayField`: `getFieldMap()` returns the internal mutable `fields` map directly. **Rule: `ReturnOfCollectionOrArrayField`**
+
+**Line 488** - `ReturnOfCollectionOrArrayField`: `getFieldValues()` returns `fields.values()` directly. **Rule: `ReturnOfCollectionOrArrayField`**
+
+**Line 659** - `ReturnOfCollectionOrArrayField` / `MethodReturnsInternalArray`: `getObservables()` returns a new array each call but exposes internal `fields` and `type` references. **Rule: `ReturnOfCollectionOrArrayField`**
+
+**Line 609** - `UnnecessaryLocalVariable`: `oldSize` is declared, used once for comparison — minor, but acceptable pattern.
+
+**Line 540** - `PreferEmptyStringToNull`: `getField(field).orElse(null)` assigns null to `oldValue`. **Rule: `AssignmentToNull`**
+
+**Line 349** - `CyclomaticComplexity`: `getSourceField` has extremely high cyclomatic complexity (>20 branches). **Rule: `CyclomaticComplexity`**
+
+**Line 245** - `NonNullAnnotationOnReturnType` with `Optional`: `@NonNull Optional<String> getCitationKey()` — annotating `Optional` return with `@NonNull` is redundant/misleading. **Rule: `OptionalUsedAsFieldOrParameterType` / `RedundantNullCheckOnNonNullable`**
+
+**Line 395** - `EmptyString`: `commentsBeforeEntry = ""` initialized at declaration (line 100) and again set via `setParsedSerialization` sets `changed = false` before updating state — ordering issue. **Rule: `AssignmentOrder`**
+
+**Line 393-395** - `HiddenField`: Parameter `parsedSerialization` in `setParsedSerialization` shadows instance field `parsedSerialization`. **Rule: `HiddenField`**

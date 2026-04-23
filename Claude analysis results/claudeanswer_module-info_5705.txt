@@ -1,0 +1,37 @@
+**Line 1** — `open module` declaration makes all packages reflectively accessible; prefer explicit `opens` directives instead. **Rule: Overly Permissive Module Declaration**
+
+**Line 22** — `uses com.dlsc.gemsfx.TagsField`: `uses` directive references a concrete class, not a service interface. **Rule: Uses Directive Should Reference Service Interface**
+
+**Lines 48–52** — Commented-out `/*runtime*/` pseudo-directives are non-standard workarounds embedded in `requires` statements (`requires /*runtime*/ org.apache.logging.log4j.to.slf4j`, `requires /*runtime*/ org.tinylog.api.slf4j`). Should use `requires static` or `requires` with proper qualifier; inline comments masking intended modifier. **Rule: Misleading/Incorrect Module Directive Qualifier**
+
+**Lines 60–62** — Commented-out `requires` directives left in code (`// requires com.fasterxml.aalto`, `// requires org.yaml.snakeyaml`). **Rule: Dead/Commented-Out Code**
+
+**Lines 64–67** — Commented-out `requires jakarta.annotation` left in code. **Rule: Dead/Commented-Out Code**
+
+**Lines 71–73** — Commented-out `requires jakarta.ws.rs`. **Rule: Dead/Commented-Out Code**
+
+**Lines 76–80** — Commented-out `requires com.google.gson`. **Rule: Dead/Commented-Out Code**
+
+**Lines 83–86** — Commented-out `requires org.glassfish.hk2.api`. **Rule: Dead/Commented-Out Code**
+
+**Lines 89–92** — Commented-out `requires unirest.modules.gson`. **Rule: Dead/Commented-Out Code**
+
+**Lines 94–98** — Entire SQL databases region commented out. **Rule: Dead/Commented-Out Code**
+
+**Lines 100–111** — Multiple commented-out `requires` in Apache Commons region. **Rule: Dead/Commented-Out Code**
+
+**Lines 113–118** — Entire latex2unicode region commented out. **Rule: Dead/Commented-Out Code**
+
+**Lines 120–124** — Multiple consecutive commented-out `requires` directives. **Rule: Dead/Commented-Out Code**
+
+**Lines 133–155** — Majority of AI region is commented out including `uses` directives; dead code left in module descriptor. **Rule: Dead/Commented-Out Code**
+
+**Line 157** — `requires com.sun.jna.platform` without requiring `com.sun.jna` explicitly (commented out on line 156 and line 172); implicit transitive dependency on internal module. **Rule: Missing Explicit Dependency / Implicit Transitive Dependency**
+
+**Line 161** — `// uses org.eclipse.jgit.transport.SshSessionFactory` and `// uses org.eclipse.jgit.lib.Signer` commented out alongside active `requires org.eclipse.jgit`. **Rule: Dead/Commented-Out Code**
+
+**Line 165** — `requires transitive org.jspecify`: `transitive` is used but `org.jspecify` is an annotation library; transitive re-export is unnecessary unless this is an API module. **Rule: Unnecessary Transitive Requires**
+
+**Line 170** — `requires static io.github.eadr`: optional static dependency with no corresponding `uses` or apparent reflective justification documented. **Rule: Undocumented Optional Dependency**
+
+**Lines 172–178** — Multiple commented-out `requires` in "other libraries" region. **Rule: Dead/Commented-Out Code**

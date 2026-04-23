@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "UnusedPrivateField",
+              "shortDescription": {
+                "text": "Avoid unused private fields such as 'dividerPositionSubscription'."
+              },
+              "fullDescription": {
+                "text": "\nDetects when a private field is declared and/or assigned a value, but not used.\n\nSince PMD 6.50.0 private fields are ignored, if the fields are annotated with any annotation or the\nenclosing class has any annotation. Annotations often enable a framework (such as dependency injection, mocking\nor e.g. Lombok) which use the fields by reflection or other means. This usage can't be detected by static code analysis.\nPreviously these frameworks where explicitly allowed by listing their annotations in the property\n\"ignoredAnnotations\", but that turned out to be prone of false positive for any not explicitly considered framework.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedprivatefield",
+              "help": {
+                "text": "\nDetects when a private field is declared and/or assigned a value, but not used.\n\nSince PMD 6.50.0 private fields are ignored, if the fields are annotated with any annotation or the\nenclosing class has any annotation. Annotations often enable a framework (such as dependency injection, mocking\nor e.g. Lombok) which use the fields by reflection or other means. This usage can't be detected by static code analysis.\nPreviously these frameworks where explicitly allowed by listing their annotations in the property\n\"ignoredAnnotations\", but that turned out to be prone of false positive for any not explicitly considered framework.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidCatchingGenericException",
+              "shortDescription": {
+                "text": "Avoid catching Throwable in try-catch block"
+              },
+              "fullDescription": {
+                "text": "\nAvoid catching generic exceptions in try-catch blocks. Catching overly broad exception types makes it difficult\nto understand what can actually go wrong in your code and can hide real problems.\n\n**Why these exceptions should not be caught:**\n\n* **Exception**: This is the base class for all checked exceptions. Catching it means you're handling all possible\n  checked exceptions the same way, which is rarely appropriate and makes error handling less precise.\n\n* **RuntimeException**: These represent programming errors (like logic bugs) that should typically be fixed in\n  code rather than caught and handled. Catching them can hide bugs that should be addressed during development.\n\n* **NullPointerException**: This usually indicates a programming error (accessing null references). Rather than\n  catching it, code should be written to avoid null pointer dereferences through null checks or defensive programming.\n\n* **Throwable**: This is the superclass of all errors and exceptions. Catching it means you're trying to handle\n  both recoverable exceptions and serious errors (like OutOfMemoryError) the same way, which is dangerous.\n\n* **Error**: These represent serious problems that applications should not try to handle (like OutOfMemoryError,\n  StackOverflowError). Catching Error can prevent the JVM from properly terminating when it encounters unrecoverable situations.\n\n**Better approaches:**\n- Catch specific exception types that you can meaningfully handle\n- Use multiple catch blocks for different exception types that require different handling\n- Consider using defensive programming techniques to prevent exceptions rather than catching them\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidcatchinggenericexception",
+              "help": {
+                "text": "\nAvoid catching generic exceptions in try-catch blocks. Catching overly broad exception types makes it difficult\nto understand what can actually go wrong in your code and can hide real problems.\n\n**Why these exceptions should not be caught:**\n\n* **Exception**: This is the base class for all checked exceptions. Catching it means you're handling all possible\n  checked exceptions the same way, which is rarely appropriate and makes error handling less precise.\n\n* **RuntimeException**: These represent programming errors (like logic bugs) that should typically be fixed in\n  code rather than caught and handled. Catching them can hide bugs that should be addressed during development.\n\n* **NullPointerException**: This usually indicates a programming error (accessing null references). Rather than\n  catching it, code should be written to avoid null pointer dereferences through null checks or defensive programming.\n\n* **Throwable**: This is the superclass of all errors and exceptions. Catching it means you're trying to handle\n  both recoverable exceptions and serious errors (like OutOfMemoryError) the same way, which is dangerous.\n\n* **Error**: These represent serious problems that applications should not try to handle (like OutOfMemoryError,\n  StackOverflowError). Catching Error can prevent the JVM from properly terminating when it encounters unrecoverable situations.\n\n**Better approaches:**\n- Catch specific exception types that you can meaningfully handle\n- Use multiple catch blocks for different exception types that require different handling\n- Consider using defensive programming techniques to prevent exceptions rather than catching them\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnusedFormalParameter",
+              "shortDescription": {
+                "text": "Avoid unused method parameters such as 'event'."
+              },
+              "fullDescription": {
+                "text": "\nReports parameters of methods and constructors that are not referenced them in the method body.\nParameters whose name starts with `ignored` or `unused` are filtered out.\n\nRemoving unused formal parameters from public methods could cause a ripple effect through the code base.\nHence, by default, this rule only considers private methods. To include non-private methods, set the\n`checkAll` property to `true`. The same applies to public constructors.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#unusedformalparameter",
+              "help": {
+                "text": "\nReports parameters of methods and constructors that are not referenced them in the method body.\nParameters whose name starts with `ignored` or `unused` are filtered out.\n\nRemoving unused formal parameters from public methods could cause a ripple effect through the code base.\nHence, by default, this rule only considers private methods. To include non-private methods, set the\n`checkAll` property to `true`. The same applies to public constructors.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidInstanceofChecksInCatchClause",
+              "shortDescription": {
+                "text": "An instanceof check is being performed on the caught exception. Create a separate catch clause for FetcherClientException."
+              },
+              "fullDescription": {
+                "text": "\nEach caught exception type should be handled in its own catch clause.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidinstanceofchecksincatchclause",
+              "help": {
+                "text": "\nEach caught exception type should be handled in its own catch clause.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidInstanceofChecksInCatchClause",
+              "shortDescription": {
+                "text": "An instanceof check is being performed on the caught exception. Create a separate catch clause for FetcherServerException."
+              },
+              "fullDescription": {
+                "text": "\nEach caught exception type should be handled in its own catch clause.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidinstanceofchecksincatchclause",
+              "help": {
+                "text": "\nEach caught exception type should be handled in its own catch clause.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 8,
+                  "endLine": 109,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnusedPrivateField",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid unused private fields such as 'dividerPositionSubscription'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 26,
+                  "endLine": 150,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidCatchingGenericException",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Avoid catching Throwable in try-catch block"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 664,
+                  "startColumn": 22,
+                  "endLine": 664,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnusedFormalParameter",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Avoid unused method parameters such as 'event'."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 687,
+                  "startColumn": 33,
+                  "endLine": 687,
+                  "endColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstanceofChecksInCatchClause",
+          "ruleIndex": 4,
+          "message": {
+            "text": "An instanceof check is being performed on the caught exception. Create a separate catch clause for FetcherClientException."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 885,
+                  "startColumn": 38,
+                  "endLine": 885,
+                  "endColumn": 60
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstanceofChecksInCatchClause",
+          "ruleIndex": 5,
+          "message": {
+            "text": "An instanceof check is being performed on the caught exception. Create a separate catch clause for FetcherServerException."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 887,
+                  "startColumn": 45,
+                  "endLine": 887,
+                  "endColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 1109,
+                  "startColumn": 13,
+                  "endLine": 1109,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LibraryTab.java"
+                },
+                "region": {
+                  "startLine": 1126,
+                  "startColumn": 13,
+                  "endLine": 1126,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

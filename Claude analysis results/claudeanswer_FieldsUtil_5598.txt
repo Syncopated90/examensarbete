@@ -1,0 +1,15 @@
+**Line 19** — `UtilityClassWithPublicConstructor`: Utility class `FieldsUtil` has no private constructor.
+
+**Line 52** — `CastToConcreteClass` / `ForcedTypecast`: `field` is cast to `StandardField` without a safe guard beyond `isStandardField()` — brittle cast; use pattern matching (`instanceof StandardField standardField`) consistent with lines 228/233.
+
+**Line 53** — `SwitchStatementsRatherThanPatternMatching` / `AvoidSwitchStatements`: Traditional `switch` statement used instead of switch expression; inconsistent with the switch expression used on line 36.
+
+**Line 53** — `MissingDefault`: The `switch` on `standardField` has no `default` case.
+
+**Line 228** — `InefficientEmptyStringCheck` / `ReturnEmptyStringNotNull`: Method `getDescription` returns `""` (line 248) but can also fall through without returning for `InternalField` values other than `KEY_FIELD`, silently returning `""` — missing else/return path is implicit, making the control flow unclear.
+
+**Line 228** — `ConfusingTernary` / `AvoidChainedInstanceofChecks`: Three chained `if/else if` blocks using `instanceof` could be replaced with pattern-matching switch expression (Java 21+), inconsistent with `getNameWithType`.
+
+**Line 36** — `NullCaseInSwitch`: The `case null` in `getNameWithType` throws `IllegalArgumentException`, but the same null case is not handled in `getDescription`, creating inconsistent null handling between the two methods.
+
+**Line 49** — `MissingNullDefault`: `default` in `getNameWithType` silently returns display name with no type annotation for `StandardField`, which may be unintentional.

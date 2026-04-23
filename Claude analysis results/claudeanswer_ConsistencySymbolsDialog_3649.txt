@@ -1,0 +1,16 @@
+**Line 10** — `ClassNamingConventions` / `UtilityClassWithPublicConstructor`: No violation here, but:
+
+**Line 10** — `UncommentedEmptyConstructor`: Constructor lacks documentation.
+
+**Line 16-18** — `UnnecessaryFullyQualifiedName` / method chaining style: minor, not a real violation.
+
+More precisely:
+
+**Line 10** — **MissingOverride** / **CommentRequired**: No Javadoc on public class.
+
+**Line 12** — **UnnecessaryThis**: `this.setTitle(...)`, `this.initModality(...)`, `this.setResizable(...)` — use of `this` qualifier is unnecessary.
+
+- Line 13: **UnnecessaryThis**
+- Line 14: **UnnecessaryThis**
+
+**Line 16** — **LawOfDemeter**: `ViewLoader.view(this).load().setAsDialogPane(this)` violates the Law of Demeter (train wreck / method chaining on returned objects).

@@ -1,0 +1,15 @@
+**Line 5** — `UncommentedEmptyMethodBody` / `MissingJavadoc`: class and public method lack Javadoc comments.
+
+**Line 5** — `UseStringBufferForStringAppends` (inverse not applicable here, but note below)
+
+**Line 16** — `UseStringBuilderOrBufferWithChar`: `sb.append("\n")` should use `sb.append('\n')` (char literal instead of String literal).
+
+**Line 19–28** — `StringConcatenation` / `UseStringBuilder`: String concatenation using `+` inside `generateBibtexEntry` instead of a `StringBuilder`.
+
+**Line 18** — `UnusedFormalParameter`: parameter `i` shadows the outer loop variable name (minor naming conflict; both methods use `i`).
+
+**Line 3** — `AtLeastOneConstructor`: class `BibtexEntryGenerator` does not define a constructor.
+
+**Line 18** — `MethodArgumentCouldBeFinal`: parameter `i` in `generateBibtexEntry(int i)` could be declared `final`.
+
+**Line 6** — `MethodArgumentCouldBeFinal`: parameter `number` in `generateBibtexEntries(int number)` could be declared `final`.

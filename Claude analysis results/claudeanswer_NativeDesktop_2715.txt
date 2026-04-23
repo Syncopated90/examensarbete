@@ -1,0 +1,29 @@
+**Line 33** – `LoggerFactory` imported but logger instances are created via `LoggerFactory.getLogger()` repeatedly inline; no static field declared. **Repeated Logger Instantiation** (rule: `Logger should be a constant / avoid creating logger instances repeatedly`).
+
+**Line 63** – `(PS == field)` and `(PDF == field)`: comparing with `==` instead of `.equals()`. **ReferenceEquality** (rule: `Object comparison using == instead of equals()`).
+
+**Line 86** – `(split.length >= 3)` check inside `else if` after already checking `split.length >= 2`; the outer condition is redundant. **RedundantCondition**.
+
+**Line 88** – `StandardField.DOI == field`: reference equality comparison. **ReferenceEquality**.
+
+**Line 90** – `StandardField.ISBN == field`: reference equality comparison. **ReferenceEquality**.
+
+**Line 92** – `StandardField.EPRINT == field`: reference equality comparison. **ReferenceEquality**.
+
+**Line 101** – `Objects.equals(link, initialLink)` used correctly, but the parameter `entry` is passed in but only used in the `EPRINT` branch; no null check on `entry`. **NullDereference** risk (rule: `Parameter should be validated before use`).
+
+**Line 125** – `switch (field)` includes `case null` — `field` is a method parameter typed as `Field` (interface); allowing null through without prior null check. **NullDereference** (rule: `Null should not be used as a case label without guarding`).
+
+**Line 144** – `command` is a method parameter reassigned inside `executeCommand`. **ParameterReassignment** (rule: `Method parameters should not be reassigned`).
+
+**Line 194** – `absolutePath = fileLink.toAbsolutePath().getParent().toString()`: `.getParent()` can return `null` if the path has no parent; no null check. **NullDereference** (rule: `Return value of getParent() should be checked for null before use`).
+
+**Line 215** – Same issue: `file.toAbsolutePath().getParent().toString()` with no null check on `getParent()`. **NullDereference**.
+
+**Line 217** – `command = command.trim()`: parameter reassigned. **ParameterReassignment**.
+
+**Line 270** – `get()` is called repeatedly throughout the class, instantiating a new `NativeDesktop` object on every call. **InappropriateIntimacy / Performance** (rule: `Avoid creating unnecessary object instances in frequently called methods`).
+
+**Line 270–276** – `get()` method has no `else` before final `return new DefaultDesktop()`; all OS checks are `if/else if` chains without a final `else`, falling through to default silently. **MissingDefaultCase** / **ConfusingTernary**.
+
+**Line 44** – `REMOTE_LINK_PATTERN` is `private static final` but the class is `abstract`; acceptable, however the constant is used in a `static` utility method, making the abstract class act as a utility class. **AbstractClassWithoutAbstractMethods misuse** (rule: `Abstract classes should have abstract methods that justify abstraction`).

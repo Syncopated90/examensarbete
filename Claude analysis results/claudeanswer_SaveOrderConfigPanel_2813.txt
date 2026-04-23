@@ -1,0 +1,21 @@
+**Line 5** — `UnusedImports`: `javax.swing.undo.UndoManager` is a Swing class injected into a JavaFX controller; while used at line 91, mixing Swing undo infrastructure into a JavaFX view violates layering conventions. More precisely, the `@Inject` on line 38 with a Swing type is an **InappropriateInjectTarget** / **AvoidSwingComponentsInJavaFXContext**.
+
+**Line 38** — `AvoidSwingDependency` / `InappropriateUseOfSwing`: `UndoManager` from `javax.swing.undo` injected into a JavaFX controller.
+
+**Line 47** — `ConstructorCallsOverridableMethod`: `initialize()` is `@FXML` private, acceptable, but `viewModel` is assigned without null-guard and depends on injected fields being set first — **InjectedFieldUsedBeforeInjection** risk if injection order not guaranteed.
+
+**Line 55–66** — `AvoidInstantiationsInLambda` / **ComplexLambda**: The `ListChangeListener` lambda contains nested `while`/`if` logic; should be extracted to a named method. Rule: **ExcessiveLambdaBody**.
+
+**Line 62** — `ForLoopCanBeForeach` / **UnusedVariable**: `criterionViewModel` in the `wasRemoved` for-loop is never used in the loop body (`clearCriterionRow(change.getFrom())` ignores it). Rule: **UnusedFormalParameter** / **ForLoopVariableNotUpdated**.
+
+**Line 91** — `LawOfDemeter`: `FieldsUtil.getNameWithType(item, preferences, undoManager)` passes `undoManager` (a collaborator of the controller) deep into a utility method — violates **LawOfDemeter**.
+
+**Line 94** — `AvoidDuplicateBindings` / **RedundantCall**: `field.itemsProperty().bindBidirectional(viewModel.sortableFieldsProperty())` redundantly binds items that were already passed via the `ComboBox` constructor on line 87. Rule: **RedundantBidirectionalBinding**.
+
+**Line 97** — `UnusedReturnValue`: `GridPane.getHgrow(field)` return value is discarded. Rule: **CheckReturnValue**.
+
+**Lines 104–119** — `AvoidDuplicateCode`: Repeated `getStyleClass().addAll(...)`, `setPrefHeight(20.0)`, `setPrefWidth(20.0)` pattern for `remove`, `moveUp`, `moveDown`. Rule: **DuplicatedBlocks**.
+
+**Line 137** — `UseCollectionIsEmpty`: `viewModel.sortCriteriaProperty().size() >= limit` should use `size()` comparison, but the binding lambda could instead check `isEmpty()` for the zero-limit edge case — minor; main issue is **AvoidComplexLambdaInBinding**: lambda inside `Bindings.createBooleanBinding` should be extracted.
+
+**Lines 148–163** — `UnnecessaryFXMLAnnotation`: `moveCriterionUp`, `moveCriterionDown`, `removeCriterion` are annotated `@FXML` but are called programmatically (lines 107, 112, 117) not from FXML. Rule: **UnnecessaryAnnotation**.

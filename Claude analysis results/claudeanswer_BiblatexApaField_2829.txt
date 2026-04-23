@@ -1,0 +1,15 @@
+**Line 46** — `fromName` uses generic type parameter `<T>` but only checks `instanceof BiblatexApaEntryType`; the generic is unnecessary and misleading. **Rule: UnusedFormalParameter / UnnecessaryGenerics**
+
+**Line 24** — `this.displayName = null;` — assigning null to a field instead of using `Optional`. **Rule: NullAssignment**
+
+**Line 30** — Same as above: `this.displayName = null;`. **Rule: NullAssignment**
+
+**Line 40** — Same as above: `this.displayName = null;`. **Rule: NullAssignment**
+
+**Line 47–49** — Method returns `Optional.empty()` with a comment referencing a side-effect rationale; the null check on a generic type parameter is an unchecked type check. **Rule: ConfusingTernary / PrematureReturn**
+
+**Line 46** — `type` parameter typed as `<T>` but only used for an `instanceof` check; should be typed as `Object` or the specific type. **Rule: UnusedGenericTypeParameter**
+
+**Line 65** — `isStandardField()` hardcodes `return false` — acceptable for an enum implementation, but this is a **Rule: UncommentedEmptyMethodBody** concern if intent is not documented.
+
+**Line 57** — `getProperties()` returns the mutable internal `EnumSet` directly, exposing internal state. **Rule: MethodReturnsInternalArray / ReturnOfCollectionOrArrayField**

@@ -1,0 +1,19 @@
+**Line 23** — `VisibilityModifier`: Fields `getChildren`, `addChild`, `equivalence` should be `private final`.
+
+**Line 23** `ImmutableField`: Field `getChildren` is not declared `final`.
+
+**Line 24** `ImmutableField`: Field `addChild` is not declared `final`.
+
+**Line 25** `ImmutableField`: Field `equivalence` is not declared `final`.
+
+**Line 88** — `IDENTITY_FINISH` characteristic declared but `finisher()` is not the identity function for the type signature (minor — `finisher` returns `i -> i` which is correct, but declaring `IDENTITY_FINISH` with a non-identity cast is a contract issue).
+
+**Line 78** — `CallingSuperInConstructor` / design: `combiner()` calls `accumulator()` on each iteration inside the lambda, creating a new `BiConsumer` object on every element — `MethodCallInLoopCondition` / unnecessary object creation per iteration.
+
+**Line 46** — `LambdaCanBeMethodReference`: The `supplier()` method correctly uses a method reference; no issue here.
+
+**Line 55** — `SimplifyOptionalCallChains`: `sameItemInTree.isPresent()` followed by `sameItemInTree.get()` should use `sameItemInTree.ifPresent(...)` or `orElseThrow` — `OptionalGetWithoutIsPresent` risk pattern; prefer `ifPresentOrElse`.
+
+**Line 65** — Same issue: `sameItemInTree.isPresent()` / `sameItemInTree.get()` — use `ifPresent` instead.
+
+**Line 78** — `AvoidInstantiatingObjectsJustToGetClass` / performance: `accumulator()` is called inside the loop in `combiner()`, instantiating a new lambda on every iteration.

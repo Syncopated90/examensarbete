@@ -1,0 +1,7 @@
+**Line 19** — `UnnecessaryFullyQualifiedName`: `SystematicLiteratureReviewStudyEntryType.values()` — the class name is redundant inside its own enum body; `values()` suffices.
+
+**Line 20** — `LambdaParameterNaming` / misleading parameter name: lambda parameter `field` is used in a method that filters entry types, not fields — poor/misleading naming.
+
+**Line 26** — `MethodInvocationOfOppositeMethod` / redundant case conversion: `getName()` returns `displayName.toLowerCase(Locale.ENGLISH)`, but `fromName` calls `equalsIgnoreCase`, making the lowercase conversion in `getName()` partially redundant and inconsistent with the contract of `getName()` which should return a stable identifier, not a case-transformed display name.
+
+**Line 26** — `TransformationOfReturnValue`: `getName()` returns a transformed (lowercased) version of `displayName`, while `getDisplayName()` (line 30) returns the original — the two methods are tightly coupled to the same field with differing transformations, risking inconsistency if `displayName` changes.

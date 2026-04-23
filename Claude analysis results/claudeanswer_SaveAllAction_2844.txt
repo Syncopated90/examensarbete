@@ -1,0 +1,11 @@
+**Line 27** - `this.stateManager = stateManager` assigned after `this.executable.bind(needsDatabase(stateManager))` on line 27; field assigned out of order relative to use. **Rule: Field Assignment Order / Obscured Field Initialization**
+
+**Line 35** - `Injector.instantiateModelOrService(BibEntryTypesManager.class)` uses a service locator pattern inside a method, hiding a dependency rather than injecting it. **Rule: Law of Demeter / Hidden Dependency (Avoid Service Locator)**
+
+**Line 35** - `SaveDatabaseAction` is instantiated inside a loop on every iteration. **Rule: Avoid Instantiating Objects Inside Loops**
+
+**Line 36** - Return value of `saveDatabaseAction.save()` is checked, but the loop continues silently after notifying; no early exit or aggregation of failures. **Rule: Improper Error Handling / Continue After Error**
+
+**Line 23** - Constructor parameter order has `dialogService` and `preferences` swapped relative to field declaration order (fields: `tabsSupplier`, `dialogService`, `preferences`; constructor: `tabsSupplier`, `preferences`, `dialogService`). **Rule: Inconsistent Parameter/Field Ordering**
+
+**Line 14** - `com.airhacks.afterburner.injection.Injector` is a framework-specific static service locator imported and used directly in business logic. **Rule: Avoid Static Imports of Service Locators / Tight Coupling to Framework**

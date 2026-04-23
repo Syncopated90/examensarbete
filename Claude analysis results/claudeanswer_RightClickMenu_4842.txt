@@ -1,0 +1,33 @@
+**Line 47** – `RightClickMenu` class has no constructor declared private; utility class with only static methods should have a private constructor. **Rule: HideUtilityClassConstructor**
+
+**Line 57** – Local variable `extractReferencesAction` is used only within the method but the `ExtractReferencesAction` object is created before the `ContextMenu`, coupling instantiation order unnecessarily. **Rule: LocalVariableCouldBeFinal**
+
+**Line 60** – `extractFileReferencesOnline` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 61** – `extractFileReferencesOffline` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 55** – `factory` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 56** – `contextMenu` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 109** – `sourceDatabaseContext` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 113** – `targetDatabaseName` is declared before the if-else branches but re-assigned inside each branch; not assigned at declaration. **Rule: VariableDeclarationUsageDistance**
+
+**Line 100** – `copyToMenu` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 148** – `copySpecialMenu` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 170** – `previewPreferences` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 196** – `copyFieldContentMenu` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 216** – `sendMenu` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 222** – Trailing `new SeparatorMenuItem()` added to `sendMenu` with no item following it; useless trailing separator. **Rule: UnnecessaryCodeBlock / visual noise (UselessSeparator)**
+
+**Line 229** – `searchMenu` could be declared `final`. **Rule: LocalVariableCouldBeFinal**
+
+**Line 95** – Method `createCopyToMenu` is `private` but `createCopySubMenu` and `createCopyFieldContentSubMenu` are `public`/`package` without clear justification for differing visibility in a utility class. **Rule: MethodVisibility inconsistency**
+
+**Line 144** – `createCopySubMenu` is declared `public` in a class with no instantiation path; should be `private` or the class should be an instantiable service. **Rule: UnusedModifier / ExcessivePublicCount**

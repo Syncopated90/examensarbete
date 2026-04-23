@@ -1,0 +1,13 @@
+**Line 20-21** — `public static final` mutable field (`EnumSet`) exposed directly; **Rule: Mutable Static Field / Encapsulation Violation**
+
+**Line 28** — `getEntryNode` is a `public static` method in a non-instantiable utility class that has no private constructor; **Rule: Missing Private Constructor (Utility Class)**
+
+**Line 63** — `if/else if` chain without final `else` on type check; implicit fall-through to default return is acceptable, but the method could use a switch expression; **Rule: Avoid If/Else Chains (UseSwitch / SimplifyBooleanReturns)**
+
+**Line 78-83** — `isRTL` iterates `text.toCharArray()` creating a temporary array allocation on every call; **Rule: Inefficient String Iteration (UseStringCharacterIterator / AvoidArrayCopy)**
+
+**Line 78** — `isRTL` is `private static` and called in two separate methods (`createSummary`, `createLabel`) causing duplicate branching logic; **Rule: Duplicate Code / DRY Violation**
+
+**Line 63** — `type instanceof StandardEntryType standardEntry` pattern followed by `== StandardEntryType.Book` and `.contains()`; could be collapsed; **Rule: Simplifiable Instance-Of / Excessive Complexity**
+
+**Line 35-39** — Multiple repeated calls to `entry.getFieldOrAliasLatexFree(...)` for different fields with identical `.orElse("")` pattern — not extracted to a helper; **Rule: Avoid Duplicate Literals / Code Duplication**

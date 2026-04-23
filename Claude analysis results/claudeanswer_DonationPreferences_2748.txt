@@ -1,0 +1,9 @@
+**Line 12** — `ParameterHidingField`: Parameter `neverShowAgain` hides field `neverShowAgain`.
+
+**Line 12** — `ParameterHidingField`: Parameter `lastShownEpochDay` hides field `lastShownEpochDay`.
+
+**Line 17** — `UnusedPrivateMethod` / `AccessorMethodGeneration`: Private no-arg constructor is only called via `getDefault()`; could be inlined, but more critically it is unnecessarily private given the public factory method delegates to it — minor design smell; flagged as **UnnecessaryConstructor** if the factory method is the sole intended entry point.
+
+**Line 23** — `UnnecessaryLocalVariable` / **MethodCouldBeStatic** (PMD): `getDefault()` does not use any instance state and could be a simple constructor call returned directly; no real static-analysis violation here beyond noting the factory is trivially thin.
+
+**Line 26** — `LawOfDemeter`: `setAll` accesses internal property values of the passed `preferences` object (`preferences.isNeverShowAgain()`, `preferences.getLastShownEpochDay()`), violating encapsulation/Law of Demeter.

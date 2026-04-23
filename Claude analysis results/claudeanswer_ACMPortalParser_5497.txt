@@ -1,0 +1,21 @@
+**Line 6** `CookieHandler` imported but only used via static method — acceptable, but `CookieManager` import is paired with it.
+
+**Line 82** `new String((stream.readAllBytes()), StandardCharsets.UTF_8)` — redundant parentheses around `stream.readAllBytes()`. **Rule: UnnecessaryParentheses**
+
+**Line 78** `CookieHandler.setDefault(new CookieManager())` inside a public method called potentially multiple times — global state mutation on every call. **Rule: AvoidStaticMutationOfGlobalState / StaticFieldSetInMethod**
+
+**Line 78** `CookieHandler.setDefault(new CookieManager())` — `CookieManager` instance created and set but never stored or restored; leaks global state. **Rule: StaticFieldSetInMethod**
+
+**Line 67** `fullSegment.indexOf("10")` — `indexOf` returns `-1` if not found; no bounds check before `substring`. **Rule: PotentialIndexOutOfBoundsException / AvoidNegativeArrayIndex**
+
+**Line 110** `typeStr` parameter received but variable `upperUnderscoreTyeStr` contains typo (`Tye` instead of `Type`). **Rule: AvoidFieldNameMatchingTypeName / LocalVariableNamingConventions** (minor: typo in variable name)
+
+**Line 137** `dateField[i]` accessed with index `i` up to `dateArray.size()` which could be > 3, causing `ArrayIndexOutOfBoundsException`. **Rule: ArrayIndexOutOfBounds**
+
+**Line 82** `stream.readAllBytes()` — entire response read into memory with no size limit. **Rule: AvoidLargeMemoryAllocation / DoNotReadEntireFileInMemory**
+
+**Line 100** `uriBuilder.build().toURL()` — `URIBuilder.build()` can throw `URISyntaxException` declared in signature, but `toURL()` throws `MalformedURLException` separately; both declared but exception granularity is conflated. **Rule: ExceptionDeclarationOrder** (minor)
+
+**Line 215** `new Author(given, null, null, family, null)` — `given` and `family` can both be `null`; no null guard before constructing `Author`. **Rule: NullAssignment / AvoidPassingNullToMethod**
+
+**Line 59** `parseDoiSearchPage` — `null` passed as charset to `Jsoup.parse(stream, null, HOST)`; should use explicit charset. **Rule: AvoidPassingNullToMethod**

@@ -1,0 +1,54 @@
+**Line 44 — UnusedPrivateMethod / PrivateConstructorCalledByPublicMethod**
+Private constructor `GroupsPreferences()` is only called via `getDefault()` — acceptable, but it delegates to the public constructor, which is fine. However:
+
+**Line 44 — ConstructorCallsOverridableMethod** (if class were non-final — low risk here, but note class is not declared `final`)
+
+**Line 23-24 — ConfusingParameterName / HiddenField**
+Parameters `shouldAutoAssignGroup` (line 26) and `shouldDisplayGroupCount` (line 27) shadow the instance fields of the same name.
+
+**Line 26:**
+```java
+this.shouldAutoAssignGroup = new SimpleBooleanProperty(shouldAutoAssignGroup);
+```
+Parameter name `shouldAutoAssignGroup` shadows field `shouldAutoAssignGroup` — **HiddenField**
+
+**Line 27:**
+```java
+this.shouldDisplayGroupCount = new SimpleBooleanProperty(shouldDisplayGroupCount);
+```
+Parameter name `shouldDisplayGroupCount` shadows field `shouldDisplayGroupCount` — **HiddenField**
+
+**Line 57 — HiddenField**
+Parameter `shouldAutoAssignGroup` in the `@VisibleForTesting` constructor shadows the instance field.
+
+**Line 58 — HiddenField**
+Parameter `shouldDisplayGroupCount` shadows the instance field.
+
+**Line 59 — HiddenField**
+Parameter `defaultHierarchicalContext` shadows the instance field.
+
+**Line 28 — HiddenField**
+Parameter `defaultHierarchicalContext` shadows the instance field.
+
+**Line 72 — UnnecessaryLocalBeforeReturn / SimplifiableConditional**
+```java
+if (groupViewMode.isEmpty()) {
+    return EnumSet.noneOf(GroupViewMode.class);
+}
+return EnumSet.copyOf(groupViewMode);
+```
+The guard is necessary (`EnumSet.copyOf` throws on empty), so no rule broken here — this is correct.
+
+**Line 44 — CallSuperInConstructor** (missing — private constructor doesn't call `super()` explicitly, minor style)
+
+**Line 65 — ClassWithOnlyPrivateConstructorsShouldBeFinal** — `getDefault()` is the only way to call the private constructor; the class is not declared `final`. **MissingFinalClass / ClassShouldBeFinal** does not strictly apply since there are public constructors.
+
+**Line 74 — ReturnEmptyCollectionRatherThanNull** — not violated (returns empty EnumSet), OK.
+
+**Line 69 — MethodReturnsInternalArray** — not applicable.
+
+**Line 67 — UseEnumSet** — `groupViewMode` is already a `SetProperty`, wrapping with `EnumSet.copyOf` is fine.
+
+**Summary of key violations:**
+- Lines 26, 27, 28, 57, 58, 59: **HiddenField** — constructor parameters shadow instance fields.
+- Class not declared `final` despite having a private constructor intended for factory use: **ClassWithOnlyPrivateConstructors** rule partially applicable (Line 44).

@@ -1,0 +1,15 @@
+**Line 42** — `URLDATE` handler uses variable name `acessed` (misspelled). **Naming Convention / Typo in Variable Name**
+
+**Line 41** — variable name `accesed` is also misspelled. **Naming Convention / Typo in Variable Name**
+
+**Line 83** — `entry.getFieldLatexFree(StandardField.TYPE).isPresent()` followed by `.get()` on line 84 instead of using `ifPresent` or `map`. **Calling Optional.get() Without isPresent Check** (though guarded, prefer `ifPresent`/`map`). **Avoid calling Optional.get() directly / Use Optional.ifPresent**
+
+**Line 83–84** — `getFieldLatexFree(StandardField.TYPE)` is called twice. **Duplicate Calls / Unnecessary Method Call Repetition**
+
+**Line 71** — `entry.getFieldLatexFree(StandardField.YEAR).isEmpty()` checked, then `getFieldOrAliasLatexFree` called inside the block; `getFieldLatexFree` and `getFieldOrAliasLatexFree` are redundantly overlapping calls. **Redundant Condition / Unnecessary Duplicate Call**
+
+**Line 107** — `StandardField.EDITOR` is passed as the `field` argument when processing `StandardField.TRANSLATOR`. **Wrong Argument / Copy-Paste Error**
+
+**Line 116** — `result` is initialized as a new `ArrayList` but is immediately discarded if `authorLatexFreeOpt` is non-empty (replaced by stream `.toList()`), and returned empty only on early exit. The intermediate `result` list is unnecessary. **Unnecessary Object Creation / Dead Code**
+
+**Line 22** — Private constructor on a utility class but class is not declared `final`. **Missing Final Modifier on Utility Class**

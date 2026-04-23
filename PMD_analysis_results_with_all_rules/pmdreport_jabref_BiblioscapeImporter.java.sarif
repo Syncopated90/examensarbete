@@ -1,0 +1,3117 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "AtLeastOneConstructor",
+              "shortDescription": {
+                "text": "Each class should declare at least one constructor"
+              },
+              "fullDescription": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#atleastoneconstructor",
+              "help": {
+                "text": "\n\nEach non-static class should declare at least one constructor.\nClasses with solely static members are ignored, refer to [UseUtilityClassRule](pmd_rules_java_design.html#useutilityclass) to detect those.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "GodClass",
+              "shortDescription": {
+                "text": "Possible God Class (WMC=80, ATFD=77, TCC=0.000%)"
+              },
+              "fullDescription": {
+                "text": "\nThe God Class rule detects the God Class design flaw using metrics. God classes do too many things,\nare very big and overly complex. They should be split apart to be more object-oriented.\nThe rule uses the detection strategy described in \"Object-Oriented Metrics in Practice\".\nThe violations are reported against the entire class.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* ATFD: a measure of how much data external data the class uses, see {% jdoc java::lang.java.metrics.JavaMetrics#ACCESS_TO_FOREIGN_DATA %}\n* TCC: a measure of how tightly related the methods are, see {% jdoc java::lang.java.metrics.JavaMetrics#TIGHT_CLASS_COHESION %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High WMC\n* High ATFD\n* Low TCC\n\nSee also the reference:\n\nMichele Lanza and Radu Marinescu. *Object-Oriented Metrics in Practice:\nUsing Software Metrics to Characterize, Evaluate, and Improve the Design\nof Object-Oriented Systems.* Springer, Berlin, 1 edition, October 2006. Page 80.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#godclass",
+              "help": {
+                "text": "\nThe God Class rule detects the God Class design flaw using metrics. God classes do too many things,\nare very big and overly complex. They should be split apart to be more object-oriented.\nThe rule uses the detection strategy described in \"Object-Oriented Metrics in Practice\".\nThe violations are reported against the entire class.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* ATFD: a measure of how much data external data the class uses, see {% jdoc java::lang.java.metrics.JavaMetrics#ACCESS_TO_FOREIGN_DATA %}\n* TCC: a measure of how tightly related the methods are, see {% jdoc java::lang.java.metrics.JavaMetrics#TIGHT_CLASS_COHESION %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High WMC\n* High ATFD\n* Low TCC\n\nSee also the reference:\n\nMichele Lanza and Radu Marinescu. *Object-Oriented Metrics in Practice:\nUsing Software Metrics to Characterize, Evaluate, and Improve the Design\nof Object-Oriented Systems.* Springer, Berlin, 1 edition, October 2006. Page 80.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CyclomaticComplexity",
+              "shortDescription": {
+                "text": "The class 'BiblioscapeImporter' has a total cyclomatic complexity of 80 (highest 76)."
+              },
+              "fullDescription": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cyclomaticcomplexity",
+              "help": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "NcssCount",
+              "shortDescription": {
+                "text": "The method 'importDatabase(BufferedReader)' has a NCSS line count of 194."
+              },
+              "fullDescription": {
+                "text": "\nThis rule uses the NCSS (Non-Commenting Source Statements) metric to determine the number of lines\nof code in a class, method or constructor. NCSS ignores comments, blank lines, and only counts actual\nstatements. For more details on the calculation, see the documentation\n{% jdoc java::lang.java.metrics.JavaMetrics#NCSS %}.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#ncsscount",
+              "help": {
+                "text": "\nThis rule uses the NCSS (Non-Commenting Source Statements) metric to determine the number of lines\nof code in a class, method or constructor. NCSS ignores comments, blank lines, and only counts actual\nstatements. For more details on the calculation, see the documentation\n{% jdoc java::lang.java.metrics.JavaMetrics#NCSS %}.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CognitiveComplexity",
+              "shortDescription": {
+                "text": "The method 'importDatabase(BufferedReader)' has a cognitive complexity of 157, current threshold is 15"
+              },
+              "fullDescription": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cognitivecomplexity",
+              "help": {
+                "text": "\n            Methods that are highly complex are difficult to read and more costly to maintain. If you include too much decisional\n            logic within a single method, you make its behavior hard to understand and more difficult to modify.\n\n            Cognitive complexity is a measure of how difficult it is for humans to read and understand a method. Code that contains\n            a break in the control flow is more complex, whereas the use of language shorthands doesn't increase the level of\n            complexity. Nested control flows can make a method more difficult to understand, with each additional nesting of the\n            control flow leading to an increase in cognitive complexity.\n\n            Information about Cognitive complexity can be found in the original paper here:\n            <https://www.sonarsource.com/docs/CognitiveComplexity.pdf>\n\n            By default, this rule reports methods with a complexity of 15 or more. Reported methods should be broken down into less\n            complex components.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CyclomaticComplexity",
+              "shortDescription": {
+                "text": "The method 'importDatabase(BufferedReader)' has a cyclomatic complexity of 76."
+              },
+              "fullDescription": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cyclomaticcomplexity",
+              "help": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "NPathComplexity",
+              "shortDescription": {
+                "text": "The method 'importDatabase(BufferedReader)' has an NPath complexity of 417969, current threshold is 200"
+              },
+              "fullDescription": {
+                "text": "\nThe NPath complexity of a method is the number of acyclic execution paths through that method.\nWhile cyclomatic complexity counts the number of decision points in a method, NPath counts the number of\nfull paths from the beginning to the end of the block of the method. That metric grows exponentially, as\nit multiplies the complexity of statements in the same block. For more details on the calculation, see the\ndocumentation {% jdoc java::lang.java.metrics.JavaMetrics#NPATH %}.\n\nA threshold of 200 is generally considered the point where measures should be taken to reduce\ncomplexity and increase readability.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#npathcomplexity",
+              "help": {
+                "text": "\nThe NPath complexity of a method is the number of acyclic execution paths through that method.\nWhile cyclomatic complexity counts the number of decision points in a method, NPath counts the number of\nfull paths from the beginning to the end of the block of the method. That metric grows exponentially, as\nit multiplies the complexity of statements in the same block. For more details on the calculation, see the\ndocumentation {% jdoc java::lang.java.metrics.JavaMetrics#NPATH %}.\n\nA threshold of 200 is generally considered the point where measures should be taken to reduce\ncomplexity and increase readability.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'reader' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'bibItems' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ShortVariable",
+              "shortDescription": {
+                "text": "Avoid variables with short names like hm"
+              },
+              "fullDescription": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#shortvariable",
+              "help": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UseConcurrentHashMap",
+              "shortDescription": {
+                "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+              },
+              "fullDescription": {
+                "text": "\nSince Java5 brought a new implementation of the Map designed for multi-threaded access, you can\nperform efficient map reads without blocking other threads.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_multithreading.html#useconcurrenthashmap",
+              "help": {
+                "text": "\nSince Java5 brought a new implementation of the Map designed for multi-threaded access, you can\nperform efficient map reads without blocking other threads.\n        "
+              },
+              "properties": {
+                "ruleset": "Multithreading",
+                "priority": 3,
+                "tags": [
+                  "Multithreading"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'hm' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'lines' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AssignmentInOperand",
+              "shortDescription": {
+                "text": "Avoid assignment to line in operand"
+              },
+              "fullDescription": {
+                "text": "\nAvoid assignments in operands; this can make code more complicated and harder to read.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#assignmentinoperand",
+              "help": {
+                "text": "\nAvoid assignments in operands; this can make code more complicated and harder to read.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"------\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'type' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidInstantiatingObjectsInLoops",
+              "shortDescription": {
+                "text": "Avoid instantiating new objects inside loops"
+              },
+              "fullDescription": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_performance.html#avoidinstantiatingobjectsinloops",
+              "help": {
+                "text": "\nNew objects created within loops should be checked to see if they can created outside them and reused.\n        "
+              },
+              "properties": {
+                "ruleset": "Performance",
+                "priority": 3,
+                "tags": [
+                  "Performance"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'pages' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'comments' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'entry' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"AU\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"TI\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"ST\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"YP\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"VL\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"NB\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"PS\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"PE\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"KW\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"RT\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"SB\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"SA\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"NT\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"PB\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"TA\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"TT\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"ED\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"TW\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"QA\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"QT\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"IS\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"AB\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"AD\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"LG\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"CO\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ShortVariable",
+              "shortDescription": {
+                "text": "Avoid variables with short names like s"
+              },
+              "fullDescription": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#shortvariable",
+              "help": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 's' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"C1\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"C2\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"C3\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"C4\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"C5\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"C6\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"DE\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"CA\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"TH\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as \"SE\" in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidDeeplyNestedIfStmts",
+              "shortDescription": {
+                "text": "Deeply nested if..then statements are hard to read"
+              },
+              "fullDescription": {
+                "text": "\nAvoid creating deeply nested if-then statements since they are harder to read and error-prone to maintain.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#avoiddeeplynestedifstmts",
+              "help": {
+                "text": "\nAvoid creating deeply nested if-then statements since they are harder to read and error-prone to maintain.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "IdenticalConditionalBranches",
+              "shortDescription": {
+                "text": "Conditional statement ignores the condition"
+              },
+              "fullDescription": {
+                "text": "\n            Conditional statement that does the same thing when the condition is true and false\n            is either incorrect (one of the branches should be changed) or redundant\n            (can be replaced by one of its branches).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#identicalconditionalbranches",
+              "help": {
+                "text": "\n            Conditional statement that does the same thing when the condition is true and false\n            is either incorrect (one of the branches should be changed) or redundant\n            (can be replaced by one of its branches).\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ShortVariable",
+              "shortDescription": {
+                "text": "Avoid variables with short names like b"
+              },
+              "fullDescription": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#shortvariable",
+              "help": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'b' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "NullAssignment",
+              "shortDescription": {
+                "text": "Assigning an Object to null is a code smell.  Consider refactoring."
+              },
+              "fullDescription": {
+                "text": "\nAssigning a \"null\" to a variable (outside of its declaration) is usually bad form.  Sometimes, this type\nof assignment is an indication that the programmer doesn't completely understand what is going on in the code.\n\nNOTE: This sort of assignment may used in some cases to dereference objects and encourage garbage collection.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#nullassignment",
+              "help": {
+                "text": "\nAssigning a \"null\" to a variable (outside of its declaration) is usually bad form.  Sometimes, this type\nof assignment is an indication that the programmer doesn't completely understand what is going on in the code.\n\nNOTE: This sort of assignment may used in some cases to dereference objects and encourage garbage collection.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "OnlyOneReturn",
+              "shortDescription": {
+                "text": "A method should have only one exit point, and that should be the last statement in the method"
+              },
+              "fullDescription": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#onlyonereturn",
+              "help": {
+                "text": "\nA method should have only one exit point, and that should be the last statement in the method.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "AtLeastOneConstructor",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Each class should declare at least one constructor"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 8,
+                  "endLine": 27,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GodClass",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Possible God Class (WMC=80, ATFD=77, TCC=0.000%)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 8,
+                  "endLine": 27,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CyclomaticComplexity",
+          "ruleIndex": 2,
+          "message": {
+            "text": "The class 'BiblioscapeImporter' has a total cyclomatic complexity of 80 (highest 76)."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 8,
+                  "endLine": 27,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NcssCount",
+          "ruleIndex": 3,
+          "message": {
+            "text": "The method 'importDatabase(BufferedReader)' has a NCSS line count of 194."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 25,
+                  "endLine": 50,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CognitiveComplexity",
+          "ruleIndex": 4,
+          "message": {
+            "text": "The method 'importDatabase(BufferedReader)' has a cognitive complexity of 157, current threshold is 15"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 25,
+                  "endLine": 50,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CyclomaticComplexity",
+          "ruleIndex": 5,
+          "message": {
+            "text": "The method 'importDatabase(BufferedReader)' has a cyclomatic complexity of 76."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 25,
+                  "endLine": 50,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NPathComplexity",
+          "ruleIndex": 6,
+          "message": {
+            "text": "The method 'importDatabase(BufferedReader)' has an NPath complexity of 417969, current threshold is 200"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 25,
+                  "endLine": 50,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Parameter 'reader' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 64,
+                  "endLine": 50,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Local variable 'bibItems' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 24,
+                  "endLine": 51,
+                  "endColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ShortVariable",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Avoid variables with short names like hm"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 28,
+                  "endLine": 53,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 10,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 28,
+                  "endLine": 53,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Local variable 'hm' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 28,
+                  "endLine": 53,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 10,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 36,
+                  "endLine": 54,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Local variable 'lines' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 36,
+                  "endLine": 54,
+                  "endColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AssignmentInOperand",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Avoid assignment to line in operand"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 16,
+                  "endLine": 56,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Avoid using literals such as \"------\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 17,
+                  "endLine": 62,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Local variable 'type' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 26,
+                  "endLine": 63,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 33,
+                  "endLine": 63,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Local variable 'pages' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 26,
+                  "endLine": 64,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 34,
+                  "endLine": 64,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Local variable 'comments' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 30,
+                  "endLine": 69,
+                  "endColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 41,
+                  "endLine": 69,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'entry' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 55,
+                  "endLine": 71,
+                  "endColumn": 60
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Avoid using literals such as \"AU\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 25,
+                  "endLine": 72,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 21,
+          "message": {
+            "text": "Avoid using literals such as \"TI\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 32,
+                  "endLine": 75,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Avoid using literals such as \"ST\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 32,
+                  "endLine": 78,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Avoid using literals such as \"YP\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 32,
+                  "endLine": 81,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Avoid using literals such as \"VL\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 32,
+                  "endLine": 84,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Avoid using literals such as \"NB\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 32,
+                  "endLine": 87,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Avoid using literals such as \"PS\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 32,
+                  "endLine": 90,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Avoid using literals such as \"PE\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 32,
+                  "endLine": 93,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Avoid using literals such as \"KW\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 32,
+                  "endLine": 96,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Avoid using literals such as \"RT\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 32,
+                  "endLine": 99,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Avoid using literals such as \"SB\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 32,
+                  "endLine": 102,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 31,
+          "message": {
+            "text": "Avoid using literals such as \"SA\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 32,
+                  "endLine": 105,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Avoid using literals such as \"NT\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 32,
+                  "endLine": 108,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Avoid using literals such as \"PB\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 32,
+                  "endLine": 111,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 34,
+          "message": {
+            "text": "Avoid using literals such as \"TA\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 32,
+                  "endLine": 114,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 35,
+          "message": {
+            "text": "Avoid using literals such as \"TT\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 32,
+                  "endLine": 117,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 36,
+          "message": {
+            "text": "Avoid using literals such as \"ED\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 32,
+                  "endLine": 120,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 37,
+          "message": {
+            "text": "Avoid using literals such as \"TW\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 32,
+                  "endLine": 123,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 38,
+          "message": {
+            "text": "Avoid using literals such as \"QA\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 32,
+                  "endLine": 126,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 39,
+          "message": {
+            "text": "Avoid using literals such as \"QT\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 129,
+                  "startColumn": 32,
+                  "endLine": 129,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 40,
+          "message": {
+            "text": "Avoid using literals such as \"IS\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 32,
+                  "endLine": 132,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 41,
+          "message": {
+            "text": "Avoid using literals such as \"AB\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 32,
+                  "endLine": 135,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 42,
+          "message": {
+            "text": "Avoid using literals such as \"AD\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 32,
+                  "endLine": 138,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 43,
+          "message": {
+            "text": "Avoid using literals such as \"LG\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 32,
+                  "endLine": 141,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 44,
+          "message": {
+            "text": "Avoid using literals such as \"CO\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 144,
+                  "startColumn": 32,
+                  "endLine": 144,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ShortVariable",
+          "ruleIndex": 45,
+          "message": {
+            "text": "Avoid variables with short names like s"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 148,
+                  "startColumn": 32,
+                  "endLine": 148,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 46,
+          "message": {
+            "text": "Local variable 's' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 148,
+                  "startColumn": 32,
+                  "endLine": 148,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 47,
+          "message": {
+            "text": "Avoid using literals such as \"C1\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 151,
+                  "startColumn": 32,
+                  "endLine": 151,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 48,
+          "message": {
+            "text": "Avoid using literals such as \"C2\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 32,
+                  "endLine": 154,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 49,
+          "message": {
+            "text": "Avoid using literals such as \"C3\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 157,
+                  "startColumn": 32,
+                  "endLine": 157,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 50,
+          "message": {
+            "text": "Avoid using literals such as \"C4\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 32,
+                  "endLine": 160,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 51,
+          "message": {
+            "text": "Avoid using literals such as \"C5\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 163,
+                  "startColumn": 32,
+                  "endLine": 163,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 52,
+          "message": {
+            "text": "Avoid using literals such as \"C6\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 32,
+                  "endLine": 166,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 53,
+          "message": {
+            "text": "Avoid using literals such as \"DE\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 32,
+                  "endLine": 169,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 54,
+          "message": {
+            "text": "Avoid using literals such as \"CA\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 172,
+                  "startColumn": 32,
+                  "endLine": 172,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 55,
+          "message": {
+            "text": "Avoid using literals such as \"TH\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 175,
+                  "startColumn": 32,
+                  "endLine": 175,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 56,
+          "message": {
+            "text": "Avoid using literals such as \"SE\" in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 32,
+                  "endLine": 178,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 57,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 21,
+                  "endLine": 222,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 57,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 223,
+                  "startColumn": 21,
+                  "endLine": 225,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IdenticalConditionalBranches",
+          "ruleIndex": 58,
+          "message": {
+            "text": "Conditional statement ignores the condition"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 226,
+                  "startColumn": 24,
+                  "endLine": 240,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 57,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 227,
+                  "startColumn": 21,
+                  "endLine": 229,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 57,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 230,
+                  "startColumn": 21,
+                  "endLine": 232,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ShortVariable",
+          "ruleIndex": 59,
+          "message": {
+            "text": "Avoid variables with short names like b"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 255,
+                  "startColumn": 26,
+                  "endLine": 255,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 60,
+          "message": {
+            "text": "Local variable 'b' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 255,
+                  "startColumn": 26,
+                  "endLine": 255,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 255,
+                  "startColumn": 30,
+                  "endLine": 255,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NullAssignment",
+          "ruleIndex": 61,
+          "message": {
+            "text": "Assigning an Object to null is a code smell.  Consider refactoring."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 261,
+                  "startColumn": 32,
+                  "endLine": 261,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidInstantiatingObjectsInLoops",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Avoid instantiating new objects inside loops"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 268,
+                  "startColumn": 32,
+                  "endLine": 268,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "OnlyOneReturn",
+          "ruleIndex": 62,
+          "message": {
+            "text": "A method should have only one exit point, and that should be the last statement in the method"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/BiblioscapeImporter.java"
+                },
+                "region": {
+                  "startLine": 274,
+                  "startColumn": 17,
+                  "endLine": 274,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

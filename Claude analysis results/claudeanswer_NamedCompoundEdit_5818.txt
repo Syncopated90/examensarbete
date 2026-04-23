@@ -1,0 +1,17 @@
+**Line 10** - `ShadowingLocalVariable` / Field `hasEdits` shadows the inherited `inProgress` pattern; more critically, field name `hasEdits` duplicates the method name `hasEdits()` — **MethodNamingConventions** conflict.
+
+**Line 10** — `BooleanInstantiation` / `hasEdits` is a primitive `boolean` field defaulting to `false` but never reset — **FieldShouldBeFinal** rule violated (it is not final but could arguably be, though it mutates; main issue is below).
+
+**Line 19** — `AssignmentInOperand` / direct field assignment `hasEdits = true` without guarding prior state — **UnusedReturnValue** not applicable here, but the superclass return value of `super.addEdit()` is returned without checking if the edit was actually added before setting `hasEdits = true`. Rule: **AvoidLiteralsInIfCondition** / **OverrideBothEqualsAndHashcode** not relevant. Actual rule: **PrematureDeclaration** — `hasEdits` is set to `true` before confirming `super.addEdit()` succeeds.
+
+**Line 29** — `XSSVulnerability` / raw `name` field is concatenated directly into an HTML string without escaping. Rule: **InjectionAttack** / **AvoidHTMLConstruction**.
+
+**Line 34** — Same as line 29. Rule: **InjectionAttack** / **AvoidHTMLConstruction**.
+
+**Line 39** — `RawTypeUsage` — `edits` is a raw `Vector` field from `CompoundEdit` accessed directly, bypassing encapsulation. Rule: **DirectAccessToFieldFromOutsidePackage** / **AvoidAccessingProtectedFieldDirectly** (accessing protected field `edits` from superclass directly rather than through accessor methods).
+
+**Line 40** — `AppendCharacterWithCharArgument` — `.append("<li>")` uses a `String` literal where a `char` would suffice for parts of it. Minor rule: **InefficientStringBuffering**.
+
+**Line 7** — `UnnecessaryFullyQualifiedName` / unused or unnecessary import check — `Localization` import is used, not an issue. No violation here.
+
+**Line 3-4** — `AvoidSwingComponents` — use of `javax.swing.undo.*` may violate rules discouraging Swing usage in non-UI logic layers depending on architecture rules. Rule: **LayeredArchitectureViolation**.

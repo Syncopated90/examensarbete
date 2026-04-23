@@ -1,0 +1,11 @@
+**Line 17-18** — `ReadOnlyListWrapper` assigned to `ReadOnlyListProperty`: the field is declared as `ReadOnlyListProperty` but instantiated as `ReadOnlyListWrapper`. The `ReadOnlyListWrapper` is the mutable backing wrapper; exposing it via the field type leaks mutability intent inconsistently. Rule: **DeclarationTypeShouldBeConcreteNotAbstract** / **LooseCoupling** (use the most specific type or the correct abstraction consistently).
+
+**Line 19-20** — Same issue as lines 17-18. Rule: **LooseCoupling** / **DeclarationTypeShouldBeConcreteNotAbstract**.
+
+**Line 13-15** — `cslBibliographyTitle`, `cslBibliographySelectedHeaderFormat`, `cslBibliographySelectedBodyFormat` are `private final` fields but exposed directly via getters returning `StringProperty` (mutable). Rule: **ReturnOfCollectionOrArrayField** / **MutableStateMustBePrivate** — callers can mutate internal state.
+
+**Line 44** — `headerFormatListProperty()` method name conflicts with JavaFX naming convention; property accessor methods should be named `<propertyName>Property()` consistently. The field is named `headerFormatListProperty` making the method name `headerFormatListProperty()` — the field and method share the same name, which is a **MethodNamingConventions** violation (field and method should not share identical names).
+
+**Line 52** — Same as line 44 for `bodyFormatListProperty()`. Rule: **MethodNamingConventions**.
+
+**Line 23** — Constructor parameter `openOfficePreferences` shadows the instance field `openOfficePreferences`. Rule: **HiddenField**.

@@ -1,0 +1,9 @@
+**Line 15** — `UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR` (FindBugs/SpotBugs): `sideEffect` field is declared but not initialized in constructor, leaving it null by default.
+
+**Line 26** — `NP_NULL_ON_SOME_PATH` (FindBugs/SpotBugs): Null check on `sideEffect` after it is annotated `@NonNull` in the `build()` method parameter declaration in the public API, creating a contract inconsistency.
+
+**Line 14** — `UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD` (FindBugs/SpotBugs): `sideEffect` field in `Builder` is package-accessible and can remain null.
+
+**Line 17** — `MISSING_BREAK_IN_SWITCH` / `MissingNullCheck` (PMD): `@NonNull` annotation on `title` parameter is not enforced with an explicit null check in the constructor body.
+
+**Line 21** — `NullArgumentCheck` (PMD): `@NonNull` contract on `sideEffect` parameter is not enforced with an explicit null check before assignment; a null value can still be assigned to the field.

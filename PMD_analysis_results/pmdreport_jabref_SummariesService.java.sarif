@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "LooseCoupling",
+              "shortDescription": {
+                "text": "Avoid using implementation types like 'TreeMap'; use the interface instead"
+              },
+              "fullDescription": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling",
+              "help": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Avoid using implementation types like 'TreeMap'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/SummariesService.java"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 19,
+                  "endLine": 39,
+                  "endColumn": 71
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

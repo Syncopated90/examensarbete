@@ -1,0 +1,13 @@
+**Line 13** — `record` with mutable component types (`List`, `Map`, `Deque`): **AvoidMutableRecords** / **MutableRecordComponent**. Records imply immutability but expose mutable collections directly.
+
+**Line 13** — `Map<String, BstFunctions.BstFunction>`: **ExcessiveImports** / **CouplingBetweenObjects** — inner class reference tightens coupling.
+
+**Line 13** — `Deque<Object>`: **LooseCoupling** — use of `Object` as generic type parameter; overly broad type.
+
+**Line 16** — `Optional<Path> path`: **OptionalUsedAsFieldOrParameterType** (Sonar: `java:S3553`) — `Optional` should not be used as a record component/field type.
+
+**Line 19** — Constructor parameter `Path path` shadows record component `Optional<Path> path`: **HiddenField** — the constructor parameter `path` hides the record component `path`.
+
+**Line 21** — `new LinkedList<>()`: **LooseCoupling** — concrete `LinkedList` should be referenced via `Deque` interface, though here the justification comment exists; still flagged by tools.
+
+**Line 21** — Long line / **ParameterNumber** — the canonical constructor call has 7 arguments, exceeding the typical threshold of 5–6: **ExcessiveParameterList**.

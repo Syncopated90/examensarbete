@@ -1,0 +1,15 @@
+**Line 22** — `ParameterNumber` / **Excessive Parameter List**: Constructor has 4 parameters; consider encapsulating.
+
+**Line 30** — `UncommentedEmptyMethodBody` / **Missing Javadoc on private method**: `configure()` has side effects not documented.
+
+**Line 36** — `DesignForExtension`: `call()` overrides a method but is not `final`, `abstract`, or empty — violates design for extension rule.
+
+**Line 18-19** — `NullableAnnotationWithNonNullField`: Field `apiKey` is `@Nullable` inside a `@NullMarked` class; the `@Nullable` is redundant but not a violation per se — however mixing `@NullMarked` with explicit `@Nullable` can conflict with tooling expectations.
+
+**Line 13** — `ClassDataAbstractionCoupling`: Class depends on `AiModelService`, `AiProvider`, `BackgroundTask`, `Localization`, `String`, `List` — high coupling count.
+
+**Line 22** — `HiddenField`: Constructor parameters `aiModelService`, `aiProvider`, `apiBaseUrl`, `apiKey` shadow instance fields of the same name.
+
+**Line 36** — `UnnecessaryOverride` risk: `call()` does nothing except delegate entirely to `aiModelService.fetchModelsSynchronously`, suggesting a violation of **Single Responsibility** / `UnnecessaryDelegation`.
+
+**Line 31** — `AvoidLiteralsInIfCondition` / hardcoded `false` boolean literal passed to `showToUser(false)` — **MagicBoolean** / avoid boolean literals in method calls.

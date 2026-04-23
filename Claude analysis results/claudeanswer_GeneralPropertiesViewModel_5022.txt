@@ -1,0 +1,19 @@
+**Line 38** — `ObjectProperty<Charset>` field declared, but `SimpleObjectProperty` used at line 41 for `selectedDatabaseModeProperty`. Inconsistent abstraction: `selectedDatabaseModeProperty` declared as `SimpleObjectProperty` instead of `ObjectProperty`. **Rule: LooseCoupling**
+
+**Line 41** — `SimpleObjectProperty<BibDatabaseMode> selectedDatabaseModeProperty` exposed via public accessor returning `SimpleObjectProperty` (line 171) instead of `ObjectProperty`. **Rule: LooseCoupling**
+
+**Line 235–237** — Dead code: `else` branch after `if (!currPath.isAbsolute())` and `else if (currPath.isAbsolute())` covers all cases; the final `else` block is unreachable. **Rule: UnreachableCode**
+
+**Line 224** — `togglePath` is public but never referenced outside the class in this file. If unused externally, violates **Rule: UnusedFormalParameter** (if never called) or at minimum **Rule: UnnecessaryModifier** if package-private would suffice.
+
+**Line 192** — `getBrowseDirectory`: `Path.of(configuredDir)` called without guarding against `InvalidPathException`, which can be thrown for malformed paths entered manually. **Rule: AvoidThrowingRawExceptionTypes** / **Rule: PreserveStackTrace** (exception silently unhandled).
+
+**Line 210** — `validateDirectory`: `Path.of(directoryPath)` called before the `try` block on line 215, so an `InvalidPathException` on line 210 is not caught. **Rule: AvoidCatchingGenericException** / **Rule: ExceptionHandling** (partial exception coverage).
+
+**Line 80** — `setValues()`: `metaData.getLibrarySpecificFileDirectory().orElse("").trim()` — `.trim()` called but the result of `orElse("")` on empty is `""`, which is already trimmed; minor but indicates **Rule: UselessParentheses** / **Rule: UnnecessaryLocalBeforeReturn** style issue; more critically `userSpecificFileDirectoryProperty` is not trimmed on line 82 inconsistently. **Rule: InconsistentImplementation**
+
+**Line 95** — `userSpecificFileDirectory` is not trimmed before use in `storeSettings()`, unlike `librarySpecificFileDirectory` which is trimmed on line 91. **Rule: InconsistentImplementation**
+
+**Line 55** — Constructor is package-private (no modifier) but class is `public`. If instantiation outside the package is intended, the constructor accessibility is insufficient. **Rule: CommentDefaultAccessModifier**
+
+**Line 36** — `encodingDisableProperty` shadows the method name `encodingDisableProperty()` at line 155, which is a naming collision between field and accessor. **Rule: MethodNamingConventions** / **Rule: FieldNamingConventions**

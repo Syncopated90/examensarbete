@@ -1,0 +1,21 @@
+**Line 53** — `document` initialized to `null` and used after a try-catch without null check on return. **Null Return** / **NullAssignment**
+
+**Line 53** — Local variable `document` assigned `null` before try block. **DD anomaly** (PMD: `DataflowAnomalyAnalysis`)
+
+**Line 67** — Broad exception logged with low-severity `warn` for `ParserConfigurationException`; caller receives `null` silently. **ReturnOfNull** / **AvoidReturningNull**
+
+**Line 32** — Static mutable field `DOCUMENT_BUILDER_FACTORY` — `DocumentBuilderFactory` is not thread-safe when calling `newDocumentBuilder()`. **NotThreadSafe** / **StaticMutableField**
+
+**Line 75** — `new GetOpenOfficeType()` instantiated inside a loop per row. **AvoidInstantiatingObjectsJustToCallGetClass** / object instantiated inside loop unnecessarily. Same applies to `new NonSpaceWhitespaceRemover()` and `new RemoveBrackets()` on **line 78**.
+
+**Line 78** — Nested constructor calls `new NonSpaceWhitespaceRemover().format(new RemoveBrackets().format(...))` — objects instantiated only to invoke a method. **AvoidInstantiatingObjectsJustToCallGetClass**
+
+**Line 40** — `entries != null ? entries : bibtex.getEntries()` — null check on parameter suggests nullable contract not documented; parameter should be annotated or validated formally. **NullParameterAnnotation** / **AvoidNullChecksOnPrimitives**
+
+**Line 91** — Attribute name `"table.style-name"` uses a dot instead of a colon (`"table:style-name"`), inconsistent with namespace convention used elsewhere (e.g., line 127). **PotentiallyBuggyCode** / **ConfusingAttributeName**
+
+**Line 101** — Element tag `"style.properties"` uses dot separator instead of colon (`"style:properties"`), inconsistent with line 110 `"style:properties"`. **PotentiallyBuggyCode**
+
+**Line 127** — Attribute `"table.style-name"` again uses dot instead of colon. **PotentiallyBuggyCode**
+
+**Line 35–36** — Field `toExportFields` initialized inline with a complex stream expression at field declaration level; side-effect-prone initialization outside constructor. **AvoidComplexInitializationInFieldDeclaration**

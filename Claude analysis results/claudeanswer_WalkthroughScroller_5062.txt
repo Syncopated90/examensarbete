@@ -1,0 +1,17 @@
+**Line 55** — `isScrollable`: Method is too long / complex (4 conditions chained); consider **MethodLength** or **BooleanExpressionComplexity** rule violation.
+
+**Line 55** — `isScrollable(@NonNull Node node)`: Parameter named `node` shadows the class-level concept and conflicts with the outer method parameter name in `WalkthroughScroller(Node node)` — **HiddenField** rule.
+
+**Line 129** — `findItemIndex`: Parameter `container` is declared as `Node` but could be typed more specifically; however more critically, `targetBounds` returned from `sceneToLocal` **cannot be null** in JavaFX — the null check `if (targetBounds == null ...)` is dead code — **RedundantNullCheck** rule.
+
+**Line 129** — `findItemIndex`: The condition `containerBounds.contains(targetBounds)` returning `-1` means "already visible, don't scroll" but the logic is inverted from the intent — **InvertedCondition** rule (PMD).
+
+**Line 138** — `double itemHeight = fixedCellSize;` followed immediately by a conditional reassignment — **InitializeThenIgnore** / **VariableDeclarationUsageDistance** rule (PMD).
+
+**Line 32** — `.stream().map(...).forEach(subscriptions::add)` — use of `forEach` with a side-effecting operation on a stream; prefer `collect` — **StreamExpressionStyle** / **ForEachCanBeUsedWithCollect** rule.
+
+**Line 25** — Constructor performs significant work (logging, list building, listener setup) — **DoNotCallOverridableMethodsInConstructor** adjacent concern; violates **ConstructorCallsOverridableMethod** if any called method is non-final, and general **ExcessiveConstructorLength** rule.
+
+**Line 44** — `cleanup()` is public but there is no interface or contract enforcing it is called — **CloseResource** / **UnsynchronizedStaticUsageRule**; the `subscriptions` list is mutable state with no lifecycle guarantee.
+
+**Line 19** — Class `WalkthroughScroller` has no interface and is not `final` — **DesignForExtension** rule (Checkstyle): public methods `cleanup` is not `final`, `abstract`, or `empty`.

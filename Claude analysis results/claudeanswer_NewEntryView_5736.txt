@@ -1,0 +1,31 @@
+**Line 74** – `VisibilityModifier`: Field `viewModel` not declared `private final` (mutable, non-final).
+
+**Line 215** – `LocalVariableCouldBeFinal`: `approach` reassigned after initial assignment; should use `final` if not reassigned, but it is reassigned — however the parameter `initialApproach` shadows the field of the same name on **line 79**, violating `HiddenField`.
+
+**Line 79** – `HiddenField`: Local field `initialApproach` (constructor parameter) hides instance field `initialApproach`.
+
+**Line 118** – `AvoidInstantiatingObjectsJustToGetClass` / `UnnecessaryCast`: Cast `(Button)` is unchecked at runtime and could throw `ClassCastException`; no compile-time safety (`AvoidUncheckedExceptionsInSignatures` / raw cast).
+
+**Line 215** – `NullAssignment`: `approach` is declared and then conditionally assigned in multiple branches; initial value could be `null` if `initialApproach` is `null` and `clipboardText` is blank — but `newEntryPreferences.getLatestApproach()` covers it. Not a defect here, but see below.
+
+**Line 76** – `FieldDeclarationsShouldBeAtStartOfClass`: `currentApproach` is non-final but mutable state without synchronization (`NotThreadSafe`).
+
+**Line 289** – `NullDereference`: `interpretParser.getValue()` can be `null`; calling `.getLocalizedName()` without null check.
+
+**Line 246** – `NullDereference`: `idFetcher.getValue()` is checked for `null` inside lambda but on **line 246** `idFetcher.setValue(initialFetcher)` where `initialFetcher` may be `null` if both `fetcherFromName` calls return `null`.
+
+**Line 392** – `ReturnNull`: `descriptionOfEntryType` returns `null`; violates `@NonNull` contract implied by callers expecting non-null strings for tooltips — but more precisely violates `MissingNullCheckOnReturnValue` at **line 392** call site (**line 348**) where `description != null` guard is present — actually OK. However `descriptionOfEntryType` itself lacks `@Nullable` annotation, violating `MissingAnnotation`.
+
+**Line 392** – `ReturnOfNull`: Method `descriptionOfEntryType` returns `null` without `@Nullable` annotation (`ReturnOfNull`).
+
+**Line 459** – `ReturnNull`: `fetcherFromName` returns `@Nullable` but the `@Nullable` annotation is on the method, not the return type position consistently — minor style issue.
+
+**Line 473** – `OnlyReturnInsteadOfLastReturn` / `UnnecessaryLocalVariable`: `parserFromName` declares `@NonNull` return but if `parsers` list doesn't contain `RULE_BASED_GENERAL` and it's returned as default — no violation, but the fallback bypasses the `@NonNull` contract if `parsers` is empty and the constant isn't in it.
+
+**Line 289** – `NullDereference`: `interpretParser.getValue()` can return `null` when `setOnAction` fires before a value is set.
+
+**Line 97** – `LawOfDemeter`: `preferences.getImportFormatPreferences()` and `preferences.getNewEntryPreferences()` violate Law of Demeter (train wreck).
+
+**Line 200** – `CyclomaticComplexity`: `finalizeTabs()` has high cyclomatic complexity due to nested conditionals and switch.
+
+**Line 108** – `AvoidCallingFinalizeMethod` / `ConstructorCallsOverridableMethod`: `ViewLoader.view(this).load().setAsDialogPane(this)` called in constructor, which may invoke `initialize()` (overridable via FXML injection) before all fields are set — `ConstructorCallsOverridableMethod`.

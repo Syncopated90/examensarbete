@@ -1,0 +1,9 @@
+**Line 30** — `DuplicatedBlocks` / **Redundant Field Assignment**: `undoManager` is already stored by `super(...)` call in `AbstractEditorViewModel`; assigning it again to `this.undoManager` duplicates storage.
+
+**Line 35** — `Law of Demeter` / **Feature Envy**: `getGenerateCiteKeyCommand()` constructs a new object directly, coupling this class to `GenerateCitationKeySingleAction`'s constructor signature.
+
+**Line 14** — `ClassDataAbstractionCoupling`: The class depends on a high number of external types (`CliPreferences`, `BibDatabaseContext`, `UndoManager`, `DialogService`, `Field`, `SuggestionProvider`, `FieldCheckers`, `Command`, `GenerateCitationKeySingleAction`), violating the data abstraction coupling threshold.
+
+**Line 19-28** — `ExcessiveParameterList`: Constructor has 7 parameters, exceeding the recommended maximum.
+
+**Line 35** — `ObjectInstantiationInEqualsHashCode` / **Missing Null Check**: `entry` field (inherited from `AbstractEditorViewModel`) is used without a null guard before being passed to `GenerateCitationKeySingleAction`.

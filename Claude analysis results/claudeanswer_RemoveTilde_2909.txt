@@ -1,0 +1,5 @@
+**Line 10** — `NullPointerException` risk / **Null Dereference**: `fieldText` is used without a null check before calling `.length()` and `.toCharArray()`.
+
+**Line 13** — **Performance**: `toCharArray()` creates an unnecessary array copy; iterating via `charAt()` or using the `StringBuilder` directly would avoid the allocation.
+
+**Line 16** — **Logic Defect / Incorrect Behavior**: When `c[i] == '~'` is true, the backslash-skip branch is in the `else`, so a sequence `\~` is incorrectly handled — the `~` is replaced with a space instead of being treated as a LaTeX tilde command (the backslash is appended in one iteration, then the next iteration hits `~` and replaces it, bypassing the skip logic).

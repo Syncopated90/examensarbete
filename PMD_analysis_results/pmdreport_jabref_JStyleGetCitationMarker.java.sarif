@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LocalVariableNamingConventions",
+              "shortDescription": {
+                "text": "The local variable name 'i_out' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablenamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "SimplifiedTernary",
+              "shortDescription": {
+                "text": "This conditional expression can be simplified with || or &&"
+              },
+              "fullDescription": {
+                "text": "\n\nReports ternary expression with the form `condition ? literalBoolean : foo`\nor `condition ? foo : literalBoolean`.\n\nThese expressions can be simplified as follows:\n* `condition ? true : expr` simplifies to `condition || expr`\n* `condition ? false : expr` simplifies to `!condition && expr`\n* `condition ? expr : true` simplifies to `!condition || expr`\n* `condition ? expr : false` simplifies to `condition && expr`\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#simplifiedternary",
+              "help": {
+                "text": "\n\nReports ternary expression with the form `condition ? literalBoolean : foo`\nor `condition ? foo : literalBoolean`.\n\nThese expressions can be simplified as follows:\n* `condition ? true : expr` simplifies to `condition || expr`\n* `condition ? false : expr` simplifies to `!condition && expr`\n* `condition ? expr : true` simplifies to `!condition || expr`\n* `condition ? expr : false` simplifies to `condition && expr`\n\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JStyleGetCitationMarker.java"
+                },
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 1,
+                  "endLine": 24,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableNamingConventions",
+          "ruleIndex": 1,
+          "message": {
+            "text": "The local variable name 'i_out' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JStyleGetCitationMarker.java"
+                },
+                "region": {
+                  "startLine": 566,
+                  "startColumn": 13,
+                  "endLine": 566,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "SimplifiedTernary",
+          "ruleIndex": 2,
+          "message": {
+            "text": "This conditional expression can be simplified with || or &&"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/JStyleGetCitationMarker.java"
+                },
+                "region": {
+                  "startLine": 656,
+                  "startColumn": 54,
+                  "endLine": 658,
+                  "endColumn": 95
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+**Line 32** - `URISyntaxException` — String concatenation used directly in URI constructor without encoding; potential injection via `doi.asString()`. **Rule: Improper Input Neutralization / OWASP Injection**
+
+**Line 32** - `new URI(BASE_URL + "tallies/" + doi.asString()).toURL()` — String concatenation to build URL/URI rather than using a URI builder. **Rule: Avoid Concatenation in URI Construction**
+
+**Line 37** - `download.asString()` — No timeout or size limit configured on `URLDownload`; unbounded response read. **Rule: Denial of Service / Resource Exhaustion**
+
+**Line 38** - `LOGGER.debug("Response {}", response)` — Logging full HTTP response may leak sensitive data. **Rule: Sensitive Data Exposure in Logs (CWE-532)**
+
+**Line 40** - `tallies.getString("detail")` — No length check or sanitization before using external string in exception message. **Rule: Improper Handling of Untrusted Input**
+
+**Line 26** - Empty constructor `public SciteAiFetcher()` — Unnecessary explicit empty constructor; default constructor suffices. **Rule: UnnecessaryConstructor (PMD)**
+
+**Line 49** - `entry.getDOI()` — Parameter `entry` not validated for null despite `@NonNull` absence on parameter. **Rule: NullDereference / Missing Null Check**
+
+**Line 22** - `BASE_URL` — Field is `private static final` but could use `URI` type rather than `String` to fail fast on invalid base. **Rule: UseCorrectType / Fail-Fast Construction**

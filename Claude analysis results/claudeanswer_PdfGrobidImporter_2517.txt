@@ -1,0 +1,21 @@
+**Line 20** — `DM_DEFAULT_ENCODING` / Lazy Initialization: `GrobidService` is instantiated eagerly in the constructor and stored, but `importFormatPreferences` is also stored, creating redundant state if `grobidService` already holds a reference to the preferences.
+
+**Line 16** — `URF_UNREAD_FIELD`: `grobidService` is written but only read in one method; no violation here — scratch that.
+
+**Line 17** — `URF_UNREAD_FIELD` (FindBugs/SpotBugs): `importFormatPreferences` is stored as a field but its only use is as an argument in `processReferences` on line 26. The `grobidService` on line 16 already captures `importFormatPreferences.grobidPreferences()` at construction time, meaning preferences changes after construction won't be reflected in `grobidService` — **Mutable State / Stale Reference**.
+
+**Line 20** — `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` — not applicable here.
+
+**Line 20** — `MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR`: If any method called during construction is overridable, this is a violation. Not present here directly.
+
+**Line 26** — `THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION`: Method declares `throws IOException, ParseException` — `ParseException` may be an overly broad or redundant checked exception declaration depending on whether `processReferences` actually throws it.
+
+**Line 15** — **Violation: Class not `final` and extends a concrete/abstract class** (`MutableClass` / missing `final`): `PdfGrobidImporter` is a public non-final class with no extension points needed.
+
+**Lines 16–17** — **Violation: `VisibilityModifier`** (Checkstyle): Fields `grobidService` and `importFormatPreferences` should be `private final` — they are `private final`, so no violation.
+
+**Line 20–22** — **Violation: `ImmutableField`** is satisfied; no issue.
+
+**Line 17** — **Violation: Redundant Field** (SonarQube `S1854`): `importFormatPreferences` is stored solely to pass to `processReferences`, but `grobidService` was already constructed from it. If `processReferences` needs the full preferences object, the field is justified — but storing both the service and the preferences it was built from is a **SonarQube S4040 / Redundant State** smell.
+
+**Line 26** — **Violation: `S1130`** (SonarQube): `throws IOException` — if `processReferences` does not throw `IOException`, this is an unnecessary declared exception.

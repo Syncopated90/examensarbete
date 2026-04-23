@@ -1,0 +1,31 @@
+**Line 17** — `GitHandler` is imported but also referenced via `gitHandlerRegistry.get()` return; check if direct import is needed or if it violates **UnusedImports** (it is used on line 122, so acceptable — but verify).
+
+**Line 26** — `URLUtil` import: verify usage; used only in `githubHttpsUrlValidator()` — acceptable.
+
+**Line 27** — `StringUtil` import: used in two predicates — acceptable.
+
+---
+
+**Line 87 (`shareToGitHub`)** — **`EmptyCatchBlock` / exception swallowing risk**: `doShareToGitHub()` throws checked exceptions (`JabRefException`, `IOException`, `GitAPIException`), but the `BackgroundTask.wrap()` lambda catches `Exception` silently if the framework swallows it. Wrapped checked exceptions may be lost depending on framework implementation — **`PreserveStackTrace`** rule violation risk.
+
+**Line 93** — **`LambdaCanBeMethodReference`**: `_ -> { dialogService.notify(...); close.run(); }` cannot trivially be a method reference, but the unused lambda parameter `_` — **`UnusedFormalParameter`** violation.
+
+**Line 96–101** — **`UnusedFormalParameter`**: lambda parameter `e` is used, acceptable.
+
+**Line 108 (`doShareToGitHub`)** — **`AvoidThrowingRawExceptionTypes`** / overly broad exception declaration: method declares `throws JabRefException, IOException, GitAPIException` — `IOException` and `GitAPIException` are broad; **`SignatureDeclareThrowsException`** violation.
+
+**Line 116** — **`LocalVariableCouldBeFinal`**: `String url` could be declared `final`. **`LocalVariableCouldBeFinal`** violation.
+
+**Line 118** — **`LocalVariableCouldBeFinal`**: `Path bibPath` could be declared `final`. **`LocalVariableCouldBeFinal`** violation.
+
+**Line 119** — **`LocalVariableCouldBeFinal`**: `GitHandler handler` could be declared `final`. **`LocalVariableCouldBeFinal`** violation.
+
+**Line 120** — **`LocalVariableCouldBeFinal`**: `GitStatusSnapshot status` could be declared `final`. **`LocalVariableCouldBeFinal`** violation.
+
+**Line 50** — **`FieldDeclarationsShouldBeAtStartOfClass`**: fields `usernameProperty`, `patProperty`, `repositoryUrlProperty`, `rememberPatProperty` declared after non-field members conceptually, but within class body after other fields — ordering acceptable; however `// TODO` comment on line 49 indicates **`CommentDefaultAccessModifier`** / technical debt marker left in production code — **`AvoidCommentedOutCode` / TodoComment** violation.
+
+**Line 49** — **`TodoComment`** rule violation: `// TODO:` comment present in production code.
+
+**Line 36** — **`CommentContent` / JavadocStyle**: `///` doc comment used (preview feature syntax in Java); if not supported by the analyser, flagged as **`InvalidJavadocPosition`** or syntax issue.
+
+**Line 86** — **`CommentContent`**: `/// @implNote` uses non-standard triple-slash syntax outside of official Javadoc — **`InvalidJavadocPosition`** violation.

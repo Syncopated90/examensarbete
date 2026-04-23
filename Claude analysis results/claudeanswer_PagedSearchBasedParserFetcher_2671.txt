@@ -1,0 +1,17 @@
+**Line 13** — `interface` implements multiple interfaces (`SearchBasedParserFetcher`, `PagedSearchBasedFetcher`, `ParserFetcher`); potential **InterfaceSegregationPrinciple** violation / **ExcessiveClassCoupling**.
+
+**Line 17** — Variable `urlForQuery` declared before `try` block unnecessarily; **UnusedLocalVariable** scope wider than needed / **VariableDeclarationUsageDistance**.
+
+**Line 25** — Private method in interface (`private List<BibEntry> getBibEntries`); while legal since Java 9, this is a **PrivateMethodInInterface** design smell — logic should reside in a concrete class.
+
+**Line 26** — Resource `stream` in try-with-resources chains two calls (`getUrlDownload(urlForQuery).asInputStream()`); intermediate object is not closed if `asInputStream()` throws — **UnsafeResourceOpenInTryWithResources** / **ResourceLeakDetection**.
+
+**Line 27** — `fetchedEntries` returned directly after mutation via `forEach`; no null-check on `getParser().parseEntries(stream)` — **NullAssignment** / **ReturnEmptyCollectionRatherThanNull** risk.
+
+**Line 28** — `this::doPostCleanup` side-effectful lambda inside `forEach` on a result list — **AvoidSideEffectsInLambdas**.
+
+**Line 43** — `getURLForQuery(BaseQueryNode, int)` declares checked exceptions `URISyntaxException`, `MalformedURLException` in an interface method; callers forced to handle low-level exceptions — **SignatureDeclareThrowsException** / **AvoidThrowingRawExceptionTypes** (leaking implementation detail).
+
+**Line 46** — Default method overrides another interface's default method (`getURLForQuery`) — **OverrideBothEqualsAndHashcode** analogue: **AmbiguousMethodInheritance** / **UnexpectedBehaviorFromSuperDefaultMethod**.
+
+**Line 51** — `performSearch` delegates solely to `SearchBasedParserFetcher.super.performSearch(queryNode)` with no added value — **UnnecessaryMethodOverride** / **UselessOverridingMethod**.

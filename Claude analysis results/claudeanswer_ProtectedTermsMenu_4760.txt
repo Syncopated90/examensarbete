@@ -1,0 +1,23 @@
+**Line 25** — `ST_FIELD_NOT_SERIALIZABLE` / **Mutable Static Field** (`FORMATTER` is a mutable static field, not thread-safe and violates encapsulation)
+
+**Line 25** — `PMD:ImmutableField` / Field `FORMATTER` is assigned only in the constructor and could be `final`, but is declared `static`, making it shared across instances and overwritten per instantiation
+
+**Line 25** — `PMD:MutableStaticState` — static field `FORMATTER` is non-final and written in instance constructor, causing race conditions in multi-instance scenarios
+
+**Line 77** — `PMD:ShortVariable` — variable name `firstStr` is acceptable but `lastStr` is fine; however `firstStr`/`lastStr` are reassigned after declaration — **no issue here**; actual issue: **`PMD:AvoidReassigningLocalVariables`** — `firstStr` (line 65) and `lastStr` (line 66) are reassigned at lines 68 and 71
+
+**Line 78** — `PMD:UnprotectTermsFormatter` instantiated inline inside `execute()` — **`PMD:AvoidInstantiatingObjectsJustToCallGetters`** / object created per invocation unnecessarily
+
+**Line 97** — `PMD:VisibilityModifier` — field `list` in `AddToProtectedTermsAction` is package-private (no modifier), should be `private`
+
+**Line 128** — `PMD:InefficientEmptyStringCheck` — `textInputControl.getSelectedText().isEmpty()` calls `getSelectedText()` twice (line 128 and line 140); result not cached
+
+**Line 135** — `PMD:AvoidReassigningLocalVariables` — `beginIdx` and `endIdx` are declared `int` but mutated via `--`/`++` in loops; use of `--beginIdx` and `++endIdx` constitutes reassignment
+
+**Line 152** — `PMD:LawOfDemeter` — `Injector.instantiateModelOrService(ProtectedTermsLoader.class)` called twice (lines 152 and 155), violating DRY and Law of Demeter
+
+**Line 152** — `PMD:DuplicateCode` — `Injector.instantiateModelOrService(ProtectedTermsLoader.class)` duplicated from line 152 (constructor) and line 155 (`getExternalFilesMenu`)
+
+**Line 23** — `PMD:ClassNamingConventions` — class is package-private (`class` without `public`) which is intentional, but combined with non-`final` declaration allows subclassing; **`PMD:ClassWithOnlyPrivateConstructorsShouldBeFinal`** does not apply, but class should be `final`
+
+**Line 29–43** — `PMD:AnonymousClassShouldBeNamedClass` — anonymous `Action` implementations used for `protectSelectionActionInformation` and `unprotectSelectionActionInformation` should be named classes

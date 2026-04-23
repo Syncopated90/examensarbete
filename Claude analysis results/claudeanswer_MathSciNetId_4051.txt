@@ -1,0 +1,27 @@
+**Line 25 – Null Dereference / Missing Null Check**
+`Rule: NULL_DEREFERENCE`
+`mrNumberRaw` is not annotated `@NonNull` and no null check is performed before calling `StringUtil.tokenizeToList(mrNumberRaw, ...)`.
+
+---
+
+**Line 25 – Unchecked Return Value / Possible Empty List**
+`Rule: STYLE / POSSIBLE_INDEX_OUT_OF_BOUNDS`
+`getFirst()` is called on the result of `tokenizeToList` without verifying the list is non-empty; if `mrNumberRaw` is blank or empty the list may be empty, throwing `NoSuchElementException`.
+
+---
+
+**Line 25 – Method Always Returns Present Optional**
+`Rule: RETURN_VALUE_IGNORED / REDUNDANT_OPTIONAL`
+`parse` always returns `Optional.of(...)`, making the `Optional` return type misleading; it can never return `Optional.empty()`.
+
+---
+
+**Line 52 – String Concatenation in URI Constructor**
+`Rule: IMPROPER_VALIDATION_OF_ARRAY_INDEX / SECURITY – URI_INJECTION`
+`identifier` is concatenated directly into the URI string without encoding or validation, allowing malformed or malicious content to influence the URI.
+
+---
+
+**Line 20 – Constructor Parameter Not Validated**
+`Rule: STYLE / MISSING_VALIDATION`
+`identifier` is accepted and stored as-is with no trimming or format validation despite the `parse` method performing trimming, creating inconsistency when the constructor is called directly.

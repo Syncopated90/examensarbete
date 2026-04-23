@@ -1,0 +1,18 @@
+**Line 12** `toString` — `java:S1206` (Override `toString` without overriding `equals`/`hashCode` — not applicable here, but more precisely): No actual rule broken here for `toString`.
+
+Let me re-examine strictly:
+
+**Line 7** — `java:S2enum` / **Naming convention**: The Javadoc uses `///` (Markdown Javadoc, Java 23+) which may not be supported depending on source level — **`java:S5738`** or compiler compatibility issue.
+
+**Line 12-14** — **`java:S1185`**: The `toString()` override simply delegates to `this.name().toLowerCase(Locale.ROOT)`. This is acceptable, but:
+
+**Line 13**: `this.name()` — **`java:S2176`** not applicable.
+
+**Line 13**: Unnecessary use of `this` — **`java:S2176`** no.
+
+**`java:S1185`** — `this` keyword is redundant; `name()` can be called without `this`.
+
+| Line | Rule | Description |
+|------|------|-------------|
+| 13 | `java:S2176` / `checkstyle:RedundantModifier` | `this.name()` — `this` is redundant; use `name()` directly |
+| 6 | Compiler/source level | `///` Markdown Javadoc requires Java 23+; may violate source compatibility rules |

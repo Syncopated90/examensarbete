@@ -1,0 +1,11 @@
+**Line 32** — `userDefined != null`: Redundant null check on `Optional` returned by `isPresent()` guard; `Optional` objects are never null by contract. **Rule: `RedundantNullCheck` / `UnnecessaryNullCheck`**
+
+**Line 32** — `userDefined.isPresent() && userDefined != null`: Condition order is illogical; null check should precede `isPresent()` if it were meaningful. **Rule: `ConfusingTernary` / `InvertedCondition`**
+
+**Line 18** — `resolve` is a `public static` method on a utility-style class but the class has no `private` constructor preventing instantiation. **Rule: `HideUtilityClassConstructor`**
+
+**Line 36** — `databasePath.isEmpty()` is redundant since `databasePath` is typed as `Optional<Path>`; the preceding null check `databasePath == null` is unnecessary — `Optional` parameters should not be null by convention. **Rule: `NullableOptional` / `OptionalUsedAsField` (misuse of Optional as parameter with null check)**
+
+**Line 22** — `System.getProperty("user.name")` result is not checked for null before being passed to `resolve`. **Rule: `NullAssignment` / `UncheckedNullFromExternalSource`**
+
+**Line 27** — `Optional<Path> databasePath` as a method parameter violates the convention that `Optional` should not be used as a parameter type. **Rule: `OptionalAsParameter` (SonarLint: `java:S3553`)**

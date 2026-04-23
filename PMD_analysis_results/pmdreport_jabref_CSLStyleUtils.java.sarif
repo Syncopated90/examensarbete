@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "NonExhaustiveSwitch",
+              "shortDescription": {
+                "text": "Switch statements or expressions should be exhaustive, add a default case (or missing enum branches)"
+              },
+              "fullDescription": {
+                "text": "\n            Switch statements should be exhaustive, to make their control flow\n            easier to follow. This can be achieved by adding a `default` case, or,\n            if the switch is on an enum type, by ensuring there is one switch branch\n            for each enum constant.\n\n            This rule doesn't consider Switch Statements, that use Pattern Matching, since for these the\n            compiler already ensures that all cases are covered. The same is true for Switch Expressions,\n            which are also not considered by this rule.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#nonexhaustiveswitch",
+              "help": {
+                "text": "\n            Switch statements should be exhaustive, to make their control flow\n            easier to follow. This can be achieved by adding a `default` case, or,\n            if the switch is on an enum type, by ensuring there is one switch branch\n            for each enum constant.\n\n            This rule doesn't consider Switch Statements, that use Pattern Matching, since for these the\n            compiler already ensures that all cases are covered. The same is true for Switch Expressions,\n            which are also not considered by this rule.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "GuardLogStatement",
+              "shortDescription": {
+                "text": "Logger calls should be surrounded by log level guards."
+              },
+              "fullDescription": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement",
+              "help": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "NonExhaustiveSwitch",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Switch statements or expressions should be exhaustive, add a default case (or missing enum branches)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CSLStyleUtils.java"
+                },
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 21,
+                  "endLine": 159,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CSLStyleUtils.java"
+                },
+                "region": {
+                  "startLine": 174,
+                  "startColumn": 13,
+                  "endLine": 174,
+                  "endColumn": 92
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

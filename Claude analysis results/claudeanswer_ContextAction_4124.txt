@@ -1,0 +1,32 @@
+**Line 36-38** — `NullPointerException` risk / **Dereference of potentially null value**
+`bibEntry.getValue()` may return an empty `Optional`; calling `.map(...).orElse(...)` is safe, but `bibEntry.getValue()` itself could be `null` if the `ObservableOptionalValue` has no value set, depending on implementation. Low risk but worth noting.
+
+**Line 36** — **Law of Demeter** violation
+`bibEntry.getValue().map(BibEntry::getFieldsObservable).orElse(...)` chains multiple method calls on returned objects.
+
+**Line 44** — **Law of Demeter** violation
+`linkedFile.getFile().isOnlineLink()` — double dot chain violates Law of Demeter. Repeated throughout lines 44, 45, 53, 54, 62, 69, 79, 80, 101, 106.
+
+**Line 45** — **Law of Demeter** violation
+`linkedFile.getFile().findIn(...)` — double dot chain. Repeated on lines 54, 80.
+
+**Line 47** — **Law of Demeter** violation
+`linkedFile.getFile().linkProperty()` — double dot chain. Repeated on lines 56, 63, 81.
+
+**Line 69** — **Law of Demeter** violation
+`linkedFile.getFile().getSourceUrl()` — double dot chain. Repeated on line 107.
+
+**Line 70** — **Law of Demeter** violation
+`linkedFile.getFile().sourceUrlProperty()` — double dot chain.
+
+**Lines 44–88** — **Long Method / Complex Constructor**
+Constructor contains significant business logic and a large `switch` expression; logic should be extracted to a separate method.
+
+**Line 97** — **Missing default case handling**
+The `execute()` switch does not have a `default` case, unlike the binding switch. Unhandled `StandardActions` values will silently do nothing.
+
+**Lines 23–25** — **Unused field** potential
+`command` and `linkedFile` are stored as fields solely for use in `execute()`, but `viewModel` is also stored — acceptable, but storing `databaseContext` and `preferences` as locals rather than fields is inconsistent style.
+
+**Line 32** — **Constructor parameter count** / **Too Many Parameters rule**
+Constructor has 6 parameters, exceeding the commonly enforced limit of 4–5.

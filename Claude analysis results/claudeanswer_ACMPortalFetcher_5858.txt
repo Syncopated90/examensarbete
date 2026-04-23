@@ -1,0 +1,31 @@
+**Line 24 — `CookieHandler.setDefault` Side Effect in Constructor**
+Rule: **Object-level side effects / global state mutation in constructor** (e.g., Sonar: `S2696` — *Instance methods should not write to "static" fields*)
+`CookieHandler.setDefault()` modifies a JVM-wide static/global state inside a constructor, which is a side effect that affects all threads and instances.
+
+---
+
+**Line 21 — Unused `private static final` field could be public constant**
+Rule: **`SEARCH_URL` is `private` but `FETCHER_NAME` is `public`** — inconsistent constant visibility is a minor style issue, but more critically:
+Rule: **Hardcoded URL** (Sonar: `S1075` — *URIs should not be hardcoded*)
+
+---
+
+**Line 44 — `getURLForQuery` declares checked exceptions not from interface contract**
+Rule: **Overly broad exception declaration** (Sonar: `S1160` — *Methods should not throw both checked and unchecked exceptions* / redundant multi-exception throws if interface already declares them — verify interface signature alignment)
+
+---
+
+**Line 37 — Method `createQueryString` returns empty string on absent value**
+Rule: **Optional misuse** (Sonar: `S3655` — or design smell): silently returning `""` on `orElse("")` may propagate a malformed query without signaling failure.
+
+---
+
+**Line 19 — Class has no `final` modifier despite no intended subclassing**
+Rule: Sonar `S2160` — *Subclasses that add fields should override "equals"* (less relevant here) / PMD: **`ClassWithoutFinalModifier`** or missing `final` on utility-like concrete class.
+
+---
+
+**Line 12 — Unused import `DefaultQueryTransformer` indirectly (used only in private method)**
+No violation here, but:
+**Line 14 — `BaseQueryNode` import from `model.search.query`**
+Rule: **Layer dependency violation** — a `logic.importer` class directly depends on `model.search.query`, potentially violating the defined architectural layering rules (ArchUnit rule breach).

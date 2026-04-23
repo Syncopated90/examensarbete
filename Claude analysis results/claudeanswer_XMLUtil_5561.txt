@@ -1,0 +1,11 @@
+**Line 37** — `TransformerFactory.newInstance()` — **XXE_DTD_TRANSFORM_FACTORY**: `TransformerFactory` not configured to disable external DTD/entity processing, leaving it vulnerable to XXE injection.
+
+**Line 41** — `System.out.println(writer)` — **SYSTEM_OUT_PRINTLN** / **SLF4J_SIGN_ONLY_FORMAT**: Direct use of `System.out` instead of a logger (despite `@AllowedToUseStandardStreams`, still a code smell violation of **USE_LOGGER_INSTEAD_OF_PRINT_STATEMENT** rule).
+
+**Line 37** — `TransformerFactory tf = TransformerFactory.newInstance()` — **SECURITY_XML_TRANSFORMER_FACTORY**: Missing `tf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true)`.
+
+**Line 64** — `metadata.item(0).getTextContent()` — **NULL_DEREFERENCE**: `metadata.item(0)` can return `null`; calling `.getTextContent()` without null check before wrapping in `Optional.ofNullable`.
+
+**Line 6** — `import java.util.AbstractList` — **UNUSED_IMPORT** (conditionally): `AbstractList` is only used in the private inner class; not a direct violation, but inner class could use `AbstractList` reference checked.
+
+**Line 100–111** — `NodeListWrapper` (inner class) — **MAKE_PACKAGE_PROTECTED**: Private static final inner class `NodeListWrapper` unnecessarily exposes `NodeListWrapper(NodeList)` constructor without `private` modifier on the constructor itself — **PACKAGE_VISIBLE_CONSTRUCTOR**.

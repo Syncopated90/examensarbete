@@ -1,0 +1,11 @@
+**Line 30** — `DBMSConnection.getAvailableDBMSTypes()` — **UnnecessaryStaticQualifier** / **RedundantModifier**: static method called via class name inside the same class; should use bare `getAvailableDBMSTypes()`.
+
+**Line 57** — `dbms.toString()` — **UnnecessaryCallToStringToString** / **ImplicitCallToToString**: `Localization.lang` likely accepts `Object`; explicit `.toString()` is redundant.
+
+**Line 21** — `DBMSConnection(DBMSConnectionProperties connectionProperties)` — **AssignmentInTryBlock** / **ConstructorInitializationWithSideEffects**: `this.connection` is conditionally assigned inside a `try` block (lines 33–35) but the field is `final`; if the compiler allows it, the two assignments inside `if/else` mean the field could be seen as not definitely assigned on some paths by static analyzers (**MutableStaticState** / **BranchAssignment** concern).
+
+**Line 28** — `DriverManager.setLoginTimeout(3)` — **AvoidCallingStaticMethodsOnInstances** / **StaticMethodWithSideEffects**: global `DriverManager` timeout mutated inside a constructor, affecting all subsequent connections in the JVM (**GlobalStateMutation**).
+
+**Line 6** — `import java.util.HashSet;` — **UnusedImport**: only used on line 55 inside a `static` method that returns `Set`; flagged by some analyzers as avoidable if refactored, though technically used — borderline.
+
+**Line 39** — `LOGGER.error(...)` with exception rethrown — **PreserveStackTrace** / **AvoidCatchAndRethrow**: catching `SQLException` only to log and rethrow adds no value and is flagged as **CatchAndRethrow** violation.

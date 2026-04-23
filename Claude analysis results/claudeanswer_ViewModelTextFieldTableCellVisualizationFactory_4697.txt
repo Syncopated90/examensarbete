@@ -1,0 +1,23 @@
+**Line 22** — `UNUSED_FIELD` / **FieldShouldBeFinal**: `validationStatusProperty` and `stringConverter` are instance fields but not `private final`.
+
+**Line 24** — **VisibilityModifier**: `validationStatusProperty` lacks `private` modifier explicitness (mutable non-private state).
+
+**Line 25** — **VisibilityModifier**: `stringConverter` is package-private by omission; should be `private`.
+
+**Line 28** — **ReturnValueIgnored** / **MethodMayBeStatic**: `withValidation` mutates state and returns `this`; builder pattern on a mutable class risks thread-safety issues.
+
+**Line 38** — **AnonymousClassShouldBeNamedClass**: Anonymous `TextFieldTableCell` subclass is large and should be a named inner class.
+
+**Line 40** — **FieldShouldBeFinal** (inner): `subscriptions` field in anonymous class should be `final` (it is not declared `final`).
+
+**Line 51** — **DoubleCheckedLocking / UnnecessaryCommentedCode**: Triple-slash `///` Javadoc-style comments are non-standard Java (JEP 467, preview); use `/** */` for stable Java.
+
+**Line 55** — **CyclomaticComplexity**: `lookupTextField()` has nested `if-else` with `instanceof` pattern matching; could be simplified.
+
+**Line 72** — **NullCheckBeforeInstanceof** / **PreferOptionalOrElse**: `getTableRow() == null` null-check mixed with `instanceof` patterns inconsistently.
+
+**Line 83** — **CallToValidationTwice**: `validationStatusProperty.apply(viewModel)` is called twice (lines 84 and 89), causing duplicate evaluation; result should be stored in a local variable.
+
+**Line 84-87** — **AvoidChainedMethodCalls**: Excessive method chaining reduces readability and makes debugging harder.
+
+**Line 89** — **DuplicatedCode**: `validationStatusProperty.apply(viewModel)` duplicates the call on line 84; extract to local variable.

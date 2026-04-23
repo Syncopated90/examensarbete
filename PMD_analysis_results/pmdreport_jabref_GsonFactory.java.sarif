@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UncommentedEmptyMethodBody",
+              "shortDescription": {
+                "text": "Document empty method body"
+              },
+              "fullDescription": {
+                "text": "\nUncommented Empty Method Body finds instances where a method body does not contain\nstatements, but there is no comment. By explicitly commenting empty method bodies\nit is easier to distinguish between intentional (commented) and unintentional\nempty methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#uncommentedemptymethodbody",
+              "help": {
+                "text": "\nUncommented Empty Method Body finds instances where a method body does not contain\nstatements, but there is no comment. By explicitly commenting empty method bodies\nit is easier to distinguish between intentional (commented) and unintentional\nempty methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UncommentedEmptyMethodBody",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Document empty method body"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GsonFactory.java"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 40,
+                  "endLine": 17,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2151 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UseUtilityClass",
+              "shortDescription": {
+                "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+              },
+              "fullDescription": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#useutilityclass",
+              "help": {
+                "text": "\nFor classes that only have static methods, consider making them utility classes.\nNote that this doesn't apply to abstract classes, since their subclasses may\nwell include non-static methods.  Also, if you want this class to be a utility class,\nremember to add a private constructor to prevent instantiation.\n(Note, that this use was known before PMD 5.1.0 as UseSingleton).\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "RedundantFieldInitializer",
+              "shortDescription": {
+                "text": "Avoid using redundant field initializer for 'initialized'"
+              },
+              "fullDescription": {
+                "text": "\nJava will initialize fields with known default values so any explicit initialization of those same defaults\nis redundant and results in a larger class file (approximately three additional bytecode instructions per field).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_performance.html#redundantfieldinitializer",
+              "help": {
+                "text": "\nJava will initialize fields with known default values so any explicit initialization of those same defaults\nis redundant and results in a larger class file (approximately three additional bytecode instructions per field).\n        "
+              },
+              "properties": {
+                "ruleset": "Performance",
+                "priority": 3,
+                "tags": [
+                  "Performance"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like BEGIN_CHANGE_METHOD"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'BEGIN_CHANGE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'END_CHANGE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'NEXT_ADD_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like NEXT_UPDATE_METHOD"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'NEXT_UPDATE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like NEXT_REMOVE_METHOD"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'NEXT_REMOVE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'REFILTER_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like ENSURE_SIZE_METHOD"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'ENSURE_SIZE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like GET_PREDICATE_IMPL_METHOD"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'GET_PREDICATE_IMPL_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'FILTERED_FIELD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "FieldNamingConventions",
+              "shortDescription": {
+                "text": "The static field name 'SIZE_FIELD' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#fieldnamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for field declarations. This rule reports variable declarations\n            which do not match the regex that applies to their specific kind ---e.g. constants (static final),\n            enum constant, final field. Each regex can be configured through properties.\n\n            By default this rule uses the standard Java naming convention (Camel case), and uses the ALL_UPPER\n            convention for constants and enum constants.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Public method and constructor comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'filteredList' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CyclomaticComplexity",
+              "shortDescription": {
+                "text": "The method 'refilterListReflection(FilteredList<BibEntryTableViewModel>, int, int)' has a cyclomatic complexity of 12."
+              },
+              "fullDescription": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#cyclomaticcomplexity",
+              "help": {
+                "text": "\nThe complexity of methods directly affects maintenance costs and readability. Concentrating too much decisional logic\nin a single method makes its behaviour hard to read and change.\n\nCyclomatic complexity assesses the complexity of a method by counting the number of decision points in a method,\nplus one for the method entry. Decision points are places where the control flow jumps to another place in the\nprogram. As such, they include all control flow statements, such as `if`, `while`, `for`, and `case`. For more\ndetails on the calculation, see the documentation {% jdoc java::lang.java.metrics.JavaMetrics#CYCLO %}.\n\nGenerally, numbers ranging from 1-4 denote low complexity, 5-7 denote moderate complexity, 8-10 denote\nhigh complexity, and 11+ is very high complexity. By default, this rule reports methods with a complexity >= 10.\nAdditionally, classes with many methods of moderate complexity get reported as well once the total of their\nmethods' complexities reaches 80, even if none of the methods was directly reported.\n\nReported methods should be broken down into several smaller methods. Reported classes should probably be broken down\ninto subcomponents.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'sourceFrom' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'sourceTo' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'predicateImpl' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ShortVariable",
+              "shortDescription": {
+                "text": "Avoid variables with short names like it"
+              },
+              "fullDescription": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#shortvariable",
+              "help": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'it' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'filtered' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ShortVariable",
+              "shortDescription": {
+                "text": "Avoid variables with short names like el"
+              },
+              "fullDescription": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#shortvariable",
+              "help": {
+                "text": "\nFields, local variables, enum constant names or parameter names that are very short are not helpful to the reader.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'el' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'pos' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'passedBefore' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'passedNow' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'insertionPoint' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidAccessibilityAlteration",
+              "shortDescription": {
+                "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+              },
+              "fullDescription": {
+                "text": "\nMethods such as `getDeclaredConstructors()`, `getDeclaredMethods()`, and `getDeclaredFields()` also\nreturn private constructors, methods and fields. These can be made accessible by calling `setAccessible(true)`.\nThis gives access to normally protected data which violates the principle of encapsulation.\n\nThis rule detects calls to `setAccessible` and finds possible accessibility alterations.\nIf the call to `setAccessible` is wrapped within a `PrivilegedAction`, then the access alteration\nis assumed to be deliberate and is not reported.\n\nNote that with Java 17 the Security Manager, which is used for `PrivilegedAction` execution,\nis deprecated: [JEP 411: Deprecate the Security Manager for Removal](https://openjdk.org/jeps/411).\nFor future-proof code, deliberate access alteration should be suppressed using the usual\nsuppression methods (e.g. by using `@SuppressWarnings` annotation).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidaccessibilityalteration",
+              "help": {
+                "text": "\nMethods such as `getDeclaredConstructors()`, `getDeclaredMethods()`, and `getDeclaredFields()` also\nreturn private constructors, methods and fields. These can be made accessible by calling `setAccessible(true)`.\nThis gives access to normally protected data which violates the principle of encapsulation.\n\nThis rule detects calls to `setAccessible` and finds possible accessibility alterations.\nIf the call to `setAccessible` is wrapped within a `PrivilegedAction`, then the access alteration\nis assumed to be deliberate and is not reported.\n\nNote that with Java 17 the Security Manager, which is used for `PrivilegedAction` execution,\nis deprecated: [JEP 411: Deprecate the Security Manager for Removal](https://openjdk.org/jeps/411).\nFor future-proof code, deliberate access alteration should be suppressed using the usual\nsuppression methods (e.g. by using `@SuppressWarnings` annotation).\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UseUtilityClass",
+          "ruleIndex": 0,
+          "message": {
+            "text": "All methods are static. Consider adding a private no-args constructor to prevent instantiation."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 8,
+                  "endLine": 18,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 8,
+                  "endLine": 18,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 33,
+                  "endLine": 19,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "RedundantFieldInitializer",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Avoid using redundant field initializer for 'initialized'"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 28,
+                  "endLine": 20,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 28,
+                  "endLine": 20,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like BEGIN_CHANGE_METHOD"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 27,
+                  "endLine": 21,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 27,
+                  "endLine": 21,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 5,
+          "message": {
+            "text": "The static field name 'BEGIN_CHANGE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 27,
+                  "endLine": 21,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 27,
+                  "endLine": 22,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 6,
+          "message": {
+            "text": "The static field name 'END_CHANGE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 27,
+                  "endLine": 22,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 27,
+                  "endLine": 23,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 7,
+          "message": {
+            "text": "The static field name 'NEXT_ADD_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 27,
+                  "endLine": 23,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Avoid excessively long variable names like NEXT_UPDATE_METHOD"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 27,
+                  "endLine": 24,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 27,
+                  "endLine": 24,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 9,
+          "message": {
+            "text": "The static field name 'NEXT_UPDATE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 27,
+                  "endLine": 24,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Avoid excessively long variable names like NEXT_REMOVE_METHOD"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 27,
+                  "endLine": 25,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 27,
+                  "endLine": 25,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 11,
+          "message": {
+            "text": "The static field name 'NEXT_REMOVE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 27,
+                  "endLine": 25,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 27,
+                  "endLine": 26,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 12,
+          "message": {
+            "text": "The static field name 'REFILTER_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 27,
+                  "endLine": 26,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Avoid excessively long variable names like ENSURE_SIZE_METHOD"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 27,
+                  "endLine": 27,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 27,
+                  "endLine": 27,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 14,
+          "message": {
+            "text": "The static field name 'ENSURE_SIZE_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 27,
+                  "endLine": 27,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Avoid excessively long variable names like GET_PREDICATE_IMPL_METHOD"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 27,
+                  "endLine": 28,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 27,
+                  "endLine": 28,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 16,
+          "message": {
+            "text": "The static field name 'GET_PREDICATE_IMPL_METHOD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 27,
+                  "endLine": 28,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 26,
+                  "endLine": 29,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 17,
+          "message": {
+            "text": "The static field name 'FILTERED_FIELD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 26,
+                  "endLine": 29,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 26,
+                  "endLine": 30,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "FieldNamingConventions",
+          "ruleIndex": 18,
+          "message": {
+            "text": "The static field name 'SIZE_FIELD' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 26,
+                  "endLine": 30,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 24,
+                  "endLine": 32,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Parameter 'filteredList' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 84,
+                  "endLine": 32,
+                  "endColumn": 96
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Public method and constructor comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 24,
+                  "endLine": 46,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CyclomaticComplexity",
+          "ruleIndex": 21,
+          "message": {
+            "text": "The method 'refilterListReflection(FilteredList<BibEntryTableViewModel>, int, int)' has a cyclomatic complexity of 12."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 24,
+                  "endLine": 46,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Parameter 'filteredList' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 84,
+                  "endLine": 46,
+                  "endColumn": 96
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 22,
+          "message": {
+            "text": "Parameter 'sourceFrom' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 102,
+                  "endLine": 46,
+                  "endColumn": 112
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 23,
+          "message": {
+            "text": "Parameter 'sourceTo' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 118,
+                  "endLine": 46,
+                  "endColumn": 126
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 24,
+          "message": {
+            "text": "Local variable 'predicateImpl' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 47,
+                  "endLine": 59,
+                  "endColumn": 60
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ShortVariable",
+          "ruleIndex": 25,
+          "message": {
+            "text": "Avoid variables with short names like it"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 60,
+                  "endLine": 60,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 26,
+          "message": {
+            "text": "Local variable 'it' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 60,
+                  "endLine": 60,
+                  "endColumn": 62
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 27,
+          "message": {
+            "text": "Local variable 'filtered' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 19,
+                  "endLine": 62,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ShortVariable",
+          "ruleIndex": 28,
+          "message": {
+            "text": "Avoid variables with short names like el"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 40,
+                  "endLine": 66,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 29,
+          "message": {
+            "text": "Local variable 'el' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 40,
+                  "endLine": 66,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 30,
+          "message": {
+            "text": "Local variable 'pos' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 21,
+                  "endLine": 67,
+                  "endColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 31,
+          "message": {
+            "text": "Local variable 'passedBefore' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 25,
+                  "endLine": 68,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 32,
+          "message": {
+            "text": "Local variable 'passedNow' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 25,
+                  "endLine": 69,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 33,
+          "message": {
+            "text": "Local variable 'insertionPoint' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 25,
+                  "endLine": 81,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 9,
+                  "endLine": 113,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 9,
+                  "endLine": 114,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 9,
+                  "endLine": 115,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 9,
+                  "endLine": 116,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 9,
+                  "endLine": 117,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 9,
+                  "endLine": 119,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 9,
+                  "endLine": 120,
+                  "endColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 9,
+                  "endLine": 121,
+                  "endColumn": 54
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 9,
+                  "endLine": 123,
+                  "endColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidAccessibilityAlteration",
+          "ruleIndex": 34,
+          "message": {
+            "text": "You should not modify visibility of constructors, methods or fields using setAccessible()"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/FilteredListProxy.java"
+                },
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 9,
+                  "endLine": 124,
+                  "endColumn": 39
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

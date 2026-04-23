@@ -1,0 +1,1461 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Class comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "DataClass",
+              "shortDescription": {
+                "text": "The class 'HTMLUnicodeConversionMaps' is suspected to be a Data Class (WOC=0.000%, NOPA=7, NOAM=0, WMC=2)"
+              },
+              "fullDescription": {
+                "text": "\nData Classes are simple data holders, which reveal most of their state, and\nwithout complex functionality. The lack of functionality may indicate that\ntheir behaviour is defined elsewhere, which is a sign of poor data-behaviour\nproximity. By directly exposing their internals, Data Classes break encapsulation,\nand therefore reduce the system's maintainability and understandability. Moreover,\nclasses tend to strongly rely on their data representation, which makes for a brittle\ndesign.\n\nRefactoring a Data Class should focus on restoring a good data-behaviour proximity. In\nmost cases, that means moving the operations defined on the data back into the class.\nIn some other cases it may make sense to remove entirely the class and move the data\ninto the former client classes.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* WOC: a 'non-triviality' measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHT_OF_CLASS %}\n* NOPA: number of public attributes, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_PUBLIC_FIELDS %}\n* NOAM: number of public accessor methods, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_ACCESSORS %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High NOPA + NOAM\n* Low WOC\n* Low WMC\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#dataclass",
+              "help": {
+                "text": "\nData Classes are simple data holders, which reveal most of their state, and\nwithout complex functionality. The lack of functionality may indicate that\ntheir behaviour is defined elsewhere, which is a sign of poor data-behaviour\nproximity. By directly exposing their internals, Data Classes break encapsulation,\nand therefore reduce the system's maintainability and understandability. Moreover,\nclasses tend to strongly rely on their data representation, which makes for a brittle\ndesign.\n\nRefactoring a Data Class should focus on restoring a good data-behaviour proximity. In\nmost cases, that means moving the operations defined on the data back into the class.\nIn some other cases it may make sense to remove entirely the class and move the data\ninto the former client classes.\n\nThe rule uses metrics to implement its detection strategy. The violation message\ngives information about the values of these metrics:\n* WMC: a class complexity measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHED_METHOD_COUNT %}\n* WOC: a 'non-triviality' measure for a class, see {% jdoc java::lang.java.metrics.JavaMetrics#WEIGHT_OF_CLASS %}\n* NOPA: number of public attributes, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_PUBLIC_FIELDS %}\n* NOAM: number of public accessor methods, see {% jdoc java::lang.java.metrics.JavaMetrics#NUMBER_OF_ACCESSORS %}\n\nThe rule identifies a god class by looking for classes which have all of the following properties:\n* High NOPA + NOAM\n* Low WOC\n* Low WMC\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "CommentSize",
+              "shortDescription": {
+                "text": "Comment is too large: Line too long"
+              },
+              "fullDescription": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentsize",
+              "help": {
+                "text": "\nDetermines whether the dimensions of non-header comments found are within the specified limits.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like HTML_LATEX_CONVERSION_MAP"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "CommentRequired",
+              "shortDescription": {
+                "text": "Field comments are required"
+              },
+              "fullDescription": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_documentation.html#commentrequired",
+              "help": {
+                "text": "\nDenotes whether javadoc (formal) comments are required (or unwanted) for specific language elements.\n        "
+              },
+              "properties": {
+                "ruleset": "Documentation",
+                "priority": 3,
+                "tags": [
+                  "Documentation"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UseConcurrentHashMap",
+              "shortDescription": {
+                "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+              },
+              "fullDescription": {
+                "text": "\nSince Java5 brought a new implementation of the Map designed for multi-threaded access, you can\nperform efficient map reads without blocking other threads.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_multithreading.html#useconcurrenthashmap",
+              "help": {
+                "text": "\nSince Java5 brought a new implementation of the Map designed for multi-threaded access, you can\nperform efficient map reads without blocking other threads.\n        "
+              },
+              "properties": {
+                "ruleset": "Multithreading",
+                "priority": 3,
+                "tags": [
+                  "Multithreading"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like UNICODE_ESCAPED_ACCENTS"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like NUMERICAL_LATEX_CONVERSION_MAP"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like UNICODE_LATEX_CONVERSION_MAP"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like LATEX_HTML_CONVERSION_MAP"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LongVariable",
+              "shortDescription": {
+                "text": "Avoid excessively long variable names like LATEX_UNICODE_CONVERSION_MAP"
+              },
+              "fullDescription": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#longvariable",
+              "help": {
+                "text": "\nFields, formal arguments, or local variable names that are too long can make the code difficult to follow.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UseShortArrayInitializer",
+              "shortDescription": {
+                "text": "Array initialization can be written shorter"
+              },
+              "fullDescription": {
+                "text": "\n\nWhen declaring and initializing array fields or variables, it is not necessary to explicitly create a new array\nusing `new`. Instead one can simply define the initial content of the array as a expression in curly braces.\n\nE.g. `int[] x = new int[] { 1, 2, 3 };` can be written as `int[] x = { 1, 2, 3 };`.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#useshortarrayinitializer",
+              "help": {
+                "text": "\n\nWhen declaring and initializing array fields or variables, it is not necessary to explicitly create a new array\nusing `new`. Instead one can simply define the initial content of the array as a expression in curly braces.\n\nE.g. `int[] x = new int[] { 1, 2, 3 };` can be written as `int[] x = { 1, 2, 3 };`.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'aConversionList' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'strippedLaTeX' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "ConfusingTernary",
+              "shortDescription": {
+                "text": "Avoid if (x != y) ..; else ..;"
+              },
+              "fullDescription": {
+                "text": "\nAvoid negation within an \"if\" expression with an \"else\" clause.  For example, rephrase:\n`if (x != y) diff(); else same();` as: `if (x == y) same(); else diff();`.\n\nMost \"if (x != y)\" cases without an \"else\" are often return cases, so consistent use of this\nrule makes the code easier to read.  Also, this resolves trivial ordering problems, such\nas \"does the error case go first?\" or \"does the common case go first?\".\n\nSince null checks are commonly considered a positive condition, they are by default ignored\nby this rule. This means both `a == null` and `a != null` are allowed. If you want\nto enforce either style and disallow the other, use the property `nullCheckBranch`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#confusingternary",
+              "help": {
+                "text": "\nAvoid negation within an \"if\" expression with an \"else\" clause.  For example, rephrase:\n`if (x != y) diff(); else same();` as: `if (x == y) same(); else diff();`.\n\nMost \"if (x != y)\" cases without an \"else\" are often return cases, so consistent use of this\nrule makes the code easier to read.  Also, this resolves trivial ordering problems, such\nas \"does the error case go first?\" or \"does the common case go first?\".\n\nSince null checks are commonly considered a positive condition, they are by default ignored\nby this rule. This means both `a == null` and `a != null` are allowed. If you want\nto enforce either style and disallow the other, use the property `nullCheckBranch`.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidDeeplyNestedIfStmts",
+              "shortDescription": {
+                "text": "Deeply nested if..then statements are hard to read"
+              },
+              "fullDescription": {
+                "text": "\nAvoid creating deeply nested if-then statements since they are harder to read and error-prone to maintain.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#avoiddeeplynestedifstmts",
+              "help": {
+                "text": "\nAvoid creating deeply nested if-then statements since they are harder to read and error-prone to maintain.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "AvoidLiteralsInIfCondition",
+              "shortDescription": {
+                "text": "Avoid using literals such as 128 in if statements"
+              },
+              "fullDescription": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#avoidliteralsinifcondition",
+              "help": {
+                "text": "\nAvoid using hard-coded literals in conditional statements. By declaring them as static variables\nor private members with descriptive names maintainability is enhanced. By default, the literals \"-1\" and \"0\" are ignored.\nMore exceptions can be defined with the property \"ignoreMagicNumbers\".\n\nThe rule doesn't consider deeper expressions by default, but this can be enabled via the property `ignoreExpressions`.\nWith this property set to false, if-conditions like `i == 1 + 5` are reported as well. Note that in that case,\nthe property ignoreMagicNumbers is not taken into account, if there are multiple literals involved in such an expression.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'unicodeSymbol' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableCouldBeFinal",
+              "shortDescription": {
+                "text": "Local variable 'anAccentList' could be declared final"
+              },
+              "fullDescription": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablecouldbefinal",
+              "help": {
+                "text": "\nA local variable assigned only once can be declared final.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "MethodArgumentCouldBeFinal",
+              "shortDescription": {
+                "text": "Parameter 'escapedString' is not assigned and could be declared final"
+              },
+              "fullDescription": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#methodargumentcouldbefinal",
+              "help": {
+                "text": "\n            Reports method and constructor parameters that can be made final because they are never reassigned within the body of the method.\n\n            This rule ignores unused parameters so as not to overlap with the rule {% rule java/bestpractices/UnusedFormalParameter %}.\n            It will also ignore the parameters of abstract methods.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 3,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Class comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 8,
+                  "endLine": 6,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "DataClass",
+          "ruleIndex": 1,
+          "message": {
+            "text": "The class 'HTMLUnicodeConversionMaps' is suspected to be a Data Class (WOC=0.000%, NOPA=7, NOAM=0, WMC=2)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 8,
+                  "endLine": 6,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 2,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 8,
+                  "endLine": 6,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 1,
+                  "endLine": 8,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 1,
+                  "endLine": 9,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 1,
+                  "endLine": 10,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 1,
+                  "endLine": 11,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Avoid excessively long variable names like HTML_LATEX_CONVERSION_MAP"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 45,
+                  "endLine": 12,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 45,
+                  "endLine": 12,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 6,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 45,
+                  "endLine": 12,
+                  "endColumn": 88
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 46,
+                  "endLine": 13,
+                  "endColumn": 61
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 6,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 46,
+                  "endLine": 13,
+                  "endColumn": 79
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 7,
+          "message": {
+            "text": "Avoid excessively long variable names like UNICODE_ESCAPED_ACCENTS"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 45,
+                  "endLine": 14,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 45,
+                  "endLine": 14,
+                  "endColumn": 68
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 6,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 45,
+                  "endLine": 14,
+                  "endColumn": 86
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 8,
+          "message": {
+            "text": "Avoid excessively long variable names like NUMERICAL_LATEX_CONVERSION_MAP"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 46,
+                  "endLine": 15,
+                  "endColumn": 76
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 46,
+                  "endLine": 15,
+                  "endColumn": 76
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 6,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 46,
+                  "endLine": 15,
+                  "endColumn": 94
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 9,
+          "message": {
+            "text": "Avoid excessively long variable names like UNICODE_LATEX_CONVERSION_MAP"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 45,
+                  "endLine": 16,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 45,
+                  "endLine": 16,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 6,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 45,
+                  "endLine": 16,
+                  "endColumn": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 10,
+          "message": {
+            "text": "Avoid excessively long variable names like LATEX_HTML_CONVERSION_MAP"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 45,
+                  "endLine": 17,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 45,
+                  "endLine": 17,
+                  "endColumn": 70
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 6,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 45,
+                  "endLine": 17,
+                  "endColumn": 88
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LongVariable",
+          "ruleIndex": 11,
+          "message": {
+            "text": "Avoid excessively long variable names like LATEX_UNICODE_CONVERSION_MAP"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 45,
+                  "endLine": 18,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 45,
+                  "endLine": 18,
+                  "endColumn": 73
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseConcurrentHashMap",
+          "ruleIndex": 6,
+          "message": {
+            "text": "If you run in Java5 or newer and have concurrent access, you should use the ConcurrentHashMap implementation"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 45,
+                  "endLine": 18,
+                  "endColumn": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentSize",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Comment is too large: Line too long"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 1,
+                  "endLine": 28,
+                  "endColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseShortArrayInitializer",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Array initialization can be written shorter"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 37,
+                  "endLine": 772,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 37,
+                  "endLine": 30,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UseShortArrayInitializer",
+          "ruleIndex": 12,
+          "message": {
+            "text": "Array initialization can be written shorter"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 775,
+                  "startColumn": 37,
+                  "endLine": 860,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CommentRequired",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Field comments are required"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 775,
+                  "startColumn": 37,
+                  "endLine": 775,
+                  "endColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 13,
+          "message": {
+            "text": "Local variable 'aConversionList' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 863,
+                  "startColumn": 23,
+                  "endLine": 863,
+                  "endColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 14,
+          "message": {
+            "text": "Local variable 'strippedLaTeX' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 865,
+                  "startColumn": 24,
+                  "endLine": 865,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ConfusingTernary",
+          "ruleIndex": 15,
+          "message": {
+            "text": "Avoid if (x != y) ..; else ..;"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 866,
+                  "startColumn": 17,
+                  "endLine": 873,
+                  "endColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 868,
+                  "startColumn": 21,
+                  "endLine": 870,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDeeplyNestedIfStmts",
+          "ruleIndex": 16,
+          "message": {
+            "text": "Deeply nested if..then statements are hard to read"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 876,
+                  "startColumn": 21,
+                  "endLine": 882,
+                  "endColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidLiteralsInIfCondition",
+          "ruleIndex": 17,
+          "message": {
+            "text": "Avoid using literals such as 128 in if statements"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 876,
+                  "startColumn": 62,
+                  "endLine": 876,
+                  "endColumn": 65
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 18,
+          "message": {
+            "text": "Local variable 'unicodeSymbol' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 877,
+                  "startColumn": 32,
+                  "endLine": 877,
+                  "endColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableCouldBeFinal",
+          "ruleIndex": 19,
+          "message": {
+            "text": "Local variable 'anAccentList' could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 886,
+                  "startColumn": 23,
+                  "endLine": 886,
+                  "endColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MethodArgumentCouldBeFinal",
+          "ruleIndex": 20,
+          "message": {
+            "text": "Parameter 'escapedString' is not assigned and could be declared final"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/HTMLUnicodeConversionMaps.java"
+                },
+                "region": {
+                  "startLine": 911,
+                  "startColumn": 45,
+                  "endLine": 911,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

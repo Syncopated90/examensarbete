@@ -1,0 +1,17 @@
+**Line 83** — `ObservableOptionalValue<BibEntry> bibEntry` field is initialized with a mutable field assignment at declaration, then reassigned in `bindToEntry()`. Field is declared non-final but could cause issues; more critically, the field type `ObservableOptionalValue` is reassigned breaking any existing bindings. **Rule: FieldShouldBeFinal / MutableField**
+
+**Line 83** — `private ObservableOptionalValue<BibEntry> bibEntry = EasyBind.wrapNullable(new SimpleObjectProperty<>());` — local variable shadows/replaces field reference; existing bindings on `bibEntry` become stale when reassigned at line 290. **Rule: LooseCoupling / BrokenObservableBinding**
+
+**Line 161** — `LinkedFileViewModel transferredItem = null;` — `transferredItem` may be `null` when used at `items.set(thisIdx, transferredItem)` (line 174) if no matching item is found. **Rule: NullAssignment / PossibleNullPointerException**
+
+**Line 174** — `items.set(thisIdx, transferredItem);` — `transferredItem` can be `null` (initialized to `null`, only assigned inside loop if match found). **Rule: NullPointerException / AvoidNullPointerException**
+
+**Line 136** — `LinkedFile selectedItem = listView.getSelectionModel().getSelectedItem().getFile();` — `getSelectedItem()` can return `null`; `.getFile()` called without null check. **Rule: NullPointerException / AvoidNullPointerException**
+
+**Line 290** — `bibEntry = EasyBind.wrapNullable(new SimpleObjectProperty<>(entry));` — reassigning a non-final field that was already bound into `contextMenuFactory` at initialization; `contextMenuFactory` holds a stale reference to the old `bibEntry`. **Rule: ConstructorCallsOverridableMethod / StaleReference**
+
+**Line 100** — `UiThreadObservableList<LinkedFileViewModel> decoratedModelList` is created in constructor before `initialize()` is called (FXML injection hasn't run yet); `viewModel` is `null` at this point since it's set in `@FXML initialize()`. **Rule: NullPointerException / FieldNotInitialized**
+
+**Line 271** — `dialogService.showCustomDialogAndWait(new LinkedFileEditDialog()).filter(file -> !file.isEmpty()).ifPresent(newLinkedFile -> viewModel.addNewLinkedFile(newLinkedFile));` — overly long single line, lambda can be method reference. **Rule: ExcessiveLineLength / UseMethodReference**
+
+**Line 83** — `private ObservableOptionalValue<BibEntry> bibEntry` — non-`final` field used across multiple methods; reassignment at line 290 is not thread-safe. **Rule: NonThreadSafeSingleton / UnsynchronizedField**

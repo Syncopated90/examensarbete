@@ -1,0 +1,23 @@
+**Line 26** — `ParameterNumber`: Constructor has 3 parameters; consider reducing or using a builder.
+
+**Line 37** — `LambdaBodyLength`: Lambda body spans multiple lines with try/catch; extract to a method.
+
+**Line 39** — `IllegalCatch`: Catching `IOException` inside a lambda; should be handled externally.
+
+**Line 41** — `ReturnValueIgnored` / `AvoidNewObjectInsideLambda`: `ParserResult.fromError(e).getDatabase()` silently returns an empty database on error, masking failures.
+
+**Line 57** — `LambdaBodyLength`: Deeply nested lambda with multiple chained operations; extract to named method.
+
+**Line 58** — `AvoidNestedLambdas`: Lambda nested within lambda reduces readability.
+
+**Line 60** — `OptionalGetWithoutIsPresent` / `CompareObjectsWithEquals`: `entry.equals(...)` comparison used on `BibEntry` — relies on `equals` override correctness; combined with `.orElse(new BibEntry())`, creates unnecessary object instantiation on every iteration.
+
+**Line 60** — `AvoidInstantiatingObjectsJustToGetClass` / `AvoidNewObjectInsideLambda`: `new BibEntry()` instantiated repeatedly inside a stream filter.
+
+**Line 60** — `CyclomaticComplexity`: Chained `.orElse("")` and `.orElse(new BibEntry())` in a single filter predicate; extract to a method.
+
+**Line 65** — `LawOfDemeter`: `entry.getFieldMap().putIfAbsent(...)` violates Law of Demeter — accessing internal map of `BibEntry` directly.
+
+**Line 65** — `LambdaBodyLength` / `AvoidNestedLambdas`: Nested `ifPresent` + `forEach` lambdas inside `addCrossReferencingData`.
+
+**Line 65** — `OptionalGetWithoutIsPresent`: `refEntry.getFieldOrAlias(field).orElse("")` silently defaults to empty string, potentially introducing blank field entries.

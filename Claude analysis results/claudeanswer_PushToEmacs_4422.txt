@@ -1,0 +1,29 @@
+**Line 44 – Duplicate Code / Redundant Assignment**
+`commandPath` is assigned twice from the same expression (lines 37 and 44). Rule: **VariableDeclarationUsageDistance** / **RedundantAssignment**.
+
+**Line 83 – Use of `Runtime.getRuntime().exec(String[])`**
+`Runtime.exec()` is flagged as unsafe/deprecated in favor of `ProcessBuilder`. Rule: **RuntimeExecRule** / **UseProcessBuilder**.
+
+**Line 85 – Resource Leak**
+`Process p` is never closed. Rule: **CloseResource**.
+
+**Line 87 – Reading error stream byte-by-byte**
+`out.read()` reads one byte at a time; inefficient. Rule: **AvoidFileStream** / **UseBufferedReader** / **UseNIOFiles** (depending on ruleset, PMD: **AvoidFileStream** or Sonar: **S2095**).
+
+**Line 91 – Casting `int` to `char`**
+`(char) c` from `InputStream.read()` will mishandle multi-byte (non-ASCII) characters. Rule: **AvoidUsingOctalValues** / **CharArraysUsage** / Sonar **S4973** / PMD **AvoidCastingByteToChar**.
+
+**Line 95 – `sb.toString()` called unnecessarily**
+`sb.toString().trim().isEmpty()` instead of checking `sb` length directly. Rule: **InsufficientStringBufferDeclaration** / **AppendCharacterWithChar** / Sonar **S1149**.
+
+**Line 85 – Field access from lambda (non-final field `couldNotPush`)**
+`couldNotPush = true` inside a lambda modifies a non-local, non-final field on the enclosing instance without synchronization. Rule: **NonThreadSafeSingleton** / Sonar **S3077** / **AvoidThreadSafety** (race condition).
+
+**Line 37 – Null check followed by trim without null guard is fine, but combined condition style**
+`commandPath == null || commandPath.trim().isEmpty()` — acceptable, but some rulesets prefer `StringUtils.isBlank()`. Rule: **UseStringBufferLength** / Sonar **S2259** (minor).
+
+**Line 56–72 – String concatenation in loop-equivalent context**
+Repeated `.concat()` and `+` string concatenation. Rule: **UseStringBufferForStringAppends** / **InefficientStringBuffering**.
+
+**Line 119 – `jumpToLineCommandlineArguments` uses `commandPath` field directly**
+Instance field `commandPath` is used without null-check. Rule: **NullAssignment** / **AvoidNullPointerException** / Sonar **S2259**.

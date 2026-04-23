@@ -1,0 +1,23 @@
+**Line 5** `HashMap` — `java.util.HashMap` imported but usage could be `LinkedHashMap`; however, specifically: **Rule: LooseCoupling** — field declared as `HashMap` via `new HashMap<>()` assigned to `Map<>` (acceptable), but `new ArrayList<>(partitions.values())` returns order dependent on `HashMap` iteration.
+
+**Line 5** — **Rule: UnnecessaryImport** / **Rule: UnusedImports**: `java.util.HashMap` is used, but flagged by some analyzers as implementation type leaked through `computeIfAbsent` lambda.
+
+**Line 17** — **Rule: HideUtilityClassConstructor**: `RangeSort` is a utility class with a private constructor — acceptable, but the class is non-final.
+
+**Line 17** — **Rule: FinalClass**: Utility class `RangeSort` with only a private constructor should be declared `final`.
+
+**Line 24** — **Rule: VisibilityModifier** / **Rule: AccessorMethodGeneration**: Inner class `HolderComparatorWithinPartition` is `private static` but not `final`.
+
+**Line 27** — **Rule: ImmutableField**: Field `cmp` in `HolderComparatorWithinPartition` can be declared `final` — it is assigned only in constructor. (It is declared `final`, so this is satisfied. No violation here.)
+
+**Line 36** — **Rule: MissingOverride** / no issue. Legitimate.
+
+**Line 54** — **Rule: LawOfDemeter**: `holder.getRange().getText()` — two-level chain call, violating Law of Demeter.
+
+**Line 60** — **Rule: LawOfDemeter**: `holder.getRange().getText()` — same violation repeated.
+
+**Line 46** — **Rule: LawOfDemeter**: `rangeHolders.getFirst().getRange().getText()` — chained call violation.
+
+**Line 54** — **Rule: LooseCoupling**: `new ArrayList<>()` returned from `getPartitions()` breaks encapsulation by exposing mutable copy; minor, but the internal `List<V>` values are still mutable references.
+
+**Line 53** — **Rule: ReturnEmptyCollectionRatherThanNull**: Not violated, but `getPartitions()` exposes internal mutable lists by reference (the inner lists are not copies) — **Rule: MethodReturnsInternalArray** / **Rule: ExposureOfInternalState**.

@@ -1,0 +1,21 @@
+**Line 23** - `VariableDeclarationUsageDistance`: Lambda parameter `glyph` shadows field `glyph`.
+
+**Line 35** - `VariableDeclarationUsageDistance`: Lambda parameter `glyph` shadows field `glyph`.
+
+**Line 23** - `LambdaParameterName`: Lambda parameter `glyph` shadows enclosing field of same name.
+
+**Line 35** - `LambdaParameterName`: Lambda parameter `glyph` shadows enclosing field of same name.
+
+**Line 30** - `UnusedLocalVariable`: Variable `size` is used only once; intermediate variable unnecessary (minor), but more critically `Size` and `SizeUnits` are internal/deprecated CSS APIs.
+
+**Line 17** - `VisibilityModifier`: Field `glyph` is private but its type `ObjectProperty<IconTheme.JabRefIcons>` is exposed directly via `glyphProperty()` at line 53, breaking encapsulation convention for final fields.
+
+**Line 18** - `VisibilityModifier`: Same issue for field `glyphSize` exposed via `glyphSizeProperty()` at line 61.
+
+**Line 32** - `MagicNumber`: Literal `9` is a magic number with no explanation.
+
+**Line 19** - `HiddenField`: Constructor parameter `size` (line 20 in second constructor) and field `glyphSize` risk confusion; constructor parameter `icon` hides nothing but parameter name reuse across constructors reduces clarity.
+
+**Line 40** - `UnnecessaryConstructor`: `JabRefIconView()` delegates to `this(IconTheme.JabRefIcons.ERROR)`, making `getDefaultGlyph()` at line 44 redundant and inconsistent — the default is hardcoded in two places.
+
+**Line 44** - `DuplicateLiteral`: `IconTheme.JabRefIcons.ERROR` appears on both line 40 and line 44, violating DRY.

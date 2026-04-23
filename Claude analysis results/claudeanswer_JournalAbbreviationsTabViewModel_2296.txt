@@ -1,0 +1,23 @@
+**Line 34** — `FieldNamingConventions`: Instance field `LOGGER` uses uppercase/constant naming convention; should be `logger`.
+
+**Line 7** — `UnusedImport`: `java.util.stream.Collectors` is used, but `Collectors.toList()` should be replaced with `Stream.toList()` (Java 16+); minor but flagged by some analyzers as `UseStreamToList`.
+
+**Line 129** — `AvoidFileStream` / `InefficientStringBuffering`: `filePath.toString()` passed directly to `Localization.lang` which already accepts strings — no issue here, but:
+
+**Line 129** — `InappropriateStringHandling`: `filePath.toString()` used instead of `filePath.toAbsolutePath().toString()` for display — inconsistency with line 272.
+
+**Line 91** — `LambdaBodyLength`: The lambda passed to `currentFile.addListener` is excessively long, violating single-responsibility within lambdas.
+
+**Line 86** — `ListChangeListenerMissesAllChanges`: Only `lcl.next()` is called once; if multiple changes occur, subsequent changes are ignored — should loop `while (lcl.next())`.
+
+**Line 197** — `EmptyStringCheck`: `abbreviationObject.getName().trim().isEmpty()` should use `isBlank()` (Java 11+) — `UseStringIsBlank`.
+
+**Line 201** — `EmptyStringCheck`: Same as above — `abbreviationObject.getAbbreviation().trim().isEmpty()` should use `isBlank()`.
+
+**Line 230** — `ConfusingTernary` / `BranchLogic`: `index > 1` skips index 1 when deleting, meaning the item at index 0 is never selected as a fallback when index is 1 — likely an off-by-one bug (`index > 0` intended).
+
+**Line 272** — `CollectorsToListUsage`: `collect(Collectors.toList())` should be replaced with `.toList()` (Java 16+) — `UseStreamToList`.
+
+**Line 122** — `CollectorsToListUsage`: Same — `collect(Collectors.toList())` on line 122.
+
+**Line 34** — `LoggerNotStatic`: `LOGGER` is an instance field; loggers should be `private static final`.

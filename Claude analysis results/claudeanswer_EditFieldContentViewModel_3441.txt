@@ -1,0 +1,15 @@
+**Line 62** — `Bindings.and()` expects `ObservableBooleanValue` arguments; `overwriteFieldContentProperty()` returns `BooleanProperty` (acceptable) but `fieldValidationStatus().validProperty()` returns `ReadOnlyBooleanProperty` — **mismatched binding type / incorrect API usage**.
+
+**Line 62** — `canAppend` binding name implies "can append only when overwrite is enabled AND field is valid", but the logic in `appendToFieldValue()` (line 95) already gates on `overwriteFieldContent.get()` independently — **misleading/incorrect guard condition** (`CanAppend` should not require `overwriteFieldContent`).
+
+**Line 78** — `fieldValue.set("")` inside the loop resets the field value on every iteration, not just once after all entries are processed — **incorrect loop body side-effect**.
+
+**Line 103** — `fieldValue.set("")` inside the loop resets on every iteration — **incorrect loop body side-effect**.
+
+**Line 95** — `appendToFieldValue()` comment says "Append button should be disabled if 'overwriteNonEmptyFields' is false", but the condition `overwriteFieldContent.get()` means appending only happens when overwrite is true — **misleading comment / inverted logic**.
+
+**Line 51** — `selectedField` initialized to `StandardField.AUTHOR` but immediately overwritten conditionally via `findFirst().ifPresent()` — if no set fields exist, the default `AUTHOR` silently persists — **silent fallback / missing explicit default handling**.
+
+**Line 84** — `addEdit(edits)` called unconditionally even when `edits.hasEdits()` is false — **unconditional edit registration regardless of whether any changes occurred**.
+
+**Line 110** — Same as line 84: `addEdit(edits)` called unconditionally — **unconditional edit registration**.

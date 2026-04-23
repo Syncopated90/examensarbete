@@ -1,0 +1,17 @@
+**Line 15** — `ValueTableCellFactory` object created but result of `install(this)` is used on a discarded intermediate; however, the primary issue is that the `new ValueTableCellFactory<>()` instance is **created and not assigned to a variable**, making it an unnecessary object creation if `install` has side effects only.
+**Rule: `new` object created but result not stored (UnnecessaryLocalVariable / ObjectCreationWithoutUsage)**
+
+**Line 15–16** — Method chaining on a newly constructed object where the object reference is discarded after use.
+**Rule: `ResultOfMethodCallIgnored` / `UnusedReturnValue`**
+
+**Line 15** — `withText(FileUtil::getBaseName)` passes a method reference to `withText`; `FileUtil::getBaseName` is a static method reference used as a functional interface, but `FileUtil` is referenced as if it were an instance — acceptable only if `getBaseName` is static. If not static, this violates:
+**Rule: `MethodReferenceUsage` / `UnnecessaryMethodReference`**
+
+**Line 15–17** — `setCellValueFactory` is called **after** `install(this)`, meaning the cell value factory is set after the cell factory is already installed, which may result in the column rendering before the value factory is configured.
+**Rule: `UnsynchronizedStatefulRessource` / incorrect initialization order**
+
+**Line 20–22** — `LibraryColumn()` delegates to `LibraryColumn(MainTableColumnModel)` — this is acceptable, but the no-arg constructor exposes a default construction path that bypasses any future validation on the model parameter.
+**Rule: `AvoidNoArgumentConstructor` / `MissingOverrideAnnotation` (if superclass defines one)**
+
+**Line 10** — Class `LibraryColumn` is `public` but not `final`, and extends a generic class without restricting subclassing.
+**Rule: `ClassWithoutFinalModifier` / `DesignForExtension`**

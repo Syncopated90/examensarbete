@@ -1,0 +1,15 @@
+**Line 55** – `BufferedReader` created outside try-with-resources; if constructor throws, resource leaks. **Resource Leak** (`java:S2095`)
+
+**Line 54** – `InputStreamReader` created outside try-with-resources; same leak risk. **Resource Leak** (`java:S2095`)
+
+**Line 163** – Local variable named `LCSSimilarity` starts with uppercase letter. **Naming Convention** (`java:S117`)
+
+**Line 176** – Early `return` inside loop on `levSimilarity >= LEVENSHTEIN_THRESHOLD` without tracking best score; first match above threshold returned regardless of whether a better match exists. **Correctness/Logic** (`java:S1142`, premature return)
+
+**Line 170** – Early `return` inside loop on `exactSubstringMatch`; first exact substring match returned without checking remaining entries for a longer/better match. **Correctness/Logic** (`java:S1142`, premature return)
+
+**Line 36** – `LEVENSHTEIN_MATCHER` is a `static final` field instantiated as `new StringSimilarity()` but used as a utility; should be a utility class or singleton. **Class Design** (`java:S2390`)
+
+**Line 100** – `getConferenceFromBookTitle` reassigns the `conference` variable multiple times instead of using separate scoped variables. **Variable Reuse** (`java:S1854` / `java:S1481`)
+
+**Line 57** – `try (inputStream; reader)` — `inputStream` was not declared in the try-with-resources statement; relying on effectively-final variable in try-with-resources is non-idiomatic and obscures ownership. **Code Style** (`java:S2093`)

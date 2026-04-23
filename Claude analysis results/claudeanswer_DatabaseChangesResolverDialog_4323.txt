@@ -1,0 +1,21 @@
+**Line 31** — `ConstantNamingConvention`: `LOGGER` should be `logger` (non-constant `static final` fields use camelCase; however, loggers are conventionally lowercase) — more precisely, `private final static` field order violates **ModifierOrder** rule; should be `private static final`.
+
+**Line 31** — `ModifierOrder`: Modifiers should appear in order `private static final`, not `private final static`.
+
+**Line 35** — `ConstantNamingConvention` / `FieldNamingConvention`: `DETAILS_VIEW_CACHE` is an instance field (non-static), not a constant; should not use `UPPER_SNAKE_CASE`.
+
+**Line 35** — `MutableField`: `DETAILS_VIEW_CACHE` is a mutable collection field named as a constant, misleading intent.
+
+**Line 73** — `VisibilityModifier` / constructor does work beyond assignment: `ViewLoader.view(this).load().setAsDialogPane(this)` — side effects in constructor violate single-responsibility.
+
+**Line 75** — `AvoidLambdaInConstructor` / **DoNotCallOverridableMethodsInConstructor**: `setResultConverter` is called in the constructor with a lambda referencing `viewModel`, which is `null` at construction time — **NullDereference** risk on `viewModel`.
+
+**Line 93** — `LawOfDemeter`: `changesTableView.getSelectionModel().setSelectionMode(...)` — multiple chained calls on foreign objects.
+
+**Line 94** — `LawOfDemeter`: `changesTableView.getSelectionModel().selectFirst()` — same violation.
+
+**Line 96** — `LawOfDemeter`: `changesTableView.getSelectionModel().selectedItemProperty()` — same violation.
+
+**Line 50–56** — `VisibilityModifier`: `@Inject` fields are package-private by injection but declared without explicit visibility — should have explicit `private` modifier if using field injection, or constructor injection preferred.
+
+**Line 47** — `UnusedField` risk: `areAllChangesAccepted` and `areAllChangesDenied` are only written inside a lambda; no `volatile` or synchronization — **FieldNotInitialized** / threading concern if accessed from another thread.

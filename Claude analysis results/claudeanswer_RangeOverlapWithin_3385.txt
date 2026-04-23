@@ -1,0 +1,25 @@
+**Line 14** — `HideUtilityClassConstructor`: Utility class constructor should be private (it is private, but class should be `final`). **`FinalClass`** — utility class `RangeOverlapWithin` is not declared `final`.
+
+**Line 46** — `AvoidAssertStatement`: Use of `assert` statement; assertions can be disabled at runtime.
+
+**Line 52** — `OptionalGetWithoutIsPresent`: Calling `.get()` on an `Optional` without checking `isPresent()` first.
+
+**Line 55** — `ForLoopVariableCount` / **`ModifiedControlVariable`**: Loop control variable `i` is modified inside the loop body (line 73: `i++`).
+
+**Line 63** — `LocalVariableCouldBeFinal`: `aValues` could be declared `final`.
+
+**Line 66** — `LocalVariableCouldBeFinal`: `bHolder` is reassigned in the while loop but the initial assignment could be structured differently; more precisely, **`VariableDeclarationUsageDistance`**: `bHolder` declared far from its use.
+
+**Line 79** — `LocalVariableCouldBeFinal`: `valuesForOverlappingRanges` could be declared `final`.
+
+**Line 56** — `LocalVariableCouldBeFinal`: `aHolder` could be declared `final`.
+
+**Line 57** — `LocalVariableCouldBeFinal`: `bHolder` (outer) could be declared `final` (it is reassigned on line 72, so this is a **`LocalVariableCouldBeFinal`** violation on the initial declaration at line 57).
+
+**Line 58** — `LocalVariableCouldBeFinal`: `aRange` could be declared `final`.
+
+**Line 59** — `LocalVariableCouldBeFinal`: `bRange` could be declared `final`.
+
+**Line 62** — `LocalVariableCouldBeFinal`: `cmpResult` (first) could be declared `final`; also reused/reassigned at line 86 — **`VariableDeclarationUsageDistance`** and **`ModifiedControlVariable`** concern: `cmpResult` is re-declared at line 86 shadowing the prior one.
+
+**Line 27** — `ParameterNumber`: Method `findOverlappingRanges` has 4 parameters; depending on configured threshold this may violate **`ParameterNumber`** rule.

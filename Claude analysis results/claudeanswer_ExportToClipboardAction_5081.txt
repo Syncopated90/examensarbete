@@ -1,0 +1,15 @@
+**Line 51** - `entries` field is a mutable `ArrayList` instance variable shared across calls; not thread-safe (`NonThreadSafeMutableField` / `InstanceVariableMayNotBeInitialized`)
+
+**Line 75** - `Collectors.toList()` should be replaced with `Stream.toList()` (`UseCollectorsToList` / modernization rule)
+
+**Line 83** - `.orElse(null)` used; prefer `.orElse(null)` is flagged as `ReturnOfNull` / `NullableOptional` — misuse of `Optional`, result assigned to nullable reference defeating Optional's purpose (`OptionalAssignedToNull`)
+
+**Line 108** - `entries.addAll(stateManager.getSelectedEntries())` modifies a shared instance field inside a background thread (`NonThreadSafeFieldAccess` / race condition with `setContentToClipboard` on line 139 reading `entries.size()`)
+
+**Line 111** - `stateManager.getActiveDatabase().get()` called without `isPresent()` check; potential `NoSuchElementException` (`OptionalGetWithoutIsPresent`)
+
+**Line 130** - `extensions.contains("rdf")` branch calls `clipboardContent.putRtf(result.content)` — likely copy-paste error, RDF content put as RTF (`ConfusingTernaryRule` / wrong method called)
+
+**Line 51** - `entries` is an instance field populated in `exportToClipboard` but never cleared between invocations, causing accumulated entries on repeated calls (`InstanceFieldNotReset` / stale state bug)
+
+**Line 68** - `stateManager.getSelectedEntries().isEmpty()` check duplicates the `executable` binding guard on line 64; redundant defensive check (`RedundantCondition` / `UnnecessaryConditionalCheck`)

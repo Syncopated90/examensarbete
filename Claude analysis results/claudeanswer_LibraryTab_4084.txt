@@ -1,0 +1,25 @@
+**Line 174** — `Random` used for security-sensitive ID generation; use `SecureRandom` or a UUID instead. **Rule: java:S2245 (Use of pseudorandom number generator)**
+
+**Line 174** — `new Random().nextLong()` wrapped in `Long.valueOf(...).toString()` — unnecessary boxing. Use `Long.toString(...)`. **Rule: java:S1158 (Unnecessary boxing)**
+
+**Line 193** — `new CitationStyleCache(bibDatabaseContext)` result is discarded; object created but not assigned. **Rule: java:S1848 (Objects should not be created to be dropped immediately)**
+
+**Line 443** — Catching `Throwable` instead of `Exception`. **Rule: java:S1181 (Catch Exception instead of Throwable)**
+
+**Line 571** — `collect(Collectors.toList())` should use `Stream.toList()`. **Rule: java:S6204 (Use Stream.toList())**
+
+**Line 251** — Method `closeIndexManger` is a typo ("Manger" instead of "Manager"). **Rule: java:S100 (Method names should comply with a naming convention) / naming**
+
+**Line 636** — `createLibraryTab` has too many parameters (12). **Rule: java:S107 (Methods should not have too many parameters)**
+
+**Line 657** — `createLibraryTab` overload also has too many parameters (11). **Rule: java:S107**
+
+**Line 684** — Unchecked cast `(CountingUndoManager) undoManager` without prior `instanceof` check. **Rule: java:S1905 / java:S2175 (Unchecked cast)**
+
+**Line 120** — `@SuppressWarnings({"FieldCanBeLocal"})` suppresses a warning rather than fixing the issue. **Rule: java:S1309 (Suppress warnings annotations should not be used)**
+
+**Line 527** — `handleNonBibTeXStringData` uses `instanceof` pattern with separate if-else chain instead of pattern matching or sealed hierarchy. **Rule: java:S6880 (Pattern matching preferred)**
+
+**Line 480** — `doDeleteEntry` returns `-1`, `0`, or positive int but return type is `int` with no documented contract; magic numbers used. **Rule: java:S109 (Magic numbers should not be used)**
+
+**Line 109** — Field `changeMonitor` is mutable `Optional` used as a field. **Rule: java:S3553 (Optional should not be used for fields)**

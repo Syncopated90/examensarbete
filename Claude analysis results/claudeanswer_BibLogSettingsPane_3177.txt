@@ -1,0 +1,13 @@
+**Line 25** – `LOGGER` field declared but never used. **UnusedField**
+
+**Line 68** – Local variable `initialDir` assigned but never read (dead store). **UnusedLocalVariable**
+
+**Line 69–72** – `FileDialogConfiguration` object assigned to local variable `config` and immediately returned; intermediate variable is unnecessary. **UnnecessaryLocalVariable**
+
+**Line 69** – `withInitialDirectory(viewModel.getInitialDirectory())` calls `viewModel.getInitialDirectory()` again when `initialDir` already holds the result (redundant call, also makes `initialDir` a dead store). **RedundantMethodCall**
+
+**Line 31** – `initializeViewModel` declares `throws JabRefException` but the exception is only propagated from `viewModel.getBlgWarnings(context)`; if that call is the sole source, coupling checked exception to an initialisation method is a design concern. **AvoidThrowingRawExceptionTypes** (minor: unnecessary checked exception propagation)
+
+**Line 42** – `refreshWarnings` declares `throws JabRefException` — same issue as line 31. **AvoidThrowingRawExceptionTypes**
+
+**Line 29** – `@Inject` and `@FXML` annotations are mixed on fields without constructor injection; `dialogService` relies on field injection, reducing testability. **InjectionViaFieldAnnotation**

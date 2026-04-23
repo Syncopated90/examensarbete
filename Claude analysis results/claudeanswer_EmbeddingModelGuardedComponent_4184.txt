@@ -1,0 +1,17 @@
+**Line 19** - `ClassNamingConventions` / `AbstractClassName`: Abstract class name `EmbeddingModelGuardedComponent` should be prefixed with `Abstract` or follow abstract naming convention.
+
+**Line 21** - `ImmutableField`: Field `aiService` can be declared as `final` — it is already, but the class itself is not final while exposing `public` methods that could be overridden; minor note: acceptable.
+
+**Line 37** - `ReturnCount`: Method `showPrivacyPolicyGuardedContent` has multiple return points (returns on lines 39, 41, 43, 45).
+
+**Line 37** - `UseGuardClauses` / `AvoidNegationInIfCondition`: Condition `!aiService.getEmbeddingModel().isPresent()` uses negation; prefer positive condition first.
+
+**Line 38** - `RepeatedCalls` / `PMD:AvoidDuplicateLiterals` or `DesignPattern`: `aiService.getEmbeddingModel()` is called repeatedly (lines 38, 39, 43, 50, 53, 56) without storing the result — violates **DRY** / **PMD:AvoidRepeatedLiterals** and risks inconsistent state.
+
+**Line 57** - `AccessorMethodGeneration` / `VisibilityModifier`: `showBuildingEmbeddingModel()` is `public` but should be `private` or `protected` since it is an internal UI helper not intended for external use.
+
+**Line 62** - `MethodNamingConventions`: Two methods are both named `listen` (lines 62 and 67), differing only by parameter type. This breaks **MethodNamingConventions** — event listener methods should have descriptive names reflecting the event they handle (e.g., `onEmbeddingModelBuilt`, `onEmbeddingModelBuildingError`).
+
+**Line 62 & 67** - `UnusedFormalParameter`: The `event` parameters are never used inside either `listen` method body.
+
+**Line 19** - `CouplingBetweenObjects`: Class depends on `AiService`, `AiPreferences`, `ExternalApplicationsPreferences`, `DialogService`, `AdaptVisibleTabs`, `JabRefEmbeddingModel`, `ErrorStateComponent`, `Localization`, `UiTaskExecutor` — excessive coupling, violates **PMD:ExcessiveImports** / **CouplingBetweenObjects**.

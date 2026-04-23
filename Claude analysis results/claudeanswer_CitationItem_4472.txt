@@ -1,0 +1,23 @@
+**Line 14** – `ClassNamingConventions`: Class `CitationItem` has package-private visibility; consider making it public or explicitly documenting intent.
+
+**Line 15–19** – `VisibilityModifier`: Fields `oci`, `citing`, `cited`, `creation`, `timespan` are package-private (no access modifier); fields should be private.
+
+**Line 22** – `VisibilityModifier`: Field `journalSelfCitation` is package-private.
+
+**Line 25** – `VisibilityModifier`: Field `authorSelfCitation` is package-private.
+
+**Line 29** – `MethodNamingConventions` / `UnusedAccessModifier`: `extractIdentifiers` is package-private but could be `private`; it is not called outside the class.
+
+**Line 29** – `ParameterAssignment`-adjacent / `NullableParameter`: Parameter annotated `@Nullable` but the method is inside a `@NullMarked` class — the null check is correct, but the method should arguably be `private`.
+
+**Line 37** – `LocalVariableName`: `pids` is acceptable, but `pid` loop variable shadows nothing — no issue here; however splitting on `\\s+` without trimming leading whitespace means a leading space produces an empty first token, which `colonIndex > 0` silently drops — **LogicBug / IncorrectStringComparison**: empty string from split is not explicitly handled.
+
+**Line 40** – `UnnecessaryLocalVariable`: `prefix` and `value` are single-use temporaries that could be inlined (minor style rule: `LocalVariableCouldBeFinal`).
+
+**Line 40–41** – `LocalVariableCouldBeFinal`: `prefix`, `value`, `field` are never reassigned and should be `final`.
+
+**Line 36** – `LocalVariableCouldBeFinal`: `identifiers` is never reassigned; should be `final`.
+
+**Line 34** – `LocalVariableCouldBeFinal`: `pids` array is never reassigned; should be `final`.
+
+**Line 27** – `RecordDefinition`: `IdentifierWithField` record is an inner type of a package-private class with no explicit access modifier on the record itself — `VisibilityModifier` violation.

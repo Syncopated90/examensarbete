@@ -1,0 +1,19 @@
+**Line 46** - `REFERENCE_PATTERN`: Field name does not follow constant naming conventions (acceptable), but the regex uses `.*?` with `Pattern.DOTALL` which can cause catastrophic backtracking. **Regex Denial of Service (ReDoS)**
+
+**Line 218** - `if (proceedingsMatcher.find() || workshopMatcher.find() && (!volumeFound && !numberFound))`: **Operator Precedence** — `&&` binds tighter than `||`, so this reads as `find() || (find() && (...))`. Missing parentheses around the `||` operands to express likely intended logic.
+
+**Line 222** - `proceedingsMatcher.hasMatch()`: `Matcher.hasMatch()` is a Java 21+ API. **API compatibility risk** if targeting earlier Java versions.
+
+**Line 119** - `reference = reference.replace(".-", "-")`: Silently modifies the reference before `originalReference` is set — but `originalReference` is set on **line 118** using the pre-modified value, so this is acceptable. No issue.
+
+**Line 87** - `contents = ReferencesBlockFromPdfFinder.getReferencesPagesText(document)`: Variable declared on separate line from assignment. **Unnecessary variable declaration split** (UnnecessaryLocalVariable / variable can be inlined).
+
+**Line 67** - `public RuleBasedBibliographyPdfImporter()`: Sets `citationKeyPatternPreferences = null`. **NullableField** — field annotated `@Nullable` is explicitly assigned null; combined with unchecked use risk downstream.
+
+**Line 113** - `BibEntry parsePlainCitation(String number, String reference)`: Parameter `reference` is reassigned throughout the method. **ParameterAssignment** rule violation — method parameter used as working variable.
+
+**Line 218** - `workshopMatcher.find()` is called even when `proceedingsMatcher.find()` is true due to short-circuit evaluation not applying to the right-hand side grouping. **Eager evaluation side-effect**: `find()` advances the matcher state unnecessarily.
+
+**Line 57** - `AUTHORS_AND_TITLE_AT_BEGINNING`: Pattern uses Unicode left double quotation mark (`"`) — **hardcoded non-ASCII character** in source, fragile if encoding is mishandled. **AvoidUnicodeEscapes** violation (inverse: should use `\u201c`).
+
+**Line 290** - `result.getField(StandardField.BOOKTITLE).get()`: Calls `Optional.get()` without `isPresent()` check. **OptionalGetWithoutIsPresent** — though guarded by `hasField`, this is a fragile pattern.

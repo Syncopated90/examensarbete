@@ -1,0 +1,13 @@
+**Line 32** – `setResultConverter` lambda ignores the `button` parameter when it is not `ButtonType.OK`, returning `null` unconditionally — acceptable, but the lambda captures `viewModel` before `initialize()` is guaranteed to have run, creating a potential null reference (`viewModel` may be `null` when the converter fires). **Rule: Initialization Order / Null Dereference**
+
+**Line 32–36** – `setResultConverter` references `viewModel` which is an instance field set in `@FXML initialize()`. If the result converter is invoked before `initialize()` completes or if FXML loading fails, `viewModel` will be `null`. **Rule: NullDereference**
+
+**Line 17** – `@FXML private HelpButton helpButton;` — `HelpButton` is injected via FXML but never null-checked before use in `initialize()`. **Rule: NullDereference**
+
+**Line 16** – `@FXML private CheckBox showCitationKeyBox;` — same as above, no null-check before `bindBidirectional` call on line 42. **Rule: NullDereference**
+
+**Line 22** – Constructor calls `this.setHeaderText(...)` and `ViewLoader.view(this)...setAsDialogPane(this)` — calling overridable/instance methods and passing `this` reference before the object is fully constructed. **Rule: ConstructorCallsOverridableMethod / DoNotCallOverridableMethodsInConstructor**
+
+**Line 29** – `ViewLoader.view(this).load().setAsDialogPane(this)` passes `this` (partially constructed object) to external code. **Rule: ThisEscapeInConstructor**
+
+**Line 19** – `private EntryTableConfigurationDialogViewModel viewModel;` is not `final` and is assigned outside the constructor (in `initialize()`), making it mutable and not thread-safe. **Rule: ImmutableField / NonFinalField**

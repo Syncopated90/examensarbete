@@ -1,0 +1,25 @@
+Here are the static analysis violations:
+
+**Line 13** (`HTML_LATEX_CONVERSION_MAP`): `ImmutableField` / `MutableStaticField` — `public static final` map is mutable despite `final` modifier.
+
+**Line 14** (`ESCAPED_ACCENTS`): `MutableStaticField` — same issue.
+
+**Line 15** (`UNICODE_ESCAPED_ACCENTS`): `MutableStaticField` — same issue.
+
+**Line 16** (`NUMERICAL_LATEX_CONVERSION_MAP`): `MutableStaticField` — same issue.
+
+**Line 17** (`UNICODE_LATEX_CONVERSION_MAP`): `MutableStaticField` — same issue.
+
+**Line 18** (`LATEX_HTML_CONVERSION_MAP`): `MutableStaticField` — same issue.
+
+**Line 19** (`LATEX_UNICODE_CONVERSION_MAP`): `MutableStaticField` — same issue.
+
+**Line 32** (`CONVERSION_LIST`): `MutableStaticField` — `private static final` array is mutable; array contents can be modified externally.
+
+**Line 355** (`cleanLaTeX`): `UnnecessaryFullyQualifiedName` / implicit: the method is `private` but `CONVERSION_LIST` and `ACCENT_LIST` initialization is in a `static` block with no error handling — `NumberFormatException` from `Integer.decode` is uncaught. Rule: `AvoidThrowingRawExceptionTypes` / `EmptyCatchBlock` — no try/catch around `Integer.decode` calls in the static initializer.
+
+**Line 355** (`cleanLaTeX`): `UseIndexOfChar` — `replaceAll` with regex `[\\\\\\{\\}\\$]` could raise `ClassWithOnlyPrivateConstructorsShouldBeFinal` rule missed; the regex is overly complex for simple char replacement.
+
+**Line 596** (class level): `ClassWithOnlyPrivateConstructorsShouldBeFinal` — `HTMLUnicodeConversionMaps` has only a private constructor but is not declared `final`.
+
+**Line 597** (private constructor): `HideUtilityClassConstructor` — utility class should have a `private` constructor (it does), but class should also be `final`.

@@ -1,0 +1,19 @@
+**Line 19** - `ConfusingTernary`: Negated condition in ternary operator; consider inverting to put the positive case first.
+
+**Line 20** - `StringConcatenation` / line continuation: `Localization.lang(...)` call split across lines with dot operator on new line violates style rules.
+
+**Line 32** - `LocalVariableCouldBeFinal`: `root` could be declared `final`.
+
+**Line 34** - `LocalVariableCouldBeFinal`: `undo` is already `final` but `oldRoot` and `newRoot` (lines 24-25) could be `final`.
+
+**Line 24** - `LocalVariableCouldBeFinal`: `oldRoot` is never modified after assignment.
+
+**Line 25** - `LocalVariableCouldBeFinal`: `newRoot` is never modified after assignment.
+
+**Line 24** - `UnusedLocalVariable`: `oldRoot` is assigned but never used.
+
+**Line 34** - `DoubleCheckedLocking` / redundant call: `databaseContext.getMetaData().getGroups()` is called twice (lines 27 and 34), violating `DuplicatedCode` / `AvoidDuplicateLiterals`.
+
+**Line 34** - `NullAssignment`: `.orElse(null)` passes potential `null` into `GroupTreeNodeViewModel` constructor, risking `NullPointerException`.
+
+**Line 39** - `UnnecessaryCommentRule`: Comment "I think setting root to null is not possible" is speculative and should be replaced with an assertion or removed.

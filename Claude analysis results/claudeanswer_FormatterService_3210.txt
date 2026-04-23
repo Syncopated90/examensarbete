@@ -1,0 +1,5 @@
+**Line 12** — `NullPointerException` risk: `queryParams.getFormat()` may return `null`; calling `.toLowerCase()` on null throws NPE. **Rule: NULL_DEREFERENCE**
+
+**Line 9** — `@Service` annotation used but no interface implemented; HK2 typically requires a contract interface or `@Contract` annotated type. **Rule: MISSING_CONTRACT / INCORRECT_SERVICE_DECLARATION**
+
+**Line 11** — Method `getFormatter` has no null check on `queryParams` parameter itself. **Rule: NULL_DEREFERENCE**

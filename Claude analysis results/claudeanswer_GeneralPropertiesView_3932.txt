@@ -1,0 +1,29 @@
+**Line 28-43** – `@FXML` fields are not `private` by convention but more critically they are package-private implicitly; however the actual issues are below.
+
+**Line 48** – **FieldNamingConvention / ImmutableField**: `switchToRelativeText` and `switchToAbsoluteText` are effectively constants but declared as instance fields instead of `static final`.
+
+**Line 49** – Same as line 48.
+
+**Line 28** – **UnusedImport** (indirect): `javafx.scene.control.Tooltip` is used, but `javafx.application.Platform` import is only used once inside a lambda — not a violation, disregard.
+
+**Line 48-49** – **MutableStaticState / UseOfNonThreadSafeType**: `Localization.lang(...)` called at field initialization time (class load/instantiation), not inside `initialize()`, meaning locale changes after construction are not reflected. **Rule: AvoidCallingLocalizationOutsideInitialize**.
+
+**Line 96** – **NullDereference / PotentialPathInjection**: `Path.of(newValue)` called without checking if `newValue` is null or blank; if `newValue` is empty string `Path.of("")` may behave unexpectedly. **Rule: NullDereference**.
+
+**Line 101** – Same as line 96. **Rule: NullDereference**.
+
+**Line 107** – Same as line 96. **Rule: NullDereference**.
+
+**Line 56** – **LawOfDemeter**: `this.databaseContext` is accessed directly; `databaseContext` is inherited from `AbstractPropertiesTabView` and assigned in constructor before `ViewLoader` runs — accessing it before `initialize()` is called via `ViewLoader.load()` is safe, but the assignment on line 54 (`this.databaseContext = databaseContext`) before `load()` on line 56 is correct ordering. No violation here.
+
+**Line 68** – **UnnecessaryQualifier**: `this.viewModel` — `this.` qualifier is unnecessary. **Rule: UnnecessaryThis**.
+
+**Line 94** – **UnnecessaryThis**: `this.databaseContext.getDatabasePath()` — `this.` is redundant. **Rule: UnnecessaryThis**.
+
+**Line 95-96** – **UnnecessaryThis**: repeated. **Rule: UnnecessaryThis**.
+
+**Lines 117, 122, 127** – **AccessorMethodGeneration / MissingAccessModifier**: `browseLibrarySpecificFileDirectory()` is `public` but `browseLatexFileDirectory()`, `libSpecificFileDirPathSwitch()`, `userSpecificFileDirPathSwitch()`, `laTexSpecificFileDirPathSwitch()` are package-private. **Rule: InconsistentAccessModifier** — FXML handlers should have consistent visibility.
+
+**Line 28-43** – **ExcessiveClassLength / GodClass**: All tooltip, icon, and switch fields are managed in one view class, violating single responsibility. **Rule: GodClass**.
+
+**Line 46-47** – **AvoidDuplicateLiterals**: `"Switch to relative path..."` and `"Switch to absolute path..."` strings are defined as fields but the same pattern (ternary switching between them) is repeated three times (lines 99, 104, 110). **Rule: AvoidDuplicateLiterals** / **DuplicatedCode**.

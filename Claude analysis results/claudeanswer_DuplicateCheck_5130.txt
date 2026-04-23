@@ -1,0 +1,53 @@
+**Line 34** — `MagicNumber`: `0.75` is a magic number.
+
+**Line 45** — `MagicNumber`: `0.05` is a magic number.
+
+**Line 47** — `MagicNumber`: `3` is a magic number.
+
+**Line 55** — `MagicNumber`: `2.5` repeated; magic numbers in static initializer.
+
+**Line 56** — `MagicNumber`: `2.5` magic number.
+
+**Line 57** — `MagicNumber`: `3.` magic number.
+
+**Line 58** — `MagicNumber`: `2.` magic number.
+
+**Line 59** — `MagicNumber`: `0.1` magic number.
+
+**Line 60** — `MagicNumber`: `0.1` magic number.
+
+**Line 61** — `MagicNumber`: `3.` magic number.
+
+**Line 72** — `LawOfDemeter`: `one.getFields()` chained with `.stream()` then `.filter()` then `.anyMatch()` violates Law of Demeter.
+
+**Line 75** — `UnnecessaryCallToOrElseThrow`: `one.getField(field).orElseThrow()` is called inside a lambda where `one.getField(field)` was not checked prior; potential hidden exception.
+
+**Line 107** — `MagicNumber`: `0.0` repeated magic number.
+
+**Line 131** — `MagicNumber`: `0.0` magic number.
+
+**Line 172** — `MagicNumber`: `0.8` magic number.
+
+**Line 185** — `MagicNumber`: `0.8` magic number.
+
+**Line 196** — `MagicNumber`: `0.8` magic number.
+
+**Line 208** — `MagicNumber`: `0.8` magic number.
+
+**Line 218** — `MagicNumber`: `0.8` magic number.
+
+**Line 225** — `VariableDeclarationUsageDistance`: `allFields` is declared then immediately mutated across two lines before use.
+
+**Line 230** — `MagicNumber`: comment says "equal properties" but `totalCount` starts at `allFields.size()` without initialization to a named constant.
+
+**Line 242** — `MagicNumber`: `1.01` is a magic number; comment acknowledges the hack.
+
+**Line 242** — `AvoidInlineComments`: inline comment explaining `1.01` should be a named constant or documented elsewhere.
+
+**Line 248** — `UnnecessaryCreationOfOptional`: `Optional.of(one.getUserComments())` wraps a non-Optional value unnecessarily; `getUserComments()` already returns a `String`.
+
+**Line 249** — `UnnecessaryCreationOfOptional`: same as line 248 for `two.getUserComments()`.
+
+**Line 278** — `DoubleCheckedLocking`/`RedundantConditional`: `type.get()` is called again at line 284 after `type.isPresent()` was already confirmed and `type.get()` stored in `entryType` — redundant second `.get()` call on line 284.
+
+**Line 290** — `LawOfDemeter`: `compareFieldSet(Sets.union(...), ...)` accesses internal fields of both entries directly and chains result index `[0]` inline.

@@ -1,0 +1,7 @@
+**Line 17** — `InstantiationRule` / **Returning `new` object from method**: `getAutoCompletionStrategy()` creates a new `AppendWordsStrategy` instance on every call rather than reusing a cached instance. This is a performance issue.
+
+**Line 17** — `UnnecessaryLocalVariable` / method directly returns a `new` expression without any conditional logic, suggesting the method may be unnecessary abstraction if the caller could instantiate directly.
+
+**Line 12** — `ExcessiveParameterList`: Constructor has 4 parameters, which may indicate a violation of a constructor complexity rule.
+
+**Line 11** — `MissingOverride`-adjacent concern: `getAutoCompletionStrategy()` does not carry `@Override` — if it overrides or implements an interface method, the annotation is absent.

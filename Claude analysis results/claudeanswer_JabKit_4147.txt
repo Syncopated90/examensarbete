@@ -1,0 +1,39 @@
+**Line 5** - `UnusedImports`: `java.io.IOException` is used, but `java.net.MalformedURLException` is caught explicitly when it's already a subtype handled by `FetcherException` catch block — redundant catch type.
+
+**Line 73** - `SystemOutPrintln`: Direct use of `System.out.println` instead of logger.
+
+**Line 76** - `SystemOutPrintln` / `UseStringFormat`: `System.out.printf(BuildInfo.JABREF_BANNER + "%n", ...)` — string concatenation inside `printf`.
+
+**Line 76** - `AvoidStringConcatenation`: String concatenation `BuildInfo.JABREF_BANNER + "%n"` used as format string argument.
+
+**Line 110** - `SystemOutPrintln`: Direct use of `System.out.println`.
+
+**Line 73** - `SystemOutPrintln`: Direct use of `System.out.println`.
+
+**Line 148** - `SystemOutPrintln`: Direct use of `System.out.println`.
+
+**Line 152** - `SystemOutPrintln`: Direct use of `System.out.println`.
+
+**Line 157** - `SystemOutPrintln`: Direct use of `System.out.println`.
+
+**Line 168** - `SystemErrPrintln`: Direct use of `System.err.println`.
+
+**Line 171** - `SystemErrPrintln`: Direct use of `System.err.println`.
+
+**Line 176** - `SystemErrPrintln`: Direct use of `System.err.println` inside `catch`.
+
+**Line 185** - `UnnecessaryCast`: Explicit cast `(SelfContainedSaveConfiguration)` on the result of `new SelfContainedSaveConfiguration()` is redundant.
+
+**Line 197** - `SystemErrPrintln`: Direct use of `System.err.println`.
+
+**Line 199** - `SystemOutPrintln`: Direct use of `System.out.println`.
+
+**Line 201** - `AvoidStringConcatenation` / `SystemErrPrintln`: String concatenation with `"\n"` in `System.err.println`; use `%n` or logger.
+
+**Line 229** - `BooleanInstantiation` / `FieldInitialization`: `private boolean usageHelpRequested = true` — initializing to `true` is likely a bug; help options typically default to `false`.
+
+**Line 9** - `UnusedImports`: `java.util.Optional` — used, valid. `javafx.util.Pair` on **line 11** — using JavaFX `Pair` instead of a purpose-built type or `Map.Entry` violates layering rules.
+
+**Line 83** - `AvoidLiteralsInIfCondition`: String literals `"http://"`, `"https://"`, `"ftp://"` used directly in conditionals without named constants.
+
+**Line 95** - `UseSystemProperties`: `System.getProperty("user.home")` should use a named constant or utility method.

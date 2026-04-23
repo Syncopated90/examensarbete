@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "PreserveStackTrace",
+              "shortDescription": {
+                "text": "Thrown exception does not preserve the stack trace of exception 'e' on all code paths"
+              },
+              "fullDescription": {
+                "text": "\nReports exceptions that are thrown from within a catch block, yet don't refer to the\nexception parameter declared by that catch block. The stack trace of the original\nexception could be lost, which makes the thrown exception less informative.\n\nTo preserve the stack trace, the original exception may be used as the cause of\nthe new exception, using `Throwable#initCause`, or passed as a constructor argument\nto the new exception. It may also be preserved using `Throwable#addSuppressed`.\nThe rule actually assumes that any method or constructor that takes the original\nexception as argument preserves the original stack trace.\n\nThe rule allows `InvocationTargetException` and `PrivilegedActionException` to be\nreplaced by their cause exception. The discarded part of the stack trace is in those\ncases only JDK-internal code, which is not very useful. The rule also ignores exceptions\nwhose name starts with `ignored`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#preservestacktrace",
+              "help": {
+                "text": "\nReports exceptions that are thrown from within a catch block, yet don't refer to the\nexception parameter declared by that catch block. The stack trace of the original\nexception could be lost, which makes the thrown exception less informative.\n\nTo preserve the stack trace, the original exception may be used as the cause of\nthe new exception, using `Throwable#initCause`, or passed as a constructor argument\nto the new exception. It may also be preserved using `Throwable#addSuppressed`.\nThe rule actually assumes that any method or constructor that takes the original\nexception as argument preserves the original stack trace.\n\nThe rule allows `InvocationTargetException` and `PrivilegedActionException` to be\nreplaced by their cause exception. The discarded part of the stack trace is in those\ncases only JDK-internal code, which is not very useful. The rule also ignores exceptions\nwhose name starts with `ignored`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "PreserveStackTrace",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Thrown exception does not preserve the stack trace of exception 'e' on all code paths"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GrobidPlainCitationParser.java"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 19,
+                  "endLine": 48,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

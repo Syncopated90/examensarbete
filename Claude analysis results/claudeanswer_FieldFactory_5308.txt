@@ -1,0 +1,19 @@
+**Line 54** - `fieldName` is a method parameter being reassigned. **ParameterAssignment**
+
+**Line 57–66** - Deeply nested method calls (7 levels). **AvoidDeeplyNestedIfStmts** / **ExcessiveMethodLength** (chained nesting complexity)
+
+**Line 54** - Reassignment of parameter `fieldName`. **AssignmentToMethodParameter**
+
+**Line 44** - Method parameter `type` is annotated `@Nullable` but method is in `@NullMarked` context; null check is absent before use in `BiblatexSoftwareField.fromName(type, fieldName)` and `BiblatexApaField.fromName(type, fieldName)` and `AMSField.fromName(type, fieldName)`. **NullPointerDereference** (potential)
+
+**Line 96** - `serializeOrFields(Field... fields)` and `serializeOrFields(OrFields fields)` are overloaded with ambiguous varargs. **OverloadedVarargsMethod**
+
+**Line 150** - `getAllFieldsWithOutInternal` — typo in method name ("WithOut" should be "Without"). **MethodNamingConventions**
+
+**Line 176** - `getDateFields` includes `StandardField.YEAR` via identity comparison (`field == StandardField.YEAR`), mixing `.equals`-based and `==` comparison styles. **CompareObjectsWithEquals**
+
+**Line 190** - `getAllFields` uses `HashSet` which gives no ordering guarantees, but callers like `getAllFieldsWithOutInternal` wrap it in `TreeSet`; the intermediate unordered set is unnecessary overhead. **UnnecessaryLocalBeforeReturn** / **UselessOverridingMethod**
+
+**Line 57–66** - `OptionalUtil.<Field>orElse(...)` repeated explicit type witness is unnecessary with type inference. **UnnecessaryTypeWitness** / **UselessTypeParameterExplicit**
+
+**Line 32** - `DELIMITER` constant (`;`) is used for both field lists and or-field lists with no distinction; potential misuse. **MagicCharacter** / **AvoidDuplicateLiterals**

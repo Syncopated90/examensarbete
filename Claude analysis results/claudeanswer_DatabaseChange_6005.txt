@@ -1,0 +1,17 @@
+**Line 23** — `AbstractClassWithoutAbstractMethods` (class is declared `abstract` but contains abstract method `applyChange`; however, the `sealed` modifier combined with `abstract` is redundant coupling — minor; main issue below)
+
+**Line 23** — `ExcessiveImports` / unused import risk: multiple specific subclass imports are only referenced in the `permits` clause, not in logic.
+
+**Line 31** — `NullCheck` / `AvoidLiteralsInIfCondition`: null check on `databaseChangeResolverFactory` parameter rather than using `Optional` parameter type.
+
+**Line 31** — `ConstructorCallsOverridableMethod`: `setChangeName("Unnamed Change!")` is a non-private, non-final method called from constructor, allowing subclasses to override it.
+
+**Line 31** — `AvoidLiteralsInIfCondition`: the string literal `"Unnamed Change!"` is a magic string with no named constant.
+
+**Line 25** — `VisibilityModifier`: `externalChangeResolver` is `protected` and non-final effectively mutable field exposed to subclasses.
+
+**Line 24** — `VisibilityModifier`: `databaseContext` is `protected` rather than `private`, violating encapsulation.
+
+**Line 46** — `UnnecessaryJavaDocComment` (Markdown `///` comment style is non-standard Javadoc; not valid prior to JDK 23 and inconsistent with rest of codebase).
+
+**Line 59** — `ReturnEmptyCollectionRatherThanNull` / design issue: `externalChangeResolver.get()` returns `Optional<DatabaseChangeResolver>` but the underlying `OptionalObjectProperty` wrapping an `Optional` creates a double-optional anti-pattern (`OptionalObjectProperty` likely holds `Optional`, so callers get `Optional<Optional<...>>`).

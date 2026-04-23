@@ -1,0 +1,15 @@
+**Line 5** — `UnusedImports`: `javafx.scene.control.Button` is used only as a parameter type passed directly to a utility method; however, the import itself is valid. *(Retract — import is used.)*
+
+**Line 11** — `UnusedImports`: `org.jabref.logic.util.strings.StringUtil` — used, import valid. *(Retract.)*
+
+---
+
+**Line 44** — `CommentedOutCode`: Commented-out code block (`panel.getUndoManager().addEdit(...)`) should be removed, not left in source.
+
+**Line 43** — `TodoComment`: `// TODO: Add undo` violates a rule prohibiting TODO comments in committed code.
+
+**Line 35** — `ReturnCount` / early-return style is acceptable, but note: `text.get()` is called twice (lines 34 and 38) — **Line 34 & 38** — `MethodCallOnSameObjectRepeated` / `DuplicateCalls`: `text.get()` is invoked redundantly; result should be stored in a local variable.
+
+**Line 48** — `LawOfDemeter`: `PopOverUtil.showJournalInfo(journalInfoButton, entry, ...)` accesses `entry` directly from the superclass, exposing internal state; violates encapsulation / Law of Demeter.
+
+**Line 14** — `ClassDataAbstractionCoupling`: Class depends on `JournalAbbreviationRepository`, `TaskExecutor`, `DialogService`, `UndoManager`, `SuggestionProvider`, `FieldCheckers`, `Field` — exceeds typical coupling threshold of 7.

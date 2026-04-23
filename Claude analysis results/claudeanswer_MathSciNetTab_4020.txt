@@ -1,0 +1,15 @@
+**Line 31** – `browser.addEventFilter(MouseEvent.ANY, MouseEvent::consume)` — **Unconditional Event Suppression / Security**: consuming ALL mouse events including programmatic ones is overly broad; a custom filter should be used instead of `MouseEvent::consume` as a method reference to `consume` (an instance method used as a consumer).
+
+**Line 35** – `root.getChildren().addAll(browser, progress)` — **Incorrect Z-Order**: `browser` is added before `progress`, so the progress indicator renders behind the web view and will be invisible to the user. `progress` should be added after `browser`.
+
+**Line 44** – Lambda inside `addListener` — **Memory Leak / Listener Not Removed**: the progress listener is added to the `LoadWorker` property but never removed. Since `WebView` is obtained from `WebViewStore` (reused), this leaks listeners across multiple `bindToEntry` calls.
+
+**Line 29** – `WebView browser = WebViewStore.get()` — **Resource Leak / Stale State**: the `WebView` retrieved from the store may retain state (loaded content, listeners) from prior use; no reset is performed before reuse.
+
+**Line 52** – `bindToEntry` calls `getPane` on every invocation — **Performance / Redundant Object Creation**: a new `StackPane` and new listeners are created each time `bindToEntry` is called without releasing the previous ones.
+
+**Line 22** – `getMathSciNetId` — **Duplicate Logic**: this method is called separately in `shouldShow` (line 48) and `bindToEntry`→`getPane` (line 38), computing the same value twice for the same entry with no caching.
+
+**Line 19–21** – Constructor `MathSciNetTab()` — **Missing `super()` / No Tab Initialization**: `NAME` constant is defined but never passed to the parent tab (e.g., via `super(NAME)`), making the constant unused dead code.
+
+**Line 17** – `public static final String NAME` — **Dead Code / Unused Constant**: `NAME` is declared public but never referenced within the class or (apparently) enforced via the constructor.

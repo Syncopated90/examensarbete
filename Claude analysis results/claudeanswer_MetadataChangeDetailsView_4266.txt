@@ -1,0 +1,21 @@
+**Line 8** – `SplitPane` imported but also used to wrap a single `resultContainer` (see line 103); unused import `Orientation` is used, but `SplitPane` with single item is a misuse. *(Not an import issue — proceed.)*
+
+**Line 3** – `javafx.geometry.Orientation` — used only once; not a violation.
+
+**Line 103** – **Single-Element SplitPane**: `new SplitPane(resultContainer)` creates a `SplitPane` with a single child. A `SplitPane` requires at least two items to be meaningful. This is a logic/design bug.
+
+**Line 62** – **Unchecked Cast / Raw toString()**: `diff.originalObject().toString()` and `diff.newObject().toString()` — if `originalObject()` returns `Object`, calling `.toString()` directly without null-check violates **Null Dereference** rule. No null guard before `.toString()`.
+
+**Line 63** – Same as line 62 — **Null Dereference** on `diff.newObject().toString()`.
+
+**Line 75** – **Local Variable Hides Field** / **Inefficiency**: `getOriginalMetaData()` and `getNewMetaData()` are each called twice (lines 75–76 and implicitly via `metadataChange.getMetaDataDiff()`). **Law of Demeter** violated — `metadataChange.getMetaDataDiff().getOriginalMetaData()` chains two calls repeatedly.
+
+**Line 75–76** – **Law of Demeter** (`train wreck`): `metadataChange.getMetaDataDiff().getOriginalMetaData()` and `metadataChange.getMetaDataDiff().getNewMetaData()` — each is a chain of two method calls on a foreign object.
+
+**Line 113** – **Violation of Single Responsibility**: `createScrollPane` calls `setAllAnchorsAndAttachChild(scrollPane)` — a scroll pane factory method should not have the side effect of attaching the pane to an anchor layout.
+
+**Line 28** – **Constructor Does Too Much**: The constructor performs loop iteration, UI construction, and layout attachment — violates **Single Responsibility Principle** / **God Constructor** rule.
+
+**Line 46** – **Feature Envy**: `addDifferenceView` accesses `diff.differenceType()` twice; result should be stored in a local variable — **Repeated Calls to Same Method** rule.
+
+**Line 155** – **Missing Default in Switch**: The `switch` on `MetaDataDiff.DifferenceType` has no `default` branch. If a new enum constant is added, it will throw `MatchException` at runtime — **Missing Switch Default** rule.

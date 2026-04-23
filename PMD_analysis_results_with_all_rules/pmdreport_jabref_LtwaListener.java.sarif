@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ExcessivePublicCount",
+              "shortDescription": {
+                "text": "This class has 48 public methods and attributes; current threshold is 45."
+              },
+              "fullDescription": {
+                "text": "\nClasses with large numbers of public methods and attributes require disproportionate testing efforts\nsince combinational side effects grow rapidly and increase risk. Refactoring these classes into\nsmaller ones not only increases testability and reliability but also allows new variations to be\ndeveloped easily.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#excessivepubliccount",
+              "help": {
+                "text": "\nClasses with large numbers of public methods and attributes require disproportionate testing efforts\nsince combinational side effects grow rapidly and increase risk. Refactoring these classes into\nsmaller ones not only increases testability and reliability but also allows new variations to be\ndeveloped easily.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "TooManyMethods",
+              "shortDescription": {
+                "text": "This class has too many methods, consider refactoring it."
+              },
+              "fullDescription": {
+                "text": "\nA class with too many methods is probably a good suspect for refactoring, in order to reduce its\ncomplexity and find a way to have more fine grained objects.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#toomanymethods",
+              "help": {
+                "text": "\nA class with too many methods is probably a good suspect for refactoring, in order to reduce its\ncomplexity and find a way to have more fine grained objects.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 3,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ExcessivePublicCount",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has 48 public methods and attributes; current threshold is 45."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LtwaListener.java"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 8,
+                  "endLine": 11,
+                  "endColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "TooManyMethods",
+          "ruleIndex": 1,
+          "message": {
+            "text": "This class has too many methods, consider refactoring it."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/LtwaListener.java"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 57,
+                  "endLine": 276,
+                  "endColumn": 2
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": false,
+          "toolConfigurationNotifications": [
+            {
+              "associatedRule": {
+                "id": "LoosePackageCoupling"
+              },
+              "message": {
+                "text": "No packages or classes specified"
+              }
+            }
+          ],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

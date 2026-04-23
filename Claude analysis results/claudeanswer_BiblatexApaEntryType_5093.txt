@@ -1,0 +1,8 @@
+**Line 30** - `SimplifyStreamCalls` / **Redundant `equalsIgnoreCase` after `toLowerCase`**
+`field.getName()` already returns lowercase (via `toLowerCase(Locale.ENGLISH)`), so `equalsIgnoreCase` is redundant; use `equals(name.toLowerCase(Locale.ENGLISH))` or plain `equals`.
+
+**Line 29-31** - `UseEnumValues` / **Inefficient stream over enum values**
+`Arrays.stream(BiblatexApaEntryType.values())` creates an unnecessary array copy; prefer `EnumSet` or direct iteration.
+
+**Line 8** - `EnumConstructorPattern` / **Enum constant display names mirror the enum name exactly**
+Each `displayName` is identical to the enum constant name, making the field redundant — `name()` would suffice.

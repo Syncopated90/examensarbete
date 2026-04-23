@@ -1,0 +1,11 @@
+**Line 31** - `Field 'regex' may be null` / **Null Field Not Initialized** — `regex` and `replaceWith` are declared but not initialized, leaving them as `null` by default.
+
+**Line 44** - **Null Return** — `format` returns `fieldText` which may be `null`, violating a non-null return contract if one is expected by the interface.
+
+**Line 44** - **Inconsistent Null Check** — `replaceWith` is not checked for `null` alongside `regex` on the same condition, yet both are set together; `replaceWith` could theoretically be `null` if `parts.get(1)` were null, causing NPE on line 47.
+
+**Line 36** - **Empty/Incomplete Method Body (Silent Failure)** — Early `return` with no logging or exception when `parts.size() < 2`, suppressing error silently (TODO comment confirms this).
+
+**Line 13** - **Typo in Javadoc** — `"commma"` is misspelled (should be `"comma"`).
+
+**Line 47** - **Unchecked Regex Exception** — `replaceAll` can throw `PatternSyntaxException` if `regex` is invalid; it is not caught or declared.

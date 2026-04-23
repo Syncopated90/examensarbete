@@ -1,0 +1,13 @@
+**Line 21** - `replaceButton` is declared as `ButtonType` but used with `ControlHelper.setAction()`. `ButtonType` is not a `Node`; this is likely a wrong type declaration — should probably be a `Button`. **Rule: CorrectType / WrongVariableType**
+
+**Line 32** - `viewModel` field is not declared `final` despite being assigned only once in the constructor. **Rule: FieldShouldBeFinal**
+
+**Line 42** - `visualizer` is initialized and decorated but never used after `setDecoration()` — no controls are registered with it. **Rule: UnusedVariable / DeadCode**
+
+**Line 51** - `"".equals(findString)` — `findString` is obtained directly from `findField.getText()` which cannot be `null`, so `findString.isEmpty()` is more appropriate and clearer. **Rule: UseStringIsEmpty / SimplifyBooleanExpression** (PMD: `UseStringIsEmpty`)
+
+**Line 31** - `viewModel` is assigned in the constructor after field declaration without `final`, missing `final` modifier. **Rule: ImmutableField** (PMD)
+
+**Line 39** - `ControlHelper.setAction(replaceButton, ...)` called in constructor before `initialize()` — `replaceButton` (`@FXML`) is injected only after `load()`, so the ordering is acceptable, but `replaceButton` being `ButtonType` (not a `Node`) means `@FXML` injection of `ButtonType` is non-standard. **Rule: MismatchedFXMLType**
+
+**Line 17** - `ReplaceStringView` extends `BaseDialog<Void>` and has public `initialize()` method (line 41) — `@FXML` methods should be `private`, not `public`. **Rule: FXMLMethodVisibility / MethodVisibility**

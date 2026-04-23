@@ -1,0 +1,17 @@
+**Line 14** - `AUTHOR_YEAR_TITLE_COMPARATOR` is package-private (no access modifier) but not private. **Rule: VisibilityModifier**
+
+**Line 15** - Same issue for `YEAR_AUTHOR_TITLE_COMPARATOR`. **Rule: VisibilityModifier**
+
+**Line 14-15** - Non-private static fields should be final constants with proper naming or encapsulated. Both are mutable `Comparator` references exposed at package level. **Rule: MutableStaticState**
+
+**Line 51** - Typo in exception message: `"misssing"` (three s's). **Rule: AvoidDuplicateLiterals** / **Comment: not a static analysis rule but flagged by spell-check linters**
+
+**Line 47** - `produceCitationMarkers` method is long and has multiple responsibilities (lookup, order, marker type branching). **Rule: ExcessiveMethodLength** / **Rule: SingleResponsibilityPrinciple**
+
+**Line 54-62** - Chained `if/else if/else` on type-checking style properties. **Rule: AvoidComplexConditionRule** / **Rule: CollapsibleIfStatements**
+
+**Line 13** - `OOProcess` utility class with private constructor but static fields are not `private`. **Rule: HideUtilityClassConstructor** (constructor is hidden, but fields violate encapsulation)
+
+**Line 21-24** - Local variable `ayt` used only to pass to constructor; inline it. **Rule: UnnecessaryLocalBeforeReturn**
+
+**Line 28-31** - Same: local variable `yat` used only to pass to constructor. **Rule: UnnecessaryLocalBeforeReturn**

@@ -1,0 +1,13 @@
+**Line 13** – `VisibilityModifier` / **Field should be private and accessed via constructor or setter**: `toGraphicIfPresent` has package-private effective visibility risk, but more precisely both fields lack `private final` — they are mutable instance fields set outside the constructor, violating **Immutable Field** / **Field Not Final**.
+
+**Line 14** – Same rule: `defaultGraphic` is a mutable non-final field.
+
+**Line 16** – `ReturnValueIgnored` / **Method chaining on mutable state**: `withGraphicIfPresent` calls `setToGraphic()` which calls `withGraphic(...)` (parent method), but if `defaultGraphic` is not yet set, `setToGraphic()` installs a lambda capturing a `null` `defaultGraphic` — **Incorrect order of initialization / Premature call to `setToGraphic()`**.
+
+**Line 22** – Same rule as line 16: `withDefaultGraphic` calls `setToGraphic()` before `toGraphicIfPresent` may be set — **Premature call to `setToGraphic()`**.
+
+**Line 28** – `LambdaCanBeMethodReference` / **Lambda should be simplified**: the lambda `(rowItem, item) -> { ... }` is non-trivial but the null-check on `toGraphicIfPresent` inside the lambda is a **NullCheck** code smell; the null guard should be enforced at assignment time.
+
+**Line 29** – `PrematureOptionalCheck` / **Calling `isPresent()` without `ifPresent` idiom**: `item.isPresent()` followed by `item.get()` on line 30 should use `item.map(...)` or `item.ifPresent(...)` — violates **OptionalGetWithoutIsPresent** / **UseOptionalAPI** rule.
+
+**Line 30** – `OptionalGetWithoutIsPresent` (secondary): `item.get()` is guarded but static analysers (e.g., SpotBugs, PMD `OptionalGetWithoutIsPresent`) still flag the pattern instead of `item.map(v -> toGraphicIfPresent.apply(rowItem, v)).orElse(defaultGraphic)`.

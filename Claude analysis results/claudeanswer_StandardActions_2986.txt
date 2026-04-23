@@ -1,0 +1,37 @@
+**Line 243 – `text` field not declared `final` (Mutable Enum Field)**
+Rule: `ImmutableField` / `MutableEnumField`
+The field `text` is non-final and mutated by `withText()`, violating enum immutability.
+
+**Line 243 – `private String text` missing `final`**
+Rule: `FieldShouldBeFinal`
+
+**Lines 293–296 (`withText` method) – Mutation of enum instance state**
+Rule: `EnumMutability` / `AvoidMutableEnumFields`
+Enum constants are effectively singletons; mutating `this.text` causes shared mutable state accessible to all callers.
+
+**Line 293 – `withText` returns `Action` but modifies `this` and returns `this` cast to `Action`**
+Rule: `ModifyingEnumStateThroughMethod`
+
+**Line 10 – `@NonNull` annotation imported but the `withText` method at line 293 mutates enum state regardless**
+Rule: `AnnotationMisuse` — `@NonNull` only guards null input, does not prevent the side-effect mutation problem.
+
+**Lines 16–17 – Duplicate `KeyBinding.COPY_PREVIEW` used for two different constants**
+`COPY_CITATION_HTML` (line 21) and `COPY_CITATION_PREVIEW` (line 24) both bind to `KeyBinding.COPY_PREVIEW`.
+Rule: `DuplicateEnumValue` / `AvoidDuplicateKeybindings`
+
+**Lines 173–174 – Duplicate `KeyBinding.HELP` used for six constants**
+`HELP`, `HELP_GROUPS`, `HELP_REGEX_SEARCH`, `HELP_NAME_FORMATTER`, `HELP_SPECIAL_FIELDS`, `HELP_PUSH_TO_APPLICATION` all bind `KeyBinding.HELP`.
+Rule: `DuplicateEnumValue`
+
+**Lines 163–164 – Duplicate `KeyBinding.DOWNLOAD_FULL_TEXT` / `KeyBinding.AUTOGENERATE_CITATION_KEYS`**
+`LOOKUP_FULLTEXT` and `DOWNLOAD_FULL_TEXT` share `KeyBinding.DOWNLOAD_FULL_TEXT`; `GENERATE_CITE_KEY` and `GENERATE_CITE_KEYS` share `KeyBinding.AUTOGENERATE_CITATION_KEYS`.
+Rule: `DuplicateEnumValue`
+
+**Lines 171–172 – `KeyBinding.OPEN_FILE` used for both `OPEN_EXTERNAL_FILE` (line 42) and `OPEN_FILE` (line 126)**
+Rule: `DuplicateEnumValue`
+
+**Lines 169–170 – `KeyBinding.COPY` used for both `COPY` (line 33) and `COPY_FILE_TO_FOLDER` (line 185)**
+Rule: `DuplicateEnumValue`
+
+**Lines 169–172 – `KeyBinding.DELETE_ENTRY` used for both `DELETE_ENTRY` (line 36) and `DELETE_FILE` (line 187)**
+Rule: `DuplicateEnumValue`

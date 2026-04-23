@@ -1,0 +1,17 @@
+**Line 47** — `AiService` created but never closed; resource leak. Rule: **CloseResource**
+
+**Line 29** — `sharedOptions` field is initialized but never used. Rule: **UnusedField**
+
+**Line 63** — `System.err.print`/`println` used directly instead of logger. Rule: **SystemPrintln** (×4, lines 63–66)
+
+**Line 47** — `AiService` instantiated inside `call()` on every invocation without lifecycle management. Rule: **ResourceManagement** / missing try-with-resources.
+
+**Line 58** — `entries` declared before try block, could be declared inside. Rule: **VariableDeclarationUsageDistance**
+
+**Line 22** — Class is package-private but implements `Callable<Integer>` used by external framework (picocli); implicit coupling. Rule: **ExcessiveClassCoupling**
+
+**Line 24** — Logger uses raw class reference `GetCitingWorks.class` in a package-private class — minor, but rule: **LoggerIsNotStaticFinal** is satisfied; no violation here.
+
+**Line 44** — `argumentProcessor.cliPreferences` is a direct field access on parent command (breaks encapsulation). Rule: **InappropriateIntimacy**
+
+**Line 44** — `argumentProcessor` could be null if command is run without parent. Rule: **NullAssignment** / missing null check.

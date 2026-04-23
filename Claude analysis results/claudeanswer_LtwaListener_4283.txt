@@ -1,0 +1,11 @@
+- **Line 11**: `InterfaceNameSuffix` / `AbstractClassName` — Interface named `LtwaListener` uses suffix `Listener`; by convention ANTLR-generated aside, PMD flags non-`I`-prefixed or misnamed interfaces depending on ruleset. *(Minor/convention-dependent)*
+
+- **Line 11**: `ExcessivePublicCount` — Interface declares an excessive number of public methods (40+).
+
+- **Lines 18, 23, 28, 33, 38, 43, 48, 53, 58, 63, 68, 73, 78, 83, 88, 93, 98, 103, 108, 113, 118, 123, 128, 133, 138, 143, 148, 153, 158, 163, 168, 173, 178, 183, 188, 193, 198, 203, 208, 213**: `MissingOverride` — Methods in an interface extending another interface that override/implement methods from the parent should be annotated with `@Override` where applicable (specifically `enterEveryRule`, `exitEveryRule`, etc., if overriding `ParseTreeListener`).
+
+- **Lines 18–213**: `JavadocVariable` / `JavadocMethod` — Javadoc `@param` tag references parameter `ctx` but does not specify the type explicitly per strict Javadoc rules. *(Informational)*
+
+- **Line 5**: `UnnecessaryImport` — `import org.antlr.v4.runtime.tree.ParseTreeListener` may be flagged if the interface reference is considered indirectly satisfied, though here it is directly used via `extends`; not a violation in this case. *(Not a violation)*
+
+- **Lines 18, 28, 38, 48**: `CouplingBetweenObjects` — High coupling to numerous inner context classes of `LtwaParser` (`SingleWordTitleFullContext`, `StopwordPlusTitleFullContext`, etc.), violating coupling thresholds.
