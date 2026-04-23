@@ -1,9 +1,9 @@
 import os, json
 
 def summarize_results():
-  summarize_claude()
+  #summarize_claude()
   #summarize_pmd()
-  #summarize_pmd_with_all_rules()
+  summarize_pmd_with_all_rules()
 def summarize_claude():
   claude_results_dir = "Claude analysis results/"
   file_results = []
@@ -18,7 +18,7 @@ def summarize_claude():
     print(result)
   #print(file_results[0])
   print(len(file_results))
-  with open("claude_results_summary.txt", "w", encoding = "utf-8") as file:
+  with open("claude_results_summary_160 files.txt", "w", encoding = "utf-8") as file:
     for result in file_results:
       file.write(json.dumps(result))
       file.write("\n")
@@ -36,7 +36,7 @@ def summarize_pmd():
   for result in pmd_results:
     print(result)
   print(len(pmd_results))
-  with open("pmd_results_summary.txt", 'w', encoding = 'utf-8') as file:
+  with open("pmd_results_summary_160 files.txt", 'w', encoding = 'utf-8') as file:
     for result in pmd_results:
       file.write(json.dumps(result))
       file.write("\n")
@@ -54,7 +54,7 @@ def summarize_pmd_with_all_rules():
   for result in pmd_results:
     print(result)
   print(len(pmd_results))
-  with open("pmd_results_summary_with_all_rules.txt", 'w', encoding = 'utf-8') as file:
+  with open("pmd_results_summary_with_all_rules_160 files.txt", 'w', encoding = 'utf-8') as file:
     for result in pmd_results:
       file.write(json.dumps(result))
       file.write("\n")
