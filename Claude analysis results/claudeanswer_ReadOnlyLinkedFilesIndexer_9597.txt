@@ -1,0 +1,23 @@
+**Line 19** — `UWF_UNWRITTEN_FIELD` / **Unwritten Field**: `indexDirectory` and `searcherManager` may remain null if constructor throws, but are used unconditionally in `closeIndex()`.
+
+**Line 25** — `RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE` / **Null Dereference**: If `FSDirectory.open()` throws, `searcherManager` is never assigned; `closeIndex()` will throw `NullPointerException`.
+
+**Line 26** — `NP_NULL_ON_SOME_PATH` / **Null Dereference**: `searcherManager` can be null if constructor's try block fails partially; `getSearcherManager()` returns null.
+
+**Line 53** — `NP_NULL_ON_SOME_PATH` / **Null Dereference**: `searcherManager.close()` called without null check on `searcherManager`.
+
+**Line 54** — `NP_NULL_ON_SOME_PATH` / **Null Dereference**: `indexDirectory.close()` called without null check on `indexDirectory`.
+
+**Line 17** — `FCBL_FIELD_COULD_BE_LOCAL` / **Field Could Be Local**: `indexDirectory` is only used within constructor and `closeIndex()`; could arguably be encapsulated more defensively.
+
+**Line 32** — `USM_USELESS_SUBCLASS_METHOD` / **Empty Method Override**: `updateOnStart()` is an empty override providing no implementation.
+
+**Line 37** — `USM_USELESS_SUBCLASS_METHOD` / **Empty Method Override**: `addToIndex()` is an empty override.
+
+**Line 42** — `USM_USELESS_SUBCLASS_METHOD` / **Empty Method Override**: `removeFromIndex()` is an empty override.
+
+**Line 47** — `USM_USELESS_SUBCLASS_METHOD` / **Empty Method Override**: `updateEntry()` is an empty override.
+
+**Line 52** — `USM_USELESS_SUBCLASS_METHOD` / **Empty Method Override**: `removeAllFromIndex()` is an empty override.
+
+**Line 57** — `USM_USELESS_SUBCLASS_METHOD` / **Empty Method Override**: `rebuildIndex()` is an empty override.

@@ -1,0 +1,31 @@
+**Line 16**: `UnusedImport` - `AllowedToUseLogic` is imported but used only as annotation; verify if `StringUtil` import at line 17 is the actual reason this annotation is needed.
+
+**Line 140**: `LocalVariableNamingConvention` - variable `lText` does not follow camelCase convention (should be `text` or `localText`).
+
+**Line 170**: `MissingDefault` - inner `switch` on `key` for `"p"` tag handling has a `default` but the outer `switch` structure mixes statement and expression switch styles inconsistently across the method.
+
+**Line 155**: `ObjectEquality` - `Objects.requireNonNull(tagName)` return value is ignored; result not assigned.
+
+**Line 158**: `VariableDeclarationUsageDistance` - `attributes` declared far from first use inside each case block.
+
+**Line 213**: `UnnecessaryLocalVariable` - `expected` is assigned from `expectEnd.pop()` and used only once immediately after.
+
+**Line 230**: `StringConcatenationInLoop` - `rest.insert(0, "<%s>".formatted(s))` uses `String.format`-style inside a loop on a `StringBuilder`, partially defeating the purpose.
+
+**Line 247**: `UnusedImport` - `XPropertySet` is re-cast on line 268 after already being declared on line 244, making the first declaration unused after `setAllPropertiesToDefault()`.
+
+**Line 338**: `NullAssignment` - `layers.peek()` can return `null` if the deque is empty; result is used without null check on line 340 (`oldLayer` copy).
+
+**Line 395**: `NullAssignment` - `layers.peek()` on line 420 and line 446 can return `null`; no null guard present.
+
+**Line 499**: `ConfusingTernaryOperator` - `parts.length > 0 ? parts[0] : ""` is always true since `split` on a non-empty string returns at least one element; condition is misleading.
+
+**Line 530**: `AvoidUncheckedCast` - `.map(e -> (short) e)` and `.map(e -> (byte) e)` are unchecked narrow casts from `Object` that will throw `ClassCastException` at runtime if the stored type differs.
+
+**Line 578**: `BooleanVarNamingConvention` - local variables `FAIL` and `PASS` use constant naming convention (`ALL_CAPS`) but are local variables, not constants.
+
+**Line 578-579**: `MagicBoolean` - `final boolean FAIL = true` / `PASS = false` are unnecessarily verbose; method could simply return `true`/`false` directly.
+
+**Line 593**: `EmptyCatchBlock` - `catch` block swallows `UnknownPropertyException | PropertyVetoException | IllegalArgumentException | WrappedTargetException` with no logging.
+
+**Line 601**: `AvoidThrowingRawExceptionTypes` - throws `java.lang.IllegalArgumentException` wrapping a `com.sun.star.lang.IllegalArgumentException`, obscuring the origin type.

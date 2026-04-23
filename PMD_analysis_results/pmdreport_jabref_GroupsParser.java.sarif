@@ -1,0 +1,325 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "UnnecessaryFullyQualifiedName",
+              "shortDescription": {
+                "text": "Unnecessary qualifier 'GroupsParser': 'fromString' is already in scope"
+              },
+              "fullDescription": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname",
+              "help": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "UselessParentheses",
+              "shortDescription": {
+                "text": "Useless parentheses around `cursor.getParent().isPresent()`."
+              },
+              "fullDescription": {
+                "text": "\n            Parenthesized expressions are used to override the default operator precedence\n            rules. Parentheses whose removal would not change the relative nesting of operators\n            are unnecessary, because they don't change the semantics of the enclosing expression.\n\n            Some parentheses that strictly speaking are unnecessary, may still be considered useful\n            for readability. This rule allows to ignore violations on two kinds of unnecessary parentheses:\n            - \"Clarifying\" parentheses, which separate operators of difference precedence. While\n            unnecessary, they make precedence rules explicit, which may be useful for rarely used\n            operators. For example:\n            ```java\n                (a + b) & c // is equivalent to `a + b & c`, but probably clearer\n            ```\n            Unset the property `ignoreClarifying` to report them.\n\n            - \"Balancing\" parentheses, which are unnecessary but visually balance out another pair\n            of parentheses around an equality operator. For example, those two expressions are equivalent:\n            ```java\n                (a == null) != (b == null)\n                a == null != (b == null)\n            ```\n            The parentheses on the right are required, and the parentheses on the left are\n            just more visually pleasing. Unset the property `ignoreBalancing` to report them.\n\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#uselessparentheses",
+              "help": {
+                "text": "\n            Parenthesized expressions are used to override the default operator precedence\n            rules. Parentheses whose removal would not change the relative nesting of operators\n            are unnecessary, because they don't change the semantics of the enclosing expression.\n\n            Some parentheses that strictly speaking are unnecessary, may still be considered useful\n            for readability. This rule allows to ignore violations on two kinds of unnecessary parentheses:\n            - \"Clarifying\" parentheses, which separate operators of difference precedence. While\n            unnecessary, they make precedence rules explicit, which may be useful for rarely used\n            operators. For example:\n            ```java\n                (a + b) & c // is equivalent to `a + b & c`, but probably clearer\n            ```\n            Unset the property `ignoreClarifying` to report them.\n\n            - \"Balancing\" parentheses, which are unnecessary but visually balance out another pair\n            of parentheses around an equality operator. For example, those two expressions are equivalent:\n            ```java\n                (a == null) != (b == null)\n                a == null != (b == null)\n            ```\n            The parentheses on the right are required, and the parentheses on the left are\n            just more visually pleasing. Unset the property `ignoreBalancing` to report them.\n\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "PreserveStackTrace",
+              "shortDescription": {
+                "text": "Thrown exception does not preserve the stack trace of exception 'exception' on all code paths"
+              },
+              "fullDescription": {
+                "text": "\nReports exceptions that are thrown from within a catch block, yet don't refer to the\nexception parameter declared by that catch block. The stack trace of the original\nexception could be lost, which makes the thrown exception less informative.\n\nTo preserve the stack trace, the original exception may be used as the cause of\nthe new exception, using `Throwable#initCause`, or passed as a constructor argument\nto the new exception. It may also be preserved using `Throwable#addSuppressed`.\nThe rule actually assumes that any method or constructor that takes the original\nexception as argument preserves the original stack trace.\n\nThe rule allows `InvocationTargetException` and `PrivilegedActionException` to be\nreplaced by their cause exception. The discarded part of the stack trace is in those\ncases only JDK-internal code, which is not very useful. The rule also ignores exceptions\nwhose name starts with `ignored`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#preservestacktrace",
+              "help": {
+                "text": "\nReports exceptions that are thrown from within a catch block, yet don't refer to the\nexception parameter declared by that catch block. The stack trace of the original\nexception could be lost, which makes the thrown exception less informative.\n\nTo preserve the stack trace, the original exception may be used as the cause of\nthe new exception, using `Throwable#initCause`, or passed as a constructor argument\nto the new exception. It may also be preserved using `Throwable#addSuppressed`.\nThe rule actually assumes that any method or constructor that takes the original\nexception as argument preserves the original stack trace.\n\nThe rule allows `InvocationTargetException` and `PrivilegedActionException` to be\nreplaced by their cause exception. The discarded part of the stack trace is in those\ncases only JDK-internal code, which is not very useful. The rule also ignores exceptions\nwhose name starts with `ignored`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "UnnecessaryFullyQualifiedName",
+              "shortDescription": {
+                "text": "Unnecessary qualifier 'GroupsParser': 'addLegacyEntryKeys' is already in scope"
+              },
+              "fullDescription": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname",
+              "help": {
+                "text": "\nImport statements allow the use of non-fully qualified names.  The use of a fully qualified name\nwhich is covered by an import statement is redundant.  Consider using the non-fully qualified name.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 4,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              }
+            },
+            {
+              "id": "LooseCoupling",
+              "shortDescription": {
+                "text": "Avoid using implementation types like 'EnumSet'; use the interface instead"
+              },
+              "fullDescription": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling",
+              "help": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupsParser.java"
+                },
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 8,
+                  "endLine": 41,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnnecessaryFullyQualifiedName",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Unnecessary qualifier 'GroupsParser': 'fromString' is already in scope"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupsParser.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 39,
+                  "endLine": 74,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UselessParentheses",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Useless parentheses around `cursor.getParent().isPresent()`."
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupsParser.java"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 60,
+                  "endLine": 83,
+                  "endColumn": 92
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PreserveStackTrace",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Thrown exception does not preserve the stack trace of exception 'exception' on all code paths"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupsParser.java"
+                },
+                "region": {
+                  "startLine": 276,
+                  "startColumn": 19,
+                  "endLine": 276,
+                  "endColumn": 76
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnnecessaryFullyQualifiedName",
+          "ruleIndex": 4,
+          "message": {
+            "text": "Unnecessary qualifier 'GroupsParser': 'addLegacyEntryKeys' is already in scope"
+          },
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupsParser.java"
+                },
+                "region": {
+                  "startLine": 290,
+                  "startColumn": 13,
+                  "endLine": 290,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PreserveStackTrace",
+          "ruleIndex": 3,
+          "message": {
+            "text": "Thrown exception does not preserve the stack trace of exception 'exception' on all code paths"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupsParser.java"
+                },
+                "region": {
+                  "startLine": 293,
+                  "startColumn": 19,
+                  "endLine": 293,
+                  "endColumn": 76
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 5,
+          "message": {
+            "text": "Avoid using implementation types like 'EnumSet'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/GroupsParser.java"
+                },
+                "region": {
+                  "startLine": 325,
+                  "startColumn": 9,
+                  "endLine": 325,
+                  "endColumn": 29
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

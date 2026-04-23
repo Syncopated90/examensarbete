@@ -1,0 +1,13 @@
+**Line 4** – `java.util.Optional` used as return type in interface method (`getLookupResult()`). **Rule: `OptionalAsMethodParameter`** (more precisely, Optional as return type is acceptable, but the import itself is fine; actual rule broken:)
+
+**Line 17** – `Optional` return type on interface method. **Rule: `ReturnsNullInsteadOfOptional`** is not broken, but:
+
+**Lines 10, 15** – Javadoc comments use `///` (line comment style) instead of `/** */` block comments. **Rule: `JavadocStyle`** / **`InvalidJavadocPosition`** – `///` is not valid Javadoc syntax in Java; these will not be processed as Javadoc by the compiler.
+
+**Line 6** – `///` used on interface-level comment. **Rule: `InvalidJavadocPosition`**
+
+**Line 7** – Interface `CitationMarkerNormEntry` has no explicit visibility modifier on methods; interface methods are implicitly `public`, but:
+
+**Lines 10 and 17** – Missing `@return` Javadoc tag on methods that return values. **Rule: `MissingJavadocMethod`** / **`JavadocMethod`**
+
+**Line 17** – Method `getLookupResult()` returns `Optional<CitationLookupResult>` — `Optional` should not be used as a return type in interfaces per some rulesets. **Rule: `OptionalUsage`**

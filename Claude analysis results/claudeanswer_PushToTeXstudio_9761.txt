@@ -1,0 +1,14 @@
+**Line 21 - String Format Style**
+`"%s%s%s".formatted(...)` — calling `formatted()` on a string literal; prefer `String.format("%s%s%s", ...)` for consistency, or simplify to direct concatenation. (Rule: `StringFormat` / `UseStringFormat`)
+
+**Line 25 - Unused Parameter**
+`column` parameter is declared but never used in the method body. (Rule: `UnusedFormalParameter`)
+
+**Line 20 - Array Return**
+Method `getCommandLine` returns a mutable array, violating encapsulation. (Rule: `MethodReturnsInternalArray`)
+
+**Line 25 - Array Return**
+Method `jumpToLineCommandlineArguments` returns a mutable array. (Rule: `MethodReturnsInternalArray`)
+
+**Line 9 - Public Static Final**
+`APPLICATION` is a `public static final` field of non-primitive, non-String type, exposing a mutable reference. (Rule: `PublicStaticFinalFieldShouldBeImmutable` / `MutableStaticState`)

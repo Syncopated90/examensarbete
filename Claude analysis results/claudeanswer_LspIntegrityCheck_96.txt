@@ -1,0 +1,13 @@
+**Line 17** — `AVOID_CONSTANTS_IN_INTERFACES` / **Constant naming**: Boolean constant `ALLOW_INTEGER_EDITION` is fine by naming convention, but it is a magic-value workaround rather than a configuration parameter. Minor issue only.
+
+**Line 36** — **AvoidCatchingNPE** (PMD): `NullPointerException` should not be explicitly caught. Fix the root cause instead.
+
+**Line 38** — **MethodLength** / **LongLine**: The chained builder call on a single line exceeds typical line length limits (>120 chars).
+
+**Line 39** — **LongLine**: Same issue — builder chain exceeds line length limits.
+
+**Line 35–44** — **LambdaBodyLength** (PMD): The lambda body passed to `flatMap` is too long and contains a try/catch; should be extracted to a named method.
+
+**Line 44** — **ReturnEmptyCollectionRatherThanNull** / **UnnecessaryLocalBeforeReturn**: `Stream.of()` is used as a fallback after swallowing an exception, masking the error path — related to the caught NPE on line 36.
+
+**Line 27–33** — **LocalVariableCouldBeFinal** (PMD): `integrityCheck` is assigned once and never reassigned; should be declared `final`.

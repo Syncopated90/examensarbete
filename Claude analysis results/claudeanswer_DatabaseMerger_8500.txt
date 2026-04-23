@@ -1,0 +1,25 @@
+**Line 53** - `Collectors.toList()` — **UseCollectorsToUnmodifiableList** / **UseStreamToList**: Prefer `Stream.toList()` over `Collectors.toList()`.
+
+**Line 57** — **VisibilityModifier**: `mergeStrings` is `public` but should be `private` or `package-private` given class design; exposes internal logic unnecessarily.
+
+**Line 63** — **AvoidCallingOptionalGet**: `target.getStringByName(bibtexStringName).get()` calls `Optional.get()` without `isPresent()` check.
+
+**Line 68–71** — **StringConcatenationInLoop**: `newName = bibtexStringName + "_" + suffix` performs string concatenation inside a `while` loop.
+
+**Line 34 / Line 43** — **UnnecessarySynchronized** / **SynchronizedMethod**: `merge` methods are `synchronized` but the class has no shared mutable state; synchronization is ineffective for thread safety of external objects.
+
+**Line 50** — **LocalVariableCouldBeFinal**: `duplicateCheck` could be declared `final`.
+
+**Line 58** — **LocalVariableCouldBeFinal**: `bibtexString` loop variable could be `final`.
+
+**Line 59** — **LocalVariableCouldBeFinal**: `bibtexStringName` could be declared `final`.
+
+**Line 62** — **LocalVariableCouldBeFinal**: `importedContent` and `existingContent` could be declared `final`.
+
+**Line 67** — **LocalVariableCouldBeFinal**: `suffix` cannot be `final` (modified), but `newName` initial assignment at line 68 could be folded.
+
+**Line 74** — **TodoComment**: `// TODO undo/redo` violates no-TODO-comment rule (also line 81).
+
+**Line 105** — **LambdaCanBeMethodReference**: `() -> target.setGroups(newGroups)` — the lambda body is a single method call but captures a variable, marginal; however the `newGroups::moveTo` at line 103 shadows a potential **MethodReferenceUsage** concern.
+
+**Line 51–53** — **UnnecessaryLocalVariable**: `newEntries` is assigned and immediately passed to `insertEntries`; could be inlined.

@@ -1,0 +1,13 @@
+**Line 11** — `InterfaceIsType`: Interface `SearchListener` has no methods of its own beyond those inherited; however, it does declare methods, so this is not applicable. Correct issue:
+
+**Line 11** — `JavadocVariable` / missing `@author` or `@version` tag in type-level Javadoc (CheckStyle: `JavadocType` rule — missing `@param` or required tags on the interface Javadoc block).
+
+More precisely:
+
+- **Line 10** — `JavadocType`: Type-level Javadoc comment does not include required tags (e.g., `@author`, `@version`).
+- **Line 1** — `GeneratedAnnotation` / `MissingOverride`: Auto-generated file lacks `@Generated` annotation on the type declaration.
+- **Line 4** — `UnusedImports`: `ParseTreeListener` is imported and used only as a parent interface; no violation here — but verify no unused imports.
+- **Line 11** — `InterfaceTypeParameterName`: No violation.
+- **Lines 16, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90** — `JavadocMethod`: Each method Javadoc uses `{@code ...}` or `{@link ...}` referencing `SearchParser` inner context classes (`StartContext`, `ImplicitAndExpressionContext`, etc.) that are not resolvable at static analysis time — `JavadocMissingParamTag` or `InvalidJavadocPosition` may trigger depending on tooling.
+- **Line 11** — `DesignForExtension` (PMD/Checkstyle): Interface extends `ParseTreeListener` without documenting extension contract.
+- **Line 1** — `CommentFirstSentence` (Checkstyle): First line is a generated comment, not a proper Javadoc sentence on the type.

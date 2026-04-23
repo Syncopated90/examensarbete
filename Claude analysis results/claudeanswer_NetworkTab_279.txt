@@ -1,0 +1,27 @@
+**Line 48** – `proxyPasswordText = ""` — Field initialized to default value (`""`) unnecessarily. **FieldInitializedToDefaultValue**
+
+**Line 49** – `proxyPasswordCaretPosition = 0` — Field initialized to default value (`0`) unnecessarily. **FieldInitializedToDefaultValue**
+
+**Line 54** – `gitPatText = ""` — Field initialized to default value (`""`) unnecessarily. **FieldInitializedToDefaultValue**
+
+**Line 55** – `gitPatCaretPosition = 0` — Field initialized to default value (`0`) unnecessarily. **FieldInitializedToDefaultValue**
+
+**Line 155** – `proxyPasswordReveal(MouseEvent event)` — Parameter `event` is unused. **UnusedFormalParameter**
+
+**Line 163** – `proxyPasswordMask(MouseEvent event)` — Parameter `event` is unused. **UnusedFormalParameter**
+
+**Line 173** – `gitPatReveal(MouseEvent event)` — Parameter `event` is unused. **UnusedFormalParameter**
+
+**Line 181** – `gitPatMask(MouseEvent event)` — Parameter `event` is unused. **UnusedFormalParameter**
+
+**Line 163** – `!"".equals(proxyPasswordText)` — Use `!proxyPasswordText.isEmpty()`. **UseStringIsEmpty**
+
+**Line 181** – `!"".equals(gitPatText)` — Use `!gitPatText.isEmpty()`. **UseStringIsEmpty**
+
+**Line 144** – `new SimpleStringProperty(cellData.getValue().getThumbprint())` — Observable value created unnecessarily; consider reuse. **UnnecessaryLocalVariable**
+
+**Line 145–148** – Method chain on `new ValueTableCellFactory<>()` — anonymous object created and used inline without assignment; not a violation per se, but `withTooltip` uses `"Remove formatter '%0'"` which appears mismatched for a certificate removal action. **ConfusingArgumentToVarargsMethod** / copy-paste error.
+
+**Line 130** – `certVersion` uses `EasyBind.map` while other columns use `setCellValueFactory` with direct property — inconsistent pattern, but specifically `EasyBind.map` returns `ObservableValue` not `StringProperty`; may cause **ReturnValueIgnored** if binding is garbage collected.
+
+**Line 133–134** – Same as line 130: `certValidFrom`, `certValidTo` — **ReturnValueIgnored** risk from weak `EasyBind.map` observable references.

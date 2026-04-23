@@ -1,0 +1,19 @@
+**Line 29** — `DocumentBuilderFactory.newInstance()` assigned to a `static final` field without XXE protection (external entities not disabled). **Rule: XXE_DOCUMENT_BUILDER_FACTORY** / **XML External Entity (XXE) vulnerability**.
+
+**Line 30** — `DOCUMENT_BUILDER_FACTORY` is a mutable static field (`DocumentBuilderFactory` is not thread-safe). **Rule: ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD** / **Mutable Static Field**.
+
+**Line 55** — `Document result = null` initialized to null, used later without null-check if `getDOMrepresentation()` returns `null` to callers. **Rule: NP_NULL_ON_SOME_PATH** / **Null Dereference risk**.
+
+**Line 57** — `DOCUMENT_BUILDER_FACTORY.newDocumentBuilder()` called on a shared static `DocumentBuilderFactory` which is not thread-safe. **Rule: STCAL_INVOKE_ON_STATIC_CALENDAR_INSTANCE** / **Non-thread-safe static instance invocation**.
+
+**Line 79** — Element named `"style.table-row-properties"` uses a dot instead of colon (likely bug: should be `"style:table-row-properties"`). **Rule: correctness / String literal defect**.
+
+**Line 92** — `table.setAttribute("table.style-name", "ta1")` uses dot instead of colon (`table:style-name`). **Rule: correctness / String literal defect**.
+
+**Line 95** — `row.setAttribute("table.style-name", "ro1")` uses dot instead of colon (`table:style-name`). **Rule: correctness / String literal defect**.
+
+**Line 46** — `entries` parameter is accepted as `null` and explicitly handled, but accepting `null` as a valid argument is a poor API design. **Rule: NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE** / **Null parameter accepted**.
+
+**Line 183** — Caught exception `ParserConfigurationException` only logs a warning and allows `result` to remain `null`, which is silently returned to the caller. **Rule: REC_CATCH_EXCEPTION** / **Return of null on exception**.
+
+**Line 27** — Class is package-private (`class OpenDocumentRepresentation`) but has a `public` constructor (line 35). **Rule: Inconsistent access modifiers**.

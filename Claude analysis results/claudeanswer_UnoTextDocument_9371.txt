@@ -1,0 +1,13 @@
+**Line 64** — `Optional.ofNullable(frameTitleString)`: `String.valueOf()` never returns null; use `Optional.of()`. **Rule: `UnnecessaryNullCheck` / `OptionalOfNullableMisuse`**
+
+**Line 64** — `String.valueOf(frameTitleObj.get())`: converts an `Object` to String via `valueOf`; if the object is already a `String`, a direct cast is more appropriate. **Rule: `UnnecessaryCallToStringValueOf`**
+
+**Line 19** — `UnoTextDocument()`: empty private constructor lacks a comment explaining it is a utility class. **Rule: `HideUtilityClassConstructor` / `UtilityClassWithoutPrivateConstructor`** (constructor exists but class has no `final` modifier). **Rule: `UtilityClassShouldBeFinal`**
+
+**Line 29** — `catch (NoDocumentException | DisposedException ex)`: caught exception `ex` is not logged or rethrown; information is silently discarded. **Rule: `EmptyCatchBlock` / `AvoidSwallowingExceptions`**
+
+**Line 36** — `getCurrentController`: method is `public` but operates on a `null`-permitting parameter without a `@Nullable` annotation; inconsistent null contract with callers. **Rule: `NullableAnnotationMissing` / `MissingNullCheckAnnotation`**
+
+**Line 48** — `getFrameTitle`: `frame.get()` called after `frame.isEmpty()` check is safe, but `Optional.get()` without `isPresent()` guard on the same line is a style violation some analyzers flag. **Rule: `OptionalGetWithoutIsPresent`** (context-dependent, flagged by SpotBugs `OPT_PREMATURE_GET`)
+
+**Lines 22–32** — `isDocumentConnectionMissing`: method name is a negative boolean; naming convention prefers positive names (e.g., `isDocumentConnectionAvailable`). **Rule: `AvoidNegativelyNamedBooleanMethods` / `BooleanMethodNameMustStartWithQuestion`**

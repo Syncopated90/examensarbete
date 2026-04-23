@@ -1,0 +1,11 @@
+**Line 8** — `ClassNamingConventions`: Class is package-private but lacks visibility modifier documentation; minor, but note no `public` modifier while implementing `Comparable`.
+
+**Line 30** — `EqualsAvoidNull`: `Objects.equals(key, that.key)` is fine, but `bundle == that.bundle` on line 42 uses reference equality (`==`) instead of `.equals()` — **UseEqualsInsteadOfEqualityOperator / CompareObjectsWithEquals**.
+
+**Line 42** — `CompareObjectsWithEquals`: `bundle == that.bundle` compares object references rather than using `.equals()`.
+
+**Line 9** — `UnusedPrivateField` / `FieldNotUsedInEquals`: `path` is declared but excluded from both `equals()` and `hashCode()`, violating the consistency contract implied by its inclusion as a field — **InconsistentHashCodeAndEquals** (field `path` used in `toString` and getter but omitted from `equals`/`hashCode`).
+
+**Line 46** — `HashCodeAndEqualsNotPaired` / `InconsistentHashCode`: `hashCode()` omits `path`, consistent with `equals()`, but `path` being a meaningful field and excluded from both raises a **MissingHashCodeEntry** concern.
+
+**Line 57** — `NullPassedToNotNullAnnotated` / `NullDereference` risk: `compareTo` calls `getId()` on parameter `o` without null check — **NullDereferenceInCompareTo**.

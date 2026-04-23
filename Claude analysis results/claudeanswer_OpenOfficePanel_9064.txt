@@ -1,0 +1,25 @@
+**Line 98** — `currentStyle` field shadows the field; `OOStyle currentStyle` is declared twice (also as field at line 98 and assigned from preferences). Not a shadow, but:
+
+**Line 98, 100** — `private OOStyle ooBase` / `private OOStyle currentStyle` — `ooBase` is declared as `OOBibBase` type but listed under `OOStyle` block. Minor grouping issue only.
+
+**Line 170** — **Dead Store / Unused Assignment**: `jStyle = jStyleLoader.getUsedJstyle();` — the reassigned local variable `jStyle` from the pattern variable in `instanceof JStyle jStyle` is then reassigned but the pattern variable is already bound; the original pattern binding is lost. The `jStyle` from the `instanceof` pattern is shadowed by the reassignment.
+
+**Line 163** — **Unnecessary local constants**: `final boolean FAIL = true` and `final boolean PASS = false` — use of magic-named local boolean constants instead of returning literals directly. (Violation: *AvoidInlineConditionals* / *UnusedLocalVariable* style, or simply unnecessary complexity.)
+
+**Line 291** — **Redundant condition**: `syncOptions.isPresent() && openOfficePreferences.getSyncWhenCiting()` — `syncOptions` is only non-empty when `getSyncWhenCiting()` is true (set 2 lines above), making the second condition always true when the first is true. (**RedundantCondition**)
+
+**Line 248** — **Variable declared but `withText` is unused if branch not taken**: `boolean withText = citationType.withText()` is computed before checking `citeDialogViewModel.isPresent()`, but only used inside the `if` block.
+
+**Line 201** — **Exception swallowed / poor handling**: `catch (WrappedTargetException | NoSuchElementException ex)` wrapped in `throw new RuntimeException(ex)` inside a lambda — **PreserveStackTrace** rule violation (original checked exception needlessly wrapped).
+
+**Line 312** — **Same as line 201**: `throw new RuntimeException(e)` wrapping checked exceptions inside lambda — **PreserveStackTrace**.
+
+**Line 395** — **Identical catch block / repeated string literal**: `Localization.lang("Autodetecting paths...")` is passed twice as separate arguments (title and message are identical strings) — **AvoidDuplicateLiterals**.
+
+**Line 350** — **Same violation**: `Localization.lang("Autodetecting paths...")` duplicated — **AvoidDuplicateLiterals**.
+
+**Line 84** — `private OOStyle currentStyle` — mutable non-final field that is also exposed via `currentStyleProperty`; state is duplicated between `currentStyle` and `currentStyleProperty` without synchronization. **InconsistentState**.
+
+**Line 433** — **`autoSync` action listener is set but `alwaysAddCitedOnPagesText` is added to menu conditionally both via `EasyBind` (line 444) and imperatively (line 472)**— duplicate conditional logic for adding `alwaysAddCitedOnPagesText`. **DuplicateCode**.
+
+**Line 222** — `boolean hasDatabase = !getBaseList().isEmpty()` — `getBaseList()` always returns a non-empty list (it falls back to `new BibDatabase()`), making `hasDatabase` always `true`. **RedundantCondition**.

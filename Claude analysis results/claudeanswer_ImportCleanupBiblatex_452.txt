@@ -1,0 +1,5 @@
+**Line 20** - `DD_MEANINGLESS_OVERRIDE` (or `USELESS_OVERRIDE`): The local reassignment of parameter `entry` from `super.doPostCleanup(entry)` is unnecessary if the parent modifies in place; however the core issue is:
+
+**Line 20** - `RV_RETURN_VALUE_IGNORED`: The result of `super.doPostCleanup(entry)` is assigned back to the parameter variable `entry`, but since Java is pass-by-value for references, the reassignment of the local parameter `entry` has no effect on the caller's reference.
+
+**Line 19** - `PARAMETER_ASSIGNMENT` (PMD): Assignment to a method parameter (`entry`) is discouraged.

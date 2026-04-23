@@ -1,0 +1,11 @@
+**Line 14** — `LocalVariableCouldBeFinal`: The parameter `title` could be declared `final`.
+
+**Line 15** — `UnnecessaryLocalVariable` / Instantiation concern: `new TitleParser()` is instantiated without reuse; consider a static method or singleton (`InstantiationWithoutObjectUse` / `IllegalInstantiation`).
+
+**Line 18** — `MethodReturnsInternalArray` (PMD): Returning `Collections.unmodifiableList(words)` still exposes the internal list structure; prefer returning a copy (`ReturnOfCollectionOrArrayField`).
+
+**Line 22** — `CallToDeprecatedMethod` / API concern: `getWords().isEmpty()` calls `getWords()` which wraps the list on every invocation; repeated calls to `getWords()` on lines 22, 24, 27, 29 are inefficient (`RepeatedCallToMethod`).
+
+**Line 24** — `UnnecessaryUnboxing` / `RepeatedCallToMethod`: `getWords().getFirst()` — `getWords()` called again unnecessarily; same on **line 29** (`getWords().getLast()`).
+
+**Line 36** — `LawOfDemeter`: `words.stream().map(Word::toString)` — direct field access to `words` instead of going through `getWords()` breaks encapsulation consistency (`DirectFieldAccess` / `LawOfDemeter`).

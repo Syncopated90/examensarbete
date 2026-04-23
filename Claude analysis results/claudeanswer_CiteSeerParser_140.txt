@@ -1,0 +1,17 @@
+**Line 21** — `CookieHandler.setDefault(new CookieManager())` — **Misplaced Responsibility / Side Effect in Business Method**: Setting a global JVM-wide `CookieHandler` inside a parsing method is a side effect unrelated to parsing.
+
+**Line 21** — **Non-Thread-Safe Global State Modification**: `CookieHandler.setDefault()` modifies a global static resource without synchronization, causing race conditions in concurrent environments.
+
+**Line 34** — **Return Value Ignored**: `bibEntry.setField(...)` returns an `Optional`; all return values on lines 34–42 are silently discarded.
+
+**Line 35** — **Semantic Incorrectness / Misuse of Field**: `StandardField.DOI` is set with a value explicitly noted (lines 28–31) as not a valid DOI; a custom or different field should be used.
+
+**Line 46** — **Passing `Optional` as Parameter**: `parseAuthors(Optional<JSONArray>)` accepts an `Optional` parameter, violating the convention that `Optional` should not be used as a method parameter type.
+
+**Line 54** — **Potential `StringIndexOutOfBoundsException` / Off-by-One**: If `authorsArray.length()` is 0, `authorsArray.length() - 1` evaluates to `-1`, causing the loop to not execute but line 56 (`authorsArray.getString(-1)`) will throw an exception.
+
+**Line 57** — **Unnecessary Object Instantiation in Method**: `new AuthorListParser()` is instantiated on every call; it should be a class-level field.
+
+**Line 17** — **Missing `@Slf4j` / No Logging**: Parse errors and unexpected input are silently swallowed with no logging mechanism present in the class.
+
+**Line 19** — **Checked Exception Declaration Without Actual Throw**: `parseCiteSeerResponse` declares `throws ParseException` but never throws it directly; the exception is never raised in the method body.

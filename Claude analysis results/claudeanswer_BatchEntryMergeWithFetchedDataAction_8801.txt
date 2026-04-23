@@ -1,0 +1,11 @@
+**Line 46** - `java:S3864` (or general: **"Optional.map() with orElse should be simplified"**) — `getActiveDatabase()` is called twice; the `isEmpty()` check followed by `.map(...).orElse(List.of())` is redundant. Use a single `ifPresent`/`map`/`orElse` chain.
+
+**Line 43** - `java:S2589` **"Redundant null/empty check"** — `stateManager.getActiveDatabase().isEmpty()` is checked on line 43, then `.map(...).orElse(List.of())` on line 46 duplicates that guard.
+
+**Line 57** - `java:S2095` **"Resources should be closed"** — `MergingIdBasedFetcher` may implement `Closeable`/`AutoCloseable`; it is never closed.
+
+**Line 58** - `java:S107` **"Too many parameters"** (if `BatchEntryMergeTask` constructor has ≥4 params) — constructor called with 4 arguments, potentially violating max-parameter rule.
+
+**Line 21** - `java:S1104` / **"Class variable fields should not have public accessibility"** — not applicable here, but `stateManager`, `undoManager`, `preferences`, `notificationService`, `taskExecutor` are all `private final`, which is correct; no violation.
+
+**Line 28–36** - `java:S107` **"Methods should not have too many parameters"** — constructor has 5 parameters, exceeding the default threshold of 4.

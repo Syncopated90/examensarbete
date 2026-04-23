@@ -1,0 +1,14 @@
+**Line 14 — `HideUtilityClassConstructor`**
+The `Directories` class is a utility class with only static methods but has no private constructor, allowing instantiation.
+
+**Lines 23, 31, 38, 44, 50, 56, 63, 70 — `CallToDeprecatedMethod` / repeated `AppDirsFactory.getInstance()` calls**
+`AppDirsFactory.getInstance()` is called repeatedly on every method invocation rather than being stored as a constant — violates **`AvoidDuplicateCode`** / **`StaticImport`** / single-responsibility for initialization.
+
+**Line 39 — `AvoidStringConcatenation` / `StringConcatenation`**
+`"lucene" + File.separator + LinkedFilesConstants.VERSION` uses string concatenation; should use `String.join` or `Path.of` chaining.
+
+**Line 45 — `AvoidStringConcatenation`**
+`"ai" + File.separator + AiService.VERSION` same violation as line 39.
+
+**Lines 22–70 — `MethodNamingConventions` (minor)**
+No violation here, but all methods lack `@NonNull` or nullability annotations despite returning `Path` objects derived from external factory calls that could return `null`, violating **`ReturnValueIgnored`** / **`NullableReturnCheck`** — no null-check on `AppDirsFactory.getInstance().getUserDataDir(...)` before passing to `Path.of()`.

@@ -1,0 +1,26 @@
+**Line 107 — `Stream.peek()` used for side effects**
+Rule: `StreamPeekForSideEffects` / Sonar `S3958`
+`peek()` is intended for debugging, not for performing mutations (`updateField`). Side effects should be in `forEach`.
+
+**Line 96 — Merging entry copies only fields, ignores entry type discrepancy silently**
+Rule: `IncompleteEntryMerge` (logic defect / missing validation)
+The merged entry uses `entryFromLibrary.getType()` but never reconciles the `fetchedEntry`'s type.
+
+**Line 44 — Null check instead of using `Optional` parameter**
+Rule: `AvoidNullChecks` / PMD `NullAssignment`
+`fetchEntry` accepts `BibEntry` and manually null-checks; the parameter should be `Optional<BibEntry>`.
+
+**Line 28 — `static final` mutable-adjacent: `NonSpaceWhitespaceRemover` assumed thread-safe without documentation**
+Rule: `NonThreadSafeStaticField`
+Sharing a formatter instance statically is risky if `format()` is not thread-safe.
+
+**Line 107 — `collect(Collectors.toSet())` after `peek` with side effects causes non-deterministic ordering**
+Rule: `PeekWithCollect` / ordering-dependent side effects
+Fields are updated via `peek` before collection; stream ordering is not guaranteed for `Set`.
+
+**Line 93 — `mergeBibEntries` iterates fields twice (line 95–97 and via `updateFieldsFromSource`)**
+Rule: `AvoidDuplicateIterations` / PMD `OptimizableToArrayCall`
+All fields from `entryFromLibrary` are iterated once to copy, then `fetchedEntry` fields are iterated — but `shouldUpdateField` re-fetches values via `getField` redundantly.
+
+**Line 63 — `flatMap(Optional::stream)` with `findFirst` discards remaining fetch attempts silently**
+Rule: Acceptable pattern, but combined with `peek`-based side effects on line 107, lazy evaluation may cause unexpected behavior — `StreamLazySideEffects`.

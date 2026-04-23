@@ -1,0 +1,9 @@
+**Line 22** — `NullPointerException` risk / **Null Dereference**: `parserResult.getFieldRange()` may return `null`; `fieldRange` is dereferenced without null check.
+
+**Line 24** — **String Format / Path.toString()**: `inputFile` is passed directly as `%s` argument, relying on implicit `toString()`; should use `inputFile.toString()` explicitly. *(Minor: `Path.toString()` is platform-dependent — separators may vary.)*
+
+**Line 24** — **Hard-coded Line Separator**: `\n` used instead of `%n` or `System.lineSeparator()`, breaking portability across OS.
+
+**Line 14** — **Excessive Parameters / Long Parameter List**: Constructor has 4 parameters; consider a builder or parameter object.
+
+**Line 22** — **Law of Demeter**: `message.entry()` and `message.field()` are chained into `parserResult.getFieldRange()`, exposing internal structure across multiple objects.

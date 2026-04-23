@@ -1,0 +1,51 @@
+**Line 29** — `onMouseClickedEvent` field not initialized; mutable field exposed without encapsulation — **VisibilityModifier**
+
+**Line 30** — same issue for `onMousePressedEvent` — **VisibilityModifier**
+
+**Line 31** — same for `toCustomInitializer` — **VisibilityModifier**
+
+**Line 32** — same for `contextMenuFactory` — **VisibilityModifier**
+
+**Line 33** — same for `toOnDragDetected` — **VisibilityModifier**
+
+**Line 34** — same for `toOnDragDropped` — **VisibilityModifier**
+
+**Line 35** — same for `toOnDragEntered` — **VisibilityModifier**
+
+**Line 36** — same for `toOnDragExited` — **VisibilityModifier**
+
+**Line 37** — same for `toOnDragOver` — **VisibilityModifier**
+
+**Line 38** — same for `toOnMouseDragEntered` — **VisibilityModifier**
+
+**Line 122** — `treeTableView.addEventHandler` called inside `updateItem`; a new handler is registered every time the row is reused, causing handler accumulation — **EventHandlerLeak / AvoidEventHandlerInUpdateItem**
+
+**Line 135** — `getParent()` may return `null`; no null check before calling `localToScreen` — **NullDereference**
+
+**Line 148** — `setOnMouseClicked` called inside `updateItem`; handler re-registered on every cell reuse — **AvoidEventHandlerInUpdateItem**
+
+**Line 152** — same for `setOnMousePressed` — **AvoidEventHandlerInUpdateItem**
+
+**Line 156** — `toCustomInitializer.accept(this)` called inside `updateItem`; side effects repeated on every update — **AvoidSideEffectsInUpdateItem**
+
+**Line 160** — `setOnDragDetected` inside `updateItem`; handler re-registered on reuse — **AvoidEventHandlerInUpdateItem**
+
+**Line 163** — `setOnDragDropped` inside `updateItem` — **AvoidEventHandlerInUpdateItem**
+
+**Line 166** — `setOnDragEntered` inside `updateItem` — **AvoidEventHandlerInUpdateItem**
+
+**Line 169** — `setOnDragExited` inside `updateItem` — **AvoidEventHandlerInUpdateItem**
+
+**Line 172** — `setOnDragOver` inside `updateItem` — **AvoidEventHandlerInUpdateItem**
+
+**Line 176** — `setOnMouseDragEntered` inside `updateItem` — **AvoidEventHandlerInUpdateItem**
+
+**Line 179** — `addEventFilter` called inside `updateItem` loop; filters accumulate on every update without removal — **EventHandlerLeak**
+
+**Line 100** — `putIfAbsent` silently ignores duplicate `pseudoClass` entries; no feedback to caller — **IgnoredReturnValue**
+
+**Line 107** — `putIfAbsent` silently ignores duplicate `event` entries — **IgnoredReturnValue**
+
+**Line 118** — anonymous inner class referencing outer `treeTableView` parameter creates implicit closure capture; prevents GC of the view — **AvoidAnonymousInnerClasses / MemoryLeak**
+
+**Line 119** — `subscriptions` field declared inside anonymous class but behaves as instance state; should be declared at the enclosing scope — **FieldDeclarationsShouldBeAtStartOfClass**

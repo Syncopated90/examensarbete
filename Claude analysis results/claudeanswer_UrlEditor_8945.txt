@@ -1,0 +1,13 @@
+**Line 30** — `@FXML` on a `final` field (`viewModel`). `@FXML` injection requires the field to be non-final; this combination is contradictory. **Rule: InjectedFieldShouldNotBeFinal / InvalidFXMLAnnotationUsage**
+
+**Line 30** — Field `viewModel` is declared `final` but assigned in the constructor after `ViewLoader.view(this).load()`, which is acceptable for `final`, however `@FXML` implies framework injection which conflicts with `final`. **Rule: ConfusingAnnotation**
+
+**Line 46** — `this.viewModel` is assigned after `ViewLoader...load()` is called (line 42–44). If `load()` attempted `@FXML` injection of `viewModel`, it would fail since it's `final`. **Rule: FieldNotInitializedBeforeUse / IncorrectFXMLUsage**
+
+**Line 49** — `textField.initContextMenu(contextMenuSupplier, preferences.getKeyBindingRepository())` — `keyBindingRepository` is already injected on line 35; passing `preferences.getKeyBindingRepository()` is a duplicate/inconsistent source. **Rule: ConfusingUtilityUsage**
+
+**Line 52** — Method chaining with nested `new` instantiations (`new CleanupUrlFormatter().format(new TrimWhitespaceFormatter().format(...))`) creates unnecessary object allocations inline. **Rule: InsufficientStringBufferDeclaration / UnnecessaryLocalBeforeReturn / AvoidInstantiatingObjectsJustToCallGetMethod**
+
+**Line 32–35** — `@Inject` fields (`dialogService`, `preferences`, `keyBindingRepository`, `undoManager`) are used in the constructor body (lines 45–53) after `ViewLoader.load()` triggers injection. If injection has not completed before the constructor body accesses them, NPE is possible. **Rule: DoNotCallOverridableMethodInConstructor / ConstructorCallsOverridableMethod**
+
+**Line 40–41** — Constructor parameters `undoAction` and `redoAction` are not stored as fields; they are used only transiently. No rule broken strictly, but they shadow the injected undo concern. **Rule: UnusedFormalParameter** (if `establishBinding` does not retain them — depends on implementation, flagged as suspect).

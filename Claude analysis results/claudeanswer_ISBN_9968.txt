@@ -1,0 +1,29 @@
+**Line 25** — `NullPassThrough`: `input` parameter has no `@NonNull` annotation but is passed directly to `new ISBN()` which requires `@NonNull`.
+
+**Line 39** — `MagicNumber`: Literal `10` used directly without named constant.
+
+**Line 42** — `MagicNumber`: Literal `13` used directly without named constant.
+
+**Line 58** — `MagicNumber`: Literal `10` used directly without named constant.
+
+**Line 63** — `MagicNumber`: Literal `8` used directly without named constant.
+
+**Line 65** — `MagicNumber`: Literal `10` used directly without named constant (also `9`).
+
+**Line 68** — `MagicNumber`: Literal `11` used directly without named constant.
+
+**Line 73** — `MagicNumber`: Literal `13` used directly without named constant.
+
+**Line 77** — `MagicNumber`: Literals `12`, `3` used directly without named constants.
+
+**Line 79** — `MagicNumber`: Literal `10` used directly without named constant.
+
+**Line 65-66** — `ConfusingArithmeticExpression`: `'9' + 1` is an obscure way to derive `':'` (char arithmetic), reducing readability; should use named constant or explicit value `10`.
+
+**Line 100** — `UnnecessaryCast`: `(ISBN) o` cast is unnecessary given the `getClass()` guard, but more critically, `equals` uses `equalsIgnoreCase` while **Line 104** `hashCode` normalises to lowercase — this is consistent, but `equalsIgnoreCase` without normalising first is a `EqualsHashCodeSymmetry` smell worth flagging.
+
+**Line 24** — `ReturnCount`: Method `parse` has multiple return statements (violation of single-exit rule).
+
+**Line 107** — `OverriddenMethodCallInConstructor`: Not applicable here, but `isbnString.toLowerCase(Locale.ENGLISH)` in `hashCode` duplicates logic already available via `asString()`; minor `DuplicateStringLiteral` / encapsulation issue.
+
+**Line 17** — `UseOfPatternQuote`: The `-` in `replace("-", "")` at line 22 is fine, but the regex `[\\dxX]` does not anchor the `x` case consistently with the `isbn10check` logic — potential `RegexpDesign` inconsistency (pattern allows lowercase `x`, check handles it, but it is not documented).

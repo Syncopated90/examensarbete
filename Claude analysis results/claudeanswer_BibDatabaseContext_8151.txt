@@ -1,0 +1,21 @@
+**Line 156** — `Objects.requireNonNull` called immediately after null check and fallback assignment; redundant null check (`RedundantNullCheck` / `UnnecessaryNullCheck`)
+
+**Line 163** — `preferences.shouldStoreFilesRelativeToBibFile()` and `preferences.getMainFileDirectory()` are method calls with potential side effects inside a conditional; no issue per se, but `fileDirs` is a local variable of interface type `SequencedSet` referenced only through `LinkedHashSet` — acceptable, but:
+
+**Line 141** — `new LinkedHashSet<>(3)` — initial capacity `3` is used but `LinkedHashSet` capacity semantics differ from `ArrayList`; minor misuse (`MagicNumber`)
+
+**Line 152** — `Objects.requireNonNull(parentPath, ...)` after already assigning `parentPath` a non-null value in the else branch — redundant (`RedundantNullCheck`)
+
+**Line 231** — `getDatabasePath().isPresent()` followed immediately by `getDatabasePath().get()` on line 233 and again on line 235 — multiple calls to `getDatabasePath()` instead of using the `Optional` once (`OptionalGetWithoutIsPresent` / `CallToOptionalGetWithoutIsPresent`, and `AvoidMultipleUnboxing`)
+
+**Line 244** — `Reader.of(bibContent)` — `Reader` is an abstract class from `java.io`; calling a static factory `of` on it is Java 11+, acceptable, but the created `Reader` is never closed — resource leak (`ResourceLeak` / `CloseResource`)
+
+**Line 248** — `try (Reader reader = new BufferedReader(new InputStreamReader(bibContentStream)))` — `bibContentStream` is not owned by this method; closing the `BufferedReader` will close the passed-in `InputStream`, which may be unintended (`CloseResource` / `DoNotCallCloseOnExternallyOwnedStream`)
+
+**Line 270** — `toString()` calls `getFulltextIndexPath()` which performs file system path resolution and logging — side effects in `toString` (`SideEffectInToString`)
+
+**Line 54** — `private final String uid = "bibdatabasecontext_" + UUID.randomUUID();` — field initializer with non-deterministic value; `UUID.randomUUID()` is a side effect at field initialization (`AvoidCallingRandomInFieldInit` / `NonDeterministicFieldInitializer`)
+
+**Line 198** — `dbmsListener.unregisterListener(dbmsSynchronizer)` inside `if (dbmsSynchronizer != null)` block, but `dbmsListener` null check is the outer condition — correct, but `dbmsSynchronizer` field could be `null` while `dbmsListener` is not, indicating inconsistent state management (`InconsistentState`)
+
+**Lines 71–73** — Constructor `BibDatabaseContext(BibDatabase, MetaData)` does not validate inputs despite `@NullMarked` annotation on the class; no null checks on `database` or `metaData` parameters (`NullArgumentNotChecked`)

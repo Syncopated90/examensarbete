@@ -1,0 +1,15 @@
+**Line 69** - `file.isEmpty()` / `file.map(Path::toString).orElse("")` — **Contradictory/Useless Code**: When `file.isEmpty()`, `file.map(Path::toString).orElse("")` will always return `""`. The format string `%1` with an empty string produces a misleading message. More critically, this is a logic error: the error message implies we know the filename but we don't.
+
+**Line 69** - **Confusing/Wrong Branch Logic**: The notify is called inside `file.isEmpty()` block, but passes `file.map(...)` which is always empty here — **NullOrEmptyPathUsage**.
+
+**Line 72** - `file.get()` — **OptionalGetWithoutIsPresent**: `file.get()` is called but guarded only by `else`, which is acceptable here; however, Sonar/PMD still flags `Optional.get()` without a direct `isPresent()` check on the same line — **Rule: OptionalGetWithoutIsPresent**.
+
+**Line 88** - `writeMetadataToFile` is `public static synchronized` — **Rule: UnnecessarySynchronization / SynchronizedMethod**: Synchronizing a static method locks the class monitor unnecessarily; callers are not documented to rely on this guarantee, and internal state being protected is unclear.
+
+**Line 88** - **ExcessiveParameterList**: `writeMetadataToFile` has 8 parameters — **Rule: ExcessiveParameterList** (PMD default threshold is 7).
+
+**Line 92** - `// Similar code can be found at ...` — **Rule: CommentedOutCode / TodoComment**: Cross-reference comment is informal and not actionable; violates **AvoidInlineComments** or **CommentContent** rules depending on ruleset.
+
+**Line 94** - `new XmpUtilWriter(xmpPreferences).writeXmp(...)` — **Rule: InsufficientlyDocumentedThrows / ThrowsCountRule**: Method declares 4 checked exceptions (`IOException`, `TransformerException`, `SaveException`, `ParserConfigurationException`) — **Rule: ThrowsCount** (PMD flags >3 thrown exception types).
+
+**Lines 44–60** — Constructor parameter order differs from field declaration order (e.g., `fieldPreferences` declared before `databaseContext` at fields, reversed in constructor body assignments) — **Rule: DeclarationOrderRule** (PMD).

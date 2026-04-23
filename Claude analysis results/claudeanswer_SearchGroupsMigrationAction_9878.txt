@@ -1,0 +1,23 @@
+**Line 29** — `String Concatenation` (rule: **AvoidStringConcatenation** / **UseStringFormat**): String concatenated with `+` instead of using `Localization.lang` or a formatter.
+
+**Line 30** — `String Concatenation` (same rule): Hardcoded English string passed directly to `showErrorDialogAndWait` without localization.
+
+**Line 29-31** — `Confused Return` / **MissingElse**: `return false` on line 33 executes regardless of whether the `equals(VERSION_6_0_ALPHA)` branch ran, making the inner `if` block have a side-effect-only purpose with no structural `else`, which is misleading but legal — borderline **CollapsibleIfStatements**.
+
+**Line 28** — **AvoidNestedBlocks** / **CollapsibleIfStatements**: Nested `if` inside `if (currentVersion.isPresent())` could be collapsed.
+
+**Line 29** — **InternationalizationRule** / **NonLocalizedString**: Error dialog text on lines 29–30 uses hardcoded English strings instead of `Localization.lang(...)`.
+
+**Line 44** — **ReturnFromFinallyBlock** / **UnnecessaryBooleanReturn**: `return true` inside a for-loop recursive check; acceptable but the recursive method could be replaced with stream — minor **AvoidInstantiatingObjectsJustToGetClass**.
+
+**Line 54** — **LawOfDemeter**: `parserResult.getMetaData().getGroups()` chains two method calls on a returned object.
+
+**Line 55** — **LawOfDemeter**: `parserResult.getMetaData().setGroupSearchSyntaxVersion(...)` — same chain.
+
+**Line 26** — **LawOfDemeter**: `parserResult.getMetaData().getGroupSearchSyntaxVersion()` — same chain.
+
+**Line 38** — **LawOfDemeter**: `parserResult.getMetaData().getGroups()` — repeated violation.
+
+**Line 63** — **ExceptionsShouldBeImmutable** / **AvoidCatchingGenericException**: Catching `ParseCancellationException` and silently delegating to a dialog swallows exception detail without logging.
+
+**Line 63** — **EmptyCatchBlock** (effectively): The catch block performs only a UI delegation with no logging of the caught exception `e`, violating **LogAndThrow** / **AvoidSwallowingException**.

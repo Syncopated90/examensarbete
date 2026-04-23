@@ -1,0 +1,15 @@
+**Line 6** — `UnusedImport`: `java.util.stream.Collectors` can be replaced; with Java 16+ use `Stream.toList()` instead of `collect(Collectors.toList())`, making the import unnecessary if refactored, but as-is it's used. *(Retract)*
+
+**Line 28** — `CollectorsToList`: Use `Stream.toList()` instead of `collect(Collectors.toList())` (modernization rule / `CollectorsToList`).
+
+**Line 33** — `OverriddenMethodCallInHashCode` / `HashCodeUsesNonFinalField`: `entryType` and `fields` are non-primitive `ObjectProperty`/`ObservableList`; `hashCode()` delegates to `ObjectProperty.hashCode()` which is identity-based, making it inconsistent with `equals()` which uses `Objects.equals` on the property values — **`InconsistentHashCode`**.
+
+**Line 39–44** — `EqualsGetClass` vs `instanceof`: Use of `instanceof` with pattern matching is acceptable, but `equals` compares `ObjectProperty` references via `Objects.equals`, which uses identity for `SimpleObjectProperty` — **`EqualsBrokenForSubclasses`** / **`InconsistentHashCode`**.
+
+**Line 55** — `MethodName` / `AccessorMethodName`: Method `fields()` returns a mutable `ObservableList` directly, violating encapsulation — **`ReturnOfCollectionOrArrayField`**.
+
+**Line 59** — `ReturnOfCollectionOrArrayField` (same): `entryType()` exposes the internal `ObjectProperty` directly — **`ExposedInternalRepresentationByReturningReference`**.
+
+**Line 63** — `UnnecessaryJavaDocParam` / parameter name `focusedItem` is misleading for a general remove operation — **`LinguisticallyMisguidedMethodName`** (parameter named `focusedItem` implies UI concern leaked into model).
+
+**Line 16** — `StaticImport` of `FieldViewModel.Mandatory` — **`StaticImportUsage`**: static import of a nested enum from another class reduces readability.

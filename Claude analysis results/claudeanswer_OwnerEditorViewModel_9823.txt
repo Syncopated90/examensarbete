@@ -1,0 +1,9 @@
+**Line 10** — `ClassNamingConventions` / `AbstractClassName`: Class `OwnerEditorViewModel` extends an abstract-prefixed class but is itself concrete; no rule broken here, but:
+
+**Line 10** — `MissingOverride`: `setOwner()` likely overrides a parent/interface method without `@Override` annotation.
+
+**Line 21** — `LawOfDemeter`: `preferences.getOwnerPreferences().getDefaultOwner()` violates Law of Demeter (message chain / train wreck).
+
+**Line 11** — `ImmutableField` / `EncapsulationRule`: `preferences` field is `final` and only used once; acceptable, but single-use injected dependency may indicate `FeatureEnvy`.
+
+**Line 21** — `NullDereference`: `preferences.getOwnerPreferences()` may return `null`, and `.getDefaultOwner()` is called without null check.

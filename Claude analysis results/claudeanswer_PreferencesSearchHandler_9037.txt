@@ -1,0 +1,15 @@
+**Line 5** — `UnusedImport`: `java.util.stream.Collectors` is unused (`.toList()` should be used instead of `.collect(Collectors.toList())`). Actually it is used, so no violation here.
+
+**Line 49** — `CollectorsToList`: Use `Stream.toList()` instead of `collect(Collectors.toList())`.
+
+**Line 64** — `StreamPeekForSideEffects` / `StreamPeekSideEffect`: `.peek()` is used for side effects (highlighting), which violates the principle that `peek` is for debugging only.
+
+**Line 64–67** — `StreamFindAnyIsPresent` / `ReplaceStreamFindAnyIsPresent`: `.findAny().isPresent()` should be replaced with `.anyMatch(...)`.
+
+**Line 40** — `VisibilityModifier` / `DesignForExtension`: `filterTabs` is `public` in a package-private class.
+
+**Line 116** — `VisibilityModifier`: `filteredPreferenceTabsProperty()` is `protected` in a package-private class.
+
+**Line 23** — `MutableField`: `preferenceTabs` field could be declared as an unmodifiable list.
+
+**Line 135** — `ParameterName` / `LocalVariableNameConvention`: parameter `parent` shadows `javafx.scene.Parent` import — variable name conflicts with type name.

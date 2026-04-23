@@ -1,0 +1,14 @@
+**Line 47 — Resource Leak (`predictor` not closed in `close()`)**
+`predictor` implements `AutoCloseable` but `close()` only closes `model`, never calls `predictor.close()`.
+
+**Line 44 — `RuntimeException` thrown (`AvoidThrowingRawExceptionTypes`)**
+Throwing raw `RuntimeException` instead of a specific exception subclass.
+
+**Line 21 — Excessive `throws` declaration / Constructor Exception Handling**
+Constructor declares three checked exceptions (`ModelNotFoundException`, `MalformedModelException`, `IOException`); if `model.newPredictor()` fails after `loadModel()`, the loaded `model` is never closed — resource leak.
+
+**Line 26 — Method parameter named `list` (`AvoidUsingShortVariableNames` / poor naming)**
+Parameter name `list` shadows the type and violates descriptive naming rules.
+
+**Line 17 — Class implements two interfaces without necessity (`SingleResponsibilityPrinciple`)**
+Implementing both `EmbeddingModel` and `AutoCloseable` conflates lifecycle management with model logic; minor design rule violation.

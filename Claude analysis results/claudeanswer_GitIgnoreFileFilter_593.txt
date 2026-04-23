@@ -1,0 +1,23 @@
+**Line 32** `LocalVariableCouldBeFinal` — `gitIgnorePatterns` assigned via stream but field is non-final local initialization path diverges; minor: stream on `Set.of(...)` is redundant, use stream directly — **redundant `Set.of(...).stream()`**, prefer `Stream.of(...)`.
+
+**Line 31–34** `DuplicatedBlocks` / comment `// duplicate code as below` acknowledges duplicated stream pipeline violating **DRY / AvoidDuplicateLiterals**.
+
+**Line 32** `AvoidDuplicateLiterals` — string literals `".git"`, `".DS_Store"`, `"desktop.ini"`, `"Thumbs.db"` and `"glob:"` appear without named constants.
+
+**Line 51** `AvoidDuplicateLiterals` — literal `"glob:"` repeated (also at line 32) without a named constant.
+
+**Line 53** `AvoidDuplicateLiterals` — `"**/"`  repeated at lines 44 and 46.
+
+**Line 56** `AvoidDuplicateLiterals` — `"glob:.gitignore"` is a magic string literal.
+
+**Line 38** `LocalVariableCouldBeFinal` — `patterns` is declared non-final but could be effectively final in the happy path (it is reassigned only in the catch block, preventing `final`, but the design warrants a refactor).
+
+**Line 58** `EmptyCatchBlock` / **AvoidCatchingGenericException** — catching `IOException` and logging at `INFO` level silently swallows the error; rule: **PreserveStackTrace** is satisfied, but **UseProperLogLevel** (should be `warn` or `error`).
+
+**Line 25** `AssignmentInOperand` — compound condition `(currentPath != null) && !Files.exists(...)` with side-effect loop mutation; rule: **WhileLoopWithLiteralBoolean** / **AvoidReassigningParameters** — `currentPath` reassigns the parameter `path` indirectly via alias.
+
+**Line 24** `AvoidReassigningParameters` — parameter `path` is aliased immediately into `currentPath` solely to avoid direct parameter reassignment; the parameter itself is still used on line 29, mixing concerns.
+
+**Line 74** `NullReturnFromMethod` (potential) — `child.getFileName()` can return `null` for a path with zero elements; rule: **ReturnNullInsteadOfOptional** / **NullAssignment** risk propagated to callers of `safeRelativize`.
+
+**Line 63** `LawOfDemeter` — `relative.getFileName()` chains two method calls on a returned object inside a lambda.

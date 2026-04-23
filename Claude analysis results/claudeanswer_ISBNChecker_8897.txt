@@ -1,0 +1,5 @@
+**Line 6** — `UnusedImports`: `StringUtil` import may be unused if `isBlank` is available directly; verify necessity, but flagged for review.
+
+**Line 12** — `SimplifyBooleanReturn` / `InvertedCondition`: Early return on blank check using third-party `StringUtil.isBlank` instead of standard `String.isBlank()` (Java 11+), violating `UseStringIsBlank` rule.
+
+**Line 17** — `LocalVariableCouldBeFinal`: `isbn` is assigned once and never reassigned; should be declared `final`.

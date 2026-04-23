@@ -1,0 +1,19 @@
+**Line 71** — `releaseIndexSearcher` is not called if `search()` throws an exception. **Resource Leak** / missing try-finally.
+
+**Line 71-74** — `IOException` caught but `IndexSearcher` may not be released on exception path. **Resource Leak**.
+
+**Line 48** — `parser` is a mutable field modified after construction (`setDefaultOperator`, `setAllowLeadingWildcard` on lines 49-50 are fine, but `parser` is not `final` in spirit; however it is a shared mutable `MultiFieldQueryParser` accessed without synchronization). **Thread Safety Violation**.
+
+**Line 88** — `Integer.parseInt(getFieldContents(...))` — no guard against `NumberFormatException` if field is empty or non-numeric. **Unchecked Exception / Missing Exception Handling**.
+
+**Line 85** — `topDocs.totalHits.value()` — direct field access on `TotalHits` object; minor API misuse depending on Lucene version, but more critically `value()` is a method call on a public field — acceptable, not a rule break.
+
+**Line 96** — `startTime` is declared but the elapsed time log at line 111 is the only use; if an exception is thrown mid-loop, timing is silently lost. **Dead Code / Misleading Instrumentation** (minor).
+
+**Line 133-135** — `acquireIndexSearcher` and `releaseIndexSearcher` are `static` utility methods that wrap instance-like state (`SearcherManager`). **Utility Method Design** — these should not exist as separate methods or should be inlined; unnecessary indirection without value.
+
+**Line 44** — `new String[0]` passed to `toArray` — **Performance**: prefer `toArray(String[]::new)` (minor, but flagged by tools like Sonar: `S4010`).
+
+**Line 56** — `getLuceneQuery` shadows the parameter name: local variable `query` (line 78) shadows no outer variable, acceptable. No issue here.
+
+**Line 75** — `IndexSearcher.TooManyClauses` caught alongside `IOException` in a single catch — **Overly Broad Exception Handling**; these are unrelated exception types merged silently (`S2221`-adjacent).

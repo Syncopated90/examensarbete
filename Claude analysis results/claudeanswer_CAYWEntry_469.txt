@@ -1,0 +1,17 @@
+**Line 8-14: Record Components Not Validated (Nullability)**
+`CAYWEntry` record has no compact constructor validating non-null fields. Rule: **NullAssignment** / **MissingNullCheck**
+
+**Line 17-22: Incomplete `equals` Implementation**
+`equals` only compares `bibEntry` while ignoring `label`, `shortLabel`, `description`, and `citationProperties`. Rule: **OverrideBothEqualsAndHashcode** / **InefficientEquals**
+
+**Line 25-27: `hashCode` Inconsistent with `equals`**
+`hashCode` only uses `bibEntry`, which technically aligns with the broken `equals`, but other fields are excluded without justification. Rule: **HashCodeOnlyUsesOneField**
+
+**Line 17: Missing `instanceof` Pattern Check**
+`getClass() != o.getClass()` used instead of `instanceof` pattern matching, which is less idiomatic and breaks subclass symmetry contracts. Rule: **UseInstanceof** / **AvoidGetClassOverInstanceOf**
+
+**Line 20: Unnecessary Cast**
+`(CAYWEntry) o` is an explicit cast that could be avoided using `instanceof` pattern matching (`o instanceof CAYWEntry caywEntry`). Rule: **UnnecessaryCast**
+
+**Line 8-14: Record Overrides `equals`/`hashCode` Partially**
+A record manually overrides `equals` and `hashCode` but excludes most components, silently breaking the default record contract. Rule: **InconsistentRecordOverride**

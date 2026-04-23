@@ -1,0 +1,7 @@
+**Line 5-7: Record component naming — `newLeftEntry` and `newRightEntry` are semantically ambiguous/misleading** (naming convention issue).
+
+**Line 5-7: `MutableObjectField` / `EncapsulationOfMutableObjects`** — `BibEntry` is likely a mutable object; storing mutable objects in a record breaks the implicit immutability contract of records. The record does not perform defensive copying.
+
+**Line 5: `ExcessiveParameterList`** — Record declares 5 parameters, exceeding typical thresholds (commonly >4).
+
+**Line 1: `PackageDeclaration` / file organization** — No module-info or missing `@NullMarked`/null-safety annotations on record components; components could receive `null` with no guard.

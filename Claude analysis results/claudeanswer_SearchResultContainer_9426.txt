@@ -1,0 +1,29 @@
+**Line 17-20: `ConstantNamingConvention` (PMD) / `StaticFinalFieldNameCheck` (Checkstyle)**
+`private final static` should be `private static final`.
+
+**Line 17-20: `variable declaration order` (Checkstyle: `ModifierOrder`)**
+Modifier order should be `static final`, not `final static`.
+
+**Line 22: `FieldInitializationWithConstructorArgument` / redundant field initializer**
+Field `selectedEntries` is initialized inline and then immediately reassigned in the constructor (line 25). The inline initialization on line 22 is dead code. (PMD: `AvoidFieldNameMatchingMethodName` / `UnnecessaryFieldInitialization`)
+
+**Line 22: `MutableField` (PMD: `ImmutableField`)**
+`selectedEntries` could be declared `final` since it is only assigned in the constructor after line 22's redundant init is removed.
+
+**Line 31-32: `NullCheck` / `ConfusingTernary`**
+`searchResultCell.getItem() == null || selectedEntries.contains(...)` — the null guard and contains check are combined but `getItem()` is called twice (lines 32 and 35), violating **DRY** / PMD `AvoidReassigningParameters` adjacent issue; minor but notable: **PMD `LocalVariableCouldBeFinal`** applies to the result of `getItem()` which should be extracted to a local variable.
+
+**Line 100: `InefficientStringBuffering` / `UseStringBufferForStringAppends` (PMD)**
+String concatenation using `+` with `"..."` inside a method that already uses `String.join`. Minor violation.
+
+**Line 95: `EmptyStringCheck` (PMD: `UseEqualsToTestStringEmptiness`)**
+`text.isEmpty()` is correct, but the combined null check `text == null || text.isEmpty()` is fine; no violation here specifically.
+
+**Line 48-50 (lambda in `setup`): `AvoidInstantiatingObjectsJustToGetClass` / `AccessorMethodGeneration` (PMD)**
+The lambda captures `selectedEntries` from the outer instance, creating a synthetic accessor if `selectedEntries` were private in a stricter context — minor encapsulation concern.
+
+**Line 68: `MagicNumber` (PMD: `AvoidLiteralInIfCondition` / `MagicNumberCheck`)**
+Literal `5` passed to `new VBox(5)` is a magic number.
+
+**Line 22: `VisibilityModifier` (PMD)**
+`selectedEntries` is `private` but mutable and non-final, violating immutability conventions.

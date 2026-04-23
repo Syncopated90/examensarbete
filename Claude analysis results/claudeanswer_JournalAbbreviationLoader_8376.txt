@@ -1,0 +1,23 @@
+**Line 50 — NullReturn**
+`loadRepository` returns `null` on `IOException`; callers may receive `null` without warning.
+
+**Line 44 — Resource Leak**
+`tempDir` and `tempJournalList` are not deleted/cleaned up on failure between `Files.copy` and `deleteOnExit` registration; `deleteOnExit` is also unreliable.
+
+**Line 57 — ModifyCollectionWhileIterating (Indirect)**
+`Collections.reverse(lists)` mutates the list returned directly from preferences, causing unintended side effects on the underlying preference state.
+
+**Line 36 — Resource Leak**
+`tempDir` created via `Files.createTempDirectory` is not wrapped in a try-finally; if an exception occurs after creation but before `deleteOnExit`, the temp directory leaks.
+
+**Line 75 — Resource Leak**
+Same issue in `loadLtwaRepository`: `tempDir` and `tempLtwaList` are not cleaned up on failure between `Files.copy` and `deleteOnExit`.
+
+**Line 24 — UtilityClassWithPublicConstructor**
+`JournalAbbreviationLoader` is a utility class (all methods are `static`) but exposes a default public constructor.
+
+**Line 50 — ReturnNull**
+Returning `null` from `loadRepository` instead of throwing an exception or returning an `Optional` violates clean API design (PMD `ReturnEmptyCollectionRatherThanNull` / SpotBugs `NP_NULL_ON_SOME_PATH`).
+
+**Line 63 — InvalidPathException swallowed with only logging**
+Catching `InvalidPathException` alongside `IOException` and only logging conflates unrecoverable path errors with I/O errors, hiding programming defects.

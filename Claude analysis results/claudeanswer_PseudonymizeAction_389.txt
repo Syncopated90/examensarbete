@@ -1,0 +1,11 @@
+**Line 80** — `exportPseudonymBibFile` continues execution after detecting an invalid file type instead of returning or throwing. **Missing Return/Exception After Error** (SonarLint: `S1763` / incomplete error handling).
+
+**Line 83–84** — `BibDatabaseWriter` is constructed with `result.bibDatabaseContext()` and then `writeDatabase` is called again with `result.bibDatabaseContext()`. The context is passed twice (once in constructor, once in method call), likely a **duplicate argument / redundant parameter** bug. (`S4275` / redundant code).
+
+**Line 46** — Lambda `() -> new IllegalStateException(...)` passed to `orElseThrow` uses a non-lazy string concatenation — actually fine, but the anonymous `new Pseudonymization()` on **line 47** instantiates a stateless object unnecessarily. **Instantiation of utility-style class** (`S2176` / unnecessary instantiation).
+
+**Line 44** — `stateManager.getActiveDatabase().orElseThrow(...)` and **line 45** also call `orElseThrow` on chained optionals inline inside `pseudonymizeDatabase`, which is called from a `Consumer` lambda. Unchecked `IllegalStateException` will propagate silently to the caller without user notification. **Exception swallowed / not reported to UI** (`S1181` / improper exception handling).
+
+**Line 40** — `dialogService.showDirectorySelectionDialog(...).ifPresent(this::pseudonymizeDatabase)` silently does nothing if no directory is selected, with no user feedback. **Missing else / notification** (`S2589`).
+
+**Line 63** — `Localization.lang("%0 and %1 created at %2", pseudoBibPath.getFileName(), pseudoCsvPath.getFileName(), outputFilePath)` passes `Path` objects where `String` arguments are expected. **Wrong argument type** (`S2234`).

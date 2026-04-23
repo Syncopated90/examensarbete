@@ -1,0 +1,394 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LooseCoupling",
+              "shortDescription": {
+                "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+              },
+              "fullDescription": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#loosecoupling",
+              "help": {
+                "text": "\nExcessive coupling to implementation types (e.g., `HashSet`) limits your ability to use alternate\nimplementations in the future as requirements change. Whenever available, declare variables\nand parameters using a more general type (e.g, `Set`).\n\nThis rule reports uses of concrete collection types. User-defined types that should be treated\nthe same as interfaces can be configured with the property `allowedTypes`.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "LocalVariableNamingConventions",
+              "shortDescription": {
+                "text": "The final local variable name 'FAIL' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablenamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LocalVariableNamingConventions",
+              "shortDescription": {
+                "text": "The final local variable name 'PASS' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablenamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 8,
+                  "endLine": 54,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 430,
+                  "startColumn": 21,
+                  "endLine": 430,
+                  "endColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 475,
+                  "startColumn": 13,
+                  "endLine": 475,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 493,
+                  "startColumn": 13,
+                  "endLine": 493,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 494,
+                  "startColumn": 13,
+                  "endLine": 494,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 523,
+                  "startColumn": 13,
+                  "endLine": 523,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 526,
+                  "startColumn": 17,
+                  "endLine": 526,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 527,
+                  "startColumn": 17,
+                  "endLine": 527,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 529,
+                  "startColumn": 17,
+                  "endLine": 529,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LooseCoupling",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Avoid using implementation types like 'ArrayList'; use the interface instead"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 556,
+                  "startColumn": 17,
+                  "endLine": 556,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableNamingConventions",
+          "ruleIndex": 2,
+          "message": {
+            "text": "The final local variable name 'FAIL' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 716,
+                  "startColumn": 23,
+                  "endLine": 716,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableNamingConventions",
+          "ruleIndex": 3,
+          "message": {
+            "text": "The final local variable name 'PASS' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OOTextIntoOO.java"
+                },
+                "region": {
+                  "startLine": 717,
+                  "startColumn": 23,
+                  "endLine": 717,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

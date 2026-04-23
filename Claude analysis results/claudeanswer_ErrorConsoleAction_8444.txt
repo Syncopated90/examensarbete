@@ -1,0 +1,7 @@
+**Line 17** — `Injector.instantiateModelOrService(DialogService.class)` — **Dependency Injection Misuse / Service Locator Anti-Pattern**: `DialogService` should be injected via constructor rather than pulled from the service locator directly inside `execute()`.
+
+**Line 18** — `new ErrorConsoleView()` — **Avoid Instantiation in Business Logic**: UI component instantiated directly, violating separation of concerns; should be provided via factory or injection.
+
+**Line 13** — `public class ErrorConsoleAction extends SimpleCommand` — **Missing `private` or `final` fields**: Class has no fields but depends on external state fetched at call time, making it non-testable and stateful-unsafe.
+
+**Line 16–19** — `execute()` — **Null Dereference (CWE-476)**: No null check on the result of `Injector.instantiateModelOrService()`; if it returns `null`, line 18 throws `NullPointerException`.

@@ -1,0 +1,15 @@
+**Line 3** — `UnusedImports`: `StringUtil` import may be unused if inherited or the utility class is redundant, but more precisely — no rule broken here specifically on import.
+
+Let me provide accurate findings:
+
+**Line 19** — `MissingJavadoc`: Public method `getLogicalNotOperator` overrides without documentation; minor but flagged by Checkstyle's `MissingJavadocMethod`.
+
+**Line 19** — `ReturnValue`: `getLogicalNotOperator` returns `"NOT "` with a trailing space but no leading space, inconsistent with `getLogicalAndOperator` (`" AND "`) and `getLogicalOrOperator` (`" OR "`) which have spaces on both sides. **InconsistentReturnValue / StyleInconsistency**.
+
+**Line 24** — `LawOfDemeter`: `handleAuthor` delegates directly to a static utility method — acceptable, but static method calls on utility classes can be flagged as **UseStaticMemberViaClassName** violation depending on configuration.
+
+**Lines 24, 29, 34, 39** — `UncommentedEmptyMethodBody` / `MissingOverrideAnnotation`: All `@Override` methods lack Javadoc; flagged under **MissingJavadocMethod**.
+
+**Line 3** — `UnnecessaryImport`: If `AbstractQueryTransformer` already imports or re-exports `StringUtil`, this could be flagged as **RedundantImport**.
+
+**Line 19** — `BugPattern (inconsistent operator spacing)`: `"NOT "` missing leading space unlike `" AND "` and `" OR "`, logical defect — **InconsistentQueryOperatorFormatting**.

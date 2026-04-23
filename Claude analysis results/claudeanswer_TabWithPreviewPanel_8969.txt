@@ -1,0 +1,9 @@
+**Line 26** – `AssertWithSideEffects` / **Assertion used as control flow** (or `AvoidAssertStatement`): `assert` statement is used in production code to validate a condition that is then re-checked with `instanceof` on line 27. The `assert` can be disabled at runtime via JVM flags, making it an unreliable guard.
+
+**Line 20** – `NullPassedToNonNull` / **Passing null argument**: `orElse(null)` explicitly passes `null` to `setDatabase`, which likely expects a non-null value, risking a `NullPointerException` inside the callee.
+
+**Line 25** – `UnnecessaryLocalVariable` / redundant variable: `Parent parent = previewPanel.getParent()` is used only immediately below; minor style issue but flagged by tools like PMD.
+
+**Line 26** – `AvoidAssertStatement` (PMD rule): `assert` statements should not be used in production/application code.
+
+**Line 27** – `DuplicatedCondition` / **Redundant instanceof check**: `parent.getParent() instanceof SplitPane` is checked twice — once in the `assert` (line 26) and once in the `if` (line 27), which is redundant.

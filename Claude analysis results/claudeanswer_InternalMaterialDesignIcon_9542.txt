@@ -1,0 +1,17 @@
+**Line 18** — `MutableFieldDefinition` / **Non-final field** (`color` is not `final` but could be, violating immutability; `icons` is final but `color` is not)
+
+**Line 18** — `VisibilityRule`: Field `color` should be `private final` — it is assigned in constructor and never reassigned after construction (the package-private constructor sets it, but the field is declared non-final).
+
+**Line 6** — `UnusedImport`: `java.util.stream.Collectors` is used, but check below — actually used on line 34, skip.
+
+**Line 25** — `ConstructorCallsOverridableMethod` (indirect): package-private constructor is called from public constructor, not an issue per se, but the package-private constructor at line 25 is not `private`, breaking encapsulation — **ReducedAccessibility** rule.
+
+**Line 40** — `LocalVariableShadowing`: Lambda parameter `color` on line 44 shadows the field `color` (the instance field `Optional<Color> color` is shadowed by the lambda parameter `Color color`).
+
+**Line 44-46** — `LongLambda` / **AvoidInlineConditionals**: multi-line lambda inside `ifPresent` reduces readability.
+
+**Line 34** — `CollectorsToList`: `Collectors.joining()` is fine, but `stream().map().map().collect()` could be simplified; minor **UnnecessaryChainedMethodCall**.
+
+**Line 29** — `VarArgsParameterInPublicMethod` + overloaded constructor ambiguity: two public constructors `(Ikon...)` and `(List<Ikon>)` create potential confusion — **OverloadedMethodsDeclarationOrder**.
+
+**Line 18** — **FieldNotFinal** (`PMD:ImmutableField`): `color` is only assigned in constructors and never mutated after; it should be declared `final`.

@@ -1,0 +1,19 @@
+**Line 54** — `NullCheck on Optional` / `OptionalGetWithoutIsPresent` misuse (minor, but more critically):
+
+**Line 54** — `AvoidLiteralsInIfCondition` / **NullCheckOnOptionalValue**: The parameter `nameToFormat` is sourced from `name.get()` at line 38 after `name.isPresent()` check, so it can never be `null`. The null check is dead code. **Rule: `UnusedCode` / `DeadCode`**
+
+**Line 54–56** — The method returns `null` when input is `null`, but return type is `String` (non-annotated). **Rule: `ReturnNullInsteadOfOptional` / `NullableReturn`**
+
+**Line 63** — `default` case appears before specific cases in `switch` expression. **Rule: `DefaultComesLast`**
+
+**Line 32** — Method parameter `fields` declared `final` unnecessarily (local parameter). **Rule: `UnnecessaryModifier` / `ParameterAssignment`** (style: redundant `final` on parameters is flagged by some rulesets)
+
+**Line 33** — Method parameter `entry` declared `final` unnecessarily. **Rule: `UnnecessaryModifier`**
+
+**Line 52** — Method parameter `nameToFormat` declared `final`. **Rule: `UnnecessaryModifier`**
+
+**Line 20** — Constructor parameter `bibDatabaseContext` is used only to call `.getDatabase()` and not stored; intermediate object not null-checked. **Rule: `NullDereference` / `MissingNullCheck`**
+
+**Line 35** — `name.get()` called after `isPresent()` check, but could use `name.ifPresent()` or `map` idiom. **Rule: `OptionalOrElse` / `SimplifyOptionalCallChains`**
+
+**Line 41** — Same as line 35: `content.get()` called after `isPresent()`. **Rule: `SimplifyOptionalCallChains`**

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "DefaultLabelNotLastInSwitch",
+              "shortDescription": {
+                "text": "The default label should be the last label in a switch statement or expression"
+              },
+              "fullDescription": {
+                "text": "\nBy convention, the default label should be the last label in a switch statement or switch expression.\n\nNote: This rule has been renamed from \"DefaultLabelNotLastInSwitchStmt\" with PMD 7.7.0.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#defaultlabelnotlastinswitch",
+              "help": {
+                "text": "\nBy convention, the default label should be the last label in a switch statement or switch expression.\n\nNote: This rule has been renamed from \"DefaultLabelNotLastInSwitchStmt\" with PMD 7.7.0.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "DefaultLabelNotLastInSwitch",
+          "ruleIndex": 0,
+          "message": {
+            "text": "The default label should be the last label in a switch statement or expression"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/MainTableFieldValueFormatter.java"
+                },
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 13,
+                  "endLine": 71,
+                  "endColumn": 20
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

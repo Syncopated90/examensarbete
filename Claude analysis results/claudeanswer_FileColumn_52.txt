@@ -1,0 +1,15 @@
+**Line 5** - `UnusedImport`: `java.util.stream.Collectors` is used, but check below — actually used on lines 91 and 130, valid. Disregard.
+
+**Line 91** - `ReplaceCollectorsToList`: `.collect(Collectors.toList())` should be replaced with `.toList()`.
+
+**Line 130** - `ReplaceCollectorsJoining`: Minor style — acceptable, but `.collect(Collectors.joining("\n"))` is fine; no rule broken here.
+
+**Line 157** - `UnusedFormalParameter` / `LambdaParameterName`: `event` parameter in `menuItem.setOnAction(event -> linkedFileViewModel.open())` — the parameter is unused; should be `_` (as correctly done on line 113 `_ ->`).
+
+**Line 91** - `ReplaceCollectorsToList`: `.collect(Collectors.toList())` used instead of `.toList()` (already flagged above).
+
+**Line 5** - `UnusedImport`: `Collectors` is imported but `.toList()` should replace `.collect(Collectors.toList())` on line 91; if fixed, `Collectors` may become unused (still used line 130, so remains needed).
+
+**Line 68** - `ConstructorCallsOverridableMethod` (or similar): Two constructors share repeated logic not fully extracted — minor duplication violation but `setCommonSettings()` partially addresses it.
+
+**Line 157** - `UnusedAssignment`/`UnusedLambdaParameter`: `event` is declared but not used in `menuItem.setOnAction(event -> linkedFileViewModel.open())`.

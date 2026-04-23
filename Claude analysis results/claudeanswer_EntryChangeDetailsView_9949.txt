@@ -1,0 +1,19 @@
+**Line 24** — `scrolling` field is a non-thread-safe mutable instance variable accessed from lambda event handlers. **Rule: ThreadSafety / NonAtomicOperation**
+
+**Line 24** — `private boolean scrolling` is an instance field used as a reentrancy guard but is not `volatile` or `AtomicBoolean`. **Rule: VolatileField / UnsynchronizedAccess**
+
+**Line 44** — Unchecked cast `(WebView) previewClone.getContent()`. **Rule: UncheckedCast / AvoidUncheckedCasts**
+
+**Line 45** — Unchecked cast `(WebView) previewViewer.getContent()`. **Rule: UncheckedCast / AvoidUncheckedCasts**
+
+**Line 80** — Unchecked cast `(Integer) webView.getEngine().executeScript(...)`. **Rule: UncheckedCast / AvoidUncheckedCasts**
+
+**Line 80** — `executeScript` return value cast to `Integer` without null check; can throw `NullPointerException` on unbox. **Rule: NullDeference / AvoidNPE**
+
+**Line 78** — Lambda captures `this` (via `scrolling` field), preventing garbage collection of the enclosing object as long as the `WebView` event handler is registered. **Rule: AvoidCaptureOfMutableEnclosingInstance / MemoryLeak**
+
+**Line 51** — `PreviewWithSourceTab` instantiated but only `getPreviewWithSourceTab()` is called immediately; the object itself is discarded. **Rule: UnusedLocalVariable / UnnecessaryLocalBeforeReturn**
+
+**Line 53** — Same as line 51 for `newPreviewWithSourcesTab`. **Rule: UnusedLocalVariable / UnnecessaryLocalBeforeReturn**
+
+**Line 81** — String concatenation used to build a script string with an untrusted integer value. Though `int` here is safe, the pattern is flagged as a bad practice for script injection. **Rule: AvoidStringConcatenationInLoop / ScriptInjection**

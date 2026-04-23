@@ -1,0 +1,13 @@
+**Line 4** – `ClassNamingConventions` / `MissingJavadocType`: Class uses `///` doc comment (not valid Javadoc `/** */`).
+
+**Line 4** – `UncommentedEmptyClassBody` / `MissingConstructor`: No explicit constructor defined; suppression comment `/// Used for GSON` suggests reliance on default constructor without documentation.
+
+**Line 5** – `VisibilityModifier`: Field `citedPaper` is package-private by default — should be `private` (it is `private`, this is fine) — N/A.
+
+**Line 5** – `ImmutableField`: Field `citedPaper` is never assigned within the class (only via reflection/GSON), but static analysis flags it as potentially immutable/unassigned.
+
+**Line 8** – `MissingJavadocMethod`: Public method `getCitedPaper()` lacks a Javadoc comment.
+
+**Line 8** – `UnnecessaryModifier` / `ReturnCount`: Minor — no setter exists, field can only be set via reflection, no `setCitedPaper` violates **BeanMembersShouldSerialize** rule.
+
+**Line 4** – `CommentDefaultAccessModifier` / `BeanMembersShouldSerialize`: No `serialVersionUID` and no `implements Serializable`, yet used as a data-transfer object.

@@ -1,0 +1,11 @@
+**Line 50**: `stateManager` — **Law of Demeter** violation. Chained method calls `stateManager.getActiveDatabase().map(BibDatabaseContext::getMode)` reach through multiple object boundaries.
+
+**Line 54**: `entryType.isPresent()` / **Line 55**: `entryType.get()` / **Line 57**: `entryType.get()` — **Avoid calling `Optional.get()` without `isPresent()` guard being idiomatic**; prefer `map`/`ifPresentOrElse` over `isPresent()`+`get()` (**Use Optional orElse/map instead of isPresent/get**).
+
+**Line 48**: `determineFieldsToShow` — **FeatureEnvy**: method accesses `stateManager` and `entryTypesManager` (external objects) more than its own class data.
+
+**Line 28–36**: Constructor has **too many parameters** (10) — **ExcessiveParameterList** rule violation.
+
+**Line 44**: `setText(title)` and **Line 45**: `setTooltip(...)` and **Line 46**: `setGraphic(...)` — side effects in constructor (**ConstructorCallsOverridableMethod** / avoid non-trivial logic in constructors).
+
+**Line 50**: `BibDatabaseMode.BIBLATEX` — **AvoidLiteralsInIfCondition** / magic constant used as default fallback inline rather than a named constant.

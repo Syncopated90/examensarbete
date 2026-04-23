@@ -1,0 +1,13 @@
+**Line 37** – `null` passed as `defaultChoice` parameter; `@NullMarked` context makes this a nullability contract violation. **Rule: NullArgumentForNonNullParameter**
+
+**Line 44** – Same as above: `null` passed for `defaultChoice` in `@NullMarked` context. **Rule: NullArgumentForNonNullParameter**
+
+**Line 37** – Default method calls abstract method `showChoiceDialogAndWait` with `null`; no `@Nullable` annotation on `defaultChoice` parameter in abstract declaration despite `@implNote` acknowledging null. **Rule: MissingNullableAnnotation**
+
+**Line 154** – Empty line before closing `///` comment block (before `Optional<ButtonType> showCustomButtonDialogWithTooltipsAndWait`). **Rule: JavadocStyle / SpacingAfterDocComment**
+
+**Line 30** – Interface `DialogService` extends `NotificationService` and also declares `notify(Notification<?> notification)` at line 245, which may conflict/duplicate a method from `NotificationService`. **Rule: RedundantMethodOverride / InterfaceMethodClash**
+
+**Line 30** – `@NullMarked` applied to interface but several method parameters (e.g., `defaultChoice T` at line 36, 44) explicitly documented to accept `null` without `@Nullable` annotation, violating the `@NullMarked` contract. **Rule: MissingNullableAnnotation**
+
+**Line 109** – `optOutAction` parameter of type `Consumer<Boolean>` is not annotated `@Nullable` yet could logically be absent; under `@NullMarked` this is unsafe. **Rule: MissingNullableAnnotation**

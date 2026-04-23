@@ -1,0 +1,17 @@
+**Line 21** — `FieldName` (Naming Convention): Instance field `TABLE_ICONS` uses all-caps naming, violating Java naming conventions for non-constant instance fields. Should be `tableIcons`.
+
+**Line 23** — `UnusedFormalParameter`: Constructor parameter `undoManager` is used, but parameter `preferences` is only partially used (passed through); however more critically:
+
+**Line 23** — `UnusedFormalParameter`: Constructor parameters `preferences` and `undoManager` suggest the constructor is doing too much work — violates **Single Responsibility Principle** / `ExcessiveMethodLength`.
+
+**Line 23** — `ExcessiveMethodLength` / `CyclomaticComplexity`: Constructor is excessively long, performing all initialization logic inline.
+
+**Line 21** — `MutableField`: `TABLE_ICONS` is a mutable non-final collection field exposed to potential modification; should be declared `final` (it is not marked `final`).
+
+**Line 33** — `AvoidInstantiatingObjectsJustToGetClass` / `InappropriateObjectConstruction`: `new UnknownField("citeseerurl")` used as a map key relies on `equals`/`hashCode` correctness of `UnknownField`; a magic string literal is used directly — violates `AvoidLiteralsInIfCondition` / magic string rule.
+
+**Line 96** — `ReturnNull`: `getTableIcon` returns `null` on line 98, violating the **ReturnNull** rule; should return `Optional<Node>` instead.
+
+**Line 96** — `CommentedOutCode` (lines 97): Commented-out logger call violates **CommentedOutCode** rule.
+
+**Lines 26,29,32,35,38,41,44,47,58,62,66,71,75,80,85,90** — `CommentedOutCode`: Multiple commented-out `setToolTipText` / logger calls throughout the constructor violate the **CommentedOutCode** rule.

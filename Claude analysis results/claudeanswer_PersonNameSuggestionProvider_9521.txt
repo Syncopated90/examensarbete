@@ -1,0 +1,21 @@
+**Line 9** — `StringUtil` import may be wrong package path (logic layer imported into GUI layer — layered architecture violation)
+
+**Line 24** — `PersonNameSuggestionProvider` constructor has package-private visibility but class is `public`; inconsistent API encapsulation
+
+**Line 28** — Parameter `database` not annotated `@NonNull` inconsistently with line 24 parameter `field` which is annotated
+
+**Line 24** — Same: parameter `database` lacks `@NonNull` annotation, inconsistent with sibling constructor
+
+**Line 36** — `getAuthors` is `public` but accesses internal `fields` state; should be package-private or `protected`
+
+**Line 36** — Method `getAuthors` returns a `Stream` which is a resource that callers may fail to close; streams over entries should be consumed internally
+
+**Line 44** — `Equivalence.equals().onResultOf(Author::getNamePrefixAndFamilyName)` — `getNamePrefixAndFamilyName` may return `null`, causing NPE inside `Equivalence.equals()`
+
+**Line 49** — `Comparator.comparing(Author::getNameForAlphabetization)` — `getNameForAlphabetization` may return `null`, causing NPE in natural ordering comparator
+
+**Line 54** — `candidate.getFamilyGiven(false)` may return `null`; passing to `containsIgnoreCase` without null check
+
+**Line 59** — `database.getEntries().parallelStream()` — use of `parallelStream` without justification; risk of thread-safety issues if `database` is not thread-safe
+
+**Line 59** — `database` could be `null` (no null guard, no `@NonNull`); NPE risk on `database.getEntries()`

@@ -1,0 +1,13 @@
+**Line 12** — `CONTAINS_FOUR_DIGIT` field name does not follow constant naming convention (minor), but more critically: **Naming** — `CONTAINS_FOUR_DIGIT` is misleading; the regex also enforces non-digit boundaries, not just containment.
+
+**Line 12-13** — **Field naming / design**: `PUNCTUATION_MARKS` on line 14 is a regex pattern string but named as if it's a collection of characters. Rule: **LinguisticallyMisleadingName**.
+
+**Line 14** — **Rule: UnusedPrivateField / MisplacedConstant**: `PUNCTUATION_MARKS` is a raw `String` used as a regex but not compiled into a `Pattern`, causing repeated regex compilation on every `replaceAll` call.
+
+**Line 30** — **Rule: IneffientRegexUsage / AvoidStringReplaceAllWithoutCompiledPattern**: `value.replaceAll(PUNCTUATION_MARKS, "")` compiles the regex on every invocation instead of using a precompiled `Pattern`.
+
+**Line 41** — **Rule: IneffientRegexUsage / AvoidStringReplaceAllWithoutCompiledPattern**: Same as line 30; `value.replaceAll(PUNCTUATION_MARKS, "")` recompiles the regex on every call.
+
+**Line 36-44** — **Rule: DuplicatedCode**: `isValueCorrectlyFormatted` duplicates the logic of `checkValue`, violating DRY. One should delegate to the other.
+
+**Line 36** — **Rule: UseUtilityClass**: `isValueCorrectlyFormatted` is a `public static` method on a non-utility class that also implements `ValueChecker` as an instance method. The static and instance responsibilities are mixed. Rule: **SingleResponsibilityPrinciple / MixedStaticAndInstanceConcerns**.

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UselessPureMethodCall",
+              "shortDescription": {
+                "text": "Do not call pure method truncatedTo if the result is not used."
+              },
+              "fullDescription": {
+                "text": "\nThis rule detects method calls of pure methods whose result is unused. A pure method is a method without\nside effects. Therefore, ignoring the result of such a method call is likely a mistake.\n\nEither the method call can be removed or the result should be used.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#uselesspuremethodcall",
+              "help": {
+                "text": "\nThis rule detects method calls of pure methods whose result is unused. A pure method is a method without\nside effects. Therefore, ignoring the result of such a method call is likely a mistake.\n\nEither the method call can be removed or the result should be used.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UselessPureMethodCall",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Do not call pure method truncatedTo if the result is not used."
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/TimeStampToCreationDate.java"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 13,
+                  "endLine": 45,
+                  "endColumn": 59
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

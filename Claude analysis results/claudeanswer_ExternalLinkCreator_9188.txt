@@ -1,0 +1,19 @@
+**Line 4** — `URLEncoder` imported but `URLEncoder.encode()` used only inside a try-catch that catches `Exception`; `URLEncoder.encode(String, Charset)` does not throw checked exceptions, so the broad `catch (Exception ex)` is unnecessary. **Rule: ExcessiveCatchBlock / CatchingTooGeneral**
+
+**Line 112** — `catch (Exception ex)` catches overly broad exception type instead of specific unchecked or checked exceptions. **Rule: AvoidCatchingGenericException**
+
+**Line 44** — `String author = entry.getField(StandardField.AUTHOR).orElse(null)` — use of `null` breaks null-safety; `Optional` is unwrapped to `null` and passed as `@Nullable`, which is an anti-pattern when `Optional` is already available. **Rule: OptionalGetWithoutIsPresent / AvoidNullPassthrough**
+
+**Line 54** — Same violation as line 44. **Rule: OptionalGetWithoutIsPresent / AvoidNullPassthrough**
+
+**Line 64** — Same violation as line 44. **Rule: OptionalGetWithoutIsPresent / AvoidNullPassthrough**
+
+**Line 140** — `int idx = 0; for (...) { ...; idx++; }` — manual index tracking inside a for-each loop instead of using an indexed for loop or stream with index. **Rule: ForLoopVariableCount / AvoidManualIndexing**
+
+**Line 109** — `URLEncoder.encode(filteredTitle.trim(), StandardCharsets.UTF_8)` and `URLEncoder.encode(author.trim(), ...)` are called inside the same try block as unrelated logic, making the catch block ambiguous. **Rule: ExceptionHandlingGranularity**
+
+**Line 88** — `lowerUrl.startsWith("http://")` — HTTP (non-TLS) URLs are permitted as valid, allowing insecure links. **Rule: AvoidInsecureConnections / InsecureURL**
+
+**Line 136** — `AuthorListParser authorListParser = new AuthorListParser()` instantiated inside a loop-adjacent block on every method call; object is stateless and could be a constant or injected. **Rule: InsufficientMemoization / AvoidInstantiatingObjectsJustToGetClass**
+
+**Line 155** — `LOGGER.error("Failed to construct {} URL: {}", serviceName, ex.getMessage())` — `ex` itself is not passed as the last argument, so the stack trace is lost. **Rule: LostExceptionInformation / PreserveStackTrace**

@@ -1,0 +1,23 @@
+**Line 44** – `resultRecord` method declares 3 checked exceptions (`IOException`, `GitAPIException`, `JabRefException`); overly broad exception declaration / mixed abstraction levels. **Rule: ExcessiveThrows / DeclaredException**
+
+**Line 55** – `git.log().setMaxCount(1).call().iterator().next()` — no check if iterator is empty before calling `.next()`, risking `NoSuchElementException`. **Rule: IteratorNextWithoutHasNext**
+
+**Line 58** – `head.equals(localHead)` compares `RevCommit` objects; should use `ObjectId`-level equality (`head.getId().equals(localHead.getId())`). **Rule: SuspiciousEqualsMethodName / ObjectEquality**
+
+**Line 68** – `DirCache dirCache` is opened inside a `try-with-resources` block for `ObjectInserter` but `dirCache` is never explicitly unlocked/closed. **Rule: UnsynchronizedDirCacheAccess / ResourceLeak**
+
+**Line 72** – `repo.getFullBranch()` can return `null` (detached HEAD); result passed to `commitWithParents` without null check. **Rule: NullDereference / PossibleNullPointerException**
+
+**Line 75** – `blobEqualsCommitPath` is called after staging (`git.add()`) but reads the working-tree file again independently; potential TOCTOU race. **Rule: TOCTOU / TimeOfCheckTimeOfUse**
+
+**Line 89** – `blobEqualsCommitPath` is `private static` but declared on instance; no functional issue, but static method accessing no instance state should be extracted to utility class. **Rule: UnnecessaryModifier / StaticMethodInNonUtilityClass**
+
+**Line 93** – `Path.of(relativePath)` re-parses a path that was already derived from relativization; redundant conversion. **Rule: UnnecessaryConversion / RedundantObjectCreation**
+
+**Line 110** – `new PersonIdent(repo)` called twice in sequence with no intervening time passage guarantee; author and committer timestamps may diverge under load. **Rule: DuplicateCode / IdenticalExpressions**
+
+**Line 119** – `repo.resolve(Constants.HEAD)` can throw `IOException`; it is called inside the `try (ObjectInserter)` block but the outer method only declares `IOException`, silently swallowing context. **Rule: CaughtExceptionDoesNothing / GenericExceptionHandling**
+
+**Line 125** – `switch` on `RefUpdate.Result` with `case RENAMED` — `RENAMED` is not a valid result of `RefUpdate.update()`, it belongs to `RefRename`; dead case. **Rule: DeadCode / ImpossibleSwitchCase**
+
+**Line 127** – `default` branch throws `IOException` wrapping an enum value without preserving any causing exception; information loss. **Rule: PreserveStackTrace / ThrowWithoutCause**

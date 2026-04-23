@@ -1,0 +1,20 @@
+**Line 35-39 — `setResultConverter` lambda ignores return in non-OK case**
+The lambda always returns `null` regardless of button type, including OK after saving. This may be intentional but silently discards result state; no explicit `ButtonType.CANCEL` or default handling is present.
+
+**Line 21 — Field `viewModel` not `final`**
+`viewModel` is assigned once in `initialize()` but not declared `final`. Rule: *Make non-reassigned fields final* (ImmutableField / FieldShouldBeFinal).
+
+**Line 35-39 — Lambda accesses `viewModel` which may be `null`**
+`setResultConverter` is registered in the constructor before `initialize()` is guaranteed to have run. If the converter fires before FXML injection, `viewModel.saveSettings()` throws `NullPointerException`. Rule: *Null dereference* (NullDereference / AvoidNullDereference).
+
+**Line 18-19 — `@FXML` fields not `final`**
+`pathField` and `helpButton` are mutable package-private-ish fields injected by FXML but not protected against external reassignment. Rule: *VisibilityModifier* / non-final injected fields.
+
+**Line 17 — Class not `final`**
+`MainFileDirectoryDialog` is not declared `final` and has no documented extension points. Rule: *ClassShouldBeFinal* (design rule).
+
+**Line 25 — Calling overridable method `setHeaderText` in constructor**
+`setHeaderText` is called in the constructor; if subclassed, this executes before the subclass constructor. Rule: *ConstructorCallsOverridableMethod* (MPI / PMD ConstructorCallsOverridableMethod).
+
+**Line 31-34 — Method chain on `ViewLoader` without null check**
+`ViewLoader.view(this).load().setAsDialogPane(this)` — no null/exception handling if loading fails. Rule: *ReturnValueIgnored* / missing error handling.

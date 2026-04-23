@@ -1,0 +1,21 @@
+**Line 10** — `{1,2}` after `-` is redundant given the surrounding pattern; minor issue but **RegexpSingleline** / **SimplifyRegex**: the comment `{1,2}` quantifier on `-` is acceptable, but note the pattern uses `\\s*` on both ends — no rule broken here strictly.
+
+**Line 12** — `start` initialized to `0` implicitly; field never assigned in the `else` branch. **FieldShouldBeFinal** not applicable, but **UnusedPrivateField** is not the issue either.
+
+**Line 11–13** — `freeform`, `start`, `end` are instance fields that could be `private final` after construction but are not. **ImmutableField** (PMD).
+
+**Line 12** — `private int start;` and **Line 14** — `private int end;`: inconsistent blank line between fields. **EmptyLineSeparator** (Checkstyle).
+
+**Line 20** — `pages` parameter is not checked for `null`. **NullParameterRule** / **NullAssignment** risk — **AvoidNullChecks** violation (PMD: **NullAssignment**).
+
+**Line 29** — Method `getDOMrepresentation` does not follow camelCase strictly (`DOM` is all-caps). **MethodName** (Checkstyle).
+
+**Line 31** — `freeform == null` used to distinguish between two states (freeform vs numeric). Using `null` as a sentinel value violates **NullLiteral** / **CompareObjectsWithEquals** — more precisely **AvoidLiteralsInIfCondition** or **UseNullToIndicateState** — PMD: **NullAssignment**.
+
+**Line 34–35** — Local variables `tmpStart` and `tmpEnd` shadow the field-naming convention; not a violation per se, but variable names mirror XML element names poorly. **LocalVariableName** (Checkstyle): names should be more descriptive.
+
+**Line 44** — `separator` parameter in `toString(String separator)` has no `null` check; if `null` is passed, result is the string `"null"` concatenated. **NullParameterRule** (PMD).
+
+**Line 44** — `toString(String separator)` is a public method overloading `toString()` with a parameter — non-standard API design. **AvoidOverloadingPublicMethods** / **UnusedFormalParameter** not applicable, but **MethodNamingConventions** arguably flagged.
+
+**Line 50** — `@Override` on `toString()` delegates to `toString("-")` which is correct, but the class has no `equals()` or `hashCode()` override alongside `toString()`. **OverrideBothEqualsAndHashcode** (PMD) — if `toString` is overridden for value semantics, `equals`/`hashCode` should follow.

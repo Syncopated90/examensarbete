@@ -1,0 +1,21 @@
+**Line 9** — `UnusedImport`: `java.util.stream.Collectors` is imported but replaced by `Collectors.toList()` which could use `Stream.toList()` directly; still an unnecessary legacy collector import.
+
+**Line 51** — `CollectorsToList`: `.collect(Collectors.toList())` should be replaced with `.toList()` (Java 16+).
+
+**Line 60** — `MemberName` / `MethodParamPad`: Field/builder method `max_tokens` violates Java naming convention (should be camelCase: `maxTokens`).
+
+**Line 100** — `VisibilityModifier`: Inner class `TextGenerationRequest` fields (`model`, `messages`, `temperature`, `max_tokens`) are `protected` in a `private static` class — should be `private`.
+
+**Line 110** — `MemberName`: Field `max_tokens` in `TextGenerationRequest` violates camelCase naming convention.
+
+**Line 119** — `MemberName`: Field `max_tokens` in `Builder` violates camelCase naming convention.
+
+**Line 138** — `MemberName`: Method `max_tokens(Integer)` in `Builder` violates camelCase naming convention.
+
+**Line 89** — `InterruptedException` swallowed without restoring interrupt status: catching `InterruptedException` without calling `Thread.currentThread().interrupt()` violates **ThreadSafety/RestoreInterruptedState**.
+
+**Line 75** — `ImmutableCast`/`PreferStringIsEmpty`: `generatedText.isEmpty()` is fine, but the paired null check with `||` means if `generatedText` is null, `isEmpty()` is never reached — logic is correct but the null check makes `isEmpty()` redundant if null is expected; minor style issue.
+
+**Line 27** — `FieldName`: `LOGGER` follows convention, no issue.
+
+**Line 31** — `FieldCanBeFinal`: `gson` is initialized inline and never reassigned — should be `private static final`.

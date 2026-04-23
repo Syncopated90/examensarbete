@@ -1,0 +1,21 @@
+**Line 23** – `COLLATOR` is a mutable static field (`Collator` is not thread-safe). Rule: **ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD** / **Non-thread-safe static field**
+
+**Line 24** – `FieldType` enum declared with package-private access inside a public class without explicit modifier. Rule: **ModifierOrder** / **VisibilityModifier**
+
+**Line 55** – `InternalField.TYPE_HEADER == this.fields.getPrimary()` uses `==` for object comparison instead of `.equals()`. Rule: **ReferenceEquality** / **CompareObjectsWithEquals**
+
+**Line 57** – Same issue: `StandardField.YEAR == this.fields.getPrimary()` uses `==`. Rule: **ReferenceEquality**
+
+**Line 59** – Same issue: `StandardField.MONTH == this.fields.getPrimary()` uses `==`. Rule: **ReferenceEquality**
+
+**Line 75** – `getFieldValue` returns `null` instead of `Optional<String>`. Rule: **ReturnNull** / **NullableReturn**
+
+**Line 84** – `fieldType == FieldType.TYPE` uses `==` on enum, which is acceptable for enums, but inconsistent with field comparisons above. *(Not a violation for enums.)*
+
+**Line 95** – `return -multiplier;` and **Line 97** `return +multiplier;` — unary `+` is a no-op and misleading. Rule: **UnaryPlus** / **UselessUnaryOperator**
+
+**Line 148** – `return -1 * multiplier;` uses magic number `-1`. Rule: **MagicNumber**
+
+**Line 46** – `getCollator()` casts `Collator.getInstance()` to `RuleBasedCollator` without checking the type first. Rule: **AvoidUncheckedCast** / **ClassCastException risk**
+
+**Line 68** – Variable named `o` is a poor name (single-letter, non-descriptive). Rule: **LocalVariableName** / **NamingConventions**

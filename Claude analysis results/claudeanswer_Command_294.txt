@@ -1,0 +1,15 @@
+**Line 26** — `VisibilityModifier`: Field `serviceLocator` should be `private`, not `protected`.
+
+**Line 33** — `HiddenField`: Parameter `serviceLocator` in `setServiceLocator` shadows the field `serviceLocator`.
+
+**Line 35** — `NullCheck` / `ReturnCount`: Early return on null check increases method complexity; consider extracting validation.
+
+**Line 33** — `DesignForExtension`: Method `execute(UiCommand)` is `protected` and non-abstract in an abstract class, allowing uncontrolled overriding.
+
+**Line 29** — `DesignForExtension`: Method `setServiceLocator` is public and non-final in an abstract class.
+
+**Line 31** — `DesignForExtension`: Abstract method `execute()` declaration is fine, but subclasses are not constrained from widening access.
+
+**Line 37–38** — `MultipleStringLiterals`: Inline string literal `"This command is not supported in CLI mode."` should be extracted to a constant.
+
+**Line 26** — `InjectedField` / `MutableField`: Mutable injected field `serviceLocator` is not `final`; dependency should be injected via constructor.

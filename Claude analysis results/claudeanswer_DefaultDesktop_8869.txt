@@ -1,0 +1,17 @@
+**Line 13** — `UnusedImports`: `org.slf4j.LoggerFactory` is imported but used only indirectly; however it is used at line 38, so not unused. Let me re-examine.
+
+**Line 29** — `UnusedFormalParameter`: Parameter `application` is never used in `openFileWithApplication`.
+
+**Line 36** — `UnusedFormalParameter`: Parameter `absolutePath` is never used in `openConsole`.
+
+**Line 36** — `UnusedFormalParameter`: Parameter `dialogService` is never used in `openConsole`.
+
+**Line 38** — `GuardLogStatement`: Logger call not guarded by a level check (e.g., `if (logger.isErrorEnabled())`). Minor, but flagged by some rulesets.
+
+**Line 38** — `UseCorrectAssertInTests` / `AvoidThrowingRawExceptionTypes`: Not applicable here. Instead: the method signature declares `throws IOException` but the body never throws `IOException` — **`SignatureDeclareThrowsException`** (unnecessary checked exception declaration).
+
+**Line 22** — `SignatureDeclareThrowsException`: `openFile` declares `throws IOException` but delegates directly; minor, but consistent.
+
+**Line 27** — `SignatureDeclareThrowsException`: `openFileWithApplication` ignores its `application` parameter entirely, effectively making the method identical to `openFile` — **`EquivalentCode`** / duplicate implementation.
+
+**Line 32** — `NullAssignment` risk: `filePath.toAbsolutePath().getParent()` can return `null` if path has no parent — **`NullDereference`** at line 32.

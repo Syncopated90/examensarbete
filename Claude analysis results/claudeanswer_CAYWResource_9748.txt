@@ -1,0 +1,23 @@
+**Line 52** — `initialized` is a non-volatile static field accessed in a synchronized instance method (`initializeGUI`) and also read without synchronization. **Rule: unsafe publication / non-volatile mutable static field (DCL / visibility)**
+
+**Line 84** — `Collectors.toList()` used instead of `.toList()` (already used on line 80). **Rule: use Stream.toList() instead of Collectors.toList()**
+
+**Line 96** — Lambda passed to `ifPresent` could be extracted or the whole expression simplified; `srvStateManager.getActiveSelectionTabProperty().get().ifPresent(...)` chains two `.get()` calls risking confusion. **Rule: method chain too long / Law of Demeter violation**
+
+**Line 97** — `Collectors.toList()` inside lambda when `.toList()` suffices. **Rule: use Stream.toList() instead of Collectors.toList()**
+
+**Line 107** — `"\\".concat(...)` — string concatenation via `concat` instead of `+` operator or string literal. **Rule: use string concatenation operator instead of String.concat()**
+
+**Line 143** — `assert !"demo".equalsIgnoreCase(libraryPath.get())` — use of `assert` for control-flow validation in production code; assertions can be disabled at runtime. **Rule: do not use assert for argument validation**
+
+**Line 52/216** — `initialized` static field written inside synchronized instance method but read on line 215 without lock in the same method — classic broken double-checked idiom without `volatile`. **Rule: double-checked locking on non-volatile field**
+
+**Line 215** — `if (!initialized)` read outside synchronization before entering synchronized block — actually `initializeGUI` is `synchronized` on `this`, not on the class, so different instances do not share the lock for a static field. **Rule: synchronizing on instance (`this`) to guard a static field**
+
+**Line 78** — `srvStateManager instanceof JabRefSrvStateManager` negated logic: the comment says "not supported in CLI mode" but the condition checks for `JabRefSrvStateManager` (the GUI manager). Logic appears inverted. **Rule: inverted condition / logic error**
+
+**Line 92** — Same inverted `instanceof` check as line 78. **Rule: inverted condition / logic error**
+
+**Line 52** — `private static boolean initialized` mutable static state in a Jakarta REST resource class (which may be singleton or per-request depending on scope) without clear lifecycle management. **Rule: avoid mutable static state in JAX-RS resources**
+
+**Line 229** — `getChocolateBibAsStream()` can return `null` (annotated `@Nullable`) but callers on lines 175, 183, and 199 pass the result directly without null checks. **Rule: nullable return value not checked before use**

@@ -1,0 +1,14 @@
+**Line 43** — `RV_RETURN_VALUE_IGNORED` / **Ignored return value**
+`localDateTime.truncatedTo(ChronoUnit.SECONDS)` returns a new `LocalDateTime`; the result is discarded. `localDateTime` is never updated.
+
+**Line 61** — `DLS_DEAD_LOCAL_STORE` / **Dead local store**
+`FieldChange changeTo` is declared before the `changeList.add(...)` call on line 63, making the declaration unnecessarily separated from its assignment on line 65.
+
+**Line 59** — `DP_DO_INSIDE_DO_PRIVILEGED` / **Double call to `entry.getField`**
+`entry.getField(timeStampField)` is called twice (lines 57 and 58); the second `.get()` should use the `Optional` already obtained.
+
+**Line 63** — `UWF_UNWRITTEN_FIELD` / **Confusing field constant mismatch**
+`StandardField.TIMESTAMP` is hardcoded in the `FieldChange` constructor instead of using `timeStampField`, breaking consistency if `timestampPreferences.getTimestampField()` returns a different field.
+
+**Line 65** — `RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE` / **Redundant `orElse`**
+`entry.getField(StandardField.CREATIONDATE).orElse("")` is called immediately after `entry.setField(StandardField.CREATIONDATE, ...)`, so the field is guaranteed to be present; the `.orElse("")` is redundant and misleading.

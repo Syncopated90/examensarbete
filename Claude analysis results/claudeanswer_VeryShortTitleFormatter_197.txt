@@ -1,0 +1,19 @@
+**Line 6** — `UnusedImports`: `Formatter` is imported but the class extends it; verify if the import path is correct/necessary given the same-package possibility. *(Low severity, likely valid)*
+
+**Line 7** — `UnusedImports`: `Localization` is used, so this is fine — no violation.
+
+**Line 4** — `UnusedImports`: `java.util.function.Predicate` — used only via `Predicate.not(...)` on line 27; valid use, no violation.
+
+---
+
+**Line 23** — `MethodParameterNamingConventions` / `ParameterAssignment`: Parameter annotated `@NonNull` but no null-check is performed; the annotation alone does not enforce non-nullity at runtime.
+
+**Line 25–28** — `LawOfDemeter`: Method chain `title.getWords().stream().filter(...).findFirst()` violates the Law of Demeter (multiple chained calls on returned objects).
+
+**Line 28** — `UnnecessaryLocalVariable`: `resultTitle` is assigned and immediately returned on the next line; could be inlined.
+
+**Line 11** — `AbstractClassWithoutAbstractMethods` (or `ClassNamingConventions`): Class extends `Formatter` which may itself be abstract; if `Formatter` is not abstract, extending it without a clear reason may violate design rules.
+
+**Line 32–34** — `LongString` / `AvoidLiteralInAnnotation`: String literal passed to `Localization.lang(...)` spans multiple lines unnecessarily.
+
+**Line 3** — `UnusedImports`: `java.util.Optional` — used on line 25; valid, no violation.

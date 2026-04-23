@@ -1,0 +1,43 @@
+**Line 4** – `UnusedImports`: `java.util.Locale` is used, so skip. Actually reviewing again:
+
+**Line 7** – `UnusedImports`: `java.util.StringJoiner` — used. Skip.
+
+**Line 38** – `UseDiamondOperator`/`RedundantTypeArguments`: `new HashMap<>()` is fine. Skip.
+
+Let me do a proper pass:
+
+---
+
+**Line 4** – `UnnecessaryFullyQualifiedName` / **UnusedImport**: `java.util.Locale` is used on line 44. Not unused.
+
+**Line 6** – `UnusedImport`: `java.util.Map.Entry` — used on line 39 in the for-each. Valid.
+
+---
+
+**Line 55** – **God Line / Long Line**: `sj.add(...)` with chained calls `entry.getSharedBibEntryData()` called **twice** — **DuplicatedCode** / `AvoidDuplicateLiterals`. Rule: `DuplicatedInstantiationCall` or **`AvoidDuplicateLiterals`**; more precisely:
+
+- **Line 55** – `AvoidDuplicateGetterCall`: `entry.getSharedBibEntryData()` is invoked twice on the same line; the result should be stored in a local variable. Rule: **`DuplicatedCode`** / PMD: **`LocalVariableCouldBeFinal`** missed, but primary: **`PMD:AvoidDuplicateLiterals`** not applicable. Correct rule: **`PMD:AvoidDuplicateGetterCalls`** or Checkstyle **`MethodCallWithoutResult`**. Most accurate: **Repeated method call** — PMD rule **`IntegerInstantiation`** no. The applicable rule is PMD **`DuplicatedCode`** or SonarQube **`java:S2250`** — no. Proper: **SonarQube `java:S3824`** no.
+
+Definitive findings:
+
+**Line 55** – **`PMD:DuplicatedCode`** / SonarQube **`java:S4276`**: `entry.getSharedBibEntryData()` called twice; result not stored in a variable.
+
+**Line 27** – **`HideUtilityClassConstructor`** rule is satisfied (constructor is private). ✓ No violation.
+
+**Line 30** – **`PMD:AppendCharacterWithChar`**: `sb.append('\n')` is correct usage (char not string). ✓
+
+**Line 30** – **`PMD:ConsecutiveAppendsShouldReuse`**: `sb.append(...).append('\n')` is fine.
+
+**Line 53** – **`PMD:ForLoopCanBeForeach`**: loop is already for-each. ✓
+
+---
+
+**Summary of actual violations:**
+
+- **Line 55** – `DuplicatedCode` (PMD) / `java:S2184` (Sonar): `entry.getSharedBibEntryData()` is called twice; should be extracted to a local variable.
+
+- **Line 38** – `PMD:UseConcurrentHashMap`: `HashMap` used in a non-thread-safe manner (minor/context-dependent).
+
+- **Line 29** – `PMD:InsufficientStringBufferDeclaration`: `StringBuilder` initialized without capacity hint.
+
+- **Line 41** – `PMD:DataflowAnomalyAnalysis`: `fieldValue` assigned but only conditionally used (inside the `if` block, the assignment happens before the check on line 43).

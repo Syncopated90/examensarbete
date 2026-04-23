@@ -1,0 +1,5 @@
+**Line 16** — `RegExp_SingleChar_Alternatives`: The regex character class `[ \\-\u2013\u2014]+` uses a literal hyphen that should be placed at the start or end of the class to avoid ambiguity (hyphen may be interpreted as a range).
+
+**Line 18** — `SimplifiableConditional` / redundant else: The `else if (pageParts.length >= 1)` branch is always true when the `length == 2` case is false and the array is non-empty; since `split()` never returns an empty array, the `else` branch (`return ""`) is dead code.
+
+**Line 16** — `UseVarargs` / method design: `s.split(...)` result assigned inline without null-check on `pageParts` (minor: `split` cannot return null but the branching logic treating `length >= 1` as a special case alongside `length == 2` is logically incomplete — `pageParts[0]` is returned for any length other than 2, including length > 2, silently dropping extra parts).

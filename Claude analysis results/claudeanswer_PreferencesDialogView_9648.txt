@@ -1,0 +1,19 @@
+**Line 33** — `StaticFieldInitializedInline` / Localization method called at class initialization (static field initialized with non-constant method call; if Localization is not yet ready, this will fail at class-load time).
+
+**Line 91** — `LongLine` / overly long line; also `MultipleConditionsOnOneLine` — multiple `instanceof` checks chained with `||` on a single line reduce readability.
+
+**Line 87** — `InnerClassLambda` / an event filter is added inside a selection-change listener lambda, meaning every time a tab is selected a **new** `EventFilter` is registered on the dialog pane without ever being removed — `EventFilter` leak / `AvoidInstantiatingObjectsJustToCallGetClass` (accumulating listeners).
+
+**Line 79** — `AvoidReassigningParameters` (minor): `observable` and `previousText` parameters in the lambda are unused — `UnusedFormalParameter`.
+
+**Line 104** — `UseCollectionIsEmpty` — `.stream().filter(...).findFirst()` could simply use `getItems()` with a direct loop or `stream` is acceptable, but the `Optional` variable `tabToSelectIfExist` is used immediately; no real issue here beyond naming convention (`LocalVariableName` — name is overly long).
+
+**Line 45** — `ThisEscapeInConstructor` — `this` is passed to `ViewLoader.view(this)` and `setAsDialogPane(this)` before the constructor finishes, allowing partial object escape.
+
+**Line 50** — `AvoidLiteralsInIfCondition` (borderline) / lambda parameter `_` — acceptable in modern Java but `UnusedFormalParameter` for the unnamed lambda parameter depending on static analysis tool version.
+
+**Line 141** — `AvoidDuplicateLiterals` — the comment string `"ToDo: ..."` is duplicated between lines 141 and 152; also both `importPreferences()` and `resetPreferences()` duplicate the pattern of disabling `cancelButton` — `DuplicatedBlocks`.
+
+**Line 68** — `LawOfDemeter` — `preferences.getKeyBindingRepository().checkKeyCombinationEquality(...)` violates Law of Demeter (two-level chain from injected field).
+
+**Line 80** — `LawOfDemeter` — same violation: `preferences.getKeyBindingRepository().checkKeyCombinationEquality(...)`.

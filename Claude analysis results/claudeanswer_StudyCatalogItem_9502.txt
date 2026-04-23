@@ -1,0 +1,19 @@
+**Line 57: `Objects.equals(isEnabled(), that.isEnabled())`**
+Rule: **UnnecessaryBoxing / UseEqualsForPrimitiveComparison**
+`isEnabled()` returns `boolean` (primitive); wrapping in `Objects.equals` causes unnecessary autoboxing. Use `==` or direct comparison instead.
+
+**Line 62: `Objects.hash(getName(), isEnabled())`**
+Rule: **UnnecessaryBoxing**
+Same issue — `isEnabled()` (primitive `boolean`) is autoboxed to `Boolean` unnecessarily when passed to `Objects.hash`.
+
+**Line 57: `Objects.equals(getName(), that.getName())`**
+Rule: **SimplifiableEquals**
+`getName()` returns a `String`; could use `getName().equals(that.getName())` with a null-guard, but more relevantly, since `name` is `@NonNull`, the `Objects.equals` null-safety is redundant.
+
+**Line 16: `@NonNull String name`**
+Rule: **ConstructorParameterAnnotation / NullableApiMisuse**
+The `@NonNull` annotation is applied but there is no null-check or assertion performed on `name` in the constructor body, making the annotation unenforceable at runtime.
+
+**Line 24: `setName(String name)`**
+Rule: **MissingNullCheck / InconsistentNullability**
+Parameter `name` lacks `@NonNull` annotation, inconsistent with constructor's `@NonNull` contract on the same field.

@@ -1,0 +1,15 @@
+**Line 17** — `NullAway`/`NullPointerException` risk: `userHostString` is dereferenced without null check despite `@NullMarked` guaranteeing non-null; however the real issue is the method accepts `String` but the annotation contract is only as strong as callers respect it. No violation here strictly.
+
+**Line 17** — **`DesignForExtension`** (Checkstyle): `parse` is a static method, acceptable, but `getUserHostString` and `hasSameHost` on a record are implicitly final — no issue.
+
+**Line 43** — **`VisibilityModifier`** (Checkstyle / PMD `DefaultPackage`): `other.host` directly accesses the record component of another instance. In a record, `host()` is the accessor; direct field access `other.host` bypasses the accessor method. Rule: **`DirectFieldAccess`** / PMD **`LawOfDemeter`** — use `other.host()` instead.
+
+**Line 43** — Same issue: `other.host` referenced twice; should be `other.host()`.
+
+**Line 32** — **`DirectFieldAccess`**: `host.isEmpty()` and `user` accessed as raw fields rather than via canonical accessors `host()` and `user()`. Rule: **`DirectFieldAccess`**.
+
+**Line 36** — **`DirectFieldAccess`**: `user` and `host` used directly instead of `user()`, `host()`.
+
+**Line 43** — **`DirectFieldAccess`**: `host`, `other.host` used directly instead of `host()`, `other.host()`.
+
+**Line 48** — **`UnnecessaryMethodOverride`** / **`SuperfluousOverride`** (PMD): `toString()` delegates entirely to `getUserHostString()`; the override adds indirection without adding value — consider inlining or removing.

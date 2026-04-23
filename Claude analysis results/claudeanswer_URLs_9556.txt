@@ -1,0 +1,11 @@
+**Line 3** - `HideUtilityClassConstructor`: Utility class `URLs` lacks a private constructor.
+
+**Line 8** - `DeclarationOrder`: Constants should follow a consistent grouping; `DONATE_URL` (line 11) and `DONATION_URL` (line 33) are duplicates by value.
+
+**Line 11** - `MultipleVariableDeclarations` / Duplicate: `DONATE_URL = "https://donations.jabref.org"` and `DONATION_URL` (line 33) share identical values — duplicate constant.
+
+**Line 5** - `MultipleVariableDeclarations` / Duplicate: `WEBPAGE_URL = "https://jabref.org/"` and `HOMEPAGE_URL` (line 32) `"https://www.jabref.org"` are near-duplicates representing the same resource.
+
+**Line 26** - Duplicate value: `MANAGE_ASSOCIATED_FILES_DOC` shares the identical URL value as `FILE_LINKS_DOC` (line 15) — duplicate constant.
+
+**Line 3** - `ClassDataAbstractionCoupling` / design: Class is purely a constants holder with no encapsulation; should use an enum or interface, violating `InterfaceIsType` if converted, but as-is violates `HideUtilityClassConstructor`.

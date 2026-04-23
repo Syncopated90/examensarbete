@@ -1,0 +1,35 @@
+**Line 14** — `ClassDataAbstractionCoupling` / excessive imports; also `UnusedImports`: `List`, `Iterator`, `ArrayList` are imported but never used directly.
+
+**Line 11** — `UnusedImports`: `java.util.List` unused.
+
+**Line 12** — `UnusedImports`: `java.util.Iterator` unused.
+
+**Line 13** — `UnusedImports`: `java.util.ArrayList` unused.
+
+**Line 14** — `SuppressWarnings` with `"all"` — `AvoidConstantCondition` / overly broad suppression violates `SuppressWarningsRule`.
+
+**Line 18** — `VisibilityModifier`: `_decisionToDFA` is `protected static` mutable array; arrays should be private (`MutableStaticState`).
+
+**Line 19–20** — `VisibilityModifier`: `_sharedContextCache` is `protected static final` but exposes mutable object.
+
+**Line 54–55** — `MutableStaticState` / `VisibilityModifier`: `tokenNames` is a `public static` mutable array, violating encapsulation.
+
+**Line 57–65** — `AvoidStaticInitializer`: `static` initializer block used to populate `tokenNames`.
+
+**Line 68–70** — `DeprecatedMethod` / missing `@deprecated` Javadoc tag on `getTokenNames()`; `@Deprecated` annotation present but no Javadoc `@deprecated` tag.
+
+**Line 54** — `ArrayIsStoredDirectly`: public mutable static array `tokenNames` exposed directly.
+
+**Line 88** — `ConfusingTernary` / blank line before `getVocabulary()` method — minor style; `NewlineAtEndOfFile` not applicable here but extra blank line violates `WhitespaceAround`.
+
+**Line 96** — `UnnecessaryOverride` / trivial delegation: `getGrammarFileName()`, `getRuleNames()`, `getSerializedATN()`, `getATN()` are single-expression overrides with no added logic (lines 96–103) — `UnnecessaryOverride`.
+
+**Line 106** — `AvoidStaticInitializer`: `static { RuntimeMetaData.checkVersion(...); }` at line 17.
+
+**Line 17** — `AvoidStaticInitializer`: static initializer used for version check.
+
+**Line 580–584** — `AvoidStaticInitializer`: third static initializer populating `_decisionToDFA`.
+
+**Line 577** — `VisibilityModifier`: `_serializedATN` is `public static final` raw `String` — acceptable, but `_ATN` at line 579 is a `public static final` mutable `ATN` object, violating `VisibilityModifier`.
+
+**Line 54** — `PublicStaticField`: `tokenNames` is public static mutable array — `MutableStaticState`.

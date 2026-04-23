@@ -1,0 +1,17 @@
+**Line 5** — `UnusedImport`: `com.sun.star.container.NoSuchElementException` is caught but shadows/conflicts with `java.util.NoSuchElementException`; however it is used, so flag instead:
+
+**Line 16** — `MethodDeclaration`: Method `getTextContentByName` declares a checked exception `WrappedTargetException` in `throws` clause but does not explicitly handle or document the case where `nameAccess` is `null`. — **NullPointerException` risk / `MissingNullCheck`**
+
+**Line 16** — `UncommentedEmptyConstructor` (inverse): constructor is private and empty — **`UnusedPrivateConstructor`** / utility class pattern is fine, but:
+
+**Line 11** — `HideUtilityClassConstructor`: Class `UnoNameAccess` is a utility class (only static methods) — the private constructor satisfies this, no violation here.
+
+**Line 15–16** — `JavadocMethod`: The comment on line 14 uses `///` (non-standard Javadoc format); should be `/** */`. — **`InvalidJavadocFormat`**
+
+**Line 14** — `CommentedOutCode` / **`NonJavadocComment`**: Triple-slash `///` is not valid Javadoc; the `@return` tag will not be processed. — **`InvalidJavadocTag`**
+
+**Line 20** — `CatchAndReturn`: Catching `NoSuchElementException` only to return `Optional.empty()` silently suppresses the exception without logging. — **`AvoidCatchingAndIgnoringException`** / **`EmptyCatchBlock`** (effectively)
+
+**Line 16** — `ParameterAssignment` risk: `nameAccess` parameter is never null-checked before calling `.getByName(name)` on line 20 — **`NullPointerDereference`**
+
+**Line 5** — `ImportOrder`: UNO imports (`com.sun.*`) should be separated from standard library imports per convention — **`ImportOrder`**

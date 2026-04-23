@@ -1,0 +1,13 @@
+**Line 16** - `NullableField`: Field `firstEntry` is declared `final` but assigned `null`; should be `@Nullable`.
+
+**Line 21** - `MissingSwitchDefault` / `ImmediatelyReturnedVariable` (PMD): The `if/else` block could be simplified to a ternary expression.
+
+**Line 21** - `CollapsibleIfStatements`: `if (bibEntries.isEmpty())` assigns `null` to a `final` field, violating null-safety contract implied by `final`.
+
+**Line 22** - `AssignmentToNull`: Assigning `null` to `this.firstEntry` breaks null-safety; should use `Optional<BibEntry>` instead.
+
+**Line 28** - `MethodReturnsInternalArray` / `NullableReturn`: `getFirstEntry()` returns a nullable value without the type being `Optional<BibEntry>`, making callers prone to `NullPointerException`.
+
+**Line 20** - `ConstructorCallsOverridableMethod`: `bibEntries.isEmpty()` and `bibEntries.getFirst()` are called on a parameter without defensive copying, violating `ConstructorShouldNotCallOverridableMethods` and allowing external mutation of the list reference passed to `super`.
+
+**Line 19** - `UseUnderscoresInNumericLiterals` / `LooseCoupling`: Parameter type should use `Collection<BibEntry>` instead of `List<BibEntry>` to reduce coupling.

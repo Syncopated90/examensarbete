@@ -1,0 +1,11 @@
+**Line 25** - `String.formatted()` with `%s%s%s` and three arguments is overly complex; prefer concatenation or a single format string. *(Minor style issue)*
+
+**Line 25** - Array created inline within return statement without null-check on `commandPath`. **Null Dereference** (`NullPointerException` risk if `commandPath` is null).
+
+**Line 30** - `jumpToLineCommandlineArguments` ignores the `column` parameter. **Unused Parameter** (`UnusedFormalParameter`).
+
+**Line 30** - `"--position=\"%s\""` embeds escaped quotes via `formatted(line)` — `line` is an `int` but no range validation is performed. **Missing Input Validation**.
+
+**Line 30** - Array created inline within return statement without null-check on `commandPath`. **Null Dereference** (`NullPointerException` risk).
+
+**Line 9** - `APPLICATION` is a `public static final` field of a non-utility class exposing mutable enum state unnecessarily. **Inappropriately Public Field** (`VisibilityModifier`).

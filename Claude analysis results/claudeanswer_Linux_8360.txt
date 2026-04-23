@@ -1,0 +1,23 @@
+**Line 44** - `Runtime.getRuntime().exec(cmd)` — **Process return value ignored** (ignored result of `exec`); also **Forbidden API** (`Runtime.exec` should use `ProcessBuilder`).
+
+**Line 44** - `Runtime.getRuntime().exec(cmd)` — **Resource leak**: returned `Process` is never closed.
+
+**Line 44** - `catch (Exception e2)` — **Too broad catch**: catches `Exception` instead of specific exceptions.
+
+**Line 57** - `Process process = processBuilder.start()` — **Resource leak**: `Process` never closed.
+
+**Line 79** - `Process process = processBuilder.start()` — **Resource leak**: `Process` never closed.
+
+**Line 103** - `Process process = processBuilder.start()` — **Resource leak**: `Process` never closed.
+
+**Line 125** - `Process process = processBuilder.start()` — **Resource leak**: `Process` (readlink) never closed/awaited properly outside the `try-with-resources` for reader only.
+
+**Line 144** - `Process processTerminal = builder.start()` — **Resource leak**: `Process` never closed.
+
+**Line 175** - `new BufferedReader(new InputStreamReader(...))` — **Resource leak**: `BufferedReader` not closed (not in try-with-resources).
+
+**Line 92** - `absoluteFilePath` variable declared but `filePath.getParent().toString()` used in `cmd` instead — **Inconsistent usage** / dead assignment risk if parent is null (**NullPointerException**: `filePath.getParent()` can return `null`).
+
+**Line 56–57** - `viewer` used directly in `ProcessBuilder` without validation — **Command injection**: unsanitized external input passed to `ProcessBuilder`.
+
+**Line 75** - `application.split(" ")` — **Incorrect split for command parsing**: does not handle quoted arguments; also potential **command injection**.

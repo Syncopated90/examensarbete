@@ -1,0 +1,7 @@
+**Line 19** — `UnnecessaryFullyQualifiedName`: `SystematicLiteratureReviewStudyEntryType.values()` uses unnecessary fully qualified enum name inside its own class; `values()` suffices.
+
+**Line 20** — `LambdaCanBeMethodReference`: `field -> field.getName().equalsIgnoreCase(name)` — lambda could potentially be simplified, though not a full method reference; minor style violation.
+
+**Line 20** — `UseCollectionIsEmpty` / `findAny` preference — minor; use of `findFirst` is generally preferred over `findAny` for deterministic results (`FindAnyUsage`).
+
+**Line 26** — `StringConcatenation`/`MethodInvocationOfSameClass`: `getName()` is called from `fromName` filter (line 20) and defined to return lowercased value (line 26), while `equalsIgnoreCase` is used — redundant case-insensitive comparison on already-lowercased string (`RedundantStringCase`).

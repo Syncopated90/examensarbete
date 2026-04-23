@@ -1,0 +1,9 @@
+**Line 13** — `StringUtil.isBlank` — **Redundant Null Check / Inconsistent Null Handling**: `value` parameter is not checked for `null` before calling `StringUtil.isBlank(value)`; if `null` is passed, behavior depends on `StringUtil` implementation rather than failing fast.
+
+**Line 19** — `new ISSN(issnString)` — **Unnecessary Object Creation**: `issnString` is already trimmed from `value.trim()` on line 17, but a new `ISSN` object is created on line 19 and another conceptual call (`isValidFormat`, `isValidChecksum`) is made on separate lines 20 and 24, requiring the object to maintain state across multiple method calls — **Temporary Field** smell.
+
+**Line 17** — `value.trim()` — **Duplicate Code / Redundant Work**: `trim()` is called here after `StringUtil.isBlank(value)` on line 13, which likely already handles whitespace internally, making the trim potentially redundant.
+
+**Line 20** — `issn.isValidFormat()` — **Sequential Validation Without Short-Circuit Explanation**: No rule broken per se, but the two validations (`isValidFormat` and `isValidChecksum`) are tightly coupled to object state, violating **Single Responsibility** if `ISSN` handles both format and checksum logic.
+
+**Line 6** — `import org.jabref.logic.util.strings.StringUtil` — **Coupling to Utility Class**: Direct static utility coupling rather than using `String.isBlank()` (available since Java 11), violating **Avoid Unnecessary Dependencies**.

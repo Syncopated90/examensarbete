@@ -1,0 +1,17 @@
+**Line 12 — HideUtilityClassConstructor**
+Utility class `ListUtil` does not have a private constructor, allowing instantiation.
+
+**Line 14 — MethodName / javadoc style**
+`///` (Markdown javadoc) is non-standard; minor style rule violation depending on ruleset, but more critically:
+
+**Line 14 — UnusedImports**
+`java.util.List` is used only via method reference `List::stream` (acceptable), but `java.util.stream.Stream` and `java.util.stream.StreamSupport` are used — no issue there. However:
+
+**Line 6 — UnusedImport**
+`java.util.stream.StreamSupport` — used, no issue.
+
+**Line 5 — UnusedImport**
+`java.util.stream.Stream` — used, no issue.
+
+**Line 12 — MissingConstructorJavadoc / UtilityClass**
+No private constructor declared. Rule: **HideUtilityClassConstructor** — utility classes should not have a public or default constructor.

@@ -1,0 +1,7 @@
+**Line 46** — `equalsIgnoreCase` called on string literal instead of variable; should be `name.equalsIgnoreCase("bibtexkey")` — **Rule: LiteralsFirstInComparisons** (also known as **PositionLiteralsFirstInComparisons**)
+
+**Line 36** — `EnumSet.noneOf(FieldProperty.class)` returns a mutable set stored in a field with no defensive copying on return in `getProperties()` — **Rule: ReturnEmptyCollectionRatherThanNull** / **MethodReturnsInternalArray** (mutable internal state exposed directly)
+
+**Line 57** — `getProperties()` returns the internal mutable `EnumSet` directly, exposing internal representation — **Rule: ExposureOfMutableInternalRepresentationByReturnType**
+
+**Line 50** — `Arrays.stream(InternalField.values())` — unnecessary array allocation via `values()`; prefer `EnumSet` iteration — **Rule: InefficientEmptyStringCheck** / **UseCollectionIsEmpty** — more precisely **OptimizableToArrayCall** / inefficient stream over enum values — **Rule: UnnecessaryLocalBeforeReturn** *(marginal)*; primary rule: **InefficientEmptyStringCheck** is wrong — correct rule: **UseEnumCollections**

@@ -1,0 +1,9 @@
+**Line 22** – `new Task<>()` anonymous inner class captures `libraryTabs` (a mutable `List`) from the enclosing scope without synchronization. **Rule: Thread-Safety / Unsynchronized shared mutable state access across threads.**
+
+**Line 30** – `Thread.sleep(100)` called inside a busy-wait loop. **Rule: Busy Wait (performance anti-pattern / `BusyWait`).**
+
+**Line 36** – `UiTaskExecutor.runInJavaFXThread(waitForSaveFinished)` submits the task to the JavaFX thread, but `waitForSaveFinished` contains a blocking loop with `Thread.sleep`. Blocking the JavaFX Application Thread will freeze the UI. **Rule: Do not block the UI/Event Dispatch Thread (`DoNotCallThread.sleep` on UI thread / `JFXBlockingCall`).**
+
+**Line 37–41** – `dialogService.showProgressDialogAndWait(...)` is called after the task is already submitted to the JavaFX thread; if the task completes before the dialog opens, the dialog may never close or behave incorrectly. **Rule: Race condition between task submission and dialog display (`RaceCondition`).**
+
+**Line 21** – `libraryTabs.stream().anyMatch(LibraryTab::isSaving)` is evaluated on the calling thread while the task may simultaneously evaluate the same expression on another thread without synchronization. **Rule: `NonAtomicOperationOnVolatileField` / unsynchronized concurrent read (`UnsynchronizedMethodCall`).**

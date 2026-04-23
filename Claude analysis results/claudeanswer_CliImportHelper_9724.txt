@@ -1,0 +1,20 @@
+**Line 31** — `LOGGER.debug("Importing file from locaiton {}", location);`
+**Rule: Typo in string literal** — "locaiton" should be "location".
+
+**Line 31** — `LOGGER.debug(...)`
+**Rule: Guard log statements (GuardLogStatement)** — debug log not wrapped in `if (LOGGER.isDebugEnabled())`.
+
+**Line 40** — `System.err.println(...)`
+**Rule: Avoid printing to System.err (SystemErrUsage / UseLogger)** — use logger instead of `System.err.println`.
+
+**Line 54** — `System.out.println(result.getErrorMessage())`
+**Rule: Avoid printing to System.out (SystemOutUsage / UseLogger)** — use logger instead of `System.out.println`.
+
+**Line 67** — `System.out.println(Localization.lang("Importing %0", file))`
+**Rule: Avoid printing to System.out (SystemOutUsage / UseLogger)** — use logger instead of `System.out.println`.
+
+**Line 27** — `public static Optional<ParserResult> importFile(String location, ...)`
+**Rule: Method overloading ambiguity / Utility class with only static methods** — class has only static methods but is not declared `final` with a private constructor (UtilityClassPattern).
+
+**Line 22** — `public class CliImportHelper`
+**Rule: Missing private constructor (HideUtilityClassConstructor)** — utility class should have a private no-arg constructor to prevent instantiation.

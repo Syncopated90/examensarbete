@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "UseLocaleWithCaseConversions",
+              "shortDescription": {
+                "text": "When doing a String.toLowerCase()/toUpperCase() call, use a Locale"
+              },
+              "fullDescription": {
+                "text": "\nWhen doing `String::toLowerCase()/toUpperCase()` conversions, use an explicit locale argument to specify the case\ntransformation rules.\n\nUsing `String::toLowerCase()` without arguments implicitly uses `Locale::getDefault()`.\nThe problem is that the default locale depends on the current JVM setup (and usually on the system in which\nit is running). Using the system default may be exactly what you want (e.g. if you are manipulating strings\nyou got through standard input), but it may as well not be the case (e.g. if you are getting the string over\nthe network or a file, and the encoding is well-defined and independent of the environment). In the latter case,\nusing the default locale makes the case transformation brittle, as it may yield unexpected results on a machine\nwhose locale has other case translation rules. For example, in Turkish, the uppercase form of `i` is `İ` (U+0130,\nnot ASCII) and not `I` (U+0049) as in English.\n\nThe rule is intended to *force* developers to think about locales when dealing with strings. By taking a\nconscious decision about the choice of locale at the time of writing, you reduce the risk of surprising\nbehaviour down the line, and communicate your intent to future readers.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#uselocalewithcaseconversions",
+              "help": {
+                "text": "\nWhen doing `String::toLowerCase()/toUpperCase()` conversions, use an explicit locale argument to specify the case\ntransformation rules.\n\nUsing `String::toLowerCase()` without arguments implicitly uses `Locale::getDefault()`.\nThe problem is that the default locale depends on the current JVM setup (and usually on the system in which\nit is running). Using the system default may be exactly what you want (e.g. if you are manipulating strings\nyou got through standard input), but it may as well not be the case (e.g. if you are getting the string over\nthe network or a file, and the encoding is well-defined and independent of the environment). In the latter case,\nusing the default locale makes the case transformation brittle, as it may yield unexpected results on a machine\nwhose locale has other case translation rules. For example, in Turkish, the uppercase form of `i` is `İ` (U+0130,\nnot ASCII) and not `I` (U+0049) as in English.\n\nThe rule is intended to *force* developers to think about locales when dealing with strings. By taking a\nconscious decision about the choice of locale at the time of writing, you reduce the risk of surprising\nbehaviour down the line, and communicate your intent to future readers.\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UseLocaleWithCaseConversions",
+          "ruleIndex": 0,
+          "message": {
+            "text": "When doing a String.toLowerCase()/toUpperCase() call, use a Locale"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/CAYWResource.java"
+                },
+                "region": {
+                  "startLine": 265,
+                  "startColumn": 34,
+                  "endLine": 265,
+                  "endColumn": 58
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

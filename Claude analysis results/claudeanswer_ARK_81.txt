@@ -1,0 +1,13 @@
+**Line 29** - `parse` always returns a non-empty `Optional`, making the `Optional` return type misleading. **Rule: `Optional` misuse / vacuous Optional wrapping**
+
+**Line 27** - TODO comment left in production code. **Rule: `CommentedOutCode` / `TodoComment`**
+
+**Line 34** - `strip()` result assigned to local variable used only once; could be inlined. **Rule: `UnnecessaryLocalBeforeReturn`**
+
+**Line 35** - Regex `"^ark:/"` compiled on every call to `asString()`. **Rule: `InsufficientStringBufferDeclaration` / `PrecomputedRegex` (regex not pre-compiled as `Pattern` constant)**
+
+**Line 40** - `URLUtil.createUri` may return `null`; wrapping in `Optional.of` will throw `NullPointerException`. **Rule: `NullPointerDereference` / `AvoidCallingOptionalOfWithNullableValue`**
+
+**Line 22** - Constructor is `private` but class is non-`final`, preventing subclassing while also preventing external instantiation — inconsistent design. **Rule: `ClassWithOnlyPrivateConstructorsShouldBeFinal`**
+
+**Line 20** - Class `ARK` extends `EprintIdentifier` but does not override `equals`/`hashCode` despite holding state (`ark` field). **Rule: `OverrideEquals` / `HashCodeWithoutEquals`**

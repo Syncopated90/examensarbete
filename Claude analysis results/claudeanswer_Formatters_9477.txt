@@ -1,0 +1,17 @@
+**Line 53** - `keyToFormatterMap` is a mutable static field initialized in a static block. **Rule: Mutable Static Field** (should be `final`).
+
+**Line 51** - `keyToFormatterMap` is non-`final` but declared as a class-level static field. **Rule: Static Field Not Final**
+
+**Line 108** - `keyToFormatterMap.containsKey(name)` followed by `keyToFormatterMap.get(name)` — double map lookup. **Rule: Inefficient Map Access** (use `Map.get` and check for null, or `getOrDefault`/`computeIfAbsent`).
+
+**Line 116** - `switch` statement uses fall-through style with no `default` case. **Rule: Missing Default in Switch**
+
+**Line 131** - `modifier` is a method parameter being reassigned (`modifier = modifier.replace(...)`). **Rule: Parameter Assignment**
+
+**Line 133** - `Integer.parseInt(modifier)` with no exception handling — will throw unchecked `NumberFormatException` if non-numeric. **Rule: Unhandled Exception / Missing Exception Handling**
+
+**Line 137** - `Integer.parseInt(modifier.substring(8))` with no exception handling. **Rule: Unhandled Exception / Missing Exception Handling**
+
+**Line 116-127** - `switch` on `String` with no `default` clause, silently falls through to the `if-else` chain. **Rule: Missing Default Case**
+
+**Line 51-53** - `keyToFormatterMap` is package-private (no access modifier) and mutable. **Rule: Visibility / Mutable Non-Private Static Field**

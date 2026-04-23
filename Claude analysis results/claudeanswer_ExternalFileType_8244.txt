@@ -1,0 +1,13 @@
+**Line 10** - `CommentDefaultImplementation` / Interface with default methods (interfaces should not have default implementations unless necessary; `@NullMarked` on interface with default methods containing logic)
+
+**Line 23** - `DefaultMethodInInterface` - `getField()` contains a default implementation with logic/side-effect potential; violates interface segregation.
+
+**Line 32** - `DefaultMethodInInterface` - `toStringArray()` contains a default implementation with logic; same rule violation.
+
+**Line 33** - `UnnecessaryBoxing` / `ReturnWrappedArray` - Returns a mutable array `new String[]` from a public method, exposing internal representation risk (`MethodReturnsInternalArray`).
+
+**Line 33** - `ArrayIsStoredDirectly` / `MethodReturnsInternalArray` - Returning a raw array from a public API is a security/encapsulation violation.
+
+**Line 23** - `LawOfDemeter` - `FieldFactory.parseField(getExtension())` violates Law of Demeter by calling a static factory through a chain within the interface itself.
+
+**Line 33** - `LawOfDemeter` - `getIcon().name()` chains a method call on the result of another method call within the same expression.

@@ -1,0 +1,21 @@
+**Line 17** - `LocalVariableCouldBeFinal`: Variable `i` could be declared final... actually no, it's incremented.
+
+**Line 17** - `AvoidInstantiatingObjectToGetClassObject` / design issue: Manual index tracking with `i` alongside a for-each loop.
+
+**Line 15** - `UnnecessaryLocalBeforeReturn`: `keywords` is used, so not applicable. Let me be precise:
+
+---
+
+**Line 17** — `ForLoopVariableCount` / `ControlVariableInLoopModification` (PMD): Variable `i` is manually managed inside a for-each loop; a traditional for loop or iterator should be used instead.
+
+**Line 20** — `InsufficientStringBufferDeclaration` (PMD): `StringBuilder` is created with default capacity without specifying an initial size based on expected content.
+
+**Line 14** — `ConsecutiveAppends` / `UseStringBuilderAppend` (PMD/Checkstyle): Multiple consecutive `sb.append()` calls could be chained into a single call.
+
+**Line 18-19** — `ConsecutiveAppends` (PMD `AppendCharacterWithChar`): `sb.append("KW  - ")` appending a string literal that could be broken; minor but `append` calls should be chained: `sb.append("KW  - ").append(keyword)`.
+
+**Line 20** — `CallToStringInsteadOfKeywordComparison`: `keyword.toString()` is called explicitly; passing `keyword` directly to `append` is sufficient as `StringBuilder.append(Object)` calls `toString()` implicitly. This violates **`UnnecessaryCallToStringToString`** or **`CallToStringToString`** (PMD).
+
+**Line 11** — `ReturnEmptyStringNotNull` (best practice violation): Returning `""` instead of `null` changes contract silently — acceptable by convention but should be documented; flagged by **`MissingOverrideAnnotation`** — no, `@Override` is present.
+
+**Line 16** — `UnusedLocalVariable` risk: `int i = 0` initialized but only used for boundary check; this pattern is flagged by **`ForLoopCanBeForeach`** in reverse — here a for-each is used but an index is still manually tracked, violating **`AvoidManualArrayCopy`**-style rule. PMD rule: **`ForLoopCanBeWhileLoop`** does not apply, but **`UseCollectionIsEmpty`** does not apply either. Correct rule: **`ForLoopVariableCount`** (PMD).

@@ -1,0 +1,17 @@
+**Line 36 – Return Null (NullPointerException Risk)**
+`singularText` may be `null` if `setArgument` was never called or `parts.size() < 2`. Returning `null` from `format()` violates the expected non-null return contract.
+
+**Line 31 – Null Check Incomplete**
+`pluralText == null` is checked but `singularText == null` is not checked before it is returned on line 38. A case where `parts.size() >= 2` but some edge sets only `pluralText` is not possible here, but the asymmetric null-guard is a code smell / inconsistent null check rule violation.
+
+**Line 23 – Empty Return / Silently Swallowed Error**
+`return;` silently ignores the too-few-arguments condition, leaving `pluralText` and `singularText` as `null`. Violates **"Avoid Empty Catch Blocks / Silent Failures"** rule.
+
+**Line 31 – Empty String Return on Null Argument**
+Returning `""` when `pluralText == null` hides a misconfiguration. Violates **"Avoid Hidden Errors"** / **"Design by Contract"** rule.
+
+**Line 16-17 – Mutable Fields Not Initialized to Safe Defaults**
+`pluralText` and `singularText` are instance fields defaulting to `null`, with no safe default. Violates **"Initialize Variables"** rule.
+
+**Line 35 – Regex Compiled on Every Call**
+`fieldText.matches(".*\\sand\\s.*")` recompiles the regex on every invocation. Violates **"Optimize Regex / Use Precompiled Patterns"** rule. Should use a `static final Pattern`.

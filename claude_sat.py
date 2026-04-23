@@ -20,12 +20,20 @@ def pmd_recheck_with_all_rules():
   print(f"Elapsed time: {end - start}")
 
 def random_choice():
-  file_amount = 1
+  file_amount = 320
   checked_files = populate_checked_files()
   claude_time = 0.0
   pmd_quickstart_time = 0.0
   pmd_all_rules_time = 0.0
   number_of_files_checked = 0
+
+  def store_results(file_name):
+    with open(file_name, "a", encoding="utf-8") as result_file:
+      result_file.write(f"pmd time: {pmd_quickstart_time}\n")
+      result_file.write(f"pmd all rules time: {pmd_all_rules_time}\n")
+      result_file.write(f"claude time: {claude_time}\n")
+      result_file.write(f"number of files checked: {number_of_files_checked}\n\n")
+
   for _ in range(0, file_amount):
     file = random.choice(os.listdir(code_dir))
     if file not in checked_files:
@@ -41,15 +49,12 @@ def random_choice():
       pmd_all_rules_time += (after_all_rules - after_quickstart)
       claude_time += (end - after_all_rules)
       number_of_files_checked += 1
+      store_results("temp_summary_of_analysis_results.txt")
   print(f"pmd quickstart time: {pmd_quickstart_time}")
   print(f"pmd all rules time: {pmd_all_rules_time}")
   print(f"claude time: {claude_time}")
   print(f"number of files checked: {number_of_files_checked}")
-  with open("summary_of_analysis_results.txt", "a", encoding="utf-8") as result_file:
-    result_file.write(f"pmd time: {pmd_quickstart_time}\n")
-    result_file.write(f"pmd all rules time: {pmd_all_rules_time}\n")
-    result_file.write(f"claude time: {claude_time}\n")
-    result_file.write(f"number of files checked: {number_of_files_checked}\n\n")
+  store_results("summary_of_analysis_results.txt")
 
 def populate_checked_files():
   checked_files = []

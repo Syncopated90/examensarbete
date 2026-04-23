@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "NonExhaustiveSwitch",
+              "shortDescription": {
+                "text": "Switch statements or expressions should be exhaustive, add a default case (or missing enum branches)"
+              },
+              "fullDescription": {
+                "text": "\n            Switch statements should be exhaustive, to make their control flow\n            easier to follow. This can be achieved by adding a `default` case, or,\n            if the switch is on an enum type, by ensuring there is one switch branch\n            for each enum constant.\n\n            This rule doesn't consider Switch Statements, that use Pattern Matching, since for these the\n            compiler already ensures that all cases are covered. The same is true for Switch Expressions,\n            which are also not considered by this rule.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#nonexhaustiveswitch",
+              "help": {
+                "text": "\n            Switch statements should be exhaustive, to make their control flow\n            easier to follow. This can be achieved by adding a `default` case, or,\n            if the switch is on an enum type, by ensuring there is one switch branch\n            for each enum constant.\n\n            This rule doesn't consider Switch Statements, that use Pattern Matching, since for these the\n            compiler already ensures that all cases are covered. The same is true for Switch Expressions,\n            which are also not considered by this rule.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 3,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "NonExhaustiveSwitch",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Switch statements or expressions should be exhaustive, add a default case (or missing enum branches)"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ExportTabViewModel.java"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 9,
+                  "endLine": 45,
+                  "endColumn": 10
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

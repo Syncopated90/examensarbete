@@ -1,0 +1,17 @@
+**Line 9** — `HideUtilityClassConstructor`: Utility class has no private constructor.
+
+**Line 9** — `stringToDouble(String)` — `UseLocaleWithCaseConversions`: Not applicable here, but:
+
+**Line 10** — `DefaultLocale`: `Locale.getDefault()` used; may produce unexpected results depending on the runtime locale.
+
+**Line 26** — `DefaultLocale`: `Locale.getDefault()` used again.
+
+**Line 9** — `ClassNamingConventions`: No issue here.
+
+**Line 18** — `LocalVariableCouldBeFinal`: `format` could be declared `final`.
+
+**Line 19** — `LocalVariableCouldBeFinal`: `parsedNumber` could be declared `final`.
+
+**Line 30** — `LocalVariableCouldBeFinal`: `format` could be declared `final`.
+
+**Line 21** — `AvoidCatchingGenericException` (PMD): `ParseException` is specific, but the catch discards the exception `e` without logging — **`EmptyCatchBlock`** / `UnusedFormalParameter`: caught exception `e` is never used or logged.

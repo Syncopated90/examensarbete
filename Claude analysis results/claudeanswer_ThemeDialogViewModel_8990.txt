@@ -1,0 +1,23 @@
+**Line 22** — `customPathProperty` field name shadows the method `customPathProperty()` at line 55. **FieldNameHidesMethodName** / **HiddenField**
+
+**Line 27** — Constructor does not validate `preferences` or `dialogService` for null before assignment. **NullArgumentNotChecked** / **AvoidUncheckedExceptionsInSignatures**
+
+**Line 63** — `preferences.getInternalPreferences().getLastPreferencesExportPath().toString()` — chained method calls with no null checks; any intermediate call could return null causing NPE. **AvoidDereferencingNullPointer** / **LawOfDemeter**
+
+**Line 63** — Ternary spans multiple lines with complex logic inside a method call argument; violates single responsibility for readability. **AvoidInlineConditionals**
+
+**Line 67** — `FileDialogConfiguration.Builder` chained across multiple lines — `.withInitialDirectory(fileDir)` accepts a `String` but the directory is not validated to exist before use. **NullAssignment** / **PathTraversalValidation**
+
+**Line 72** — `dialogService.showFileOpenDialog(fileDialogConfiguration)` return value chain `.ifPresent(...)` — `file` could refer to a non-existent path; no validation before calling `setCustomPath`. **InputValidation**
+
+**Line 77** — `customPathProperty.get().trim().isEmpty()` and `customPathProperty.get()` called twice — double invocation of `get()` without caching result. **AvoidDuplicateLiterals** / **DoubleCheckedInvocation**
+
+**Line 77** — `Path.of(customPathProperty.get())` can throw `InvalidPathException` (unchecked) if the string is malformed; not caught. **AvoidThrowingRawExceptionTypes** / **ExceptionHandling**
+
+**Line 81** — `selectedThemeProperty.get() != null` check is placed after already calling `.get()` on line 80 in `switch`; if `get()` returns null the switch at line 83 will throw NPE. **NullDereference** / **MissingNullCheck**
+
+**Line 83** — `switch` expression on `selectedThemeProperty.get()` with no null guard; if property value is null, throws NPE at runtime. **NullDereference**
+
+**Line 14** — `GuiPreferences` import used only to store a reference and call `getInternalPreferences()`; violates **LawOfDemeter** — should depend on the specific sub-preferences directly.
+
+**Line 11** — `WorkspacePreferences` is obtainable from `GuiPreferences`; storing both violates **DRY** / **SingleResponsibilityPrinciple** at field level.

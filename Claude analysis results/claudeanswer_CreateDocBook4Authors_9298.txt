@@ -1,0 +1,9 @@
+**Line 12** — `NullPointerException` risk: `fieldText` is not checked for `null` before being passed to `AuthorList.parse()`. **Rule: NULL_DEREFERENCE / AvoidNullParameterValidation (missing null check)**
+
+**Line 7** — Javadoc comment uses `///` (Markdown Javadoc, Java 23+) which is non-standard for typical Java codebases and may break tooling. **Rule: InvalidJavadocFormat / CommentStyle**
+
+**Line 10** — Class has no constructor defined but also no explanation; minor issue: `DocBookAuthorFormatter` is instantiated on every `format()` call despite being stateless. **Rule: InsufficientStringBufferDeclaration / UnnecessaryLocalBeforeReturn** — also **Rule: AvoidInstantiatingObjectsJustToCallGetClass / InefficientObjectCreation** (line 13, repeated instantiation of stateless `DocBookAuthorFormatter`)
+
+**Line 11** — `StringBuilder` initial capacity of `100` is arbitrary and undocumented. **Rule: MagicNumber**
+
+**Line 14** — `StandardField.AUTHOR.getName()` is called inline; the result is a constant-like value and could be stored as a constant to avoid repeated method calls. **Rule: AvoidDuplicateLiterals / PreserveStackTrace**

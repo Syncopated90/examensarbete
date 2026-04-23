@@ -1,0 +1,19 @@
+**Line 7** — `java.util.HashMap` imported but `fieldPositions` could use `java.util.LinkedHashMap` or is a mutable field exposed via getter. Minor: unused import risk low, but `HashMap` is a raw mutable field.
+
+**Line 37** — **VisibilityModifier / MutableField**: `fieldPositions` is a mutable instance field exposed directly via `getFieldPositions()` at line 195 — returns internal mutable state (encapsulation violation).
+
+**Line 63** — **MethodLength / SingleResponsibility**: `write(BibEntry, BibWriter, BibDatabaseMode, boolean)` delegates adequately, but the overloaded `write` chain is fragile.
+
+**Line 86** — **LocalVariableName**: `final int indent` declared inside method but `getLengthOfLongestFieldName` is a static method called on instance context — not a violation itself, but `indent` is computed before the `type.isPresent()` branch and used inside it, making it always computed even when unused.
+
+**Line 88** — **VariableDeclarationUsageDistance**: `Optional<BibEntryType> type` is declared far from its first conditional use.
+
+**Line 155** — **LawOfDemeter**: `entry.getCitationKey().orElse("")` is called twice in the same `catch` block — **DuplicateCode** / repeated expression.
+
+**Line 155** — **AvoidCatchingGenericException** (borderline): catching `InvalidFieldValueException` and wrapping in `IOException` loses type specificity.
+
+**Line 167** — **CompareObjectsWithEquals**: `InternalField.KEY_FIELD != field` uses reference equality (`!=`) instead of `.equals()` — **ReferenceEquality** rule violation.
+
+**Line 195** — **ReturnOfCollectionOrArray**: `getFieldPositions()` returns a reference to the internal mutable `HashMap`, violating encapsulation. Should return `Collections.unmodifiableMap(fieldPositions)`.
+
+**Line 48** — **ResourceManagement**: `StringWriter` and `BibWriter` are not closed in a try-with-resources block in `write(List<BibEntry>, BibDatabaseMode)`.

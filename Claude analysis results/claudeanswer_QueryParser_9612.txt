@@ -1,0 +1,18 @@
+**Line 36 — `Comparator.comparing(Term::text).reversed()`**
+Rule: **UnusedImport** — `Comparator` is used, so this is fine, but:
+
+**Line 36** — **`reversed()` sorts descending, but the Javadoc (line 22) says "alphabetically and numerically first instance is used"** — Rule: **IncorrectDocumentation / LogicError**: descending sort contradicts "first" (smallest) selection intent.
+
+**Line 28** — Rule: **LocalVariableCouldBeFinal** — `StandardQueryParser parser` can be declared `final`.
+
+**Line 29** — Rule: **LocalVariableCouldBeFinal** — `Query luceneQuery` can be declared `final`.
+
+**Line 30** — Rule: **LocalVariableCouldBeFinal** — `Set<Term> terms` can be declared `final`.
+
+**Line 33** — Rule: **LocalVariableCouldBeFinal** — `QueryVisitor visitor` can be declared `final`.
+
+**Line 35** — Rule: **LocalVariableCouldBeFinal** — `List<Term> sortedTerms` can be declared `final`.
+
+**Line 28** — Rule: **ResourceNotManaged (CloseResource)** — `StandardQueryParser` may hold resources; not closed in a try-with-resources block.
+
+**Line 38** — Rule: **AvoidCatchingGenericExceptions** (broad catch): catching `IllegalStateException` and `IllegalArgumentException` alongside the checked exception conflates unrelated runtime failures with expected parse errors, masking bugs.

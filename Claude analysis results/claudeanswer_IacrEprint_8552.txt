@@ -1,0 +1,15 @@
+**Line 22** — `IACR_EPRINT_EXP` is a `private static final` constant but uses escaped forward slashes (`\\/`) which are unnecessary in Java regex; minor style/correctness issue. **Rule: java:S4248** (Regex patterns should be defined as constants, and compiled once — pattern is compiled inline inside constructor).
+
+**Line 29** — `Pattern.compile(IACR_EPRINT_EXP).matcher(trimmedId)` compiles the pattern on every constructor invocation instead of storing it as a static constant. **Rule: java:S4248** (Regular expressions should not be compiled more than once).
+
+**Line 37** — `matchesExcepted` — method name is a misspelling of "matchesExpected" (or "matchesAccepted"). **Rule: java:S100** (Method names should comply with a naming convention / naming typo).
+
+**Line 37-39** — `identifier.matches(...)` internally compiles a new `Pattern` on each call. **Rule: java:S4248** (Regular expressions should not be compiled more than once).
+
+**Line 38** — Escaping forward slashes (`\\/`) inside a Java string regex is unnecessary and misleading. **Rule: java:S5361** (Unnecessarily escaped characters in regex).
+
+**Line 44** — `IllegalArgumentException` caught but not logged or re-thrown with context; silent control flow via exception. **Rule: java:S1166** (Exception handlers should preserve the original exception).
+
+**Line 25** — Constructor is package-private (no modifier) but class is `public`; likely unintentional access restriction. **Rule: java:S1104** / **java:S5993** (Public class constructor should be consistently accessible).
+
+**Line 19** — `RESOLVER` is `public static final` but mutable URI reference initialized via a utility method that could return null (no null check). **Rule: java:S2386** (Mutable fields should not be public static) and **Rule: java:S2259** (Null pointer dereference risk).

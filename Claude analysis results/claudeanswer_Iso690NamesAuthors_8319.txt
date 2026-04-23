@@ -1,0 +1,27 @@
+**Line 17** — `AvoidLiteralsInIfCondition` / `MagicNumber`: literal `"and"` used directly in `split()` without surrounding spaces, also a logic bug but flagged as **UseStringContains** or improper delimiter.
+
+**Line 17** — `StringSplitWithoutLimit`: `String.split()` called without a limit argument.
+
+**Line 20** — `StringSplitWithoutLimit`: `String.split()` called without a limit argument (second `split`).
+
+**Line 26** — `StringSplitWithoutLimit`: `String.split()` called without a limit argument (third `split`).
+
+**Line 19** — `ForLoopCanBeForeach`: standard `for` loop can be replaced with enhanced for-each loop.
+
+**Line 22** — `LocalVariableNamingConventions` / shadowing: variable `author` (array) shadows the loop concept and is reassigned on line 26, violating `VariableDeclarationUsageDistance`.
+
+**Line 26** — `VariableDeclarationUsageDistance`: `author` is re-assigned after being declared and used, increasing distance.
+
+**Line 29** — `UnnecessaryLocalVariable` / `UnusedLocalVariable` risk: `name` and `surname` declared but only assigned in branches — no initialisation value given, declared outside conditionals unnecessarily.
+
+**Line 57** — `MagicNumber`: literal `2` used in condition `authors.length - 2` without named constant.
+
+**Line 59** — `MagicNumber`: literal `2` used in condition `authors.length - 2`.
+
+**Line 57–61** — `ConfusingTernary`: if/else-if checking `i < authors.length - 2` and `i == authors.length - 2` should use a cleaner construct.
+
+**Line 63** — `UnnecessaryComment`: inline comment restates what the code does.
+
+**Throughout** — `CommentDefaultAccessModifier` / non-English comments violate `LanguageConventions` (comments in Spanish in an English codebase).
+
+**Line 9** — `ClassNamingConventions`: class name `Iso690NamesAuthors` does not follow consistent acronym casing (`ISO690`).

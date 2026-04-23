@@ -1,0 +1,21 @@
+**Line 60** – `ActionFactory` instantiated without dependency injection; should be injected or reused. **Rule: InjectionAntiPattern / UnusedLocalVariable** (ActionFactory is created but never stored).
+
+**Line 62** – `new ActionFactory()` — missing `@Inject` or constructor injection. **Rule: AvoidInstantiatingObjectsJustToCallGetClass / DependencyInjectionViolation**
+
+**Line 79** – `withOnMouseClickedEvent` uses `columnsList.getFocusModel().getFocusedItem()` instead of the `item` lambda parameter, making focus state unreliable. **Rule: ConfusingTernary / SuspiciousValueOfParameter**
+
+**Line 47–49** – Constructor calls `ViewLoader.view(this)` which invokes `initialize()` indirectly; calling overridable/initializer logic in constructor. **Rule: ConstructorCallsOverridableMethod**
+
+**Line 55** – `getTabName()` returns a localizable string but is not `@Override`-annotated from a `final` method; acceptable, but `Localization.lang` called on every access without caching. **Rule: AvoidCallingMethodsOnNewObject / ConsiderCachingLocalization**
+
+**Line 62** – `HelpAction` instantiated inline within `configureIconButton`; anonymous object creation with side effects in method call. **Rule: AvoidInstantiatingObjectsJustForSideEffects**
+
+**Line 30–45** – Multiple `@FXML` fields are not `private`; they have package-private access (no modifier shown, but `@FXML` fields should be `private`). **Rule: VisibilityModifier**
+
+**Line 73** – `setCellValueFactory` on `actionsColumn` uses `nameProperty()` solely to trigger cell rendering; semantically misleading. **Rule: MisleadingVariableName / ImproperUseOfCellValueFactory**
+
+**Line 86–89** – Event filter lambda captures `viewModel` directly; if `viewModel` is reassigned, stale reference possible. **Rule: LambdaCapturesNonEffectivelyFinal / AvoidAccessingFieldsInLambda**
+
+**Line 99** – `Platform.runLater` used to defer validation initialization; could silently fail if `viewModel` is null at execution time. **Rule: AvoidNullCheckInLambda / UnsafeRunLater**
+
+**Line 28** – `TableTab` extends `AbstractPreferenceTabView` and implements `PreferencesTab`; if `AbstractPreferenceTabView` already implements `PreferencesTab`, the `implements` clause is redundant. **Rule: RedundantImplements**

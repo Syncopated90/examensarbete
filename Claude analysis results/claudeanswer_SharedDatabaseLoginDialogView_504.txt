@@ -1,0 +1,21 @@
+**Line 33** — `JavadocStyle` / `InvalidJavadocPosition`: Uses `///` (Markdown Javadoc) style; non-standard for Java < 23, inconsistent with `/** */` convention.
+
+**Line 44** — `VisibilityModifier`: `@FXML` fields should be `private`, but `connectButton` typed as `ButtonType` is injected via FXML — mixing control and non-control FXML fields.
+
+**Line 75** — `NullAssignment`/`AvoidFinalLocalVariable` risk: `btnConnect` cast is unchecked; no null check before `.disableProperty()` call on line 76 — potential `NullPointerException`.
+
+**Line 75** — `AvoidUncheckedExceptionsInSignatures` / `ClassCastException`: Unchecked cast `(Button) this.getDialogPane().lookupButton(connectButton)`.
+
+**Line 76** — `ConstructorCallsOverridableMethod` / ordering: `viewModel` is used on line 76–77 inside constructor but is only assigned in `initialize()` (line 90), risking `NullPointerException` if `initialize()` hasn't run yet.
+
+**Line 77** — Same issue: `viewModel.loadingProperty()` called in constructor before `viewModel` is initialized.
+
+**Line 82** — `UnusedFormalParameter`: `openDatabase()` is `@FXML` void but doesn't use any parameter; no issue, but method at line 139 `showSaveDbToFileDialog(ActionEvent event)` — `event` parameter is unused.
+
+**Line 139** — `UnusedFormalParameter`: `event` is declared but never used.
+
+**Line 144** — `UnusedFormalParameter`: `event` is declared but never used.
+
+**Line 100** — `MethodName`/`NamingConvention`: `viewModel.databaseproperty()` — inconsistent naming; should be `databaseProperty()` (lowercase 'p' violates JavaFX property naming convention).
+
+**Line 107** — `MethodName`: `viewModel.selectedDbmstypeProperty()` — `selectedDbmstypeProperty` should be `selectedDbmsTypeProperty` (naming convention violation).

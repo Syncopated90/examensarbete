@@ -1,0 +1,17 @@
+**Line 14** – `JABREF_BANNER` is a `public static final` field of non-primitive, mutable type (`String` concatenation is fine, but the field references external mutable state via `TextFormatter`). More critically:
+
+**Line 14** – **`ConstantName`**: The field `JABREF_BANNER` is acceptable, but the inline multi-line string construction with side-effect-prone static initializers violates **`Initialization`** / **`StaticVariableInitialization`**.
+
+**Line 30** – **`SystemPropertyUsage`** / **`CallToSystemGetenv`**: `System.getProperty()` called in static field initializer; rule: **AvoidUsingHardCodedIP** is not violated, but **`UseSystemGetenv`** / direct `System.getProperty` in static context is flagged.
+
+**Line 56** – **`EmptyCatchBlock`**: `catch (IOException ignored)` — rule: **`EmptyCatchBlock`** (PMD) / **`IllegalCatch`** (Checkstyle). Catching and silently ignoring `IOException` with only a comment.
+
+**Line 63** – **`AvoidLiteralsInIfCondition`** / **`MagicNumber`**: No direct magic numbers here, but:
+
+**Line 65–73** – **`HardCodedCredentials`** (PMD `CredentialsSensitivity` / FindSecBugs `HARD_CODE_KEY`): Hard-coded API keys passed as default string literals (e.g., `"tAhPRKADc6cC26mZUnAoBt3MAjCvKbuCZsB4lI3c"`, `"36b910b6-2eb3-46f2-b64c-9abc149925ba"`, `"5jv3wyt4tt2bwcwv7jjk7pc3"`, `"fb82f2e692b3c72dafe5f4f1fa0ac00b"`, `"118d90a519d0fc2a01ee9715400054d4"`). Rule: **`HardcodedCredentials`**.
+
+**Line 79** – **`LawOfDemeter`**: `Optional.ofNullable(...).map(...).orElse(...)` chain is acceptable, but `.replaceAll("\\$\\{.*\\}", "")` uses a greedy regex — rule: **`GreedyRegex`** / the regex `.*` is greedy and could match unintended content.
+
+**Line 79** – **`UseIndexOfChar`** / **`SimplifyRegex`**: `replaceAll` used where `replace` with a non-regex would not apply, but the regex `\\$\\{.*\\}` is greedy — rule: **`ReluctantQuantifier`** (should be `.*?`).
+
+**Line 37–45** – **`VisibilityModifier`** (PMD/Checkstyle): All instance fields (`version`, `maintainers`, `year`, `astrophysicsDataSystemAPIKey`, etc.) are `public` non-static non-final... wait, they are `final`. Still: rule **`VisibilityModifier`** — public instance fields, even if final, should be encapsulated via accessors.

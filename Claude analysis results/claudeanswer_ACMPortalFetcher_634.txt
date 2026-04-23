@@ -1,0 +1,17 @@
+**Line 24 — `CookieHandler.setDefault` in constructor (Global State Modification)**
+Setting a global/static `CookieHandler` in a constructor causes unintended side effects across the JVM. Rule: **Avoid using static mutable state / unexpected side effects in constructors**.
+
+**Line 37 — Method could be static (class method not using instance state)**
+`createQueryString` is already `static`, but `new DefaultQueryTransformer()` is instantiated inline with no reuse. Rule: **Instantiation of utility/stateless object inside method body (unnecessary object creation)**.
+
+**Line 44 — Checked exceptions in `throws` clause not fully justified**
+`MalformedURLException` is a subtype concern already covered by `URISyntaxException` context; `URIBuilder.build().toURL()` throwing `MalformedURLException` is unlikely given a valid base URL constant. Rule: **Overly broad or unnecessary checked exception declaration**.
+
+**Line 21 — `SEARCH_URL` hardcoded string (magic URL)**
+The URL is a hardcoded literal with no configuration point. Rule: **Avoid hardcoded URLs / magic strings**.
+
+**Line 19 — Class implements interface but declares `public` constant**
+`FETCHER_NAME` is a `public static final` field on a non-final class. Rule: **Constants should be declared on a utility/constants class or interface, not on implementation classes**.
+
+**Line 19 — Class is not `final`**
+`ACMPortalFetcher` is not declared `final` despite no extension points being designed. Rule: **Make utility/implementation classes `final` if not designed for inheritance**.

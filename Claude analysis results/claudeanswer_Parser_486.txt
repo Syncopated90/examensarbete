@@ -1,0 +1,14 @@
+**Line 16 — `Implicit_Dependency_On_UTF8_Encoding`**
+`dataString.getBytes(StandardCharsets.UTF_8)` encodes to UTF-8, but `ByteArrayInputStream` feeds raw bytes with no charset context to `parseEntries(InputStream)`, which may re-interpret those bytes using a different or default charset internally — silent encoding contract mismatch.
+
+**Line 11 — `Interface_Without_Javadoc_On_Members`**
+The interface-level Javadoc comment (line 10) uses the Markdown `///` doc-comment style, but `parseEntries(InputStream)` (line 13) and `parseEntries(String)` (line 15) have no individual Javadoc, violating the rule that all public API members must be documented.
+
+**Line 13 — `Checked_Exception_In_Interface`**
+`parseEntries(InputStream)` declares `throws ParseException` (a checked exception) in an interface method, coupling all implementors to checked exception handling and preventing use as a functional interface / lambda target — violates **DesignForExtension / avoid checked exceptions in interfaces** rule.
+
+**Line 15 — `Checked_Exception_In_Default_Method`**
+Same rule violation: the `default` method also propagates `throws ParseException`, unnecessarily restricting callers of the convenience overload.
+
+**Line 16 — `Resource_Never_Closed` (RSPEC-2095)**
+`new ByteArrayInputStream(...)` is created inline and passed directly without ever being closed; while `ByteArrayInputStream.close()` is a no-op, static analysis tools (e.g., SonarQube) still flag it as a potential resource leak because the type implements `Closeable`.

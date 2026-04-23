@@ -1,0 +1,13 @@
+**Line 12** – `PATTERN` naming convention / magic regex: The pattern string `(1?\\d\\b)` only matches 1–19, silently ignoring numbers ≥ 20 (e.g., 21st, 22nd). Functional bug, not a style rule per se, but violates **CorrectImplementation / BugPattern**.
+
+**Line 12** – **FieldName**: The constant `NUMBER_PATTERN` is acceptable, but the comment says "not directly followed by a letter plus the number 11" which is misleading/inaccurate documentation — violates **CommentContent / MisleadingComment**.
+
+**Line 16–18** – **ReturnNull**: Returning `null` when input is `null` instead of an empty string or throwing — violates **ReturnNull** (PMD) / **ReturnsNullInsteadOfEmptyOptional**.
+
+**Line 20** – **LocalVariableName**: Variable `m` is a single-character name — violates **LocalVariableName** (Checkstyle) rule requiring descriptive names.
+
+**Line 23** – **MagicNumber**: `Integer.parseInt(result)` result fed into a `switch` with literal cases `1`, `2`, `3` — the literals `1`, `2`, `3` violate **MagicNumber** (Checkstyle/PMD).
+
+**Line 11** – **VisibilityModifier**: `NUMBER_PATTERN` is `private static final` which is correct, but the class has no `final` modifier — violates **DesignForExtension** (Checkstyle); `format` is overridable without being designed for it.
+
+**Line 35** – **AppendReplacement** with literal string concatenation `result + ordinalString` is safe here, but passing unsanitized replacement strings to `appendReplacement` can violate **RegexpDanger**; no escaping via `Matcher.quoteReplacement()` — violates **UnescapedReplacement** (SpotBugs **RV_REGEX_REPLACE**).

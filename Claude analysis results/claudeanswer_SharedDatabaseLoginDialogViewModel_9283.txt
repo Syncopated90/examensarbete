@@ -1,0 +1,21 @@
+**Line 152** — `setupKeyStore()` uses `System.setProperty` for SSL configuration; sensitive password exposed via system property. **Rule: Security - Sensitive Data Exposure / Hardcoded Credentials in System Properties**
+
+**Line 153** — `System.setProperty("javax.net.debug", "ssl")` left enabled unconditionally in production code. **Rule: Debug Code Left in Production**
+
+**Line 113** — `hostValidator` error message uses `Localization.lang("Port")` but validates `host` field. **Rule: Copy-Paste Error / Incorrect Validation Message**
+
+**Line 114** — `portValidator` error message uses `Localization.lang("Host")` but validates `port` field. **Rule: Copy-Paste Error / Incorrect Validation Message**
+
+**Line 190** — `catch (Throwable e)` catches `Throwable` instead of specific exceptions. **Rule: OverlyBroadCatch / Do Not Catch Throwable**
+
+**Line 210** — `result.filter(ButtonType.OK::equals).ifPresent(btn -> openSharedDatabase(connectionProperties))` — return value of recursive `openSharedDatabase` call is ignored. **Rule: Return Value Ignored**
+
+**Line 207** — Recursive call to `openSharedDatabase` inside lambda without depth control. **Rule: Infinite Recursion Risk**
+
+**Line 81** — `sharedDatabasePreferences` initialized inline with `new SharedDatabasePreferences()` rather than injected. **Rule: Dependency Injection Violation / Hidden Dependency**
+
+**Line 280** — Method named `databaseproperty()` violates Java naming convention (should be `databaseProperty()`). **Rule: Naming Convention Violation (MethodNamingConventions)**
+
+**Line 316** — Method `selectedDbmstypeProperty()` violates naming convention (should be `selectedDBMSTypeProperty()`). **Rule: Naming Convention Violation (MethodNamingConventions)**
+
+**Line 155** — `System.setProperty` calls are not thread-safe and affect the entire JVM. **Rule: Non-Thread-Safe Global State Modification**

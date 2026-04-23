@@ -1,0 +1,14 @@
+**Line 9 – Class Naming Convention / Utility Class Design**
+`OOTuple3` is a public mutable-accessible data holder; the `OO` prefix is non-standard and violates naming conventions (rule: **NamingConventions** / `ClassNamingConventions`).
+
+**Line 9 – Missing `equals()`/`hashCode()` (rule: `OverrideBothEqualsAndHashcode`)**
+The class defines fields but does not override `equals()` or `hashCode()`, making instances unreliable in collections.
+
+**Line 9 – Missing `toString()` (rule: `MissingOverride` / general best practice)**
+No `toString()` method is provided for a data-carrying class.
+
+**Line 9 – Raw generics not bounded; class should implement `Serializable` or be a `record` (rule: `ClassWithoutPackageDeclaration`)**
+Package is present, but the class could be replaced by a `record`, violating **UseRecordTypes** (PMD 6.40+).
+
+**Lines 11–13 – Public Fields (rule: `VisibilityModifier` / `DataClass`)**
+`public final A a`, `public final B b`, `public final C c` expose fields directly, breaking encapsulation. Fields should be `private` with accessors.

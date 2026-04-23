@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "LocalVariableNamingConventions",
+              "shortDescription": {
+                "text": "The final local variable name 'FAIL' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablenamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "LocalVariableNamingConventions",
+              "shortDescription": {
+                "text": "The final local variable name 'PASS' doesn't match '[a-z][a-zA-Z0-9]*'"
+              },
+              "fullDescription": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#localvariablenamingconventions",
+              "help": {
+                "text": "\n            Configurable naming conventions for local variable declarations and other locally-scoped\n            variables. This rule reports variable declarations which do not match the regex that applies to their\n            specific kind (e.g. final variable, or catch-clause parameter). Each regex can be configured through\n            properties.\n\n            By default this rule uses the standard Java naming convention (Camel case).\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "GuardLogStatement",
+              "shortDescription": {
+                "text": "Logger calls should be surrounded by log level guards."
+              },
+              "fullDescription": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_bestpractices.html#guardlogstatement",
+              "help": {
+                "text": "\nWhenever using a log level, one should check if it is actually enabled, or\notherwise skip the associate String creation and manipulation, as well as any method calls.\n\nAn alternative to checking the log level are substituting parameters, formatters or lazy logging\nwith lambdas. The available alternatives depend on the actual logging framework.\n        "
+              },
+              "properties": {
+                "ruleset": "Best Practices",
+                "priority": 2,
+                "tags": [
+                  "Best Practices"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "LocalVariableNamingConventions",
+          "ruleIndex": 0,
+          "message": {
+            "text": "The final local variable name 'FAIL' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OpenOfficePanel.java"
+                },
+                "region": {
+                  "startLine": 191,
+                  "startColumn": 23,
+                  "endLine": 191,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "LocalVariableNamingConventions",
+          "ruleIndex": 1,
+          "message": {
+            "text": "The final local variable name 'PASS' doesn't match '[a-z][a-zA-Z0-9]*'"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OpenOfficePanel.java"
+                },
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 23,
+                  "endLine": 192,
+                  "endColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OpenOfficePanel.java"
+                },
+                "region": {
+                  "startLine": 203,
+                  "startColumn": 21,
+                  "endLine": 203,
+                  "endColumn": 91
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OpenOfficePanel.java"
+                },
+                "region": {
+                  "startLine": 244,
+                  "startColumn": 38,
+                  "endLine": 244,
+                  "endColumn": 107
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GuardLogStatement",
+          "ruleIndex": 2,
+          "message": {
+            "text": "Logger calls should be surrounded by log level guards."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/OpenOfficePanel.java"
+                },
+                "region": {
+                  "startLine": 488,
+                  "startColumn": 21,
+                  "endLine": 488,
+                  "endColumn": 96
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

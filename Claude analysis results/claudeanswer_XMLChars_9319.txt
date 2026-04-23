@@ -1,0 +1,25 @@
+**Line 16** - `forceReplace` is an instance field but `ASCII_TO_XML_CHARS` and `XML_CHARS` are static; `forceReplace` initialization inside `restFormat` is not thread-safe. **Rule: Non-thread-safe lazy initialization (DCL / unsynchronized lazy init)**
+
+**Line 16** - `forceReplace` is a mutable instance field on what appears to be a stateless formatter. **Rule: Class has mutable instance state (may cause thread-safety issues)**
+
+**Line 25** - `return fieldText;` returns `null`. **Rule: NullReturn / Return value is null (method should not return null)**
+
+**Line 70** - `fieldText.charAt(i + 1)` — no bounds check before access; if `&` is the last character, this throws `StringIndexOutOfBoundsException`. **Rule: Possible index out of bounds (ArrayIndexOutOfBoundsException / StringIndexOutOfBoundsException)**
+
+**Line 72** - After `i += 2`, `fieldText.charAt(i)` is accessed with no bounds check. **Rule: Possible index out of bounds**
+
+**Line 44** - `s.replaceAll("&|\\\\&", "&#x0026;")` uses regex in `replaceAll` where `&` alone could match unintended patterns; mixing regex and literal replacement is fragile. **Rule: Use of replaceAll with non-regex intent / confusing regex**
+
+**Line 33** - `formattedFieldText.replaceAll(s, repl)` — `s` (the key from `XmlCharsMap`) is used directly as a regex pattern without escaping; if the key contains regex metacharacters this will throw or behave incorrectly. **Rule: Unvalidated regex pattern (potential PatternSyntaxException)**
+
+**Line 15** - `ASCII_TO_XML_CHARS` is a mutable `HashMap` exposed as `static`; it is written in a `static` block but could be made immutable. **Rule: Mutable static field (use Collections.unmodifiableMap or Map.of)**
+
+**Line 16** - `forceReplace` field is never reset; if the same instance is reused after modification it retains state. **Rule: Mutable instance field not reset between uses**
+
+**Line 54** - Magic numbers `126`, `40`, `32` used without named constants. **Rule: Avoid magic numbers (use named constants)**
+
+**Line 58** - Magic numbers `44, 45, 63, 64, 94, 95, 96, 124` used inline. **Rule: Avoid magic numbers**
+
+**Line 77** - Magic number `125` used without a named constant. **Rule: Avoid magic numbers**
+
+**Line 40** - `LatexToUnicodeFormatter` instantiated on every call to `format`. **Rule: Inefficient object creation inside method (should be a field or static)**

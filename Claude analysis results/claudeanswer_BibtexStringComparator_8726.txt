@@ -1,0 +1,21 @@
+**Line 25-27: Inverted Logic (SimplifyBooleanReturn / logic bug)**
+
+```java
+if (res == 0) {
+    return res;  // Returns 0 (equal) when names ARE equal, but comment says "First check names" implying non-zero should return early. Logic is inverted — should return `res` when `res != 0` to skip ref check for unequal names.
+}
+```
+
+The condition is backwards. When `res == 0` the strings are equal and returning is correct, but when `res != 0` the code falls through to the `considerRefs` block unnecessarily only to potentially flip the result. The guard should be `if (res != 0) { return res; }` before entering `considerRefs` — wait, actually the `considerRefs` block *is* entered when `res != 0`. The real bug: **the early return fires on equality (`res == 0`), skipping `considerRefs`, which is the only correct path, but the comment "First check their names" is misleading and the condition exits on equal instead of not-equal.**
+
+**Line 25: `DoubleCheckedLocking` / `SimplifyBooleanReturn`**
+`if (res == 0) { return res; }` — returning 0 explicitly is redundant; `return 0` is clearer. Rule: **ReturnEmptyCollectionRatherThanNull / UnnecessaryLocalVariable**.
+
+**Line 18: `UnnecessaryLocalVariable`**
+`int res;` declared without initialization, then immediately assigned on line 24. Can be declared inline: `int res = name1.compareTo(name2);`
+
+**Line 43-44: `DuplicateCode` / `AvoidDuplicateLiterals`**
+`.toLowerCase(Locale.ROOT)` repeated four times (lines 21, 22, 43, 44).
+
+**Line 29: `MisleadingComment`**
+Comment ends with `.x` — stray character indicating copy-paste/editing artifact.

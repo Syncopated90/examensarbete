@@ -1,0 +1,11 @@
+**Line 28** — `Correctness` / **DuplicateCondition**: The condition `valueTrimmedAndLowerCase.endsWith(",")` is duplicated; the `startsWith(",")` check on line 26 already covers leading commas, but `endsWith(",")` appears twice — once on line 26 (`startsWith(",")`) and once on line 28 (`endsWith(",")`) — however specifically: `endsWith(",")` on line 28 duplicates the logic intent but the literal string `","` also appeared in the `startsWith` branch, making the comma check ambiguous and potentially dead for the `endsWith` branch given the `startsWith` already consumed it.
+
+**Line 26** — `BugRisk` / **LogicalError**: `valueTrimmedAndLowerCase.startsWith(",")` checks for a leading comma but a lone `","` value would also be caught by `endsWith(",")` on line 28, meaning the `else if` on line 28 is unreachable for a `","` input (already returned on line 27).
+
+**Line 28** — `BugRisk` / **UnreachableCode**: The `endsWith(",")` condition on line 28 is never reached when the value equals `","` because line 26 already matches and returns, making the `else if` branch partially dead.
+
+**Line 43** — `CodeStyle` / **InlineInstantiation**: `new RemoveBrackets().format(value)` instantiates a new object on every invocation; the object is stateless and should be a reusable field or static instance.
+
+**Line 49–51** — `Correctness` / **InconsistentEqualsCheck**: `isStandardFormat` uses `.equals(name)` to compare the re-formatted author list against the original input. This is a strict equality check that will fail for semantically valid but differently spaced/cased inputs, producing false-positive integrity warnings.
+
+**Line 16** — `CodeStyle` / **MissingNullCheck**: `databaseContext.getMode()` is called without a null guard on `databaseContext`, risking a `NullPointerException` if `null` is passed.

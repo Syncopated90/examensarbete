@@ -1,0 +1,15 @@
+**Line 10** — `ClassNamingConventions` / `VisibilityModifier`: Class `JabRefAction` has package-private visibility; typically classes should be `public` or explicitly justified.
+
+**Line 22** — `LawOfDemeter`: `command.executableProperty().not()` chains method calls on a returned object.
+
+**Line 21** — `LambdaCanBeMethodReference`: `event -> command.execute()` can be replaced with a method reference `command::execute`.
+
+**Line 24** — `InstanceofPatternMatching` is used correctly (Java 16+), no issue — skip.
+
+**Line 25** — `InefficientStringBuffering` / `AvoidStringConcatenation`: `Bindings.concat(action.getDescription(), ...)` mixes a plain `String` with a property; `action.getDescription()` should ideally be a binding/observable for consistency, but is called once as a static value — minor design issue.
+
+**Line 14** — `NullAssignment` / `ReturnValueIgnored`: `ifPresent` side-effect chains are acceptable, no direct violation, but two chained optional side-effects on lines 14–15 reduce readability — `CognitiveComplexity` minor note.
+
+**Line 6** — `UnusedImports`: `KeyBindingRepository` is used, not an issue. But `de.saxsys.mvvmfx.utils.commands.Command` import on **line 8** is a loose coupling concern — `DependencyInversionPrinciple` potential violation using a concrete framework type in constructor signature.
+
+**Line 20** — `ConstructorCallsOverridableMethod`: `this(action, keyBindingRepository)` delegates to another constructor which calls `setLongText`, a non-final inherited method — overridable method call in constructor chain.

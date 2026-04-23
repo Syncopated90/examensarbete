@@ -1,0 +1,15 @@
+**Line 19** — `WeakHashMap` is not thread-safe; field `throttlers` uses `WeakHashMap` without synchronization. **Rule: NonThreadSafeSingleton / UnsynchronizedStaticField (or Use of non-thread-safe collection)**
+
+**Line 19** — `WeakHashMap<DelayTaskThrottler, Void>` uses `Void` as value type with `null` values; storing `null` in a `WeakHashMap` value is legal but the key type `DelayTaskThrottler` may itself be weakly reachable after `createThrottler` returns if the caller doesn't hold a strong reference. **Rule: LooseCoupling / WeakHashMap misuse**
+
+**Line 50** — `throttlers.forEach((throttler, aVoid) -> throttler.shutdown())` iterates a `WeakHashMap` without synchronization, risking `ConcurrentModificationException`. **Rule: UnsynchronizedStaticField / NonSynchronizedMethodCall**
+
+**Line 54** — `DelayTaskThrottler throttler = new DelayTaskThrottler(delay)` — resource created but no guarantee it is closed/shutdown if never stored strongly; potential resource leak. **Rule: CloseResource**
+
+**Line 65** — `get(long timeout, TimeUnit unit)` ignores `timeout` and `unit` parameters entirely. **Rule: IgnoredParameters / UnusedFormalParameter**
+
+**Line 65** — `get(long timeout, TimeUnit unit)` does not declare `throws InterruptedException, TimeoutException` violations of the `Future.get(long, TimeUnit)` contract (though technically permitted by narrowing, it violates Liskov expectations and the `Future` contract). **Rule: MethodSignatureExcludesException**
+
+**Line 63** — `get()` does not declare `throws InterruptedException` — narrowing checked exceptions from the interface. **Rule: DesignForExtension / MissingOverrideAnnotation** (also a Liskov violation)
+
+**Line 34** — Catching `Exception` is overly broad; catches both checked and unchecked exceptions. **Rule: IllegalCatch**

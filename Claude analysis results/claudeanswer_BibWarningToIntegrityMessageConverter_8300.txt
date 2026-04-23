@@ -1,0 +1,8 @@
+**Line 35** — `OptionalGetWithoutIsPresent` (Sonar: `java:S3655`)
+`getEntryByCitationKey(...).get()` called without `isPresent()` check, despite the `isEmpty()` check on the previous call being a separate invocation (two separate calls to `getEntryByCitationKey`).
+
+**Line 32–35** — `java:S3824` / Duplicate method call
+`getEntryByCitationKey(bibWarning.entryKey())` is called twice; result should be stored in a variable to avoid redundant computation and the unsafe `.get()`.
+
+**Line 24** — `java:S1118` / `UtilityClassWithPublicConstructor`
+Utility class with only a `static` method has an implicit public constructor; should have a private constructor.

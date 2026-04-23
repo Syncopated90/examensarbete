@@ -1,0 +1,19 @@
+**Line 26** — `ST_MUTABLE_STATIC_FIELD` / **Mutable Static Field**: `MSCMAP` is a mutable `BiMap` declared as `static final`; the reference is final but the map contents are mutable.
+
+**Line 27** — `ST_MUTABLE_STATIC_FIELD` / **Non-thread-safe Mutable Static**: `conversionPossible` is a non-`volatile` static boolean written in a static initializer and readable from multiple threads without synchronization.
+
+**Line 32** — `RETURN_VALUE_IGNORED` / **Return Value of `HashBiMap.create()` assigned but shadowed**: method return type is `HashBiMap` while the field type is `BiMap`; no direct rule break here, but see below.
+
+**Line 44** — `REC_CATCH_EXCEPTION` / **Overly broad exception handling missing**: `MscCodeUtils.loadMscCodesFromJson(resourceUrl).get()` can throw `InterruptedException` and `ExecutionException` (if it returns a `Future`) but only `MscCodeLoadingException` is caught, leaving checked exceptions unhandled.
+
+**Line 44** — `NP_NULL_ON_SOME_PATH` / **Null Dereference**: `.get()` result is used directly without null check.
+
+**Line 63** — `OBJ_CALL_OF_INJECTOR` / **Law of Demeter / Service Locator Anti-pattern**: `Injector.instantiateModelOrService` is a service locator call inside a formatter method, making dependencies hidden and untestable.
+
+**Line 66** — `NP_NULL_ON_SOME_PATH` / **Null Dereference**: `cliPreferences` could be `null` if the injector returns null; no null check before `.getBibEntryPreferences()`.
+
+**Line 67** — `NP_NULL_ON_SOME_PATH` / **Null Dereference**: `bibPreferences` could be `null` before calling `.getKeywordSeparator()`.
+
+**Line 70** — `IT_NO_SUCH_ELEMENT` / **Iterator misuse**: `Iterator` is used manually with a `while` loop when an enhanced for-loop over `keyList` would be safer and idiomatic.
+
+**Line 75** — `DM_STRING_TOSTRING` / **Redundant `toString()`**: `item.toString().trim()` calls `toString()` on an object solely to call `trim()`; if `Keyword` has a dedicated accessor this is a unnecessary allocation.

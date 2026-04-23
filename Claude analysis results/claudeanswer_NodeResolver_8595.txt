@@ -1,0 +1,23 @@
+**Line 20** - `InternalApi`: Use of `com.sun.javafx.scene.NodeHelper` is an internal Sun/Oracle API, not part of the public JavaFX contract.
+
+**Line 21** - `InternalApi`: Use of `com.sun.javafx.scene.control.LabeledText` is an internal Sun/Oracle API.
+
+**Line 56** - `MissingJavadocMethod` / `MissingNonNullAnnotation`: Parameter `glyph` lacks `@NonNull` annotation, inconsistent with other static methods.
+
+**Line 64** - `UnnecessaryParentheses`: Parentheses around `(graphic instanceof JabRefIconView jabRefIconView)` and `(graphic instanceof FontIcon fontIcon)` are unnecessary.
+
+**Line 64-65** - `OperatorWrap` / `BooleanExpressionComplexity`: Complex boolean expression combining `||` and `&&` without parentheses grouping for clarity; operator precedence reliance is fragile.
+
+**Line 92** - `VariableDeclarationUsageDistance`: `tooltipText` at line 92 is declared and checked, then re-declared at line 98 within an inner block — duplicate variable name in overlapping scopes.
+
+**Line 98** - `LocalVariableHiding`: Local variable `tooltipText` on line 98 hides the `tooltipText` declared on line 92 in the enclosing block.
+
+**Line 103** - `SimplifyBooleanReturn` / `UnnecessaryNullCheck`: `button.getTooltip() != null && button.getTooltip().getText() != null` on line 98-99 — tooltip null already checked on line 91; redundant null check.
+
+**Line 116** - `AvoidInlineConditionals`: Ternary `node instanceof DialogPane pane ? pane.lookupButton(buttonType) : null` where the null branch can never be reached given the preceding `predicate(DialogPane.class::isInstance)` filter; dead code path.
+
+**Line 134** - `LambdaBodyLength` / `AvoidNestedBlocks`: The lambda passed to `.filter()` spans multiple lines with nested blocks; should be extracted to a named private method.
+
+**Line 157** - `CallToDeprecatedMethod` / `NullableUsedInNonNullContext`: `item.getStyleableNode()` can return `null`; passing result directly to `isVisible` without annotation is unsafe without checking, and `getStyleableNode()` may be deprecated depending on JavaFX version.
+
+**Line 157-161** - `MethodChainTooLong`: Chained stream operations `.filter().filter().map().findFirst()` exceed typical chain length recommendations.

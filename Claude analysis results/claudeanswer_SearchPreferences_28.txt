@@ -1,0 +1,11 @@
+**Line 109** — `getSearchWindowDividerPosition()` returns `Double` (boxed type) instead of primitive `double`. Unnecessary boxing. **Rule: `UnnecessaryBoxing` / `AutoBoxing`**
+
+**Lines 37–44** — Constructor mutates `searchFlags` (a field initialized by delegated constructor) after `this(...)` call. Calling `this(...)` initializes the object, then post-construction mutation occurs. While legal, this violates **`ConstructorCallsOverridableMethod`** / **`AvoidCallingFinalizeOrSuperFinalize`** — more precisely: **`NonFinalFieldsInConstructorInvariant`** / object is not fully initialized in a single constructor path. **Rule: `ConstructorOnlyInitializesOrCallsSuperConstructor`**
+
+**Line 72** — `setSearchFlag` checks `contains` twice unnecessarily. The logic can be simplified to a single conditional. **Rule: `SimplifyBooleanReturns` / `CollapsibleIfStatements`**
+
+**Lines 27–35** — Constructor has **7 parameters**. **Rule: `ExcessiveParameterList` (threshold typically 5–7)**
+
+**Line 109** — Method name `getSearchWindowDividerPosition()` returns `Double` but all similar methods (`getSearchWindowHeight`, `getSearchWindowWidth`) return `double`. **Rule: `InconsistentReturnType` / `LinguisticNaming`**
+
+**Lines 97, 101, 105** — Getter methods prefixed with `get` but return `DoubleProperty` / `ObjectProperty`. JavaFX convention is no `get` prefix for property accessors. **Rule: `MethodNamingConventions`**

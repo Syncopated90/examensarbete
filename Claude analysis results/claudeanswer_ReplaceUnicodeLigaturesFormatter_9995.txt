@@ -1,0 +1,11 @@
+**Line 20** - `java:S2864` (KeySetInsteadOfEntrySet) — iterating `keySet()` then calling `get(key)` should use `entrySet()`.
+
+**Line 36** - `java:S2864` (KeySetInsteadOfEntrySet) — same issue, `keySet()` with subsequent `get(key)` call.
+
+**Line 14** - `java:S2176` (ClassNamingConvention / DiamondInterface) — class implements both `Formatter` and `LayoutFormatter`; if one extends the other this is redundant.
+
+**Line 19** - `java:S5964` / `java:S2175` — `UnicodeLigaturesMap` is instantiated only to iterate it; if it extends `Map` directly, the local variable could be eliminated (minor design smell).
+
+**Line 36** - `java:S3864` (ReplaceAll with potentially null value) — `ligaturesMap.get(key)` can return `null` if key is absent, passing `null` to `replaceAll()` causes `NullPointerException`.
+
+**Line 20** - `java:S5960` / null-safety — `stringMap.get(key)` may return `null`, storing a `null` value into `ligaturesMap`.

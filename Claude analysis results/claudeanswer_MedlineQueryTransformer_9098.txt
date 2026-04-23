@@ -1,0 +1,9 @@
+**Line 38** - `handleYearRange` calls `parseYearRange(yearRange)` but ignores the return value; relies on side-effect mutation of fields `startYear`/`endYear`. **Rule: IGNORING_RETURN_VALUE / Use_of_side_effects_over_return_values**
+
+**Line 39** - `endYear == Integer.MAX_VALUE` compares against `Integer.MAX_VALUE` as a sentinel value, which is an inappropriate use of a magic constant. **Rule: MAGIC_NUMBER / COMPARISONS_WITH_UNRELATED_CONSTANTS**
+
+**Line 40** - Returns raw `yearRange` without the `[dp]` suffix, inconsistent with the other branch that appends `[dp]`. **Rule: INCONSISTENT_RETURN / Correctness**
+
+**Line 38-41** - `startYear` and `endYear` appear to be mutable instance/class-level fields modified by `parseYearRange`, making `MedlineQueryTransformer` stateful and non-thread-safe. **Rule: THREAD_SAFETY_VIOLATION / MUTABLE_INSTANCE_FIELD**
+
+**Line 20** - `getLogicalNotOperator` returns `"NOT "` with a trailing space but no leading space, inconsistent with `getLogicalAndOperator` and `getLogicalOrOperator` which have spaces on both sides. **Rule: INCONSISTENT_IMPLEMENTATION**

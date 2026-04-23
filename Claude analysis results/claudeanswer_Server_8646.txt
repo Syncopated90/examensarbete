@@ -1,0 +1,32 @@
+**Line 125 — Dead Code / Unused Method**
+`sslCertExists()` is declared but never called anywhere in the class.
+
+**Line 131 — Unused Method**
+`getSslContext()` is declared but never called anywhere in the class.
+
+**Line 148 — Empty Method Body**
+`stopServer()` contains only a comment; it performs no operation (dead code stub).
+
+**Line 125 — Rule: UnusedPrivateMethod**
+`sslCertExists` is a private method that is never invoked.
+
+**Line 131 — Rule: UnusedPrivateMethod**
+`getSslContext` is a private method that is never invoked.
+
+**Line 143 — Rule: HardcodedCredential**
+`sslContextConfig.setKeyStorePass("changeit")` hardcodes a password literal.
+
+**Line 79 — Rule: IllegalCatch**
+`catch (Exception e)` catches the overly broad `Exception` type inside the shutdown hook.
+
+**Line 109 — Rule: CommentedOutCode**
+`// TODO: Add SSL` references incomplete/unimplemented functionality left in production code.
+
+**Line 148 — Rule: CommentedOutCode**
+`// serverInstance.stop();` is commented-out code left in `stopServer()`.
+
+**Line 52 — Rule: CommentedOutCode**
+`// Path bibPath = Path.of(Server.class.getResource(...).toURI());` is commented-out code in `run()`.
+
+**Line 86 — Rule: OverloadedMethod / NullPassthrough**
+`run(SrvStateManager, URI)` explicitly passes `null` as the `UiMessageHandler` argument, bypassing nullability intent of `@Nullable` parameter in a way that should use an `Optional` instead.

@@ -1,0 +1,25 @@
+**Line 46-50** — `Resource Leak` (AiService implements Closeable/AutoCloseable but is never closed)
+
+**Line 29** — `UnnecessaryLocalVariable` / field initializer redundant if always overwritten; minor — `MutableField` (mutable default value assigned to a non-final field)
+
+**Line 36** — `MutableField` (same as above for `citationFetcherType`)
+
+**Line 40** — `MutableField` (`doi` field is mutable and package-private via picocli injection with no validation)
+
+**Line 63** — `SystemErr` (direct use of `System.err.print` instead of logger)
+
+**Line 64** — `SystemErr` (direct use of `System.err.println`)
+
+**Line 65** — `SystemErr` (direct use of `System.err.println`)
+
+**Line 66** — `SystemErr` (direct use of `System.err.println` with empty string — also `EmptyStatement`-adjacent)
+
+**Line 22** — `VisibilityModifier` (class is package-private but implements public interface `Callable<Integer>`; inconsistent visibility)
+
+**Line 25** — `VisibilityModifier` (`LOGGER` is private/static/final — compliant, but class itself violates encapsulation)
+
+**Line 27** — `VisibilityModifier` (`argumentProcessor` field is package-private, not private)
+
+**Line 59** — `UnnecessaryLocalVariable` (`entries` is declared, assigned in try, then immediately used — could be inlined)
+
+**Line 62** — `NullAssignment` risk — `entries` is declared outside try block and could theoretically be uninitialized if control flow were more complex (static analyzers flag this pattern as `DD anomaly`)

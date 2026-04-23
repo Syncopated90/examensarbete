@@ -1,0 +1,11 @@
+**Line 12** — `Field Naming Convention`: Pattern constant name `DIGITS` is acceptable, but the regex `"[ ]\\d+"` uses a character class with a single character; should be `" \\d+"` — `SimplifyRegex` / `SingleCharacterInCharacterClass`.
+
+**Line 24** — `Regex Correctness / Incomplete Pattern`: `DIGITS` matches only digits **preceded by a space** (e.g., `" 012"`), so standalone leading digits (e.g., `"012 CDMA"`) are not removed — `IncorrectRegexPattern`.
+
+**Line 5** — `UnusedImport`: `org.jabref.logic.formatter.Formatter` is imported but `RemoveDigitsFormatter` extends it via simple name; not a violation itself, but if `Formatter` is in the same package this would be redundant — conditional on package structure.
+
+**Line 23** — `NullParameterAnnotation` / `RedundantNullCheck`: `@NonNull` is declared on `value`, but no null-check or assertion is performed inside the method body, making the annotation misleading without enforcement — `MissingNullCheckForNonNullParameter`.
+
+**Line 30** — `HardcodedStringLiteral` (minor): `"Removes digits."` — the period inside the localization string is inconsistent style compared to `"Remove digits"` (no period) on line 15 — `InconsistentLocalizationStringStyle`.
+
+**Line 34** — `HardcodedStringLiteral`: `"In 012 CDMA"` is a hardcoded string not passed through `Localization` — `HardcodedLiteral`.

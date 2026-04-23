@@ -1,0 +1,25 @@
+**Line 86** - `NullAssignment`: Assigning `null` to local variable `zblid` instead of using `Optional`.
+
+**Line 93** - `ReturnOfNull`: Method `getURLForEntry` returns `null` instead of throwing an exception or returning an `Optional`.
+
+**Line 57** - `LawOfDemeter`: `entry.getFieldOrAlias(StandardField.AUTHOR).get()` called after separate `isPresent()` check on line 56; use `ifPresent` or `map` instead.
+
+**Line 55** - `LawOfDemeter` / `AvoidDeeplyNestedCode`: Chained calls `uriBuilder.addParameter` inside multiple `ifPresent` lambdas repeated without abstraction.
+
+**Line 80** - `LawOfDemeter`: `response.getBody().getObject().getJSONArray("results")` violates Law of Demeter with three-level chain.
+
+**Line 83** - `LawOfDemeter`: `result.getJSONObject(0).get("zbl_id").toString()` — three-level chain with no null safety on `.get("zbl_id")`.
+
+**Line 79** - `MagicNumber`: Literal `200` used as HTTP status code without a named constant.
+
+**Line 97** - `MagicNumber`: Literal `200` used as count parameter without a named constant.
+
+**Line 97** - `AvoidDuplicateLiterals`: String `"https://zbmath.org/bibtexoutput/"` duplicated on lines 95 and 102.
+
+**Line 95 & 102** - `AvoidDuplicateLiterals`: Repeated URL string `"https://zbmath.org/bibtexoutput/"` should be extracted to a constant.
+
+**Line 96** - `AvoidDuplicateLiterals`: Parameter name `"start"` and value `"0"` repeated on lines 96 and 105.
+
+**Line 97** - `AvoidDuplicateLiterals`: Parameter name `"count"` repeated on lines 97 and 106.
+
+**Line 38** - `UnnecessaryAnnotation` / redundant `@NonNull` on constructor parameter when field nullability is not enforced elsewhere in the class.

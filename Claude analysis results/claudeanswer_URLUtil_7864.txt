@@ -1,0 +1,13 @@
+**Line 37** — `NullReturned`: `suffix` is assigned `null` and later passed to `ExternalFileTypes.isExternalFileTypeByExt()` and `Optional.ofNullable()`. Using `null` instead of `Optional.empty()` or a sentinel value is poor practice; specifically violates **AvoidAssigningNull** / **NullAssignment**.
+
+**Line 46** — `ConfusingTernary` / logic error: When `index <= 0` or `index == link.length() - 1`, the code falls into a branch that references `strippedLinkIndex` and attempts `strippedLink.substring(strippedLinkIndex + 1)`. If `strippedLinkIndex` is `0` or negative (as set at line 37), this can produce an incorrect substring or **StringIndexOutOfBoundsException** — **ImpossibleSubstring** / **PotentialIndexOutOfBoundsException**.
+
+**Line 47** — `MagicNumber`: The literal `1` in `.indexOf('/') >= 1` should be a named constant. **AvoidLiteralsInIfCondition**.
+
+**Line 50** — `ReturnOfNull` risk: `Optional.of(suffix)` at line 50 will throw **NullPointerException** if `suffix` is `null` (set at line 37–38). Should be `Optional.ofNullable(suffix)`. Rule: **NullPointerPossible** / **OptionalUsedAsFieldOrParameterType** misuse.
+
+**Line 55** — `MagicNumber`: The literal `1` in `.indexOf('/') >= 1`. **AvoidLiteralsInIfCondition**.
+
+**Line 23** — `UseOptionalOfNullable` / **MethodTooLong**: The method `getSuffix` is excessively long and handles multiple concerns, violating **ExcessiveMethodLength** / **SingleResponsibilityPrinciple**.
+
+**Line 13** — `HideUtilityClassConstructor`: Constructor is `private` ✓, but the class is not declared `final`. Rule: **ClassShouldBeFinal** for utility classes.

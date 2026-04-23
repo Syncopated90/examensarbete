@@ -1,0 +1,11 @@
+**Line 13** — `path.lastIndexOf('/')` assumes Unix path separator; on Windows paths use `\`. **Rule: `Path Manipulation` / `File.separator` not used**
+
+**Line 13** — `path.substring(path.lastIndexOf('/') + 1)` — if `lastIndexOf('/')` returns `-1` (no slash found), result is `path.substring(0)` which is benign, but if path is empty string this still silently proceeds. **Rule: `Null Dereference` / missing empty/null check on `file.getLink()`**
+
+**Line 12** — `parentEntry.getCitationKey().orElse("N/A")` — no null check on `parentEntry`. **Rule: `Null Dereference`**
+
+**Line 11** — `file` parameter not null-checked before use on line 13. **Rule: `Null Dereference`**
+
+**Line 6** — Class is a DTO but has no `toString()`, `equals()`, or `hashCode()`. **Rule: `MissingOverride` / `EqualsHashCode`**
+
+**Line 6** — Class is not declared `final` despite holding only `final` fields and no subclassing intent. **Rule: `ClassNamingConventions` / design — should be `final`**

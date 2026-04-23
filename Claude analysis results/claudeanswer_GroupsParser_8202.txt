@@ -1,0 +1,27 @@
+**Line 57** — `ParameterAssignment`: Parameter `string` is reassigned (`string = string.trim()`).
+
+**Line 75** — `NullAssignment`: `root` is assigned `null` and may be returned as `null` at line 84.
+
+**Line 84** — `NullReturn`: Method `importGroups` may return `null` (`root` never assigned if all strings are empty or skipped).
+
+**Line 97** — `ParameterAssignment`: Parameter `input` is not reassigned here but `fromString` returns `null` at line 130 — **NullReturn** violation.
+
+**Line 130** — `NullReturn`: Method `fromString` explicitly returns `null`.
+
+**Line 226** — `ParameterAssignment`: Parameter `input` is reassigned (`input = input.replace(...)`).
+
+**Line 140** — `UseAssertInsteadOfIfInProductionCode` / `AssertWithSideEffects`: `assert` statements used in non-test production code (lines 140, 161, 176, 191, 206, 222, 237, 260, 275, 290, 305) — **AvoidAssertAsIdentifier** / production assert usage across multiple private methods.
+
+**Line 206** — `StringConcatenation` inside `charAt(0)` call with no bounds check — **PossiblyIndexOutOfBoundsException**: `token.nextToken()` result could be empty string, making `.charAt(0)` throw.
+
+**Line 212** — Same as above: `.charAt(0)` on potentially empty string — **PossiblyIndexOutOfBoundsException**.
+
+**Line 155** — `CloseResource`: `BibDatabase` instantiated inline, not closed.
+
+**Line 163** — `CloseResource`: Another `BibDatabase` instantiated inline, not closed.
+
+**Line 301** — `MagicNumber`: Literal `1` used repeatedly in comparisons (lines 241, 243, 301, 303, 316, 317, 323) — **MagicNumber** rule broken multiple times.
+
+**Line 63** — `LocalVariableCouldBeFinal`: `cursor` and `root` could be declared final or use more idiomatic structure; more directly — **AvoidReassigningVariables**: `cursor` is repeatedly reassigned inside the loop.
+
+**Line 75** — `CollapsibleIfStatements` / logic: nested `while` with `.get()` on `Optional` at line 78 — **OptionalGetWithoutIsPresent**: `.get()` called after `.isPresent()` check but in a `while` condition, the inner `.get()` on line 78 (`cursor.getParent().get()`) is called without a direct `isPresent()` guard on that same call.

@@ -1,0 +1,39 @@
+**Line 19** — `STD_CONSTANT_NAMING_CONVENTION` / `ConstantNamingConvention` — `DEFAULT_WIN_EXEC_PATH` contains a path string that is mutable-intent; however the main issue: these are non-`final` in spirit but more critically:
+
+**Line 19-27** — `ClassWithOnlyPrivateConstructorsShouldBeFinal` — not applicable here, but:
+
+**Line 19** — `UseUnderscoresInNumericLiterals` — not triggered.
+
+---
+
+**Line 19, 21, 23, 24, 25, 27** — `AvoidDuplicateLiterals` — `"soffice"` is duplicated across `OSX_EXECUTABLE` (line 22), `LINUX_EXECUTABLE` (line 27).
+
+**Line 22, 27** — `AvoidDuplicateLiterals` — `"soffice"` literal duplicated.
+
+---
+
+**Line 44–54** — `ExcessiveParameterList` — constructor has 12 parameters, exceeds typical threshold (usually >7).
+
+---
+
+**Line 88** — `BooleanGetMethodName` — `getUseAllDatabases()` should be `isUseAllDatabases()` for boolean property.
+
+**Line 98** — `BooleanGetMethodName` — `getSyncWhenCiting()` should be `isSyncWhenCiting()`.
+
+**Line 130** — `BooleanGetMethodName` — `getAlwaysAddCitedOnPages()` should be `isAlwaysAddCitedOnPages()`.
+
+**Line 174** — `BooleanGetMethodName` — `getAddSpaceAfter()` should be `isAddSpaceAfter()`.
+
+---
+
+**Line 71** — `EmptyMethodInAbstractClassShouldBeAbstract` — not applicable; but `clearConnectionSettings()` and `clearCurrentJStyle()` are feature-envy or limited utility methods.
+
+---
+
+**Line 120** — `AvoidInstanceofChecksInCatchClause` — not a catch, but:
+
+**Line 120–122** — `InstanceofUsageRule` / `PatternMatchingForInstanceOf` — use of `instanceof` with pattern variable is acceptable in modern Java, no violation.
+
+---
+
+**Line 32** — `LooseCoupling` — field `externalJStyles` declared as `ObservableList` (concrete type) instead of a more abstract type; same for line 40 `externalCslStyles`.

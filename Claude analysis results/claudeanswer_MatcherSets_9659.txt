@@ -1,0 +1,5 @@
+**Line 10** — `MatcherType` parameter named `ruleSet` is misleading; parameter name doesn't match its type semantics. *(Rule: `LocalVariableName` / naming convention)*
+
+**Line 11** — Comparison using `==` on an enum is acceptable, but the `else` branch implicitly assumes only two enum values exist; if a new `MatcherType` is added, it silently falls through to `OrMatcher`. *(Rule: `MissingSwitchDefault` / use switch instead of if-else for enum)*
+
+**Line 4** — Utility class `MatcherSets` has no private constructor, allowing instantiation. *(Rule: `HideUtilityClassConstructor`)*

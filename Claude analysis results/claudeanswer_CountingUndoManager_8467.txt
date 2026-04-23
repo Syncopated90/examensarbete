@@ -1,0 +1,21 @@
+**Line 15** — `ClassWithoutLogger` / `MissingSerialVersionUID`: `CountingUndoManager` extends `UndoManager` (which implements `Serializable`) but declares no `serialVersionUID`.
+
+**Line 17** — `UnusedPrivateField` / `VisibilityModifier`: `unchangedPoint` is a non-private mutable field candidate; more precisely it is accessed only via synchronized methods but is a plain `int` while balance is tracked via a property — inconsistent state management.
+
+**Line 19** — `FieldDeclarationsShouldBeAtStartOfClass` (ordering): Non-constant field `balanceProperty` declared after `unchangedPoint` but before other fields — minor, style rule.
+
+**Line 57** — `NonThreadSafeSingleton` / thread-safety: `incrementBalance()` reads then writes `balanceProperty` non-atomically; called from `synchronized` methods on `this`, but `balanceProperty` itself is a JavaFX property not safe for off-thread mutation — however `updateUndoableStatus` dispatches to JavaFX thread while `incrementBalance` does not, creating inconsistent threading.
+
+**Line 57–60** — `UnsynchronizedStaticUsageInSynchronizedContext`: `incrementBalance` and `decrementBalance` mutate `balanceProperty` directly on the calling (non-JavaFX) thread, violating JavaFX thread-confinement rule.
+
+**Line 63–65** — `UnsynchronizedStaticUsageInSynchronizedContext`: Same violation in `updateUndoableStatus` — lambda captures `canUndo()` inside a Runnable posted to JavaFX thread, but `canUndo()` is called on the JavaFX thread without holding the `synchronized` lock.
+
+**Line 63** — `LambdaCanBeMethodReference`: `() -> undoableProperty.setValue(canUndo())` is not a method reference but could be simplified; minor style rule.
+
+**Line 34** — `EmptyControlStatement` / `UnnecessaryElse`: The `else { return false; }` block is unnecessary after a `return true` in the `if` block — violates `UnnecessaryElseStatement` rule.
+
+**Line 15** — `ClassNamingConventions` / design: Class name `CountingUndoManager` — no violation here, but the class overrides `synchronized` methods without declaring `@Override` consistently — all `@Override` usages are correct, no issue.
+
+**Line 17** — `ImmutableField`: `unchangedPoint` is only ever assigned in `markUnchanged()` and initializer; could be flagged depending on analyzer, but genuinely mutable — not a violation.
+
+**Line 34** — `BooleanExpressionComplexity` / `SimplifiableReturns`: The `if/else` returning the same boolean as `editAdded` violates `UnnecessaryIfStatement` — the entire block can be replaced with `return editAdded` plus side-effects only when true.

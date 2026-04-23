@@ -1,0 +1,11 @@
+**Line 41** — `Collectors.toList()` — Use `Stream.toList()` instead (Java 16+). Rule: **UseStreamToList** (PMD) / `UseSteamToList` (Sonar: S6204)
+
+**Line 52** — `WebFetchers.getSearchBasedFetchers(...)` called inside `parallelStream` operation — method invoked per element, potentially expensive and repeated. Rule: **AvoidDuplicateWork** / **AvoidInstantiatingObjectsJustToCallGetClass**; more precisely, this is a **MethodCallInLoopCondition** / **CallToMethodRepeatedInLoop** violation — the Set should be computed once outside the stream.
+
+**Line 57** — `.orElse(null)` — returning null from Optional defeats its purpose. Rule: **AvoidReturningNull** (PMD) / **OptionalOrElseNull** (Sonar: S2789 / S3655)
+
+**Line 40** — `parallelStream()` used without justification or benchmarking for a potentially small list. Rule: **UseParallelStreamJudiciously** / **UseForkJoinPool** — Sonar: **S3078** / PMD: **UselessParentheses** — more accurately Sonar: **S4276** or the rule against unnecessary parallel streams.
+
+**Line 14** — Class is package-private but has `public` methods (`getActiveFetchers`). Rule: **UnnecessaryModifier** — public method in package-private class (PMD: **UnnecessaryModifier**)
+
+**Line 39** — Parameter `libraryEntries` shadows the instance field `this.libraryEntries`. Rule: **HiddenField** (PMD: `HiddenField`)

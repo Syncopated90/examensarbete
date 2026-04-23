@@ -1,0 +1,17 @@
+**Line 32** — `userDefined != null`
+**Rule: Redundant null check on Optional** — `userDefined` is returned by `metaData.getBlgFilePath()`, guaranteed non-null after `isPresent()` guard; comparing an `Optional` reference to `null` is redundant and misleading.
+
+**Line 32** — `userDefined.isPresent() && userDefined != null`
+**Rule: Incorrect operand order / dead code** — The `null` check should precede `isPresent()`, not follow it. As written, `userDefined != null` is unreachable dead code within the condition context.
+
+**Line 18** — `resolve` is `static` but belongs to a non-utility instantiable class.
+**Rule: Use utility class conventions** — Class has no instance members; should declare a private constructor or be marked `final` with only static methods (Checkstyle: `HideUtilityClassConstructor`).
+
+**Line 37** — `databasePath.isEmpty()`
+**Rule: Confusing Optional empty check** — Prefer `!databasePath.isPresent()` or `databasePath.isEmpty()` is Java 11+; not itself wrong but inconsistent with the `isPresent()` style used on line 32 (`MissingOverride` / style inconsistency).
+
+**Line 23** — `System.getProperty("user.name")`
+**Rule: Avoid system property access in logic layer** — Direct `System.getProperty` call introduces environment coupling and untestability; violates dependency inversion (PMD: `AssignmentInOperand` / architecture rule).
+
+**Line 32** — Operator precedence / logic
+**Rule: Suspicious condition** — `isPresent()` already guarantees non-null Optional value; the `&&` with `!= null` suggests a logic misunderstanding, flagged by SonarLint as `java:S2589` (boolean expression always true).

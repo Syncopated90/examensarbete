@@ -1,0 +1,9 @@
+**Line 8** — `PATTERN_ESCAPED_CURLY_BRACES` is declared `private static final` but never used directly; `matcher` is created from it on line 14, however the variable `c` (line 16) is computed but only used for counting (lines 17), while `addedBraces` is built from the original `input` — **"Suspicious/misleading variable use"**: the corrected brace count is applied to `addedBraces` (original input), not to `c` (escaped-braces-stripped string), which is likely a **logic bug / inconsistent state**.
+
+**Line 15** — `addedBraces` is initialized from `input` but `c` (the cleaned string) is never used as the base for corrections — **"Dead/unused computation"** (variable `c` is used only for counting, its string value is discarded).
+
+**Line 17** — Two separate stream pipelines over `c.chars()` — **"Inefficient code / multiple iterations"**: the string is iterated twice where a single pass would suffice.
+
+**Line 17** — `long diff` assigned from subtraction of two `long` values cast-compared against `0` (int) in `while (diff != 0)` — **"Comparison of long to int literal"** (minor type mismatch, rule: `IntLiteralEquality` / `MismatchedType`).
+
+**Line 14** — `matcher` is created but its only use is `replaceAll` on line 16; the `Matcher` object itself is not reused — **"Unnecessary local variable"** (`matcher` could be inlined).

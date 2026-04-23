@@ -1,0 +1,21 @@
+**Line 50** — `marker.isPresent()` is redundant; already confirmed non-empty by `marker.isEmpty()` check above. **Rule: `SimplifyOptionalCallChains` / `RedundantCondition`**
+
+**Line 50** — Dead code branch: `withText && marker.isPresent()` — `marker.isPresent()` is always `true` here due to `continue` on line 46. **Rule: `UnnecessaryLocalVariable` / `RedundantNullCheck`**
+
+**Line 68** — Local variable `ZERO_WIDTH_SPACE` is declared as `String` but reassigned conditionally; it is effectively used as a mutable variable inside a method where it should be a `final` local or ternary. **Rule: `VariableNotUsedBeforeReassignment` / `ImmutableLocalVariable`**
+
+**Line 67–71** — `ZERO_WIDTH_SPACE` is a local variable named with `UPPER_SNAKE_CASE`, which is the convention for constants (`static final`), not local variables. **Rule: `LocalVariableNamingConventions`**
+
+**Line 71** — `citationText2.toString()` called on `OOText`; `citationText2` is reassigned on the same line it was set on line 66, obscuring intent. **Rule: `VariableReassignment` / `PrematureDeclaration`**
+
+**Line 66** — `citationText2` is declared outside the `if (withText)` block scope but only used within it; should be scoped more tightly. **Rule: `UnnecessaryLocalVariable` / `PrematureDeclaration`**
+
+**Line 35–38** — Method `applyNewCitationMarkers` declares checked exceptions `IllegalTypeException` and others not actually thrown in its body (e.g., `CreationException` is only thrown indirectly). **Rule: `RedundantThrows`**
+
+**Line 40** — Direct field access `frontend.citationGroups` on a presumably encapsulated object violates encapsulation. **Rule: `DirectFieldAccess` / `LawOfDemeter`**
+
+**Line 44** — Direct field access `group.citationType`. **Rule: `DirectFieldAccess`**
+
+**Line 47** — Direct field access `group.groupId.citationGroupIdAsString()` — two levels of chained field access. **Rule: `LawOfDemeter`**
+
+**Line 28** — Private constructor present but class is not `final`. **Rule: `ClassWithOnlyStaticMethodsShouldBeFinal` / `UtilityClassShouldBeFinal`**

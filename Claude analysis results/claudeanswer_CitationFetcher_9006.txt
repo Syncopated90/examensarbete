@@ -1,0 +1,13 @@
+**Line 13** — `CitationFetcher` extends `CitationCountFetcher` but `CitationCountFetcher` is not imported. **Missing import** / unresolved type.
+
+**Line 36** — `getReferences` declares `throws FetcherException` in an interface method. If `CitationCountFetcher` declares a conflicting or no exception, this may cause **incompatible throws clause**.
+
+**Line 43** — Same issue as line 36 for `getCitations`.
+
+**Line 4** — `java.net.URI` is imported but only used in default method return types — acceptable, but worth noting if the interface is meant to be purely abstract. Not a rule violation per se.
+
+**Line 10** — `@NullMarked` applied to an interface that has `Optional` return types (lines 49, 56). Mixing `@NullMarked` with `Optional` return is redundant for nullability signalling. **Rule: AvoidOptionalAsField** (by analogy; use of `Optional` as method return in a `@NullMarked` context is redundant/inconsistent).
+
+**Line 18–19** — `CITES` and `CITED_BY` are enum constants with a public mutable field `label` (line 23). **Rule: VisibilityModifier** — `public` non-final (effectively final but not declared) field in enum; should be `private final` with a getter.
+
+**Line 23** — `public final String label` — **Rule: VisibilityModifier**: public field should be private with accessor method.

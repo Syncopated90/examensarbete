@@ -1,0 +1,27 @@
+**Line 106** - `AUTHOR_CACHE` field: `Collections.synchronizedMap` wrapping `WeakHashMap` — `computeIfAbsent` on a synchronized map is not thread-safe (the synchronization wrapper does not protect compound operations). **Rule: Thread-Safety / Non-atomic compound operation on synchronized collection**
+
+**Line 130** - `fixAuthorFirstNameFirstCommas`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 138** - `fixAuthorFirstNameFirst`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 145** - `fixAuthorLastNameFirstCommas`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 152** - `fixAuthorLastNameFirst(String authors)`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 159** - `fixAuthorLastNameFirst(String authors, boolean abbreviate)`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 166** - `fixAuthorLastNameOnlyCommas`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 173** - `fixAuthorForAlphabetization`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 180** - `fixAuthorNatbib`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 196** - `getAsNatbib`: local variable `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 97** - `andCoordinatedConjunction(List<String> authors, ...)`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 91** - `andCoordinatedConjunction(List<Author> authors, ...)`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**
+
+**Line 219** - `latexFreeAuthors.latexFreeAuthors = latexFreeAuthors`: direct write to another object's private field from within the same class — self-referential assignment creating a circular object reference, potential memory/design issue. **Rule: WriteToFinalField / CircularReference**
+
+**Line 81** - `of(List<Author> authors)`: parameter `authors` shadows field `this.authors`. **Rule: HiddenField**

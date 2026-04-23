@@ -1,0 +1,13 @@
+**Line 21** — `NullPassedToNonNull` / **Null Argument**: `null` is passed as `databaseContext` to a parameter that is later dereferenced without null-check guarding the call path (though guarded at line 33, the design relies on implicit null convention rather than `Optional`).
+
+**Line 21** — `ConstructorCallsOverridableMethod` (indirect): the chained constructor `this(null, stateManager)` followed by `this.executable.bind(...)` means the second constructor's side-effects are partially overridden, and bind is called outside the delegated constructor, breaking consistent initialisation order.
+
+**Line 25** — `HiddenField`: parameter `stateManager` in the two-arg constructor shadows the instance field `this.stateManager`.
+
+**Line 25** — `HiddenField`: parameter `databaseContext` shadows no field directly but the assigned field `alternateDatabase` uses a different name, indicating a naming inconsistency; more critically `stateManager` shadows the instance field.
+
+**Line 31** — `ServiceLocatorPattern` / `AvoidUsingStaticAccess`: `Injector.instantiateModelOrService(DialogService.class)` is a service-locator anti-pattern; `DialogService` should be injected via constructor rather than obtained statically inside `execute()`.
+
+**Line 31** — `VariableDeclarationUsageDistance`: `dialogService` is declared and used immediately but obtained via a static service locator on every invocation, making it a candidate for constructor injection.
+
+**Line 37** — `OptionalGetWithoutIsPresent` risk mitigated but style violation: `.isPresent()` + `.get()` should be replaced with `.ifPresent(...)` or `orElse` idiom (`UnnecessaryCallToPresent` / `OptionalOrElse`).

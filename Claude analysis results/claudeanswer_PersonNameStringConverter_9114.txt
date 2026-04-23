@@ -1,0 +1,19 @@
+**Line 20** — `SWITCH_EXHAUSTIVE` / Missing default handling: `switch` on enum `getNameFormat()` without exhaustive coverage; relies on `default` fallthrough but intermediate `break` statements cause fields to potentially remain uninitialized before Java's definite assignment is satisfied (compiler resolves this, but logic is fragile).
+
+**Line 20** — `SWITCH_EXPRESSION_PREFERRED`: Traditional `switch` statement used where a `switch` expression would be cleaner and safer.
+
+**Line 29** — `FALLTHROUGH`: `case BOTH:` falls through to `default:` intentionally but without a comment.
+
+**Line 40** — `SWITCH_EXHAUSTIVE` / `SWITCH_EXPRESSION_PREFERRED`: Traditional `switch` statement with `default: break` on an enum; switch expression preferred.
+
+**Line 50** — `SWITCH_EXHAUSTIVE` / `SWITCH_EXPRESSION_PREFERRED`: Same issue repeated for `autoCompFF` block.
+
+**Line 63** — `RETURN_NULL_NOT_POSSIBLE` / `ArrayIndexOutOfBoundsException`: `AuthorList.parse(string).getAuthor(0)` will throw if the parsed list is empty (e.g., empty string input); no guard against empty list.
+
+**Line 63** — `MISSING_NULL_CHECK`: No null check on `string` parameter before passing to `AuthorList.parse`.
+
+**Line 37** — `MISSING_NULL_CHECK`: No null check on `author` parameter; if `author` is null, NullPointerException will be thrown.
+
+**Line 57** — `RETURN_DEFAULT_AMBIGUOUS`: Method falls through to `author.getNamePrefixAndFamilyName()` when both `autoCompFF` and `autoCompLF` are `false`, which is a silent fallback with no indication it is intentional.
+
+**Line 14** — `CONSTRUCTOR_PARAM_SHADOWS_FIELD`: Parameter names `autoCompFF`, `autoCompLF` shadow the instance fields of the same name, relying solely on `this.` qualification — error-prone.

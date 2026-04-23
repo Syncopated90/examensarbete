@@ -1,0 +1,9 @@
+**Line 4** — `java.util.ArrayList` imported but never used directly (field initialized inline); **UnusedImports**
+
+**Line 5** — `java.util.Set` used only locally in `setValues()`; acceptable, but `fields` variable is populated and never consumed beyond `add()` calls — **DeadCode** / **UnusedLocalVariable** (`fields` is built up but `sortableFieldsProperty` is populated from `FieldFactory.getStandardFieldsWithCitationKey()` instead, making lines 48–52 dead writes)
+
+**Line 25** — `new ArrayList<>()` passed to `FXCollections.observableArrayList(new ArrayList<>())` is redundant; equivalent to no-arg call — **RedundantObjectCreation** / **UselessConstructorCall**
+
+**Line 48** — `Set<Field> fields` is assigned and mutated (lines 49–52) but never read or used — **UnusedLocalVariable**
+
+**Line 53** — `sortableFieldsProperty.addAll(FieldFactory.getStandardFieldsWithCitationKey())` ignores the `fields` set built above; the population of `fields` (lines 48–52) is therefore dead code — **DeadCode**

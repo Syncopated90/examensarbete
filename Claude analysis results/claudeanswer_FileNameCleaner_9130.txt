@@ -1,0 +1,17 @@
+**Line 18** — `StringIndexOutOfBoundsException` risk / **Null Dereference**: No null check on `badFileName` before calling `.length()`.
+
+**Line 18** — **ForLoopVariableCount** / performance: `badFileName.length()` called on every iteration; should be cached in a local variable.
+
+**Line 33** — **Null Dereference**: Same as line 18; no null check on `badFileName`.
+
+**Line 33** — **ForLoopVariableCount** / performance: `badFileName.length()` called on every iteration; should be cached.
+
+**Line 25** — **InappropriateToString**: `.toString().trim()` chains are redundant; `StringBuilder` could trim during building or `trim()` could be applied only once, but the deeper issue is that `trim()` silently mutates the returned filename in a non-obvious way — **HiddenBehavior** / **UnexpectedSideEffect**.
+
+**Line 41** — Same **InappropriateToString** / **HiddenBehavior** as line 25.
+
+**Line 9** — **ClassNamingConventions** / **UtilityClassWithoutFinalModifier**: Utility class is not declared `final`.
+
+**Line 17** — **MethodParameterNaming**: Parameter named `badFileName` is semantically misleading as a general naming convention violation — **LinguisticNaming** rule; parameter name encodes intent that should be in Javadoc only.
+
+**Line 31** — **MethodParameterNaming** / **LinguisticNaming**: Same issue; `badFileName` used for a directory name parameter violates **LinguisticNaming** rule.

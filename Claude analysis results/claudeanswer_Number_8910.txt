@@ -1,0 +1,9 @@
+**Line 9** — `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` / **Public Mutable Static Field**: `serialExportNumber` is `public static` and non-final, allowing uncontrolled external mutation.
+
+**Line 9** — `MS_SHOULD_BE_FINAL` (FindBugs/SpotBugs): Mutable static field `serialExportNumber` is not `private` and not `final`.
+
+**Line 17** — `THREAD_SAFETY_VIOLATION` / **Race Condition**: `serialExportNumber` is a static field read in `format()` without synchronization, making it unsafe for concurrent use.
+
+**Line 9** — `PMD:DataClass` / **Inappropriate Intimacy**: Exposing internal state via a raw `public static` field breaks encapsulation.
+
+**Line 12-14** — `PMD:UnusedFormalParameter`: The `arg` parameter in `setArgument` is silently ignored with no exception or documentation beyond a comment.
