@@ -1,0 +1,13 @@
+**Line 48** - `Path Traversal` (Security) — `file.getParent() + "/" + suffix` uses string concatenation with user-influenced `suffix` (derived from `entry.getId()` and citation key) to construct a path, enabling directory traversal if the key contains `../`.
+
+**Line 48** - `String concatenation with Path` — `file.getParent()` returns a `Path`; concatenating with `"/" + suffix` via `+` operator is fragile and platform-dependent. Should use `file.getParent().resolve(suffix)`.
+
+**Line 46** - `Unchecked Optional access` — `entry.getField(InternalField.KEY_FIELD).orElse("null")` silently substitutes `"null"` string for missing key; no warning or logging, masking potential data issues.
+
+**Line 44** - `Variable declared inside loop` — `String suffix` and `Path entryFile` are declared inside the `for` loop body unnecessarily increasing allocation overhead per iteration.
+
+**Line 33** - `Unused annotation target` — `@NonNull` on `List<BibEntry> entries` parameter is redundant given the `entries.isEmpty()` guard; the contract is not enforced via assertion or precondition check.
+
+**Line 57** - `Resource not closed` — `new XmpUtilWriter(this.xmpPreferences)` creates an object whose lifecycle is not managed; if `XmpUtilWriter` holds resources, they are never closed.
+
+**Line 57** - `Method chain on single line` — `new XmpUtilWriter(...).generateXmpStringWithoutXmpDeclaration(entries)` couples construction and method call, making it untestable and violating single responsibility at call site.

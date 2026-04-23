@@ -1,0 +1,15 @@
+**Line 34** - `ObjectProperty<Consumer<ChatMessageComponent>> onDelete` — Field declared but `onDelete` property never exposed via getter (inconsistent API with `chatMessage` property). **EncapsulationRule**
+
+**Line 44** - `@Inject private ClipBoardManager clipBoardManager` — Injected field is not initialized at constructor time; used in `copyFullMessage()` which can be called before injection completes if context menu is triggered early. **UnsafeInjection**
+
+**Line 47–51** - `chatMessage.addListener((_, _, newValue) ->` — Listener registered before `markdownTextFlow` is initialized (line 53), but listener calls `loadChatMessage()` which uses `markdownTextFlow`. If `chatMessage` were set during construction before line 53, NPE would occur. **NullDereference** / **ConstructorDoesMoreThanAssign**
+
+**Line 63** - `public ChatMessageComponent(ChatMessage chatMessage, Consumer<ChatMessageComponent> onDeleteCallback)` — Calls overridable method indirectly via `this()` which does non-trivial work; subclass state would be uninitialized. **ConstructorCallsOverridableMethod**
+
+**Line 68** - `new MenuItem(Localization.lang("Copy"))` — UI object `contextMenu` created in a non-`@FXML` method called from constructor, before `@FXML` fields are injected by `ViewLoader.load()` on line 46. `markdownContentPane` (used line 74) may be null. **NullDereference**
+
+**Line 148** - `vBox.setStyle(...)` — Inline style string construction via concatenation; should use CSS classes instead. **AvoidStringConcatenation** / **HardcodedStyleRule**
+
+**Line 107** - `default -> LOGGER.error(...)` — `chatMessage.get().type().name()` called twice on same object with no null guard; also `default` branch in sealed-type switch suggests incomplete type handling. **RedundantMethodCall** / **SwitchStatementsShouldHaveDefault**
+
+**Line 34-35** - Both `ObjectProperty` fields are `private final` but expose mutable state through setters without change validation or documentation of threading expectations. **MutableStateThroughProperty**

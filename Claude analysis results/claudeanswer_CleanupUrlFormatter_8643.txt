@@ -1,0 +1,14 @@
+**Line 44 — NullCheckBypassedByNonNull / Redundant Null Check**
+`@NonNull` annotation on parameter `url` already forbids null, yet `Objects.requireNonNull(url, "Null url")` performs a redundant null check.
+
+**Line 44–45 — RedundantNullCheck**
+`@NonNull String url` combined with `Objects.requireNonNull` is contradictory; the null guard is dead code.
+
+**Line 19 — CommentedOutCode / MisleadingComment**
+Inline comment says "get text after them" but the regex captures the value of the parameter, not merely text after `=`; minor documentation inaccuracy.
+
+**Line 62–66 — ConsecutiveStringAppend / StringConcatenation**
+`getExampleInput()` builds a return value using `+` operator across multiple string literals at runtime; should be a single compile-time constant or use a `String` constant field.
+
+**Line 1 — PackageDeclaration / LayerViolation**
+`CleanupUrlFormatter` resides in `logic.formatter.bibtexfields` but performs network-URL decoding unrelated to BibTeX field formatting, violating single-responsibility per package naming convention.

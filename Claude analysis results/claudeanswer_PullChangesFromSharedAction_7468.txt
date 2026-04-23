@@ -1,0 +1,9 @@
+**Line 18** — `NullAssignment` / `NullDereference`: `databaseContext.getDBMSSynchronizer()` may return `null`; `dbmsSynchronizer.pullChanges()` is called without null check.
+
+**Line 17** — `AccessorMethodGeneration`: Lambda used where a method reference could apply.
+
+**Line 8** — `ClassNamingConventions` (minor): Class name `PullChangesFromSharedAction` is verbose but not a rule break per se; no issue here.
+
+**Line 14** — `LawOfDemeter`: `this.executable.bind(ActionHelper.needsDatabase(stateManager).and(...))` chains method calls violating the Law of Demeter.
+
+**Line 17** — `MissingOverride`: `execute()` overrides a method from `SimpleCommand` but lacks `@Override` annotation.

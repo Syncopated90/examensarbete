@@ -1,0 +1,11 @@
+**Line 21** – `String Format` / **Localization String with Concatenated User Data**: The `%0` placeholder inlines raw user data (preamble content) directly into a localized string, which can break layout and is potentially unsafe. Use a separate `Label` or `TextArea` for the value.
+
+**Line 25** – Same rule violation as line 21 — `%0` embeds raw external preamble content into a localized string.
+
+**Line 21** – `Long Line` / **Line Length**: The line exceeds typical 120-character limits.
+
+**Line 25** – `Long Line`: Same violation.
+
+**Line 13** – `Visibility` / **Field Not Assigned to Field**: `preambleDiff` is a local variable used only within the constructor; acceptable, but `PreambleChange` parameter is used solely for extraction with no null guard — **Null Dereference** risk if `preambleChange` or `preambleChange.getPreambleDiff()` returns `null`.
+
+**Line 16** – `Hard-coded Style`: Magic string `"sectionHeader"` is a hard-coded CSS class name inline in logic code — violates **Avoid Magic Literals** / `AvoidLiterals` rule.

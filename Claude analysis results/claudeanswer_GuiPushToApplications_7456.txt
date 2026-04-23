@@ -1,0 +1,9 @@
+**Line 14** — `APPLICATIONS` is a mutable static field (`ArrayList`). **Rule: `ST_WRITE_TO_STATIC_FROM_INSTANCE_CONTEXT` / Mutable Static Field**
+
+**Line 20-21** — Race condition: `APPLICATIONS` is checked and written without synchronization. **Rule: `DC_DOUBLECHECK` / Non-thread-safe lazy initialization of static field**
+
+**Line 33** — `GuiPushToVScode` is instantiated twice (lines 30 and 33). **Rule: `DUPLICATE_CODE` / Duplicate entry in list**
+
+**Line 20** — Method has two parameters (`dialogService`, `preferences`) that are silently ignored on subsequent calls when `APPLICATIONS` is already populated; callers may receive a list built with different parameters. **Rule: `STALE_PARAMETER` / Ignored method parameter**
+
+**Line 38** — `///` triple-slash comment is a Java 23+ doc comment feature; use of it in context expecting standard Javadoc may be unintentional or unsupported in older toolchains. **Rule: `COMMENT_STYLE_VIOLATION`**

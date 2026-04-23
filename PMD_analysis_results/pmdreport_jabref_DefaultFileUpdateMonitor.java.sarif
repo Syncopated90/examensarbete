@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "AvoidUsingVolatile",
+              "shortDescription": {
+                "text": "Use of modifier volatile is not recommended."
+              },
+              "fullDescription": {
+                "text": "\nUse of the keyword 'volatile' is generally used to fine tune a Java application, and therefore, requires\na good expertise of the Java Memory Model. Moreover, its range of action is somewhat misknown. Therefore,\nthe volatile keyword should not be used for maintenance purpose and portability.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_multithreading.html#avoidusingvolatile",
+              "help": {
+                "text": "\nUse of the keyword 'volatile' is generally used to fine tune a Java application, and therefore, requires\na good expertise of the Java Memory Model. Moreover, its range of action is somewhat misknown. Therefore,\nthe volatile keyword should not be used for maintenance purpose and portability.\n        "
+              },
+              "properties": {
+                "ruleset": "Multithreading",
+                "priority": 2,
+                "tags": [
+                  "Multithreading"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "CloseResource",
+              "shortDescription": {
+                "text": "Ensure that resources like this WatchService object are closed after use"
+              },
+              "fullDescription": {
+                "text": "\nEnsure that resources (like `java.sql.Connection`, `java.sql.Statement`, and `java.sql.ResultSet` objects\nand any subtype of `java.lang.AutoCloseable`) are always closed after use.\nFailing to do so might result in resource leaks.\n\nNote: It suffices to configure the super type, e.g. `java.lang.AutoCloseable`, so that this rule automatically triggers\non any subtype (e.g. `java.io.FileInputStream`). Additionally specifying `java.sql.Connection` helps in detecting\nthe types, if the type resolution / auxclasspath is not correctly setup.\n\nNote: Since PMD 6.16.0 the default value for the property `types` contains `java.lang.AutoCloseable` and detects\nnow cases where the standard `java.io.*Stream` classes are involved. In order to restore the old behaviour,\njust remove \"AutoCloseable\" from the types.\n\nThe property `allowedResourceMethodPatterns` can be used to specify method invocation patterns that return\nresources which are managed externally and don't need to be closed by the caller. This is useful for\nservlet-related streams like `HttpServletRequest.getReader()` or `HttpServletResponse.getWriter()`,\nwhich are managed by the servlet container. The patterns use InvocationMatcher syntax\n(e.g., `javax.servlet.ServletRequest#getReader()`).\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_errorprone.html#closeresource",
+              "help": {
+                "text": "\nEnsure that resources (like `java.sql.Connection`, `java.sql.Statement`, and `java.sql.ResultSet` objects\nand any subtype of `java.lang.AutoCloseable`) are always closed after use.\nFailing to do so might result in resource leaks.\n\nNote: It suffices to configure the super type, e.g. `java.lang.AutoCloseable`, so that this rule automatically triggers\non any subtype (e.g. `java.io.FileInputStream`). Additionally specifying `java.sql.Connection` helps in detecting\nthe types, if the type resolution / auxclasspath is not correctly setup.\n\nNote: Since PMD 6.16.0 the default value for the property `types` contains `java.lang.AutoCloseable` and detects\nnow cases where the standard `java.io.*Stream` classes are involved. In order to restore the old behaviour,\njust remove \"AutoCloseable\" from the types.\n\nThe property `allowedResourceMethodPatterns` can be used to specify method invocation patterns that return\nresources which are managed externally and don't need to be closed by the caller. This is useful for\nservlet-related streams like `HttpServletRequest.getReader()` or `HttpServletResponse.getWriter()`,\nwhich are managed by the servlet container. The patterns use InvocationMatcher syntax\n(e.g., `javax.servlet.ServletRequest#getReader()`).\n        "
+              },
+              "properties": {
+                "ruleset": "Error Prone",
+                "priority": 3,
+                "tags": [
+                  "Error Prone"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "AvoidUsingVolatile",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Use of modifier volatile is not recommended."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/DefaultFileUpdateMonitor.java"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 35,
+                  "endLine": 34,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CloseResource",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Ensure that resources like this WatchService object are closed after use"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/DefaultFileUpdateMonitor.java"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 26,
+                  "endLine": 107,
+                  "endColumn": 33
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

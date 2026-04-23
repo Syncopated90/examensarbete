@@ -1,0 +1,23 @@
+**Line 13** — `EntryComparator` import unused if comparator is only used locally (verify), but more critically:
+
+**Line 53** — **`LocalVariableCouldBeFinal`**: `entryComparator` is assigned once and never reassigned; should be declared `final`.
+
+**Line 48** — **`LocalVariableCouldBeFinal`**: `one` is assigned once; should be declared `final`.
+
+**Line 49** — **`LocalVariableCouldBeFinal`**: `two` is assigned once; should be declared `final`.
+
+**Line 39** — **`LocalVariableCouldBeFinal`**: `selectedEntries` is assigned once; should be declared `final`.
+
+**Line 63** — **`LocalVariableCouldBeFinal`**: `dialog` is assigned once; should be declared `final`.
+
+**Line 66** — **`LocalVariableCouldBeFinal`**: `mergeResultOpt` is assigned once; should be declared `final`.
+
+**Line 67** — **`AvoidInstantiatingObjectsOnlyToInvokeGetClass` / `InstantiationForGetClass`** (related): `new MergeTwoEntriesAction(...).execute()` — object is instantiated solely to call a method; consider a static utility or retaining the reference.
+
+**Line 18** — **`ConstantNamingConvention`** / **`MagicNumber`**: `NUMBER_OF_ENTRIES_NEEDED = 2` mitigates magic number at line 40 comparison (`!= 2`), but the value `2` at line 40 is a **`MagicNumber`** violation — should reference the constant.
+
+**Line 40** — **`MagicNumber`**: literal `2` used directly instead of `NUMBER_OF_ENTRIES_NEEDED`.
+
+**Line 49** — **`LocalVariableCouldBeFinal`**: `two` assigned once.
+
+**Lines 51–52** — **`LocalVariableCouldBeFinal`**: `first` and `second` are not final (they are conditionally assigned, so this is acceptable — not a violation).

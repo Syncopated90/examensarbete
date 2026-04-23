@@ -1,0 +1,15 @@
+**Line 30** — `java:S2658` / **Method chaining too long** (also `java:S1121`): `journalInformation.map(...).stream().toList()` is acceptable, but the entire line is excessively long, violating **LineLength** rule (>100/120 chars).
+
+**Line 30** — `java:S4738` / **Use method reference instead of lambda** — `journalInfo -> journalInformationToBibEntry(journalInfo, issn.get())` should be a method reference where possible (minor; lambda captures `issn.get()` so not directly applicable, but `issn.get()` called inside map is flagged).
+
+**Line 40** — **LineLength**: Line exceeds maximum allowed length.
+
+**Line 44** — **LineLength** / `java:S103`: The `journalInformationToBibEntry` method body is a single excessively long line with multiple chained `.withField()` calls, violating line length rules.
+
+**Line 44** — `java:S1192` / **String literals should not be duplicated** — not applicable here, but the chained builder pattern with no intermediate variables violates **java:S1142** (method contains too many return statements is not applicable; rather **java:S3776** cognitive complexity is not triggered here).
+
+**Line 44** — `java:S4276` / **Method `journalInformationToBibEntry` is private and only called in two places** — low severity, but effectively a **MethodLength** / readability violation due to chaining.
+
+**Line 16** — `java:S125` / **Commented-out code or misleading Javadoc**: The `///` triple-slash doc comment references `{@link JournalInformationFetcher}` but uses Markdown doc style inconsistently (mixing `///` with `{@link}`).
+
+**Line 22–24** — `java:S2637` / **Constructor does not initialize fields via injection** — `journalInformationFetcher` is instantiated directly with `new`, violating **dependency inversion** / `java:S5122` (hard-coded dependency, not injected).

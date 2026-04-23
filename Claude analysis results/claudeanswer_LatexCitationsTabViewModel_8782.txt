@@ -1,0 +1,17 @@
+**Line 211** — `latexParser.parse(path).get()` — **Unchecked Optional.get() without isPresent()** (rule: `OptionalGetWithoutIsPresent` / `NullDereference`)
+
+**Line 221** — `result.getCitationsByKey(...)` in `onFileDelete` where `result` could be `null` if `latexFiles.remove()` returns null — **Possible NullDereference** (rule: `NullDereference`)
+
+**Line 179** — `directoryMonitor.removeObserver(observer)` called when `observer` may be `null` on first invocation (guard `observer == null` in condition means we enter the block with null observer) — **NullDereference** (rule: `NullDereference`)
+
+**Line 57** — `FILE_FILTER` is a `static final` field initialized with a complex expression but not a compile-time constant — not an issue per se, but the field is package-private effectively; minor, skip.
+
+**Line 230** — `onFileChange` calls `onFileDelete` then `onFileCreate` then `updateStatus()`, but `onFileCreate` already calls `updateStatus()` conditionally, leading to **Duplicate/redundant `updateStatus()` call** (rule: `DoubleInvocation` / redundant call).
+
+**Line 211** — `latexParser.parse(path)` returns `Optional<LatexParserResult>`; calling `.get()` directly — **OptionalGetWithoutIsPresent** (rule: `OptionalGetWithoutIsPresent`).
+
+**Line 104** — `currentDatabaseContext` field is reassigned in `bindToEntry` but initialized in constructor and also written in constructor — not thread-safe, **non-final field written from multiple methods without synchronization** (rule: `InstanceVariableNotThreadSafe`).
+
+**Line 72–73** — `currentEntry` and `currentDatabaseContext` are mutable fields not guarded by locks, accessed from both UI thread and file alteration listener thread — **ThreadSafety / GuardedBy violation** (rule: `GuardedBy`).
+
+**Line 228** — `onDirectoryChange`, `onDirectoryCreate`, `onDirectoryDelete` are **empty method bodies** for an interface implementation with no comment explaining intent — (rule: `EmptyMethodInAbstractClassShouldBeAbstract` / `NoopMethodInAbstractClass` or `UncommentedEmptyMethodBody`).

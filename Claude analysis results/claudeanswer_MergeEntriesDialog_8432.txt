@@ -1,0 +1,19 @@
+**Line 13** - `FieldName` / Unused Field: `one` is stored but only used in the lambda (closure), not as a true instance field necessity; however more critically:
+
+**Line 13-14** - **`ImmutableField`**: Fields `one` and `two` are declared `final` but assigned after the `threeWayMergeView` field initialization, which references them indirectly — not a direct issue, but:
+
+**Line 17 vs 18-19** - **`ThisEscapeFromConstructor`** (SonarQube: `java:S3366`): `init()` is called at line 20/28 before `this.one` and `this.two` are fully initialized in the constructor chain — wait, they are assigned at lines 18-19 before `init()` at line 20. Not an issue there.
+
+**Line 13-14** - **`UnusedField`** (PMD): Fields `one` and `two` are only referenced inside the lambda in `init()`, which captures them from the constructor scope directly. The instance fields are assigned but the lambda at line 41 uses the instance fields — this is valid, but:
+
+**Line 41** - **`LambdaCanBeMethodReference`** — not applicable here.
+
+**Line 32-33** - **`MagicNumber`** (PMD `AvoidLiteralInIfCondition` / `MagicNumber`): Literal values `20` and `20` used directly in `setX(20)` and `setY(20)`.
+
+**Line 24** - **`ExcessiveParameterList`** (PMD): Constructor has 6 parameters.
+
+**Line 16** - **`ExcessiveParameterList`** (PMD): Constructor has 4 parameters (minor, but notable with 6-param overload).
+
+**Line 44** - **`ReturnNull`** (PMD): Returning `null` instead of an `Optional` or sentinel value.
+
+**Line 30** - **`CommentDefaultAccessModifier`** / **`JavadocStyle`** (Checkstyle): `///` is not valid Javadoc; should be `/** */`.

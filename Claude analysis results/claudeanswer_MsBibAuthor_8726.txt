@@ -1,0 +1,23 @@
+**Line 35 — Null Dereference / Possible NPE**
+`firstName` may be `null` (never assigned if `getGivenName()` is empty), so `!"".equals(firstName)` returns `true`, and `firstName` is returned as `null` without the guard catching it. Rule: **NullDereference** / **ReturnNullInsteadOfOptional**
+
+**Line 35 — Suspicious Null Check**
+`!"".equals(firstName)` is used to detect "not set," but `firstName` can be `null`, making the check misleading. A `null` check should be used instead. Rule: **ConfusingNullCheckPattern** / **EqualsOnNull**
+
+**Line 40 — Null Dereference**
+`middleName` may be `null` if `getGivenName()` is empty; `"".equals(middleName)` handles `null` safely but the intent is incorrect — `null` is not caught by this check, so the method returns `null` on the next line, silently. Rule: **ConfusingNullCheckPattern**
+
+**Line 11 — Field Not Initialized**
+`firstName` and `middleName` are never initialized to a default value (e.g., `""`), making null-vs-empty ambiguous throughout. Rule: **InstanceVariableMayNotBeInitialized**
+
+**Line 29 — Constructor Delegates to `this()` Then Overrides Field**
+`isCorporate` is a non-final field set after `this(author)` delegation, which is acceptable but `isCorporate` has a default of `false` from the primary constructor implicitly — not explicitly initialized. Rule: **FieldNotInitializedInConstructor**
+
+**Line 8 — Static Mutable Field**
+`REMOVE_BRACES_FORMATTER` is a `static final` reference to a mutable object. If `RemoveEnclosingBracesFormatter` is not thread-safe, this is a concurrency hazard. Rule: **StaticMutableField**
+
+**Line 49 — Return of `null` from Non-Optional Method**
+`getLastName()` calls `author.getNamePrefixAndFamilyName()` — if that returns `null`, `format(null)` may throw or return `null`, which is not documented. Rule: **NullableReturnWithoutAnnotation**
+
+**Line 52 — Return of `null` from Non-Optional Method**
+`getFirstLast()` and `getLastFirst()` return values from `author` methods without null-safety guarantees. Rule: **NullableReturnWithoutAnnotation**

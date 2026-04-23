@@ -1,0 +1,13 @@
+**Line 12** — `LocalVariableCouldBeFinal` / redundant assignment: `ID_FORMAT` is a `static final` field but assigned inside a `static` block rather than at declaration (minor style issue, not a hard rule break, but flagged by Checkstyle's `DeclarationOrder`).
+
+**Line 12** — `DoubleCheckedLocking` / **thread-safety**: `ID_FORMAT` (a `NumberFormat` instance) is not thread-safe. It is shared as a static field and used inside `next()` which is `synchronized` — however `NumberFormat.getInstance()` itself is not synchronized, posing a risk if accessed outside the lock.
+
+**Line 13-14** — `UnqualifiedStaticAccess` / Checkstyle `StaticVariableName`: Accessing `IdGenerator.ID_FORMAT` redundantly via class name inside the `static` block where it could simply be referenced as `ID_FORMAT`. PMD flags this as unnecessary qualification.
+
+**Line 17** — `ClassVariableVisibilityRule` (PMD): `private static int idCounter` is mutable shared static state with no explicit initialization comment; while private, it is mutable across threads and only protected by the `synchronized` method — should be `AtomicInteger` instead. Rule: **UseAtomicInteger** (PMD).
+
+**Line 22** — `NonAtomicOperationOnVolatileField` / PMD **NonThreadSafeSingleton**: `idCounter++` is a non-atomic compound operation (read-increment-write). Even though the method is `synchronized`, using a plain `int` instead of `AtomicInteger` is flagged by PMD rule **AvoidUsingVolatileField** / **UseAtomicInteger**.
+
+**Line 19** — Checkstyle `HideUtilityClassConstructor`: Constructor is `private` ✓ — no violation here.
+
+**Line 8** — PMD `UseUtilityClass`: `IdGenerator` has only static methods and a private constructor — should be declared `final`. Rule: **ClassWithOnlyPrivateConstructorsShouldBeFinal**.

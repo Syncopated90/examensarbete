@@ -1,0 +1,11 @@
+**Line 14** - `getLogicalAndOperator` has `public` visibility but the base class likely declares it `protected`. Inconsistent access modifier widening (may be intentional, but flags as **WeakerAccess** or **VisibilityModifier** violation).
+
+**Line 19** - `getLogicalOrOperator` same issue as line 14. **VisibilityModifier**.
+
+**Line 14, 19** - Missing `@Override` annotation consistency: `getLogicalAndOperator` and `getLogicalOrOperator` are `public` while `getLogicalNotOperator` (line 24) is `protected`. **InconsistentAccessModifier**.
+
+**Line 39** - `handleYear` uses `String.formatted()` — if the `year` value contains format specifiers (e.g., `%`), this could cause a **FormatStringManipulation** / **MissingFormatArgument** runtime exception. The year string is user-supplied and passed directly into a format string. **InjectionVulnerability** / **FormatStringAttack**.
+
+**Line 7-8** - Use of `///` (Markdown doc comments, Java 23 preview feature) — if compiled below Java 23, this is a **SyntaxError** / **PreviewFeatureUsage** violation.
+
+**Line 1** - No `import` statements present yet methods reference presumably imported `AbstractQueryTransformer`. If `AbstractQueryTransformer` is in the same package, acceptable; otherwise **MissingImport**.

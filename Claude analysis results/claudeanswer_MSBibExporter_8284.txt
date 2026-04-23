@@ -1,0 +1,14 @@
+**Line 28 — XXE (XML External Entity Injection)**
+`TransformerFactory.newInstance()` without disabling external DTDs/entities (`javax.xml.XMLConstants.FEATURE_SECURE_PROCESSING` not set). Violates **OWASP XXE Prevention / CWE-611**.
+
+**Line 25 — Package-private class with public constructor**
+`MSBibExporter` is package-private but its constructor is `public`. The `public` modifier is misleading/useless. Violates **PMED (Poorly defined access modifier)**.
+
+**Line 22 — Missing `@Override` or interface contract**
+Class is not `public` but extends `Exporter` which likely is. Violates **Visibility rule: subclass more restrictive than superclass (weaker access)**. Depending on `Exporter` visibility this may cause a compile warning.
+
+**Line 40 — Resource used inside nested try may shadow exception**
+`AtomicFileWriter` is opened in outer try-with-resources; a `SaveException` thrown in the inner `try` block will suppress any `IOException` from closing `AtomicFileWriter`. Violates **Sonar rule S2093 / improper exception handling in try-with-resources**.
+
+**Line 28 — Non-thread-safe mutable field shared across calls**
+`transformerFactory` is an instance field; `TransformerFactory` and derived `Transformer` are not guaranteed thread-safe. Violates **Sonar rule S2696 / thread-safety of shared state**.

@@ -1,0 +1,11 @@
+**Line 30 — `removeListener` (ListChangeListener): Asymmetric Listener Registration**
+The `addListener` wraps the listener in `UiThreadListChangeListener`, but `removeListener` passes the original unwrapped listener. The delegate will never find a match, so the listener is never removed. (Rule: **Broken Symmetry / Listener Not Removed**)
+
+**Line 160 — `removeListener` (InvalidationListener): Asymmetric Listener Registration**
+Same issue: `addListener` wraps in `UiThreadInvalidationListener`, but `removeListener` passes the raw unwrapped listener to the delegate. (Rule: **Broken Symmetry / Listener Not Removed**)
+
+**Line 13 — Class Javadoc: `@see` misuse**
+`@see ObservableList` is embedded inline within prose text rather than used as a standalone `@see` block tag. (Rule: **Javadoc Tag Misuse**)
+
+**Line 16 — Missing `@Override` contract enforcement**
+`UiThreadObservableList` implements `ObservableList` but does not override `equals(Object)` and `hashCode()`, which is required for correct behavior as a `List`. (Rule: **Missing `equals`/`hashCode`**)

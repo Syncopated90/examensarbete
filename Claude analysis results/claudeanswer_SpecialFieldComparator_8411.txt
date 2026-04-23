@@ -1,0 +1,15 @@
+**Line 8** — `ClassNamingConventions` / `InterfaceNamingConventions`: Class name `SpecialFieldComparator` implements `Comparator` but does not follow the convention concern (minor, debatable).
+
+**Line 11** — `AvoidReassignment` / `ParameterAssignment`: Not violated here, but note:
+
+**Line 13** — `UseOptionalIsPresent` (PMD): Calling `val1.get()` after `val1.isPresent()` — acceptable, but prefer `val1.map(...)`.
+
+**Line 13** — `OptionalGetWithoutIsPresent` (SpotBugs/ErrorProne): Not triggered here since `isPresent()` is checked, but chained `.get().getValue()` is fragile.
+
+**Line 15** — `MagicNumber` (PMD): Return of `-1` is a magic number.
+
+**Line 19** — `MagicNumber` (PMD): Return of `1` is a magic number.
+
+**Line 21** — `MagicNumber` (PMD): Return of `0` is a magic number.
+
+**Line 11** — `MethodArgumentCouldBeFinal` (PMD): Parameters `val1` and `val2` are never reassigned and should be declared `final`.

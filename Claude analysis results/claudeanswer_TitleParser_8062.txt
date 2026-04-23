@@ -1,0 +1,15 @@
+**Line 13** — `UnnecessaryLocalVariable` / `LinkedList` usage: `LinkedList` is used where `ArrayList` is preferred for most list operations (PMD: `LooseCoupling`).
+
+**Line 9** — `FieldShouldBeLocal` (PMD): `buffer` and `wordStart` are instance fields but used only within a single `parse` call, making the class **not thread-safe**. Fields should be local variables.
+
+**Line 10-11** — `NotThreadSafe`: Mutable instance fields `buffer` and `wordStart` shared across method calls without synchronization.
+
+**Line 20** — `AvoidArrayLoops` / inefficiency: `title.toCharArray()` creates a new array allocation; combined with the separate `title.toCharArray()` at **line 56**, the string is converted to char array multiple times unnecessarily.
+
+**Line 37** — `SimplifyBooleanReturns` / `CollapsibleIfStatements`: `buffer.length() <= 0` should be `buffer.isEmpty()` (PMD: `UseStringBufferLength` / Sonar: `S1155`).
+
+**Line 20** — `ForLoopVariableCount`: Manual `index` counter alongside a for-each loop; should use a traditional `for` loop instead (PMD: `AvoidManualArrayCopy`).
+
+**Line 44** — `AvoidArrayCopy` / `UseSystemArrayCopy`: `System.arraycopy` is correct here, but the surrounding logic of copying into `protectedChars` could raise `ArrayIndexOutOfBoundsException` if `wordStart` is `-1`, a **potential bug** (Sonar: `S2259`).
+
+**Line 9** — `ClassWithOnlyPrivateConstructors` is not applicable, but the `final` class has mutable state, violating **Immutability** (Sonar: `S2065`).

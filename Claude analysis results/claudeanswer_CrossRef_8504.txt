@@ -1,0 +1,19 @@
+**Line 104** — `doPostCleanup`: Calling `Optional.equals()` compares `Optional` wrappers, not the contained values. Use `.orElse("").equals(...)` or similar. **Rule: Suspicious Optional.equals usage / Incorrect equals comparison**
+
+**Line 104** — `entry.getField(...).equals(...)` — `getField` returns `Optional<String>`; calling `.equals` on it without checking presence will not throw but produces wrong logic. **Rule: Incorrect comparison of Optional values**
+
+**Line 57** — `getURLForEntry`: Side-effects inside `ifPresent` lambdas mutating `uriBuilder` (captured effectively-final mutable object). **Rule: Avoid side effects in lambda expressions (SideEffectInLambda)**
+
+**Line 79** — `getParser`: Lambda assigned to `Parser` interface does not declare `throws`; exceptions from `jsonItemToBibEntry` (`ParseException`) are caught implicitly — actually `ParseException` is unchecked here via interface, potential **swallowed/unchecked exception handling**. **Rule: ExceptionHandling / SignatureDeclareThrowsException**
+
+**Line 46** — `API_URL` is a `private static final` constant but not `static final` on an interface-implementing class — minor, but: field is package-private constant, no issue; however `REMOVE_BRACES_FORMATTER` is a mutable static field holding a mutable object. **Rule: ImmutableField / MutableStaticField**
+
+**Line 155** — `getKeywords`: Uses `StringBuilder` inside a loop with manual comma logic instead of `String.join` or `Collectors.joining`. **Rule: InsufficientStringBufferDeclaration / UseStringBuilderInLoop (style)**
+
+**Line 155–163** — `getKeywords`: The condition `if (i != jsonArray.length() - 1)` calls `jsonArray.length()` on every iteration. **Rule: ForLoopVariableCount / InefficientEmptyStringCheck**
+
+**Line 96** — `items.length()` called multiple times in loop header and body without caching. **Rule: ForLoopShouldBeWhileLoop / InefficientLoopControl**
+
+**Line 75** — `getURLForQuery`: `orElse("")` passed to `addParameter` with empty string if query is absent — silent empty query sent to API. **Rule: AvoidEmptyParameters / ReturnEmptyCollectionRatherThanNull**
+
+**Line 168** — `convertType`: Only two entry types supported; no logging or fallback warning for unrecognised types. **Rule: MissingDefault / SwitchStmtsShouldHaveDefault** (implicit in ternary, no else-logging)

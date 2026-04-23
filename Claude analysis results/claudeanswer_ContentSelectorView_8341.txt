@@ -1,0 +1,13 @@
+**Line 96** — `Optional.of(SelectionModel)` wraps a non-null selection model, then maps to `getSelectedItem()` which can return `null`. `Optional.of(null)` would throw NPE; even via `map`, the result is `Optional.empty()` only if the mapper returns null (which `map` does handle), but the real issue is **NullPointerException risk**: if `getSelectedItem()` returns null, `Optional.map` returns `Optional.empty()` — that part is safe — but using `Optional.of` instead of `Optional.ofNullable` on the selection model itself is misleading and fragile. The actual broken rule:
+
+**Line 96, 100** — `Optional.of` used where `Optional.ofNullable` is semantically required (`OptionalGetWithoutIsPresent` / `OptionalUsedAsField` — specifically **`UseOptionalOfNullable`** / PMD rule `OptionalOfNullableMisuse`). The selected item can be null; `map` saves it here, but the idiom is incorrect.
+
+**Line 56** — `viewModel.selectedFieldProperty().bind(...)` — bidirectional concern aside, `selectedFieldProperty()` is bound to a UI selection model property. If `viewModel` is a `SimpleObjectProperty` and `.bind()` is called, any subsequent `set()` call on it will throw. **Rule: `PropertyBoundAndSet`** (JavaFX binding misuse).
+
+**Line 62** — `viewModel.selectedKeywordProperty().bind(...)` — same rule as line 56. **`PropertyBoundAndSet`**.
+
+**Line 33–38** — Constructor performs non-trivial work (`ViewLoader.view(this).root(this).load()`) including virtual method dispatch risk (FXML injection). **Rule: `ConstructorCallsOverridableMethod`** (PMD).
+
+**Line 47** — `initialize()` is `public` but is an FXML lifecycle callback; it should be package-private or `private`. **Rule: `UnusedAccessModifier` / `ExcessivePublicCount`** — specifically **`AvoidPublicFXMLMethods`** (JavaFX/FXML convention rule).
+
+**Line 55** — `new ViewModelListCellFactory<Field>()` — raw-ish generic instantiation where the type parameter is explicit on the left but the factory chain `withText(FieldTextMapper::getDisplayName)` returns the factory without being stored, relying on side-effect of `install()`. Not stored in a variable — **Rule: `LinguisticallyIncorrectUsage`** / **`ReturnValueIgnored`** if intermediate builder results are considered (CheckStyle/SpotBugs `RV_RETURN_VALUE_IGNORED`).

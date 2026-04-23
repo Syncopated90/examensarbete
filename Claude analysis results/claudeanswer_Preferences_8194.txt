@@ -1,0 +1,21 @@
+**Line 34** — `SystemOutPrintln`: Use a logger instead of `System.out.println`.
+
+**Line 47** — `SystemOutPrintln`: Use a logger instead of `System.out.println`.
+
+**Line 49** — `SystemErrPrintln`: Use a logger instead of `System.err.println`.
+
+**Line 27** — `VisibilityModifier`: Field `argumentProcessor` should be private.
+
+**Line 30** — `VisibilityModifier`: Field `sharedOptions` should be private (or remove unused field).
+
+**Line 30** — `UnusedPrivateField` / unused field: `sharedOptions` is never read.
+
+**Line 59** — `VisibilityModifier`: Field `inputFile` should be private.
+
+**Line 78** — `VisibilityModifier`: Field `outputFile` should be private.
+
+**Line 5** — `UnusedImports`: `java.util.prefs.BackingStoreException` is used, but `java.util.concurrent.Callable` — not a violation; however `import static picocli.CommandLine.Mixin` (**line 15**) — `Mixin` annotation is used only on `sharedOptions` which is itself unused, making this a potentially unnecessary import if field is removed.
+
+**Line 38** — `ClassNamingConventions` / inner static class `PreferencesReset` accesses outer-class private-scope logger `LOGGER` (**line 50**): accessing a `private static` member of the enclosing class from a `static` nested class is permitted in Java but violates encapsulation conventions.
+
+**Line 44** — `ReturnValueIgnored`: Return value of `call()` is always `0` regardless of exception — swallowed exception path still returns `0`, masking errors (same applies lines **67**, **83**).

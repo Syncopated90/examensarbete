@@ -1,0 +1,11 @@
+**Line 10 — NullAssignment / Null Dereference (NullPointerDereference)**
+Constructor parameter `delegate` is not null-checked before assignment; if `null` is passed, subsequent calls to `delegate.invalidated`, `delegate.equals`, and `delegate.hashCode` will throw `NullPointerException`.
+
+**Line 19 — EqualsOverride (SymmetryIssue / LiskovSubstitution violation)**
+`equals` delegates to `delegate.equals(o)`, meaning `this.equals(someDelegate)` may return `true` while `someDelegate.equals(this)` returns `false`, breaking the symmetry contract of `Object.equals`.
+
+**Line 6 — ClassNamingConventions / Visibility (PackagePrivate)**
+Class is package-private (no access modifier) but implements a public interface (`InvalidationListener`); this is an inconsistent visibility design.
+
+**Line 19 — UselessOverridingMethod / Delegation**
+`equals` and `hashCode` (lines 19, 24) delegate entirely to `delegate`, meaning two distinct `UiThreadInvalidationListener` instances wrapping different delegates could never be equal to each other correctly, and the contract between `equals` and `hashCode` is only coincidentally maintained rather than deliberately enforced.

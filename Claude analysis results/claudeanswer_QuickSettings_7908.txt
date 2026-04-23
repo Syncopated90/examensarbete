@@ -1,0 +1,15 @@
+**Line 29** – `isScrollEnabled = true` (field initializer): Redundant field initialization (`boolean` defaults to `false`, but here it's explicitly set to `true` — not redundant per se, however the constructor calls `enableScroll()` which checks `if (isScrollEnabled) return;` immediately, so **the scroll content is never actually added during construction**). — **Rule: Incorrect Logic / Dead Code in Constructor**
+
+**Line 41–45** – `enableScroll()`: On first call from constructor, `isScrollEnabled` is `true`, so the method returns immediately without adding any children. The `VBox` is left empty after construction. — **Rule: Logic Error / Unreachable Code**
+
+**Line 28** – `isScrollEnabled`: Non-`final` field is not `private` (it is `private` ✓), but it is a mutable boolean that controls UI state modified outside normal JavaFX property binding. — **Rule: Mutable State Without Property Binding**
+
+**Line 24** – `header`: Declared as a field but only written in the constructor and never read outside `createContent`-adjacent methods; could be a local variable. — **Rule: Unnecessary Field (Field Should Be Local Variable)**
+
+**Line 111** – `button.setOnAction(event -> action.run())`: The `event` parameter is ignored; lambda can be simplified to `event -> action.run()` which is fine, but wrapping a `Runnable` in an `EventHandler` lambda when the action is already a method reference adds unnecessary indirection. — **Rule: Redundant Lambda Wrapping**
+
+**Lines 63–98** – `createContent()`: Method is long and violates single responsibility by constructing every UI element inline. — **Rule: Method Too Long / God Method**
+
+**Line 27** – `private final Label header`: `header` is declared `final` but the field is only used in `enableScroll()` and `disableScroll()` via `getChildren().addAll(header, ...)`, yet `header` is never exposed or reused meaningfully as a field. — **Rule: Unnecessary Instance Variable**
+
+**Lines 42–43** – `enableScroll()` / **Lines 51–52** – `disableScroll()`: Both call `getChildren().clear()` then re-add children; if called repeatedly this re-creates the entire content subtree each time via `createContent()`. — **Rule: Inefficient Repeated Object Creation**

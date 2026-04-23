@@ -1,0 +1,11 @@
+**Line 13** — `InstanceVariableDeclaration`: Field `lobidFetcher` could be declared `private static final` since it doesn't depend on instance state (no constructor arguments).
+
+**Line 13** — `UnnecessaryFullyQualifiedName` / tight coupling: `LOBIDFetcher` is instantiated directly in the field declaration rather than injected, violating dependency injection principles (`AvoidDirectFieldAccess` / lack of IoC).
+
+**Line 20** — `ReturnCount` / missing `@throws` documentation: Method declares checked exceptions `URISyntaxException` and `MalformedURLException` but no Javadoc documents them.
+
+**Line 21** — `LawOfDemeter`: `this.ensureThatIsbnIsValid(identifier)` followed by delegating everything else to `lobidFetcher` — the class acts purely as a pass-through delegate, suggesting it may violate the Single Responsibility Principle (`GodClass` inverse — `ExcessiveClassLength` opposite: unnecessary class / `UnnecessaryWrapperClass`).
+
+**Line 26** — `UnnecessaryMethodOverride`: `getName()` only delegates to `lobidFetcher.getName()` with no modification, making the override redundant.
+
+**Line 31** — `UnnecessaryMethodOverride`: `getParser()` only delegates to `lobidFetcher.getParser()` with no modification, making the override redundant.

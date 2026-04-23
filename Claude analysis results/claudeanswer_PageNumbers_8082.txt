@@ -1,0 +1,21 @@
+**Line 10** — `{1,2}` after `-` is redundant given the surrounding context; minor style issue, but more critically: **MagicNumber** — numeric literals `1` and `2` in regex could be named constants (minor).
+
+**Line 10** — **ImmutableField**: `PAGE_PATTERN` is `private static final` but `freeform`, `start`, `end` are mutable instance fields — acceptable, but noted.
+
+**Line 12** — **FieldNotInitialized / NullField**: `freeform` is never explicitly initialized to `null`; relies on default. Violates **ExplicitInitialization** rule.
+
+**Line 13** — **FieldNotInitialized**: `start` not explicitly initialized. Violates **ExplicitInitialization**.
+
+**Line 15** — **FieldNotInitialized**: `end` not explicitly initialized. Violates **ExplicitInitialization**.
+
+**Line 13/15** — **VisibilityModifier**: Fields `start` and `end` are package-private by default? No, they are `private`, but unnecessarily separated across lines — violates **MultipleVariableDeclarations** / **NewlineAtEndOfField** (style).
+
+**Line 29** — **LawOfDemeter**: `document.createElement`, `document.createTextNode` called multiple times directly — violation of **LawOfDemeter**.
+
+**Line 31** — **NullComparison**: Comparing `freeform == null` instead of using a null-safe utility — violates **CompareObjectsWithEquals** / **UseEqualsToCompareStrings** adjacent concern; acceptable here but `== null` for String is a **NullCheck** pattern that should use `Optional`.
+
+**Line 44** — **ReturnCount**: `toString(String)` has two return statements — violates **ReturnCount** rule.
+
+**Line 49** — **UnnecessaryOverride** / **CallSuperInConstructor**: `toString()` delegates to overloaded method — not a violation per se, but **OverloadedMethodsDeclarationOrder** may flag ordering.
+
+**Line 10** — **RegexpSingleline**: The regex `{1,2}` could be simplified to `-{1,2}` → `-{2}?` — **SimplifyRegex** / **AvoidInlineRegex** rule violated since pattern is non-trivial and inline.

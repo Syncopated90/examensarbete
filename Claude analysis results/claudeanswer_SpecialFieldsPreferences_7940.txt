@@ -1,0 +1,11 @@
+**Line 8** — `COLUMN_RANKING_WIDTH`: Magic numbers (`5` and `16`) used in constant expression. **Rule: AvoidMagicNumbers**
+
+**Line 16** — Private constructor `SpecialFieldsPreferences()` is unused dead code (only called via `getDefault()`). **Rule: UnusedPrivateMethod** / **Rule: UnnecessaryConstructor**
+
+**Line 15** — Javadoc uses `///` (triple-slash), which is not valid Javadoc syntax in Java (prior to Java 23 preview). **Rule: InvalidJavadocFormat**
+
+**Line 23** — Method `setAll` accepts a `SpecialFieldsPreferences` parameter named `preferences` which shadows the class concept; parameter should be more specific. **Rule: ConfusingArgumentToVarargsMethod** *(minor)* — more precisely: **Rule: MethodParameterNamingConventions**
+
+**Line 23** — `setAll` performs no null-check on `preferences` before calling `preferences.isSpecialFieldsEnabled()`. **Rule: NullAssignment** / **Rule: AvoidDereferenceBeforeNullCheck**
+
+**Line 30** — `specialFieldsEnabledProperty()` exposes the mutable `BooleanProperty` directly, breaking encapsulation. **Rule: ReturnOfCollectionOrArrayField** *(analogous)*: **Rule: MutableStatefulClass** / **Rule: ExposeMutableField**

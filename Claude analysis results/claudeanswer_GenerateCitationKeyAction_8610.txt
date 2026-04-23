@@ -1,0 +1,19 @@
+**Line 28** — `entries` is a mutable instance field, not thread-safe; shared between UI thread and background task. **Field Not Thread-Safe / Race Condition**
+
+**Line 29** — `isCanceled` is a non-volatile boolean read/written across threads (UI thread sets it, background task reads it). **Missing Volatile Modifier**
+
+**Line 96** — Anonymous inner class `BackgroundTask<>` accesses outer instance fields `isCanceled`, `entries`, `stateManager`, `preferences`, `dialogService`, `undoManager`, `tabSupplier` directly. **Inner Class Captures Mutable Outer State**
+
+**Line 131** — `compound` is a field of the anonymous class, accessed in `onSuccess` without null-check; if `stateManager.getActiveDatabase()` is empty, `compound` remains uninitialized (`null`), causing NPE at `compound.hasEdits()`. **Null Dereference**
+
+**Line 57** — `entries` is assigned from `stateManager.getSelectedEntries()` then mutated via `removeIf` at line 85; mutating a list obtained from shared state is unsafe. **Modification of Externally Sourced Collection**
+
+**Line 85** — `entries.removeIf(BibEntry::hasCitationKey)` mutates the `entries` list which may be backed by the state manager's selection list. **Destructive Mutation of Shared Collection**
+
+**Line 87** — `entries.parallelStream()` used for a simple predicate check with no performance justification; parallel streams on small collections introduce unnecessary overhead and potential thread-safety issues. **Inappropriate Use of Parallel Stream**
+
+**Line 64** — `backgroundTask.messageProperty().set(...)` called on a background task before it is submitted for execution; property set ordering assumption is fragile. **Fragile Initialization Order**
+
+**Line 133** — `onSuccess` is overridden in an anonymous subclass but calls `super.onSuccess(onSuccess)` after side effects; the override conflates result-handling logic with undo registration, violating single responsibility. **Misuse of Template Method / SRP Violation**
+
+**Line 70** — Method `confirmOverwriteKeys` is `public static` but uses passed-in service objects; should be package-private or instance method. **Inappropriate Access Modifier**

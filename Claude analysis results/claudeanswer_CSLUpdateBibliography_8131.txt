@@ -1,0 +1,19 @@
+**Line 22** - `BIBLIOGRAPHY_SECTION_NAME` declared before `LOGGER`. Constants and logger fields ordering: logger should precede other static fields (field ordering convention).
+
+**Line 26** - Method `getBibliographyRange` is public on a class with no public constructor explicitly defined, exposing internal UNO exception `WrappedTargetException` (vendor-specific exception leaking through public API).
+
+**Line 34** - Catches broad `com.sun.star.uno.Exception` in throws clause — overly broad exception type declared.
+
+**Line 46** - Double lookup: `getBibliographyRange(doc)` called twice (once here at line 44, result discarded if present, then called again in `clearCSLBibTextSectionContent` at line 68). Unnecessary duplicate call — **Redundant Method Call**.
+
+**Line 68** - Same as above: `getBibliographyRange` called again inside `clearCSLBibTextSectionContent`, which was already called in `rebuildCSLBibliography`. **Redundant Method Call**.
+
+**Line 91** - `getBibliographyRange` called a third time inside `populateCSLBibTextSection`, already retrieved in `rebuildCSLBibliography`. **Redundant Method Call**.
+
+**Line 34** - Method `rebuildCSLBibliography` has 6 parameters — exceeds recommended parameter count limit (typically ≤5). **Excessive Parameter List**.
+
+**Line 80** - Method `populateCSLBibTextSection` also has 6 parameters. **Excessive Parameter List**.
+
+**Line 95** - `IllegalStateException` thrown inside a method whose signature declares checked exceptions; the unchecked exception is undocumented. **Missing Exception Documentation**.
+
+**Line 57** - `textCursor` variable used only locally and could be inlined into the `DocumentAnnotation` constructor call. **Unnecessary Local Variable**.

@@ -1,0 +1,15 @@
+**Line 38** - `SearchQueryVisitor` is used as a raw type (missing generic type parameter). **Rule: RawTypes**
+
+**Line 31** - `searchQuery.isBlank()` called without null check on parameter; parameter is declared in `@NullMarked` context but has no `@NonNull`/`@Nullable` annotation, yet method body dereferences it directly. **Rule: NullDereference / MissingNullCheck**
+
+**Line 35** - `searchQueryObject.isValid()` result branches to throw, but the `SearchQuery` constructor could throw unchecked exceptions that are not caught or documented. **Rule: IllegalCatch / UnhandledException**
+
+**Line 41** - Only `ParseCancellationException` is caught; other `RuntimeException` subtypes from `visitor.visitStart()` are uncaught and will propagate unexpectedly. **Rule: IllegalCatch (incomplete catch)**
+
+**Line 43** - Exception `e` is caught but not passed to the new `FetcherException`, losing the original stack trace. **Rule: AvoidLostExceptionInformation / PreserveStackTrace**
+
+**Line 36** - Magic string `"The query is not valid"` is a hard-coded literal. **Rule: AvoidDuplicateLiterals / MagicString**
+
+**Line 43** - Magic string `"A syntax error occurred during parsing of the query"` is a hard-coded literal. **Rule: AvoidDuplicateLiterals / MagicString**
+
+**Line 29** - `default` method in interface performs non-trivial logic (parsing, visitor invocation, exception handling), violating interface design principles. **Rule: ExcessiveMethodLength / InterfaceDesign**

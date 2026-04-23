@@ -1,0 +1,11 @@
+**Line 21** — `UnsynchronizedCollectionField`: `importedEntries` is an `ArrayList` accessed from potentially concurrent contexts (given `AtomicInteger` usage suggests thread safety intent), but the list itself is not thread-safe.
+
+**Line 45** — `NonAtomicCompoundOperation`: `imported.incrementAndGet()` and `skipped.get()` are two separate atomic operations; the combined read is not atomic, creating a race condition.
+
+**Line 50** — `NonAtomicCompoundOperation`: `imported.get()` and `skipped.incrementAndGet()` are two separate atomic operations; the combined read is not atomic, creating a race condition.
+
+**Line 46** — `UnsynchronizedCollectionAccess`: `importedEntries.add(entry)` is unsynchronized on a shared mutable list in a context implying concurrent use.
+
+**Line 26** — `NullableParameter`: `stateManager` parameter is unannotated but assigned to a `@NonNull` field with no null guard.
+
+**Line 31** — `NullableParameter`: same issue — `stateManager` in the two-arg constructor has no `@NonNull` annotation and no null check before assignment to `@NonNull` field.

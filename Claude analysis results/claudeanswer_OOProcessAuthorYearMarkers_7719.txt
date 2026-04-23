@@ -1,0 +1,15 @@
+**Line 52** — `normCitMarkerToClachingKeys` — **Typo in variable name** ("Claching" should be "Clashing"). (Naming Convention Rule)
+
+**Line 53** — `.get()` on `Optional` without `isPresent()` check — **Unchecked Optional.get()** (avoid `Optional.get` without `isPresent`).
+
+**Line 56** — `putIfAbsent` return value semantics misused — **Confusing logic**: `putIfAbsent` returns the *existing* value (not null) if key is present, or null if absent. The variable is named `clashingKeys` but receives `null` on first insertion, then immediately re-fetched. **Dead code / logic smell** (Unnecessary call to `get` after `putIfAbsent`).
+
+**Line 59** — `clashingKeys.contains(citationKey)` on a `List` — **Inefficient contains check** (UseArrayListContains / PreferSet): linear search on list; a `Set` should be used.
+
+**Line 130** — `List<CitationMarkerEntry> citationMarkerEntries = OOListUtil.map(cits, e -> e)` — **Unnecessary identity lambda mapping** (UselessLambda / RedundantMapping): maps each element to itself.
+
+**Line 22** — `class OOProcessAuthorYearMarkers` — **Utility class not declared `final`** (FinalClass rule): class with only a private constructor and static methods should be `final`.
+
+**Line 22–23** — Private constructor has no body comment — **EmptyConstructorBody** / missing `// utility class` comment (minor style rule).
+
+**Line 77** — `int nextUniqueLetter = 'a'` — **Implicit char-to-int widening** stored as `int`, then cast back with `(char)` at line 79 — **AvoidUnnecessaryCast** / use `char` type directly.

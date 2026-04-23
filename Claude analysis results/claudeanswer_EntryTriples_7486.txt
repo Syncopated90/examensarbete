@@ -1,0 +1,15 @@
+**Line 14** — `VisibilityModifier`: `baseMap` is `public` but should be `private` (with accessor).
+
+**Line 15** — `VisibilityModifier`: `localMap` is `public` but should be `private`.
+
+**Line 16** — `VisibilityModifier`: `remoteMap` is `public` but should be `private`.
+
+**Line 36** — `OptionalGetWithoutIsPresent`: `.get()` called on `Optional` without guard (though `.filter(isPresent)` precedes it, static analyzers like PMD/Checkstyle still flag naked `.get()` calls).
+
+**Line 61–63** — `ModifyCollectionInMethod` / manual `addAll` chaining: prefer `Stream.of(...).flatMap(Set::stream).collect(...)` over mutating a local collection imperatively (PMD `AvoidReassigningParameters` / style rule).
+
+**Line 60** — `UnnecessaryLocalVariable`: `all` could be returned inline without an intermediate variable.
+
+**Line 24** — `HideUtilityClassConstructor` does not apply (constructor is `private`, correct), but the `from` factory and `getCitationKeyToEntryMap` being `public static` on a `final` utility-style class with instance state is a design inconsistency (`ClassDataAbstractionCoupling`).
+
+**Line 33** — `LawOfDemeter`: `context.getDatabase().getEntries()` violates train-wreck / Law of Demeter (two chained method calls on returned objects).

@@ -1,0 +1,13 @@
+**Line 63** — `BackgroundTask.wrap(...).onSuccess(...).onFailure(...).executeWith(taskExecutor)` — **Ignored Return Value / Resource Leak**: The `BackgroundTask` chain result is not stored; if `executeWith` returns a future/task, it is discarded.
+
+**Line 63–80** — **Magic Chain / Method Chain Too Long**: Excessive method chaining on `BackgroundTask` reduces readability (Checkstyle: `MethodChainCount`).
+
+**Line 85** — **Unused Parameter**: `gitStatusViewModel` and `registry` are passed as parameters to `doPush`, but `registry` is not used directly — `syncService` is created from `guiPreferences` and `registry`, so `registry` is used, but `gitStatusViewModel` is used only conditionally, making the parameter design questionable. More precisely: **`gitStatusViewModel` is a local object created at line 60 solely to be passed into `doPush` and mutated there** — this is a violation of **"Output Parameter"** / **"Avoid Side Effects via Parameters"** rule.
+
+**Line 60–61** — **Unused Variable Risk / Violation of Single Responsibility**: `GitStatusViewModel` is instantiated inside `execute()` and passed into a background thread (`doPush`), which calls `gitStatusViewModel.refresh()` — **thread-safety violation**: UI ViewModel is accessed from a background thread (not the JavaFX Application Thread). Rule: **"UI component accessed from non-UI thread"**.
+
+**Line 88** — **Exception Swallowing / Overly Broad Exception Declaration**: `doPush` declares `throws IOException, GitAPIException, JabRefException` — acceptable, but `GitAPIException` is a checked exception not extending the others; however `IOException` and `GitAPIException` could be wrapped for cleaner abstraction. Rule: **`ThrowsCount`** (more than one checked exception type thrown).
+
+**Line 44–45** — **Localization Key Concatenation**: `Localization.lang("Please open a library before pushing.")` — period inside the localization string is inconsistent style and may break translation lookup. Rule: **Localization string formatting**.
+
+**Line 113** — **`ex.getMessage()` may return null**: `ex.getMessage()` is passed directly to `Localization.lang(...)` without null check. Rule: **`NullPointerException` risk / `AvoidCallingGetMessage`**.

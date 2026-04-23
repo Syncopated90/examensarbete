@@ -1,0 +1,19 @@
+**Line 24** — `getIcon()` returns `Optional<JabRefIcon>` directly from `getAction().getIcon()` without null-check on `getAction()`. **Rule: NullReturnCheck** (though chaining is safe here if `getAction()` never returns null; no actual violation if switch is exhaustive).
+
+**Line 17** — Parameter annotated `@NonNull` but no explicit null guard (e.g., `Objects.requireNonNull`). **Rule: ExplicitNullCheck / NullGuardForNonNullAnnotated**
+
+**Line 28** — `getMenuString()` calls `getAction().getText()`, result not null-checked before return. **Rule: NullReturnCheck**
+
+**Line 13** — Class is `public` but has no Javadoc. **Rule: MissingJavadocType**
+
+**Line 20** — Method `getValue()` has no Javadoc. **Rule: MissingJavadocMethod**
+
+**Line 24** — Method `getIcon()` has no Javadoc. **Rule: MissingJavadocMethod**
+
+**Line 28** — Method `getMenuString()` has no Javadoc. **Rule: MissingJavadocMethod**
+
+**Line 32** — Method `getToolTipText()` has no Javadoc. **Rule: MissingJavadocMethod**
+
+**Line 57** — Method `getAction()` has no Javadoc. **Rule: MissingJavadocMethod**
+
+**Line 15** — Field `value` has no Javadoc. **Rule: MissingJavadocVariable**

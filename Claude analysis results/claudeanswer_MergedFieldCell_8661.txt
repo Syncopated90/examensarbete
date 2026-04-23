@@ -1,0 +1,9 @@
+**Line 15** — `FieldName` (or instance variable): `textArea` is initialized inline as a field (`private final StyleClassedTextArea textArea = new StyleClassedTextArea()`) performing object construction at field declaration level, which can cause issues if the constructor throws — **Initialization in Declaration of Non-Simple Field**.
+
+**Line 17** — `super()` is not the first statement explicitly, but more critically: `initialize()` is called from the constructor while the object is not fully initialized — **Overridable Method Called During Object Construction** (the method `initialize()` is `private` so not overridable itself, but `getStyleClass()`, `getChildren()`, `setAlignment()` etc. are inherited/overridable calls from a partially constructed object).
+
+**Line 37–40** — The lambda captures `MergedFieldCell.this` and `e.getSource()` inside an event filter: `e.copyFor(e.getSource(), MergedFieldCell.this)` re-fires a consumed event, which is **unconditionally re-dispatching a consumed event** — potential infinite loop / **Event Recursion** risk.
+
+**Line 27–30** — `BindingsHelper.bindBidirectional` uses a method reference `textProperty()::setValue` — `textProperty()` is called at bind time to obtain the property, then `::setValue` is bound; if `textProperty()` returns a new object each call, this is a **Method Reference on Potentially Unstable Target**.
+
+**Line 14** — `DEFAULT_STYLE_CLASS` is a `private static final String` constant named with all-caps, which is correct, but the value `"merged-field"` is a **Hard-Coded String Literal** that should be an externalized constant — **AvoidLiteralsInIfCondition / Hard-Coded String**.

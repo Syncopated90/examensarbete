@@ -1,0 +1,29 @@
+**Line 38** - `SystemPropertyManipulation` / `AvoidCallingSystemSetProperty`: `System.setProperty` called in constructor; side-effectful and non-portable.
+
+**Line 38** - `ImmutableClass` / constructor has side effects modifying global state via `System.setProperty`.
+
+**Line 35** - `AssignmentToStaticFieldFromInstanceMethod` (indirect): static field `XMP_UTIL_SHARED` is package-private instantiation; should be `private`.
+
+**Line 35** - `VisibilityModifier`: `XMP_UTIL_SHARED` is not `private`.
+
+**Line 152** - `AvoidUsingDefaultCharset` / `UseExplicitCharset`: `xmpMetaString.getBytes()` uses platform default charset instead of explicit charset (e.g., `StandardCharsets.UTF_8`).
+
+**Line 107** - `AvoidLiteralsInIfCondition` / `MagicNumber`: `END_TAG.length() - 1` is a magic expression used directly in conditional.
+
+**Line 107** - `ComplexBooleanExpression`: three-part boolean condition with mixed comparisons reduces readability.
+
+**Line 36** - `UnnecessaryConstructor`: Constructor only calls `System.setProperty`; documents a side effect with no object initialization.
+
+**Line 90** - `LocalVariableCouldBeFinal`: `first` could be declared `final`.
+
+**Line 72** - `LocalVariableCouldBeFinal`: `xmpMetaList` could be declared `final`.
+
+**Line 83** - `LocalVariableCouldBeFinal`: `documentInformation` could be declared `final`.
+
+**Line 84** - `LocalVariableCouldBeFinal`: `documentInformationEntry` could be declared `final`.
+
+**Line 113** - `LocalVariableCouldBeFinal`: `xmp`, `startDescriptionSection`, `endDescriptionSection` could be `final`.
+
+**Line 130** - `LocalVariableCouldBeFinal`: `start`, `descriptionsArray`, `end` could be `final`.
+
+**Line 141** - `LocalVariableCouldBeFinal`: `xmpMetaString` could be `final`.

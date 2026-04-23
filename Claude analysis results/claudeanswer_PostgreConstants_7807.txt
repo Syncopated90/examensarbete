@@ -1,0 +1,17 @@
+**Line 12** - `NAMING_CONVENTION`: `POSTGRES_FUNCTIONS` is a constant in an enum but uses underscore naming which conflicts with enum constant naming; more critically, it's a mutable-capable field declared `public`.
+
+**Line 12** - `ENCAPSULATION_VIOLATION`: `POSTGRES_FUNCTIONS` is `public static final` but exposes internal state directly. While `List.of()` is unmodifiable, the field itself is public on an enum.
+
+**Line 13-50** - `SQL_INJECTION` / `SECURITY_HOTSPOT`: SQL function strings use `format('(%s)', pattern)` inside PL/pgSQL, passing `pattern` directly into a format string without sanitization, enabling potential SQL injection via the `pattern` parameter.
+
+**Line 58** - `STRING_CONCATENATION`: `getMainTableSchemaReference` uses `+` string concatenation instead of `StringBuilder` or `String.format`.
+
+**Line 64** - `STRING_CONCATENATION`: `getSplitTableSchemaReference` uses `+` string concatenation instead of `StringBuilder` or `String.format`.
+
+**Line 58** - `SECURITY_HOTSPOT`: `mainTable` parameter is concatenated directly into a SQL identifier reference without validation, risking SQL injection.
+
+**Line 64** - `SECURITY_HOTSPOT`: Same as line 58 for `getSplitTableSchemaReference`.
+
+**Line 6** - `NAMING_CONVENTION`: Enum name `PostgreConstants` should be `PostgreSQLConstants` or follow consistent naming; `Postgre` is not a standard abbreviation.
+
+**Line 67-69** - `UNNECESSARY_OVERRIDE`: `toString()` override is trivial and adds minimal value; the enum could implement an interface instead.

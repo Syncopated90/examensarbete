@@ -1,0 +1,19 @@
+**Line 18** - `MF_UNINITIALIZED_FIELD` / **Null Dereference**: `viewModel` is never initialized in this class; calls at lines 26, 31, 36, 41 will throw `NullPointerException` at runtime.
+
+**Line 14** - `UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD`: `taskExecutor` is injected but never written via normal Java assignment; relies solely on framework injection with no null guard.
+
+**Line 15** - `UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD`: Same issue for `dialogService`.
+
+**Line 16** - `UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD`: Same issue for `preferences`.
+
+**Line 12** - `MISSING_SERIAL_VERSION_UID`: Class extends `VBox` (a `Serializable` hierarchy) but declares no `serialVersionUID`.
+
+**Line 14-16** - `PROTECTED_FIELD`: Fields are `protected` rather than `private`, violating encapsulation (PMD: `VisibilityModifier`).
+
+**Line 26** - `UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR` (SpotBugs): `viewModel` used without null check.
+
+**Line 31** - Same as line 26.
+
+**Line 36** - Same as line 26.
+
+**Line 41** - Same as line 26.

@@ -1,0 +1,27 @@
+**Line 74** – `backgroundTasksPairs` observable list uses a lambda creating an array with `new Observable[]`, which is a raw array creation; rule: **AvoidArrayCreationForSingleElement** / **InefficientEmptyStringCheck** — more precisely: **UseVarargs** or **ArrayIsStoredDirectly** concern, but primarily this is an anonymous array literal inside a callback — minor. More critically:
+
+**Line 60** – `openDatabases`, `selectedEntries`, `visibleSidePanes`, `searchHistory` are `private final` but expose mutable references via getters with no defensive copy — rule: **ReturnOfCollectionOrArrayField**
+
+**Line 98** – `getOpenDatabases()` returns the internal `openDatabases` list directly — rule: **ReturnOfCollectionOrArrayField**
+
+**Line 103** – `activeDatabaseProperty()` exposes internal mutable property — rule: **ReturnOfCollectionOrArrayField** (exposure of mutable internal state)
+
+**Line 116** – `getSelectedEntries()` returns mutable internal list — rule: **ReturnOfCollectionOrArrayField**
+
+**Line 141** – `setActiveDatabase()` performs null check with `== null` instead of using `Objects.requireNonNull` or `Optional` parameter — rule: **AvoidLiteralsInIfCondition** / **CompareObjectsWithEquals**
+
+**Line 141–146** – `if (database == null)` null check on parameter that should be annotated or handled idiomatically — rule: **NullAssignment** / **AvoidConditionalInsteadOfOptional**
+
+**Line 171** – `getAllDatabasePaths()` uses `new ArrayList<>()` then mutates it inside a stream side-effect (`forEachOrdered` with `list.add`) — rule: **AvoidInstantiatingObjectsJustToGetClass** / **AvoidSideEffectsInLambdas**
+
+**Line 185** – `computeValue()` calls `activeTab.getValue().map(Function.identity())` — `Function.identity()` in `map` is a no-op and redundant — rule: **UselessOperationOnImmutable** / **RedundantUnnecessaryContainerCreation**
+
+**Line 199** – `getLastSearchHistory()` returns `searchHistory.subList(...)`, which is a view of the internal mutable list — rule: **ReturnOfCollectionOrArrayField**
+
+**Line 209** – `getAiChatWindows()` returns the raw internal `aiChatWindows` `ArrayList` — rule: **ReturnOfCollectionOrArrayField**
+
+**Line 60–85** – Multiple fields (`openDatabases`, `selectedEntries`, etc.) are `ObservableList` but declared as interface types and directly exposed — rule: **LooseCoupling** (should expose through interface, not concrete implementation type leaked via `FXCollections`)
+
+**Line 76** – `runningBackgroundTasks` is a `FilteredList` exposed via `getRunningBackgroundTasks()` at line 162 — rule: **ReturnOfCollectionOrArrayField**
+
+**Line 85** – `aiChatWindows` is `new ArrayList<>()` exposed directly — rule: **ReturnOfCollectionOrArrayField** and **LooseCoupling** (should be typed as `List`)

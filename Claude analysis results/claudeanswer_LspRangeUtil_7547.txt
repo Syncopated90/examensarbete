@@ -1,0 +1,17 @@
+**Line 9** — `UtilityClassWithPublicConstructor` (PMD): Utility class has no private constructor.
+
+**Line 11** — `MethodNamingConventions` / parameter name `pos` is acceptable, but `toOffset` has no null-check on `content` — `NullPointerDereference` (FindBugs/SpotBugs): `content` and `pos` are dereferenced without null checks.
+
+**Line 39** — `NullPointerDereference` (SpotBugs): `range.startLine()`, etc. are called without null-check on `range`.
+
+**Line 50** — `OffByOne` (custom/review): `colStart` and `colEnd` are not adjusted by `-1` unlike the other overload, inconsistent with the method's own Javadoc stating "column starting at 1" — columns are passed through without decrement, violating the documented contract. This is a logic bug / `InconsistentBehavior`.
+
+**Line 55** — `NullPointerDereference` (SpotBugs): `content`, `start`, `end` used without null checks.
+
+**Line 63** — `NullPointerDereference` (SpotBugs): `content` dereferenced without null check.
+
+**Line 76** — `ConfusingArgumentToVarargsMethod` / logic issue: `isPositionInRange` passes `outer` and `inner` arguments to `isRangeInRange` with swapped semantic roles — the parameter named `outer` receives `range` and `inner` receives the point range, but `isRangeInRange` checks if `outer` contains `inner`, which is correct here — no violation. Withdraw.
+
+**Line 76** — `LawOfDemeter` (PMD): `position` and `range` fields accessed via getters through multiple chained calls across methods.
+
+**Line 1** — `UnusedImport` (PMD/Checkstyle): `org.jabref.logic.importer.ParserResult` is imported but only `ParserResult.Range` is used; the enclosing class import may mask the nested type reference, flagged as potentially unnecessary depending on compiler resolution.

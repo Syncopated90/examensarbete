@@ -1,0 +1,17 @@
+**Line 17 - Return Null (ReturnOfNull / NullReturns)**
+Returning `null` instead of an empty or default object violates null-safety principles.
+
+**Line 17 - `Integer.parseInt` without try/catch (NumberFormatException not handled)**
+`Integer.parseInt(port)` can throw `NumberFormatException` if the system property contains a non-numeric value.
+
+**Line 12 - Inefficient String operation (InefficientStringOperation)**
+`getRequestingProtocol().toLowerCase(Locale.ROOT)` chains directly without null check; if `getRequestingProtocol()` returns `null`, a `NullPointerException` is thrown.
+
+**Line 13-16 - System.getProperty with empty string default (UseSystemGetPropertyWithDefault)**
+Using `""` as a default for sensitive properties like `proxyUser` and `proxyPassword` may silently proceed with empty credentials.
+
+**Line 16 - Sensitive data in String (SensitiveDataExposure / UseCharArrayForPassword)**
+`password` is stored as a `String`. Strings are immutable and remain in memory; a `char[]` should be used and cleared after use.
+
+**Line 17 - `equalsIgnoreCase` on potentially empty string (PossiblyEmptyStringComparison)**
+If `host` is `""` (default), comparison proceeds without indicating no proxy host is configured, risking unintended authentication.

@@ -1,0 +1,15 @@
+**Line 36** – `Field 'newStudy' should be private` (VisibilityModifier)
+
+**Line 36** – `newStudy` is not initialized at declaration and may be `null` when `crawlPreparation` is called if `execute()` flow is bypassed (NullAssignment / UnInitializedField)
+
+**Line 57** – `new GitHandler(...)` resource is never closed; `GitHandler` likely implements `Closeable` (CloseResource)
+
+**Line 57** – `preferences` field accessed directly from subclass; bypasses encapsulation of parent class (InappropriateIntimacy)
+
+**Line 68** – `studyAndDirectory.get()` called multiple times after `isEmpty()` check instead of assigning to local variable (AvoidReassigningParameters / repeated `get()` on Optional)
+
+**Line 75** – `studyDirectory` is a field of the parent class assigned directly in a subclass method (InappropriateIntimacy / AvoidAccessibilityAlteration)
+
+**Line 78** – `newStudy` (package-private field) assigned in `execute()` and consumed in `crawlPreparation()`, creating implicit temporal coupling with no thread-safety guarantee (UnsynchronizedStatefulClass)
+
+**Line 64** – `execute()` missing `@Override` documentation; parent contract not clearly honoured regarding preconditions (MissingOverride is present, but `crawl()` call at line 80 is an undocumented side-effectful call relying on state set just above — VoidMethodsShouldNotBeCalledOnOptionalValues pattern via side-effect coupling)

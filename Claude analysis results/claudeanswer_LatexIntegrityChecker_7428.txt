@@ -1,0 +1,21 @@
+**Line 40** — `SESSION` is a mutable static field initialized in a static block, shared across all instances and threads. **Rule: `ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD` / Thread-Safety / Mutable Static Field**
+
+**Line 40** — `SESSION` is not thread-safe; `SnuggleSession` is stateful and `SESSION.reset()` + `SESSION.parseInput()` in `getUnescapedAmpersandsWithCount` creates a race condition. **Rule: `STCAL_INVOKE_ON_STATIC_CALENDAR_INSTANCE` / Non-thread-safe static instance**
+
+**Line 71** — `SESSION.reset()` and `SESSION.parseInput()` operate on a shared static `SESSION` without synchronization. **Rule: `IS2_INCONSISTENT_SYNC` / Unsynchronized access to static mutable field**
+
+**Line 38** — `ENGINE` is a mutable static object (not final-safe immutable). **Rule: `MS_MUTABLE_COLLECTION` / Mutable Static**
+
+**Line 41** — `EXCLUDED_ERRORS` is a mutable `HashSet` exposed as a static field with no synchronization. **Rule: `MS_MUTABLE_COLLECTION` / Mutable Static Collection**
+
+**Line 39** — `ERROR_MESSAGES` assigned via `ENGINE.getPackages().getFirst().getErrorMessageBundle()` — `getFirst()` throws `NoSuchElementException` if list is empty; no guard. **Rule: `NP_NULL_ON_SOME_PATH` / Possible NPE or unchecked exception**
+
+**Line 44** — Same: `ENGINE.getPackages().getFirst()` called again without null/empty check. **Rule: `NP_NULL_ON_SOME_PATH`**
+
+**Line 63** — `flatMap(LatexIntegrityChecker::getUnescapedAmpersandsWithCount)` — method reference to a static method that mutates shared static state inside a stream. **Rule: `STCAL_STATIC_CALENDAR_INSTANCE` / Static stateful object used in stream**
+
+**Line 86** — `snuggletexMessagePattern` could be null if the key is missing from the bundle, passed directly to `MessageFormat.format` without null check. **Rule: `NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE`**
+
+**Line 30** — Unused import `java.io.IOException` is caught internally but the import itself is used — however `java.util.Map` is used only via `Map.Entry`; verify no unused imports. **Rule: `UnusedImports`** — specifically check `Stream` import (line 10) used, valid; this is low confidence.
+
+**Line 86** — `errorMessageFormatHelper` is `public static` but accesses `private static` field `ERROR_MESSAGES` — not a bug per se, but the method is public utility with hidden dependency on static state. **Rule: `SING_SINGLETON_IMPLEMENTS_SERIALIZABLE` / Inappropriate public static method exposing internal state**

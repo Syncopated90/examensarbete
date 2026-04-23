@@ -1,0 +1,11 @@
+**Line 33** — `needsDatabase` check already performed via `executable.bind`, yet `stateManager.getActiveDatabase().isEmpty()` guard is duplicated logic. Not a hard rule violation but redundant defensive check (minor).
+
+**Line 47** — `stateManager.getActiveDatabase().get()` — `Optional.get()` called without `isPresent()` guard at call site; the earlier `isEmpty()` return only covers the method scope but the chain is fragile. **Rule: `PREC.RET` / "Unchecked use of Optional.get()"**
+
+**Line 33–35** — Early return on empty database is correct, but the `get()` on line 47 is separated from the guard by intervening code including a blocking dialog, making the guard non-obvious and fragile. **Rule: `OPT.GET` (Use of Optional.get without isPresent)**
+
+**Line 53** — `BackgroundTask.wrap(...)` result has `.executeWith(taskExecutor)` but no error handling (no `.onFailure()`). Exceptions from `clearEmbeddingsFor` are silently swallowed. **Rule: `EXC.UNHANDLED` / Missing exception handling on background task**
+
+**Line 20–28** — Constructor parameter `aiService` is assigned after `taskExecutor` but declared before it in the field list (lines 18 vs 17). Field declaration order does not match constructor assignment order. **Rule: `STYLE.FIELD_ORDER` / Inconsistent field initialization order**
+
+**Line 4** — `import java.util.List` — `List` is used only as a local variable type on line 46; it could be inlined with `var`. Minor. **Rule: `DESIGN.UNNECESSARY_IMPORT` (borderline, import is technically used)**

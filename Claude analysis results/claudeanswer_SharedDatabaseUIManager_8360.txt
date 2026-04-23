@@ -1,0 +1,21 @@
+**Line 46** – `dbmsSynchronizer` field is not `final` — **Non-Final Field** / **Mutable Instance Variable**
+
+**Line 86** – `answer.isPresent()` followed by `answer.get()` twice — **Optional.isPresent() Without orElse** / use `ifPresent` or `map` instead (**Verbose Optional Usage**)
+
+**Line 86–87** – `answer.get()` called inside `isPresent()` block is acceptable but `.equals()` used on `ButtonType` without documented contract — **Questionable equals() Usage**
+
+**Line 91** – `tabContainer.closeTab(tabContainer.getCurrentLibraryTab())` duplicated at line 96 — **Duplicate Code**
+
+**Line 104** – String concatenation using `+` across multiple lines with `"\r\n"` — **String Concatenation in Loop** / **Use StringBuilder** (**InefficientStringBuffering**)
+
+**Line 104** – `"\r\n"` used as line separator — **Use System Line Separator** (`\r\n` is platform-specific hardcoding) (**AvoidWindowsLineEndings** / **platformDependentLF**)
+
+**Line 109** – `response.isPresent() && response.get().equals(merge)` — **Verbose Optional Usage** (should use `response.filter(...).isPresent()` or `map`)
+
+**Line 46** – `dbmsSynchronizer` is a non-`final` instance field mutated by two public methods (`openNewSharedDatabaseTab`, `openSharedDatabaseFromParserResult`) — **Thread Safety / Non-Atomic State Mutation**
+
+**Line 168** – `parserResult.getDatabaseContext().getDatabasePath().orElse(null)` passes `null` to `setDatabasePath` — **Null Passed to Method** (**AvoidPassingNullToMethod**)
+
+**Line 192** – Method `getBibDatabaseContextForSharedDatabase` is `private` but creates a `DBMSSynchronizer` with many parameters inline — **Long Parameter List / Feature Envy** (minor, but noteworthy)
+
+**Line 131** – `libraryTab` is declared but its nullness is checked (`if (libraryTab != null)`) suggesting `getCurrentLibraryTab()` may return null — **Null Return Not Documented / Null Check Required** (**ReturnNullInsteadOfOptional** on the callee side)

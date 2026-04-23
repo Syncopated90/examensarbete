@@ -1,0 +1,21 @@
+**Line 27** — `LocalVariableCouldBeFinal`: `parser` could be declared `final`.
+
+**Line 28** — `LocalVariableCouldBeFinal`: `parserResult` could be declared `final`.
+
+**Line 30** — `LocalVariableCouldBeFinal`: `uri` declared but assigned inside `try` block; consider restructuring. Also `URISyntaxException` is caught but the original exception is swallowed into `ParserResult.fromError(e)` — **PreserveStackTrace** / **AvoidSwallowingExceptions**.
+
+**Line 34** — `LocalVariableCouldBeFinal`: `path` could be declared `final`.
+
+**Line 25** — **ExcessiveParameterList** / **LongParameterList**: method has 3 parameters including a complex preferences object; consider encapsulation.
+
+**Line 44** — `LocalVariableCouldBeFinal`: `result` could be declared `final`.
+
+**Line 45–49** — **LambdaCanBeMethodReference**: lambda in `forEach` is a candidate for simplification; also **LocalVariableCouldBeFinal** for `entries` on line 46.
+
+**Line 19** — **FieldShouldBeFinal**: `parserResults` is assigned only in constructor and could be declared `final` (it is, actually — correct). *(No violation here.)*
+
+**Line 25** — **SignatureDeclareThrowsException**: method declares multiple checked exceptions (`JabRefException`, `IOException`) — **MultipleCheckedExceptions** / overly broad throws declaration.
+
+**Line 30** — **AvoidCatchingGenericException** (minor): `URISyntaxException` is specific, but returning a `ParserResult` from an error that is a URI parsing issue conflates parsing errors with URI errors — **InappropriateReturnValue**.
+
+**Line 43** — **ReturnType**: returning a mutable `ConcurrentHashMap` via `Map` interface is acceptable, but the internal `ConcurrentHashMap` is exposed — **MutableStaticState** / **ExposeInternalRepresentation**.

@@ -1,0 +1,21 @@
+**Line 33** — `DISALLOWED_CHARACTERS` is a `public static final` mutable `List` (via `Arrays.asList`). **Rule: MutableStaticField / EncapsulateCollection**
+
+**Line 44** — Constructor delegates to another constructor but `bibDatabaseContext` is not annotated `@NonNull` yet a null check is implicitly expected. **Rule: MissingNullCheck / ParameterNotAnnotated**
+
+**Line 78** — `(char) c` cast from `int` stream used with `List<Character>.contains()` — autoboxing from `char` cast may produce incorrect results for values > 127. **Rule: SuspiciousCharCompare / ImplicitNarrowingConversion**
+
+**Line 99** — Same `(char) c` narrowing cast issue in `removeUnwantedCharactersWithKeepDiacritics`. **Rule: SuspiciousCharCompare / ImplicitNarrowingConversion**
+
+**Line 110** — `entry.getCitationKey().orElse(null)` stores `null` into `currentKey`; null is later passed to `Objects.equals` which is safe, but the nullable result is never annotated. **Rule: AssignmentOfNullToNonNullField / NullableNotAnnotated**
+
+**Line 135** — `occurrences--` with no guard that `occurrences` won't go negative. **Rule: NegativeArraySizeException / DecrementBelowZero** (minor: logic smell)
+
+**Line 165** — `regex.trim().isEmpty()` should use `isBlank()` for consistency with modern Java (redundant `trim()` before `isEmpty()`). **Rule: CallToDeprecatedMethod / UseIsBlank**
+
+**Line 165** — `(regex != null) && !regex.trim().isEmpty()` — null check is inconsistent with `@NonNull` conventions used elsewhere in the class. **Rule: InconsistentNullChecking**
+
+**Line 181** — `citationKeyPattern == null || CitationKeyPattern.NULL_CITATION_KEY_PATTERN.equals(citationKeyPattern)` — null check before `.equals()` is correct but mixing null-check with sentinel-value pattern is a design smell. **Rule: CompareObjectsWithEquals / AvoidNullChecksWithSentinel**
+
+**Line 197** — Recursive call to `expandBracketContent(entry)` inside the lambda on each invocation creates a new `Function` object on every modifier application. **Rule: AvoidInstantiationInLoops / IneffientRecursion**
+
+**Line 192** — `fieldParts.getFirst()` (Java 21 API) used without guarding against empty list; if `parseFieldAndModifiers` returns an empty list this throws `NoSuchElementException`. **Rule: MissingGuardClause / PotentialNoSuchElementException**

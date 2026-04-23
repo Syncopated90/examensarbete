@@ -1,0 +1,13 @@
+**Line 9** — `TRUNCATE_AFTER`: Field name violates naming convention (constants in non-enum classes should be `static final`; non-static fields should use camelCase). **Rule: `MemberName` / `VisibilityModifier`**
+
+**Line 9** — `TRUNCATE_AFTER` is an instance field using `ALL_CAPS` naming, which is conventionally reserved for `static final` constants. **Rule: `ConstantName` / `MemberName`**
+
+**Line 10** — Same issue: `KEY` is a non-static instance field using `ALL_CAPS`. **Rule: `MemberName` / `ConstantName`**
+
+**Line 9–10** — Neither `TRUNCATE_AFTER` nor `KEY` is `static`, so the `ALL_CAPS` convention is misleading and violates style rules. **Rule: `ConstantName`**
+
+**Line 8** — `TruncateFormatter` extends `Formatter` but does not call `super()` explicitly; depending on parent constructor, this may be an issue. **Rule: `SuperCloneCheck` / implicit constructor reliance**
+
+**Line 29** — `@NonNull` annotation is placed on the parameter inline with `final`; annotation placement between `final` and type is unconventional and may confuse static analysers. **Rule: `AnnotationLocation`**
+
+**Line 9–10** — Fields are `private final` but non-static; should either be `static final` (constants) or renamed to camelCase (`truncateAfter`, `key`). **Rule: `MemberName`**

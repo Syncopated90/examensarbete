@@ -1,0 +1,27 @@
+**Line 25-26**: `LongLine` / `LineLength` — string literal exceeds typical 120/150 char line length limit.
+
+**Line 28**: `LongLine` / `LineLength` — same issue.
+
+**Line 41-52**: `VisibilityModifier` — injected fields (`dialogService`, `stateManager`, `taskExecutor`, `gitHandlerRegistry`, `preferences`) are `private` but rely on framework injection; however, all `@FXML` fields (lines 30-38) are `private` without `final`, violating `ImmutableField` / `VisibilityModifier`.
+
+**Line 30-38**: `VisibilityModifier` — `@FXML` fields should be package-private per FXML convention, not `private`.
+
+**Line 55**: `VisibilityModifier` — field `viewModel` is non-`final` and mutable; violates `ImmutableField`.
+
+**Line 57**: `VisibilityModifier` / `ImmutableField` — field `visualizer` is declared `final` but its internal state is mutable; minor, but `ControlsFxVisualizer` instantiation inline could be flagged under `DeclarationOrder`.
+
+**Line 62-65**: `MethodLength` — `initialize()` method is excessively long (exceeds typical 30-line rule).
+
+**Line 62**: `HiddenField` — local/instance field `viewModel` assigned inside `initialize()` rather than constructor, masking the instance field assignment flow.
+
+**Line 67**: `AvoidInlineConditionals` / missing braces — `if (button != ButtonType.CANCEL)` block inside lambda lacks `else` branch; `MissingSwitchDefault` pattern violation in converter logic.
+
+**Line 86**: `LambdaBodyLength` — lambda assigned to `repoHelpIcon.setOnMouseClicked` spans multiple lines; should be extracted to a named method.
+
+**Line 92**: `LambdaBodyLength` — same issue for `patHelpIcon.setOnMouseClicked`.
+
+**Line 107-110**: `LambdaBodyLength` — `Platform.runLater` lambda body exceeds single-expression recommendation.
+
+**Line 116**: `DesignForExtension` — `shareToGitHub()` is `private` but calls `viewModel` directly; class itself is not `final`, violating `DesignForExtension` (class should be `final` or method protected).
+
+**Line 24**: `ClassDeclaration` / `DesignForExtension` — `GitShareToGitHubDialogView` is not declared `final` despite having no intended subclasses.

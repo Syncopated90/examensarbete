@@ -1,0 +1,8 @@
+**Line 28 — `ExceptionMessageNotLogged` / `GenericExceptionCaught`**
+Catching `Exception` is overly broad; a specific exception type should be caught.
+
+**Line 28 — `AvoidCatchingGenericException`**
+`catch (Exception ex)` violates the rule against catching generic exceptions.
+
+**Line 29 — `GuardLogStatement`**
+`LOGGER.warn(...)` is not guarded by `LOGGER.isWarnEnabled()`, causing unnecessary string/argument evaluation when warn level is disabled.

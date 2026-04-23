@@ -1,0 +1,38 @@
+**Line 26 — Singleton Pattern / Global State (S1118 / Design)**
+`INSTANCE` is a public static final singleton, creating global mutable state.
+
+**Line 33 — Resource Leak (S2095)**
+`ExecutorService executorService` initialized inline; not guaranteed to be closed if constructor or later initialization fails.
+
+**Line 40 — Resource Leak (S2095)**
+`ExecutorService lowPriorityExecutorService` same issue as line 33.
+
+**Line 46 — Resource Leak (S2095)**
+`Timer timer` not guaranteed to be cancelled on abnormal termination.
+
+**Line 57 — Log Level Inappropriate (S2139 / logging)**
+`InterruptedException` logged at `debug` in `executeAndWait`; interrupt status is not restored (`Thread.currentThread().interrupt()` missing).
+
+**Line 57 — Swallowed Interrupt (S2142)**
+`InterruptedException` caught but `Thread.currentThread().interrupt()` not called, losing the interrupt signal.
+
+**Line 101 — Log Level Inappropriate**
+`InterruptedException` in `executeInterruptableTaskAndWait` logged at `error` rather than `debug` or `info`; interrupt status not restored.
+
+**Line 101 — Swallowed Interrupt (S2142)**
+`InterruptedException` caught but `Thread.currentThread().interrupt()` not called.
+
+**Line 83 — Empty Catch Block / Intentionally Ignored Exception (S1166)**
+`InterruptedException` in `executeAll` is caught, commented "Ignored", but interrupt status is not restored and no logging occurs.
+
+**Line 91 — Swallowed Interrupt (S2142)**
+Same as line 83 for the overloaded `executeAll`.
+
+**Line 95 — Null Parameter Not Validated**
+`taskName` parameter in `executeInterruptableTask` has no `@NonNull` annotation and no null check, unlike similar methods.
+
+**Line 33–44 — Thread Name Collision**
+All threads in each pool share the same static name (`EXECUTOR_NAME` / `LOW_PRIORITY_EXECUTOR_NAME`), making debugging ambiguous; violates thread-naming best practices.
+
+**Line 107 — Method Visibility (S2440)**
+`gracefullyShutdown` is `public static` on a class that already exposes `shutdownEverything()`; the static method exposes internal implementation unnecessarily.

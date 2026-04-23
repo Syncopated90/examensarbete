@@ -1,0 +1,13 @@
+**Line 20** — `Law of Demeter` / `Train Wreck` — `stateManager.getVisibleSidePaneComponents().contains(pane)` chains calls through an intermediate object.
+
+**Line 21** — `Law of Demeter` / `Train Wreck` — `stateManager.getVisibleSidePaneComponents().add(pane)` same violation.
+
+**Line 22** — `Law of Demeter` / `Train Wreck` — `stateManager.getVisibleSidePaneComponents().sort(...)` same violation.
+
+**Line 22** — `Inappropriate Intimacy` — `TogglePaneAction` directly manipulates the internal list of `StateManager` and knows about `SidePaneViewModel.PreferredIndexSort`, coupling three separate concerns.
+
+**Line 22** — `Feature Envy` — sorting logic belongs in `StateManager` or `SidePaneViewModel`, not in `TogglePaneAction`.
+
+**Line 24** — `Law of Demeter` / `Train Wreck` — `stateManager.getVisibleSidePaneComponents().remove(pane)` same violation.
+
+**Line 19–25** — `Missing Null Check` — `stateManager.getVisibleSidePaneComponents()` could return `null`; no null guard is present.

@@ -1,0 +1,17 @@
+**Line 6** — `UnusedImport`: `java.util.stream.Collectors` can be replaced; see line 33.
+
+**Line 33** — `CollectorsToList` / `UseStreamCollect`: `extensions.stream().collect(Collectors.joining(...))` — `Collectors.joining` is correct here, but the `stream()` call on a `List<String>` followed by `collect` could use `String.join` instead (unnecessary stream usage).
+
+**Line 33** — `StringConcatenation`: String concatenation with `+` combining a field and a stream expression.
+
+**Line 37** — `ReturnNull`: `orElse(null)` returns `null` from `getIcon()`, violating null-safety; should return `Optional` or a default value.
+
+**Line 21** — `PackagePrivate` / `VisibilityModifier`: Constructor `FileExtensionViewModel(...)` has package-private visibility — no explicit access modifier; may be intentional but warrants review.
+
+**Line 3** — `UnusedImport`: `java.nio.file.DirectoryStream.Filter` is imported but only used indirectly via return type on line 41 — acceptable, but worth noting the non-obvious import source.
+
+**Line 18** — `ImmutableField`: `name`, `description`, `extensions`, and `externalApplicationsPreferences` are all effectively final and assigned only in the constructor; should be declared `final` — they already are, so no violation here.
+
+**Line 37** — `NullableReturn` (PMD/SpotBugs `NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE`): `getFirst()` on line 36 can throw `NoSuchElementException` if `extensions` is empty.
+
+**Line 36** — `AvoidCallingFinalize` / `OptionalGetWithoutIsPresent`: Not applicable, but `getFirst()` (Java 21 `List.getFirst()`) throws if list is empty — missing guard.

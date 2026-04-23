@@ -1,0 +1,11 @@
+**Line 43** — `replaceAll("[\\D]", "")`: redundant character class escape; `\D` inside `[]` doesn't need escaping. **Rule: `RedundantEscapeInRegex` / `UseCharacterClass`**
+
+**Line 43** — `pages.replaceAll("[\\D]", "")`: single-character class can be replaced with `replaceAll("\\D", "")`. **Rule: `UnnecessaryUnicodeEscape` / `SimplifyRegex`**
+
+**Line 43** — Lambda in `ifPresent` calls `entry.setField(...)`, causing a side effect inside a lambda on an `Optional`. **Rule: `AvoidSideEffectsInLambdas`**
+
+**Line 18** — `BASE_URL` is a `private static final String` constant that is a URL literal but typed as `String` rather than used with a typed constant. **Rule: `AvoidDuplicateLiterals`** (minor; single use, acceptable, but the field could be named more specifically)
+
+**Line 30** — Method `getUrlForIdentifier` declares both `URISyntaxException` and `MalformedURLException`; `MalformedURLException` is a subclass of `IOException` and `URISyntaxException` is checked — overly broad multi-exception declaration where one may be redundant depending on API contract. **Rule: `SignatureDeclareThrowsException`**
+
+**Line 43** — `entry.setField(StandardField.PAGETOTAL, ...)` return value (`Optional<String>`) is ignored inside the lambda. **Rule: `CheckReturnValue` / `IgnoredReturnValue`**

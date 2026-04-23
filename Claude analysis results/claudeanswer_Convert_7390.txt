@@ -1,0 +1,25 @@
+**Line 57** `System.out.println` — `java:S106` (Standard outputs should not be used directly to log anything)
+
+**Line 62** `System.out.println` — `java:S106`
+
+**Line 67** `System.out.println` — `java:S106`
+
+**Line 71** `System.out.println` — `java:S106`
+
+**Line 74** `System.out.println` — `java:S106`
+
+**Line 80** `System.out.println` — `java:S106`
+
+**Line 87** `parserResult.getPath().get()` — `java:S3655` (Optional value should be checked before `.get()`)
+
+**Line 99** `System.out.println` — `java:S106`
+
+**Line 36** `sharedOptions` field initialized with `new JabKit.SharedOptions()` while also injected via `@Mixin` — `java:S4813` / redundant initialization (field initializer overridden by framework injection)
+
+**Line 47** `outputFormat = "bibtex"` default assigned at field level — not a defect per se, but combined with `@Option` and mutable state, violates `java:S1450` if `outputFormat` is never reassigned outside framework.
+
+**Line 29** Class `Convert` is package-private but implements `Runnable` with `protected` method `exportFile` — `java:S2390` (protected members in package-private classes are misleading; `protected` has no effect beyond package scope).
+
+**Line 29** `Convert` has no `serialVersionUID` and is not `Serializable`, but supertype concern aside, the class is non-`final` with mutable fields injected by framework — `java:S2176` N/A; however mutable static logger is fine.
+
+**Line 64** `parserResult.get()` called multiple times — `java:S3958` / redundant repeated calls; result should be stored in a local variable (also `java:S4275`).

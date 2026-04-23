@@ -1,0 +1,19 @@
+**Line 52** — `AvoidUncheckedCast`: Unchecked cast from `Node` to `Button` without null-safe instanceof check pattern.
+
+**Line 57** — `LambdaParameterNaming` / unused lambda parameter: Anonymous lambda parameters `_` may not be valid in all Java versions targeted; non-standard parameter naming convention.
+
+**Line 58** — `ConfusingTernary` / logic error: `apiKeyValid.set(newValue.isEmpty())` — sets valid to `true` when field is empty, which contradicts the initialization logic on line 50 where empty means valid only conditionally.
+
+**Line 53–55** — `AvoidDuplicateLiterals`: `ButtonType.OK` appears on lines 53 and 95, minor duplication risk.
+
+**Line 84** — `ExcessiveMethodLength` / `AvoidRunLaterOnJFXThread`: `Platform.runLater` wraps UI manipulation but `new DelayedExecution` inside `runLater` may schedule UI updates off the FX thread depending on `DelayedExecution` implementation — potential `ThreadSafety` violation.
+
+**Line 84** — `AvoidInstantiatingObjectsJustToCallGetters`: `new DelayedExecution(...).start()` instantiates an object immediately discarded after `start()` — `UnnecessaryLocalBeforeReturn` / throwaway instantiation.
+
+**Line 63** — `AvoidFieldNameMatchingMethodName`: Field `rotation` is a `RotateTransition` but `.getNode()` is called on it at line 73; `rotation` is initialized in `initialize()` not constructor — `NullAssignment` risk if `testApiKey()` is called before `initialize()`.
+
+**Line 29** — `UnusedPrivateField`: `viewModel` field is used only for `persistApiKeysCheckBox` bindings in `initialize()` and `checkApiKey()` — acceptable, but `fetcherViewModel` is both a field and constructor parameter with no defensive null check — `NullPointerException` risk.
+
+**Line 34** — `MissingOverride` / constructor calls `setResultConverter` before `ViewLoader` completes — ordering risk if `initialize()` depends on dialog pane state.
+
+**Line 95** — `AvoidLiteralsInIfCondition`: Direct reference comparison `button == ButtonType.OK` instead of `.equals()` — while valid for JavaFX constants, violates `UseEqualsToCompareStrings`-style rules for object comparison.

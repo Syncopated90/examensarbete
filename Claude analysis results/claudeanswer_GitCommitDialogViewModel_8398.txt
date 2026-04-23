@@ -1,0 +1,19 @@
+**Line 62** — `UnusedFormalParameter` / anonymous parameter `_` may not be valid Java syntax depending on version; if Java <21, this is a compile error. If Java 21+, acceptable, but verify target version.
+
+**Line 57** — `AvoidCatchingGenericException` (implicit via `onFailure`) — `ex` is untyped `Exception`; overly broad exception handling.
+
+**Line 101** — `NullAssignment` / unnecessary null check — `commitMessage.get()` on a `SimpleStringProperty` initialized to `""` can never return `null`; the `message == null` check is dead code (`RedundantNullCheck`).
+
+**Line 68–72** — `LawOfDemeter` — `BackgroundTask.wrap(() -> { doCommit(); return null; })` forces a `return null` for a `Void` task; consider a dedicated void task wrapper.
+
+**Line 80** — `LawOfDemeter` — `stateManager.getActiveDatabase()` chains directly into business logic within the VM; violates separation of concerns.
+
+**Line 91** — `LawOfDemeter` — `gitHandlerRegistry.get(repoRootOpt.get())` — direct registry lookup inside business logic method of ViewModel.
+
+**Line 93** — `NullAssignment` risk — `GitStatusChecker.checkStatus(gitHandler)` return is used without null check; if it returns `null`, line 94 throws `NullPointerException`.
+
+**Line 107** — `AvoidThrowingNewInstanceOfSameException` / control flow via exception — comment on line 106 acknowledges `TODO`; throwing `JabRefException` for a non-exceptional condition (`!committed`) is flagged as `ExceptionAsFlowControl`.
+
+**Line 36** — `FieldCanBeLocal` — `commitMessage` and `amend` (lines 36–37) are exposed via property accessors but initialized inline; acceptable, however `commitMessageValidator` (line 39) is never exposed except via `commitMessageValidation()`, making the field itself a candidate for `UnusedPrivateField` if the validator itself isn't stored — low severity.
+
+**Line 50–53** — `LongParameterList` — constructor has 4 parameters; borderline violation of `ExcessiveParameterList` (threshold typically 3–4).

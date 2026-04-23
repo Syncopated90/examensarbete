@@ -1,0 +1,23 @@
+**Line 22** — `allFieldReplace` (field) — **FieldShadowing**: instance field `allFieldReplace` shadows nothing but is redundant; state is duplicated with `allFieldReplaceProperty`. Same for `findString` (line 23) and `replaceString` (line 24).
+
+**Line 22-24** — `allFieldReplace`, `findString`, `replaceString` — **InstanceVariableNotUsedInMethod**: fields are assigned in `replace()` and consumed in other methods, creating implicit temporal coupling; not initialized at declaration (no initializer).
+
+**Line 25** — `fields` — **InstanceVariableNotUsedInMethod**: mutable field set in `replace()`, read in `replaceItem()`, creating thread-unsafe shared mutable state; should be a local variable passed as parameter.
+
+**Line 36-38** — `replace()` — **MethodLength / SideEffectAssignment**: assigns to instance fields (`findString`, `replaceString`, `fields`, `allFieldReplace`) as side effects inside a method named `replace()`, violating single responsibility.
+
+**Line 37** — `findStringProperty.getValue()` — **NullAssignment**: `SimpleStringProperty` default value is `null`; `findString` can be `null`, causing `NullPointerException` at line 82 (`this.findString.length()`).
+
+**Line 38** — `replaceStringProperty.getValue()` — **NullAssignment**: `replaceString` can be `null`, causing `NullPointerException` at line 85 (`stringBuilder.append(this.replaceString)`).
+
+**Line 75** — `entry.getField(field).get()` — **OptionalGetWithoutIsPresent**: `getField()` returns `Optional<String>`; `.get()` is called without checking `isPresent()`, despite line 73 already checking `hasField()` — fragile and style violation.
+
+**Line 88** — `txt.substring(piv)` — **InlineConditional / UnnecessaryLocalVariable**: `txt.substring(piv)` is equivalent to `stringBuilder.append(txt, piv, txt.length())`, inconsistent with the style used at line 84.
+
+**Line 90** — `entry.setField(field, newStr)` — **AvoidSideEffects**: field is modified even when `counter == 0` (no replacements found), causing unnecessary mutation and an extraneous undo edit recording identical values.
+
+**Line 91** — `compound.addEdit(...)` — **AvoidSideEffects**: undo edit is added even when no replacement occurred (`counter == 0`), recording a no-op change.
+
+**Line 55** — `replaceItem` Javadoc — **InvalidJavadocFormat**: uses `///` (Markdown Javadoc, Java 23+ feature); inconsistent with standard `/** */` style used elsewhere in the codebase pattern.
+
+**Line 26-29** — `findStringProperty`, `replaceStringProperty`, `fieldStringProperty`, `allFieldReplaceProperty`, `selectOnlyProperty` — **VisibilityModifier**: `private final` properties exposed via public getters returning mutable property objects, allowing external mutation of internal state without encapsulation.

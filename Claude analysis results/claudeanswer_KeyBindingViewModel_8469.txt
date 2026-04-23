@@ -1,0 +1,23 @@
+**Line 23** — `keyBinding = null` field initializer is redundant; null is the default value. **Rule: RedundantFieldInitialization**
+
+**Line 24** — `realBinding = ""` field initializer is redundant; could use constructor only. **Rule: RedundantFieldInitialization**
+
+**Line 27** — `SimpleStringProperty` used instead of interface type `StringProperty` for field declaration. **Rule: LooseCoupling**
+
+**Line 28** — `SimpleStringProperty` used instead of interface type `StringProperty` for field declaration. **Rule: LooseCoupling**
+
+**Line 80** — Double-checked `a a` typo in Javadoc comment. **Rule: InvalidJavadocPosition** (malformed Javadoc)
+
+**Line 90** — String `modifiers` is built using `+=` concatenation inside conditionals; should use `StringBuilder`. **Rule: StringConcatenationInLoop / InefficientStringBuffering**
+
+**Line 94** — `modifiers = "shortcut+"` assigns literal but then `modifiers += "shift+"` appends — inefficient string concatenation. **Rule: InefficientStringBuffering**
+
+**Line 107** — `String newShortcut = modifiers + code` — concatenating a `String` with a `KeyCode` enum calls `toString()` implicitly; should be explicit `code.getName()` or `code.toString()`. **Rule: ImplicitCallToObjectToString**
+
+**Line 115** — Javadoc `@param evt as KeyEvent` — `as` is not valid Javadoc param description convention; minor but flags as **Rule: JavadocStyle**
+
+**Line 130** — `keyBindingRepository.get(key)` return value passed directly without null/empty check after `resetToDefault`. **Rule: ReturnValueIgnored / NullAssignment**
+
+**Line 138** — Same issue: `keyBindingRepository.get(key)` return value used without validation after `put`. **Rule: ReturnValueIgnored**
+
+**Line 23** — `keyBinding` field is nullable but never annotated `@Nullable`; `isCategory()` guards null checks implicitly. **Rule: NullableAnnotationMissing / MissingNullCheckOnField**

@@ -1,0 +1,15 @@
+**Line 6** — `Collectors.toList()` is unnecessary; use `Stream.toList()` instead (Java 16+). Rule: **UselessCollect / UseStreamToList**
+
+**Line 24** — `serviceLocator` field is never initialized via constructor or setter injection; remains `null`, causing potential **NullPointerException** at line 44. Rule: **NullAssignment / UnassignedField**
+
+**Line 44** — `serviceLocator.getService(...)` will throw `NullPointerException` if `serviceLocator` is null. Rule: **NullDereference**
+
+**Line 45** — Logic is inverted: returns error when `srvStateManager` **is** a `JabRefSrvStateManager`, but the error message says "CLI mode". This suggests the condition should be negated. Rule: **InvertedLogic / ConfusingTernary**
+
+**Line 64** — `entry.getCitationKey().orElse(null)` passes `null` to `List.contains()`, which is legal but suspicious and can match unintended entries. Rule: **NullPassedToMethod / AvoidPassingNullToMethod**
+
+**Line 64** — `citationKeys.isEmpty()` was already checked at line 39 (returns early if non-empty), making the `citationKeys.contains(...)` filter branch on line 64 unreachable. Rule: **UnreachableCode / DeadCode**
+
+**Line 28** — `citationKeys` is a mutable `ArrayList` exposed via `@JsonProperty` with no defensive copy. Rule: **ReturnOfCollectionOrArrayField / MutableFieldExposure**
+
+**Line 32** — Same issue: `entryIds` mutable field exposed via `@JsonProperty`. Rule: **ReturnOfCollectionOrArrayField / MutableFieldExposure**

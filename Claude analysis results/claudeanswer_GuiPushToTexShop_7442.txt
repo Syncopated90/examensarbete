@@ -1,0 +1,7 @@
+**Line 9** — `ClassVariableVisibilityCheck`: Class `GuiPushToTexShop` should be `final` or the design should be reconsidered (concrete class extends concrete class).
+
+**Line 11** — `VisibilityModifier`: Field `dialogService` duplicates the field already stored in the parent class `PushToTexShop` (passed via `super(dialogService, preferences)`), violating **DuplicateField** / **ConstructorCallsOverridableMethod** pattern.
+
+**Line 14** — `RedundantFieldInitialization` / **DuplicatedCode**: `this.dialogService = dialogService` is redundant if the superclass already stores the same reference; the field on line 11 shadows the parent's field unnecessarily.
+
+**Line 22-24** — `UnnecessaryOverride` / **MissingOverrideAnnotation** consistency: `sendErrorNotification` delegates entirely to `dialogService.showErrorDialogAndWait` with no added logic; if the parent already provides or requires this, it is an unnecessary delegation layer.

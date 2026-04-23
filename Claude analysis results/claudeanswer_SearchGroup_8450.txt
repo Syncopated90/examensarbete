@@ -1,0 +1,17 @@
+**Line 83** — `catch (Throwable t)` — **CatchThrowable**: Catching `Throwable` is overly broad; should catch `Exception` at most.
+
+**Line 86** — String concatenation with `+` in logger call — **UseParameterizedLogMessage** (also **StringConcatenationInLogger**): Use parameterized logging instead of `+`.
+
+**Line 87** — `return null` — **ReturnNull** / **NullReturn**: Returning `null` from a non-trivial method; violates null-safety conventions.
+
+**Line 93** — `name`, `context`, `color`, `isExpanded`, `description`, `iconName` accessed directly as fields in `toString()` — **DirectFieldAccess** / **AvoidAccessingDirectField**: Superclass fields accessed directly rather than via accessors.
+
+**Line 93** — Long line (string concatenation building `toString()`) — **LineTooLong**: Line exceeds typical 120/150 character limit.
+
+**Line 22** — `matchedEntries` is a mutable `HashSet` field — **FieldShouldBeFinal** is already satisfied, but the collection itself is mutable while exposed via `setMatchedEntries` — **MutableField**: Field declared `final` but its contents are mutated externally through public setters without synchronization.
+
+**Line 25** — `searchQuery` is non-final — **FieldShouldBeFinal** / **NonFinalField**: Field `searchQuery` is reassigned in `setSearchExpression`, preventing immutability but no `final` modifier is present; this is intentional yet violates **ImmutableField** where possible.
+
+**Line 32–34** — `setSearchExpression` mutates state — **AvoidMutableStaticFields** is not violated, but this method breaks the immutability of the group object — **DesignForExtension** / **MutableObject**.
+
+**Line 71** — `contains(BibEntry entry)` does not check for `null` parameter — **NullParameterDereference** / **NullArgumentCheck**: `entry.getId()` will throw `NullPointerException` if `entry` is `null`.

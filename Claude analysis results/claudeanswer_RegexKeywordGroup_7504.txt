@@ -1,0 +1,23 @@
+**Line 21 — ReDoS (Regular Expression Denial of Service)**
+`searchExpression` is concatenated directly into the regex without sanitization via `Pattern.quote()`. A malicious or malformed input can cause catastrophic backtracking.
+
+**Line 21 — `Pattern.compile` called with unvalidated external input**
+Rule: *Improper Input Validation*. `searchExpression` is never null-checked or validated before being embedded in the pattern.
+
+**Line 26 — Unintended field access on potentially null `searchField`**
+`searchField` is inherited from `KeywordGroup` with no null guard here. Rule: *Null Dereference*.
+
+**Line 14–16 — Constructor passes `searchExpression` to `super` and also compiles it, but if `Pattern.compile` throws `PatternSyntaxException` the object is left partially constructed**
+Rule: *Incomplete Object Construction / Exception Safety*.
+
+**Line 19–22 — `Pattern` object is compiled on every instantiation but never guarded against `null` `searchExpression`**
+Rule: *Null Dereference* — `Pattern.compile("\\b" + null + "\\b")` produces `"\\bnull\\b"` silently due to string concatenation coercing `null`.
+
+**Line 35–40 — `equals` accesses `other.searchField`, `other.searchExpression`, `other.caseSensitive` directly (package-private fields), bypassing encapsulation**
+Rule: *Inappropriate Intimacy / Violation of Encapsulation*.
+
+**Line 35 — `equals` does not call `super.equals()`**
+Rule: *Broken `equals` contract* — parent state beyond the explicitly listed fields is ignored.
+
+**Line 48 — `hashCode` does not call `super.hashCode()`**
+Rule: *Asymmetric `equals`/`hashCode`* — consistent with the `equals` issue above; parent fields not covered by the explicit hash args would break the contract if the parent adds state.

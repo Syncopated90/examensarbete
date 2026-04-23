@@ -1,0 +1,11 @@
+**Line 38** — `LocalVariableHidesMemberVariable` (or `HiddenField`): local variable `watcher` in `run()` hides the instance field `this.watcher`.
+
+**Line 54** — `MissedBreakInSwitch` / `IfElseChain` (not critical), but more importantly: `key.reset()` is inside the `for` loop body under the `else if` branch, not after the loop. **`key.reset()` should be called after the for-loop, not inside it** — it is only called when the event kind matches `ENTRY_CREATE`/`ENTRY_MODIFY`, skipping reset on `OVERFLOW` and other kinds. Rule: `WatchKey.reset() not called unconditionally` / `BugPattern: WatchKey reset inside conditional`.
+
+**Line 38 / Line 96** — `LocalVariableHidesMemberVariable`: in `shutdown()`, line 96, local variable `watcher` also hides the instance field `this.watcher`.
+
+**Line 33** — `DoubleCheckedLocking` / visibility issue: `watcher` is `volatile`, but it is assigned from within a try-with-resources scope in `run()` (line 39) after being declared as a local shadowing variable, meaning the field `this.watcher` is only set on line 39 inside the block — race condition exists where `addListenerForFile` may see a non-null but not-yet-registered `watcher` or a null `watcher` if called before `run()` initializes it. Rule: `UnsafePublication`.
+
+**Line 71** — `WatchServiceUnavailableException` constructor passes `e.getCause()` instead of `e` as the cause argument — the original exception `e` is lost as the root cause. Rule: `PreserveStackTrace`.
+
+**Line 55** — `OVERFLOW` handling calls `Thread.yield()` and `continue`s without calling `key.reset()`. If only overflow events occur, the key is never reset and no further events will be delivered. Rule: `WatchKey.reset() not called on all paths`.

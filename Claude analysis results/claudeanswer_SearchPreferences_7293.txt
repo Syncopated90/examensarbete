@@ -1,0 +1,9 @@
+**Line 110** — `getSearchWindowDividerPosition()` returns `Double` (boxed) instead of primitive `double`. Unnecessary boxing. Rule: **UnnecessaryBoxing** / **PrimitiveWrapping**.
+
+**Lines 37–44** — Constructor delegates to another constructor via `this(...)` then mutates `searchFlags` after delegation. This is a pattern where object state is modified post-construction through a partially constructed path, but more specifically: rule **ConstructorCallsOverridableMethod** does not apply here, however the direct issue is that `searchFlags` is assigned in the delegated constructor and then mutated in the calling constructor body — the field is `final` yet mutated post-`this()` call. This is acceptable for mutable collections, but violates **Constructor should not perform work beyond initialization** (rule: **DoNotCallOverridableMethodsInConstructors** is not triggered here). Primary flag: the constructor chain mutates state after `this()` — rule: **SingleResponsibilityConstructor** / **AvoidMutatingAfterConstruction**.
+
+**Lines 74–77** — `setSearchFlag` checks `contains` twice unnecessarily. Rule: **RedundantCondition** / **UnnecessaryConditionalCheck**. The logic `if (contains && !value) remove; else if (!contains && value) add` can simply be `if (value) add else remove`, ignoring redundant contains checks.
+
+**Line 110** — Method name `getSearchWindowDividerPosition()` returns `Double` (boxed type) while analogous methods `getSearchWindowHeight()` and `getSearchWindowWidth()` return primitive `double`. Rule: **InconsistentReturnType** / **UnnecessaryBoxing**.
+
+**Lines 120, 125, 130** — Methods named `getSearchWindowHeightProperty()`, `getSearchWindowWidthProperty()`, `getSearchWindowDividerPositionProperty()` use `get` prefix for property accessors. JavaFX convention requires property methods to be named without `get` prefix (e.g., `searchWindowHeightProperty()`). Rule: **JavaFXPropertyNamingConvention** — violated on lines 120, 125, 130.

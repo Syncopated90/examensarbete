@@ -1,0 +1,17 @@
+**Line 25** – `MissingOverrideAnnotation` / `DesignForExtension`: `findAssociatedFiles` is not `final` in a non-final class implementing an interface.
+
+**Line 25** – `ParameterAnnotationCheck`: `extensions` parameter lacks `@NonNull` annotation while the other parameters have it.
+
+**Line 41** – `IllegalCatch` / resource leak risk: `Files.walk` can throw `IOException` before the try-with-resources is entered; not caught separately.
+
+**Line 45** – `LambdaAssignment` / `MethodLength`: inline lambda inside `filter` on line 46–49 should be extracted to a named method for clarity (violation of single responsibility within stream chain).
+
+**Line 46** – `StringCaseLocaleUsage`: `.toLowerCase()` called without explicit `Locale` argument — should be `.toLowerCase(Locale.ROOT)`.
+
+**Line 57** – `StringCaseLocaleUsage`: `.toLowerCase()` called without explicit `Locale` argument — should be `.toLowerCase(Locale.ROOT)`.
+
+**Line 19** – `VisibilityModifier`: Class is package-private but has no explicit `@PackagePrivate` documentation annotation to enforce intent, relying on implicit default visibility.
+
+**Line 21** – `ConstantName`: Compliant, no issue.
+
+**Line 54** – `UnnecessaryLocalVariable` / `ReturnCount`: `getBrokenLinkedFileNames` chains directly without intermediate variable, making debugging harder (minor readability rule violation).

@@ -1,0 +1,13 @@
+**Line 30** - `LocalVariableCouldBeFinal`: `argumentProcessor` could be declared final.
+
+**Line 30-33** - `CloseableObjectNotClosed` / resource leak: `ArgumentProcessor` may implement `Closeable` and is never closed.
+
+**Line 33** - `LocalVariableCouldBeFinal`: `uiCommands` could be declared final.
+
+**Line 29** - `AvoidInstantiatingObjectToGetClassObject`: Logger already uses `CLIMessageHandler.class` correctly — no issue here.
+
+**Line 29** - `ToListCalledOnStream`: `Arrays.stream(message).toList()` — calling `.toList()` on a stream derived from `Arrays.stream` is unnecessary; `Arrays.asList(message)` or `List.of(message)` is simpler.
+
+**Line 30-33** - `UnnecessaryLocalVariable`: `argumentProcessor` is used only once immediately after declaration; could be inlined.
+
+**Line 33** - `UnnecessaryLocalVariable`: `uiCommands` is used only once in the lambda; could be inlined.

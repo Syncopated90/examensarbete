@@ -1,0 +1,17 @@
+**Line 21** — `LOGGER.debug` with multiple arguments: the message uses two `{}` placeholders but the log statement is fine; however, this is a long line that may violate line length rules. *(Minor)*
+
+**Line 12** — **UtilityClassWithoutPrivateConstructor**: `SearchQueryConversion` is a utility class (only `static` methods, no instance methods) but lacks a `private` constructor.
+
+**Line 21** — **LongLine** / **LineLength**: The debug log statement is excessively long, violating line length constraints (commonly 120 or 150 chars).
+
+**Line 15** — **MethodLength / HiddenField**: No issue here, but `searchToSql` directly chains multiple method calls without null-check on `searchQuery.getContext()`, violating **NullableReturnValue** / **AvoidChainedMethodCalls** (PMD/Checkstyle).
+
+**Line 22** — Same: `searchQuery.getContext()` return value not checked for null before calling `.visit()` — **NullableReturnValue**.
+
+**Line 27** — Same null-check issue on `searchQuery.getContext()` — **NullableReturnValue**.
+
+**Line 32** — Same null-check issue on `searchQuery.getContext()` — **NullableReturnValue**.
+
+**Line 35–36** — **JavadocStyle**: Uses non-standard `///` Markdown javadoc (JEP 467 preview), not standard `/** */` Javadoc — **InvalidJavadocFormat** / **SummaryJavadoc**.
+
+**Line 40** — **ReturnEmptyCollectionRatherThanNull** (inverse): returning `""` for null `ctx` is acceptable, but the null check for a context object that should never be null suggests a **DesignForExtension** / defensive programming smell — **AvoidLiteralsInIfCondition** not applicable, but flagged as **NullParameterCheck** without documented contract.

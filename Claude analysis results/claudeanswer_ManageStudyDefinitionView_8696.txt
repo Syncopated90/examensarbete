@@ -1,0 +1,19 @@
+**Line 113** — `NullDereference`: `viewModel` is null when `setupSaveSurveyButton` is called from constructors (lines 91, 103); `initialize()` sets `viewModel` later via FXML injection, so `viewModel.getQueries()` etc. will throw NPE.
+
+**Line 113** — `AvoidCallingFinalizeMethod` / ordering issue: constructors call `setupSaveSurveyButton` before `@FXML initialize()` runs, meaning `viewModel` is uninitialized.
+
+**Line 270** — `MethodNamingConventions` / `@FXML public void selectStudyDirectory()`: method is `public` but should be `private` consistent with other `@FXML` handler methods (lines 262, 267, 274).
+
+**Line 175** — `EmptyCatchBlock` / resource leak risk: `IOException e` is caught but only used to set label text; exception is swallowed without logging.
+
+**Line 107** — `UnnecessaryCast`: `(Button) this.getDialogPane().lookupButton(saveSurveyButtonType)` — unchecked cast with no guard; if lookup returns null, line 109 throws NPE.
+
+**Line 109** — `NullDereference`: `saveSurveyButton` could be null if `lookupButton` returns null (button not yet in scene graph at constructor time).
+
+**Line 197** — `TODO` comment left in production code (`// TODO: Keep until PR #7279 is merged`) — `CommentedOutCode` / `TodoComment` rule violation.
+
+**Line 254** — `LawOfDemeter`: `preferences.getImportFormatPreferences()`, `preferences.getImporterPreferences()`, etc. called repeatedly — excessive method chaining on injected dependency.
+
+**Line 44** — `VisibilityModifier`: `@FXML` fields (e.g., `studyTitle`, `addAuthor`) are package-private; should be `private` (all `@FXML` fields lines 41–72).
+
+**Line 37** — `AtLeastOneConstructor` / constructor does not call `super()` explicitly, though implicit; minor style issue with two public constructors and no default constructor documented.

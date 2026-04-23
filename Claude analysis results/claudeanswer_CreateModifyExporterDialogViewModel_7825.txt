@@ -1,0 +1,19 @@
+**Line 46** `saveExporter()` — **Null Return from Method** (`NullReturns`): Method declared to return `ExporterViewModel` returns `null`, which can cause `NullPointerException` at call sites without null checks.
+
+**Line 46** — **Path Traversal** (`InsecurePathCreation`): `Path.of(layoutFile.get())` uses unvalidated user input to construct a file path.
+
+**Line 47** — **Null Dereference Risk** (`AvoidCallingGetParent`/`NullAssignment`): `getParent()` can return `null` (handled), but `Path.of("")` (empty string) would throw `InvalidPathException` if `layoutFile` is empty before the emptiness check on line 51.
+
+**Line 51** — **Logic Order Defect** (`LogicInversion`): Null/empty check on `layoutFile` occurs *after* `Path.of(layoutFile.get()).getParent()` on line 46, meaning an empty `layoutFile` causes `InvalidPathException` before reaching the guard.
+
+**Line 71** — **Law of Demeter Violation** (`LawOfDemeter`): `preferences.getExportPreferences().getExportWorkingDirectory().toString()` chains three method calls on foreign objects.
+
+**Line 75** — **Long Line** (`LineLength`): `dialogService.showFileOpenDialog(fileDialogConfiguration).ifPresent(f -> layoutFile.set(f.toAbsolutePath().toString()));` exceeds typical 120-character line limit.
+
+**Line 75** — **Demeter Violation / Chained Calls** (`LawOfDemeter`): `f.toAbsolutePath().toString()` chains calls on a parameter object.
+
+**Line 33** — **Nullable Parameter Not Annotated** (`MissingNullableAnnotation`): `exporter` parameter can be `null` (checked on line 40) but is not annotated `@Nullable`.
+
+**Line 24** — **Class Not Final** (`ClassWithOnlyPrivateConstructorsShouldBeFinal` / general): Concrete class with mutable state not declared `final`, leaving it open for unsafe subclassing.
+
+**Line 29–31** — **Mutable Field Exposure** (`ReturnOfCollectionOrArrayField`): `getName()`, `getLayoutFileName()`, `getExtension()` return direct references to mutable `StringProperty` fields, violating encapsulation.

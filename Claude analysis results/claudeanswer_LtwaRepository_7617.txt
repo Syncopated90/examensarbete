@@ -1,0 +1,21 @@
+**Line 26** — `{1,3}` on `[ieasn'']{1,3}` is redundant verbosity; minor, but more critically: **`RegexShouldBePrecompiled`** is satisfied here (fields are static), no issue. However:
+
+**Line 26** — `[ieasn'']{1,3}` — **DuplicateCharacterInCharacterClass**: the character `'` (apostrophe U+0027) may appear duplicated depending on encoding alongside `'` (U+2019), but if both are the same character, this is **DuplicateCharacterInCharClass**.
+
+**Line 44** — `new MVStore.Builder().readOnly().fileName(...).open()` — **ResourceOpenedButNotSafelyClosed**: while inside try-with-resources, `MVStore` is used correctly, no issue. ✓
+
+**Line 170** — `findBestEntry(matchingEntries).get()` — **OptionalGetWithoutIsPresent**: calling `.get()` on an `Optional` without checking `isPresent()` first.
+
+**Line 195** — `isFirstElement = ctx.getParent() instanceof LtwaParser.TitleElementContext && isFirstElement;` — **SimplifiableConditionalExpression**: the boolean assignment can be simplified.
+
+**Line 233** — `abbreviation = abbreviation.substring(...)` — **ReassignedVariable** / **ParameterReassignment**: method parameter `abbreviation` is reassigned.
+
+**Line 268** — `word = reverse(word); title = reverse(title);` — **ParameterReassignment**: local variables shadowing parameters; `title` and `word` are method parameters being reassigned inside `matches()`.
+
+**Line 285** — `wordPosition += boundaryLength; continue;` — **AvoidContinue** (PMD): use of `continue` statement.
+
+**Line 295** — `handleRemainingText` mutates `titlePosition` locally but it's a primitive — no issue, but **ConfusingTernary** is absent. However: the method parameter `titlePosition` is reassigned inside **`handleRemainingText`** at **line 302**: `titlePosition += match.end()` — **ParameterReassignment**.
+
+**Line 56** — `prefix.insert(key, value)` inside loop iterating `prefixMap.keySet()` — **AvoidInstantiationsInLoops**: no instantiation here, but iterating a map by keySet and calling `.get(key)` — **MapIterationWithEntrySet** (PMD): should use `entrySet()` instead of `keySet()` with `get()`.
+
+**Line 61** — Same **MapIterationWithEntrySet** violation for `suffixMap`.

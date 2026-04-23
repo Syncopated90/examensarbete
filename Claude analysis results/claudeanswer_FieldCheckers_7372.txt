@@ -1,0 +1,15 @@
+**Line 6** — `Collectors.toList()` — **UseCollectorsToUnmodifiableList / UseDiamondOperator**: Prefer `Collectors.toUnmodifiableList()` or `.toList()` (Java 16+) over `Collectors.toList()`.
+
+**Line 26** — `ArrayListMultimap.create(50, 10)` — **MagicNumber**: Numeric literals `50` and `10` used directly without named constants.
+
+**Line 21** — `getAllMap(...)` — **LongParameterList**: Method has 5 parameters, exceeding typical threshold of 4.
+
+**Line 25** — `getAllMap(...)` — **LongParameterList**: Same violation repeated on the static method declaration — 5 parameters.
+
+**Line 19** — `fieldChecker` — **VisibilityModifier**: Field `fieldChecker` should be declared `private final` — it is, but the type `Multimap` is a mutable collection exposed via `getForField`, violating **ReturnMutableObject** (line 64).
+
+**Line 62–65** — `getForField` — **ReturnMutableObject**: Returns a mutable `Collection` directly from the internal multimap, allowing external mutation of internal state.
+
+**Line 56–60** — `getAll()` — **ReturnMutableObject**: Returns a mutable `List` from `Collectors.toList()` rather than an unmodifiable list.
+
+**Line 1** — **UnusedImport**: `java.util.Collection` is used, but verify `java.util.stream.Collectors` could be replaced with built-in `.toList()`, making it an unnecessary import on Java 16+.

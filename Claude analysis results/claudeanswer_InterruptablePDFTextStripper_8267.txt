@@ -1,0 +1,13 @@
+**Line 13** — `throws IOException` (declared in constructor via `super()` call chain) — no issue here, but:
+
+**Line 10** — **ClassWithoutLogger** / **MissingJavadoc** — class has no logger and no documentation.
+
+**Line 13** — **CallToSuperWithoutReason** — `super()` call is explicit but required here due to checked exception; however flagged by some analyzers as **UnnecessaryConstructor** since the constructor only calls `super()` and assigns a field.
+
+**Line 18** — **OverriddenMethodCallsSuper** violated in the negative sense — the method conditionally skips `super.processPage(page)`, which some tools flag as **DesignForExtension** or **SuperCallMissed** depending on the path taken.
+
+**Line 5** — **UnusedImports** — `javafx.beans.property.ReadOnlyBooleanProperty` is used, so not unused; no issue.
+
+**Line 10** — **ClassDataAbstractionCoupling** — coupling to `ReadOnlyBooleanProperty` (JavaFX) in a logic/PDF class violates layering rules; flagged as **AvoidDependencyOnJavaFxInLogicLayer** or similar architectural rule.
+
+**Line 13** — **IoCouplingBetweenPackages** — JavaFX type injected into a PDFBox subclass in the `logic` layer.

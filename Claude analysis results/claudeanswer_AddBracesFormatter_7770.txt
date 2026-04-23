@@ -1,0 +1,15 @@
+**Line 20 - Correctness / Logical Error**
+
+The condition `value.charAt(0) != '{'` AND `value.charAt(value.length() - 1) != '}'` uses `&&`, meaning braces are only added when *both* conditions are true. A value starting with `{` but not ending with `}` (or vice versa) will be returned unmodified, which is likely incorrect. Should probably be `||`.
+
+**Line 20 - Bug: Incomplete Guard**
+
+`value.length() >= 2` does not handle the case where `value.length() == 1` — a single character will be returned without braces, with no explanation or explicit handling. Missing `else if` or comment for this edge case.
+
+**Line 3 - Unused Import / Dependency Inversion**
+
+`import org.jabref.logic.formatter.Formatter` — coupling to an abstract base class rather than an interface violates Dependency Inversion Principle.
+
+**Line 19 - Nullability Redundancy**
+
+`@NonNull` annotation on `format()` parameter is redundant if the parent class `Formatter.format()` already declares it, or inconsistent if it does not — either duplication or mismatch with supertype contract.

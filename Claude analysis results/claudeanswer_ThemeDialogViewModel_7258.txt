@@ -1,0 +1,17 @@
+**Line 21** – `SimpleObjectProperty` initialized without explicit null value; field not initialized with a default, leaving property in null state until `initializeFromCurrentTheme()`. **Rule: Null Initialization / Uninitialized Property**
+
+**Line 27** – `GuiPreferences preferences` parameter shadows the field assignment; the field `preferences` is redundant since `workspacePreferences` is derived from it immediately, but `preferences` is retained solely for `browseForThemeFile()`. Minor concern, but: **Rule: Unnecessary Field (Redundant Field Storage)**
+
+**Line 63** – `customPathProperty.get()` called twice without caching; if the property changes between calls, behavior is inconsistent. **Rule: Double-Checked / Non-Atomic Read**
+
+**Line 63** – `Path.of(customPathProperty.get())` can throw `InvalidPathException` if the string is malformed; exception is uncaught. **Rule: Missing Exception Handling**
+
+**Line 65** – `selectedThemeProperty.get() != null` check is unreachable when `isValidConfiguration()` is called after `initializeFromCurrentTheme()` always sets the property; dead code. **Rule: Dead Code / Unreachable Branch**
+
+**Line 68** – `saveSettings()` does not call `isValidConfiguration()` before executing; `selectedThemeProperty.get()` could be `null`, causing `NullPointerException` on the switch. **Rule: Missing Null Check / Unchecked Dereference**
+
+**Line 56** – `preferences.getInternalPreferences().getLastPreferencesExportPath()` return value is not checked for null before calling `.toString()`; potential `NullPointerException`. **Rule: Missing Null Check**
+
+**Line 55–56** – Ternary condition evaluates `customPathProperty.get().isEmpty()` without a null guard on `customPathProperty.get()`. **Rule: Missing Null Check**
+
+**Line 20–21** – `selectedThemeProperty` and `customPathProperty` are `private final` but expose mutable state via `customPathProperty()` accessor returning the property directly. **Rule: Mutable Internal State Exposure / Broken Encapsulation**

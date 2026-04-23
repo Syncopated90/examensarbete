@@ -1,0 +1,23 @@
+**Line 5** — `Collectors.toList()` is unnecessary; use `Stream.toList()` instead (UselessCollect / UseStreamToList)
+
+**Line 52** — `Collectors.toList()` deprecated in favor of `Stream.toList()` (UseStreamToList)
+
+**Line 57** — Method `mergeStrings` is `public` but should be `private` or `package-private`; inconsistent access modifier with similar private methods (UnusedAccessModifier / ExcessivePublicCount)
+
+**Line 63** — `target.getStringByName(bibtexStringName).get()` calls `Optional.get()` without `isPresent()` check (OptionalGetWithoutIsPresent)
+
+**Line 70** — String concatenation `bibtexStringName + "_" + suffix` inside a loop; use `StringBuilder` (UseStringBufferForStringAppends / InefficientStringBuffering)
+
+**Line 73** — Same string concatenation repeated inside `while` loop (UseStringBufferForStringAppends)
+
+**Line 30** — Javadoc says `@param other` but method has two parameters `target` and `other`; missing `@param target` (MissingJavadocTag)
+
+**Line 42** — Javadoc says `@param other` but method has three parameters; missing `@param target` and `@param otherFileName` (MissingJavadocTag)
+
+**Line 84** — Javadoc uses `@param otherFilename` but actual parameter name is `otherFilename`; inconsistent with `otherFileName` used elsewhere in the class (InconsistentNaming)
+
+**Line 49** — `DuplicateCheck` instantiated with `new BibEntryTypesManager()` inside a method called repeatedly; object should be injected or cached (InsufficientDependencyInjection / ObjectInstantiationInLoop)
+
+**Line 107** — Comment "This will cause a bug" left in production code (AvoidCommentedOutCode / TodoComment)
+
+**Line 104** — `catch (IllegalArgumentException e)` is overly broad for the specific `ExplicitGroup` constructor (AvoidCatchingGenericException)

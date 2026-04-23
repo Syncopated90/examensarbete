@@ -1,0 +1,21 @@
+**Line 46** — `System.out.println` — **java:S106** (Use a logger instead of `System.out`)
+
+**Line 51** — `System.out.println` — **java:S106**
+
+**Line 55** — `System.out.println` — **java:S106**
+
+**Line 56** — `System.out.flush` — **java:S106**
+
+**Line 63** — `System.out.println` — **java:S106**
+
+**Line 72** — `new OutputStreamWriter(System.out)` — **java:S4349** / **java:S106** (wrapping `System.out` directly; also missing charset specification — **java:S4055** / **java:S1943**, `OutputStreamWriter` constructed without explicit `Charset`)
+
+**Line 101** — `System.out.println` — **java:S106**
+
+**Line 32** — `sharedOptions` field initialized with `new JabKit.SharedOptions()` while also injected via `@Mixin` — **java:S2390** (redundant field initializer, unnecessary object instantiation)
+
+**Line 38** — `outputFormat` default set via annotation but field has no explicit null-check; minor — **java:S1170** (non-final constant-like default)
+
+**Line 62** — Lambda passed inline to `check(...)` with multi-line body — **java:S1602** (prefer a method reference or named method over a multi-statement lambda)
+
+**Line 69** — Method `writeCheckResult` returns `int` (primitive) while `call()` declares return type `Integer` (boxing) — **java:S2153** (unnecessary unboxing/boxing on return)

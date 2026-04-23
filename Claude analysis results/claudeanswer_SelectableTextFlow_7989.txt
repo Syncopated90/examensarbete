@@ -1,0 +1,19 @@
+**Line 19** — `@Nullable` on primitive-wrapper field without null-safety enforcement; `startHit`, `endHit` are `HitInfo` (non-primitive) but accessed without null checks in `getSelectionStartIndex()`/`getSelectionEndIndex()` — **NullDereference** (mitigated only by `assert`, not safe in production).
+
+**Line 75** — `assert isSelectionActive();` — **AssertUsedForValidation**: `assert` statements are disabled by default in JVM; should throw `IllegalStateException` instead — **UseAssertEqualsInsteadOfTrueEquals** / **AvoidAssertAsIdentifier** / **UseAssertTrueInsteadOfAssertEquals** → specifically **AvoidUsingAssertInProductionCode**.
+
+**Line 80** — Same as line 75. **AvoidUsingAssertInProductionCode**.
+
+**Line 29** — `Injector.instantiateModelOrService` called in constructor, causing side effects and tight coupling in constructor body — **DoNotCallOverridableMethodsInConstructor** (indirect; constructor does significant work).
+
+**Line 31–36** — Multiple `addEventFilter` calls with method references in constructor — **DoNotCallOverridableMethodsInConstructor**.
+
+**Line 38** — Lambda ignoring first two parameters with `_` (unnamed variables) — not a rule violation in modern Java, but the listener holds an implicit reference to `this` — **AvoidAnonymousInnerClassesWithContext** (minor).
+
+**Line 107** — `path.setOnMouseClicked(_ -> removeHighlight());` — click on selection path removes highlight but does not clear `startHit`/`endHit`, leaving stale state — **InconsistentStateUpdate** / **LawOfDemeter**.
+
+**Line 109** — `getLocalToParentTransform()` applied to a path added to `parentPane`, which may not be the direct parent — **ImpreciseCoordinateTransform** / **AvoidReassigningParameters** (conceptual mismatch in transform chain).
+
+**Line 48** — `endIndex > fullText.length()` check: `getSelectionEndIndex()` can return `charIndex + 1` exceeding bounds for last character — **OffByOne**.
+
+**Line 84** — `getSelectionEndIndex` returns `Math.max(startHit.getCharIndex() + 1, endHit.getCharIndex() + 1)` — both branches add 1 making `Math.max` redundant vs intent; should be `Math.max(startHit.getCharIndex(), endHit.getCharIndex()) + 1` — **IntegerOverflowOrLogicError** / **SimplifyBooleanExpression**.

@@ -1,0 +1,23 @@
+**Line 16** — `ClassNamingConventions` / `GenericClassName`: Class uses raw generic `<S>` but the class name `ViewModelTreeTableCellFactory` doesn't violate naming, however the class implements `Callback` without being `final` or `abstract`. — **MissingOverride** is not violated here. Actually:
+
+**Line 16** — `ClassWithOnlyPrivateConstructorsShouldBeFinal`: Class has no access restriction but is not `final`.
+
+**Line 18** — `UnnecessaryModifier` / field visibility: Fields are package-private by default via `private` — no issue. Correct:
+
+**Line 18–22** — `InstanceVariableMayNotBeInitialized`: Fields `toText`, `toGraphic`, `toOnMouseClickedEvent`, `toTooltip`, `toStyleClass` are never initialized (implicitly `null`) and used without null-safety guarantees outside the class.
+
+**Line 54** — `AnonymousInnerClass` / `AnonymousClassShouldBeNamedClass`: An anonymous subclass of `TreeTableCell<>` is created; should be a named static inner class.
+
+**Line 54** — `AnonymousInnerClassShouldBeStatic`: The anonymous `TreeTableCell` subclass implicitly holds a reference to the outer `ViewModelTreeTableCellFactory` instance.
+
+**Line 56** — `OverriddenMethodCallDuringObjectConstruction`: Not applicable here. Correct rule: **`AvoidCatchingGenericException`** — not present.
+
+**Line 72** — `CallToDeprecatedMethod` / `LooseCoupling`: `StringUtil.isNotBlank` — dependency on a utility class instead of standard `org.apache.commons.lang3.StringUtils`.
+
+**Line 56** — `DesignForExtension`: `updateItem` is `@Override` in an anonymous class with logic; no rule broken here.
+
+**Line 84** — `LawOfDemeter`: `cellData.getValue().valueProperty()` chains two method calls on a returned object — violates Law of Demeter.
+
+**Line 84** — `UnnecessaryLambda` / `MethodReference`: `cellData -> cellData.getValue().valueProperty()` could potentially be a method reference but cannot be simplified further — minor style note.
+
+**Line 38** — `FeatureEnvy`: `toIcon.call(viewModel).getGraphicNode()` accesses internals of the `JabRefIcon` return value inside a lambda — Law of Demeter violation.

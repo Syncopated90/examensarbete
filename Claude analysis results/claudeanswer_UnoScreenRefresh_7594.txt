@@ -1,0 +1,11 @@
+**Line 8** - `HideUtilityClassConstructor`: Utility class has a public/default constructor; should be private... constructor *is* private, however the class is not `final`.
+
+**Line 8** - `UtilityClassCanBeEnum` or `FinalClass`: Utility class `UnoScreenRefresh` should be declared `final`.
+
+**Line 18** - `NullPointerException` / `AvoidCallingNullChecks`: No null check on `doc` parameter before dereferencing.
+
+**Line 22** - Same as above: No null check on `doc` parameter before dereferencing.
+
+**Line 26** - Same as above: No null check on `doc` parameter before dereferencing.
+
+**Line 18** - `ClassDataAbstractionCoupling` / `LawOfDemeter`: Directly delegating to `doc.lockControllers()` — methods are pure passthroughs with no added value (violation of delegation without abstraction).
