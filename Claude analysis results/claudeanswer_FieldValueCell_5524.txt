@@ -1,0 +1,19 @@
+**Line 38** — `LOGGER` field is `public`; should be `private static final`. Rule: **VisibilityModifier** / **LoggerIsNotStaticFinal** (logger must be private).
+
+**Line 38** — `public static final Logger LOGGER` is declared but never used in the class. Rule: **UnusedField**.
+
+**Line 51** — `HBox labelBox` has package-private (default) visibility instead of `private`. Rule: **VisibilityModifier**.
+
+**Line 63** — Constructor catches no exception from `new ActionFactory()` but `ActionFactory` usage in `createCopyButton`/`createOpenLinkButton` implicitly relies on runtime state; minor, but primary issue: **line 68** — listener calls `getToggleGroup()` which may return `null` (toggle group not yet set), risking a `NullPointerException`. Rule: **NullPointerDereference** / **AvoidNullPointerDereference**.
+
+**Line 68** — `getToggleGroup().selectToggle(...)` called inside `EasyBind.listen` callback without null-guard on `getToggleGroup()`. Rule: **NullPointerDereference**.
+
+**Line 120** — `createOpenLinkButton()` is `public` but is a private initialization helper; should be `private`. Rule: **VisibilityModifier** / **UnusedModifier**.
+
+**Line 126** — `new OpenExternalLinkAction(getText(), ...)` calls `getText()` at construction time (in `initialize()`, called from constructor), capturing the text value eagerly rather than binding it; if text changes, the action becomes stale. Rule: **ConstructorCallsOverridableMethod** / **DontCallGettersInConstructor**.
+
+**Line 113** — Same issue: `new CopyFieldValueCommand(getText(), stateManager)` captures `getText()` eagerly in constructor context. Rule: **DontCallGettersInConstructor**.
+
+**Line 85** — `label.addEventFilter(ScrollEvent.SCROLL, e -> { e.consume(); FieldValueCell.this.fireEvent(e.copyFor(...)); });` — fires a copied event after consuming, but `e.copyFor(e.getSource(), ...)` reuses the same source; should use `this` as source directly. Rule: **SuspiciousEventSource**.
+
+**Line 40** — `DEFAULT_STYLE_CLASS` and `SELECTION_BOX_STYLE_CLASS` are `public` constants with no indication they are part of a public API; they expose internal CSS implementation details. Rule: **VisibilityModifier**.

@@ -1,0 +1,41 @@
+**Line 11** — `UnusedImport`: `java.util.concurrent.Future` is used, but verify; actually used at line 51. ✓
+
+**Line 10** — `UnusedImport`: `java.util.Objects` — used at line 96. ✓
+
+**Line 7** — `UnusedImport`: `java.util.Map` — used. ✓
+
+**Line 6** — `UnusedImport`: `java.util.HashMap` — used at line 134. ✓
+
+**Line 5** — `UnusedImport`: `java.util.ArrayList` — used at line 80. ✓
+
+---
+
+**Line 19** — `UnusedImport`: `javafx.collections.ObservableSet` — used. ✓
+
+---
+
+**Line 80** — `UncheckedCast` / **CollectionMutatedDuringIteration risk**: `detectedPaths.keySet()` returns `Set<PushToApplication>`, but `sortedApplications` is typed `List<GuiPushToApplication>`. This is an unchecked/unsafe assignment — `PushToApplication` and `GuiPushToApplication` are different types; this will not compile unless `GuiPushToApplication` extends `PushToApplication`. If it does, the `new ArrayList<>(detectedPaths.keySet())` is still an unchecked cast from `Set<PushToApplication>` to `Collection<? extends GuiPushToApplication>`.
+
+**Line 80** — `GenericCast`: Unsafe raw/unchecked collection construction.
+
+---
+
+**Line 51** — `FieldNotFinal`: `detectionFuture` is not declared `final` and is assigned in a method, creating potential thread-safety issue (non-volatile mutable field accessed across threads).
+
+**Line 51** — `NonAtomicOperation` / `ThreadSafety`: `detectionFuture` is written on background thread context and read in `cancelDetection()` without synchronization or `volatile`.
+
+---
+
+**Line 86** — `LambdaParameterNaming` (unnamed `_` parameters): use of `_` for lambda parameters may not be valid prior to Java 21 (unnamed variables). Portability issue if targeting <Java 21.
+
+---
+
+**Line 114** — `NullDereference`: `Path.of(pathText)` where `pathText` could be empty string `""` — `Path.of("")` does not throw but `path.isAbsolute()` returns `false`; however the guard `!pathText.isEmpty()` is evaluated *after* `path` is already constructed via `Path.of`. Order of operations is safe here, but the construction is unnecessary when `pathText` is empty. **InefficientCode**: path object constructed before emptiness check.
+
+---
+
+**Line 49** — `FieldNotFinal`: `detectedApplicationPaths` is effectively final but declared without `final`. Minor style violation.
+
+---
+
+**Line 63** — `CollectionIsEmpty`: `pushToApplicationPreferences.getActiveApplicationName().isEmpty()` — potential `NullPointerException` if `getActiveApplicationName()` returns `null`.

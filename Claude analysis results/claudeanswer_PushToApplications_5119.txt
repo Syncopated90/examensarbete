@@ -1,0 +1,9 @@
+**Line 9** — `UtilityClassWithoutPrivateConstructor` / `HideUtilityClassConstructor`: Utility class has a private constructor but is not `final`.
+
+**Line 13** — `MethodLength` / parameter count: `getApplicationById` is a pass-through method that adds no logic; potential `LawOfDemeter` violation delegating directly to `PushApplications`.
+
+**Line 19** — `ReturnWrappedInOptional` / `OptionalOfNonNullable`: `Optional.of(switch(...))` should be `Optional.ofNullable(...)` defensively, and wrapping a non-null switch result in `Optional.of` is unnecessary since every branch returns a value — the return type could be `PushToApplication` directly.
+
+**Line 17** — `JavadocStyle`: `/// @param` uses Markdown doc comment syntax (`///`) mixing with `@param` tag; non-standard for Java < 23, and `@param` is incomplete (missing `notificationService` and `preferences` params).
+
+**Line 13-14** — `LawOfDemeter`: `getApplicationById` calls a method on the returned object of `PushApplications.getApplicationById()`, chaining `.flatMap(...)` — violates train-wreck / Law of Demeter.

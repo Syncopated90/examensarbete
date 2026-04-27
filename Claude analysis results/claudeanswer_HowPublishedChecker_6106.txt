@@ -1,0 +1,9 @@
+**Line 15** — `FIRST_LETTER_CAPITALIZED` — **Field Name Not Following Naming Convention** (constant uses ALL_CAPS with underscores, which is correct for `static final`, but the value is a `Predicate`, not a primitive/String constant — **Mutable Static Field** risk; `Pattern.asPredicate()` returns a new `Predicate` instance, though it's effectively stateless here, the field could be flagged by tools like PMD's `ImmutableField` or SonarQube's **"static non-final field"** variant).
+
+**Line 15** — **Regexp compiled but abstracted via Predicate** — The `Pattern` object is created but not stored; only the `Predicate` is retained. PMD/**AvoidStaticImports** / SonarQube: **"Pattern should be a compiled static constant"** — the `Pattern` itself is anonymous and not reusable directly.
+
+**Line 27** — `checkValue(String value)` — **Null Parameter Not Checked / Missing `@NonNull` or `@Nullable` annotation** — The `value` parameter lacks a nullability annotation, yet `StringUtil.isBlank(value)` is called, implying null may be passed. Rule: **NullPointerException risk** / PMD `NullAssignment` / SonarQube **"Method parameter nullability"**.
+
+**Line 30** — `value.trim()` — **Redundant Null Check Risk** — `value` is not guarded against `null` before calling `.trim()`; if `StringUtil.isBlank` does not handle null and returns early, this could throw NPE. Rule: PMD **`AvoidNullPointerExceptions`**.
+
+**Line 20** — `databaseContext` field — **Field Could Be Final** is already final; however the `@NonNull` annotation on the constructor parameter is not propagated to the field declaration. Rule: SonarQube **"Non-null annotations should be propagated to field"**.

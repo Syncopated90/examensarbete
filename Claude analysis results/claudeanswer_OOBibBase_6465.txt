@@ -1,0 +1,51 @@
+**Line 11** - `Collectors` imported but `Collectors.joining` is used only once; however, this is valid. Actually, unused import check:
+
+**Line 11** - `java.util.stream.Collectors` — used at line 131, valid.
+
+**Line 42** - `UnoCrossRef` — used, valid.
+
+**Line 43** - `UnoCursor` — used, valid.
+
+**Line 44** - `UnoRedlines` — used, valid.
+
+**Line 45** - `UnoStyle` — used, valid.
+
+**Line 46** - `UnoUndo` — used, valid.
+
+---
+
+**Line 98** - **AvoidCatchingNPE / NullDereference**: `cursor` is checked against null then `Objects.requireNonNull(cursor)` is called, but if `cursor` is null the NPE thrown by `requireNonNull` is uncaught and propagates unexpectedly instead of returning an `OOResult.error`.
+
+**Line 156** - **MagicNumber / AvoidLiteralsInIfCondition**: Magic number `10` used directly (`int maxReportedOverlaps = 10`).
+
+**Line 154** - **AvoidInlineConditionals / HardcodedStringLiteral**: `"Overlapping ranges"` is a hard-coded non-localized string.
+
+**Line 169** - **HardcodedStringLiteral**: `"Ranges overlapping with cursor"` is a hard-coded non-localized string.
+
+**Line 316** - **HardcodedStringLiteral**: `"StyleIsNotKnown"` hard-coded non-localized error title.
+
+**Line 338** - **HardcodedStringLiteral**: `"StyleNameIsNotInternal"` hard-coded non-localized error title.
+
+**Line 234** - **HardcodedStringLiteral**: `"Unable to get frontend"` hard-coded non-localized string.
+
+**Line 409** - **HardcodedStringLiteral**: `"Could not insert citation"` hard-coded non-localized string.
+
+**Line 438** - **ReturnValueIgnored**: `syncOptions.map(e -> e.setAlwaysAddCitedOnPages(...))` — return value of `Optional.map()` is ignored; the original `syncOptions` is unchanged.
+
+**Line 452** - **AvoidNestedTryStatements / NestedTryDepth**: `try` block nested inside outer `try` block inside `guiActionInsertEntry`.
+
+**Line 479** - **NullDereference**: `fcursor` can be `null` (assigned `null` at line 432, only assigned if `syncOptions.isPresent()`), but `fcursor.get()` is called at line 479 without null guard.
+
+**Line 538** - **AvoidNestedTryStatements**: Nested `try` inside outer `try` in `exportCitedHelper`.
+
+**Line 432** - **NullAssignment**: `OOResult<FunctionalTextViewCursor, OOError> fcursor = null` — assigning null to a local variable, violates **NullAssignment** rule.
+
+**Line 596** - **AvoidNestedTryStatements**: Nested `try`/`finally` inside outer `try` in `guiActionUpdateDocument`.
+
+**Line 644** - **AvoidNestedTryStatements**: Nested `try` inside outer `try` in the CSL branch of `guiActionUpdateDocument`.
+
+**Line 651** - **ForLoopCanBeForeach / NestedForDepth**: Double nested `for` loop iterating databases then entries is acceptable, but collecting cited entries via nested loops rather than streams reduces readability — **AvoidDeeplyNestedIfStmts** / style violation.
+
+**Line 672** - **ResourceLeak / MissedUndoLeave**: `doc.lockControllers()` is called inside the inner `try` block (line 668) but `unlockControllers()` is in the `finally` of that same block — however `lockControllers()` can be skipped if an exception occurs before it, yet `unlockControllers()` will still be called unconditionally, causing imbalance.
+
+**Line 130** - **LawOfDemeter**: `e.getError().getLocalizedMessage()` — chained method calls violating Law of Demeter.

@@ -1,0 +1,23 @@
+**Line 20**
+`PromptTemplate` stored in a `public static final` field — mutable static field exposed publicly. Rule: **MutableStaticField** / **ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD** risk; more precisely **VisibilityModifier**.
+
+**Line 29**
+`contents` parameter shadows no field but `List<Content>` is iterated via stream — no issue there, however `chatMessage` parameter type is `ChatMessage` (interface) and is cast using pattern matching only for `UserMessage`; the fallback returns `new UserMessage("INVALID")` silently suppressing unhandled types. Rule: **ReturnOfNull** variant / **AvoidThrowingRawExceptionTypes** — should throw or handle properly instead of returning sentinel value.
+
+**Line 29**
+Method `inject` accepts `ChatMessage` but never handles non-`UserMessage` types meaningfully. Rule: **MissingDefault** / **UnhandledCase**.
+
+**Line 34**
+`new UserMessage("INVALID")` — magic string used as sentinel/error value. Rule: **AvoidLiteralsInIfCondition** / **MagicNumber** (string literal variant).
+
+**Line 44**
+`entry.getCitationKey().get()` called without checking `isPresent()` first — guarded by `.filter(entry -> entry.getCitationKey().isPresent())` on line 43, so this is safe, but chaining `.filter(...isPresent()).map(...get())` should use `.map(entry -> entry.getCitationKey().map(...))` instead. Rule: **OptionalGetWithoutIsPresent** (static analysis tools flag `.get()` regardless of filter context).
+
+**Line 57**
+`HashMap` instantiated without initial capacity. Rule: **UseConcurrentHashMap** / **AvoidInstantiatingObjectsJustToGetClass** — more precisely **InitialCapacity** (PMD rule: `UseArrayListInsteadOfVector` family); PMD flags `new HashMap<>()` without capacity: **UseProperClassLoader** — correct rule: **LooseCoupling** (use `Map` literal or `Map.of`).
+
+**Line 57–61**
+`HashMap` used and mutated then passed — could be replaced with `Map.of("userMessage", userMessage, "contents", contents)`. Rule: **LooseCoupling** / **UseDiamondOperator** (already used, but `Map.of` preferred). Rule: **AvoidInstantiatingObjectsJustToGetClass**.
+
+**Line 55**
+Method `findEntriesByLink` returns a `Stream<BibEntry>` — streams must be closed if the source is I/O-based; exposing raw `Stream` from a method is fragile. Rule: **CloseResource**.

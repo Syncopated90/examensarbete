@@ -1,0 +1,17 @@
+**Line 11** - `ClassNamingConventions` / `CommandName`: Class named `GuiCommandLine` but command name is `jabref`; minor inconsistency, not a strict violation but noted.
+
+**Lines 13, 16, 20, 24, 27, 30, 33, 36, 39, 42, 45, 48** - `VisibilityModifier`: All fields are `public` instead of `private`. Fields should be encapsulated with accessors.
+
+**Line 20** - `MutableStaticState` / `FieldNamingConventions`: `importBibtex` mixes camelCase inconsistently with the option name `--importBibtex` (minor), but more critically it's a mutable public field.
+
+**Line 9** - `UnnecessaryStaticImport` / `UnusedImports` style: `import static picocli.CommandLine.Command` is a static import used as an annotation; while functional, mixing static import of `@Command` while using qualified `CommandLine.Option` and `CommandLine.Parameters` is **inconsistent import style**.
+
+**Lines 6-7**: `CommandLine.Option` and `CommandLine.Parameters` are imported as qualified nested class imports while `Command` is statically imported — **inconsistent**.
+
+**Line 33** - `FieldNamingConventions`: `versionInfoRequested` and `usageHelpRequested` (line 36) duplicate functionality already provided by `mixinStandardHelpOptions = true` on line 11, creating **redundant declarations**.
+
+**Lines 18-19, 22-23**: `DeprecatedCodeUsage`/`MissingDeprecationComment`: `@Deprecated` annotation is present but no `@deprecated` Javadoc tag in a standard `/** */` block — uses `///` Markdown comment instead of proper Javadoc, violating **JavadocStyle** rule.
+
+**Line 11** - `MissingJavadocType`: No Javadoc comment on the public class.
+
+**Lines 13-48** - `MissingJavadocVariable`: No Javadoc on public fields (beyond annotation descriptions).

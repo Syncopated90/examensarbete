@@ -1,0 +1,20 @@
+**Line 19: ParameterName (Checkstyle) / HiddenField (PMD)**
+Parameter `resolveStrings` shadows the field `resolveStrings`.
+
+**Line 39: MethodName / ReturnType**
+`setResolvableFields` accepts `Collection<Field>` but the constructor accepts `List<Field>` — inconsistent parameter types across analogous methods (API inconsistency).
+
+**Line 14: VisibilityModifier (PMD)**
+Field `resolveStrings` is not private in effect — it exposes a mutable `BooleanProperty` via `resolveStringsProperty()`, breaking encapsulation.
+
+**Line 38: LinguisticNaming (PMD)**
+`setResolvableFields` does not simply set a value; it performs `clear()` + `addAll()`, violating the expected semantic of a setter method.
+
+**Line 47: LinguisticNaming (PMD)**
+Same issue as line 38 — `setNonWrappableFields` performs compound mutation rather than a simple assignment.
+
+**Line 3: UnusedImports (PMD/Checkstyle)**
+`import java.util.Collection;` — used only in setter parameters; acceptable, but flag if Collection is deemed overly broad vs List used in constructor.
+
+**Line 19-20: HiddenField (PMD)**
+Parameters `resolvableFields` and `nonWrappableFields` shadow instance fields of the same name.

@@ -1,0 +1,20 @@
+**Line 46 — Assignment in Return Statement / Return of Mutable Object via Side Effect**
+`return contentResultStringsHtml = getHighlighterFragments(...)` — assignment inside return statement (rule: **AssignmentInOperand** / **AvoidAssignmentInOperand**)
+
+**Line 21-22 — Non-Final Fields in Effectively Immutable Class**
+`contentResultStringsHtml` and `annotationsResultStringsHtml` are non-final instance fields in a `final` class that otherwise uses final fields. (rule: **ImmutableField** — these could be made final if initialized in constructor)
+
+**Line 46 — Inconsistent Lazy Initialization**
+`contentResultStringsHtml` is lazily initialized in a non-thread-safe manner (no synchronization). (rule: **NonThreadSafeSingleton** / **UnsynchronizedStaticUsage** / **LazyInitialization**)
+
+**Line 51 — Same rule: Unsynchronized Lazy Initialization**
+`annotationsResultStringsHtml` has the same non-thread-safe lazy initialization issue. (rule: **LazyInitialization**)
+
+**Line 36-38 — Public No-Arg Constructor Delegates to Private Constructor with Magic Values**
+Passes magic literal `-1` and `null` for `pageNumber` and `highlighter`. (rule: **MagicNumber**, **AvoidLiteralsInIfCondition**)
+
+**Line 70 — NullPointerException Risk**
+`highlighter` can be `null` (set via the no-arg constructor), and `getHighlighterFragments` passes it directly to `highlighter.getBestTextFragments(...)` without a null check. (rule: **NullAssignment** / **AvoidNullPointerException** / **NullDereference**)
+
+**Line 69 — Static Field Used as Instance Dependency**
+`LinkedFilesConstants.LINKED_FILES_ANALYZER` is a static/shared `Analyzer` used inside a `try-with-resources` `tokenStream()` call; if it's reused across threads, this is unsafe. (rule: **NonThreadSafeObject**)

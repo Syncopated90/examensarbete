@@ -1,0 +1,21 @@
+**Line 29** – `lastResolvedBlgPath` field is declared but only assigned, never meaningfully read in logic that affects behavior (beyond being overwritten). **Dead Store / Unused Field** (`UnusedPrivateField`)
+
+**Line 32** – `userManuallySelectedBlgFile` field is a primitive `boolean` with package-private effective visibility via public accessor, but the field itself is `private` and only toggled without guarding thread safety. **Non-thread-safe mutable field** (`UnsynchronizedStatefulMethod`)
+
+**Line 35** – Constructor parameter `bibPath` is `Optional<Path>`; storing `Optional` as a field is an antipattern. **`Optional` used as field type** (`OptionalUsedAsFieldOrParameterType`)
+
+**Line 63** – Local variable `path` shadows the instance field `path` (a `StringProperty`). **Variable shadowing** (`LocalVariableHidesMemberVariable` / `HiddenField`)
+
+**Line 65** – `this.lastResolvedBlgPath` is assigned inside `getBlgWarnings`, a method that is not a setter — unexpected side effect in a query method. **Command-Query Separation violation** (`MethodSideEffects`)
+
+**Line 67** – `new BibtexLogParser()` instantiated inside a method on every call; should be a field or injected. **Instantiation inside method** (`AvoidInstantiatingObjectsJustToGetLength` / unnecessary object creation)
+
+**Line 36** – `Optional<Path> bibPath` stored as field. **`OptionalUsedAsFieldOrParameterType`** (PMD/Sonar `java:S3553`)
+
+**Line 38** – `System.getProperty("user.name")` called in constructor without null-check; result could be `null`. **Null dereference risk** (`NullDereferenceCheck`)
+
+**Line 107** – `System.getProperty("user.home")` used directly without null-check. **Null dereference risk** (`NullDereferenceCheck`)
+
+**Line 100** – `getResolvedBlgPath()` calls `BibLogPathResolver.resolve(...)` and so does `resetBlgFilePath()` at line 94 — duplicated logic without extraction. **Duplicated code** (`DuplicatedBlocks`)
+
+**Line 44** – `metaData.setBlgFilePath(user, resolvedPath)` called as a side effect inside a constructor. **Side effect in constructor** (`ConstructorDoesMoreThanAssignFields`)

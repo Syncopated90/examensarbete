@@ -1,0 +1,9 @@
+**Line 19** — `LooseCoupling`: Field declared as `LinkedHashSet` instead of interface type `SequencedSet` or `Set`.
+
+**Line 38** — `LooseCoupling`: `new LinkedHashSet<>(fields)` assigned to a `LinkedHashSet` field; prefer programming to interface.
+
+**Line 44** — `MissingOverride` / design issue: `determineFieldsToShow` returns the mutable internal `fields` directly, violating `ReturnEmptyCollectionRatherThanNull` / encapsulation (should return a copy to prevent external mutation).
+
+**Line 19** — `ImmutableField`: The `fields` field is never reassigned after constructor but is not declared `final` — actually it is `final`, but the collection itself is mutable and returned directly (encapsulation violation).
+
+**Lines 21-29** — `ExcessiveParameterList`: Constructor has 9 parameters, exceeding typical threshold of 7.

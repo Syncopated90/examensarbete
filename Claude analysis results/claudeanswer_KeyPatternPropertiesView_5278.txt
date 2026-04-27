@@ -1,0 +1,15 @@
+**Line 19** - `InjectedFieldIsNotFinal` (Injected fields should be declared `final` or the injection framework won't guarantee immutability; `@Inject` on non-final fields is a code smell)
+
+**Line 20** - `InjectedFieldIsNotFinal` (same rule, `bibEntryTypesManager` is not `final`)
+
+**Line 20** - `UnusedField` / `FieldCanBeLocal`: `bibEntryTypesManager` is injected but never used in `initialize()`, only in `setValues()`, making it a candidate for a narrower scope concern; however it is used, so strictly: no violation here — retract.
+
+**Line 33** - `MissingOverride`: `initialize()` overrides/implements a framework lifecycle method but lacks `@Override` annotation.
+
+**Line 17** - `FieldNamingConvention`: `bibtexKeyPatternTable` uses mixed naming that doesn't align with the field's actual type (`CitationKeyPatternsPanel`), suggesting a stale/inconsistent name (naming rule violation).
+
+**Line 15** - `ClassFanOutComplexity`: The class depends on `CitationKeyPatternsPanel`, `AbstractPropertiesTabView`, `PropertiesTab`, `GuiPreferences`, `BibEntryTypesManager`, `ViewLoader`, `BibDatabaseContext`, `KeyPatternPropertiesViewModel`, `Localization` — exceeds typical fan-out threshold of 7.
+
+**Line 44-48** - `LawOfDemeter`: Chain calls `databaseContext.getMetaData().getMode().orElse(preferences.getLibraryPreferences().getDefaultBibDatabaseMode())` and `databaseContext.getMetaData().getCiteKeyPatterns(...)` violate the Law of Demeter (multiple chained method calls on returned objects).
+
+**Line 33** - `MethodNamingConvention` / `DesignForExtension`: `initialize()` is `public` but not annotated with `@FXML`, unlike `resetAllKeyPatterns()` on line 51, creating an inconsistency in the injection/callback pattern.

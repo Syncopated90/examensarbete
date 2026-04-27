@@ -1,0 +1,15 @@
+**Line 7** (`import org.antlr.v4.runtime.tree.ErrorNode;`) — `UnusedImports`: `ErrorNode` is referenced in the method signature at the bottom, so this may be valid. Re-checking...
+
+**Line 8** (`import org.antlr.v4.runtime.tree.TerminalNode;`) — Used in `visitTerminal`. Valid.
+
+**Line 6** (`import org.antlr.v4.runtime.ParserRuleContext;`) — Used in `enterEveryRule`/`exitEveryRule`. Valid.
+
+---
+
+**Line 14** — `ClassWithoutLogger` / no logging, but that is not a standard static analysis rule violation here.
+
+**Line 14** (`public class BstBaseListener implements BstListener`) — **`AbstractClassWithoutAbstractMethods`**: The class is a concrete class acting as a base/adapter with all empty method bodies; should be declared `abstract`.
+
+**Line 21** (`@Override public void enterBstFile(...) { }`) and all similar lines — **`EmptyMethodInAbstractClassShouldBeAbstract`** (PMD): Non-abstract class with empty methods that exist solely to be overridden.
+
+**Line 13** (`@SuppressWarnings("CheckReturnValue")`) — **`SuppressWarningsWithoutReason`** (some rule sets): No comment explaining why the suppression is needed.

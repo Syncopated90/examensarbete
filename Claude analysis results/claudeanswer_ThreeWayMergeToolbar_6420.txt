@@ -1,0 +1,19 @@
+**Line 22** - `UnusedImports`: `com.google.common.base.Enums` is imported but only used within enum methods; verify necessity, but `parse()` methods use it while `fromString()` duplicates functionality via `Enum.valueOf`.
+
+**Line 28** - `FieldNamingConventions`: `highlightCharactersRadioButtons` — field name is plural for a single `RadioButton` instance.
+
+**Line 51** - `FieldNamingConventions` / `UnusedField`: `showDiff` is an instance field but only assigned once in `initialize()` and exposed via getter; should be `final` or declared at point of use.
+
+**Line 93** - `NullDereference`: `diffHighlightingMethodToggleGroup.getSelectedToggle()` can return `null` if no toggle is selected; `.equals()` called without null check.
+
+**Line 127** - `NullDereference`: `diffHighlightingMethodToggleGroup.getSelectedToggle()` can return `null` before calling `.equals(highlightWordsRadioButton)`.
+
+**Line 161** - `BooleanMethodReturnWrapped` / `UseOfBoxedBoolean`: `shouldShowDiffs()` returns `Boolean` (boxed) instead of primitive `boolean`, risking `NullPointerException`.
+
+**Line 196** - `EnumNamingConventions`: Enum constant `Diff` does not follow Java convention of `UPPER_SNAKE_CASE`; should be `DIFF`.
+
+**Line 207** - `UseThrowingVariantOfEnumValueOf`: `Enum.valueOf` in `fromString` throws `IllegalArgumentException` on invalid input with no handling; consider using `parse()` which provides a default.
+
+**Line 225** - `UseThrowingVariantOfEnumValueOf`: Same issue as line 207 for `DiffView.fromString`.
+
+**Line 196, 219** - `AvoidCallingLocalizationInStaticContext`: `Localization.lang()` called during enum constant initialization (static context), which can cause issues with initialization order and localization readiness.

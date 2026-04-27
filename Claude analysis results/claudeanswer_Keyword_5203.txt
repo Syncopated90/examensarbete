@@ -1,0 +1,15 @@
+**Line 17** — `MutableStaticField`: `DEFAULT_HIERARCHICAL_DELIMITER` is a `public static` non-final field, making it mutable global state.
+
+**Line 6** — `UnusedImport`: `java.util.stream.Collectors` is used, but `java.util.stream.Stream` is also imported — both are used; however `java.util.List` — used, `java.util.Objects` — used, `java.util.Set` — used. No unused imports flagged here. Retract.
+
+**Line 17** — `MutableStaticField` (PMD): `DEFAULT_HIERARCHICAL_DELIMITER` is not `final` but `DEFAULT_ESCAPE_SYMBOL` on line 18 is `final`. Missing `final` modifier.
+
+**Line 40** — `UselessParentheses` / regex concern: `rawString.split(Keyword.DEFAULT_HIERARCHICAL_DELIMITER.toString())` — the `>` character is passed directly to `String.split()` as a regex without escaping, but `>` is not a regex metacharacter so no rule broken here.
+
+**Line 17** — `VisibilityModifier` (PMD/Checkstyle): `DEFAULT_HIERARCHICAL_DELIMITER` is `public static` but not `final`, violating encapsulation.
+
+**Line 63** — `OverriddenMethodCallInConstructor`: Not applicable here.
+
+**Line 55** — `InefficientEmptyStringCheck`: Not applicable.
+
+**Line 17** — **`MutableStaticField`** (SpotBugs: `MS_SHOULD_BE_FINAL`): Field `DEFAULT_HIERARCHICAL_DELIMITER` should be `final`.

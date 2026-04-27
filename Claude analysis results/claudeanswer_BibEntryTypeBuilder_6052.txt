@@ -1,0 +1,27 @@
+**Line 25** — `VisibilityModifier`: Field `requiredFields` shadows the parameter name used in multiple methods below.
+
+**Line 27** — `MutableField`: `optionalFields` is non-final while `requiredFields` and `seenFields` are final; inconsistent mutability.
+
+**Line 28** — `MagicNumber`/`FieldInitialization`: Default `StandardEntryType.Misc` assigned inline without explanation.
+
+**Line 65** — `ParameterHidingField`: Parameter `requiredFields` in `withRequiredFields(SequencedSet<OrFields>)` hides instance field `requiredFields`.
+
+**Line 69** — `ParameterHidingField`: Parameter `requiredFields` in `addRequiredFields(SequencedSet<OrFields>)` hides instance field `requiredFields`.
+
+**Line 69** — `ReturnValueIgnored`/`SideEffectImport`: `this.requiredFields.addAll(requiredFields)` — return value of `addAll` ignored.
+
+**Line 80** — `ParameterHidingField`: Parameter `requiredFields` in `addRequiredFields(OrFields...)` hides instance field `requiredFields`.
+
+**Line 84** — `ParameterHidingField`: Parameter `requiredFields` in `addRequiredFields(Field...)` hides instance field `requiredFields`.
+
+**Line 88** — `ParameterHidingField`: Parameter `requiredFields` in `withRequiredFields(Field...)` hides instance field `requiredFields`.
+
+**Line 92** — `ParameterHidingField`: Parameter `requiredFields` in `withRequiredFields(OrFields, Field...)` hides instance field `requiredFields`.
+
+**Line 96** — `ParameterHidingField`: Parameter `first` shadows broader intent; parameter `requiredFields` hides instance field `requiredFields`.
+
+**Line 36** — `DuplicateCode`: Warn-log and `hasWarnings = true` block duplicated verbatim across `withImportantFields`, `withDetailFields`, and `addRequiredFields`.
+
+**Line 43** — `LawOfDemeter`: `type.getDisplayName()` called repeatedly across methods rather than storing locally.
+
+**Line 100** — `LocalVariableCouldBeFinal`: `requiredAsImportant` could be declared as part of a single chained expression; intermediate variable adds no clarity.

@@ -1,0 +1,21 @@
+**Line 252** — `computeHighlighting`: Pattern compiled inside method on every call — **InefficientRegularExpression** / **PrecompiledPattern**
+
+**Line 253** — Same issue for `ATTRIBUTES` pattern — **InefficientRegularExpression** / **PrecompiledPattern**
+
+**Line 86** — `dragSourceList` declared as mutable non-final field initialized to `null` — **NullAssignment**
+
+**Line 87** — `dragSourceSelectionModel` declared as mutable non-final field initialized to `null` — **NullAssignment**
+
+**Line 226** — `validationStatus.getHighestMessage().isPresent()` checked then `ifPresent` called — **DoubleCheckedOptional** / redundant `isPresent` before `ifPresent`
+
+**Line 337** — `targetLayout` parameter reassigned inside method body — **ParameterAssignment**
+
+**Line 355** — `targetLayout` reassigned again — **ParameterAssignment**
+
+**Line 127** — `chosenListProperty.stream()` called directly on `ListProperty` instead of `.getValue().stream()` — inconsistent with surrounding code, **DirectStreamOnListProperty**
+
+**Line 86–87** — `dragSourceList` and `dragSourceSelectionModel` are instance fields used as temporary drag state; accessed without null-check in `dragDropped` (line 308) and `dragDroppedInChosenCell` (line 329) — **NullDereference**
+
+**Line 130** — `BibEntryTypesManager` obtained via `Injector.instantiateModelOrService` (service locator anti-pattern) inside `setValues` rather than injected via constructor — **InjectionAntiPattern** / **LawOfDemeter**
+
+**Line 96** — `sourceTextProperty.addListener` uses unnamed pattern variables (`_`) — listener logic silently modifies `layout` state as a side effect with no null-guard on `sourceTextProperty.getValue()` — **NullDereference**

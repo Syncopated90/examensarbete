@@ -1,0 +1,19 @@
+**Line 20** — `BaseQueryNode` imported but check if it should be an interface/abstract type; verify usage is not overly coupled to concrete implementation. *(Abstraction Coupling)*
+
+**Line 25** — `URL_PATTERN` is a `String` used as a URL base; should be typed as `URI` or validated. *(Inappropriate Data Type)*
+
+**Line 29** — `searchKeys` field is declared but never used within the class. *(Unused Field)*
+
+**Line 29** — `searchKeys` is a mutable collection field initialized with `Arrays.asList()`; not declared `final` semantically — `Arrays.asList` returns a fixed-size but externally accessible list. Should be `List.of()` for true immutability. *(Mutable Collection Field)*
+
+**Line 52** — `uriBuilder.build()` called twice (lines 52 and 53); redundant double call. *(Duplicate Code / Redundant Computation)*
+
+**Line 63** — `uriBuilder.build()` called twice (lines 63 and 64); same redundant double call. *(Duplicate Code / Redundant Computation)*
+
+**Lines 44–53 and 55–64** — `getURLForQuery` and `getUrlForIdentifier` share nearly identical `URIBuilder` setup code (version, operation, maximumRecords, recordSchema, sortKeys). *(Duplicate Code)*
+
+**Line 77** — Character class `[\\D]` in `replaceAll` is unnecessarily wrapped in a character class; `\\D` suffices. *(Unnecessarily Complex Regex)*
+
+**Line 77** — `replaceAll("[\\D]", "")` silently discards non-digit characters without validation or logging; potential data loss. *(Improper Input Validation)*
+
+**Line 24** — Class `GvkFetcher` extends `AbstractIsbnFetcher` and implements `SearchBasedParserFetcher`, but no `LOGGER` is declared in this class; relies on inherited `LOGGER` from superclass — tight inheritance coupling. *(Inappropriate Use of Inheritance for Field Access)*

@@ -1,0 +1,21 @@
+**Line 12** — `COLUMN` — Enum constant name conflicts with potential reserved or ambiguous naming; minor, but `COLUMN` is acceptable. Skip.
+
+**Line 19** — `RULE` — Enum constant named `RULE` shadows/conflicts with the class's own enclosing package rule naming conventions. (PMD: **AvoidDuplicateLiterals** / **NamingConvention** — enum constant `RULE` conflicts with PMD rule name namespace; low severity but flagged in static analysis contexts.)
+
+**Line 44** — `toString()` — PMD: **OverrideBothEqualsAndHashcode** — Not applicable here, but:
+
+**Line 44–46** — `toString()` overridden but returns `displayName` which duplicates `getDisplayName()`. PMD: **UnnecessaryOverride** / **UncommentedEmptyMethodBody** — not empty, but redundant delegation.
+
+**Line 29** — `private final String displayName;` — PMD: **LinguisticNaming** — field `displayName` is fine, no issue.
+
+**Line 30** — `private final String abbreviation;` — No issue.
+
+**Line 1** — Missing package-level `@SuppressWarnings` or Javadoc. Checkstyle: **MissingJavadocType** — public enum has no class-level Javadoc comment.
+
+**Line 33** — `public String getDisplayName()` — Checkstyle: **MissingJavadocMethod** — public method lacks Javadoc.
+
+**Line 37** — `public String getAbbreviation()` — Checkstyle: **MissingJavadocMethod** — public method lacks Javadoc.
+
+**Line 41** — `@Override public String toString()` — Checkstyle: **MissingJavadocMethod** — public method lacks Javadoc.
+
+**Line 31** — Constructor `LocatorType(String, String)` — Checkstyle: **MissingJavadocMethod** — constructor lacks Javadoc.

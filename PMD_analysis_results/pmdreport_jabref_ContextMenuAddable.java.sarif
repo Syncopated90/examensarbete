@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "FinalParameterInAbstractMethod",
+              "shortDescription": {
+                "text": "Final parameter in abstract method"
+              },
+              "fullDescription": {
+                "text": "\n            Declaring a method parameter as final for an interface method is useless because the implementation may choose to not respect it.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_codestyle.html#finalparameterinabstractmethod",
+              "help": {
+                "text": "\n            Declaring a method parameter as final for an interface method is useless because the implementation may choose to not respect it.\n        "
+              },
+              "properties": {
+                "ruleset": "Code Style",
+                "priority": 1,
+                "tags": [
+                  "Code Style"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "FinalParameterInAbstractMethod",
+          "ruleIndex": 0,
+          "message": {
+            "text": "Final parameter in abstract method"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/ContextMenuAddable.java"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 10,
+                  "endLine": 14,
+                  "endColumn": 25
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+**Line 37** – `MoreCollectors.onlyElement()` used inside `collect()` without handling the exception case; if stream has 0 or >1 elements it throws unchecked, but `hasExactlyOne()` should guard this — low severity, but tightly coupled assumption. **Rule: IllegalCatch / FragileBooleanLogic**
+
+**Line 53** – Method `getDisplayName()` documents `@return null if field is empty` but returns whatever `FieldTextMapper.getDisplayName(fields)` returns; null return from a named getter is undocumented at the implementation level. **Rule: NullableReturn / MissingNullAnnotation**
+
+**Line 57** – `getFieldValue` returns `null` explicitly (line 58). **Rule: ReturnNull / AvoidReturningNull**
+
+**Line 28** – `setCellValueFactory` lambda `param -> getFieldValue(param.getValue())` can return `null` (per `getFieldValue`), which JavaFX does not safely handle in all cell factory contexts. **Rule: NullAssignment / ReturnNull**
+
+**Line 30-33** – `new ValueTableCellFactory<>()` result is discarded after `.install(this)`; intermediate builder object created but not assigned. **Rule: ResultOfObjectAllocationIgnored**
+
+**Line 35-41** – `fields.getFields().stream().collect(MoreCollectors.onlyElement())` re-streams `fields` after `hasExactlyOne()` check with no synchronization; if `fields` were mutable, TOCTOU race possible. **Rule: NonAtomicOperationOnVolatileField / TOCTOUVulnerability**
+
+**Line 19** – Class `FieldColumn` is not `final` and extends `MainTableColumn`; no `@Override` guards on overridable methods used in constructor (`getDisplayName` called at line 27 during construction before subclass initialization). **Rule: OverridableMethodCallInConstructor**
+
+**Line 27** – `getDisplayName()` is called in the constructor; it is an overridable method. **Rule: OverridableMethodCallInConstructor**

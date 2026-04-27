@@ -1,0 +1,13 @@
+**Line 28** — `endsWith(",")` duplicates the condition already checked with `startsWith(",")` on line 26. The `endsWith` branch should likely check `endsWith(",")` is redundant/dead logic overlap; more critically, the logic intended was probably `endsWith(" and")` only, making the comma check on `endsWith` a **copy-paste error** / **DuplicateCondition** rule violation.
+
+**Line 26** — `startsWith(",")` and **Line 28** `endsWith(",")`: the `endsWith(",")` condition on line 28 is unreachable in terms of distinct intent — **BranchStatementsShouldBeDifferent** / **IdenticalCatchBranches** (PMD: `DuplicateCondition`).
+
+**Line 25** — `valueTrimmedAndLowerCase` is computed but the original `value` (not lowercased) is passed to `isStandardFormat` on line 32 and line 41. Case folding is applied inconsistently — **InconsistentUsageOfField** / **UseConsistentDataTransformation**.
+
+**Line 41** — `new RemoveBrackets().format(value)` instantiates a new object inside a method that may be called repeatedly. **InstantiateNewObjectsInLoops** / **AvoidInstantiatingObjectsJustToCallGetClass** — more precisely PMD: **InsufficientStringBufferDeclaration**; Checkstyle: **ObjectInstantiationInLoop** if called in bulk. Rule: **UnnecessaryLocalVariable** / **ObjectCreationInMethod** — object should be a reusable field or static.
+
+**Line 47–48** — `isStandardFormat` calls `AuthorList.parse(name)` and then calls two chained getter methods. No null-check on the result of `format()` (line 41) before use on line 44. Rule: **NullDereference** / **AvoidDereferenceOfNullPointer**.
+
+**Line 13** — `PersonNamesChecker` implements `ValueChecker` but has no `@Override` annotation verification issue; `bibMode` is a non-private concern — field `bibMode` should be `private final` ✓ (this is fine), but the class is not `final` despite being a simple checker with no intended subclassing. Rule: **ClassShouldBeFinal** (PMD).
+
+**Line 26/28** — Both branches use `Localization.lang(...)` with hardcoded string keys. Rule: **AvoidDuplicateLiterals** (PMD) — the pattern of embedding raw English strings as l10n keys repeated inline.

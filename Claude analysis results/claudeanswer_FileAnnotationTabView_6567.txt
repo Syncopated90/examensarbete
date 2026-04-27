@@ -1,0 +1,33 @@
+**Line 32** – `public` field (`files`): **VisibilityModifier** – FXML fields should be `private`.
+
+**Line 33** – `public` field (`annotationList`): **VisibilityModifier**
+
+**Line 34** – `public` field (`author`): **VisibilityModifier**
+
+**Line 35** – `public` field (`page`): **VisibilityModifier**
+
+**Line 36** – `public` field (`date`): **VisibilityModifier**
+
+**Line 37** – `public` field (`content`): **VisibilityModifier**
+
+**Line 38** – `public` field (`marking`): **VisibilityModifier**
+
+**Line 39** – `public` field (`details`): **VisibilityModifier**
+
+**Line 41** – `private` non-`final` field `viewModel` not initialized at declaration: **FieldDeclarationsShouldBeAtStartOfClass** (ordering: appears after `entry` and `fileAnnotationCache`)
+
+**Line 63** – Raw type used: `new ViewModelListCellFactory<FileAnnotationViewModel>()`: **RawTypes** (diamond can be inferred, though minor; main issue is redundant explicit type argument)
+
+**Line 88** – Local variable `marking` shadows field `this.marking`: **LocalVariableHidesMemberVariable**
+
+**Line 89** – Local variable `author` shadows field `this.author`: **LocalVariableHidesMemberVariable**
+
+**Line 90** – Local variable `date` shadows field `this.date`: **LocalVariableHidesMemberVariable**
+
+**Line 91** – Local variable `page` shadows field `this.page`: **LocalVariableHidesMemberVariable**
+
+**Line 54** – `files.getSelectionModel().selectedItemProperty().addListener(...)` uses lambda ignoring `observable` and `oldValue`: **UnusedFormalParameter**
+
+**Line 61** – `annotationList.getSelectionModel().selectedItemProperty().addListener(...)` lambda ignores `observable` and `oldValue`: **UnusedFormalParameter**
+
+**Line 112** – `public` method `copy()` in a view class directly delegates to `viewModel`; no null-check on `viewModel` (initialized lazily in `initialize()`): **NullAssignment** / **CallToUnusedMethod** risk.

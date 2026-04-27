@@ -1,0 +1,23 @@
+**Line 57** - `ST_OBJ_FIELD` / Static field initialization depends on another static field (`KEY_TO_ICON` uses `IconTheme.class.getResource` which is fine, but initialization order dependency with `ICON_NAMES` is fragile)
+
+**Line 56** - `UWF_UNWRITTEN_FIELD` / `KEY_TO_ICON` is a complex static initializer that can return `null` implicitly if `readIconThemeFile` receives a null URL (no null check on `IconTheme.class.getResource(...)` before passing to `readIconThemeFile`)
+
+**Line 63** - `NP_NULL_ON_SOME_PATH` / `findIcon` calls `code.toUpperCase()` without null check on `code` parameter which lacks `@NonNull` annotation
+
+**Line 72** - `ST_OBJ_FIELD` / `loadAllIkons` mutates static field `ICON_NAMES` without synchronization; race condition in multi-threaded context
+
+**Line 72-76** - `IS2_INCONSISTENT_SYNC` / `ICON_NAMES.isEmpty()` check and `loadAllIkons()` call is a non-atomic check-then-act; not thread-safe
+
+**Line 107** - `NP_NULL_ON_SOME_PATH` / `url.openStream()` is called without verifying `url` is non-null despite `@NonNull` annotation; annotation alone does not guarantee enforcement at runtime
+
+**Line 110** - `DM_DEFAULT_ENCODING` / `BufferedReader` wraps `InputStreamReader` with explicit charset (`ISO_8859_1`) — this is correct, but note `readIconThemeFile` is called at class load time (line 56) where exceptions are silently swallowed
+
+**Line 56** - `LI_LAZY_INIT_STATIC` / Static field `KEY_TO_ICON` initialized via method call with no guarantee of safe publication
+
+**Line 87** - `NP_NULL_ON_SOME_PATH_EXCEPTION_ONLY` / `KEY_TO_ICON.getOrDefault(name, DEFAULT_ICON_PATH)` result passed to `getResource()` could produce null, then `Objects.requireNonNull` throws with non-informative path when icon key is missing
+
+**Line 128-134** - `DM_STRING_TOSTRING` / Calling `.toString()` on result of `getIconUrl(...).toString()` — actually `getIconUrl` returns `URL`, `.toString()` is called once, this is correct; however repeated pattern of `new Image(getIconUrl("...").toString())` violates **DRY** principle (not a static analysis rule per se)
+
+**Line 57** - `ST_WRITE_TO_STATIC_FROM_INSTANCE_CONTEXT` / `ICON_NAMES` is a static mutable `HashSet` modified in `loadAllIkons()` which is a static method but called from instance-like context without synchronization
+
+**Line 80** - `BC_UNCONFIRMED_CAST` / `allOf(provider.getIkon())` performs unchecked generic operation; `provider.getIkon()` raw type passed to `allOf`

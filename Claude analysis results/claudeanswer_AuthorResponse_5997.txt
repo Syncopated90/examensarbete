@@ -1,0 +1,15 @@
+**Line 4: `ClassNamingConventions`** — Class `AuthorResponse` is a data transfer object but uses no standard DTO/POJO naming suffix (minor, style-dependent).
+
+**Line 4: `MissingSerialVersionUID`** — Class is a serializable-style bean without `serialVersionUID`.
+
+**Line 5-6: `UnnecessaryModifier` / `VisibilityModifier`** — Fields `authorId` and `name` are `private` but exposed via public getters/setters with no validation, violating encapsulation purpose (effectively a public field).
+
+**Line 12: `HiddenField`** — Parameter `authorId` in `setAuthorId(String authorId)` hides the field `authorId`.
+
+**Line 20: `HiddenField`** — Parameter `name` in `setName(String name)` hides the field `name`.
+
+**Line 4: `MissingJavadocType`** — Triple-slash `///` comment is not a valid Javadoc comment (`/** */` required); Javadoc will not be generated.
+
+**Line 4: `CommentDefaultAccessModifier` / `MissingJavadocComment`** — The `///` syntax is not standard Java Javadoc, making the comment non-functional as documentation.
+
+**Line 4: `DataClass`** — Class only has getters and setters with no behaviour, violating object-oriented design principles.

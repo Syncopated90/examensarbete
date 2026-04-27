@@ -1,0 +1,19 @@
+**Line 5** — `UnusedImport`: `java.util.stream.Collectors` is used, but check below — actually used at lines 91 and 128, valid. Disregard.
+
+**Line 91** — `CollectorsToList`: `collect(Collectors.toList())` should be replaced with `.toList()` (modernized stream collection).
+
+**Line 155** — `UnusedFormalParameter`: `event` parameter in lambda `menuItem.setOnAction(event -> linkedFileViewModel.open())` is unused; should be `_` (as correctly done on line 113).
+
+**Line 113** — No issue; uses `_` correctly for unused lambda parameter.
+
+**Line 67** — `ConstructorTooLong`/`ExcessiveMethodLength`: First constructor is long with inline logic; cell factory setup should be extracted to a method.
+
+**Line 75** — `ConstructorTooLong`/`ExcessiveMethodLength`: Second constructor is excessively long with complex inline logic.
+
+**Line 91** — `AvoidCollectorsToList`: Use `Stream.toList()` instead of `collect(Collectors.toList())`.
+
+**Line 36–37** — `VisibilityModifier`: Fields `dialogService`, `database`, `preferences`, `taskExecutor` are `private final` — compliant; no issue.
+
+**Line 155** — `LambdaParameterNaming`: Lambda parameter `event` is declared but unused; should be `_` consistent with line 113.
+
+**Line 128** — `UnnecessaryLocalVariable`: `filePaths` is used only once immediately after assignment — minor but flaggable.

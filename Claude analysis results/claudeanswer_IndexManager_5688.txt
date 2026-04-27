@@ -1,0 +1,21 @@
+**Line 53** - `PostgreServer` parameter name `postgreServer` (typo: missing 's') — **NamingConventions** (inconsistent/misspelled parameter name)
+
+**Line 53** - `PostgreServer postgreServer` — **UnusedImports** / architectural rule: non-standard dependency injected into logic layer
+
+**Line 57** - `(_, _, newValue)` — **LambdaParameterNaming** (underscore parameters may not be valid in all Java versions targeted; use of unnamed patterns requires Java 21+)
+
+**Line 79-84** — Anonymous `BackgroundTask<>` subclass returning `null` — **ReturnNull** (should use typed generic, not raw Object with null return)
+
+**Line 79**, **91**, **96**, **107**, **113**, **120**, **128**, **134**, **143**, **149**, **157** — Repeated anonymous `BackgroundTask<>` subclasses with identical structure — **DuplicatedBlocks**
+
+**Line 215** — `Files.walk(path)` result not closed in try-with-resources — **ResourceLeak**
+
+**Line 215-218** — `File::delete` return value ignored — **CheckReturnValue**
+
+**Line 215** — `Files.walk(...).map(Path::toFile).forEach(File::delete)` — **AvoidFileDelete** / **PreferNIOOverIO** (mixing NIO `Files.walk` with legacy `File::delete`)
+
+**Line 198** — `DirectoryStream<Path>` used correctly with try-with-resources, but `Files.walk` on line 215 is not — **ResourceLeak**
+
+**Line 65** — Caught `IOException` logs at `debug` level and silently falls back — **GenericExceptionHandling** / **InsufficientLogging**
+
+**Line 173** — `catch (InterruptedException e)` does not call `Thread.currentThread().interrupt()` — **InterruptedExceptionHandling**

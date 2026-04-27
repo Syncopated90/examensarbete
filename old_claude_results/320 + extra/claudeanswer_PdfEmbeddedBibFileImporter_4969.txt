@@ -1,0 +1,7 @@
+**Line 70** — `Dead Code` / `Useless Method Call`: The return value of `FileUtil.getFileExtension(filename)` is ignored and the call has no side effects.
+
+**Line 57** — `Unchecked Cast`: `annotationFileAttachment.getFile()` is cast to `PDComplexFileSpecification` without an `instanceof` check before casting.
+
+**Line 80** — `Resource Leak`: `embeddedFile.createInputStream()` in `extractAndParseFile` opens an `InputStream` that is never explicitly closed; it is passed directly to `bibtexParser.parseEntries()` with no try-with-resources.
+
+**Line 48** — `Null Dereference`: `node.getNames()` can return `null`, and the result is passed directly to `extractAndParseFiles(names)` without a null check, unlike the analogous call at line 44.

@@ -1,0 +1,9 @@
+**Line 19** — `Character delimiter` should be `char` (primitive); using boxed type unnecessarily. **Rule: `UnnecessaryBoxing` / `UseOfWrapperClass`**
+
+**Line 21** — `groupsA` and `groupsB` parameters lack `@Nullable` annotation despite being used in null/blank checks, violating nullability contract consistency. **Rule: `MissingNullableAnnotation`**
+
+**Line 23** — `return groupsB` — `groupsB` could be `null` here (only blank-checked for `groupsA`), returning `null` from a method expected to return non-null. **Rule: `ReturnOfNull` / `NullableReturnedFromNonNullMethod`**
+
+**Line 25** — `return groupsA` — same issue; `groupsA` is only blank-checked, not null-checked, potential `null` return. **Rule: `ReturnOfNull` / `NullableReturnedFromNonNullMethod`**
+
+**Line 3** — `StringUtil` import from `logic.util.strings` used solely for `isBlank`, which duplicates `java.lang.String#isBlank()` or `org.apache.commons.lang3.StringUtils#isBlank()`. **Rule: `UnnecessaryDependency` / `InappropriateIntimacy`**

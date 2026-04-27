@@ -1,0 +1,11 @@
+**Line 30** — `needsEntriesSelected` with hardcoded magic number `1` (Magic Number rule)
+
+**Line 43** — `bibEntries.getFirst()` called twice without null/empty check; `getFirst()` throws `NoSuchElementException` if list is empty (Null/Empty Check / Defensive Programming rule)
+
+**Line 43** — `bibEntries.getFirst()` duplicated on **line 44**; same expression evaluated twice (DRY / Avoid Duplicate Code rule)
+
+**Line 44** — `NativeDesktop.openExternalViewer(...)` is a static method call, violating dependency inversion and making the class untestable (Law of Demeter / Avoid Static Access rule)
+
+**Line 30** — `ExternalLinkCreator` instantiated directly inside the constructor (line 35); breaks Dependency Injection principle (Dependency Inversion rule)
+
+**Line 42** — Deep nesting of lambdas inside `execute()` reduces readability and violates single level of abstraction (Deeply Nested Code rule)

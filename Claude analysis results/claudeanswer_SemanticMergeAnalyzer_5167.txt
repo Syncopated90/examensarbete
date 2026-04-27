@@ -1,0 +1,13 @@
+**Line 40** — `threeWayEntryConflictsOpt` is computed via `ConflictRules.detectEntryConflict` but its value is discarded; a new `ThreeWayEntryConflict` is constructed redundantly instead of using `threeWayEntryConflictsOpt.get()`. **Rule: `AvoidRecomputingOrIgnoringOptionalValue` / `UselessObjectCreation`**
+
+**Line 40** — Variable name `threeWayEntryConflictsOpt` is singular concept but named as plural (`Conflicts`). **Rule: `LinguisticNaming` / `ConfusingVariableName`**
+
+**Line 35–37** — Direct field access on `triples.baseMap`, `triples.localMap`, `triples.remoteMap` (assuming package-private or public fields). **Rule: `DataClass` / `EncapsulationViolation`**
+
+**Line 33** — Direct field access `triples.allKeys()` mixed with direct field access on the same object suggests inconsistent API. **Rule: `InconsistentAccessorStyle`**
+
+**Line 22–23** — Method `analyze` takes three `BibDatabaseContext` parameters with no null-checks. **Rule: `NullParameterNotChecked` / `AvoidNullPointerExceptions`**
+
+**Line 21** — `SemanticMergeAnalyzer` is a `final` class with only a `static` method and no constructor suppressing instantiation. **Rule: `UtilityClassWithoutPrivateConstructor`**
+
+**Line 44** — `threeWayEntryConflictsOpt.isPresent()` used but `.get()` not called; instead a duplicate object is created. **Rule: `OptionalGetWithoutIsPresent`** (inverse misuse — present-check without get, redundant construction). **Rule: `ReplaceOptionalIsPresentWithIfPresent`**

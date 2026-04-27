@@ -1,0 +1,17 @@
+**Line 10** - `ClassNamingConventions` / `VisibilityModifier`: Class `OOError` is package-private (no access modifier).
+
+**Line 12** - `VisibilityModifier`: Field `localizedTitle` should be `private final` (is mutable without `final`).
+
+**Line 39** - `MethodNamingConventions`: Overloaded static `from()` methods with different parameter types act as pseudo-overloads; consider distinct names for clarity. (Minor: not a hard rule violation but flagged by some analyzers as `UncommentedEmptyMethodBody` risk.)
+
+**Line 75** - `AvoidCatchingGenericException`: `fromMisc(Exception err)` accepts generic `Exception` type.
+
+**Line 76** - `AvoidHardCodedStrings` / `MagicString`: Hardcoded string `"Exception"` used instead of a localized string via `Localization.lang()`.
+
+**Line 77** - `NullReturnFromMethod` risk / `ReturnValueIgnored`: `err.getMessage()` can return `null`; result passed directly without null-check.
+
+**Line 12** - `MutableField`: `localizedTitle` is not `final` and is reassigned in `setTitle()`, violating immutability of an exception object.
+
+**Line 27** - `ReturnThis`: `setTitle()` returns `this` (builder pattern) on an exception class, which is an unusual pattern flagged by `AvoidReturningMutableObjects` or `SingleResponsibilityPrinciple` rules.
+
+**Line 10** - `SerializableClass`: `OOError` extends `JabRefException` (which extends `Exception`, which is `Serializable`) but declares no `serialVersionUID`.

@@ -1,0 +1,21 @@
+**Line 16** - `LocalVariableCouldBeFinal`: Variable `i` could be final... actually no, it's incremented.
+
+**Line 16** - `AvoidInstantiatingObjectToGetClassObject` / general: Using manual index counter `i` alongside a for-each loop is a code smell.
+
+**Line 15** - `UnnecessaryLocalVariable` / **PrematureDeclaration**: `sb` could be declared closer to use, though minor.
+
+**Line 20** - `InsufficientStringBufferDeclaration`: `StringBuilder` is created without an initial capacity.
+
+**Line 14** - `InstantiationToGetClass`: Minor, but `StringBuilder sb = new StringBuilder()` with no initial capacity (same as line 20 note).
+
+**Line 17-24** - `ForLoopCanBeForeach` is already used, but the manual counter `i` alongside for-each violates **AvoidManualCounterWithForeach** / `UseIndexBasedLoop` inversion — using a separate counter `i` with a for-each loop instead of a traditional for loop breaks **ModifiedControlVariable** style rules.
+
+**Line 21** - `CollapsibleIfStatements` / **AvoidUnnecessaryComparisons**: `i < (keywords.size() - 1)` — unnecessary parentheses around `keywords.size() - 1` violates **UnnecessaryParentheses**.
+
+**Line 12** - `ReturnEmptyStringInsteadOfNull`: Returning `""` for null input may mask null propagation; violates **AvoidLiteralsInIfCondition** indirectly, but specifically **NullShouldNotBeComparedToAnything** / the null check itself is a **CompareObjectsWithEquals** adjacent issue.
+
+**Line 6** - `UnusedImport`: `Keyword` is used, `KeywordList` is used — imports are fine; no violation here.
+
+**Line 9** - `ClassNamingConventions`: `RisKeywords` — no violation.
+
+**Line 21** - `AvoidCallingMethodInLoop`: `keywords.size()` is called on every iteration inside the loop, violating **AvoidCallingMethodInLoop** / `invariant code motion` — the size should be cached outside the loop.

@@ -1,0 +1,13 @@
+**Line 14** — `PrivateConstructorInPublicClass` / Utility-style private constructor exists alongside a public constructor; acceptable, but the private no-arg constructor is only used by the factory method, which is fine. Actually flagging:
+
+**Line 14** — `UnusedPrivateMethod` (PMD) — Private constructor `CopyToPreferences()` is only invoked internally via `getDefault()`; some analyzers flag this as the constructor is never directly visible. *(Borderline — not a strong violation.)*
+
+**Line 21** — `MethodNamingConventions` (PMD/Checkstyle) — `getDefault()` is a static factory method that follows getter naming (`get` prefix), but returns a new instance rather than a property value. Should be named `createDefault()` or `defaultInstance()`.
+
+**Line 29** — `BooleanGetMethodIsNamed` (PMD) — `getShouldIncludeCrossReferences()` returns a `boolean` but uses `get` prefix instead of `is`. Should be `isShouldIncludeCrossReferences()` or `includeCrossReferences()`.
+
+**Line 39** — `BooleanGetMethodIsNamed` (PMD) — Same rule: `getShouldAskForIncludingCrossReferences()` should use `is` prefix for boolean return type.
+
+**Line 10** — `HiddenField` (Checkstyle) — Constructor parameter `shouldAskForIncludingCrossReferences` shadows the instance field of the same name on line 8.
+
+**Line 10** — `HiddenField` (Checkstyle) — Constructor parameter `shouldIncludeCrossReferences` shadows the instance field of the same name on line 7.

@@ -1,0 +1,15 @@
+**Line 35** `LINEBREAK_WITHOUT_PERIOD_PATTERN` — redundant escape of `.` inside `[^\\\\.]]`; the double-escaped backslash means the character class is `[^\\.]` (backslash or dot) rather than the likely intended `[^.]`. **Regex Correctness / RedundantEscape**
+
+**Line 38** `readPdfContents` — method is non-static but uses no instance fields. **MissingStaticModifier / MethodCanBeStatic**
+
+**Line 86** `addContentIfNotEmpty` — `PDFTextStripper` instantiation not extracted; object created on every call with no reuse. **ObjectCreationInLoop** (called in a loop at line 44)
+
+**Line 86** `addContentIfNotEmpty` — declares checked `IOException` implicitly via `pdfTextStripper` but `PDFTextStripper()` constructor itself can throw `IOException`; it is not caught here, only the later `getText` call is wrapped. **EmptyCatchBlock / MissedException** — constructor call at line 87 is outside the try block, so an `IOException` from it would be uncaught. **MissingTryCatch**
+
+**Line 62** `isValidField` — trivial single-expression private method adds no abstraction value. **UnnecessaryMethodWrapper / ExcessiveMethodLength** (minor: **UnusedPrivateMethod** risk if inlined)
+
+**Line 63** `isValidField` — returns `!StringUtil.isNullOrEmpty(value)` but `addStringField` is the only caller; logic is inverted (guard clause checks `!isValidField`). **InvertedBooleanReturn / ConfusingNegation**
+
+**Line 50** — `return pages;` inside `catch` block after partial population is a silent partial-result return; caller cannot distinguish error from empty PDF. **ReturnInsideCatch / AvoidReturnInsideCatch**
+
+**Line 108** `addIdentifiers` — parameter named `path` shadows the imported static constant `PATH`. **VariableNamingShadow / AvoidShadowing**

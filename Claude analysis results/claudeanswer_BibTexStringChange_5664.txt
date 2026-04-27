@@ -1,0 +1,13 @@
+**Line 19** — `MethodLength` / `ParameterNumber`: Constructor has 4 parameters, violating single-responsibility and parameter count rules.
+
+**Line 14** — `ConstantName`: `LOGGER` is declared but never used after initialization; violates `UnusedPrivateField`.
+
+**Line 19** — `HiddenField`: Parameters `oldString` and `newString` shadow the instance fields of the same name.
+
+**Line 28** — `LocalVariableCouldBeFinal`: `oldContent` and `newContent` (lines 28–29) are assigned once and never reassigned; should be declared `final`.
+
+**Line 13** — `VisibilityModifier`: Class is `final` but fields `oldString` (line 16) and `newString` (line 17) are `private final` yet exposed via getters — minor; more critically, no null-check on constructor parameters violates `NullCheck`/`AvoidNullCheck` rules.
+
+**Line 16–17** — `ImmutableField`: Fields are effectively immutable (`private final`) but the object they reference (`BibtexString`) is mutated directly at line 30 (`oldString.setContent(newContent)`), violating `FinalFieldCouldBeStatic` intent and breaking encapsulation (`MutableStatefulField`).
+
+**Line 30** — `LawOfDemeter`: `oldString.setContent(...)` directly mutates an injected dependency, violating the Law of Demeter / `CouplingBetweenObjects`.

@@ -1,0 +1,22 @@
+**Line 36-37: Duplicate Condition (DuplicatedCondition)**
+`Severity.ERROR == message.getSeverity()` is evaluated twice on consecutive lines.
+
+**Line 36: Yoda Condition (YodaCondition)**
+`Severity.ERROR == message.getSeverity()` — constant on left side of equality check.
+
+**Line 37: Yoda Condition (YodaCondition)**
+Same pattern repeated.
+
+**Line 49: Yoda Condition (YodaCondition)**
+`Severity.ERROR == message.getSeverity()` — constant on left side.
+
+**Line 34: Method Overrides but Calls Super Implicitly (None — note)** — `createDecorationNode` is not declared in parent as abstract but is overridden; not a rule violation per se, but:
+
+**Line 55: createDecorationNode Called Directly (AvoidDuplicateCodeViolation / SuspiciousMethodCall)**
+`createValidationDecorations` calls `createDecorationNode(message)` directly, which is the same method overridden above — acceptable, but `createDecorationNode` is also `public` despite being a factory/helper, violating **DesignForExtension** or **MethodVisibility** — it should likely be `protected`.
+
+**Line 34: Missing @Override Javadoc Inheritance (MissingJavadocMethod)** — overridden method has no `@inheritDoc` or method-level Javadoc.
+
+**Line 46: Missing @Override Javadoc Inheritance (MissingJavadocMethod)** — same issue on `createTooltip`.
+
+**Line 53: Missing @Override Javadoc Inheritance (MissingJavadocMethod)** — same issue on `createValidationDecorations`.

@@ -1,0 +1,19 @@
+**Line 152** - `LocalVariableCouldBeFinal`: `result` could be declared `final` — but actually it's reassigned, so skip.
+
+**Line 150** - `MethodParameterReassignment`: Parameter `text` is reassigned: `text = text.replaceAll("[?]", "");`
+
+**Line 128** - `LocalVariableCouldBeFinal`: `cleanedDOI` is declared and then repeatedly reassigned; initial assignment `String cleanedDOI = doi;` followed by immediate reassignment on line 129 — **VariableDeclarationUsageDistance**: variable `cleanedDOI` declared at line 128 but reassigned immediately at line 129 without use.
+
+**Line 128–132** - `VariableDeclarationUsageDistance` / **UnusedAssignment**: `String cleanedDOI = doi;` is immediately overwritten by `cleanedDOI = URLDecoder.decode(...)` without reading `doi` through `cleanedDOI` first; the initial assignment is dead.
+
+**Line 97** - `ParameterReassignment`: Parameter `doi` is not reassigned, but local `trimmedDoi` shadows the logic — not an issue here. However, **line 100**: `doi.matches(HTTP_EXP)` uses the original `doi` while `trimmedDoi` is the trimmed version; inconsistent — potential **UseOfNonTrimmedParameter** / **BugPattern**: trim is applied to get `trimmedDoi` but `doi.matches(...)` on line 100 uses the untrimmed original.
+
+**Line 170** - `ReturnValueIgnored` / **FindBugs:RV_RETURN_VALUE_IGNORED**: `FIND_SHORT_DOI_SHORTCUT.matcher(text)` result — `matcher.group(0)` used instead of `matcher.group(1)`, inconsistent with other match calls that use group 1. **Line 169**: `matcher.group(0)` — **UseOfGroupZero**: all other `findInText` calls use `group(1)`, this uses `group(0)`.
+
+**Line 152** - `OptionalUsedAsFieldOrParameterType` (indirect): `result` is initialized to `Optional.empty()` and potentially overwritten multiple times without short-circuiting — **OverwrittenReturn**: earlier `result` assignments at lines 155 and 161 can be silently overwritten by lines 161 and 165, meaning a valid DOI match can be discarded.
+
+**Line 26** - `ConstantNamingConvention`: `AGENCY_RESOLVER` and `RESOLVER` are `public static final` fields initialized via a method call rather than a constant expression — acceptable, but **MutableStaticState**: `URI` is immutable so this is fine; no violation.
+
+**Line 108** - `AssignmentInOperand` / **HiddenField**: local variable `trimmedDoi` in constructor shadows nothing, but the parameter `doi` is a field name conflict — `doi` is both a constructor parameter and an instance field `this.doi`. **Line 95**: constructor parameter `doi` shadows instance field `doi` — **HiddenField** violation.
+
+**Line 128** - `NullPointerException` risk: `URLDecoder.decode` does not throw checked exceptions in Java 10+ but `doi` could theoretically cause issues; `LatexToUnicodeFormatter` instantiated inside a static method on **line 127** — **ObjectInstantiationInEqualsOrStatic** / **InefficientObjectCreation**: `new LatexToUnicodeFormatter()` created on every `parse()` call.

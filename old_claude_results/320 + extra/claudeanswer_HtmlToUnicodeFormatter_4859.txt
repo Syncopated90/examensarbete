@@ -1,0 +1,13 @@
+**Line 13** — `MultipleInheritance` / Interface implementation alongside class extension: `HtmlToUnicodeFormatter` extends `Formatter` and implements `LayoutFormatter`, both of which likely define `format()`, creating ambiguous contract obligations.
+
+**Line 15** — `ConstantNamingConvention`: Field is compliant, but `private static final Pattern` instantiated inline without defensive justification — minor; no violation here actually.
+
+**Line 35** — `NullParameterAnnotation` / `DesignForExtension`: `@NonNull` on overriding method parameter contradicts Liskov Substitution Principle — strengthening preconditions in a subtype/override is a violation of LSP.
+
+**Line 37** — `LocalVariableNamingConvention`: `plainText` is acceptable, no violation.
+
+**Line 37** — `UnnecessaryLocalVariable`: `plainText` is assigned and immediately used only once on line 38; could be inlined, violating `UnnecessaryLocalVariable` rule.
+
+**Line 9** — `UnusedImport`: `org.apache.commons.text.StringEscapeUtils` is used, but the class-level annotation references "Apache Commons Lang3" while the actual import is from `commons-text`, a different artifact — annotation justification is inaccurate/misleading (`MisleadingAnnotation`).
+
+**Line 5** — `LooseCoupling`: The `@AllowedToUseApacheCommonsLang3` annotation is factually incorrect as `StringEscapeUtils` in use is from `commons-text`, not `commons-lang3`.

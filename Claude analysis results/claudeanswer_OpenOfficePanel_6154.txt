@@ -1,0 +1,25 @@
+**Line 100** - `currentStyle` field and `currentStyleProperty` field both hold the same value redundantly. Duplicate state / Redundant field.
+
+**Line 170** - `jStyle` variable is reassigned (`jStyle = jStyleLoader.getUsedJstyle()`) inside a pattern variable binding block, shadowing the pattern variable. The original pattern variable `jStyle` is unused after reassignment. **Variable shadowing / Useless pattern variable**.
+
+**Line 170** - `jStyle = jStyleLoader.getUsedJstyle()` result is stored in a local variable but the enclosing `currentStyle` field is never updated with the new jStyle. **Return value ignored / Lost update**.
+
+**Line 295** - `boolean withText = citationType.withText();` — `withText` is used only inside the `if (addPageInfo)` block but declared before the null check of `citeDialogViewModel`. No rule violation here strictly, but:
+
+**Line 275** - `String pageInfo = null;` — nullable local variable used as implicit null; **Avoid null assignments to local variables (NullAssignment)**.
+
+**Line 305-308** - `syncOptions` is checked with `syncOptions.isPresent()` AND `openOfficePreferences.getSyncWhenCiting()` redundantly — `syncOptions` is already `Optional.empty()` when `getSyncWhenCiting()` is false. **Redundant condition / Simplifiable conditional (SimplifyBooleanExpression)**.
+
+**Line 168** - `final boolean FAIL = true;` and `final boolean PASS = false;` — local constants using non-constant naming convention (should be fine for `final` locals, but their ALL_CAPS style mimics class-level constants inside a method body). **AvoidFinalLocalVariable** / **LocalVariableCouldBeFinal misuse**.
+
+**Line 168-169** - `FAIL` and `PASS` are used as magic boolean replacements but are themselves just `true`/`false`. **Unnecessary local variable (UnnecessaryLocalBeforeReturn)**.
+
+**Line 350** - `boolean emptyKeys = false;` followed by a `for` loop that breaks early — this is acceptable but the loop could be replaced with a stream. Minor: **ForLoopCanBeForeach** already satisfied, but the break pattern is a **UseCollectionIsEmpty**-style smell.
+
+**Line 412** - `EasyBind.listen(currentStyleProperty, (_, _, newValue) -> { switch(newValue) { ... default -> {} } })` — the `default` branch is empty. **EmptyControlStatement / EmptySwitchStatements**.
+
+**Line 97** - Field `currentStyle` is non-private mutable state duplicated with `currentStyleProperty` (line 100). **VisibilityModifier** — `currentStyle` is package-private (no modifier). **DefaultPackage / package-visible field**.
+
+**Line 199** - `selectDocument.setTooltip(...)` is called twice: once in field initializer (line 82 implicit via `new Button(...)`) and explicitly again at line 199 inside `initPanel()`. **Duplicate method call / redundant setter call**.
+
+**Line 377** - `new CitationKeyGenerator(...).generateAndSetKey(entry)` — object created and immediately used without storing reference, acceptable, but the generator is re-instantiated on every loop iteration inside the for-loop. **AvoidInstantiatingObjectsJustToCallGetClass / inefficient object creation in loop**.

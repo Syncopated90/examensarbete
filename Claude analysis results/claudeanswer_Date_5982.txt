@@ -1,0 +1,25 @@
+**Line 22** — `DATE_REGEX` is a `public static final` field but is assigned in a `static` block rather than at declaration; field could be `blank final` but the naming convention implies it should be a constant initialized inline. Minor style issue: **ConstantName** / **ImmutableField** not violated, but the blank `DATE_REGEX` declaration with deferred init is a **BlankFinalField** pattern misuse.
+
+**Line 22** — `public static final String DATE_REGEX` is uninitialized at declaration. **UninitialisedVariable** (PMD: `UnnecessaryModifier` / Checkstyle: `DeclarationOrder`).
+
+**Line 104** — Javadoc `@param dateString` says "the string to extract the date information" on a `static` factory method `parse`; the `@param` tag says "dataString" (typo: "dataString" vs "dateString"). **InvalidJavadocParam**.
+
+**Line 104** — `@throws DateTimeParseException` declared in Javadoc but the method never actually throws it (all exceptions are caught internally and `Optional.empty()` is returned). **InvalidThrowsDeclaration** / **RedundantThrows**.
+
+**Line 110** — Parameter `dateString` is reassigned (`dateString = dateString.strip()`). **ParameterAssignment** (PMD).
+
+**Line 203** — Local variable `date` shadows the instance field `this.date`. **LocalVariableShadowsField** (PMD: `ShadowingLocalVariable`).
+
+**Line 101** — Javadoc comment on `Date(TemporalAccessor, TemporalAccessor)` says `@param endDate` "the start date" — copy-paste error; should be "the end date". **InvalidJavadocParam** / misleading documentation.
+
+**Line 238** — `parseDateWithEraIndicator`: `dateString.length() - 2` used without stripping first, but `yearString` is derived from `dateString.strip()` while the length check uses the unstripped `dateString`. **InconsistentBehavior** / potential off-by-one if leading/trailing whitespace exists.
+
+**Line 238** — `yearString` substring end index is `dateString.length() - 2` but should be based on `dateString.strip().length() - 2`. **BugPattern: StringOperationCanBeSimplified**.
+
+**Line 295** — `equals()` does not include `endDate` in comparison. **IncompleteEquals** (PMD: `EqualsHashCodeRule`); `hashCode()` on line 316 also omits `endDate`. **HashCodeAndEqualsNotPaired** / **InconsistentHashCode**.
+
+**Line 316** — `hashCode()` omits `endDate` field while `equals()` also omits it, but both omit a field that is part of object state. **MissingField** in `hashCode`/`equals` (PMD: `OverrideBothEqualsAndHashcodeRule`).
+
+**Line 56** — `"MMMM  uuuu"` (double space) in format string is intentional per comment but is a suspicious literal. **AvoidLiteralInIfCondition** / **HardcodedLiteral**.
+
+**Line 152** — `(?i-)` is used to turn off case-insensitive flag in regex, which is non-standard and may not behave as intended in Java's `java.util.regex`. **InvalidRegex** / **DontUseRegexFlag**.

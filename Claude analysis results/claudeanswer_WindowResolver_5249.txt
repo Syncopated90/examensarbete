@@ -1,0 +1,11 @@
+**Line 29** — `NullPointerException` risk: `stage.getTitle()` can return `null`; calling `.contains(...)` on it will throw NPE. Rule: **NULL_DEREFERENCE**
+
+**Line 29** — `Localization.lang(key)` is called inside a stream predicate on every element evaluation with no caching. Rule: **REPEATED_COMPUTATION_IN_LOOP** (or **WOC** — Work Outside Constructor)
+
+**Line 38** — Parameter `window` lacks `@NonNull` annotation, inconsistent with `title()` and `clazz()` which both annotate their parameters. Rule: **MISSING_NONNULL_ANNOTATION** / **INCONSISTENT_NULLNESS**
+
+**Line 45** — `windows.size() > 1` throws `IllegalStateException` but `windows.size() == 0` is silently handled by `findFirst()` returning empty. The guard only covers the upper bound, not a documented contract violation. Rule: **MISSING_CASE** / **ASYMMETRIC_PRECONDITION**
+
+**Line 29** — Filtering by `Window::isShowing` occurs before `Stage::isInstance` check; non-Stage windows are unnecessarily evaluated. Rule: **INCORRECT_FILTER_ORDER** / **PERFORMANCE**
+
+**Line 57–59** — Filtering by `clazz::isInstance` before `Window::isShowing` is inconsistent ordering compared to `title()` (line 26–27 filters `isShowing` first). Rule: **INCONSISTENT_IMPLEMENTATION**

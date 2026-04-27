@@ -1,0 +1,23 @@
+**Line 33** — `Naming:MethodParameterCount` — `provideDefinition` has 4 parameters, consider reducing.
+
+**Line 33** — `Design:LawOfDemeter` — `clientHandler.isStandalone()` and `DefinitionProviderFactory.getDefinitionProvider(...)` chained usage violates encapsulation.
+
+**Line 36** — `Style:LocalVariableCouldBeFinal` — `locations` declared as `List<Location>` but reassigned; initial assignment to `List.of()` is unnecessary if reassigned conditionally.
+
+**Line 37** — `Design:FeatureEnvy` — method reaches into `DefinitionProviderFactory` and `provider` repeatedly rather than delegating.
+
+**Line 37** — `Style:LocalVariableCouldBeFinal` — `provider` is never reassigned, should be `final`.
+
+**Line 38–40** — `Style:OptionalGetWithoutIsPresent` risk mitigated but `isPresent()`/`get()` pattern should be replaced with `ifPresent` or `map` per **`Style:OptionalUsedAsField`** / **`Idiomatic:UseOptionalOrElse`**.
+
+**Line 44** — `Naming:UnusedFormalParameter` — `languageId` in `provideDocumentLinks` is passed to factory but the parameter name suggests it could be encapsulated differently; minor.
+
+**Line 47** — `Style:LocalVariableCouldBeFinal` — `documentLinks` is conditionally reassigned; initial `List.of()` assignment is redundant.
+
+**Line 48** — `Style:LocalVariableCouldBeFinal` — `provider` is never reassigned.
+
+**Line 49–51** — `Idiomatic:UseOptionalOrElse` — `isPresent()`/`get()` should be replaced with `map`/`orElse`.
+
+**Line 21** — `Style:ConstantNamingConvention` — acceptable, but `LOGGER` is correct; no violation here.
+
+**Line 36, 47** — `Design:ImmutableField` — local variables initialized to `List.of()` then potentially replaced violates immutability intent; use `final` with ternary or `Optional.map`.

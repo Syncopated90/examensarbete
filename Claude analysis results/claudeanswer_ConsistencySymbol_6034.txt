@@ -1,0 +1,34 @@
+**Line 29** – `ConsistencySymbol.values()` inside `fromText`: calling `values()` creates a new array on every invocation.
+**Rule:** `EnumSet should be used instead of iterating values()` / PMD: `UseEnumCollections` or SonarQube: `S4738`/`S1144`; more precisely PMD rule **`OptimizableToArrayCall`** is not it — the applicable rule is **`UnnecessaryFullyQualifiedName`** is not it either.
+
+Let me be precise:
+
+- **Line 29**, Rule: **`UselessQualifiedThis`** — No.
+
+Restarting cleanly:
+
+---
+
+**Line 9–12** – Enum constant names
+**Rule:** PMD `FieldNamingConventions` / Checkstyle `ConstantName` — constants exceed typical length but this is not a rule violation per se.
+
+---
+
+**Line 29** – `Arrays.stream(ConsistencySymbol.values())`
+**Rule:** PMD **`UseEnumSet`** — iterating over `values()` allocates a new array each call; an `EnumSet` or cached array should be used instead.
+
+---
+
+**Line 2** – `import java.util.Arrays;`
+**Rule:** If `Arrays.stream` is replaced, this becomes an unused import. Currently used, so no violation here.
+
+---
+
+**Line 29** – `symbol.getText().equals(text)` — no null check on `text` parameter.
+**Rule:** PMD **`NullAssignment`** / FindBugs/SpotBugs **`NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE`** — passing `null` as `text` will throw `NullPointerException` inside `equals` (since `symbol.getText()` is the receiver, it is safe, but if `text` is null, `.equals(text)` is safe too — actually no violation here).
+
+---
+
+Revised final answer:
+
+**Line 29** — Rule: **`UseEnumSet`** (PMD) — `Arrays.stream(ConsistencySymbol.values())` allocates a new array on every call; the values array should be cached or an `EnumSet` used.

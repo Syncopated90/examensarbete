@@ -1,0 +1,15 @@
+**Line 35** — `Missing dependency array`: `areAllChangesAccepted` binding does not declare `changes` as a dependency; the binding will not update when `changes` is modified.
+
+**Line 36** — `Missing dependency array`: `areAllChangesDenied` binding does not declare `changes` as a dependency; same issue.
+
+**Line 37** — `Overly complex boolean expression`: `selectedChange.isNotNull().get()` should simply be `selectedChange.get() != null`; calling `.isNotNull()` creates a new binding object just to call `.get()` on it immediately, leaking an observable binding.
+
+**Line 29** — `Assert used for argument validation`: `assert !externalChanges.isEmpty()` uses `assert` to enforce a precondition on a public constructor parameter; assertions may be disabled at runtime. Should throw `IllegalArgumentException` instead.
+
+**Line 47** — `Method name violates naming convention`: `getSelectedChange()` wraps a property accessor but is not a simple getter — it returns `Optional<DatabaseChange>` — yet it is named `get*`, conflating property access with optional-wrapping semantics.
+
+**Line 44** — `Method name violates naming convention`: `selectedChangeProperty()` follows JavaFX property naming, but `getSelectedChange()` at line 47 and `selectedChangeProperty()` at line 44 expose the same underlying field through two methods, creating redundant API surface (`Redundant API / Duplicate Accessor`).
+
+**Line 37** — `Resource leak / Observable not observed`: `selectedChange.isNotNull()` creates a `BooleanBinding` that is never stored or disposed, constituting a minor memory/resource leak.
+
+**Line 78** — `Variable shadowing`: lambda parameter `selectedChange` in `acceptChange()` shadows the field `selectedChange` of type `ObjectProperty<DatabaseChange>` declared at line 23.

@@ -1,0 +1,7 @@
+**Line 20** — `NullPassthrough` / **Null Passed to Method**: `orElse(null)` passes a potential `null` to `setDatabase`, which may not accept null.
+
+**Line 26** — `AvoidAssertStatements` (PMD): Use of `assert` statement in production code; assertions can be disabled at runtime, making this check unreliable.
+
+**Line 26** — `AssertWithSideEffects` / **assert used for control flow validation**: The `assert` duplicates the condition already handled by the `instanceof` check on line 27, making it redundant and potentially misleading.
+
+**Line 11-12** — `VisibilityModifier` (PMD / Checkstyle): Instance fields `previewPanel` and `stateManager` are `protected` rather than `private`, violating encapsulation principles.

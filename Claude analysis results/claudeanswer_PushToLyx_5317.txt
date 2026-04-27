@@ -1,0 +1,21 @@
+**Line 17** — `ClassNamingConventions` / `AbstractClassName`: Class `PushToLyx` extends `AbstractPushToApplication` but is not abstract itself — acceptable, but check naming aligns with hierarchy intent. *(Informational, not a violation.)*
+
+**Line 52** — `LocalVariableNamingConventions`: Variable `lp` uses a non-descriptive, too-short name (< 3 meaningful chars). **Rule: ShortVariable**
+
+**Line 52** — Comment inline `// this needs to fixed because it gives "asdf"...` indicates broken/incomplete logic left in production code. **Rule: FixmeComment / TodoComment**
+
+**Line 57** — `LocalVariableNamingConventions`: Re-assignment of `lp` (declared `Path lp`) — variable is effectively mutable and reassigned; should be separate variable. **Rule: VariableDeclarationUsageDistance**
+
+**Line 61** — `LocalVariableCouldBeFinal`: `lyxPipe` is assigned once and could be declared `final`. **Rule: LocalVariableFinalInLambda** *(actually it IS declared final — acceptable)*
+
+**Line 63** — `AccessToNonFinalMember` / `LambdaUsage`: Lambda at line 63 accesses non-final instance fields `couldNotCall` (line 70). **Rule: AccessToNonFinalOuterField**
+
+**Line 53** — `Files.exists` followed by `Files.isWritable` is a TOCTOU (Time-of-Check/Time-of-Use) race condition. **Rule: TOCTOU / PathTraversalVulnerability**
+
+**Line 34** — String concatenation inside `Localization.lang(...)` call: `"[" + commandPath + "]"` appended outside the localization method, breaking localization consistency. **Rule: AvoidStringConcatenationInLocalization**
+
+**Line 37** — `commandPath + ".in"` passed directly into localization format string — the `.in` suffix is hardcoded and not localizable, inconsistent with line 34 approach. **Rule: AvoidLiteralInLocalizationCall**
+
+**Line 44–47** — Direct writes to inherited non-private fields (`couldNotPush`, `couldNotCall`, `notDefined`) from a subclass. **Rule: VisibilityModifier / AccessToProtectedField**
+
+**Line 63** — Lambda passed to `executeAndWait` accesses mutable instance fields from a potentially different thread without synchronization. **Rule: NonThreadSafeSingleton / UnsynchronizedStaticField** (fields like `couldNotCall` are not volatile or synchronized).

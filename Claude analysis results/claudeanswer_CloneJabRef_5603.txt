@@ -1,0 +1,20 @@
+**Line 12** — `main` method not declared `public`
+**Rule: visibility modifier** (`public static void main` required for standard entry point)
+
+**Line 12** — method declared `static` but class is not `public`
+**Rule: class access modifier missing** (class `CloneJabRef` lacks `public` modifier)
+
+**Line 13** — `targetDir` declared but not initialized at declaration point, requiring branching initialization
+**Rule: variable not initialized at declaration** (SonarLint: S1481 / PMD: LocalVariableCouldBeFinal workaround)
+
+**Line 23** — array `jGitArgs` could be declared `final`
+**Rule: PMD:LocalVariableCouldBeFinal**
+
+**Line 24** — `org.eclipse.jgit.pgm.Main.main(jGitArgs)` — calling external `main` method directly
+**Rule: PMD:UseMainMethodDirectly / SonarLint:S2440** — invoking another class's `main` is a code smell
+
+**Line 19** — string concatenation with object in `println`
+**Rule: PMD:UseStringBufferForStringAppends** (minor; in print context often tolerated but flagged)
+
+**Line 12** — checked exception `Exception` declared in `throws` clause
+**Rule: PMD:SignatureDeclareThrowsException / SonarLint:S112** — overly broad exception declared

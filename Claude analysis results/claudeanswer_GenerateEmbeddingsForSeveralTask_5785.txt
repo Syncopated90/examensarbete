@@ -1,0 +1,19 @@
+**Line 5** - `ExecutionException` imported but exception handling (catch) is absent; checked exception declared but not caught — **UnhandledCheckedException / DeclaredExceptionNotHandled**
+
+**Line 73** - `call()` declares `throws ExecutionException, InterruptedException` but neither is caught internally; `pair.getKey().get()` can throw both without handling — **PreserveStackTrace / EmptyExceptionHandling** (more precisely, exceptions propagate raw without wrapping or logging)
+
+**Line 76** - `pair.getKey().get()` — blocking call inside a task that could cause thread starvation or deadlock if `taskExecutor` has a bounded thread pool — **AvoidThreadBlocking**
+
+**Line 82** - `currentFile` is a mutable field written in one thread (the `call()` thread) and read in another (via `updateProgress` listener) without synchronization — **UnsynchronizedStaticFieldRule** / **NonThreadSafeSingleton** / **ThreadSafety**
+
+**Line 38** - `private String currentFile = ""` — mutable shared state accessed across threads without `volatile` or synchronization — **VolatileVariable / NotThreadSafe**
+
+**Line 63** - `name.addListener(...)` — listener added but never removed, causing a memory/listener leak — **AvoidListenerLeak**
+
+**Line 60** - `titleProperty().set(...)` and **Line 63** `name.addListener(...)` — JavaFX property/UI methods called from a background thread — **JavaFXThreadViolation**
+
+**Line 79** - `pair.getKey().get()` result (`Future<?>` returns `Object`) is ignored — **ReturnValueIgnored**
+
+**Line 72** - `List<Pair<? extends Future<?>, String>> futures` — use of raw wildcard `? extends Future<?>` is unnecessarily complex; prefer concrete type — **AvoidWildcards**
+
+**Line 29** - `private final StringProperty groupName` stored as field but only used for `.get()` and listener; a `String` snapshot would suffice, holding a `Property` reference can prevent GC — **UnnecessaryFieldReference**

@@ -1,0 +1,11 @@
+**Line 22** — `Task<Void>` anonymous class captures `libraryTabs` (a `List`) from the enclosing scope. **Rule: `SE_INNER_CLASS`** / **"Avoid anonymous classes capturing mutable outer variables"** (or PMD: `CloseResource` / SpotBugs: `SIC_INNER_SHOULD_BE_STATIC_ANON` is not exact here — more precisely):
+
+**Line 22** — SpotBugs: **`SIC_INNER_SHOULD_BE_STATIC`** — Anonymous inner class could be a static nested class since it only needs `libraryTabs` passed in.
+
+**Line 37** — **`UiTaskExecutor.runInJavaFXThread(waitForSaveFinished)`** submits the task to the JavaFX thread, but `Task.call()` contains a blocking `Thread.sleep(100)` loop. Blocking the JavaFX Application Thread causes UI freeze. **Rule: `DoNotSleepOnMainThread` / "Avoid blocking the UI thread"** (PMD/custom: blocking call on FX thread).
+
+**Line 25** — `Thread.sleep(100)` inside a busy-wait loop. **Rule: PMD `AvoidThreadGroup` / `DoNotCallThreadSleep` in a spin-wait** — busy-wait with sleep is an anti-pattern; should use a condition/lock instead. **Rule: `BusyWait`** (SpotBugs: **`MDM_THREAD_YIELD`** / FindBugs: **`MDM_WAIT_WITHOUT_TIMEOUT`**).
+
+**Line 21** — `libraryTabs.stream().anyMatch(LibraryTab::isSaving)` is called twice (lines 21 and 25) without synchronization. **Rule: **`NonAtomicOperationOnVolatileField`** / race condition — the state may change between the outer check and the task execution. **Rule: `CheckReturnValue` / TOCTOU**.
+
+**Line 20** — Method `showAndWait` takes a raw `List<LibraryTab>` but performs no null check. **Rule: PMD `NullAssignment` / `AvoidNullChecks` missing** — **`NullPointerException`** if `libraryTabs` is `null`. **Rule: PMD **`GuardedByValidator`** / **`NP_NULL_ON_SOME_PATH`** (SpotBugs)**.

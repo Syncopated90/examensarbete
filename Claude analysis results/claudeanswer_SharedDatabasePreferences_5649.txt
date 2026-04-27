@@ -1,0 +1,25 @@
+**Line 3** — `UnusedImports`: `java.io.UnsupportedEncodingException` is imported but used only in a catch block; however it is used, so skip. Actually it is used on line 163.
+
+**Line 40** — `UnnecessaryConstructor`: Public no-arg constructor only delegates to another constructor; could be considered redundant, but acceptable pattern.
+
+**Line 130** — `UseAssertEqualsInsteadOfAssert` / `AssertAsStatement`: `assert (properties.isValid())` uses a Java `assert` statement. Rule: **UseAssertions** / **AvoidAssertAsIfCondition** — production code relies on a Java `assert` which is disabled by default at runtime; assertions should not be used for argument validation in production code.
+
+**Line 130** — `AvoidUncheckedExceptionsInSignatures` / **UnnecessaryParentheses**: `assert (properties.isValid())` — unnecessary parentheses around the assert expression.
+
+**Line 152** — `AvoidCatchingGenericException` (partially): catching `GeneralSecurityException` is broad but acceptable; however `UnsupportedEncodingException` is a legacy checked exception that should be replaced with `StandardCharsets` usage to avoid needing it entirely.
+
+**Line 155** — `PreserveStackTrace` / **GenericExceptionLogged**: exception `e` is passed to logger correctly, no violation here.
+
+**Line 100** — `UselessParentheses` on `assert` at line 130 already noted.
+
+**Line 17** — `FieldNamingConventions`: `LOGGER` is fine for a static final logger.
+
+---
+
+**Summary of actual violations:**
+
+| Line | Rule |
+|------|------|
+| 130 | `AvoidAssertAsStatement` — `assert` used for argument validation; disabled at runtime by default |
+| 130 | `UnnecessaryParentheses` — parentheses around `assert` expression are redundant |
+| 152 | `UnsupportedEncodingException` should be avoided; use `StandardCharsets` to make it unchecked (related: `AvoidUsingHardCodedEncoding` / legacy checked encoding exception) |

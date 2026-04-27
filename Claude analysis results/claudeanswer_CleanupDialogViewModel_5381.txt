@@ -1,0 +1,29 @@
+**Line 7** - `UnusedImports`: `java.util.stream.Collectors` is unused if `showFailures` uses it, but it is used — skip. Actually used at line 222.
+
+**Line 54** - `VisibilityModifier`: Field `modifiedEntriesCount` is not `private final`; it is mutable instance state modified from background thread without synchronization.
+
+**Line 120** - `ThreadSafety`/`AtomicityViolation`: `modifiedEntriesCount++` is accessed from a background thread (`BackgroundTask`) without synchronization. The field is a plain `int`, not `volatile` or `AtomicInteger`.
+
+**Line 173** - `ThreadSafety`/`AtomicityViolation`: Same `modifiedEntriesCount++` in `cleanupWithProgress` called from background thread — unsynchronized access to shared mutable state.
+
+**Line 115** - `AnonymousInnerClass`: Anonymous `BackgroundTask<Void>` subclass should be replaced with a lambda or named class.
+
+**Line 85** - `AvoidInlineConditionals`: Inline ternary `targetEntries.isEmpty() ? ... : ...` assigned to `entriesToProcess`.
+
+**Line 94** - `ConfusingTernary` / long line: `selectedTab.selectedJobs().contains(...)` condition is overly complex inline.
+
+**Line 160** - `LawOfDemeter`: `tabSupplier.get().markBaseChanged()` — chained call violates Law of Demeter.
+
+**Line 112** - `LawOfDemeter`: `preferences.getAutoLinkPreferences().setAskAutoNamingPdfs(!optOut)` — chain of calls.
+
+**Line 108** - `LawOfDemeter`: `preferences.getAutoLinkPreferences().shouldAskAutoNamingPdfs()` — chain of calls.
+
+**Line 131** - `LawOfDemeter`: `preferences.getCleanupPreferences().setActiveJobs(...)` — chain of calls.
+
+**Line 135** - `LawOfDemeter`: `preferences.getCleanupPreferences().setFieldFormatterCleanups(...)` — chain of calls.
+
+**Line 143** - `LawOfDemeter`: `preferences.getFilePreferences()`, `preferences.getTimestampPreferences()`, `preferences.getJournalAbbreviationPreferences().shouldUseFJournalField()` — multiple chain violations.
+
+**Line 53** - `MutableField`: `modifiedEntriesCount` is a non-final, non-thread-safe instance field modified across potentially concurrent invocations.
+
+**Line 79** - `ReturnCount`: `apply` method has multiple return statements (lines 82, 91, 103).

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "PMD",
+          "version": "7.22.0",
+          "informationUri": "https://docs.pmd-code.org/latest/",
+          "rules": [
+            {
+              "id": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+              "shortDescription": {
+                "text": "This class has only private constructors and may be final"
+              },
+              "fullDescription": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal",
+              "help": {
+                "text": "\nReports classes that may be made final because they cannot be extended from outside\ntheir compilation unit anyway. This is because all their constructors are private,\nso a subclass could not call the super constructor.\n        "
+              },
+              "properties": {
+                "ruleset": "Design",
+                "priority": 1,
+                "tags": [
+                  "Design"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "NonThreadSafeSingleton",
+              "shortDescription": {
+                "text": "Singleton is not thread safe"
+              },
+              "fullDescription": {
+                "text": "\nNon-thread safe singletons can result in bad state changes. Eliminate\nstatic singletons if possible by instantiating the object directly. Static\nsingletons are usually not needed as only a single instance exists anyway.\nOther possible fixes are to synchronize the entire method or to use an\n[initialize-on-demand holder class](https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom).\n\nRefrain from using the double-checked locking pattern. The Java Memory Model doesn't\nguarantee it to work unless the variable is declared as `volatile`, adding an unneeded\nperformance penalty. [Reference](http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html)\n\nSee Effective Java, item 48.\n        "
+              },
+              "helpUri": "https://docs.pmd-code.org/snapshot/pmd_rules_java_multithreading.html#nonthreadsafesingleton",
+              "help": {
+                "text": "\nNon-thread safe singletons can result in bad state changes. Eliminate\nstatic singletons if possible by instantiating the object directly. Static\nsingletons are usually not needed as only a single instance exists anyway.\nOther possible fixes are to synchronize the entire method or to use an\n[initialize-on-demand holder class](https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom).\n\nRefrain from using the double-checked locking pattern. The Java Memory Model doesn't\nguarantee it to work unless the variable is declared as `volatile`, adding an unneeded\nperformance penalty. [Reference](http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html)\n\nSee Effective Java, item 48.\n        "
+              },
+              "properties": {
+                "ruleset": "Multithreading",
+                "priority": 3,
+                "tags": [
+                  "Multithreading"
+                ]
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ClassWithOnlyPrivateConstructorsShouldBeFinal",
+          "ruleIndex": 0,
+          "message": {
+            "text": "This class has only private constructors and may be final"
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/Highlighter.java"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 8,
+                  "endLine": 29,
+                  "endColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NonThreadSafeSingleton",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Singleton is not thread safe"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/Highlighter.java"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 9,
+                  "endLine": 67,
+                  "endColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NonThreadSafeSingleton",
+          "ruleIndex": 1,
+          "message": {
+            "text": "Singleton is not thread safe"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/fredr/kod/exjobb/Sourcecode/Highlighter.java"
+                },
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 9,
+                  "endLine": 87,
+                  "endColumn": 10
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolConfigurationNotifications": [],
+          "toolExecutionNotifications": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+**Line 8** — `ClassNamingConventions`: Enum name `BiblatexNonStandardEntryType` is acceptable, but the enum constants (e.g., `Artwork`, `Audio`) violate **`EnumConstantNameCheck`** (constants should be UPPER_SNAKE_CASE, e.g., `ARTWORK`, `AUDIO`). Affects lines **10–21**.
+
+**Line 29** — `UnnecessaryFullyQualifiedName`: `BiblatexNonStandardEntryType.values()` inside a static method of the same class; the class name qualifier is unnecessary.
+
+**Line 29** — `ParameterName` / variable naming: lambda parameter `field` is semantically misleading — the variable represents an entry type, not a field.
+
+**Line 34** — `MissingOverride` is satisfied, but `getName()` returns a lowercased transformation of `displayName` rather than storing it separately — **`ReturnValueIgnored`/`ImmutableField`**: the lowercasing is recomputed on every call (minor performance rule: **`InefficiëntStringBuffering`** analog — repeated object creation via `toLowerCase` on each invocation instead of storing the result at construction time).
+
+**Line 25** — `UnusedFormalParameter` risk: the constructor parameter `displayName` shadows the field assignment correctly, but the enum constant string literals (e.g., `Artwork("Artwork")`) duplicate the constant name, violating **`AvoidDuplicateLiterals`** (lines 10–21), as each display name exactly matches the enum constant name, making the argument redundant.

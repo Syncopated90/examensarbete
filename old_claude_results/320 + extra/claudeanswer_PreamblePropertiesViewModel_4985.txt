@@ -1,0 +1,20 @@
+**Line 30 - Duplicate Code / Multiple Method Calls**
+`databaseContext.getDatabase()` is called three times in a single statement; result should be stored in a local variable.
+
+**Line 30 - Long Line / Readability**
+Line exceeds typical 120/150 character line length limit.
+
+**Line 29 - Duplicate Code**
+`databaseContext.getDatabase().getPreamble().orElse("")` is evaluated twice (lines 29 and 30); result should be stored in a local variable.
+
+**Line 30 - Null Passed to orElse**
+`getPreamble().orElse(null)` defeats the purpose of `Optional`; passing `null` to `orElse` is an anti-pattern (SonarLint rule `java:S2789` / OptionalGetWithoutIsPresent family).
+
+**Line 17 - Package-Private Constructor**
+Constructor has no access modifier (package-private), which may be intentional but warrants explicit documentation if so; missing `public` or `protected` visibility modifier is flagged by Checkstyle `VisibilityModifier`.
+
+**Line 12 - Class Naming / Design**
+`preambleProperty` field is initialized inline (line 13) but never reset in `setValues()` atomically — the field could be declared `final` since the property object itself is never reassigned, which it already is; acceptable.
+
+**Line 13 - Eager Initialization with Empty String**
+`new SimpleStringProperty("")` initializes with empty string but `setValues()` overwrites it; the initial value `""` is redundant (minor code smell).

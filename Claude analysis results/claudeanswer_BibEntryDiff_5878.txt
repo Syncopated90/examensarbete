@@ -1,0 +1,11 @@
+**Line 7-9: Record Component Nullability**
+`record` components `originalEntry` and `newEntry` lack null checks — no compact constructor validates inputs.
+
+**Line 13-14: String Concatenation in Loop / With Objects**
+Using `+` operator to concatenate `BibEntry` objects (`originalEntry` and `newEntry`) instead of explicit `toString()` calls; implicit `toString()` may return `null` representation unexpectedly.
+
+**Line 7: Missing `@Serial` / Serialization**
+`record` implicitly implements `Serializable` if components do; no `serialVersionUID` declared if serialization is intended.
+
+**Line 6: Missing `final` Class Modifier**
+Records are implicitly `final`, but no explicit documentation/annotation (e.g., `@Immutable`) signals intent, and `BibEntry` mutability breaks the record's value-type contract — mutable components stored in a record violate **"Records should only contain immutable fields"** (Sonar rule `S6218`).

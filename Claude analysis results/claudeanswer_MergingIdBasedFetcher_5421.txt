@@ -1,0 +1,39 @@
+**Line 107 — `Stream.peek()` used for side effects**
+Rule: `StreamPeekUsedForSideEffects` / Sonar `S3864`
+`peek()` is intended for debugging, not for performing mutations like `updateField()`. Side effects should be in `forEach()`.
+
+---
+
+**Line 105-108 — Intermediate stream operation with side effect modifying external state**
+Rule: `AvoidSideEffectsInStreams`
+`updateFieldsFromSource` both collects fields and mutates `targetEntry` via `peek()`, violating separation of concerns.
+
+---
+
+**Line 37-41 — Mutable record component reassigned in compact constructor**
+Rule: `RecordComponentShouldBeImmutable` (acceptable pattern, but `updatedFields` parameter is silently replaced — no defensive copy of `entryFromLibrary` or `mergedEntry`)
+`BibEntry` objects in the record are mutable and not copied, breaking encapsulation expected of records.
+
+---
+
+**Line 96-98 — Repeated field lookup inside loop**
+Rule: `OptimizableOperationsInLoop` / `UnnecessaryCallToNullCheck`
+`entryFromLibrary.getField(field)` is called separately for each field when `getFields()` + `getField()` could be combined; minor inefficiency but a code smell.
+
+---
+
+**Line 86 — `LOGGER.error()` with exception swallowed into `Optional.empty()`**
+Rule: `ExceptionShouldNotBeIgnored` / Sonar `S2139`
+The `FetcherException` is logged but control flow silently continues; callers have no indication an error occurred vs. a genuinely absent result.
+
+---
+
+**Line 27-28 — `static final` field not in `UPPER_SNAKE_CASE` style violation — no issue here, but `NonSpaceWhitespaceRemover` instance shared across threads**
+Rule: `NotThreadSafe` / `AvoidSharedMutableState`
+If `NonSpaceWhitespaceRemover.format()` is not thread-safe, sharing a single static instance is unsafe.
+
+---
+
+**Line 45 — Null check instead of using `Objects.requireNonNull` or annotation**
+Rule: `IllegalArgumentException` / Sonar `S2583`
+Returning `Optional.empty()` on null input silently ignores a programming error; a null argument should throw `NullPointerException` or be annotated `@NonNull`.

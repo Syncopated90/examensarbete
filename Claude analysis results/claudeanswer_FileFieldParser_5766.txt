@@ -1,0 +1,27 @@
+**Line 27** — `NullAssignment`: Assigning `null` to `this.value` instead of handling the null case gracefully or using `Optional`.
+
+**Line 44** — `LawOfDemeter`: `fileFieldParser.parse().stream().map(...).collect(...)` chains multiple method calls on a temporary object.
+
+**Line 50** — `LawOfDemeter`: Same issue as line 44 with chained calls on temporary object.
+
+**Line 63** — `ReturnEmptyCollectionRatherThanNull`: `List.of(...)` inside try-catch with fallback return of mutable `files` — inconsistent return types (immutable vs mutable list).
+
+**Line 100** — `AvoidLiteralsInIfCondition`: Magic number `1` used in condition `linkedFileData.size() == 1` and `charactersOfCurrentElement.length() == 1`.
+
+**Line 104** — `AvoidLiteralsInIfCondition`: Magic number `1` repeated.
+
+**Line 107** — `AvoidLiteralsInIfCondition`: Magic number `1` repeated.
+
+**Line 144** — `MissingBreakInSwitch` / `ConfusingTernary`: `field` is assigned in multiple branches using if-else-if without `else`, leaving potential uninitialized path (though compiler catches it, static analysis flags it).
+
+**Line 138** — `EmptyCatchBlock`: `catch (MalformedURLException e)` block executes code but the catch for intent is misleading; comment says "store it nevertheless" but suppresses the exception without logging.
+
+**Line 160** — `EmptyCatchBlock` (logical): `catch (InvalidPathException e)` logs at DEBUG but is effectively silent in production — borderline suppressed exception.
+
+**Line 171** — `NullDereference`: `field` could theoretically be `null` if none of the if-else branches assign it (static analysis may not prove all paths assign `field`).
+
+**Line 176** — `InefficientEmptyStringCheck`: `field.getDescription().isEmpty()` — use of chained isEmpty() calls on multiple getters is repetitive; no null guard before calling methods on `field` which could be null per line 171.
+
+**Line 53** — `UselessParentheses` / `LambdaCanBeMethodReference`: The `HashMap::new` collector pattern is more complex than using `Collectors.toMap`.
+
+**Line 90** — `AvoidLiteralsInIfCondition`: Magic number `1` in `(value.charAt(i + 1) == '#')` offset check without bounds validation — potential `StringIndexOutOfBoundsException` if `i + 1 == value.length()`.

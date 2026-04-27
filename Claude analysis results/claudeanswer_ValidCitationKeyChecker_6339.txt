@@ -1,0 +1,9 @@
+**Line 19** – `StringUtil.isNullOrEmpty` used where `value` parameter in `checkValue` cannot be `null` per the `ValueChecker` contract; also mixing null-check with empty-check suggests **"Redundant Null Check"** / **NullCheckViolation**.
+
+**Line 7** – `import org.jabref.logic.util.strings.StringUtil;` — **UnusedImport** if `StringUtil` is a utility that duplicates `value == null || value.isEmpty()` and is only used once with a potentially unnecessary null guard (**RedundantImport** / **UnnecessaryUtilityClassUsage**).
+
+**Line 10** – Class uses `///` (Markdown Javadoc, Java 23+) — **InvalidJavadocComment** if the project targets < Java 23.
+
+**Line 27** – `Localization.lang("Invalid citation key")` — inconsistent capitalisation with line 20 `"empty citation key"` (lowercase); violates **ConsistentMessageFormatting** / **InconsistentLocalizationStrings**.
+
+**Line 12** – `unwantedCharacters` field is `private final` but has no null-guard in the constructor — **MissingNullCheck** / **NullAssignment** risk if caller passes `null`, which would cause a `NullPointerException` at line 22.

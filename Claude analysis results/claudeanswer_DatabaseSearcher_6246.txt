@@ -1,0 +1,13 @@
+**Line 24** — `PostgreServer` — **TypographicalNamingConvention** / **MisleadingIdentifier**: Standard naming is `PostgresServer` (missing 's'); class name appears to be a typo.
+
+**Line 33** — `indexManager.closeAndWait()` — **PrematureResourceRelease**: Index manager is closed on the invalid-query path before any reuse is possible, but more critically it is also closed on the happy path (line 41), suggesting `IndexManager` should implement `Closeable`/`AutoCloseable` and be used in a try-with-resources block.
+
+**Line 24** — `throws IOException` — **ExcessiveCheckedExceptions** / **ConstructorThrowsException**: Constructor declares a checked exception, forcing all callers to handle `IOException`; construction side-effects should be deferred.
+
+**Line 39** — `.map(entryId -> databaseContext.getDatabase().getEntryById(entryId))` — **NullAssignment** / **ReturnValueIgnored**: `getEntryById` can return `null` for an unresolved id; the resulting stream may contain `null` elements passed to `purgeEmptyEntries`, risking `NullPointerException`.
+
+**Line 37–41** — `indexManager.search(query)` — **ResourceLeak**: If an exception is thrown between `search()` and `closeAndWait()` on line 41, the `IndexManager` is never closed.
+
+**Line 17** — `LOGGER` — **ConstantNamingConvention**: Compliant (no issue here — noted only for completeness; rule is satisfied).
+
+**Line 20** — `IndexManager` field — **UncommentedEmptyConstructor** / **LawOfDemeter** (line 39): `databaseContext.getDatabase().getEntryById(entryId)` violates the Law of Demeter by chaining two method calls on a collaborator.

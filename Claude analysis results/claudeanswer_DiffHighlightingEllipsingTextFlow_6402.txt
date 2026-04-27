@@ -1,0 +1,23 @@
+**Line 23** — `ellipsisString` field declared but never initialized (null field dereference risk). **Rule: NullDereference / UnnecessaryNullCheck inconsistency**
+
+**Line 155** — `ellipsisString.set(...)` called without null check; `ellipsisString` is never initialized, so this always throws `NullPointerException`. **Rule: NullDereference**
+
+**Line 163** — `ellipsisStringProperty()` returns `ellipsisString` which is always `null`. **Rule: NullDereference / ReturnNull**
+
+**Line 22** — `DEFAULT_ELLIPSIS_STRING` declared `private final static` instead of `private static final`. **Rule: FieldDeclarationsShouldBeAtStartOfClass / ModifierOrder**
+
+**Line 49** — `adjustChildren` ignores the `change` parameter entirely. **Rule: UnusedFormalParameter**
+
+**Line 91** — Unchecked cast `(Text) lastChild` without `instanceof` guard, will throw `ClassCastException` if child is not a `Text`. **Rule: AvoidUncheckedCast**
+
+**Line 107** — Unchecked cast `(Text) super.getChildren().removeLast()` without `instanceof` guard. **Rule: AvoidUncheckedCast**
+
+**Line 110** — Unchecked cast `(Text) super.getChildren().removeLast()` without `instanceof` guard. **Rule: AvoidUncheckedCast**
+
+**Line 120** — `comparisonString.get()` called twice without null-safe caching; redundant double call. **Rule: DuplicateCode / DoubleCheckedLocking**
+
+**Line 40** — Lambda `(obs, oldValue, newValue) -> highlightDiff()` creates a strong reference via anonymous listener; `comparisonString` and `diffMode` may cause memory leaks if never removed. **Rule: AvoidListenerLeak**
+
+**Line 41** — Same memory leak concern for `diffMode` listener. **Rule: AvoidListenerLeak**
+
+**Line 75** — `removeUntilTextFits` compares `getHeight() > getMaxHeight()` but `getMaxHeight()` defaults to `Double.MAX_VALUE`, making the condition always false; likely dead code path. **Rule: UselessCondition / ConfusingTernary**

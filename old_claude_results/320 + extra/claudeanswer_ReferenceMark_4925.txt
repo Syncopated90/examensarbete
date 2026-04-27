@@ -1,0 +1,17 @@
+**Line 13** - `PREFIXES` array is declared `public static final` but arrays are mutable; rule: **MutableStaticState** / **ArrayIsStoredDirectly**
+
+**Line 42** - Constructor does not defensively copy `citationKeys` and `citationNumbers` lists; rule: **StoreOfNonImmutableObject**
+
+**Line 55** - `matcher.group(2)` cannot be `null` if `matcher.matches()` succeeded and group 2 is non-optional in the regex — dead null check; rule: **UnnecessaryNullCheck** / **RedundantNullCheck**
+
+**Line 42** - `name` parameter is unused (stored in `this.name`) but `getCitationKeys()`, `getCitationNumbers()`, `getUniqueId()` return internal mutable lists directly; rule: **ReturnOfCollectionOrArrayField** (lines **82**, **86**)
+
+**Line 82** - `getCitationKeys()` returns mutable internal list directly; rule: **ReturnOfCollectionOrArrayField**
+
+**Line 86** - `getCitationNumbers()` returns mutable internal list directly; rule: **ReturnOfCollectionOrArrayField**
+
+**Line 94** - `of(String name)` constructs a `ReferenceMark` via the parsing constructor then checks `citationKeys.isEmpty()`, but the parse fallback always sets a non-empty list, making `Optional.empty()` unreachable; rule: **UnreachableCode** / **DeadCode**
+
+**Line 30** - `citationKeys`, `citationNumbers`, `uniqueId` are non-final fields set via both constructor and `parse()`; rule: **NonFinalField** / fields should be `final` for immutability
+
+**Line 35** - `parse()` is a private method called from constructor that assigns instance fields — acceptable but `parse()` uses overridable-style design smell; rule: **ConstructorCallsOverridableMethod** (minor, private so not strictly broken, but field initialization split across constructor and method): **InitializationInSeparateMethod**

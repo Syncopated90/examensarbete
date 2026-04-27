@@ -1,0 +1,27 @@
+**Line 6** – `java.io.InputStream` unused directly (used via parameter, acceptable, but `InputStreamReader` wraps it)
+
+**Line 19** – `org.mockito.Answers` – test dependency (`mockito`) used in non-test production-path class; violates **"Test classes should not be used in production code"** (`TestClassUsedInProduction` / `AvoidUsingMockitoInProduction`)
+
+**Line 21** – `org.mockito.Mockito.mock` static import – same rule as above (`TestClassUsedInProduction`)
+
+**Line 18** – `org.junit.jupiter.api.Assertions` unused import (used via static import on line 20 and explicit reference in code, but the bare `Assertions` import on line 18 is redundant given the static import on line 20) – **`UnusedImports`**
+
+**Line 63** – `mock(ImportFormatPreferences.class, Answers.RETURNS_DEEP_STUBS)` – Mockito used inside non-test class; **`AvoidMocksInNonTestCode`**
+
+**Line 32–38** – `assertEquals(Class<?>, String, BibEntry)` – method name `assertEquals` shadows `org.junit.jupiter.api.Assertions.assertEquals`; **`ConfusingMethodName`** / **`MethodNameSameAsClassName`** (shadows assertion API)
+
+**Line 46–53** – same issue; **`ConfusingMethodName`**
+
+**Line 75** – `assertEquals(InputStream, List<BibEntry>)` parameter named `expectedInputStream` in Javadoc but `actualEntries` naming suggests inverted expected/actual convention; **`ConfusingMethodName`** / **`JUnitAssertionsShouldIncludeMessage`** (swapped expected/actual order at line 84 `Assertions.assertEquals(expectedEntries, actualEntries)` — conventional order is `expected, actual`, which is correct here, but line 90 `Assertions.assertEquals(expectedEntries, getListFromInputStream(actualInputStream))` is also fine)
+
+**Line 80** – `assertEquals(List<BibEntry>, InputStream)` – overload with reversed parameter order relative to line 73 overload; **`OverloadMethodsDeclarationOrder`** and **`ParameterOrderInconsistency`**
+
+**Line 55** – `getListFromInputStream` does not close the passed `InputStream`; caller closes it but the method silently depends on caller cleanup — **`CloseResource`**
+
+**Line 63** – `BibtexParser` instantiated with a mock inside a `try-with-resources` block but the parser itself is not a `Closeable`; the `reader` is closed but side-effects of `parser` are untested — **`CloseResource`** (minor)
+
+**Line 18** – `import org.junit.jupiter.api.Assertions` – explicit class import while `assertNotNull` is statically imported from same class on line 20; **`UnusedImports`** (the explicit `Assertions.assertEquals` calls on lines 84, 90, 108, 119 justify it, so this is not unused — retract; the import IS used)
+
+**Line 10** – `import java.util.List` – used; fine.
+
+**Lines 101, 113** – `assertEquals(InputStream, URL, Importer)` and `assertEquals(List, URL, Importer)` convert `URL` to `URI` to `Path` inline; **`AvoidInstantiationWithGetClass`** / **`UnnecessaryLocalVariable`** (minor); more critically, `URL.toURI()` can throw `URISyntaxException` which propagates — acceptable but **`SignatureDeclareThrowsException`** (declares checked exception in utility/assert method).

@@ -1,0 +1,24 @@
+**Line 29 - `fromEscapedJavaString` method**
+`DesignForExtension` / missing `final` on class or method — but more relevantly:
+
+**Line 29** - **`UnusedFormalParameter`** / **`CommentDefaultAccessModifier`**: No — focusing on real issues:
+
+---
+
+**Line 12** — `VisibilityModifier` / `HideUtilityClassConstructor`: Constructor is `private` but class is not `final` — **Rule: `FinalClass`**: Class has only a `private` constructor but is not declared `final`.
+
+**Line 29** — **`OverloadMethodsDeclarationOrder`**: `fromEscapedJavaString` duplicates the body of `fromKey` entirely — **Rule: `UnnecessaryLocalVariable`** / more precisely **`DuplicatedBlocks`**: The constructor body of `fromEscapedJavaString` is identical to `fromKey`; both simply delegate to `new LocalizationKey(key)` with no distinction.
+
+**Lines 34–38** — **`CommentedOutCode`**: Commented-out code block (`fromPropertyKey` method) violates the rule against leaving commented-out code in production source — **Rule: `CommentedOutCode`**.
+
+**Line 6** — **`MissingJavadocType`**: Class uses Javadoc-style `///` doc comments (Markdown doc comments, Java 23+) but the class-level comment is a Markdown doc comment `///` which is non-standard for static analysis tools expecting `/** */` — **Rule: `JavadocVariable`** on fields `key` and `escapedPropertyKey` at **Lines 8–9**: private fields lack Javadoc but this is minor.
+
+**Lines 8–9** — **`VisibilityModifier`**: Fields `key` and `escapedPropertyKey` are `private final` — compliant; no violation here.
+
+**Line 29** — **`ReturnCount`**: N/A.
+
+**Line 29** — **`BooleanExpressionComplexity`**: N/A.
+
+**Lines 34–38** — **`CommentedOutCode`** (PMD): Commented-out code present in production source.
+
+**Line 12** — **`FinalClass`** (PMD/Checkstyle): Class with only `private` constructor(s) should be declared `final`.

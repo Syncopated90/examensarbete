@@ -1,0 +1,20 @@
+**Line 22** — `ObjectMapper` instantiated inside method on every call; should be a static final field or injected singleton.
+**Rule:** `S2259` / Inefficient Object Creation (PMD: `ObjectMapper` instances are expensive and thread-safe; reuse them)
+
+**Line 22** — Local variable `objectMapper` is created but never closed/released.
+**Rule:** PMD `CloseResource` / Sonar `S2095`
+
+**Line 26** — `e.getMessage()` may return `null`, passing null to `entity()`.
+**Rule:** Sonar `S2259` / PMD `NullAssignment` — null dereference risk
+
+**Line 27** — `serverError()` used to handle a client-caused bad input (malformed JSON); should be `status(Response.Status.BAD_REQUEST)`.
+**Rule:** Sonar `S2325` / REST design rule — wrong HTTP status code for client error
+
+**Line 17** — Field injection (`@Inject` on private field) used instead of constructor injection.
+**Rule:** Sonar `S6813` / PMD `InjectionPointRule` — field injection is not recommended; prefer constructor injection
+
+**Line 14** — Class is not declared `final` despite having no intended subclasses.
+**Rule:** PMD `ClassWithOnlyPrivateConstructorsShouldBeFinal` / Sonar `S2160`
+
+**Line 21** — Method parameter `jsonCommand` has no null/blank check before use.
+**Rule:** PMD `NullAssignment` / Sonar `S2259` — missing null guard on input parameter

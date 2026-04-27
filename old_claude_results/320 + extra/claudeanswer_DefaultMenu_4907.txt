@@ -1,0 +1,13 @@
+**Line 19** — `VisibilityModifier` / `WeakerAccess`: Field `textInputControl` should be `private`.
+
+**Line 19** — `ImmutableField` / `FieldShouldBeFinal`: Field `textInputControl` can be `final`.
+
+**Line 41** — `LambdaCanBeMethodReference`: Lambda `value -> menuItem.setDisable(StringUtil.isNullOrEmpty(value))` could be a method reference, but minor; more critically — **VariableUsedInLambdaShouldBeFinal**: `menuItem` used in lambda but not declared `final` (effectively final, but rule flags explicit declaration missing in some rulesets).
+
+**Line 41** — `EasyBind.subscribe` return value ignored — `ReturnValueIgnored` / `CheckReturnValue`: The subscription is not stored, risking it being garbage-collected or preventing unsubscription (resource leak).
+
+**Line 52** — Same `ReturnValueIgnored` / `CheckReturnValue` violation as line 41.
+
+**Line 19** — `MissingJavadocType` (class-level Javadoc is absent at the class declaration; the Javadoc present uses `///` Markdown style but documents only the constructor, not the class itself per standard Javadoc rules).
+
+**Line 27** — `DesignForExtension` / `MissingOverride`: `get()` is a public method implementing `Supplier<List<MenuItem>>` without `@Override` annotation.

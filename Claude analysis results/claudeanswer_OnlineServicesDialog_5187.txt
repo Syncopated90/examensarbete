@@ -1,0 +1,26 @@
+**Line 19-21: Field naming convention**
+`versionCheckBox`, `webSearchBox`, `dlibCheckBox` — `webSearchBox` is inconsistent; should be `webSearchCheckBox` to match naming pattern.
+
+**Line 31: Mutable field not final**
+`viewModel` is not `final` but is a class-level field assigned in `initialize()`. Should be declared `final` if possible, or documented why it cannot be.
+
+**Line 44-47: Lambda with side effects / null return**
+`setResultConverter` always returns `null`, even on `OK`. This is a design smell; the dialog result is discarded rather than returning a meaningful value.
+
+**Line 52: `initialize()` is private but annotated `@FXML`**
+Rule: **`@FXML` on private method** — while technically permitted by JavaFX, it bypasses normal access control; should be package-private per convention.
+
+**Line 54-58: Bidirectional binding on UI thread assumption**
+`bindBidirectional` calls assume `initialize()` runs on the JavaFX Application Thread, but there is no `Platform.runLater` guard or thread assertion.
+
+**Line 71: Lambda parameter `_` used twice**
+`(_, _, newValue)` — using `_` as a repeated unnamed parameter is only valid in Java 21+ with unnamed patterns. If compiled on earlier versions this is a compile error; if Java 21+, acceptable but may confuse static analyzers. Rule: **UnusedFormalParameter** / **Java version compatibility risk**.
+
+**Line 72: Listener not stored / never removed**
+`fetcherCheckBox.selectedProperty().addListener(...)` — the listener is anonymous and never removed, causing a **memory leak** (rule: **AvoidInstantiatingObjectsJustToCallGetClass** / **CloseResource** analog — listener leak).
+
+**Line 68-75: `populateFetchers()` modifies UI outside constructor**
+Called from `initialize()` which is fine, but `fetchersContainer` could be `null` if FXML injection fails; no null check present. Rule: **NullDereference**.
+
+**Line 33: Constructor does non-trivial work**
+Constructor calls `ViewLoader`, `setResultConverter`, and triggers FXML loading — violates **DoNotCallOverridableMethodsInConstructor** and **HeavyConstructor** rules; `initialize()` is called as a side effect of `load()`.

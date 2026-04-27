@@ -1,0 +1,21 @@
+**Line 107** — `entryUpdated` assigned but logic allows multiple `onAddLinkedFile.accept` calls without re-reading updated entry state. **Stale Data / Inconsistent State**
+
+**Line 110** — `entry.getFiles()` called after `onAddLinkedFile.accept(newLinkedFiles, entry)` may still return old files if `onAddLinkedFile` doesn't mutate `entry`. **Stale Read**
+
+**Line 113** — `files.entrySet().stream()` iterates map that was potentially mutated by `autoLinkBrokenLinkedFiles` via `files.remove(fileName)` at line 148. **Unexpected Mutation of Shared Map**
+
+**Line 148** — `files.remove(fileName)` mutates the map passed in from `getAssociatedFiles`, which returns a mutable `HashMap`. Callers may not expect mutation. **Unexpected Side Effect**
+
+**Line 148** — `linkedFile.setLink(...)` mutates a `LinkedFile` object from `entry.getFiles()`, which may be shared/referenced elsewhere. **Unexpected Mutation of Input Parameter**
+
+**Line 107–125** — `doLinkAssociatedFiles` calls `onAddLinkedFile.accept` up to three times for a single entry, potentially applying partial updates. **Multiple Inconsistent State Transitions**
+
+**Line 152** — `files = Map.of()` (immutable) returned on exception, but callers like `autoLinkBrokenLinkedFiles` call `files.remove()` on it — will throw `UnsupportedOperationException` at runtime. **Return of Immutable Map Where Mutable Expected**
+
+**Line 68** — Private constructor has same parameter order ambiguity between `ExternalApplicationsPreferences` and `AutoLinkPreferences`; no defensive null checks on `directories`, `autoLinkPreferences`, `externalApplicationsPreferences`. **Null Dereference Risk**
+
+**Line 183** — `findAssociatedNotLinkedFilesWithFinder` is `public` but also called internally; exposes internal `FileFinder` abstraction. **Inappropriate Intimacy / Leaky Abstraction**
+
+**Line 36–37** — `changedEntries` and `fileExceptions` in `LinkFilesResult` are mutable lists exposed via getters directly — no defensive copy. **Mutable Collection Exposure**
+
+**Line 44–47** — `addBibEntry` and `addFileException` are `protected`, not `private`, in a `public static` inner class — broader visibility than necessary. **Excess Accessibility**

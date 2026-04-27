@@ -1,0 +1,55 @@
+**Line 4** – `java.util.Objects` imported but only used once in a lambda; minor but flagged by some linters as low-priority. Skipping trivial.
+
+---
+
+**Line 4** – `import java.util.Objects;` — **UnusedImports** (used in lambda, acceptable, but static analysis tools like Checkstyle/PMD may not flag this). Skip.
+
+**Line 5** – `import java.util.Optional;` — **UnusedImports**: `Optional` is only used in `viewModel.treeRootProperty().setValue(Optional.empty())` which is valid, but:
+
+---
+
+**Line 48** – `BibDatabaseContext bibDatabaseContext` parameter passed to constructor and forwarded only to `setupUI` then `loadConfiguration`. No field storage. Not a violation itself.
+
+---
+
+**Line 156** – `private JabRefIcon getIconForExtension(FileExtensionViewModel fileExtension)` — **ReturnCount**: method has multiple return points (PMD: `TooManyReturns`).
+
+**Line 165** – `case "any file" -> null;` and **Line 167** – `default -> null;` — **DuplicateBranches** (PMD): two switch branches return identical values; they should be merged.
+
+**Line 156** — **NullReturns** (PMD): method returns `null` in multiple branches instead of `Optional<JabRefIcon>`.
+
+---
+
+**Line 174** – `Platform.runLater(() -> { validationVisualizer.initVisualization(...); });` — **LambdaCanBeMethodReference** (PMD/IntelliJ): single-statement lambda could be simplified, though not always applicable here.
+
+**Line 173–178** – `setupValidation()`: **AvoidLiteralsInIfCondition** not applicable, but the `Platform.runLater` lambda body is a single statement — **UnnecessaryBlock** (Checkstyle).
+
+---
+
+**Line 196** – `new FileExtensionViewModel(StandardFileType.ANY_FILE, preferences.getExternalApplicationsPreferences())` inside `orElseGet` lambda — **AvoidInstantiationInLoops** not applicable, but object instantiation inside stream terminal operation is flagged by some tools.
+
+---
+
+**Line 208** – `viewModel.treeRootProperty().setValue(Optional.empty())` — **OptionalUsedAsFieldOrParameterType** (PMD): `Optional` used as a value being set into a property, violating the intent of `Optional`.
+
+---
+
+**Line 75–78** – `labelColumn` fields set but `setPrefWidth` and `setMinWidth` called with hardcoded literals `100`, `300`, `30` — **MagicNumber** (PMD/Checkstyle) on lines **76, 77, 79, 80, 102, 103**.
+
+**Line 102** – `browseButton.setMinWidth(30);` — **MagicNumber**
+
+**Line 103** – `browseButton.setPrefWidth(30);` — **MagicNumber**
+
+---
+
+**Line 50** – `this.validationVisualizer = new ControlsFxVisualizer();` — **ImmutableField** (PMD): `validationVisualizer` is assigned once in constructor and never reassigned; should be `final`. It is already declared without `final` on **line 39**.
+
+**Line 39** – `private final ControlsFxVisualizer validationVisualizer;` — actually declared `final`, so no violation. Correct.
+
+**Line 41** – `private TextField directoryPathField;` — **ImmutableField** (PMD): assigned once in `setupUI`, never reassigned; should be `final` if possible (not possible here since it's set outside constructor).
+
+---
+
+**Line 214** – `if (nextButton != null)` — **AvoidBranchingStatementAsLastInLoop** not applicable, but **NullCheck** after method return is correct practice; no violation.
+
+**Line 209–220** – `onEnteringPage`: `Platform.runLater` nesting inside an override — **AvoidCatchingGenericException** not applicable, but **ExcessiveMethodLength** not triggered.

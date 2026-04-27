@@ -1,0 +1,7 @@
+**Line 14** - `BibDatabase database` field not declared `final` after `NonNull` contract — actually it is final. Let me re-examine.
+
+**Line 15** — `BibDatabase database` parameter lacks `@NonNull` annotation, inconsistent with `field` parameter. **Rule: `MissingNullAnnotation` / inconsistent nullability annotation**
+
+**Line 22** — `database` is never null-checked before `.getEntries()` is called, yet it has no `@NonNull` annotation. **Rule: `NullPointerDereference` / `AvoidDereferenceOfNullPointer`**
+
+**Line 21–23** — `parallelStream()` used without necessity; parallel streams have overhead and correctness risks in this context. **Rule: `UseOfParallelStream` / `AvoidUnnecessaryParallelStream`**

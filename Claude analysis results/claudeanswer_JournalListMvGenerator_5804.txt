@@ -1,0 +1,17 @@
+**Line 51** — `main` method missing `public` modifier (package-private `main` not standard entry point). **Rule: `MissingPublicStaticMain` / `UnusedAccessModifier`**
+
+**Line 51** — Method declares `throws IOException` but exceptions inside the `try` block are swallowed via `Unchecked.consumer`. **Rule: `AvoidThrowingRawExceptionTypes` / `SignatureDeclareThrowsException`**
+
+**Line 57** — `System.exit(0)` used instead of throwing an exception or returning. **Rule: `DoNotCallSystemExit` / `AvoidCallingSystemExit`**
+
+**Line 66** — Method chaining across multiple lines with `.` at end of line rather than start. **Rule: `MethodChainStyleViolation` / `DotPosition`**
+
+**Line 72** — `System.out.print` / `System.out.println` used instead of logger. **Rule: `SystemOutPrint` / `AvoidPrintStackTrace`** (×4, lines 72–77)
+
+**Line 55** — `Path.of(...)` string literal path separator hardcoded with forward slashes; not `File.separator`. **Rule: `AvoidFilePathSeparator` / `HardcodedFileSeparator`** (also line 60)
+
+**Line 79** — `abbreviation -> abbreviation` is an identity lambda; should be replaced with `Function.identity()`. **Rule: `LambdaCanBeMethodReference` / `UseMethodReference`**
+
+**Line 75** — `Collection<Abbreviation>` used where `List<Abbreviation>` is the more specific return type. **Rule: `LooseCoupling`**
+
+**Line 85** — `toAbsolutePath()` called on `journalListMvFile` which was already constructed as an absolute-equivalent path; redundant call. **Rule: `UnnecessaryLocalBeforeReturn` / `RedundantMethodCall`**

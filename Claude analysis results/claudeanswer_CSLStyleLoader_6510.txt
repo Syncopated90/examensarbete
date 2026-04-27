@@ -1,0 +1,21 @@
+**Line 24-25** — `mutable-static-field`: `INTERNAL_STYLES` and `EXTERNAL_STYLES` are mutable static fields (`ArrayList`) in a `record`, violating immutability and thread-safety expectations.
+
+**Line 24-25** — `non-thread-safe-static-mutable`: Concurrent modification of `INTERNAL_STYLES` / `EXTERNAL_STYLES` without synchronization across `loadInternalStyles()`, `loadExternalStyles()`, `addStyleIfValid()`, `removeStyle()`.
+
+**Line 19** — `record-mutable-component`: `record` component `openOfficePreferences` is mutable; records should hold immutable data.
+
+**Line 31** — `constructor-side-effect`: Compact/canonical record constructor calls `loadExternalStyles()`, causing side effects during construction.
+
+**Line 52** — `inefficient-string-construction` / `new-string-from-bytes-no-charset`: `new String(styleStream.readAllBytes())` uses the platform default charset instead of specifying an explicit charset (e.g., `StandardCharsets.UTF_8`).
+
+**Line 63** — `variable-declared-outside-modified-inside-catch`: `styleCount` is decremented inside a `catch` block, leading to imprecise error accounting if multiple failures occur.
+
+**Line 15-16** — `wrong-import`: `tools.jackson.core.type.TypeReference` and `tools.jackson.databind.ObjectMapper` — incorrect package prefix; should be `com.fasterxml.jackson`.
+
+**Line 65** — `magic-string`: `"path"`, `"title"`, `"shortTitle"`, `"isNumeric"`, `"hasBibliography"`, `"usesHangingIndent"` are magic string literals used as map keys with no constants defined.
+
+**Line 68-69** — `unchecked-cast`: `(String) info.get("path")` and similar casts are unchecked and will throw `ClassCastException` at runtime if the type differs; no type validation performed.
+
+**Line 44** — `return-new-default-in-or-else`: `orElse(new CitationStyle(...))` unconditionally constructs the fallback object; `orElseGet` with a supplier should be used.
+
+**Line 155-157** — `lazy-init-not-thread-safe`: `getInternalStyles()` uses a check-then-act pattern on `INTERNAL_STYLES.isEmpty()` without synchronization, creating a race condition.

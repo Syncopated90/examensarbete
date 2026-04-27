@@ -1,0 +1,23 @@
+**Line 8-13: Record Components Not Validated (Null Check Missing)**
+Rule: `NullableOrNotNullShouldBeUsed` / `ParameterAssignment`
+`bibEntry`, `label`, `shortLabel`, `description`, `citationProperties` have no null checks in a compact constructor.
+
+**Line 17-22: Equals Method Does Not Check All Fields**
+Rule: `EqualsHashCode` / `InsufficientEquals`
+`equals()` only compares `bibEntry()`, ignoring `label`, `shortLabel`, `description`, and `citationProperties`.
+
+**Line 17: Redundant `getClass()` Check in Record**
+Rule: `UseInstanceofForEquality` / `CompareObjectsWithEquals`
+Should use `instanceof CAYWEntry caywEntry` pattern match instead of `getClass() != o.getClass()`.
+
+**Line 21: Unnecessary Cast**
+Rule: `UnnecessaryCast`
+Cast `(CAYWEntry) o` is unnecessary if `instanceof` pattern matching is used.
+
+**Line 8-13: Record Overrides `equals`/`hashCode` Inconsistently with Components**
+Rule: `OverrideBothEqualsAndHashcodeInRecord`
+Record's auto-generated `equals`/`hashCode` covers all components; partial override breaks the contract symmetry expected of records.
+
+**Line 26: `hashCode` Does Not Match `equals`**
+Rule: `HashCodeOnlyUsesOneField`
+`hashCode()` uses only `bibEntry()`, consistent with `equals()`, but both ignore other fields — violates general `equals`/`hashCode` contract for records.

@@ -1,0 +1,7 @@
+**Line 12** — `HideUtilityClassConstructor`: Utility class `PlainCitationParserFactory` has only static methods but no private constructor.
+
+**Line 12** — `MethodLength` / parameter count: `getPlainCitationParser` has 5 parameters, violating a typical threshold of 4 (`ParameterNumber` rule).
+
+**Line 17** — `SwitchExpression` / `QualifiedEnumConstant`: Switch case labels use qualified enum constant names (e.g., `PlainCitationParserChoice.RULE_BASED_GENERAL`) instead of unqualified names (`RULE_BASED_GENERAL`), which is unnecessary and non-idiomatic in a switch on that type.
+
+**Line 24** — `MethodChaining` / Law of Demeter: `aiService.getTemplatesService()` and `aiService.getChatLanguageModel()` violate the Law of Demeter — the caller reaches through `aiService` to retrieve collaborators directly.

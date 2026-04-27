@@ -1,0 +1,17 @@
+**Line 15** — `modifier_order` / `variable_declaration_usage_distance`: `private final static` should be `private static final` (convention: `static` before `final`).
+
+**Line 15** — `field_name_convention`: Non-constant instance fields should not use SCREAMING_SNAKE_CASE; however, since it's `static final`, the name is acceptable — but it is *not* effectively final (it's a mutable `Queue`), violating `checkstyle:ConstantName` rule (mutable static fields should not be named in SCREAMING_SNAKE_CASE).
+
+**Line 16** — `checkstyle:VisibilityModifier` / `pmd:MutableStaticState`: `isInitialized` is a non-final mutable static field, creating shared mutable state.
+
+**Line 17** — `pmd:MutableStaticState`: `config` is a non-final mutable static field.
+
+**Line 17** — `pmd:NullAssignment` / `checkstyle:initialization`: `config` is uninitialized (null) at declaration and used without null-check in `get()` before `isInitialized` is guaranteed to be `true` in all code paths.
+
+**Line 40** — `pmd:NonThreadSafe` / `findbugs:IS2_INCONSISTENT_SYNC`: `WEB_VIEWS.size()` and `WEB_VIEWS.poll()` (line 44) are accessed on the FX thread and background threads without synchronization; `ArrayDeque` is not thread-safe.
+
+**Line 44** — `pmd:AvoidCallingFinalize` / `findbugs:RV_RETURN_VALUE_IGNORED`: `WEB_VIEWS.poll()` can return `null` (race condition between `hasMore()` and `poll()`), but the return value is not null-checked before being returned.
+
+**Line 51** — `pmd:LambdaCanBeMethodReference`: `() -> { WEB_VIEWS.add(new WebView()); ... }` is not a method reference violation per se, but the lambda captures mutable static state accessed off the JavaFX thread unsafely.
+
+**Lines 65–72** — `pmd:UnnecessaryMethodCall` / `checkstyle:RedundantMethod`: The `getNumberOfPreloadedInstances()` and `getMinimumNumberOfInstances()` methods in the `record` manually replicate the auto-generated accessors `numberOfPreloadedInstances()` and `minimumNumberOfInstances()`, which are already provided by the record — redundant method declarations.

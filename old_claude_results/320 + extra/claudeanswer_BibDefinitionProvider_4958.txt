@@ -1,0 +1,17 @@
+**Line 48** – `getFieldRange` may return null; result passed directly to `convertToLspRange` without null check. **Null Dereference**
+
+**Line 48** – Long line exceeding 120/150 character limit. **Line Length**
+
+**Line 44** – `entry` shadows outer variable name; loop variable `entry` conflicts with `linkedFileRangeEntry` pattern inconsistency. **Variable Naming**
+
+**Line 67** – `rangeInFileString.end()` appears to return a length but is used as an absolute offset added to `start`, suggesting incorrect range arithmetic. **Incorrect Computation / Off-by-one**
+
+**Line 71–73** – Logging guard `isDebugEnabled()` used correctly, but the log message "filePath is empty" provides no context (no `uri`, no `linkedFile.getLink()`). **Insufficient Logging**
+
+**Line 29** – `EMPTY_RANGE` is mutable (`Range` is not immutable); a caller could mutate the shared instance. **Mutable Static Field**
+
+**Line 25** – `BibDefinitionProvider` extends `DefinitionProvider` but `provideDocumentLinks` is overridden to return an empty list with a comment instead of being omitted via interface default or design. **Inappropriate Inheritance / Liskov Substitution**
+
+**Line 53** – `fileString` is retrieved via `getFieldOrAlias` after already confirming presence via `getField`; redundant double lookup. **Redundant Code**
+
+**Line 60** – `fileField.indexOf(fileString.get())` returns `-1` if not found; no guard against `-1` before arithmetic on `startIndex`. **Null/Negative Dereference**

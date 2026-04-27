@@ -1,0 +1,21 @@
+**Line 7** — `java.util.HashMap` imported but `fieldPositions` could use `java.util.LinkedHashMap`; minor, but flagged as **UnusedImport** is not applicable here. Actual issues:
+
+**Line 7** — `HashMap` used for `fieldPositions` (mutable field exposed via getter) — **ReturnOfCollectionOrArrayField** (mutable internal state returned directly at line 196)
+
+**Line 196** — `return fieldPositions;` returns internal mutable collection directly — **ReturnOfCollectionOrArrayField**
+
+**Line 37** — `fieldPositions` is an instance field mutated across calls, making `BibEntryWriter` stateful and non-thread-safe — **NonThreadSafeSingleton** / **InstanceVariableMayNotBeInitialized** risk
+
+**Line 163** — `value.get().trim().isEmpty()` called after `value.isPresent()` check is safe, but `value.get()` called twice — **OptionalGetWithoutIsPresent** is not triggered, but **AvoidCallingGet** / redundant double-call pattern
+
+**Line 47** — `StringWriter` and `BibWriter` are not closed in `write(List, BibDatabaseMode)` — **CloseResource**
+
+**Line 92** — `type.get()` called multiple times after `type.isPresent()` check — **OptionalGetWithoutIsPresent** (style: should use `type.ifPresent` or assign to local)
+
+**Line 100** — `type.get()` called again — **OptionalGetWithoutIsPresent** (repeated)
+
+**Line 86** — `written.add(InternalField.KEY_FIELD)` modifies `HashSet` then `written.addAll(requiredFields)` — `requiredFields` may contain `KEY_FIELD` causing silent duplicate suppression; no rule violation but logic risk
+
+**Line 155** — `entry.getCitationKey().orElse("")` called twice in same method — **AvoidDuplicateLiterals** / redundant Optional unwrap
+
+**Line 172** — Comparison `InternalField.KEY_FIELD != field` uses reference equality instead of `.equals()` — **CompareObjectsWithEquals**

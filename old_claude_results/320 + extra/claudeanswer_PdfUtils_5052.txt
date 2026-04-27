@@ -1,0 +1,15 @@
+**Line 7** — `UnusedImports`: `PDFTextStripper` is used, but `PDDocument` import from pdfbox is used only as a parameter type — not a violation. *(Retracted)*
+
+**Line 10** — `HideUtilityClassConstructor`: Utility class `PdfUtils` lacks a private constructor.
+
+**Line 12** — `JavadocStyle` / `InvalidJavadocPosition`: `///` is a Markdown doc comment (Java 23+); non-standard in most static analysis rulesets (e.g., Checkstyle expects `/** */`).
+
+**Line 21** — `JavadocStyle` / `InvalidJavadocPosition`: Same `///` Markdown doc comment issue on `@param` tag.
+
+**Line 21** — `JavadocMissingParamTag`: Parameters `document` and `page` are not documented in the Javadoc.
+
+**Line 22** — `LocalVariableCouldBeFinal`: `stripper` could be declared `final`.
+
+**Line 27** — `LocalVariableCouldBeFinal`: `writer` could be declared `final`.
+
+**Line 26** — `CommentedOutCode`: `// stripper.setParagraphEnd(...)` is commented-out code (PMD: `CommentedOutCode`).

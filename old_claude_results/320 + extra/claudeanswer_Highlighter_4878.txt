@@ -1,0 +1,19 @@
+**Line 33** — `ST_MutableStaticField` / Mutable Static Field: `connection` is a `static` non-final mutable field, creating shared mutable state and thread-safety issues.
+
+**Line 33** — `MS_SHOULD_BE_FINAL` / Static field `connection` is not `final`.
+
+**Line 60–61** — `ST_WRITE_TO_STATIC_FROM_INSTANCE_CONTEXT` / Static field `connection` written in static method without synchronization (`highlightNode`).
+
+**Line 79–80** — Same as above in `findMatchPositions`.
+
+**Line 60** — `PREDICTABLE_RANDOM` / Not applicable here, but: **Double-checked locking without `volatile`** — `connection` is not `volatile`, so the null-check pattern on lines 59–61 and 78–80 is a broken lazy initialization (race condition).
+
+**Line 33** — `UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD` / Field assigned but never declared `volatile`, causing unsafe publication across threads.
+
+**Line 49** — `ConcurrentModification` risk: iterating `element.childNodes()` (live list) while calling `textNode.after()` which mutates the DOM, potentially causing `ConcurrentModificationException`.
+
+**Line 27** — `HideUtilityClassConstructor` rule partially broken: constructor is `private` (correct), but class has only `static` methods yet declares a mutable `static` field, violating utility class purity.
+
+**Line 33** — `AssignmentToStaticFieldFromInstanceMethod` (PMD): static field `connection` is assigned in static methods that can be called concurrently.
+
+**Line 60** / **Line 79** — `NonThreadSafeSingleton` (FindBugs/SpotBugs `LI_LAZY_INIT_STATIC`): lazy initialization of static field `connection` without synchronization.

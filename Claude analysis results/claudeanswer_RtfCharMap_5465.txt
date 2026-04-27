@@ -1,0 +1,17 @@
+**Line 7** — `UseOfConcreteClass` / `ProgrammingToImplementation`: Field declared as `HashMap` instead of `Map` interface.
+
+**Line 7** — `FieldMayBeFinal`: Field `rtfMap` is assigned only once (inline) but not declared `final` — actually it is `final`, skip.
+
+**Line 7** — `UseDiamondOperator` — redundant type parameter on right-hand side (Java 7+). Actually diamond is used, skip.
+
+**Line 7** — `LooseCoupling` (PMD): `HashMap` used instead of `Map` for field declaration.
+
+**Line 75** — `DuplicateKey`: `put("o", "\\'f8")` — key `"o"` is inserted twice (also at line 83: `put("o", "\\u248o")`), second put silently overwrites first.
+
+**Line 75 / Line 83** — `DuplicateInsert`: Key `"o"` put into map at line 75 (`\\'f8`) and again at line 83 (`\\u248o`).
+
+**Line 232** — `UnusedPrivateMethod` risk: `put()` wraps a single delegation; it adds no value and violates `UnnecessaryWrapperClass`.
+
+**Line 232–234** — `UnnecessaryMethodWrapper` (PMD `UnusedPrivateMethod` / `UnnecessaryLocalBeforeReturn`): private method `put` simply delegates to `rtfMap.put` without any additional logic.
+
+**Line 7** — `LooseCoupling` (PMD): Declare field as `Map<String, String>` rather than `HashMap<String, String>`.

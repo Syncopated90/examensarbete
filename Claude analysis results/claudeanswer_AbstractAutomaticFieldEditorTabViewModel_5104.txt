@@ -1,0 +1,21 @@
+**Line 6** — `HashSet` imported but used in a way that loses ordering; however, the sort on line 39 corrects this. Still, using `HashSet` to deduplicate an `ObservableList` and then calling `setAll` on it causes unnecessary full-list replacement on every `addFields` call.
+
+**Line 6** — `java.util.HashSet` — **LooseCoupling**: `HashSet` used directly instead of `Set` interface (declaration is fine as `Set`, but instantiation is `new HashSet<>` — minor).
+
+**Line 46** — **UseUtilityClass / Method does side-effects on shared mutable state**: `addFields` rebuilds `allFields` via `setAll` twice (lines 37–38), causing two full ObservableList notifications and discarding order between calls.
+
+**Line 46** — **UnusedFormalParameter**: `fields` parameter shadows no outer scope, but the method is `private` and only called internally — not a violation per se, but the method modifies `allFields` (an instance field) rather than returning a value, violating **CommandQuerySeparation**.
+
+**Line 24** — **VisibilityTooHigh**: `dialogService` and `stateManager` are `protected`, exposing internal collaborators to subclasses directly, violating **EncapsulationRule** / **Law of Demeter**.
+
+**Line 26** — **VisibilityTooHigh**: `compoundEdit` is `private` but `dialogService` and `stateManager` (lines 24–25) are `protected` without accessor methods — inconsistent visibility convention.
+
+**Line 29** — **ExcessiveParameterList**: Constructor has 4 parameters — violates **ExcessiveParameterList** rule (threshold typically 3).
+
+**Line 52** — **AvoidDeeplyNestedCode / Law of Demeter**: `stateManager.getSelectedEntries().size()` — two chained method calls on an injected dependency.
+
+**Line 51** — **LongLine / InlineConstructor**: Anonymous `Notifications.UiNotification` construction chained with `.withAutoClose()` across multiple lines without intermediate variable — violates **IntermediateVariable** / readability rules.
+
+**Line 38** — **InefficientEmptyCheck**: `allFields.sort(...)` called after `setAll` in `addFields` is invoked twice, meaning sort should be deferred but is only called once at line 39 — fields added via the second `addFields` call (line 38) are sorted, but interim state after line 37 is unsorted and triggers an ObservableList update unnecessarily.
+
+**Line 43** — **MissingOverride**: `getAllFields()` overrides nothing here, but if `AbstractViewModel` defines it, `@Override` annotation is absent.

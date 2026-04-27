@@ -1,0 +1,15 @@
+**Line 10** — `ClassNamingConventions`: Class name `BibTexStringDeleteDetailsView` should follow conventions; "BibTex" should be "BibTeX" or consistent with project naming (minor, but flagged by style rules).
+
+**Line 12** — `AssignmentInOperand` / `LocalVariableMayBeFinal`: `container` and `header` could be declared `final`.
+
+**Line 13** — `LocalVariableMayBeFinal`: `header` is never reassigned; should be `final`.
+
+**Line 12** — `LocalVariableMayBeFinal`: `container` is never reassigned; should be `final`.
+
+**Lines 16–18** — `AvoidDuplicateLiterals`: `Localization.lang(...)` called multiple times inline within a single method chain, reducing readability and testability.
+
+**Line 11** — `UnnecessaryConstructor`: Constructor does work but the class is `final` with no explicit superclass constructor call documented; `super()` is implicit but `setAllAnchorsAndAttachChild` is a side-effectful call in constructor, violating `ConstructorDoesNotCallOverridableMethod` if that method is not `final` in the parent.
+
+**Line 10** — `CommentRequired`: No Javadoc on `public` class.
+
+**Line 11** — `ConstructorCallsOverridableMethod`: `this.setAllAnchorsAndAttachChild(container)` — calling an instance method (potentially overridable) inside a constructor is unsafe.

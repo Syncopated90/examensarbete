@@ -1,0 +1,9 @@
+**Line 10** — `ClassNamingConventions` / `AbstractClassName`: Class `OwnerEditorViewModel` extends an abstract-prefixed class but is itself concrete; no violation here, but:
+
+**Line 10** — `UncommentedEmptyClass`: Class has minimal body, but not empty; skip.
+
+**Line 21** — `LawOfDemeter`: `preferences.getOwnerPreferences().getDefaultOwner()` — chain of two method calls violates the Law of Demeter (message chaining).
+
+**Line 11** — `ImmutableField`: Field `preferences` is declared `final` and assigned only in constructor — compliant; no violation.
+
+**Line 13-18** — `ExcessiveParameterList`: Constructor has 5 parameters, which may exceed the typical threshold of 4 (rule: `ExcessiveParameterList` / `TooManyParameters`).

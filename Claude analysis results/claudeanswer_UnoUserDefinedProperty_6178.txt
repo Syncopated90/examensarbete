@@ -1,0 +1,17 @@
+**Line 40** `orElse(new ArrayList<>())` — **`Collections.emptyList()` preferred** / **Unchecked return type**: `orElse` always evaluates its argument; use `orElseGet(ArrayList::new)`. Rule: **JAVA:S4276 / InefficientEmptyCollection** (eager evaluation of `new ArrayList<>()`).
+
+**Line 55** `propertySet.get().getPropertyValue(property).toString()` — **Null Dereference**: `toString()` is called without null check on the return value of `getPropertyValue`. Rule: **JAVA:S2259 / NullDereference**.
+
+**Line 56** `return Optional.ofNullable(value)` — **Redundant `ofNullable`**: since `toString()` on a non-null object can never return null (line 55 already calls `.toString()`), `Optional.of(value)` is sufficient. Rule: **JAVA:S2789 / RedundantNullCheck**.
+
+**Line 48-57** Method `getStringValue` throws `WrappedTargetException` but `UnknownPropertyException` is silently swallowed without logging. Rule: **JAVA:S1166 / CaughtExceptionNotLogged**.
+
+**Line 87** `container.get().addProperty(property, PropertyAttribute.REMOVEABLE, new Any(Type.STRING, value))` — `PropertyAttribute.REMOVEABLE` is a `short`, passed where a `short` is expected, but the constant name is a spelling error in the UNO API; no static rule broken here specifically, but the use of a magic-constant-like field without a named constant wrapper violates **JAVA:S2386 / AvoidUsingShortType** or **JAVA:S1874 / UseOfDeprecatedCode** depending on UNO version.
+
+**Line 63** `setStringProperty` declares `@NonNull` on parameters but does not enforce it programmatically; `remove` and `removeIfExists` similarly declare `@NonNull` (lines 95, 114) without null-guard. Rule: **JAVA:S4449 / ParameterNullabilityAnnotationWithoutValidation**.
+
+**Line 33** `getPropertyContainer` — method is `public` but only used internally via `UnoUserDefinedProperty.getPropertyContainer(doc)` qualified calls; could be package-private. Rule: **JAVA:S1104 / ExcessivePublicCount** / **PMD:UnusedModifier** (minor).
+
+**Lines 72, 79** — `container.get()` and `propertySet.get()` called after `.isEmpty()` guard, which is safe, but two separate `Optional.get()` calls on the same optional within the same method without re-binding. Rule: **JAVA:S3655 / OptionalGetWithoutIsPresent** (false-positive risk in static analyzers due to branching).
+
+**Line 100** `LOGGER.warn(...)` passes `ex` as a third argument after the message with one placeholder; the exception will be treated as a Throwable (stack trace printed), which may be unintentional if only the message was desired, or intentional but inconsistent with other catch blocks that suppress exceptions entirely. Rule: **JAVA:S2139 / LogAndThrow** (inconsistent exception handling policy across similar methods).

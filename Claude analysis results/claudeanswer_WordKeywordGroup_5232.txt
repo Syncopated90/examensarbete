@@ -1,0 +1,17 @@
+**Line 39** — `ReferenceEquality`: `InternalField.TYPE_HEADER == searchField` uses `==` for object comparison instead of `.equals()`.
+
+**Line 96** — `UnnecessaryBoxing` / `CompareObjectsWithEquals`: `Objects.equals(caseSensitive, other.caseSensitive)` wraps a `boolean` primitive unnecessarily; should use `==` or direct comparison.
+
+**Line 98** — `UnnecessaryBoxing` / `CompareObjectsWithEquals`: `Objects.equals(onlySplitWordsAtSeparator, other.onlySplitWordsAtSeparator)` same issue as line 96.
+
+**Line 128** — `VisibilityModifier`: Inner class `StringSearchStrategy` has package-private field `searchWords` instead of `private`.
+
+**Line 143** — `VisibilityModifier`: Inner class `TypeSearchStrategy` has package-private field `searchWords` instead of `private`.
+
+**Lines 128, 143** — `NonStaticInnerClass`: `StringSearchStrategy`, `TypeSearchStrategy`, and `KeywordListSearchStrategy` are non-static inner classes that do not require access to the outer instance state directly (they access outer fields implicitly), which causes an implicit reference to the outer class — should be `static` nested classes or the access should be made explicit.
+
+**Line 117** — `NonStaticInnerClass`: `SearchStrategy` interface should be `static`.
+
+**Line 65** — `AvoidInstantiatingObjectToGetClassObject` / `UnnecessaryCopy`: `new ArrayList<>(entriesToAdd)` creates an unnecessary copy just for iteration; iterating `entriesToAdd` directly is sufficient.
+
+**Line 79** — Same as line 65: `new ArrayList<>(entriesToRemove)` is an unnecessary defensive copy for simple iteration.

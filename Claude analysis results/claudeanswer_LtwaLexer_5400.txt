@@ -1,0 +1,32 @@
+**Line 6-11: `ImportControl` / `UnusedImports`**
+Wildcard import `org.antlr.v4.runtime.*` duplicates specific imports on lines 6-8. Lines 6, 7, 8 are redundant given line 9.
+
+**Line 22-23: `VisibilityModifier`**
+`channelNames` and `modeNames` are `public static` mutable arrays — public mutable static fields expose internal state.
+
+**Line 22: `ArrayIsStoredDirectly` / `PublicStaticMutable`**
+`public static String[] channelNames` is a mutable public static field.
+
+**Line 25: `ArrayIsStoredDirectly` / `PublicStaticMutable`**
+`public static String[] modeNames` is a mutable public static field.
+
+**Line 36: `PublicStaticMutable`**
+`public static final String[] ruleNames` exposes a mutable array via `makeRuleNames()`.
+
+**Line 55-56: `PublicStaticMutable`**
+`public static final String[] tokenNames` is a mutable public static array, exposed directly.
+
+**Line 52: `MutableException` / `DeprecatedField`**
+Field `tokenNames` is `@Deprecated` but still used internally at lines 58-65.
+
+**Line 68-70: `DeprecatedMethod`**
+`getTokenNames()` is `@Deprecated` and returns mutable static array `tokenNames`.
+
+**Line 118: `DefaultLabelNotLastInSwitch`**
+`switch` in `sempred()` has no `default` label; falls through to `return true` outside switch, acceptable but missing explicit default case.
+
+**Line 127, 134, 140, 147, 154, 163: `UnnecessaryCast`**
+`(RuleContext)_localctx` — `_localctx` is already declared as `RuleContext`; the cast is redundant.
+
+**Line 85-101: `BooleanExpressionComplexity`**
+`isNextBoundary()` has an excessively long boolean `||` chain (exceeds typical threshold of 3).

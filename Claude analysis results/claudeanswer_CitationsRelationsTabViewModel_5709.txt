@@ -1,0 +1,29 @@
+**Line 52** – `ClassVariableVisibilityRule`: Field `currentResult` should be `private final` where possible; it is non-final mutable state exposed via getter.
+
+**Line 53** – `ClassVariableVisibilityRule`: Field `searchTask` is not `private final`; raw `Future<?>` mutable field with no visibility control.
+
+**Line 55** – `ExcessiveParameterListRule`: Constructor has 6 parameters, exceeding typical threshold of 5.
+
+**Line 68** – `InefficientEmptyStringCheckRule`: `new SimpleStringProperty("")` — use `new SimpleStringProperty()` instead of empty string literal.
+
+**Line 70** – `UnnecessaryConstructorRule` / `AvoidInstantiatingObjectsJustToGetClassRule`: `new SciteAiFetcher()` instantiated directly inside constructor, making the class untestable (dependency not injected).
+
+**Line 73** – `LawOfDemeterRule`: `stateManager.getActiveDatabase().orElse(new BibDatabaseContext())` chains method calls across object boundaries.
+
+**Line 84** – `UnnecessaryLocalVariableRule`: `ImportHandler` is constructed but could be a field or injected dependency; instantiation inside method violates `SingleResponsibilityPrinciple`.
+
+**Line 88** – `LawOfDemeterRule`: `preferences.getImporterPreferences().generateNewKeyOnImportProperty().get()` — three-level chain violates Law of Demeter.
+
+**Line 101** – `AvoidInstantiatingObjectsJustToGetClassRule` / `NullAssignmentRule`: `entryToCite.getCitationKey().get()` called without checking `isPresent()` after conditional that only checks `isEmpty()` on a different branch path — potential `NoSuchElementException`.
+
+**Line 135** – `NullCheckRule`: `if (entry == null)` null check indicates callers may pass null; prefer `Optional<BibEntry>` parameter.
+
+**Line 153** – `AvoidCatchingGenericExceptionRule` / `LambdaCanBeMethodReferenceRule`: `.onRunning(() -> status.set(SciteStatus.IN_PROGRESS))` — single-statement lambda should be a method reference where applicable.
+
+**Line 164** – `AvoidInstantiatingObjectsJustToGetClassRule`: `new CrossRef()` instantiated directly inside method, preventing testability; should be injected dependency.
+
+**Line 166** – `UnnecessaryBlockStatementRule`: `.onRunning(() -> { status.set(SciteStatus.DOI_LOOK_UP); })` — braces unnecessary for single-statement lambda.
+
+**Line 173** – `UnnecessaryBlockStatementRule`: `.onFailure(ex -> { status.set(SciteStatus.DOI_LOOK_UP_ERROR); })` — braces unnecessary for single-statement lambda.
+
+**Line 183** – `ReturnEmptyCollectionRatherThanNullRule`: `getCurrentResult()` exposes internal `Optional` field directly, breaking encapsulation of mutable state.

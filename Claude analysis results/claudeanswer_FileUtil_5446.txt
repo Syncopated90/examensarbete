@@ -1,0 +1,19 @@
+**Line 44** (`IS_POSIX_COMPLIANT`) — `PublicStaticFinalField` / mutable static field used as constant but is a primitive boolean; acceptable, however field is public and non-final in spirit — actually it is final. No issue here.
+
+**Line 160** — `SystemOutPrintln` / `InefficientStringBuffering`: `LOGGER.info` uses `{}}` (double closing brace) — malformed log format string: `"Truncated the too long filename '{}' ({}} characters) to '{}'."` has `{}}` instead of `{}`, breaking the SLF4J placeholder.
+
+**Line 269** (`relativize` with `List<BibEntry>`) — `AvoidReassigningParameters`: method parameter is not reassigned, but side-effects via `peek` mutate entries — `peek` used for side effects instead of `forEach` breaks the rule **`StreamExpressionStyle`** / **`AvoidSideEffectsInStreams`**.
+
+**Line 269** — `UseCollectionIsEmpty`: `entry.hasField(StandardField.FILE)` guards `entry.getFiles()` but `getFiles()` itself likely returns empty list safely — minor, not definitive.
+
+**Line 391** (`convertCygwinPathToWindows`) — `ReturnNull`: method return type is `Path` (non-nullable) but returns `null` on line 393, violating `@NonNull` contract and the **`ReturnNull`** / **`NullReturnRule`** rule.
+
+**Line 406** (`buildWindowsPathWithDriveLetterIndex`) — `StringInstantiation` / incorrect escaping: `replace("/", "\\\\")` replaces `/` with two literal backslashes `\\` instead of one `\`, producing malformed Windows paths — **`CorrectStringEscaping`** / logic defect.
+
+**Line 74** (`getFileExtension(Path)`) — `NullPointerDereference` risk: `file.getFileName()` can return `null` for root paths; `.toString()` called without null check — **`NullDereference`**.
+
+**Line 100** (`getBaseName`) — `NullDereference`: `path.getFileName()` can return `null` for root paths; `.toString()` called unconditionally on line 103 — **`NullDereference`**.
+
+**Line 269** — `LinguisticNaming`: method named `relativize` but returns a `List<BibEntry>` while also mutating the input list — **`LinguisticNaming`** rule violation (method name implies pure transformation).
+
+**Line 44–45** — `ClassNamingConventions` / **`UtilityClassWithPublicConstructor`**: utility class `FileUtil` has a private constructor (correct), but public mutable-accessible static fields `IS_POSIX_COMPLIANT` and `MAXIMUM_FILE_NAME_LENGTH` violate **`DataClass`** encapsulation expectations for utility classes.
